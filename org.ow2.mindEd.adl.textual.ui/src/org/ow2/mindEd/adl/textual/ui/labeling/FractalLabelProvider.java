@@ -18,7 +18,6 @@ import org.ow2.mindEd.adl.textual.fractal.DataDefinition;
 import org.ow2.mindEd.adl.textual.fractal.FileC;
 import org.ow2.mindEd.adl.textual.fractal.FormalArgument;
 import org.ow2.mindEd.adl.textual.fractal.FormalArgumentsList;
-import org.ow2.mindEd.adl.textual.fractal.HostedInterfaceDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ImplementationDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ImportDefinition;
 import org.ow2.mindEd.adl.textual.fractal.InlineCodeC;
