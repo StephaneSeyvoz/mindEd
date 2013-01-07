@@ -101,7 +101,6 @@ public class FractalParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFormalArgumentsListAccess().getGroup_2(), "rule__FormalArgumentsList__Group_2__0");
 					put(grammarAccess.getTemplateSpecifierAccess().getGroup(), "rule__TemplateSpecifier__Group__0");
 					put(grammarAccess.getSignedINTAccess().getGroup(), "rule__SignedINT__Group__0");
-					put(grammarAccess.getHexadecimalTypeAccess().getGroup(), "rule__HexadecimalType__Group__0");
 					put(grammarAccess.getValueListAccess().getGroup(), "rule__ValueList__Group__0");
 					put(grammarAccess.getValueListAccess().getGroup_2(), "rule__ValueList__Group_2__0");
 					put(grammarAccess.getTemplateReferenceAccess().getGroup(), "rule__TemplateReference__Group__0");

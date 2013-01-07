@@ -18,18 +18,18 @@ import org.ow2.mindEd.adl.textual.services.FractalGrammarAccess;
 public class FractalSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FractalGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Value_HexadecimalTypeParserRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1;
+	protected AbstractElementAlias match_Value_HEXADECIMAL_TYPETerminalRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (FractalGrammarAccess) access;
-		match_Value_HexadecimalTypeParserRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getValueAccess().getHexadecimalTypeParserRuleCall_2()), new TokenAlias(false, false, grammarAccess.getValueAccess().getIDTerminalRuleCall_0()), new TokenAlias(false, false, grammarAccess.getValueAccess().getNullKeyword_5()), new TokenAlias(false, false, grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_3()), new TokenAlias(false, false, grammarAccess.getValueAccess().getSignedINTParserRuleCall_1()));
+		match_Value_HEXADECIMAL_TYPETerminalRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getValueAccess().getHEXADECIMAL_TYPETerminalRuleCall_2()), new TokenAlias(false, false, grammarAccess.getValueAccess().getIDTerminalRuleCall_0()), new TokenAlias(false, false, grammarAccess.getValueAccess().getNullKeyword_5()), new TokenAlias(false, false, grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_3()), new TokenAlias(false, false, grammarAccess.getValueAccess().getSignedINTParserRuleCall_1()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getHexadecimalTypeRule())
-			return getHexadecimalTypeToken(semanticObject, ruleCall, node);
+		if(ruleCall.getRule() == grammarAccess.getHEXADECIMAL_TYPERule())
+			return getHEXADECIMAL_TYPEToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getIDRule())
 			return getIDToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getSTRINGRule())
@@ -40,10 +40,10 @@ public class FractalSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * HexadecimalType :
-	 * 	'0x'INT;
+	 * terminal HEXADECIMAL_TYPE :
+	 * 	'0x' ('a'..'z'|'A'..'Z'|'0'..'9')+;
 	 */
-	protected String getHexadecimalTypeToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getHEXADECIMAL_TYPEToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "0x";
@@ -86,17 +86,17 @@ public class FractalSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_Value_HexadecimalTypeParserRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1.equals(syntax))
-				emit_Value_HexadecimalTypeParserRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			if(match_Value_HEXADECIMAL_TYPETerminalRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1.equals(syntax))
+				emit_Value_HEXADECIMAL_TYPETerminalRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Syntax:
-	 *     ID | HexadecimalType | 'null' | STRING | signedINT
+	 *     signedINT | 'null' | STRING | ID | HEXADECIMAL_TYPE
 	 */
-	protected void emit_Value_HexadecimalTypeParserRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Value_HEXADECIMAL_TYPETerminalRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -1594,43 +1594,22 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
 	}
 
-	public class HexadecimalTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HexadecimalType");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cXKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//HexadecimalType:
-		//
-		//	"0x" INT;
-		public ParserRule getRule() { return rule; }
-
-		//"0x" INT
-		public Group getGroup() { return cGroup; }
-
-		//"0x"
-		public Keyword getXKeyword_0() { return cXKeyword_0; }
-
-		//INT
-		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
-	}
-
 	public class ValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Value");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cSignedINTParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cHexadecimalTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cHEXADECIMAL_TYPETerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cSTRINGTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cValueListParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final Keyword cNullKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		
 		//Value:
 		//
-		//	ID | signedINT | HexadecimalType | STRING | ValueList | "null";
+		//	ID | signedINT | HEXADECIMAL_TYPE | STRING | ValueList | "null";
 		public ParserRule getRule() { return rule; }
 
-		//ID | signedINT | HexadecimalType | STRING | ValueList | "null"
+		//ID | signedINT | HEXADECIMAL_TYPE | STRING | ValueList | "null"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ID
@@ -1639,8 +1618,8 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 		//signedINT
 		public RuleCall getSignedINTParserRuleCall_1() { return cSignedINTParserRuleCall_1; }
 
-		//HexadecimalType
-		public RuleCall getHexadecimalTypeParserRuleCall_2() { return cHexadecimalTypeParserRuleCall_2; }
+		//HEXADECIMAL_TYPE
+		public RuleCall getHEXADECIMAL_TYPETerminalRuleCall_2() { return cHEXADECIMAL_TYPETerminalRuleCall_2; }
 
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_3() { return cSTRINGTerminalRuleCall_3; }
@@ -2519,7 +2498,7 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 	private TemplateSpecifierElements pTemplateSpecifier;
 	private AttributeTypeElements pAttributeType;
 	private SignedINTElements pSignedINT;
-	private HexadecimalTypeElements pHexadecimalType;
+	private TerminalRule tHEXADECIMAL_TYPE;
 	private ValueElements pValue;
 	private ValueListElements pValueList;
 	private TemplateReferenceElements pTemplateReference;
@@ -2540,6 +2519,8 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 	private ConstantValueElements pConstantValue;
 	private ConstantFormatElements pConstantFormat;
 	private TerminalRule tCODE_C;
+	private TerminalRule tDOUBLE_LEFT_CURLY_BRACKETS;
+	private TerminalRule tDOUBLE_RIGHT_CURLY_BRACKETS;
 	private TerminalRule tSL;
 	
 	private final Grammar grammar;
@@ -2969,20 +2950,16 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 		return getSignedINTAccess().getRule();
 	}
 
-	//HexadecimalType:
+	//terminal HEXADECIMAL_TYPE:
 	//
-	//	"0x" INT;
-	public HexadecimalTypeElements getHexadecimalTypeAccess() {
-		return (pHexadecimalType != null) ? pHexadecimalType : (pHexadecimalType = new HexadecimalTypeElements());
-	}
-	
-	public ParserRule getHexadecimalTypeRule() {
-		return getHexadecimalTypeAccess().getRule();
-	}
+	//	"0x" ("a".."z" | "A".."Z" | "0".."9")+;
+	public TerminalRule getHEXADECIMAL_TYPERule() {
+		return (tHEXADECIMAL_TYPE != null) ? tHEXADECIMAL_TYPE : (tHEXADECIMAL_TYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL_TYPE"));
+	} 
 
 	//Value:
 	//
-	//	ID | signedINT | HexadecimalType | STRING | ValueList | "null";
+	//	ID | signedINT | HEXADECIMAL_TYPE | STRING | ValueList | "null";
 	public ValueElements getValueAccess() {
 		return (pValue != null) ? pValue : (pValue = new ValueElements());
 	}
@@ -3207,9 +3184,23 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 
 	//terminal CODE_C:
 	//
-	//	"{{"->"}}";
+	//	DOUBLE_LEFT_CURLY_BRACKETS->DOUBLE_RIGHT_CURLY_BRACKETS;
 	public TerminalRule getCODE_CRule() {
 		return (tCODE_C != null) ? tCODE_C : (tCODE_C = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CODE_C"));
+	} 
+
+	//terminal DOUBLE_LEFT_CURLY_BRACKETS:
+	//
+	//	"{{";
+	public TerminalRule getDOUBLE_LEFT_CURLY_BRACKETSRule() {
+		return (tDOUBLE_LEFT_CURLY_BRACKETS != null) ? tDOUBLE_LEFT_CURLY_BRACKETS : (tDOUBLE_LEFT_CURLY_BRACKETS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE_LEFT_CURLY_BRACKETS"));
+	} 
+
+	//terminal DOUBLE_RIGHT_CURLY_BRACKETS:
+	//
+	//	"}}";
+	public TerminalRule getDOUBLE_RIGHT_CURLY_BRACKETSRule() {
+		return (tDOUBLE_RIGHT_CURLY_BRACKETS != null) ? tDOUBLE_RIGHT_CURLY_BRACKETS : (tDOUBLE_RIGHT_CURLY_BRACKETS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE_RIGHT_CURLY_BRACKETS"));
 	} 
 
 	////enum Role :

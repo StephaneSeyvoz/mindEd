@@ -653,34 +653,6 @@ finally {
 
 
 
-// Entry rule entryRuleHexadecimalType
-entryRuleHexadecimalType 
-:
-{ before(grammarAccess.getHexadecimalTypeRule()); }
-	 ruleHexadecimalType
-{ after(grammarAccess.getHexadecimalTypeRule()); } 
-	 EOF 
-;
-
-// Rule HexadecimalType
-ruleHexadecimalType
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getHexadecimalTypeAccess().getGroup()); }
-(rule__HexadecimalType__Group__0)
-{ after(grammarAccess.getHexadecimalTypeAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
 // Entry rule entryRuleValue
 entryRuleValue 
 :
@@ -1576,9 +1548,9 @@ rule__Value__Alternatives
 )
 
     |(
-{ before(grammarAccess.getValueAccess().getHexadecimalTypeParserRuleCall_2()); }
-	ruleHexadecimalType
-{ after(grammarAccess.getValueAccess().getHexadecimalTypeParserRuleCall_2()); }
+{ before(grammarAccess.getValueAccess().getHEXADECIMAL_TYPETerminalRuleCall_2()); }
+	RULE_HEXADECIMAL_TYPE
+{ after(grammarAccess.getValueAccess().getHEXADECIMAL_TYPETerminalRuleCall_2()); }
 )
 
     |(
@@ -6499,69 +6471,6 @@ finally {
 
 
 
-rule__HexadecimalType__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__HexadecimalType__Group__0__Impl
-	rule__HexadecimalType__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__HexadecimalType__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getHexadecimalTypeAccess().getXKeyword_0()); }
-
-	'0x' 
-
-{ after(grammarAccess.getHexadecimalTypeAccess().getXKeyword_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__HexadecimalType__Group__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__HexadecimalType__Group__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__HexadecimalType__Group__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getHexadecimalTypeAccess().getINTTerminalRuleCall_1()); }
-	RULE_INT
-{ after(grammarAccess.getHexadecimalTypeAccess().getINTTerminalRuleCall_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
 rule__ValueList__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -10918,7 +10827,13 @@ finally {
 }
 
 
-RULE_CODE_C : '{{' ( options {greedy=false;} : . )*'}}';
+RULE_HEXADECIMAL_TYPE : '0x' ('a'..'z'|'A'..'Z'|'0'..'9')+;
+
+RULE_CODE_C : RULE_DOUBLE_LEFT_CURLY_BRACKETS ( options {greedy=false;} : . )*RULE_DOUBLE_RIGHT_CURLY_BRACKETS;
+
+RULE_DOUBLE_LEFT_CURLY_BRACKETS : '{{';
+
+RULE_DOUBLE_RIGHT_CURLY_BRACKETS : '}}';
 
 RULE_SL : ('\\'|'\\\\'|'/');
 

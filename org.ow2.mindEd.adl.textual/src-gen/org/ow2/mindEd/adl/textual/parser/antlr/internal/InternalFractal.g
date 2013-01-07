@@ -2268,40 +2268,6 @@ rulesignedINT returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken
 
 
 
-// Entry rule entryRuleHexadecimalType
-entryRuleHexadecimalType returns [String current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getHexadecimalTypeRule()); } 
-	 iv_ruleHexadecimalType=ruleHexadecimalType 
-	 { $current=$iv_ruleHexadecimalType.current.getText(); }  
-	 EOF 
-;
-
-// Rule HexadecimalType
-ruleHexadecimalType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-	kw='0x' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getHexadecimalTypeAccess().getXKeyword_0()); 
-    }
-    this_INT_1=RULE_INT    {
-		$current.merge(this_INT_1);
-    }
-
-    { 
-    newLeafNode(this_INT_1, grammarAccess.getHexadecimalTypeAccess().getINTTerminalRuleCall_1()); 
-    }
-)
-    ;
-
-
-
-
-
 // Entry rule entryRuleValue
 entryRuleValue returns [EObject current=null] 
 	:
@@ -2333,16 +2299,9 @@ rulesignedINT
         afterParserOrEnumRuleCall();
     }
 
-    |
-	{ 
-	  /* */ 
-	}
+    |this_HEXADECIMAL_TYPE_2=RULE_HEXADECIMAL_TYPE
     { 
-        newCompositeNode(grammarAccess.getValueAccess().getHexadecimalTypeParserRuleCall_2()); 
-    }
-ruleHexadecimalType
-    { 
-        afterParserOrEnumRuleCall();
+    newLeafNode(this_HEXADECIMAL_TYPE_2, grammarAccess.getValueAccess().getHEXADECIMAL_TYPETerminalRuleCall_2()); 
     }
 
     |this_STRING_3=RULE_STRING
@@ -3715,7 +3674,13 @@ ruleConstantFormat returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
 
 
 
-RULE_CODE_C : '{{' ( options {greedy=false;} : . )*'}}';
+RULE_HEXADECIMAL_TYPE : '0x' ('a'..'z'|'A'..'Z'|'0'..'9')+;
+
+RULE_CODE_C : RULE_DOUBLE_LEFT_CURLY_BRACKETS ( options {greedy=false;} : . )*RULE_DOUBLE_RIGHT_CURLY_BRACKETS;
+
+RULE_DOUBLE_LEFT_CURLY_BRACKETS : '{{';
+
+RULE_DOUBLE_RIGHT_CURLY_BRACKETS : '}}';
 
 RULE_SL : ('\\'|'\\\\'|'/');
 

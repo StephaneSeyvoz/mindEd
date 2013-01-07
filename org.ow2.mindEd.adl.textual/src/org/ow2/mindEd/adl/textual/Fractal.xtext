@@ -190,11 +190,11 @@ AttributeType :
 signedINT :
 	('+'|'-')?INT;
 
-HexadecimalType :
-	'0x'INT;
+terminal HEXADECIMAL_TYPE :
+	'0x' ('a'..'z'|'A'..'Z'|'0'..'9')+;
 
 Value :
-	ID | signedINT | HexadecimalType | STRING | ValueList | 'null';
+	ID | signedINT | HEXADECIMAL_TYPE | STRING | ValueList | 'null';
 
 ValueList:
 	'{' member+=Value (',' member+=Value)* '}'
@@ -268,7 +268,15 @@ ConstantFormat:
 INT|STRING|ID;
 
 terminal CODE_C :
-	'{{' -> '}}';
+	DOUBLE_LEFT_CURLY_BRACKETS -> DOUBLE_RIGHT_CURLY_BRACKETS;
+
+terminal DOUBLE_LEFT_CURLY_BRACKETS:
+	'{{'
+;
+
+terminal DOUBLE_RIGHT_CURLY_BRACKETS:
+	'}}'
+;
 
 terminal SL :
 	(('\\')|('\\\\')|('/'));
