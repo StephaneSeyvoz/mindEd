@@ -80,7 +80,15 @@ public enum MindPathKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	APPLI(6, "APPLI", "APPLI");
+	APPLI(6, "APPLI", "APPLI"), /**
+	 * The '<em><b>INCLUDE PATH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INCLUDE_PATH_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	INCLUDE_PATH(7, "INCLUDE_PATH", "INCLUDE_PATH");
 
 	/**
 	 * The '<em><b>LIBRARY</b></em>' literal value.
@@ -173,6 +181,21 @@ public enum MindPathKind implements Enumerator {
 	public static final int APPLI_VALUE = 6;
 
 	/**
+	 * The '<em><b>INCLUDE PATH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>INCLUDE PATH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #INCLUDE_PATH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INCLUDE_PATH_VALUE = 7;
+
+	/**
 	 * An array of all the '<em><b>Mind Path Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -186,6 +209,7 @@ public enum MindPathKind implements Enumerator {
 			IMPORT_PACKAGE,
 			REPO,
 			APPLI,
+			INCLUDE_PATH,
 		};
 
 	/**
@@ -242,6 +266,7 @@ public enum MindPathKind implements Enumerator {
 			case IMPORT_PACKAGE_VALUE: return IMPORT_PACKAGE;
 			case REPO_VALUE: return REPO;
 			case APPLI_VALUE: return APPLI;
+			case INCLUDE_PATH_VALUE: return INCLUDE_PATH;
 		}
 		return null;
 	}

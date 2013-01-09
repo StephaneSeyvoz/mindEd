@@ -106,6 +106,38 @@ public class MindIdeCore {
 	}
 	
 	/**
+	 * Create a new mind path entry of kind 'include path' giving the include folder.
+	 * @param inc the include folder which must be added.
+	 * @return a mind path entry of kind 'include path'
+	 * 
+	 * @see MindPathEntry
+	 * @see MindPathKind
+	 * @author SSZ
+	 */
+	public static MindPathEntry newMPEIncludePath(IFolder inc) {
+		MindPathEntry ret = MindideFactory.eINSTANCE.createMindPathEntry();
+		ret.setEntryKind(MindPathKind.INCLUDE_PATH);
+		ret.setName(inc.getFullPath().toPortableString());
+		return ret;
+	}
+	
+	/**
+	 * Create a new mind path entry of kind 'include path' giving the include folder.
+	 * @param inc the include folder which must be added.
+	 * @return a mind path entry of kind 'include path'
+	 * 
+	 * @see MindPathEntry
+	 * @see MindPathKind
+	 * @author SSZ
+	 */
+	public static MindPathEntry newMPEIncludePath(File incPath) {
+		MindPathEntry ret = MindideFactory.eINSTANCE.createMindPathEntry();
+		ret.setEntryKind(MindPathKind.INCLUDE_PATH);
+		ret.setName(incPath.getAbsolutePath());
+		return ret;
+	}
+	
+	/**
 	 * Create a new mind path entry of kind application giving the name of the application and the component.
 	 * @param cn the qualified component name.
 	 * @param appliName  the name of the application

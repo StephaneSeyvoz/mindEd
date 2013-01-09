@@ -89,6 +89,7 @@
     <eLiterals name="IMPORT_PACKAGE" value="4"/>
     <eLiterals name="REPO" value="5"/>
     <eLiterals name="APPLI" value="6" literal="APPLI"/>
+    <eLiterals name="INCLUDE_PATH" value="7" literal="INCLUDE_PATH"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="IResource" instanceClassName="org.eclipse.core.resources.IResource"/>
   <eClassifiers xsi:type="ecore:EEnum" name="ComponentKind">

@@ -55,7 +55,9 @@ public final class MindPathEntryItemProviderCustom extends
 			return overlayImage(object, getResourceLocator().getImage("full/obj16/MindApplication-mpe"));
 		case PROJECT:
 			return overlayImage(object, getResourceLocator().getImage("full/obj16/MindProject-mpe"));
-
+		case INCLUDE_PATH:
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/MindIncPath-mpe"));
+			
 		default:
 			break;
 		}

@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.BasicEList;
@@ -58,7 +59,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 	private final class SaveMPEJob extends Job {
 		private final IProject p;
 		private final MindProject mp;
-		
+
 		private SaveMPEJob(IProject p, MindProject mp) {
 			super("Save mind path file for project "+p.getName());
 			this.p = p;
@@ -67,16 +68,16 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 
 		@Override
 		protected IStatus run(IProgressMonitor monitor) {
-				try {
-					writeFileEntries(p, getRawMinpath(), mp);
-				} catch (CoreException e) {
-					return new Status(Status.ERROR,MindActivator.ID,"Exception while write " + p.getFullPath(),e);
-					
-				} catch (IOException e) {
-					return new Status(Status.ERROR,MindActivator.ID,"Exception while write " + p.getFullPath(),e);
-				}
-				return Status.OK_STATUS;
+			try {
+				writeFileEntries(p, getRawMinpath(), mp);
+			} catch (CoreException e) {
+				return new Status(Status.ERROR,MindActivator.ID,"Exception while write " + p.getFullPath(),e);
+
+			} catch (IOException e) {
+				return new Status(Status.ERROR,MindActivator.ID,"Exception while write " + p.getFullPath(),e);
 			}
+			return Status.OK_STATUS;
+		}
 		@Override
 		public boolean belongsTo(Object family) {
 			return FamilyJobCST.FAMILY_ALL == family || FamilyJobCST.FAMILY_SAVE_MPE == family;
@@ -117,22 +118,81 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		public boolean belongsTo(Object family) {
 			return FamilyJobCST.FAMILY_CHANGE_MAKEFILE_VAR_MIND_SRC == family || FamilyJobCST.FAMILY_ALL == family;
 		}
-		
+
 		// SSZ
 		// Used to write path variables in the Makefile
 		// The previous version used to write absolute paths: here we write relative paths.
 		private String toFile(MindRootSrc rs) {
 			IFolder f = MindIdeCore.getResource(rs);
 			String path = "";
-			
+
 			path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
-				
+
 			return path;
 		}
 	}
-	
+
+	private static final class ChangeMindINCVarJob extends Job {
+		private MindProjectImpl _mp;
+
+		private ChangeMindINCVarJob(MindProjectImpl mp) {
+			super("Change the make file variable MIND_INC for "+mp.getProject().getName());
+			_mp = mp;
+			setRule(mp.getProject());
+		}
+
+		@Override
+		protected IStatus run(IProgressMonitor monitor) {
+			try {
+				// SSZ	
+				StringBuilder incVar = new StringBuilder();
+				for (MindPathEntry entry : _mp.getMindpathentries()) {
+					if (entry.getEntryKind() == MindPathKind.INCLUDE_PATH) {
+						// Name MAY NOT be the best attribute...
+						// If change, also modify the 2 MindIdeCore.newMPEIncludePath(...) methods
+						
+						// handle differently workspace paths and absolute file system paths
+						IPath p = new Path(entry.getName());
+						// does the folder exist in the workspace ? 
+						IFolder f = ResourcesPlugin.getWorkspace().getRoot().getFolder(p);
+						if ((f == null) || !f.exists()) {
+							// Try to find it on the hard drive
+							File file = p.toFile();
+							// should be
+							if (file.exists() && file.isDirectory()) {
+								incVar.append(entry.getName());
+								incVar.append(File.pathSeparator);
+							}
+							// else error case: do nothing ?
+						} else {
+							String path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
+							incVar.append(path);
+							incVar.append(File.pathSeparator);
+						}
+					}
+				}
+				if (incVar.length() != 0)
+					incVar.setLength(incVar.length() - 1); //remove last collon if length > 0
+
+				MindMakefile mf = new MindMakefile(_mp.getProject());
+				mf.setVarAndSave(MindMakefile.MIND_INC, incVar.toString(), "all");
+			} catch (CoreException e) {
+				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
+			} catch (IOException e) {
+				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
+			}
+			return Status.OK_STATUS;
+		}
+
+		@Override
+		public boolean belongsTo(Object family) {
+			return FamilyJobCST.FAMILY_CHANGE_MAKEFILE_VAR_MIND_INC == family || FamilyJobCST.FAMILY_ALL == family;
+		}
+
+	}
+
 	private static final class ChangeMindCOMPVarJob extends Job {
-		
+
 		private MindProjectImpl _mp;
 
 		private ChangeMindCOMPVarJob(MindProjectImpl mp) {
@@ -158,7 +218,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 				}
 				if (srcVar.length() != 0)
 					srcVar.setLength(srcVar.length() - 2); //remove last collon if length > 0
-				
+
 				MindMakefile mf = new MindMakefile(_mp.getProject());
 				mf.setVarAndSave(MindMakefile.MIND_TARGETS, srcVar.toString(), "all");
 				MindIdeCore.rebuild(_mp);
@@ -170,7 +230,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			return Status.OK_STATUS;
 		}
 
-		
+
 
 		@Override
 		public boolean belongsTo(Object family) {
@@ -184,22 +244,22 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 	 * Name of file containing project classpath
 	 */
 	public static final String MINDPATH_FILENAME = ".mindpath";  //$NON-NLS-1$
-	
+
 	/**
 	 * Name of file containing project classpath
 	 */
 	public static final String MINDLIB_FILENAME = ".mindlib";  //$NON-NLS-1$
-	
-	
+
+
 	/**
 	 * Value of the project's raw classpath if the .classpath file contains invalid entries.
 	 */
 	public static final EList<MindPathEntry> INVALID_MINDPATH = null;
 
-	
+
 	MindModelImpl _model;
 	private EList<MindRootSrc> _allsrc;
-	
+
 	public MindProjectImpl(IProject project, MindModelImpl model) {
 		this.project = project;
 		_model = model;
@@ -208,24 +268,24 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 	@Override
 	public void setMindpath(EList<MindPathEntry> mindpath) {
 		if (areMindpathsEqual(getMindpathentries(), mindpath)) return;
-		
+
 		getMindpathentries().clear();
 		getMindpathentries().addAll(mindpath);
-		
+
 		_model.syncMindPath(project, this, getRepoFromLibOrProject(), true);
 	}
-	
+
 	@Override
 	public EList<MindPathEntry> getRawMinpath() {
 		return getMindpathentries();
 	}
-	
+
 	@Override
 	public EList<MindPathEntry> getResolvedMindpath(
 			boolean ignoreUnresolvedEntry) {
 		return _model.getResolvedMindpath(this, ignoreUnresolvedEntry);
 	}
-	
+
 	@Override
 	public EList<MindLibOrProject> getUses() {
 		BasicEList<MindLibOrProject> ret = new BasicEList<MindLibOrProject>();
@@ -256,13 +316,13 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			EList<String> imports) {
 		return (MindAdl) ResolveImpl.resolve(this, MindidePackage.Literals.MIND_ADL, componentName, defaultPackage, imports);
 	}
-	
+
 	@Override
 	public boolean exists(MindFile obj) {
 		IResource r = MindIdeCore.getResource(obj);
 		return r.exists();
 	}
-	
+
 	/**
 	 * Return the first mindfile find in the packages. The resource exists at this moment.
 	 * Return null if no mindfile found.
@@ -272,45 +332,45 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		return ResolveImpl.findMindFile(this, qualifiedName);
 	}
 
-	
-	
+
+
 	@Override
 	public MindItf resolveItf(String componentName, String defaultPackage,
 			EList<String> imports) {
 		return (MindItf) ResolveImpl.resolve(this, MindidePackage.Literals.MIND_ITF, componentName, defaultPackage, imports);
 	}
-	
+
 	@Override
 	public EList<MindAdl> resolvePossibleAdlInMindPath(String componentName) {
 		return ResolveImpl.resolve(this, MindidePackage.Literals.MIND_ADL, componentName);
 	}
-	
+
 	@Override
 	public EList<MindItf> resolvePossibleItfInMindPath(String componentName) {
 		return ResolveImpl.resolve(this, MindidePackage.Literals.MIND_ITF, componentName);
 	}
-	
+
 	@Override
 	public EList<MindAdl> resolvePossibleAdlInPackage(String packageName) {
 		return ResolveImpl.resolveP(this, MindidePackage.Literals.MIND_ADL, packageName);
 	}
-	
+
 	@Override
 	public EList<MindItf> resolvePossibleItfInPackage(String packageName) {
 		return ResolveImpl.resolveP(this, MindidePackage.Literals.MIND_ITF, packageName);
 	}
-	
+
 	@Override
 	public EList<MindAdl> resolvePossibleAdlInWorkspace(String componentName) {
 		return ResolveImpl.resolveInWorkspace(MindidePackage.Literals.MIND_ADL, componentName);
 	}
-	
+
 	@Override
 	public EList<MindItf> resolvePossibleItfInWorkspace(String componentName) {
 		return ResolveImpl.resolveInWorkspace(MindidePackage.Literals.MIND_ITF, componentName);
 	}
-	
-	
+
+
 	@Override
 	public MindAdl findQualifiedComponent(String cn) {
 		return resolveAdl(cn, "", new BasicEList<String>());
@@ -327,6 +387,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			cpElement = parser.parse(new InputSource(reader)).getDocumentElement();
 		} catch (SAXException e) {
+			e.printStackTrace();
 			throw new IOException("Bad format");
 		} catch (ParserConfigurationException e) {
 			throw new IOException("Bad format");
@@ -351,7 +412,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		}
 		return paths;
 	}
-	
+
 	/**
 	 * Returns the XML String encoding of the class path.
 	 */
@@ -368,9 +429,9 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		writer.flush();
 		writer.close();
 		return s.toString("UTF8");//$NON-NLS-1$
-		
+
 	}
-	
+
 	/**
 	 * Record a shared persistent property onto a project.
 	 * Note that it is orthogonal to IResource persistent properties, and client code has to decide
@@ -434,7 +495,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			filterMPEForLib(list);
 		}
 		mp.getMindpathentries().addAll(list);
-		
+
 	}
 
 	protected static void filterMPEForLib(EList<MindPathEntry> list) {
@@ -449,7 +510,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		mpe.setName(".");
 		list.add(mpe);
 	}
-	
+
 	/*
 	 * Reads the classpath file entries of this project's .classpath file.
 	 * This includes the output entry.
@@ -457,13 +518,13 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 	 * Throws exceptions if the file cannot be accessed or is malformed.
 	 */
 	public static EList<MindPathEntry> readFileEntriesWithException(IProject p, MindLibOrProject mp) throws CoreException, IOException {
-		
+
 		File file = mp.eClass() == MindidePackage.Literals.MIND_LIBRARY ? getMindLibFile(p) : getMindPathFile(p);
 		if (!file.exists()) {
 			return setDefaultMindpath(p);
 		}
 		byte[] bytes;
-		
+
 		try {
 			bytes = UtilIO.getFileByteContent(file);
 		} catch (IOException e) {
@@ -472,7 +533,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			}
 			throw e;
 		}
-		
+
 		//if (hasUTF8BOM(bytes)) { // see https://bugs.eclipse.org/bugs/show_bug.cgi?id=240034
 		//	int length = bytes.length-IContentDescription.BOM_UTF_8.length;
 		//	System.arraycopy(bytes, IContentDescription.BOM_UTF_8.length, bytes = new byte[length], 0, length);
@@ -486,20 +547,20 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			xmlMindpath = new String(bytes);
 		}
 		return decodeMindpath(xmlMindpath);
-		
+
 	}
 
 	private static File getMindPathFile(IProject p) throws IOException,
-			CoreException {
+	CoreException {
 		return MindIdeCore.getFile(p.getFile(MINDPATH_FILENAME));
 	}
-	
+
 	private static File getMindLibFile(IProject p) throws IOException,
-		CoreException {
-	return MindIdeCore.getFile(p.getFile(MINDLIB_FILENAME));
+	CoreException {
+		return MindIdeCore.getFile(p.getFile(MINDLIB_FILENAME));
 	}
 
-	
+
 
 	private static EList<MindPathEntry> setDefaultMindpath(IProject p) {
 		EList<MindPathEntry> newMindpath = defaultMindpath(p);
@@ -526,7 +587,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			return INVALID_MINDPATH;
 		} 
 	}
-	
+
 	/**
 	 * Writes the Mindpath in a sharable format (VCM-wise) only when necessary, that is, if  it is semantically different
 	 * from the existing one in file. Will never write an identical one.
@@ -550,9 +611,9 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		// actual file saving
 		setSharedProperty(p, MINDPATH_FILENAME, encodeMindpath(newMindpath, true));
 		return true;
-		
+
 	}
-	
+
 	/**
 	 * Compare current classpath with given one to see if any different.
 	 * Note that the argument classpath contains its binary output.
@@ -567,7 +628,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 
 		int length = otherMindpath.size();
 		if (length != newMindpath.size())
-				return false;
+			return false;
 
 
 		// compare classpath entries
@@ -598,14 +659,14 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		} catch (CoreException e) {
 			MindIdeCore.log(e, "Exception while sync " + p.getFullPath().append(MINDPATH_FILENAME)); //$NON-NLS-1$
 		}
-		
+
 	}
-	
+
 	@Override
 	public EList<MindFile> getAllFiles() {
 		return ResolveImpl.getAllFiles(this);
 	}
-	
+
 	@Override
 	public MindPathEntry addMindPathImportPackageFromFile(MindFile file) {
 		MindPathEntry mpe = MindIdeCore.newMPEImport(file.getQualifiedName());
@@ -613,7 +674,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		getMindpathentries().add(mpe);
 		return mpe;
 	}
-	
+
 	@Override
 	public MindPathEntry addMindPathProjectReferenceFromFile(MindFile file) {
 		MindLibOrProject fileProject = file.getPackage() == null ? null: file.getPackage().getRootsrc() == null ? null : file.getPackage().getRootsrc().getProject();
@@ -621,7 +682,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			return null;
 		if (fileProject instanceof MindLibrary)
 			return null;
-		
+
 		IProject eclipseProject = ((MindProject) fileProject).getProject();
 		if (eclipseProject == null)
 			return null;
@@ -630,7 +691,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		getMindpathentries().add(mpe);
 		return mpe;
 	}
-	
+
 	public void resolveMPE(MindPathEntry mpe) {
 		if (_allsrc == null) {
 			getAllsrc();
@@ -638,9 +699,9 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		}
 		resolveMPE(this, _allsrc, mpe);
 	}
-		
+
 	static public void resolveMPE(MindProject currentProject, EList<MindRootSrc> allsrc, MindPathEntry mpe) {
-		
+
 		MindObject resolvedBy = mpe.getResolvedBy();
 		if (resolvedBy == null) return;
 		switch (mpe.getEntryKind()) {
@@ -668,11 +729,11 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			break;
 		}
 	}
-	
+
 	public void unresolveMPE(MindPathEntry mpe) {
 		recomputeAllSrc();
 	}
-	
+
 	public void addSrcDep(EList<MindRootSrc> dep) {
 		if (_allsrc == null) {
 			getAllsrc();
@@ -680,11 +741,11 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		}
 		_allsrc.addAll(dep);
 	}
-	
+
 	public void removeSrcDep(EList<MindRootSrc> dep) {
 		recomputeAllSrc();
 	}
-	
+
 	@Override
 	public EList<MindRootSrc> getAllsrc() {
 		if (_allsrc == null) {
@@ -693,7 +754,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		}
 		return ECollections.unmodifiableEList(_allsrc);
 	}
-	
+
 	public void recomputeAllSrc() {
 		if (_allsrc == null)
 			getAllsrc();
@@ -703,10 +764,10 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			_allsrc.retainAll(newList);
 			_allsrc.addAll(newList);
 		}
-			
+
 	}
 
- 	private void computeAllSrc(EList<MindRootSrc> allsrc) {
+	private void computeAllSrc(EList<MindRootSrc> allsrc) {
 		for (MindPathEntry mpe : getMindpathentries()) {
 			resolveMPE(this, allsrc, mpe);
 		}
@@ -724,12 +785,17 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		Job r = new ChangeMindSRCVarJob(this);
 		r.schedule();
 	}
-	
+
 	public void changeMINDCOMP() {
 		Job r = new ChangeMindCOMPVarJob(this);	
 		r.schedule();
 	}
-	
+
+	public void changeMINDINC() {
+		Job r = new ChangeMindINCVarJob(this);	
+		r.schedule();
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

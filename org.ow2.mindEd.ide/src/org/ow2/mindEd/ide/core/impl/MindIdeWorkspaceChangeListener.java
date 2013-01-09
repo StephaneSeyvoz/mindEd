@@ -142,9 +142,15 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		}
 		
 		if (resource.getType() == IResource.FILE) {
-			if (resource.getFullPath().segmentCount() == 2 || resource.getFullPath().segment(1).equals(".cproject")) {
-				if (kind == IResourceDelta.CHANGED)
+			// SSZ
+			// Not sure what monitoring every file in the root folder of the current project is useful for
+			// Leads to handling too many events useless events without a link to CSourceFolder sync.
+			//if (resource.getFullPath().segmentCount() == 2 || resource.getFullPath().segment(1).equals(".cproject")) {
+			if (resource.getFullPath().segment(1).equals(".cproject")) {
+				if (kind == IResourceDelta.CHANGED) {
 					_model.syncCSourceFolder(resource.getProject());
+					_model.syncCIncPath(resource.getProject());
+				}
 				return false;
 			}
 			MindFile mf = findOrCreateFile(resource, kind != IResourceDelta.REMOVED);

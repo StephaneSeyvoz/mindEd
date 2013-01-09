@@ -15,10 +15,15 @@ import java.util.TreeSet;
 
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
+import org.eclipse.cdt.core.settings.model.ICFolderDescription;
+import org.eclipse.cdt.core.settings.model.ICLanguageSetting;
+import org.eclipse.cdt.core.settings.model.ICLanguageSettingEntry;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
+import org.eclipse.cdt.core.settings.model.ICSettingEntry;
 import org.eclipse.cdt.core.settings.model.ICSourceEntry;
 import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.URIUtil;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -607,7 +612,7 @@ public class MindModelImpl implements MindModel {
 		}
 		MindProjectImpl mindProject = (MindProjectImpl) src.getProject();
 		if (mindProject == null) return;
-		
+
 		// Temporary desactivation
 		// TODO: Check under which conditions refreshing the MIND_TARGET Makefile variable
 		// is necessary (not on every file/package modification !)
@@ -1071,6 +1076,9 @@ public class MindModelImpl implements MindModel {
 		if (mpe.getEntryKind() == MindPathKind.APPLI) {
 			mindProject.changeMINDCOMP();
 		}
+		if (mpe.getEntryKind() == MindPathKind.INCLUDE_PATH) {
+			mindProject.changeMINDINC();
+		}
 		if (mpe.getResolvedBy() != null)
 			return;
 		;
@@ -1171,6 +1179,7 @@ public class MindModelImpl implements MindModel {
 
 	/**
 	 * Synchronize all C source folders, add in mind path if need. If the given project is not a mind project, do nothing.
+	 * SSZ: updated for full diff.
 	 * 
 	 * @param project the project
 	 */
@@ -1203,28 +1212,28 @@ public class MindModelImpl implements MindModel {
 
 		// We want to work on a temporary copy for our diff
 		Map<IPath, MindPathEntry> oldMindSourceEntriesCopy = new HashMap<IPath, MindPathEntry>(oldMindSourceEntries);
-		
+
 		// We need to compare sets to know what has been added or removed (diff)
 		Set<IPath> oldMindSourceEntriesCopyKeySet = oldMindSourceEntriesCopy.keySet();
-		Set<IPath> newICSourceEntriesFullPathKeySet = new HashSet<IPath>();
+		Set<IPath> newICSourceEntriesFullPathSet = new HashSet<IPath>();
 
 		// We need the full path entries, not the objects themselves
 		for (ICSourceEntry newICSourceEntry : newICSourceEntries) {
-			newICSourceEntriesFullPathKeySet.add(newICSourceEntry.getFullPath());
+			newICSourceEntriesFullPathSet.add(newICSourceEntry.getFullPath());
 		}
 
 		// First remove all the old entries still existing in newICSourceEntriesFullPathKeySet
 		// Note : Removing from a key from the keySet automatically removes the according
 		// value from our hosting oldMindSourceEntries map :
 		// http://docs.oracle.com/javase/6/docs/api/java/util/Map.html#keySet()
-		oldMindSourceEntriesCopyKeySet.removeAll(newICSourceEntriesFullPathKeySet);
+		oldMindSourceEntriesCopyKeySet.removeAll(newICSourceEntriesFullPathSet);
 		// The remaining entries are the ones to remove from the real MindPath
 		for (MindPathEntry removableMPE : oldMindSourceEntriesCopy.values()) {
 			mindPathEntries.remove(removableMPE);
 		}
 
 		// And we're finished with this Set, so let the environment free memory
-		newICSourceEntriesFullPathKeySet = null;
+		newICSourceEntriesFullPathSet = null;
 		oldMindSourceEntriesCopy = null;
 		oldMindSourceEntriesCopyKeySet = null;
 
@@ -1234,8 +1243,8 @@ public class MindModelImpl implements MindModel {
 
 		// Here we keep the original algorithm
 		for (ICSourceEntry newICSourceEntry : newICSourceEntries) {
-			
-			// TODO: FIXME ! Here the list has already been reduced by the previous "removeAll" and does NOT contain all pairs anymore !!!
+
+			// Here the list has already been reduced by the previous "removeAll" and does NOT contain all pairs anymore !!!
 			if (oldMindSourceEntries.containsKey(newICSourceEntry.getFullPath()))
 				// the entry is already known
 				continue;
@@ -1252,6 +1261,117 @@ public class MindModelImpl implements MindModel {
 
 			// Add the new entry to the list
 			mp.getMindpathentries().add(MindIdeCore.newMPESource(f));
+		}
+	}
+
+	/**
+	 * Synchronize all C include path folders, add in mind path if need. If the given project is not a mind project, do nothing.
+	 * SSZ
+	 * 
+	 * @param project the project
+	 */
+	public void syncCIncPath(IProject project) {
+		MindProject mp = getMindProject(project);
+		if (mp == null)
+			return;
+
+		// CDT project management
+		ICProjectDescriptionManager mgr = CoreModel.getDefault().getProjectDescriptionManager();
+		ICProjectDescription des = mgr.getProjectDescription(project, true);
+		if (des == null) {
+			return;
+		}
+		ICConfigurationDescription config = des.getConfigurationByName("Default");
+
+		// inspired from http://stackoverflow.com/questions/12853311/eclipse-cdt-programmatically-added-include-paths-does-not-appear
+		// maybe something more elegant exists
+		ICFolderDescription projectRoot = config.getRootFolderDescription();
+		ICLanguageSetting[] settings = projectRoot.getLanguageSettings();
+
+		List<ICLanguageSettingEntry> newIncludes = new ArrayList<ICLanguageSettingEntry>();
+		for (ICLanguageSetting setting : settings) {
+			if (!"org.eclipse.cdt.core.gcc".equals(setting.getLanguageId())) {
+				continue;
+			}
+
+			newIncludes.addAll(setting.getSettingEntriesList(ICSettingEntry.INCLUDE_PATH));
+		}
+
+		// Get existing Mind Inc Entries and populate the oldMindIncPathEntries map
+		Map<IPath, MindPathEntry> oldMindIncPathEntries = new HashMap<IPath, MindPathEntry>();
+		EList<MindPathEntry> mindPathEntries = mp.getMindpathentries();
+		for (MindPathEntry mpe : mindPathEntries) {
+			if (mpe.getEntryKind() != MindPathKind.INCLUDE_PATH) {
+				continue;
+			}
+			oldMindIncPathEntries.put(new Path(mpe.getName()), mpe);
+			// now let's remember our 
+		}
+
+		// We want to work on a temporary copy for our diff
+		Map<IPath, MindPathEntry> oldMindIncPathEntriesCopy = new HashMap<IPath, MindPathEntry>(oldMindIncPathEntries);
+
+		// We need to compare sets to know what has been added or removed (diff)
+		Set<IPath> oldMindIncPathEntriesCopyKeySet = oldMindIncPathEntriesCopy.keySet();
+		Set<IPath> newICLanguageSettingIncPathSet = new HashSet<IPath>();
+
+		// We need the full path entries, not the objects themselves
+		for (ICLanguageSettingEntry newICLanguageSettingEntry : newIncludes) {
+			if (!newICLanguageSettingEntry.isBuiltIn() && ((newICLanguageSettingEntry.getKind() & ICSettingEntry.INCLUDE_PATH) == 1))
+				newICLanguageSettingIncPathSet.add(new Path(newICLanguageSettingEntry.getValue()));
+		}
+
+		// First remove all the old entries still existing in newICLanguageSettingIncPathSet
+		// Note : Removing from a key from the keySet automatically removes the according
+		// value from our hosting oldMindIncPathEntriesCopyKeySet map :
+		// http://docs.oracle.com/javase/6/docs/api/java/util/Map.html#keySet()
+		oldMindIncPathEntriesCopyKeySet.removeAll(newICLanguageSettingIncPathSet);
+		// The remaining entries are the ones to remove from the real MindPath
+
+		// Careful: Here the remove() triggers an EMF event
+		for (MindPathEntry removableMPE : oldMindIncPathEntriesCopy.values()) {
+			mindPathEntries.remove(removableMPE);
+		}
+
+		// And we're finished with this Set, so let the environment free memory
+		newICLanguageSettingIncPathSet = null;
+		oldMindIncPathEntriesCopy = null;
+		oldMindIncPathEntriesCopyKeySet = null;
+
+		// Now we've got to check what exists in newIncludes
+		// that doesn't exist in oldMindIncPathEntries, and add the corresponding
+		// elements to the Mind Path
+
+		// Here we keep the original algorithm
+		for (ICLanguageSettingEntry newICLanguageSettingEntry : newIncludes) {
+
+			// Ignore non-relevant entries (negation of the previous test)
+			if (newICLanguageSettingEntry.isBuiltIn() || ((newICLanguageSettingEntry.getKind() & ICSettingEntry.INCLUDE_PATH) != 1))
+				continue;
+
+			// Here the list has already been reduced by the previous "removeAll" and does NOT contain all pairs anymore !!!
+			if (oldMindIncPathEntries.containsKey(new Path(newICLanguageSettingEntry.getValue())))
+				// the entry is already known
+				continue;
+
+			// else we need to do checks... not sure about this one
+			IPath p = new Path(newICLanguageSettingEntry.getValue());
+			if (p.segmentCount() < 2)
+				continue;
+
+			if (newICLanguageSettingEntry.getFlags() == ICSettingEntry.VALUE_WORKSPACE_PATH) {
+				IFolder f = ResourcesPlugin.getWorkspace().getRoot().getFolder(p);
+				// Add the new entry to the list
+				mp.getMindpathentries().add(MindIdeCore.newMPEIncludePath(f));
+			} else {
+				// Try to find it on the hard drive
+				File file = p.toFile();
+				// should be
+				if (file.exists() && file.isDirectory())
+					// please note there are TWO newMPEIncludePath methods with different signatures
+					mp.getMindpathentries().add(MindIdeCore.newMPEIncludePath(file));
+			}
+
 		}
 	}
 
@@ -1312,7 +1432,7 @@ public class MindModelImpl implements MindModel {
 			IProject[] existingReferences = projDesc.getReferencedProjects();
 			// create new list containing existing references
 			List<IProject> projectReferences = new ArrayList<IProject>(Arrays.asList(existingReferences));
-			
+
 			projectReferences.remove(referencedProject);
 
 			// set the new referenced project array (with conversion from arraylist)
@@ -1326,10 +1446,13 @@ public class MindModelImpl implements MindModel {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected void unresolve(MindProjectImpl mindProject, MindPathEntry mpe) {
 		if (mpe.getEntryKind() == MindPathKind.APPLI) {
 			mindProject.changeMINDCOMP();
+		}
+		if (mpe.getEntryKind() == MindPathKind.INCLUDE_PATH) {
+			mindProject.changeMINDINC();
 		}
 		if ((mpe.getEntryKind() == MindPathKind.PROJECT) && (mpe.getResolvedBy() instanceof MindProject)) {
 			// remove Project Reference (to also impact XText ADL and IDL editors cross-references resolution)

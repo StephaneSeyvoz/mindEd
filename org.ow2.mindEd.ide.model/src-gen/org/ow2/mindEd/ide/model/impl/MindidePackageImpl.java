@@ -998,6 +998,7 @@ public class MindidePackageImpl extends EPackageImpl implements MindidePackage {
 		addEEnumLiteral(mindPathKindEEnum, MindPathKind.IMPORT_PACKAGE);
 		addEEnumLiteral(mindPathKindEEnum, MindPathKind.REPO);
 		addEEnumLiteral(mindPathKindEEnum, MindPathKind.APPLI);
+		addEEnumLiteral(mindPathKindEEnum, MindPathKind.INCLUDE_PATH);
 
 		initEEnum(componentKindEEnum, ComponentKind.class, "ComponentKind");
 		addEEnumLiteral(componentKindEEnum, ComponentKind.UNKNOWN);

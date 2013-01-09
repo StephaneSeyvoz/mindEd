@@ -20,6 +20,7 @@
       <genEnumLiterals ecoreEnumLiteral="mindEd.ide.ecore#//MindPathKind/IMPORT_PACKAGE"/>
       <genEnumLiterals ecoreEnumLiteral="mindEd.ide.ecore#//MindPathKind/REPO"/>
       <genEnumLiterals ecoreEnumLiteral="mindEd.ide.ecore#//MindPathKind/APPLI"/>
+      <genEnumLiterals ecoreEnumLiteral="mindEd.ide.ecore#//MindPathKind/INCLUDE_PATH"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="mindEd.ide.ecore#//ComponentKind">
       <genEnumLiterals ecoreEnumLiteral="mindEd.ide.ecore#//ComponentKind/unknown"/>

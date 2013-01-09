@@ -60,6 +60,7 @@ public class MindMakefile {
 
 	static public final String MAKEFILE = "Makefile";
 	static public final String MIND_SRC = "MIND_SRC";
+	static public final String MIND_INC = "MIND_INC";
 	static public final String MIND_TARGETS = "MIND_TARGETS";
 
 	private IGNUMakefile _makefile;
@@ -119,7 +120,7 @@ public class MindMakefile {
 				IVariableDefinition v = (IVariableDefinition) d;
 				if (v.getName().equals(nameVar)) {
 					v.getValue().setLength(0);
-					if (nameVar.equals("MIND_SRC") && MindActivator.getPref().getMakefileMSYSCompatibilityStatus())
+					if ((nameVar.equals("MIND_SRC") || nameVar.equals("MIND_INC")) && MindActivator.getPref().getMakefileMSYSCompatibilityStatus())
 						v.getValue().append("\"" + value + "\"");
 					else
 						// On all other OS-es than Windows, and when on Windows with no
