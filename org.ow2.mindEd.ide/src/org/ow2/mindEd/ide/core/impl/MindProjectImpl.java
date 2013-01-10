@@ -165,7 +165,11 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							}
 							// else error case: do nothing ?
 						} else {
-							String path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
+							String path = (f.isLinked()) ?
+									f.getLocation().toOSString()
+									: (f.getFullPath().segment(0).equals(_mp.getName())) ?
+											f.getProjectRelativePath().toOSString()
+											: ".." + f.getFullPath().toOSString(); 
 							incVar.append(path);
 							incVar.append(File.pathSeparator);
 						}
