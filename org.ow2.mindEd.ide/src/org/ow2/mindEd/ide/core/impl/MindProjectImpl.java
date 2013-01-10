@@ -165,6 +165,13 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							}
 							// else error case: do nothing ?
 						} else {
+							/* 
+							 * check if folder is linked
+							 * if it is, take the file system path
+							 * if it's a local folder, either it's in the current project, and
+							 * we want the relative path,
+							 * or in another, and then we need a relative path ../proj/resource
+							 */
 							String path = (f.isLinked()) ?
 									f.getLocation().toOSString()
 									: (f.getFullPath().segment(0).equals(_mp.getName())) ?
