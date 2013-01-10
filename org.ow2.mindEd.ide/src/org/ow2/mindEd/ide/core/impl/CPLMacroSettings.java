@@ -27,17 +27,17 @@ public class CPLMacroSettings extends CExternalSettingProvider {
         //supply macro entries for CPL 
     	
         ArrayList<ICSettingEntry> pathEntries = new ArrayList<ICSettingEntry>();
-        pathEntries.add(new CMacroEntry("METH(interface,method ...)", "method##interface", 0));
+        pathEntries.add(new CMacroEntry("METH(interface,method ...)", "__mindfake__method", 0));
         pathEntries.add(new CMacroEntry("IS_BOUND(interface)", "(interface!=0)", 0));
         pathEntries.add(new CMacroEntry("GET_COLLECTION_SIZE(interface)", "0", 0));
-        pathEntries.add(new CMacroEntry("CALL(interface,method ...)", "method##interface", 0));
+        pathEntries.add(new CMacroEntry("CALL(interface,method ...)", "__mindfake__method", 0));
         pathEntries.add(new CMacroEntry("PRIVATE", "__private__", 0));
         pathEntries.add(new CMacroEntry("ATTR(attribute)", "attribute", 0));
         pathEntries.add(new CMacroEntry("CONSTRUCTOR()", "void _constructor_()", 0));
         pathEntries.add(new CMacroEntry("DESTRUCTOR()", "void _destructor_()", 0));
         pathEntries.add(new CMacroEntry("GET_MY_INTERFACE(interface)", "interface", 0));
-        pathEntries.add(new CMacroEntry("IS_BOUND_PTR(intertface_pointer)", "(intertface_pointer!=0)", 0));
-        pathEntries.add(new CMacroEntry("CALL_PTR(interface,method ...)", "method##interface", 0));
+        pathEntries.add(new CMacroEntry("IS_BOUND_PTR(interface_pointer)", "(interface_pointer!=0)", 0));
+        pathEntries.add(new CMacroEntry("CALL_PTR(interface,method ...)", "__mindfake__method", 0));
         pathEntries.add(new CMacroEntry("METH_PTR(methodPointer)", "methodPointer", 0));
         
         ICSettingEntry[] settings = (ICSettingEntry[]) pathEntries.toArray(new ICSettingEntry[pathEntries.size()]);
