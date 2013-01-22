@@ -135,10 +135,12 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			IFolder f = MindIdeCore.getResource(rs);
 			String path = "";
 
-			if (!f.getProjectRelativePath().toOSString().equals("runtime"))
-				path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
-
+			if (f.isLinked() && f.getProjectRelativePath().toOSString().equals("runtime"))
 				return path;
+
+			path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
+
+			return path;
 		}
 	}
 
