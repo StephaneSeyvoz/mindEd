@@ -98,8 +98,13 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			try {
 				StringBuilder srcVar = new StringBuilder();
 				for (MindRootSrc rs : new ArrayList<MindRootSrc>(_mp._allsrc)) {
-					srcVar.append(toFile(rs));
-					srcVar.append(File.pathSeparator);
+					String fileStr = toFile(rs);
+					// As we skip the runtime and return "" in this case, let's not write
+					// a useless separator
+					if (!fileStr.equals("")) {
+						srcVar.append(fileStr);
+						srcVar.append(File.pathSeparator);
+					}
 				}
 				if (srcVar.length() != 0)
 					srcVar.setLength(srcVar.length() - 1); //remove last collon if length > 0
@@ -119,16 +124,21 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			return FamilyJobCST.FAMILY_CHANGE_MAKEFILE_VAR_MIND_SRC == family || FamilyJobCST.FAMILY_ALL == family;
 		}
 
-		// SSZ
-		// Used to write path variables in the Makefile
-		// The previous version used to write absolute paths: here we write relative paths.
+		/**
+		 * SSZ
+		 * Used to write path variables in the Makefile
+		 * The previous version used to write absolute paths: here we write relative paths.
+		 * We also write the linked folders destination, and skip adding the reserved
+		 * runtime path element (already added by the compiler as a default).
+		 */
 		private String toFile(MindRootSrc rs) {
 			IFolder f = MindIdeCore.getResource(rs);
 			String path = "";
 
-			path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
+			if (!f.getProjectRelativePath().toOSString().equals("runtime"))
+				path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
 
-			return path;
+				return path;
 		}
 	}
 
@@ -150,7 +160,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 					if (entry.getEntryKind() == MindPathKind.INCLUDE_PATH) {
 						// Name MAY NOT be the best attribute...
 						// If change, also modify the 2 MindIdeCore.newMPEIncludePath(...) methods
-						
+
 						// handle differently workspace paths and absolute file system paths
 						IPath p = new Path(entry.getName());
 						// does the folder exist in the workspace ? 
@@ -177,8 +187,8 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 									: (f.getFullPath().segment(0).equals(_mp.getName())) ?
 											f.getProjectRelativePath().toOSString()
 											: ".." + f.getFullPath().toOSString(); 
-							incVar.append(path);
-							incVar.append(File.pathSeparator);
+											incVar.append(path);
+											incVar.append(File.pathSeparator);
 						}
 					}
 				}
