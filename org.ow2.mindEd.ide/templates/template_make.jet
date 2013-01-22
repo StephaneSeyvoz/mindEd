@@ -9,8 +9,6 @@ else
 endif
 
 MIND_SRC=src
-# Note: The "runtime" folder is a built-in path of the compiler, not needed in MIND_SRC
-
 MIND_INC=
 MIND_TARGETS=
 
