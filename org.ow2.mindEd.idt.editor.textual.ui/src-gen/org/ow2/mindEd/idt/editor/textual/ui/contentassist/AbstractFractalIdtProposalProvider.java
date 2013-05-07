@@ -5,7 +5,6 @@ package org.ow2.mindEd.idt.editor.textual.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.*;
-import org.ow2.mindEd.itf.editor.textual.ui.contentassist.FractalItfProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 
@@ -15,7 +14,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
  * with a more concrete subtype. 
  */
 @SuppressWarnings("all")
-public class AbstractFractalIdtProposalProvider extends FractalItfProposalProvider {
+public class AbstractFractalIdtProposalProvider extends org.ow2.mindEd.itf.editor.textual.ui.contentassist.FractalItfProposalProvider {
 		
 	public void completeIdtFile_Begindef(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

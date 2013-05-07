@@ -6,14 +6,13 @@ package org.ow2.mindEd.idt.editor.textual.parseTreeConstruction;
 import org.eclipse.emf.ecore.*;
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parsetree.reconstr.IEObjectConsumer;
-import org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor;
 
 import org.ow2.mindEd.idt.editor.textual.services.FractalIdtGrammarAccess;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("all")
-public class FractalIdtParsetreeConstructor extends AbstractParseTreeConstructor {
+public class FractalIdtParsetreeConstructor extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
 		
 	@Inject
 	private FractalIdtGrammarAccess grammarAccess;
