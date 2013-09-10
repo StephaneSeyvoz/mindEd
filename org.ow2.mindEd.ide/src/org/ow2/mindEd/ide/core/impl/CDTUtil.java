@@ -48,6 +48,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.ow2.mindEd.ide.core.FamilyJobCST;
 import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.MindIdeCore;
+import org.ow2.mindEd.ide.core.MindModel;
 import org.ow2.mindEd.ide.core.MindModelManager;
 import org.ow2.mindEd.ide.core.MindNature;
 import org.ow2.mindEd.ide.core.mindc.MindcErrorParser;
@@ -343,13 +344,14 @@ public class CDTUtil {
 
 		// Link the runtime folder to the compiler runtime from the Mindc location variable (in preference store)
 		String mindLocation = MindActivator.getPref().getMindCLocation();
+		IFolder runtimeFolder = null;
 		if (mindLocation == null) {
 			MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference"));
 		} else {
 			// is a "folder" but File is the Java way :)
 			File mindRuntimeFile = new File(mindLocation + "/runtime");
 
-			IFolder runtimeFolder = newProject.getFolder("runtime");
+			runtimeFolder = newProject.getFolder("runtime");
 			if (mindRuntimeFile.exists() && !runtimeFolder.exists())
 				runtimeFolder.createLink(new Path(mindRuntimeFile.getAbsolutePath()), IResource.ALLOW_MISSING_LOCAL, monitor);
 		}
@@ -362,8 +364,10 @@ public class CDTUtil {
 
 		// get default path and set it's
 		try {
-			MindModelManager.getMindModelManager().getMindModel().init(
-					newProject);
+			MindModel mModel = MindModelManager.getMindModelManager().getMindModel();
+			mModel.init(newProject);
+			if (runtimeFolder != null)
+				mModel.findOrCreateRootSrc(runtimeFolder);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
