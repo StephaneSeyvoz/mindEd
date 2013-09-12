@@ -169,6 +169,7 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import feature="org.eclipse.xtext.runtime" version="1.0.0.v201003151027" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtext.ui" version="1.0.0.v201003151027" match="greaterOrEqual"/>
       <import plugin="org.junit"/>
+      <import plugin="com.google.inject"/>
    </requires>
 
    <plugin
