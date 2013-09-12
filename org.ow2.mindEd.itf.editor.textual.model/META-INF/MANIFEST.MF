@@ -31,5 +31,6 @@ Export-Package: org.ow2.mindEd.itf.editor.textual,
  org.ow2.mindEd.itf.editor.textual.parser.antlr.internal,
  org.ow2.mindEd.itf.editor.textual.scoping,
  org.ow2.mindEd.itf.editor.textual.services,
- org.ow2.mindEd.itf.editor.textual.validation
+ org.ow2.mindEd.itf.editor.textual.validation,
+ org.ow2.mindEd.itf.editor.textual.serializer
 
