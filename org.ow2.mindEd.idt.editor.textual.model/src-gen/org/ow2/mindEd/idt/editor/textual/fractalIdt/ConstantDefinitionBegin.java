@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.ow2.mindEd.idt.editor.textual.fractalIdt;
 

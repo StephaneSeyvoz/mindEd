@@ -22,5 +22,6 @@ Export-Package: org.ow2.mindEd.itf.editor.textual.ui,
  org.ow2.mindEd.itf.editor.textual.ui.contentassist,
  org.ow2.mindEd.itf.editor.textual.ui.contentassist.antlr,
  org.ow2.mindEd.itf.editor.textual.ui.labeling,
- org.ow2.mindEd.itf.editor.textual.ui.outline
+ org.ow2.mindEd.itf.editor.textual.ui.outline,
+ org.ow2.mindEd.itf.editor.textual.ui.quickfix
 Bundle-Activator: org.ow2.mindEd.itf.editor.textual.ui.internal.FractalItfActivator

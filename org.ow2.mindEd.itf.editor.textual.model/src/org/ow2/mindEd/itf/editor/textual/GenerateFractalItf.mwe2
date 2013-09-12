@@ -45,9 +45,10 @@ Workflow {
 			}
 			
 			// Serializer 2.0
-			fragment = serializer.SerializerFragment {
-				generateStub = false
-			}
+			//fragment = serializer.SerializerFragment {
+				// retro-compatibility for Eclipse 3.7 and Xtext 2.0.1
+				//generateStub = false
+			//}
                 
 			// the serialization component (1.0)
 			// fragment = parseTreeConstructor.ParseTreeConstructorFragment {}

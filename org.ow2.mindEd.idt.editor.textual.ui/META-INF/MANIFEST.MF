@@ -18,5 +18,6 @@ Require-Bundle: org.ow2.mindEd.idt.editor.textual.model;bundle-version="0.2.1";v
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.ow2.mindEd.idt.editor.textual.ui.contentassist,
- org.ow2.mindEd.idt.editor.textual.ui.contentassist.antlr
+ org.ow2.mindEd.idt.editor.textual.ui.contentassist.antlr,
+ org.ow2.mindEd.idt.editor.textual.ui.quickfix
 Bundle-Activator: org.ow2.mindEd.idt.editor.textual.ui.internal.FractalIdtActivator

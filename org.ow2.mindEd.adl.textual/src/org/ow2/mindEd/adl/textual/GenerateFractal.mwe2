@@ -12,7 +12,7 @@ var runtimeProject = "../${projectName}"
 Workflow {
     bean = StandaloneSetup {
             scanClassPath = true
-            platformUri = "${runtimeProject}/.."
+            platformUri = "../.."
             registerGeneratedEPackage = "org.ow2.mindEd.itf.editor.textual.fractalIDL.FractalIDLPackage"
        		registerGenModelFile = "platform:/resource/org.ow2.mindEd.itf.editor.textual.model/src-gen/org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel"
         }
@@ -47,9 +47,10 @@ Workflow {
                 }
     
                 // Serializer 2.0
-                fragment = serializer.SerializerFragment {
-                	generateStub = false
-                }
+                //fragment = serializer.SerializerFragment {
+                	// retro-compatibility for Eclipse 3.7 and Xtext 2.0.1
+                	//generateStub = false
+                //}
                 
                 // the serialization component (1.0)
                 // fragment = parseTreeConstructor.ParseTreeConstructorFragment {}

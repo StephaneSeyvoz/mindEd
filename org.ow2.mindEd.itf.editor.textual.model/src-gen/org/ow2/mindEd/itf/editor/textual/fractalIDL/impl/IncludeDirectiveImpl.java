@@ -1,4 +1,8 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+
  */
 package org.ow2.mindEd.itf.editor.textual.fractalIDL.impl;
 

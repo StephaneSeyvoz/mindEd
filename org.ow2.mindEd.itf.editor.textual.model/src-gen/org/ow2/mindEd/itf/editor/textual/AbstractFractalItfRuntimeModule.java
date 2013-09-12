@@ -44,21 +44,6 @@ public abstract class AbstractFractalItfRuntimeModule extends DefaultRuntimeModu
 		return org.ow2.mindEd.itf.editor.textual.services.FractalItfGrammarAccess.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
-	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISemanticSequencer> bindISemanticSequencer() {
-		return org.ow2.mindEd.itf.editor.textual.serializer.FractalItfSemanticSequencer.class;
-	}
-
-	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
-	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer> bindISyntacticSequencer() {
-		return org.ow2.mindEd.itf.editor.textual.serializer.FractalItfSyntacticSequencer.class;
-	}
-
-	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
-	public Class<? extends org.eclipse.xtext.serializer.ISerializer> bindISerializer() {
-		return org.eclipse.xtext.serializer.impl.Serializer.class;
-	}
-
 	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.IParser> bindIParser() {
 		return org.ow2.mindEd.itf.editor.textual.parser.antlr.FractalItfParser.class;
