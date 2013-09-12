@@ -87,7 +87,6 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import feature="org.eclipse.xtext.ui" version="1.0.0.v201003151027" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.eclipse.cdt.ui" version="5.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.cdt.util" version="5.0.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.cdt.make.core" version="6.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.cdt.managedbuilder.core" version="6.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.cdt.managedbuilder.gnu.ui" version="5.0.100" match="greaterOrEqual"/>
@@ -152,7 +151,6 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import feature="org.eclipse.cdt" version="7.0.0.201002011403" match="greaterOrEqual"/>
       <import feature="org.eclipse.cdt.gnu.build" version="6.0.0.201002011403" match="greaterOrEqual"/>
       <import feature="org.eclipse.cdt.platform" version="7.0.0.201002011403" match="greaterOrEqual"/>
-      <import feature="org.eclipse.cdt.util" version="5.1.0.201002011403" match="greaterOrEqual"/>
       <import feature="org.eclipse.draw2d" version="3.6.0.v20100201-1030-45-7w3121142602636" match="greaterOrEqual"/>
       <import feature="org.eclipse.draw2d" version="3.6.0.v20100201-1030-45-7w3121142602636" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf" version="2.6.0.v201002011637" match="greaterOrEqual"/>
