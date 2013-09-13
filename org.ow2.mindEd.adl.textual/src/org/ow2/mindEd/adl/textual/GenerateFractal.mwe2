@@ -85,10 +85,10 @@ Workflow {
                 fragment = builder.BuilderIntegrationFragment {}
     
                 // generator API
-                fragment = generator.GeneratorFragment {
-                    generateMwe = false
-                    generateJavaMain = false
-                }
+                //fragment = generator.GeneratorFragment {
+                //    generateMwe = falsec
+                //    generateJavaMain = false
+                //}
     
                 // formatter API
                 fragment = formatting.FormatterFragment {}
@@ -124,7 +124,7 @@ Workflow {
                 // }
     
                 // rename refactoring
-                fragment = refactoring.RefactorElementNameFragment {}
+                //fragment = refactoring.RefactorElementNameFragment {}
     
                 // provides the necessary bindings for java types integration
                 fragment = types.TypesGeneratorFragment {}
