@@ -91,6 +91,33 @@ public class Messages extends NLS {
 	public static String MindProjectWizard_operation_label;
 	public static String MindProjectWizard_title;
 	public static String MindProjectWizard_window_title;
+	
+	/**
+	 * All the following messages are related to New Project Wizard, 
+	 */
+	public static String MindProjectWizardPage_Toolchains;
+	public static String MindProjectWizardPage_MindRuntime;
+	/**
+	 * And those have been imported from CDT (with prefix)
+	 * care about licence issues ?
+	 */
+	public static String MindProjectWizardPage_CDTMainWizardPage_0;
+	public static String MindProjectWizardPage_CDTMainWizardPage_1;
+
+	public static String MindProjectWizardPage_CMainWizardPage_0;
+	public static String MindProjectWizardPage_CMainWizardPage_1;
+	public static String MindProjectWizardPage_CMainWizardPage_3;
+	public static String MindProjectWizardPage_CMainWizardPage_5;
+	public static String MindProjectWizardPage_CMainWizardPage_6;
+	public static String MindProjectWizardPage_CMainWizardPage_7;
+	public static String MindProjectWizardPage_CMainWizardPage_10;
+	public static String MindProjectWizardPage_CMainWizardPage_DirReadOnlyError;
+
+	public static String MindProjectWizardPage_CDTMainWizardPage_DefaultProjectType;
+	public static String MindProjectWizardPage_CDTMainWizardPage_DefaultProjectCategory;
+
+	public static String MindProjectWizardPage_CNoToolChainSelected;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
