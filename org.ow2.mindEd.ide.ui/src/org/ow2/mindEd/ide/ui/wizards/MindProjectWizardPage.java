@@ -20,6 +20,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
@@ -30,11 +31,18 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Widget;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+import org.ow2.mindEd.ide.core.MindActivator;
+import org.ow2.mindEd.ide.core.preferences.PreferenceConstants;
 
 /**
  * It's the default page for Fractal MIND Project Wizard.
@@ -46,6 +54,8 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 	// widgets
 	protected Table table;
+	private Label mindconf_label;
+	private Button mindcLoc_button;
 	private Button runtime_checkbox;
 	private Composite tcs_choice;
 	private Button show_sup;
@@ -76,6 +86,15 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		setMessage(null);
 	}
 
+	protected static boolean isMindcToolchainConfigured() {
+		// First check if the compiler path (for runtime) has been configured
+		if (MindActivator.getPref().getMindCLocation() == null) {
+			// Now the preference panel
+			//PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(getShell(), "org.ow2.mindEd.ide.ui.preferences.MindcPreferencePage", null, null);
+			//dialog.open();
+			return false;
+		} else return true;
+	}
 
 	//---------------------------------------------------------
 	// Strongly inspired by MBSWizardHandler handleSelection()
@@ -154,6 +173,12 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		sl0gd.verticalSpan = 4;
 		separatorLabel0.setLayoutData(sl0gd);
 
+		// mind-specific settings label
+		mindconf_label = new Label(c, SWT.NONE);
+		mindconf_label.setFont(parent.getFont());
+		mindconf_label.setLayoutData(new GridData(GridData.BEGINNING));
+		mindconf_label.setText(Messages.MindProjectWizardPage_MindConfig);
+
 		// runtime checkbox
 		runtime_checkbox = new Button(c, SWT.CHECK);
 		runtime_checkbox.setText(Messages.MindProjectWizardPage_MindRuntime); 
@@ -169,6 +194,21 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				userRuntimeChoice = runtime_checkbox.getSelection();
 			}} );
 
+		// Configure compiler path preference if not already configured
+		if (!isMindcToolchainConfigured()) {
+			mindcLoc_button = new Button(c, SWT.NONE);
+			mindcLoc_button.setText(Messages.MindProjectWizardPage_MindcLocation);
+			mindcLoc_button.setFont(parent.getFont());
+			mindcLoc_button.addSelectionListener(new SelectionAdapter() {
+				// update configuration on box event
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					// Now the preference panel
+					PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(getShell(), "org.ow2.mindEd.ide.ui.preferences.MindcPreferencePage", null, null);
+					dialog.open();
+				}} );
+		}
+
 		// Separate parts of the window
 		Label separatorLabel1 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
 		GridData sl1gd = new GridData(GridData.HORIZONTAL_ALIGN_CENTER);
@@ -176,12 +216,13 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		sl1gd.verticalSpan = 4;
 		separatorLabel1.setLayoutData(sl1gd);
 
-		// toolchains choice
+		// toolchains choice label
 		toolchains_label = new Label(c, SWT.NONE);
 		toolchains_label.setFont(parent.getFont());
 		toolchains_label.setLayoutData(new GridData(GridData.BEGINNING));
 		toolchains_label.setText(Messages.MindProjectWizardPage_Toolchains);
 
+		// toolchains choice grid
 		tcs_choice = new Composite(c, SWT.NONE);
 		tcs_choice.setLayoutData(new GridData(GridData.FILL_BOTH));
 		tcs_choice.setLayout(new PageLayout());
@@ -219,7 +260,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				// TableItem attached to the table (parent in constructor)
 				TableItem ti = new TableItem(table, SWT.NONE);
 				String name = tc.getUniqueRealName();
-				
+
 				// TODO: check what it was useful for
 				//String id = tc.getId();
 
@@ -305,6 +346,11 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			}
 		}
 
+		if (!isMindcToolchainConfigured()) {
+			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_NotConfigured);
+			return false;
+		}
+		
 		if (user_tc_choice == null) {
 			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
 			return false;

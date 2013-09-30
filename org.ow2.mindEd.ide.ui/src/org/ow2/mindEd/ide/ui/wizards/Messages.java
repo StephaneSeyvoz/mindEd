@@ -117,6 +117,9 @@ public class Messages extends NLS {
 	public static String MindProjectWizardPage_CDTMainWizardPage_DefaultProjectCategory;
 
 	public static String MindProjectWizardPage_CNoToolChainSelected;
+	public static String MindProjectWizardPage_MindToolChain_NotConfigured;
+	public static String MindProjectWizardPage_MindConfig;
+	public static String MindProjectWizardPage_MindcLocation;
 	
 	static {
 		// initialize resource bundle

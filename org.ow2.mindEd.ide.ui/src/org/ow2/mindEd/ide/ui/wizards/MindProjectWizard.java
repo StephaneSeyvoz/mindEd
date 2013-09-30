@@ -16,12 +16,21 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.ide.undo.CreateProjectOperation;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
@@ -30,6 +39,7 @@ import org.eclipse.ui.statushandlers.IStatusAdapterConstants;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
+import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.impl.CDTUtil;
 
 /**
@@ -47,7 +57,7 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 		super();
 		setNeedsProgressMonitor(true);
 	}
-	
+
 
 	@Override
 	public void addPages() {
@@ -64,21 +74,22 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 	 */
 	@Override
 	public boolean performFinish() {
+
 		createNewProject();
 
 		if (newProject == null) {
 			return false;
 		}
-		
+
 		IWorkingSet[] workingSets = mainPage.getSelectedWorkingSets();
 		getWorkbench().getWorkingSetManager().addToWorkingSets(newProject,
 				workingSets);
-        
+
 		selectAndReveal(newProject);
 
 		return true;
 	}
-	
+
 	/**
 	 * Creates a new project mind with the selected name.
 	 * <p>
@@ -113,8 +124,8 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 		final IProjectDescription description = workspace
 				.newProjectDescription(newProjectHandle.getName());
 		description.setLocationURI(location);
-		
-		
+
+
 		// create the new project operation
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor)
@@ -127,8 +138,8 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 					// not preserved.  Making this undoable resulted in too many 
 					// accidental file deletions.
 					op.execute(monitor, WorkspaceUndoUtil
-						.getUIInfoAdapter(getShell()));
-					
+							.getUIInfoAdapter(getShell()));
+
 					newProject = newProjectHandle;
 
 					CDTUtil.initMindProject(newProject, monitor, mainPage.getUserRuntimeChoice());
@@ -143,7 +154,7 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 				}
 			}
 
-			
+
 		};
 
 		// run the new project creation operation
@@ -160,13 +171,13 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 				if (cause.getStatus().getCode() == IResourceStatus.CASE_VARIANT_EXISTS) {
 					status = new StatusAdapter(
 							StatusUtil
-									.newStatus(
-											IStatus.WARNING,
-											NLS
-													.bind(
-															"", //$NON-NLS-1$
-															newProjectHandle
-																	.getName()),
+							.newStatus(
+									IStatus.WARNING,
+									NLS
+									.bind(
+											"", //$NON-NLS-1$
+											newProjectHandle
+											.getName()),
 											cause));
 				} else {
 					status = new StatusAdapter(StatusUtil.newStatus(cause
@@ -194,7 +205,7 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 		return newProject;
 	}
 
-	
+
 	/**
 	 * We will accept the selection in the workbench to see if
 	 * we can initialize from it.
