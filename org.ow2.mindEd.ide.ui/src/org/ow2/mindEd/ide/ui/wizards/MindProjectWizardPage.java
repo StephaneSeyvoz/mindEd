@@ -20,7 +20,11 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.IPageChangedListener;
+import org.eclipse.jface.dialogs.PageChangedEvent;
 import org.eclipse.jface.preference.PreferenceDialog;
+import org.eclipse.jface.preference.PreferencePage;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
@@ -204,8 +208,15 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					// Now the preference panel
-					PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(getShell(), "org.ow2.mindEd.ide.ui.preferences.MindcPreferencePage", null, null);
+					PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(getShell(), "org.ow2.mindEd.ide.ui.preferences.MindcPreferencePage", new String[] {}, null);
 					dialog.open();
+					
+					if (dialog.getReturnCode() == Window.OK) {
+						mindcLoc_button.setVisible(false);
+						getShell().pack();
+					}
+					
+					setPageComplete(validatePage());
 				}} );
 		}
 
@@ -245,8 +256,19 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 		// restore settings from preferences
 		show_sup.setSelection(!CDTPrefUtil.getBool(CDTPrefUtil.KEY_NOSUPP));
+		
+		// pack the window
+		getShell().pack();
 	}
 
+	protected class MindWizardLocationPreferenceChangeListener implements IPageChangedListener {
+
+		public void pageChanged(PageChangedEvent arg0) {
+			System.out.println(arg0.toString());
+		}
+		
+	}
+	
 	protected void updateToolchainsTable(boolean supportedOnly) {
 
 		// reset table
@@ -350,7 +372,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_NotConfigured);
 			return false;
 		}
-		
+
 		if (user_tc_choice == null) {
 			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
 			return false;
