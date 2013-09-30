@@ -51,7 +51,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 	private Button show_sup;
 	private Label toolchains_label;
 
-	protected boolean userRuntimeChoice = true;
+	private boolean userRuntimeChoice = true;
 
 	IToolChain user_tc_choice = null;
 
@@ -162,6 +162,12 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		runtime_checkbox.setLayoutData(gd0);
 		// default as true
 		runtime_checkbox.setSelection(userRuntimeChoice);
+		runtime_checkbox.addSelectionListener(new SelectionAdapter() {
+			// update configuration on box event
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				userRuntimeChoice = runtime_checkbox.getSelection();
+			}} );
 
 		// Separate parts of the window
 		Label separatorLabel1 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
@@ -420,6 +426,10 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				if (s1[i].equals(s2[j])) 
 					return true;
 		return false;
+	}
+
+	public boolean getUserRuntimeChoice() {
+		return userRuntimeChoice;
 	}
 }
 
