@@ -113,6 +113,7 @@ public class MindIdeCore {
 	 * @see MindPathEntry
 	 * @see MindPathKind
 	 * @author SSZ
+	 * @since 0.8
 	 */
 	public static MindPathEntry newMPEIncludePath(IFolder inc) {
 		MindPathEntry ret = MindideFactory.eINSTANCE.createMindPathEntry();
@@ -129,6 +130,7 @@ public class MindIdeCore {
 	 * @see MindPathEntry
 	 * @see MindPathKind
 	 * @author SSZ
+	 * @since 0.8
 	 */
 	public static MindPathEntry newMPEIncludePath(File incPath) {
 		MindPathEntry ret = MindideFactory.eINSTANCE.createMindPathEntry();
@@ -201,7 +203,7 @@ public class MindIdeCore {
 		IProject p = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
 		p.create(monitor);
 		p.open(monitor);
-		CDTUtil.initMindProject(p, monitor);
+		CDTUtil.initMindProject(p, monitor, false);
 		return MindModelManager.getMindModelManager().getMindProject(p);
 	}
 

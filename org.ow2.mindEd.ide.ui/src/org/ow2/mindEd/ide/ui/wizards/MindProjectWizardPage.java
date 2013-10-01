@@ -1,6 +1,7 @@
 package org.ow2.mindEd.ide.ui.wizards;
 
 import java.net.URI;
+import java.net.URLClassLoader;
 
 import org.eclipse.cdt.internal.ui.wizards.ICDTCommonProjectWizard;
 import org.eclipse.cdt.managedbuilder.core.IInputType;
@@ -46,6 +47,7 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.ow2.mindEd.ide.core.MindActivator;
+import org.ow2.mindEd.ide.core.MindIdeBuilder;
 import org.ow2.mindEd.ide.core.preferences.PreferenceConstants;
 
 /**
@@ -98,6 +100,24 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			//dialog.open();
 			return false;
 		} else return true;
+	}
+
+	protected static boolean isMindToolchainValid() {
+		boolean launcherClassAvailable = false;
+
+		// check the configured path really points to our compiler
+		// inspired from MindIdeBuilder#mindc method
+		try {
+			URLClassLoader loader = MindIdeBuilder.getMindCClassLoader();
+			loader.loadClass("org.ow2.mind.Launcher");
+			launcherClassAvailable = true;
+		} catch (CoreException e1) {
+			launcherClassAvailable = false;
+		} catch (ClassNotFoundException e2) {
+			launcherClassAvailable = false;
+		}
+
+		return launcherClassAvailable;
 	}
 
 	//---------------------------------------------------------
@@ -199,7 +219,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			}} );
 
 		// Configure compiler path preference if not already configured
-		if (!isMindcToolchainConfigured()) {
+		if (!isMindcToolchainConfigured() || !isMindToolchainValid()) {
 			mindcLoc_button = new Button(c, SWT.NONE);
 			mindcLoc_button.setText(Messages.MindProjectWizardPage_MindcLocation);
 			mindcLoc_button.setFont(parent.getFont());
@@ -210,12 +230,13 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 					// Now the preference panel
 					PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(getShell(), "org.ow2.mindEd.ide.ui.preferences.MindcPreferencePage", new String[] {}, null);
 					dialog.open();
-					
-					if (dialog.getReturnCode() == Window.OK) {
+
+					// User clicked ok and toolchain is valid: remove the config button from the wizard
+					if (dialog.getReturnCode() == Window.OK && isMindToolchainValid()) {
 						mindcLoc_button.setVisible(false);
 						getShell().pack();
 					}
-					
+
 					setPageComplete(validatePage());
 				}} );
 		}
@@ -256,7 +277,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 		// restore settings from preferences
 		show_sup.setSelection(!CDTPrefUtil.getBool(CDTPrefUtil.KEY_NOSUPP));
-		
+
 		// pack the window
 		getShell().pack();
 	}
@@ -266,9 +287,9 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		public void pageChanged(PageChangedEvent arg0) {
 			System.out.println(arg0.toString());
 		}
-		
+
 	}
-	
+
 	protected void updateToolchainsTable(boolean supportedOnly) {
 
 		// reset table
@@ -367,9 +388,9 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				return false;
 			}
 		}
-
-		if (!isMindcToolchainConfigured()) {
-			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_NotConfigured);
+		
+		if (!isMindcToolchainConfigured() || !isMindToolchainValid()) { 
+			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_InvalidOrNotConfigured);
 			return false;
 		}
 

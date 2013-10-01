@@ -50,22 +50,22 @@ import org.ow2.mindEd.ide.model.MindidePackage;
  *
  */
 public class MindIdeBuilder extends IncrementalProjectBuilder {
-	
-	
+
+
 	/**
- * ID of mind ide builder.
- */
+	 * ID of mind ide builder.
+	 */
 	public static final String BUILDER_ID = MindActivator.ID+".core.builder";
-	
+
 
 	@Override
 	protected void clean(IProgressMonitor monitor) throws CoreException {
 		IProject currentProject = getProject();
 		if (currentProject == null || !currentProject.isAccessible()) return ;
-		
+
 		MindCMarker.unmark(currentProject, false, IResource.DEPTH_INFINITE);
 	}
-	
+
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
 			throws CoreException {
@@ -78,23 +78,23 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 		if (mp == null) {
 			return new IProject[0];
 		}
-		
+
 		String mindLocation = MindActivator.getPref().getMindCLocation();
 		if (mindLocation == null) {
 			MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Cannot find mindc, set mindc location in preference"));
 			return new IProject[0];
 		}
-		
+
 		IResourceDelta delta = getDelta(currentProject);
 		if (delta == null) {
 			// full build
 			for (MindFile mf : mp.getAllFiles()) {
 				try {
 					if (mf.eClass() != MindidePackage.Literals.MIND_ADL) continue;
-					
+
 					IResource mfRsc = MindIdeCore.getResource(mf);
 					MindCMarker.unmark(mfRsc, false, IResource.DEPTH_ZERO);
-/*					checkFile(currentProject, Collections.singletonList(mf));
+					/*					checkFile(currentProject, Collections.singletonList(mf));
 				} catch (InvalidCommandLineException e) {
 					addError(currentProject, mf, e);
 				} catch (ADLException e) {
@@ -103,20 +103,20 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 					e.printStackTrace();
 				}
 			}
-			
+
 		} else  {
 			final List<MindFile> adls = new ArrayList<MindFile>();
-			
+
 			IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
-				
+
 				@Override
 				public boolean visit(IResourceDelta delta) throws CoreException {
 					IResource r = delta.getResource();
 					if (r == null) return false;
 					MindObject mo = MindIdeCore.get(r);
-					
+
 					if (mo == null) return false;
-					
+
 					if (mo.eClass() == MindidePackage.Literals.MIND_PROJECT)
 						return true;
 					if (mo.eClass() == MindidePackage.Literals.MIND_PACKAGE)
@@ -128,14 +128,14 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 					return false;
 				}
 			};
-			
+
 			delta.accept(visitor );
 			//incrementalBuild
 			for (MindFile mf : adls) {
 				try {
 					IResource mfRsc = MindIdeCore.getResource(mf);
 					MindCMarker.unmark(mfRsc, false, IResource.DEPTH_ZERO);
-/*					checkFile(currentProject, Collections.singletonList(mf));
+					/*					checkFile(currentProject, Collections.singletonList(mf));
 				} catch (InvalidCommandLineException e) {
 					addError(currentProject, mf, e);
 				} catch (ADLException e) {
@@ -151,65 +151,65 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 	private void addError(IProject currentProject, MindFile mf,
 			InvalidCommandLineException e) throws CoreException {
 		IResource mfRsc = MindIdeCore.getResource(mf);
-		
+
 		IMarker marker = MindCMarker.mark(mfRsc);
 		MindCMarker.setSeverity(marker, IMarker.SEVERITY_ERROR);
 		MindCMarker.setDescription(marker, e.getMessage());
 	}
-	
+
 	private void addError(IProject currentProject, MindFile mf,
 			ADLException e) throws CoreException {
 		Error error = e.getError();
 		ErrorLocator locator = error.getLocator();
 		int[] charsIndex = computeCharStartAndEnd(mf, locator);
-		
+
 		IResource mfRsc = MindIdeCore.getResource(mf);
-		
+
 		IMarker marker = MindCMarker.mark(mfRsc);
 		MindCMarker.setSeverity(marker, IMarker.SEVERITY_ERROR);
 		marker.setAttribute(IMarker.CHAR_START, charsIndex[0]);
 		marker.setAttribute(IMarker.CHAR_END, charsIndex[1]);
 		if (locator != null)
 			marker.setAttribute(IMarker.LINE_NUMBER, locator.getBeginLine());
-		
+
 		// To test XTEXT integration
 		addXtextAttributes(marker, e);
 		MindCMarker.setDescription(marker, error.getMessage());
 		e.printStackTrace();
 	}
-	
+
 	private void addXtextAttributes(final IMarker marker, ADLException e) throws CoreException {
-		
+
 		marker.setAttribute("CODE_KEY",e.getError().getTemplate().getGroupId()+"-"+e.getError().getTemplate().getErrorId());
 		marker.setAttribute("URI_KEY", URI.createPlatformResourceURI(marker.getResource().getFullPath().toString(),false).appendFragment("/").toString());
 	}
-	
+
 	public int[] computeCharStartAndEnd(MindFile mf, ErrorLocator locator) {
 		IFile	ifile = MindIdeCore.getResource(mf);
-		
+
 		File f = ifile == null ? null : ifile.getLocation() == null ? null : ifile.getLocation().toFile();
-		
+
 		if (locator == null) {
 			return new int[] { 0, 0 };
 		}
 		if (locator == null || f == null || !f.exists() || f.length() == 0) return new int[] { 0, 0 };
-		
+
 		int char_start = 0, char_end = 0;
 		int bl = locator.getBeginLine();
 		int bc = locator.getBeginColumn();
 		int el = locator.getEndLine();
 		int ec = locator.getEndColumn();
-		
-		
+
+
 		if (bl == 1) {
 			char_start = bc;
 		}
-		
+
 		if (el == 1) {
 			return new int[] { char_start, ec };
 		}
 
-		
+
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(f));
@@ -219,7 +219,7 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 			int nextchar = -1;
 			int tabSize = 8;
 			while(true) {
-				
+
 				int c = nextchar;
 				if (c == -1) {
 					c = br.read();
@@ -227,7 +227,7 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 				}
 				begin++;
 				nextchar =  br.read();
-				
+
 				if ((c == '\r' && nextchar == '\n') || (c == '\n') || (c =='\r' && nextchar != '\n')) {
 					if (c == '\r' && nextchar == '\n') {
 						begin++;
@@ -252,7 +252,7 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 					char_end = begin;
 					return new int[] {char_start, char_end};
 				}
-				
+
 			}
 			if (char_start != 0) {
 				return new int[] {char_start, begin };
@@ -267,36 +267,45 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 		}
 		return new int[] { 0, 0 };
 	}
-	
+
 
 	private static final String MINDC_METHOD = "nonExitMain";
 	static URLClassLoader mindCClassLoader = null;
-	
-	
+
+
 	public static URLClassLoader getMindCClassLoader() throws CoreException {
-		if (mindCClassLoader == null) {
-			String mindLocation = MindActivator.getPref().getMindCLocation();
-			if (mindLocation == null)
-				throw new CoreException(new Status(Status.ERROR, MindActivator.ID, "Cannot find mindc, set mindc location in preference"));
-			File libMindC = new File(new File( mindLocation), "lib");
-			ArrayList<URL> urls = new ArrayList<URL>();
-			File[] jars = libMindC.listFiles();
-			if (jars != null) {
-				for (File j : jars) {
-					if (j != null&& j.getName().endsWith(".jar")) {
-						try {
-							urls.add(j.toURI().toURL());
-						} catch (MalformedURLException e) {
-							MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Cannot get the url of "+j));
-						}
+		String mindLocation = MindActivator.getPref().getMindCLocation();
+		if (mindLocation == null) {
+			mindCClassLoader = null;
+			throw new CoreException(new Status(Status.ERROR, MindActivator.ID, "Cannot find mindc, set mindc location in preference"));
+		}
+		File libMindC = new File(new File( mindLocation), "lib");
+		if (!libMindC.exists()) {
+			mindCClassLoader = null;
+			throw new CoreException(new Status(Status.ERROR, MindActivator.ID, "Mindc location erroneous: no lib folder found"));
+		}
+		ArrayList<URL> urls = new ArrayList<URL>();
+		File[] jars = libMindC.listFiles();
+		if ((jars == null) || (jars.length == 0)) {
+			mindCClassLoader = null;
+			throw new CoreException(new Status(Status.ERROR, MindActivator.ID, "Mindc location erroneous: no jar found in lib folder"));
+		}
+		if (jars != null) {
+			for (File j : jars) {
+				if (j != null&& j.getName().endsWith(".jar")) {
+					try {
+						urls.add(j.toURI().toURL());
+					} catch (MalformedURLException e) {
+						MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Cannot get the url of "+j));
 					}
 				}
 			}
-			mindCClassLoader = new URLClassLoader((URL[]) urls.toArray(new URL[urls.size()]), MindIdeBuilder.class.getClassLoader());
 		}
+		mindCClassLoader = new URLClassLoader((URL[]) urls.toArray(new URL[urls.size()]), MindIdeBuilder.class.getClassLoader());
+		
 		return mindCClassLoader;
 	}
-	
+
 	public static void computeResolvedMindPath(MindLibOrProject mp, Set<MindObject> visited, Set<MindObject> path) {
 		if (visited.contains(mp)) return;
 		visited.add(mp);
@@ -325,12 +334,12 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 			}
 		}
 	}
-	
+
 	public static void checkFile(IProject project, List<MindFile> filesToCheck) throws InvalidCommandLineException, ADLException, CompilerError, CoreException {
 		MindProject mp = MindIdeCore.get(project);
 		if (mp == null) return;
 		ArrayList<String> args = new ArrayList<String>();
-		
+
 		Set<MindObject> visited = new HashSet<MindObject>();
 		Set<MindObject> path = new HashSet<MindObject>();
 		computeResolvedMindPath(mp, visited, path);
@@ -343,18 +352,18 @@ public class MindIdeBuilder extends IncrementalProjectBuilder {
 		}
 		args.add("-o="+project.getLocation().append("build").toOSString());
 		args.add("--check-adl");
-		
+
 		for (MindFile mf : filesToCheck) {
 			if (mf.eClass() == MindidePackage.Literals.MIND_ADL) {
 				args.add(mf.getQualifiedName());
 			}
 		}
-		
+
 		System.out.println("Call mindc :");
 		for (String a : args) {
 			System.out.println("   "+a);
 		}
-		
+
 		MindIdeBuilder.mindc((String[]) args.toArray(new String[args.size()]));		
 	}
 	/**
@@ -367,15 +376,15 @@ method: public static void nonExitMain(final String... args)
 	 * @throws ADLException
 	 * @throws CoreException 
 	 */
-	
+
 	static public void mindc(String... args) throws InvalidCommandLineException,
-    ADLException, CompilerError, CoreException {
+	ADLException, CompilerError, CoreException {
 		String mindClassName =MindActivator.getPref().getMindCMainClass();
-		
+
 		if (mindClassName == null || "".equals(mindClassName))
 			mindClassName = "org.ow2.mind.Launcher";
 		URLClassLoader mindCClassLoader2 = getMindCClassLoader();
-		
+
 		try {
 			Method method = mindCClassLoader2.loadClass(mindClassName).getMethod(MINDC_METHOD, args.getClass());
 			method.invoke(null, (Object) args);
@@ -407,7 +416,7 @@ method: public static void nonExitMain(final String... args)
 				MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Mindc Compiler: " + targetException.getMessage(), targetException));
 		}
 	}
-	
+
 	/*
 	 *
 Usage: mindc [OPTIONS] (<definition>[:<execname>])+
@@ -436,11 +445,11 @@ Available options are :
   -B, --no-bin                    Do not generate binary ADL/IDL ('.def', '.itfdef' and '.idtdef' files).
 
 	 */
-	
+
 	public void compile(MindFile f) {
-		
+
 	}
-	
+
 	public static void changeMindCLocation() {
 		mindCClassLoader = null;
 	}

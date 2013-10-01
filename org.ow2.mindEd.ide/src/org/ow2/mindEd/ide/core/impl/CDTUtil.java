@@ -31,15 +31,12 @@ import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.cdt.managedbuilder.internal.core.Configuration;
 import org.eclipse.cdt.managedbuilder.internal.core.ManagedProject;
 import org.eclipse.cdt.utils.envvar.StorableEnvironment;
-import org.eclipse.core.filesystem.IFileStore;
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -51,7 +48,6 @@ import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.MindModel;
 import org.ow2.mindEd.ide.core.MindModelManager;
 import org.ow2.mindEd.ide.core.MindNature;
-import org.ow2.mindEd.ide.core.mindc.MindcErrorParser;
 import org.ow2.mindEd.ide.core.template.TemplateMake;
 import org.ow2.mindEd.ide.model.MindProject;
 
@@ -310,11 +306,12 @@ public class CDTUtil {
 	 * @param newProject
 	 *            create project
 	 * @param monitor
+	 * @param importRuntime 
 	 * @throws CoreException
 	 * @throws UnsupportedEncodingException
 	 */
 	public static void initMindProject(IProject newProject,
-			IProgressMonitor monitor) throws CoreException,
+			IProgressMonitor monitor, boolean importRuntime) throws CoreException,
 			UnsupportedEncodingException {
 
 		// create first
@@ -343,17 +340,20 @@ public class CDTUtil {
 			srcFolder.create(true, true, monitor);
 
 		// Link the runtime folder to the compiler runtime from the Mindc location variable (in preference store)
-		String mindLocation = MindActivator.getPref().getMindCLocation();
 		IFolder runtimeFolder = null;
-		if (mindLocation == null) {
-			MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference"));
-		} else {
-			// is a "folder" but File is the Java way :)
-			File mindRuntimeFile = new File(mindLocation + "/runtime");
+		String mindLocation = null;
+		if (importRuntime) {
+			mindLocation = MindActivator.getPref().getMindCLocation();
+			if (mindLocation == null) {
+				MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference"));
+			} else {
+				// is a "folder" but File is the Java way :)
+				File mindRuntimeFile = new File(mindLocation + "/runtime");
 
-			runtimeFolder = newProject.getFolder("runtime");
-			if (mindRuntimeFile.exists() && !runtimeFolder.exists())
-				runtimeFolder.createLink(new Path(mindRuntimeFile.getAbsolutePath()), IResource.ALLOW_MISSING_LOCAL, monitor);
+				runtimeFolder = newProject.getFolder("runtime");
+				if (mindRuntimeFile.exists() && !runtimeFolder.exists())
+					runtimeFolder.createLink(new Path(mindRuntimeFile.getAbsolutePath()), IResource.ALLOW_MISSING_LOCAL, monitor);
+			}
 		}
 		// end runtime folder
 
