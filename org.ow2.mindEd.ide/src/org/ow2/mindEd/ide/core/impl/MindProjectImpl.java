@@ -814,6 +814,9 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		r.schedule();
 	}
 
+	/**
+	 * @since 0.8
+	 */
 	public void changeMINDINC() {
 		Job r = new ChangeMindINCVarJob(this);	
 		r.schedule();

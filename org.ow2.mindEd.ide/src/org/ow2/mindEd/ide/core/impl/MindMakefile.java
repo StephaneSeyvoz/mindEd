@@ -60,6 +60,9 @@ public class MindMakefile {
 
 	static public final String MAKEFILE = "Makefile";
 	static public final String MIND_SRC = "MIND_SRC";
+	/**
+	 * @since 0.8
+	 */
 	static public final String MIND_INC = "MIND_INC";
 	static public final String MIND_TARGETS = "MIND_TARGETS";
 

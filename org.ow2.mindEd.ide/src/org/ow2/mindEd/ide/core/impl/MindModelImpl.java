@@ -1269,6 +1269,7 @@ public class MindModelImpl implements MindModel {
 	 * SSZ
 	 * 
 	 * @param project the project
+	 * @since 0.8
 	 */
 	public void syncCIncPath(IProject project) {
 		MindProject mp = getMindProject(project);

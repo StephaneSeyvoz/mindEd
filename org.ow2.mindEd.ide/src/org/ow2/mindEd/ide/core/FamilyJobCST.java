@@ -12,6 +12,7 @@ public class FamilyJobCST {
 	
 	/**
 	 * Constant identifying the job family identifier for job which set make file var "MIND_INC".
+	 * @since 0.8
 	 */
 	public static final Object FAMILY_CHANGE_MAKEFILE_VAR_MIND_INC = new Object();
 	
