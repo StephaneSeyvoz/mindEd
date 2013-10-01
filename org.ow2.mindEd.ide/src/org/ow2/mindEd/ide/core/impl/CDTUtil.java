@@ -221,12 +221,12 @@ public class CDTUtil {
 				List<MindProject> allMindProjects = MindIdeCore.getModel().getAllProject();
 				for (MindProject currProject : allMindProjects) {
 					if (mindcRuntimeLocation == null) {
-						MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference"));
+						MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"runtime\" linked folder could not be created, set mindc location in preference"));
 					} else {
 						// is a "folder" but File is the Java way :)
 						File mindRuntimeFile = new File(mindcRuntimeLocation);
 						if (!mindRuntimeFile.exists()) {
-							MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Mindc location subfolder \"Runtime\" doesn't exist !"));
+							MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Mindc location subfolder \"runtime\" doesn't exist !"));
 							continue;
 						}
 
