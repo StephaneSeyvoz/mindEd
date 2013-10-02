@@ -203,7 +203,8 @@ public class MindIdeCore {
 		IProject p = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
 		p.create(monitor);
 		p.open(monitor);
-		CDTUtil.initMindProject(p, monitor, false);
+		// Here we ususally don't need the runtime folder, and neither to specify a choice of C toolchain
+		CDTUtil.initMindProject(p, monitor, false, null);
 		return MindModelManager.getMindModelManager().getMindProject(p);
 	}
 

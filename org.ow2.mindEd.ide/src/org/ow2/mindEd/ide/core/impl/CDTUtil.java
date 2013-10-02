@@ -26,10 +26,13 @@ import org.eclipse.cdt.core.settings.model.extension.CConfigurationData;
 import org.eclipse.cdt.internal.core.envvar.EnvironmentVariableManager;
 import org.eclipse.cdt.internal.core.envvar.UserDefinedEnvironmentSupplier;
 import org.eclipse.cdt.managedbuilder.core.IBuilder;
+import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
+import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.cdt.managedbuilder.internal.core.Configuration;
 import org.eclipse.cdt.managedbuilder.internal.core.ManagedProject;
+import org.eclipse.cdt.managedbuilder.internal.core.ToolChain;
 import org.eclipse.cdt.utils.envvar.StorableEnvironment;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -307,11 +310,12 @@ public class CDTUtil {
 	 *            create project
 	 * @param monitor
 	 * @param importRuntime 
+	 * @param toolChain 
 	 * @throws CoreException
 	 * @throws UnsupportedEncodingException
 	 */
 	public static void initMindProject(IProject newProject,
-			IProgressMonitor monitor, boolean importRuntime) throws CoreException,
+			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
 
 		// create first
@@ -328,8 +332,6 @@ public class CDTUtil {
 				monitor);
 
 		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
-
-
 
 		// Create the default structure
 		IFolder buildFolder = newProject.getFolder("build");
@@ -357,10 +359,17 @@ public class CDTUtil {
 		}
 		// end runtime folder
 
+		// TODO: Propagate toolchain information and enhance the C integration with:
+		// C Toolchains management inspired from:
+		// org.eclipse.cdt.managedbuilder.ui.wizards.STDWizardHandler#setProjectDescription
+		// AND
+		// org.eclipse.cdt.managedbuilder.ui.wizards.NewMakeProjFromExisting#performFinish
+		// (see inner "execute" method of the "WorkspaceModifyOperation")
+
 		// Set CDT information
 		ICProjectDescriptionManager mgr = CoreModel.getDefault()
 				.getProjectDescriptionManager();
-		ICProjectDescription des = mgr.getProjectDescription(newProject, true);
+		ICProjectDescription projDesc = mgr.getProjectDescription(newProject, true);
 
 		// get default path and set it's
 		try {
@@ -373,22 +382,38 @@ public class CDTUtil {
 			e.printStackTrace();
 		}
 
-		if (des != null)
+		if (projDesc != null)
 			return; // C project description already exists
 
-		des = mgr.createProjectDescription(newProject, true);
+		projDesc = mgr.createProjectDescription(newProject, false);
 
 		IManagedBuildInfo info = ManagedBuildManager.createBuildInfo(newProject);
 
-		ManagedProject mProj = new ManagedProject(des);
+		ManagedProject mProj = new ManagedProject(projDesc);
 		info.setManagedProject(mProj);
 
+		// TODO: check if our legacy "org.ow2.mindEd.ide.core.build" id is ok ?
+		// in CDT's NewMakeProjFromExisting they do:
+		// String s = toolChain == null ? "0" : ((ToolChain) toolChain).getId();
+		// ManagedBuildManager.calculateChildId(s, null) according to the C toolchain Id !
 		String id = ManagedBuildManager.calculateChildId(
 				"org.ow2.mindEd.ide.core.build", null);
-		Configuration config = new Configuration(mProj, null, id, "Default");
-
+		
+		Configuration config = new Configuration(mProj, (ToolChain) toolChain, id, "Default");
+		
+		// We don't want CDT Internal Builder so we take inspiration from STDWizardHandler#setProjectDescription
+		// and its
+		// if (bld != null) { 		if(bld.isInternalBuilder()) { ... } } block to change from CDT Internal to GNU Make
 		IBuilder bld = config.getEditableBuilder();
 		if (bld != null) {
+			// change default choice from CDT Internal Builder to GNU Make Builder
+			if(bld.isInternalBuilder()){
+				IConfiguration prefCfg = ManagedBuildManager.getPreferenceConfiguration(false);
+				IBuilder prefBuilder = prefCfg.getBuilder();
+				config.changeBuilder(prefBuilder, ManagedBuildManager.calculateChildId(config.getId(), null), prefBuilder.getName());
+				bld = config.getEditableBuilder();
+			}
+			
 			// It's make (not eclipse)
 			bld.setManagedBuildOn(false);
 			// The makefile is in the project root
@@ -428,7 +453,7 @@ public class CDTUtil {
 		CConfigurationData data = config.getConfigurationData();
 		data.getBuildData();
 
-		des.createConfiguration(ManagedBuildManager.CFG_DATA_PROVIDER_ID, data);
+		projDesc.createConfiguration(ManagedBuildManager.CFG_DATA_PROVIDER_ID, data);
 
 		// add the Mindc error parser to the project defaults
 		String[] defaultErrorParserListArray = config.getErrorParserList();
@@ -438,13 +463,13 @@ public class CDTUtil {
 		config.setErrorParserList(defaultErrorParserList.toArray(new String[defaultErrorParserList.size()]));
 
 		// ADD CPL Macro settings
-		ICConfigurationDescription cfgDes = des.getConfigurationById(id);
+		ICConfigurationDescription cfgDes = projDesc.getConfigurationById(id);
 		Set<String> settingProviders = new HashSet<String>(Arrays.asList(cfgDes.getExternalSettingsProviderIds())); 
 
 		settingProviders.add(CPLMacroSettings.ID);
 		cfgDes.setExternalSettingsProviderIds(settingProviders.toArray(new String[settingProviders.size()]));
 
-		mgr.setProjectDescription(newProject, des);
+		mgr.setProjectDescription(newProject, projDesc);
 
 
 	}

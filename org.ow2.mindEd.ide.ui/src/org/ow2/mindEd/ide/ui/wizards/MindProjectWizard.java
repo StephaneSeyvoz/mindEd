@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
+import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -142,7 +143,7 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 
 					newProject = newProjectHandle;
 
-					CDTUtil.initMindProject(newProject, monitor, mainPage.getUserRuntimeChoice());
+					CDTUtil.initMindProject(newProject, monitor, mainPage.getUserRuntimeChoice(), mainPage.getUserCToolChainchoice());
 				} catch (OperationCanceledException e) {
 					throw new InvocationTargetException(e);
 				} catch (CoreException e) {

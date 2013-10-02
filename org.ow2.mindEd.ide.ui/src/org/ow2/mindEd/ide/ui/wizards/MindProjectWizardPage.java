@@ -69,7 +69,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 	private boolean userRuntimeChoice = true;
 
-	IToolChain user_tc_choice = null;
+	private IToolChain UserCToolChainChoice = null;
 
 	/**
 	 * Creates a new project creation wizard page.
@@ -157,30 +157,30 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 		// no toolchain selected = null
 		if (widget == null) {
-			user_tc_choice = null;
+			UserCToolChainChoice = null;
 			return;
 		}
 
 
 		if (!(widget instanceof TableItem)) { // should never happen
-			user_tc_choice = null;
+			UserCToolChainChoice = null;
 			return;
 		}
 
 		TableItem ti = (TableItem) widget;
 
 		if (ti.getData() == null) { // should never happen
-			user_tc_choice = null;
+			UserCToolChainChoice = null;
 			return;
 		}
 
 		if (!(ti.getData() instanceof IToolChain)) { // should never happen
-			user_tc_choice = null;
+			UserCToolChainChoice = null;
 			return;
 		}
 
 		// Set the toolchain choice !
-		user_tc_choice = (IToolChain) ti.getData();
+		UserCToolChainChoice = (IToolChain) ti.getData();
 	}
 
 	private void createGroup(Composite parent) {
@@ -394,10 +394,10 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			return false;
 		}
 
-		if (user_tc_choice == null) {
-			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
-			return false;
-		}
+//		if (user_tc_choice == null) {
+//			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
+//			return false;
+//		}
 
 		setErrorMessage(null);
 		return true;
@@ -519,6 +519,10 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 	public boolean getUserRuntimeChoice() {
 		return userRuntimeChoice;
+	}
+
+	public IToolChain getUserCToolChainchoice() {
+		return UserCToolChainChoice;
 	}
 }
 
