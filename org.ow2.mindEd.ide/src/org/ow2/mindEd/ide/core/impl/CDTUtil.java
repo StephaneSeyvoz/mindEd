@@ -10,21 +10,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CProjectNature;
 import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.settings.model.COutputEntry;
 import org.eclipse.cdt.core.settings.model.CSourceEntry;
+import org.eclipse.cdt.core.settings.model.ICConfigExtensionReference;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICOutputEntry;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
 import org.eclipse.cdt.core.settings.model.ICSettingEntry;
 import org.eclipse.cdt.core.settings.model.ICSourceEntry;
+import org.eclipse.cdt.core.settings.model.ICTargetPlatformSetting;
 import org.eclipse.cdt.core.settings.model.WriteAccessException;
 import org.eclipse.cdt.core.settings.model.extension.CConfigurationData;
 import org.eclipse.cdt.internal.core.envvar.EnvironmentVariableManager;
 import org.eclipse.cdt.internal.core.envvar.UserDefinedEnvironmentSupplier;
+import org.eclipse.cdt.internal.core.model.BinaryParserConfig;
+import org.eclipse.cdt.internal.core.model.CModelManager;
 import org.eclipse.cdt.managedbuilder.core.IBuilder;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
@@ -56,7 +61,8 @@ import org.ow2.mindEd.ide.model.MindProject;
 
 public class CDTUtil {
 
-
+	private final static String OLD_BINARY_PARSER_ID = "org.eclipse.cdt.core.BinaryParser";	//$NON-NLS-1$
+	
 	private static final class RemoveCSourceFolderJob extends Job {
 		private final IFolder f;
 
@@ -399,7 +405,11 @@ public class CDTUtil {
 		String id = ManagedBuildManager.calculateChildId(
 				"org.ow2.mindEd.ide.core.build", null);
 		
-		Configuration config = new Configuration(mProj, (ToolChain) toolChain, id, "Default");
+		//Configuration config = new Configuration(mProj, (ToolChain) toolChain, id, "Default");
+		
+		IConfiguration firstExtCfg = ManagedBuildManager.getFirstExtensionConfiguration(toolChain);
+		// Configuration(ManagedProject managedProject, Configuration cloneConfig, String id, boolean cloneChildren, boolean temporary)
+		Configuration config = new Configuration(mProj, (Configuration) firstExtCfg, id, true, false);
 		
 		// We don't want CDT Internal Builder so we take inspiration from STDWizardHandler#setProjectDescription
 		// and its
@@ -470,8 +480,29 @@ public class CDTUtil {
 		cfgDes.setExternalSettingsProviderIds(settingProviders.toArray(new String[settingProviders.size()]));
 
 		mgr.setProjectDescription(newProject, projDesc);
-
-
+		
+		// Default binary parser for the Makefile projects is org.eclipse.cdt.core.ELF !
+		// So it does not work on Windows, except on project reload (open/close, export/import, eclipse restart) that
+		// fixes the configuration.
+		// Here we force the configuration of the configuration to 
+		ICConfigExtensionReference[] parserExtRefs = CCorePlugin.getDefault().getDefaultBinaryParserExtensions(newProject);
+		ICTargetPlatformSetting tps = cfgDes.getTargetPlatformSetting();
+		
+		List<String> parserIdsList = new ArrayList<String>();
+		
+		for (ICConfigExtensionReference ref : parserExtRefs) {
+			if (ref.getExtensionPoint().equals(CCorePlugin.BINARY_PARSER_UNIQ_ID))
+				parserIdsList.add(ref.getID());
+		}
+		
+		String[] parserIds = parserIdsList.toArray(new String[]{});
+		
+		tps.setBinaryParserIds(parserIds);
+		
+			// now reset the already existing binary parser to be replaced by the good one 
+		cfgDes.remove(CCorePlugin.BINARY_PARSER_UNIQ_ID);
+		CModelManager.getDefault().resetBinaryParser(newProject);
+		// End of executable recognition tasks
 	}
 
 	/**
