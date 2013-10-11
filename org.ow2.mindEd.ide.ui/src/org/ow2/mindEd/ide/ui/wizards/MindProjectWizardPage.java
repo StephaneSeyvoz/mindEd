@@ -313,6 +313,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			}
 		}
 
+		table.setSelection(0);
 		table.setVisible(true);
 
 		setPageComplete(validatePage());

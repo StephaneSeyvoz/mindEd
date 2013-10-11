@@ -32,9 +32,12 @@ import org.eclipse.cdt.internal.core.model.BinaryParserConfig;
 import org.eclipse.cdt.internal.core.model.CModelManager;
 import org.eclipse.cdt.managedbuilder.core.IBuilder;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
+import org.eclipse.cdt.managedbuilder.core.IInputType;
 import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
+import org.eclipse.cdt.managedbuilder.core.ITool;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
+import org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin;
 import org.eclipse.cdt.managedbuilder.internal.core.Configuration;
 import org.eclipse.cdt.managedbuilder.internal.core.ManagedProject;
 import org.eclipse.cdt.managedbuilder.internal.core.ToolChain;
@@ -62,7 +65,7 @@ import org.ow2.mindEd.ide.model.MindProject;
 public class CDTUtil {
 
 	private final static String OLD_BINARY_PARSER_ID = "org.eclipse.cdt.core.BinaryParser";	//$NON-NLS-1$
-	
+
 	private static final class RemoveCSourceFolderJob extends Job {
 		private final IFolder f;
 
@@ -324,20 +327,12 @@ public class CDTUtil {
 			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
 
-		// create first
+		// create Makefile first
 		IFile makefile = newProject.getFile("Makefile");
 		if (!makefile.exists())
 			makefile.create(
 					new ByteArrayInputStream(createMakeTemplate(newProject)), true,
 					monitor);
-
-		// add nature
-		CProjectNature.addNature(newProject, CProjectNature.C_NATURE_ID,
-				monitor);
-		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",
-				monitor);
-
-		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
 
 		// Create the default structure
 		IFolder buildFolder = newProject.getFolder("build");
@@ -365,7 +360,7 @@ public class CDTUtil {
 		}
 		// end runtime folder
 
-		// TODO: Propagate toolchain information and enhance the C integration with:
+		// Propagating toolchain information for CDT integration
 		// C Toolchains management inspired from:
 		// org.eclipse.cdt.managedbuilder.ui.wizards.STDWizardHandler#setProjectDescription
 		// AND
@@ -375,7 +370,7 @@ public class CDTUtil {
 		// Set CDT information
 		ICProjectDescriptionManager mgr = CoreModel.getDefault()
 				.getProjectDescriptionManager();
-		ICProjectDescription projDesc = mgr.getProjectDescription(newProject, true);
+		ICProjectDescription projDesc = mgr.createProjectDescription(newProject, false);
 
 		// get default path and set it's
 		try {
@@ -388,29 +383,26 @@ public class CDTUtil {
 			e.printStackTrace();
 		}
 
-		if (projDesc != null)
-			return; // C project description already exists
-
-		projDesc = mgr.createProjectDescription(newProject, false);
-
 		IManagedBuildInfo info = ManagedBuildManager.createBuildInfo(newProject);
 
-		ManagedProject mProj = new ManagedProject(projDesc);
+		IConfiguration firstExtCfg = null;
+		
+		firstExtCfg = ManagedBuildManager.getFirstExtensionConfiguration(toolChain);
+		
+		ManagedProject mProj = new ManagedProject(newProject, firstExtCfg.getProjectType());
 		info.setManagedProject(mProj);
 
-		// TODO: check if our legacy "org.ow2.mindEd.ide.core.build" id is ok ?
-		// in CDT's NewMakeProjFromExisting they do:
-		// String s = toolChain == null ? "0" : ((ToolChain) toolChain).getId();
-		// ManagedBuildManager.calculateChildId(s, null) according to the C toolchain Id !
 		String id = ManagedBuildManager.calculateChildId(
-				"org.ow2.mindEd.ide.core.build", null);
-		
-		//Configuration config = new Configuration(mProj, (ToolChain) toolChain, id, "Default");
-		
-		IConfiguration firstExtCfg = ManagedBuildManager.getFirstExtensionConfiguration(toolChain);
+				firstExtCfg.getId(), null);
+
 		// Configuration(ManagedProject managedProject, Configuration cloneConfig, String id, boolean cloneChildren, boolean temporary)
-		Configuration config = new Configuration(mProj, (Configuration) firstExtCfg, id, true, false);
-		
+		Configuration config = new Configuration(mProj, (Configuration) firstExtCfg, id, false, true);
+
+		CConfigurationData data = config.getConfigurationData();
+		ICConfigurationDescription cfgDes = projDesc.createConfiguration(ManagedBuildManager.CFG_DATA_PROVIDER_ID, data);
+		config.setConfigurationDescription(cfgDes);
+		config.exportArtifactInfo();
+
 		// We don't want CDT Internal Builder so we take inspiration from STDWizardHandler#setProjectDescription
 		// and its
 		// if (bld != null) { 		if(bld.isInternalBuilder()) { ... } } block to change from CDT Internal to GNU Make
@@ -423,7 +415,7 @@ public class CDTUtil {
 				config.changeBuilder(prefBuilder, ManagedBuildManager.calculateChildId(config.getId(), null), prefBuilder.getName());
 				bld = config.getEditableBuilder();
 			}
-			
+
 			// It's make (not eclipse)
 			bld.setManagedBuildOn(false);
 			// The makefile is in the project root
@@ -439,7 +431,7 @@ public class CDTUtil {
 		// the name of this configuration is Default
 
 		config.setName("Default");
-		config.setArtifactName(newProject.getName());
+		config.setArtifactName(mProj.getDefaultArtifactName());
 
 		// Create a source entries ArrayList
 		List<ICSourceEntry> sourceEntries = new ArrayList<ICSourceEntry>();
@@ -458,12 +450,6 @@ public class CDTUtil {
 
 		// convert the List to good-sized typed array
 		config.setSourceEntries(sourceEntries.toArray(new ICSourceEntry[sourceEntries.size()]));
-		config.exportArtifactInfo();
-
-		CConfigurationData data = config.getConfigurationData();
-		data.getBuildData();
-
-		projDesc.createConfiguration(ManagedBuildManager.CFG_DATA_PROVIDER_ID, data);
 
 		// add the Mindc error parser to the project defaults
 		String[] defaultErrorParserListArray = config.getErrorParserList();
@@ -473,7 +459,6 @@ public class CDTUtil {
 		config.setErrorParserList(defaultErrorParserList.toArray(new String[defaultErrorParserList.size()]));
 
 		// ADD CPL Macro settings
-		ICConfigurationDescription cfgDes = projDesc.getConfigurationById(id);
 		Set<String> settingProviders = new HashSet<String>(Arrays.asList(cfgDes.getExternalSettingsProviderIds())); 
 
 		settingProviders.add(CPLMacroSettings.ID);
@@ -481,28 +466,31 @@ public class CDTUtil {
 
 		mgr.setProjectDescription(newProject, projDesc);
 		
-		// Default binary parser for the Makefile projects is org.eclipse.cdt.core.ELF !
-		// So it does not work on Windows, except on project reload (open/close, export/import, eclipse restart) that
-		// fixes the configuration.
-		// Here we force the configuration of the configuration to 
-		ICConfigExtensionReference[] parserExtRefs = CCorePlugin.getDefault().getDefaultBinaryParserExtensions(newProject);
-		ICTargetPlatformSetting tps = cfgDes.getTargetPlatformSetting();
+		// add nature
+		// Note: those tasks HAVE TO BE LAST, AFTER configuration
+		// (the C_NATURE triggers lots of C configuration, with default values, leading to troublesome situations otherwise)
+		CProjectNature.addNature(newProject, CProjectNature.C_NATURE_ID, monitor);
+		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor);
+		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
 		
-		List<String> parserIdsList = new ArrayList<String>();
-		
-		for (ICConfigExtensionReference ref : parserExtRefs) {
-			if (ref.getExtensionPoint().equals(CCorePlugin.BINARY_PARSER_UNIQ_ID))
-				parserIdsList.add(ref.getID());
+	}
+
+	/**
+	 * Finds a tool handling given language in the tool-chain.
+	 * This returns the first tool found.
+	 */
+	private ITool getTool(String languageId, IToolChain toolchain) {
+		ITool[] tools = toolchain.getTools();
+		for (ITool tool : tools) {
+			IInputType[] inputTypes = tool.getInputTypes();
+			for (IInputType inType : inputTypes) {
+				String lang = inType.getLanguageId(tool);
+				if (languageId.equals(lang)) {
+					return tool;
+				}
+			}
 		}
-		
-		String[] parserIds = parserIdsList.toArray(new String[]{});
-		
-		tps.setBinaryParserIds(parserIds);
-		
-			// now reset the already existing binary parser to be replaced by the good one 
-		cfgDes.remove(CCorePlugin.BINARY_PARSER_UNIQ_ID);
-		CModelManager.getDefault().resetBinaryParser(newProject);
-		// End of executable recognition tasks
+		return null;
 	}
 
 	/**

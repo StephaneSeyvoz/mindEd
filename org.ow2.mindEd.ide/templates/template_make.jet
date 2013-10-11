@@ -11,7 +11,7 @@ endif
 # runtime is a built-in value
 MIND_SRC=src
 
-MIND_INC=
+MIND_INC=""
 
 MIND_TARGETS=
 
