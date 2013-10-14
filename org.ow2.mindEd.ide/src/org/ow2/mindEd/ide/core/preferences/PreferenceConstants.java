@@ -9,7 +9,7 @@ public class PreferenceConstants {
 
 	public static final String P_MINDC_MAIN_CLASS = "mindcMainClass";
 	
-	public static final String P_MAKEFILE_MSYS_COMPATIBILITY = "makefileMSYSCompatibility";
+	public static final String P_GNU_MAKEFILE_COMPATIBILITY = "GNUMakefileCompatibility";
 
 	public static final String P_BOOLEAN = "booleanPreference";
 

@@ -123,11 +123,11 @@ public class MindMakefile {
 				IVariableDefinition v = (IVariableDefinition) d;
 				if (v.getName().equals(nameVar)) {
 					v.getValue().setLength(0);
-					if ((nameVar.equals("MIND_SRC") || nameVar.equals("MIND_INC")) && MindActivator.getPref().getMakefileMSYSCompatibilityStatus())
+					if ((nameVar.equals("MIND_SRC") || nameVar.equals("MIND_INC")) && MindActivator.getPref().getGNUMakefileCompatibilityStatus())
 						v.getValue().append("\"" + value + "\"");
 					else
 						// On all other OS-es than Windows, and when on Windows with no
-						// MSYS compatibility needed
+						// GNU Makefile compatibility needed
 						v.getValue().append(value);
 					changeLines(v);
 					return v;
@@ -276,7 +276,7 @@ public class MindMakefile {
 	}
 	
 /**
- * Set a new value to variable <code>varName</code>. Variable is always re-written in order for the MSYS compatibility preference change event to always work.
+ * Set a new value to variable <code>varName</code>. Variable is always re-written in order for the GNU Make compatibility preference change event to always work.
  * If var is not found insert var before target <code>targetBefore</code>.
  * 
  * @param varName  the name of variable

@@ -37,11 +37,11 @@ public class MindPreference implements IPreferenceChangeListener {
 		getPreferences().put(PreferenceConstants.P_MINDC_MAIN_CLASS, classMain);
 	}
 
-	public boolean getMakefileMSYSCompatibilityStatus(){
+	public boolean getGNUMakefileCompatibilityStatus(){
 		// second argument is for default value: default is when the compatibility variable
 		// hasn't even been created (we can't access it), so we must be on a non-windows OS,
-		// and the msys compatibility is false
-		return getPreferences().getBoolean(PreferenceConstants.P_MAKEFILE_MSYS_COMPATIBILITY, false);
+		// and the GNU Make compatibility is false
+		return getPreferences().getBoolean(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY, false);
 	}
 
 	public IEclipsePreferences getPreferences() {
@@ -71,7 +71,7 @@ public class MindPreference implements IPreferenceChangeListener {
 			if (newValue == null)
 				newValue = ""; // fix null pointer in cdt env
 			CDTUtil.changeMINDCLocation((String) newValue);
-		} else if (event.getKey().equals(PreferenceConstants.P_MAKEFILE_MSYS_COMPATIBILITY)) {
+		} else if (event.getKey().equals(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY)) {
 			// Whatever the value, as the event was fired, a settings change event occured and
 			// we force the Makefile refresh
 			// In any case the Makefile MIND_SRC variable writing will consult the new value anyway

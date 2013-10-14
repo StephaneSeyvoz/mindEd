@@ -15,7 +15,7 @@ import org.ow2.mindEd.ide.core.preferences.PreferenceConstants;
 
 /**
  * This class represents a preference page that
- * is contributed to the Preferences dialog. It's allow setting MIND_ROOT variable.
+ * is contributed to the Preferences dialog. It allows setting the MIND_ROOT variable.
  */
 
 public class MindcPreferencePage
@@ -42,11 +42,11 @@ public class MindcPreferencePage
 		addField(new StringFieldEditor(PreferenceConstants.P_MINDC_MAIN_CLASS, 
 				"&Mindc main class:", getFieldEditorParent()));
 		
-		// Windows-specific property to allow compatibility with MSYS (enables quote characters writing
+		// Windows-specific property to allow compatibility with GNU Make (enables quote characters writing
 		// in the Makefile "MIND_SRC" variable value)
 		if (System.getProperty("os.name").startsWith("Windows")){
-			addField(new BooleanFieldEditor(PreferenceConstants.P_MAKEFILE_MSYS_COMPATIBILITY,
-					"&MSYS GNU Make compatibility (Windows-only setting)", getFieldEditorParent()));
+			addField(new BooleanFieldEditor(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY,
+					"&GNU Make compatibility (Windows-only setting)", getFieldEditorParent()));
 		}
 	}
 
