@@ -39,6 +39,8 @@ public class ApplicationWizardPage extends ElementListSelectionDialog implements
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
+		setMessage("Filter components (* = any string, ? = any char):");
+		
 		if (_mpe != null) {
 			try {
 				String[] appliInfo = UtilMindIde.appliInfo(_mpe.getName());
