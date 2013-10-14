@@ -326,7 +326,7 @@ public class CDTUtil {
 	public static void initMindProject(IProject newProject,
 			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
-
+		
 		// create Makefile first
 		IFile makefile = newProject.getFile("Makefile");
 		if (!makefile.exists())
@@ -372,23 +372,12 @@ public class CDTUtil {
 				.getProjectDescriptionManager();
 		ICProjectDescription projDesc = mgr.createProjectDescription(newProject, false);
 
-		// get default path and set it's
-		try {
-			MindModel mModel = MindModelManager.getMindModelManager().getMindModel();
-			mModel.init(newProject);
-			if (runtimeFolder != null)
-				mModel.findOrCreateRootSrc(runtimeFolder);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		IManagedBuildInfo info = ManagedBuildManager.createBuildInfo(newProject);
 
 		IConfiguration firstExtCfg = null;
-		
+
 		firstExtCfg = ManagedBuildManager.getFirstExtensionConfiguration(toolChain);
-		
+
 		ManagedProject mProj = new ManagedProject(newProject, firstExtCfg.getProjectType());
 		info.setManagedProject(mProj);
 
@@ -396,7 +385,7 @@ public class CDTUtil {
 				firstExtCfg.getId(), null);
 
 		// Configuration(ManagedProject managedProject, Configuration cloneConfig, String id, boolean cloneChildren, boolean temporary)
-		Configuration config = new Configuration(mProj, (Configuration) firstExtCfg, id, false, true);
+		Configuration config = new Configuration(mProj, (Configuration) firstExtCfg, id, true, false);
 
 		CConfigurationData data = config.getConfigurationData();
 		ICConfigurationDescription cfgDes = projDesc.createConfiguration(ManagedBuildManager.CFG_DATA_PROVIDER_ID, data);
@@ -464,6 +453,7 @@ public class CDTUtil {
 		settingProviders.add(CPLMacroSettings.ID);
 		cfgDes.setExternalSettingsProviderIds(settingProviders.toArray(new String[settingProviders.size()]));
 
+		// finish the C job
 		mgr.setProjectDescription(newProject, projDesc);
 		
 		// add nature
@@ -472,6 +462,18 @@ public class CDTUtil {
 		CProjectNature.addNature(newProject, CProjectNature.C_NATURE_ID, monitor);
 		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor);
 		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
+
+		// Add the runtime if needed
+		// Only do so after Mind nature is enabled, in order for things to be ready to configure
+		try {
+			MindModel mModel = MindModelManager.getMindModelManager().getMindModel();
+			mModel.init(newProject);
+			if (runtimeFolder != null)
+				mModel.findOrCreateRootSrc(runtimeFolder);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
