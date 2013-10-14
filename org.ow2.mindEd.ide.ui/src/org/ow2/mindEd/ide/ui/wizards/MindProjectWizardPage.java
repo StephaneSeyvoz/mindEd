@@ -313,7 +313,11 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			}
 		}
 
+		// init configuration
 		table.setSelection(0);
+		UserCToolChainChoice = (IToolChain) table.getSelection()[0].getData(); // supposing selection is unique ; FIXME: enforce that ?
+		
+		// go
 		table.setVisible(true);
 
 		setPageComplete(validatePage());
