@@ -39,7 +39,7 @@ public class ApplicationWizardPage extends ElementListSelectionDialog implements
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		setMessage("Filter components (* = any string, ? = any char):");
+		setMessage(Messages.ApplicationWizardPage_FilterMessage);
 		
 		if (_mpe != null) {
 			try {
@@ -63,7 +63,7 @@ public class ApplicationWizardPage extends ElementListSelectionDialog implements
 		
 		// Label for path field
 		Label pathLabel = new Label(parent, SWT.NONE);
-		pathLabel.setText("Application name:");
+		pathLabel.setText(Messages.ApplicationWizardPage_AppName);
 
 		// Path text field
 		_applicationNameText = new Text(parent, SWT.BORDER);
@@ -94,9 +94,9 @@ public class ApplicationWizardPage extends ElementListSelectionDialog implements
 		IStatus status;
 
 		if (_nextApplicationName == null || _nextApplicationName.length() == 0
-				|| _nextApplicationName.contains("/")) {
+				|| _nextApplicationName.contains("/")) { //$NON-NLS-1$
 			status = new Status(IStatus.ERROR, PlatformUI.PLUGIN_ID,
-					IStatus.ERROR, "Invalid appication name", null);
+					IStatus.ERROR, Messages.ApplicationWizardPage_InvalidAppName, null);
 		} else {
 			status = Status.OK_STATUS;
 		}
