@@ -327,6 +327,9 @@ public class CDTUtil {
 			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
 		
+		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor);
+		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
+		
 		// create Makefile first
 		IFile makefile = newProject.getFile("Makefile");
 		if (!makefile.exists())
@@ -447,7 +450,7 @@ public class CDTUtil {
 		defaultErrorParserList.add("org.ow2.mindEd.ide.MindcErrorParser");
 		config.setErrorParserList(defaultErrorParserList.toArray(new String[defaultErrorParserList.size()]));
 
-		// ADD CPL Macro settings
+		// ADD CPL Macro settingsfff
 		Set<String> settingProviders = new HashSet<String>(Arrays.asList(cfgDes.getExternalSettingsProviderIds())); 
 
 		settingProviders.add(CPLMacroSettings.ID);
@@ -457,11 +460,9 @@ public class CDTUtil {
 		mgr.setProjectDescription(newProject, projDesc);
 		
 		// add nature
-		// Note: those tasks HAVE TO BE LAST, AFTER configuration
+		// Note: this task HAS TO BE LAST, AFTER configuration
 		// (the C_NATURE triggers lots of C configuration, with default values, leading to troublesome situations otherwise)
 		CProjectNature.addNature(newProject, CProjectNature.C_NATURE_ID, monitor);
-		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor);
-		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
 
 		// Add the runtime if needed
 		// Only do so after Mind nature is enabled, in order for things to be ready to configure

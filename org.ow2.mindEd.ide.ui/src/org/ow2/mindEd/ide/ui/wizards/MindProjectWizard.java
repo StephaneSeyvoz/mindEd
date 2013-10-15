@@ -8,8 +8,10 @@ import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceStatus;
 import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -144,6 +146,8 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 					newProject = newProjectHandle;
 
 					CDTUtil.initMindProject(newProject, monitor, mainPage.getUserRuntimeChoice(), mainPage.getUserCToolChainchoice());
+					
+					newProject.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
 				} catch (OperationCanceledException e) {
 					throw new InvocationTargetException(e);
 				} catch (CoreException e) {

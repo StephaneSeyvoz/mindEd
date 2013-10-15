@@ -25,9 +25,11 @@
       <builder
             id="org.ow2.mindEd.ide.core.builder">
       </builder>
+<!--
       <requires-nature
             id="org.eclipse.cdt.core.cnature">
       </requires-nature>
+-->
       <requires-nature
             id="org.eclipse.xtext.ui.shared.xtextNature">
       </requires-nature>
