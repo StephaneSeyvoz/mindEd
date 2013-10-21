@@ -94,7 +94,7 @@ public class FractalSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     HEXADECIMAL_TYPE | STRING | 'null' | ID | signedINT
+	 *     'null' | ID | signedINT | STRING | HEXADECIMAL_TYPE
 	 */
 	protected void emit_Value_HEXADECIMAL_TYPETerminalRuleCall_2_or_IDTerminalRuleCall_0_or_NullKeyword_5_or_STRINGTerminalRuleCall_3_or_SignedINTParserRuleCall_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
