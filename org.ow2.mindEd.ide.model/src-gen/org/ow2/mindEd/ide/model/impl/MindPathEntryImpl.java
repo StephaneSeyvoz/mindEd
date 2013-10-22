@@ -120,7 +120,7 @@ public class MindPathEntryImpl extends MindObjectImpl implements MindPathEntry {
 	@SuppressWarnings("unchecked")
 	public MindLibOrProject getOwnerProject() {
 		if (eContainerFeatureID() != MindidePackage.MIND_PATH_ENTRY__OWNER_PROJECT) return null;
-		return (MindLibOrProject)eContainer();
+		return (MindLibOrProject)eInternalContainer();
 	}
 
 	/**

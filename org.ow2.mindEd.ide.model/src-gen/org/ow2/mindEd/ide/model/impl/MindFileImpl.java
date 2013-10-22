@@ -145,7 +145,7 @@ public class MindFileImpl extends MindObjectImpl implements MindFile {
 	 */
 	public MindPackage getPackage() {
 		if (eContainerFeatureID() != MindidePackage.MIND_FILE__PACKAGE) return null;
-		return (MindPackage)eContainer();
+		return (MindPackage)eInternalContainer();
 	}
 
 	/**

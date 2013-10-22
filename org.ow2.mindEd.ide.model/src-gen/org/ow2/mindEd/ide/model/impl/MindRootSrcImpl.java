@@ -219,7 +219,7 @@ public class MindRootSrcImpl extends MindObjectImpl implements MindRootSrc {
 	 */
 	public MindRepo getRepoFromRootSrc() {
 		if (eContainerFeatureID() != MindidePackage.MIND_ROOT_SRC__REPO_FROM_ROOT_SRC) return null;
-		return (MindRepo)eContainer();
+		return (MindRepo)eInternalContainer();
 	}
 
 	/**

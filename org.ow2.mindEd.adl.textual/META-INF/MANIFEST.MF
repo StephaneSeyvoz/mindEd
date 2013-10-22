@@ -33,4 +33,5 @@ Export-Package: org.ow2.mindEd.adl.textual,
  org.ow2.mindEd.adl.textual.scoping,
  org.ow2.mindEd.adl.textual.serializer,
  org.ow2.mindEd.adl.textual.services,
- org.ow2.mindEd.adl.textual.validation
+ org.ow2.mindEd.adl.textual.validation,
+ org.ow2.mindEd.adl.textual.generator

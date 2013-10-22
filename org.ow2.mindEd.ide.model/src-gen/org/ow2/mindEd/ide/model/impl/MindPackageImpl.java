@@ -111,7 +111,7 @@ public class MindPackageImpl extends MindObjectImpl implements MindPackage {
 	 */
 	public MindRootSrc getRootsrc() {
 		if (eContainerFeatureID() != MindidePackage.MIND_PACKAGE__ROOTSRC) return null;
-		return (MindRootSrc)eContainer();
+		return (MindRootSrc)eInternalContainer();
 	}
 
 	/**
