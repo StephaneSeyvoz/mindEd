@@ -4,7 +4,7 @@
     editorDirectory="/org.ow2.mindEd.adl.textual.editor/src" modelPluginID="org.ow2.mindEd.adl.textual"
     forceOverwrite="true" modelName="Fractal" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.adl.textual.edit"
-    editorPluginID="org.ow2.mindEd.adl.textual.editor" runtimeVersion="2.9" usedGenPackages="../../../org.ow2.mindEd.itf.editor.textual.model/src-gen/org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel#//fractalIDL">
+    editorPluginID="org.ow2.mindEd.adl.textual.editor" runtimeVersion="2.9" usedGenPackages="../../../org.ow2.mindEd.itf.editor.textual.model/model/generated/FractalItf.genmodel#//fractalIDL">
   <genPackages prefix="Fractal" basePackage="org.ow2.mindEd.adl.textual" disposableProviderFactory="true"
       ecorePackage="Fractal.ecore#/">
     <genClasses ecoreClass="Fractal.ecore#//AdlDefinition">

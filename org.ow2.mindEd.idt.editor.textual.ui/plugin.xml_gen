@@ -308,5 +308,58 @@
             </attribute>
         </markerResolutionGenerator>
     </extension>
+   	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="org.ow2.mindEd.idt.editor.textual.FractalIdt.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+    <extension point="org.eclipse.ui.menus">
+         <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+         <command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+               style="push">
+            <visibleWhen checkEnabled="false">
+               <reference
+                     definitionId="org.ow2.mindEd.idt.editor.textual.FractalIdt.Editor.opened">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+	    <page
+	        category="org.ow2.mindEd.idt.editor.textual.FractalIdt"
+	        class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.ow2.mindEd.idt.editor.textual.FractalIdt.refactoring"
+	        name="Refactoring">
+	        <keywordReference id="org.ow2.mindEd.idt.editor.textual.ui.keyword_FractalIdt"/>
+	    </page>
+	</extension>
+
+  <extension point="org.eclipse.compare.contentViewers">
+    <viewer id="org.ow2.mindEd.idt.editor.textual.FractalIdt.compare.contentViewers"
+            class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="idt">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer id="org.ow2.mindEd.idt.editor.textual.FractalIdt.compare.contentMergeViewers"
+            class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="idt" label="FractalIdt Compare">
+     </viewer>
+  </extension>
+  <extension point="org.eclipse.ui.editors.documentProviders">
+    <provider id="org.ow2.mindEd.idt.editor.textual.FractalIdt.editors.documentProviders"
+            class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            extensions="idt">
+    </provider>
+  </extension>
 
 </plugin>

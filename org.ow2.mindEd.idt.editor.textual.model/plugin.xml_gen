@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.ow2.org/fractal/mind/idl/FractalIdt" 
        class = "org.ow2.mindEd.idt.editor.textual.fractalIdt.FractalIdtPackage"
-       genModel = "org/ow2/mindEd/idt/editor/textual/FractalIdt.genmodel" /> 
+       genModel = "model/generated/FractalIdt.genmodel" /> 
 	
   </extension>
 
