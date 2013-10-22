@@ -21,4 +21,16 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated mindEd.ide -->
+      <editor
+            id="org.ow2.mindEd.ide.editor.presentation.MindideEditorID"
+            name="%_UI_MindideEditor_label"
+            icon="icons/full/obj16/MindideModelFile.gif"
+            extensions="mindide"
+            class="org.ow2.mindEd.ide.editor.presentation.MindideEditor"
+            contributorClass="org.ow2.mindEd.ide.editor.presentation.MindideActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

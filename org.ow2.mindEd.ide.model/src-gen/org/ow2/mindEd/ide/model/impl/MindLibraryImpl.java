@@ -279,7 +279,7 @@ public class MindLibraryImpl extends MindLibOrProjectImpl implements MindLibrary
 	 */
 	public MindRepo getRepoFromRootSrc() {
 		if (eContainerFeatureID() != MindidePackage.MIND_LIBRARY__REPO_FROM_ROOT_SRC) return null;
-		return (MindRepo)eContainer();
+		return (MindRepo)eInternalContainer();
 	}
 
 	/**

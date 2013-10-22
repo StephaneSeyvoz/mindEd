@@ -107,7 +107,7 @@ public abstract class MindLibOrProjectImpl extends MindObjectImpl implements Min
 	 */
 	public MindRepo getRepoFromLibOrProject() {
 		if (eContainerFeatureID() != MindidePackage.MIND_LIB_OR_PROJECT__REPO_FROM_LIB_OR_PROJECT) return null;
-		return (MindRepo)eContainer();
+		return (MindRepo)eInternalContainer();
 	}
 
 	/**

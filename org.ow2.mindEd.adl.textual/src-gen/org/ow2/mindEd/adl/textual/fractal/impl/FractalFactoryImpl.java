@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.ow2.mindEd.adl.textual.fractal.impl;
 
@@ -34,7 +30,7 @@ public class FractalFactoryImpl extends EFactoryImpl implements FractalFactory
   {
     try
     {
-      FractalFactory theFractalFactory = (FractalFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.ow2.org/mindEd/adl/textual/Fractal"); 
+      FractalFactory theFractalFactory = (FractalFactory)EPackage.Registry.INSTANCE.getEFactory(FractalPackage.eNS_URI);
       if (theFractalFactory != null)
       {
         return theFractalFactory;

@@ -13,7 +13,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameFQN" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         transient="true" defaultValueLiteral="" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentKind" eType="#//ComponentKind"
-        transient="true" defaultValueLiteral="NULL"/>
+        transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simpleName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         transient="true"/>
   </eClassifiers>
@@ -235,7 +235,8 @@
     <eLiterals name="provides" literal="provides"/>
     <eLiterals name="requires" value="1" literal="requires"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ComponentKind" serializable="false">
+  <eClassifiers xsi:type="ecore:EEnum" name="ComponentKind" instanceTypeName="ComponentKind"
+      serializable="false">
     <eLiterals name="NULL"/>
     <eLiterals name="COMPOSITE" value="1"/>
     <eLiterals name="PRIMITIVE" value="2"/>

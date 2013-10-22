@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ow2.mindEd.adl.textual/src-gen"
-    editDirectory="/org.ow2.mindEd.adl.textual.edit/src" editorDirectory="/org.ow2.mindEd.adl.textual.editor/src"
-    modelPluginID="org.ow2.mindEd.adl.textual" forceOverwrite="true" modelName="Fractal"
-    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ow2.mindEd.adl.textual/src-gen" editDirectory="/org.ow2.mindEd.adl.textual.edit/src"
+    editorDirectory="/org.ow2.mindEd.adl.textual.editor/src" modelPluginID="org.ow2.mindEd.adl.textual"
+    forceOverwrite="true" modelName="Fractal" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.adl.textual.edit"
-    editorPluginID="org.ow2.mindEd.adl.textual.editor" runtimeVersion="2.7" usedGenPackages="../../../../../../../org.ow2.mindEd.itf.editor.textual.model/src-gen/org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel#//fractalIDL">
+    editorPluginID="org.ow2.mindEd.adl.textual.editor" runtimeVersion="2.9" usedGenPackages="../../../org.ow2.mindEd.itf.editor.textual.model/src-gen/org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel#//fractalIDL">
   <genPackages prefix="Fractal" basePackage="org.ow2.mindEd.adl.textual" disposableProviderFactory="true"
       ecorePackage="Fractal.ecore#/">
     <genClasses ecoreClass="Fractal.ecore#//AdlDefinition">
