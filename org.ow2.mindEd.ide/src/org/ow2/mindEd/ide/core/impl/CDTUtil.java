@@ -534,7 +534,9 @@ public class CDTUtil {
 				for (String currTypeStr : supportedTypesArray) {
 					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
 					for (String currValueStr : supportedValuesForCurrType) {
-						if (currValueStr.equals("org.eclipse.cdt.build.core.buildArtefactType.exe"))
+						// we don't compare to the whole chain since GNU ARM CROSS (old version) uses a different prefix: not sure if the algo is ok
+						if (currValueStr.endsWith(".buildArtefactType.exe")
+								|| currValueStr.endsWith(".buildArtefactType.application")) // sometimes encountered with GNU ARM Eclipse 0.5 old-school toolchains 
 							return tool;
 					}
 				}
