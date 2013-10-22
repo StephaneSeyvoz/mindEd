@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CProjectNature;
@@ -40,6 +41,7 @@ import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin;
 import org.eclipse.cdt.managedbuilder.internal.core.Configuration;
 import org.eclipse.cdt.managedbuilder.internal.core.ManagedProject;
+import org.eclipse.cdt.managedbuilder.internal.core.Tool;
 import org.eclipse.cdt.managedbuilder.internal.core.ToolChain;
 import org.eclipse.cdt.utils.envvar.StorableEnvironment;
 import org.eclipse.core.resources.IFile;
@@ -326,10 +328,10 @@ public class CDTUtil {
 	public static void initMindProject(IProject newProject,
 			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
-		
+
 		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor);
 		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
-		
+
 		// create Makefile first
 		IFile makefile = newProject.getFile("Makefile");
 		if (!makefile.exists())
@@ -458,7 +460,7 @@ public class CDTUtil {
 
 		// finish the C job
 		mgr.setProjectDescription(newProject, projDesc);
-		
+
 		// add nature
 		// Note: this task HAS TO BE LAST, AFTER configuration
 		// (the C_NATURE triggers lots of C configuration, with default values, leading to troublesome situations otherwise)
@@ -475,21 +477,68 @@ public class CDTUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		ITool compiler = getCompiler(toolChain);
+		ITool linker = getLinker(toolChain);
+
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found compiler with command " + compiler.getToolCommand()));
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found linker with command " + linker.getToolCommand()));
+
 	}
 
 	/**
-	 * Finds a tool handling given language in the tool-chain.
+	 * Finds a compiler from its build type in the tool-chain.
 	 * This returns the first tool found.
 	 */
-	private ITool getTool(String languageId, IToolChain toolchain) {
+	private static ITool getCompiler(IToolChain toolchain) {
+
 		ITool[] tools = toolchain.getTools();
+		Tool currTool = null;
 		for (ITool tool : tools) {
-			IInputType[] inputTypes = tool.getInputTypes();
-			for (IInputType inType : inputTypes) {
-				String lang = inType.getLanguageId(tool);
-				if (languageId.equals(lang)) {
-					return tool;
+			// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
+			if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
+				continue;
+
+			currTool = (Tool) tool;
+			if (currTool.supportsType("org.eclipse.cdt.build.core.buildType")) {
+				String[] supportedTypesArray = currTool.getSupportedTypeIds();
+				for (String currTypeStr : supportedTypesArray) {
+					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
+					for (String currValueStr : supportedValuesForCurrType) {
+						if (currValueStr.equals("org.eclipse.cdt.build.core.buildType.release") || currValueStr.equals("org.eclipse.cdt.build.core.buildType.debug"))
+							return tool;
+					}
 				}
+
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Finds a linker from its build type in the tool-chain.
+	 * This returns the first tool found.
+	 */
+	private static ITool getLinker(IToolChain toolchain) {
+
+		ITool[] tools = toolchain.getTools();
+		Tool currTool = null;
+		for (ITool tool : tools) {
+			// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
+			if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
+				continue;
+
+			currTool = (Tool) tool;
+			if (currTool.supportsType("org.eclipse.cdt.build.core.buildArtefactType")) {
+				String[] supportedTypesArray = currTool.getSupportedTypeIds();
+				for (String currTypeStr : supportedTypesArray) {
+					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
+					for (String currValueStr : supportedValuesForCurrType) {
+						if (currValueStr.equals("org.eclipse.cdt.build.core.buildArtefactType.exe"))
+							return tool;
+					}
+				}
+
 			}
 		}
 		return null;
