@@ -30,5 +30,6 @@ Export-Package: org.ow2.mindEd.idt.editor.textual,
  org.ow2.mindEd.idt.editor.textual.parser.antlr.internal,
  org.ow2.mindEd.idt.editor.textual.scoping,
  org.ow2.mindEd.idt.editor.textual.services,
- org.ow2.mindEd.idt.editor.textual.validation
+ org.ow2.mindEd.idt.editor.textual.validation,
+ org.ow2.mindEd.idt.editor.textual.parseTreeConstruction
 

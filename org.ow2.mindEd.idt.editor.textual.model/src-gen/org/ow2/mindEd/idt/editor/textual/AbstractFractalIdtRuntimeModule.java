@@ -44,6 +44,11 @@ public abstract class AbstractFractalIdtRuntimeModule extends DefaultRuntimeModu
 		return org.ow2.mindEd.idt.editor.textual.services.FractalIdtGrammarAccess.class;
 	}
 
+	// contributed by org.eclipse.xtext.generator.parseTreeConstructor.ParseTreeConstructorFragment
+	public Class<? extends org.eclipse.xtext.parsetree.reconstr.IParseTreeConstructor> bindIParseTreeConstructor() {
+		return org.ow2.mindEd.idt.editor.textual.parseTreeConstruction.FractalIdtParsetreeConstructor.class;
+	}
+
 	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.IParser> bindIParser() {
 		return org.ow2.mindEd.idt.editor.textual.parser.antlr.FractalIdtParser.class;
@@ -109,6 +114,11 @@ public abstract class AbstractFractalIdtRuntimeModule extends DefaultRuntimeModu
 		return org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider.class;
 	}
 
+	// contributed by org.eclipse.xtext.generator.formatting.FormatterFragment
+	public Class<? extends org.eclipse.xtext.formatting.IFormatter> bindIFormatter() {
+		return org.ow2.mindEd.idt.editor.textual.formatting.FractalIdtFormatter.class;
+	}
+
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public Class<? extends org.eclipse.xtext.resource.IContainer.Manager> bindIContainer$Manager() {
 		return org.eclipse.xtext.resource.containers.StateBasedContainerManager.class;
@@ -127,11 +137,6 @@ public abstract class AbstractFractalIdtRuntimeModule extends DefaultRuntimeModu
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public void configureIResourceDescriptionsBuilderScope(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider.NAMED_BUILDER_SCOPE)).to(org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions.class);
-	}
-
-	// contributed by org.eclipse.xtext.generator.formatting.FormatterFragment
-	public Class<? extends org.eclipse.xtext.formatting.IFormatter> bindIFormatter() {
-		return org.ow2.mindEd.idt.editor.textual.formatting.FractalIdtFormatter.class;
 	}
 
 }
