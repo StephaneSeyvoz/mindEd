@@ -131,7 +131,10 @@ Workflow {
 			*/
 			
 			// quickfix API 
-			fragment = quickfix.QuickfixProviderFragment {}			
+			fragment = quickfix.QuickfixProviderFragment {}
+			
+			// rename refactoring
+			fragment = refactoring.RefactorElementNameFragment auto-inject {}			
 		}
 	}
 }

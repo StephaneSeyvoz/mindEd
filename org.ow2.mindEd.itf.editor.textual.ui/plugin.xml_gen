@@ -213,38 +213,69 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="itf">
+			type="fractalitf">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="itf">
+            uriExtension="fractalitf">
         </resourceServiceProvider>
     </extension>
 
 
-    <!-- marker definitions for org.ow2.mindEd.itf.editor.textual.FractalItf -->
-    <extension
-            id="fractalitf.check.fast"
-            name="FractalItf Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.fast"/>
-        <persistent value="true"/>
+	<!-- marker definitions for org.ow2.mindEd.itf.editor.textual.FractalItf -->
+	<extension
+	        id="fractalitf.check.fast"
+	        name="FractalItf Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.fast"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="fractalitf.check.normal"
+	        name="FractalItf Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.normal"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="fractalitf.check.expensive"
+	        name="FractalItf Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.expensive"/>
+	    <persistent value="true"/>
+	</extension>
+
+   <extension
+         point="org.eclipse.xtext.builder.participant">
+      <participant
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+      </participant>
+   </extension>
+   <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            category="org.ow2.mindEd.itf.editor.textual.FractalItf"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.ow2.mindEd.itf.editor.textual.FractalItf.compiler.preferencePage"
+            name="Compiler">
+            <keywordReference id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"/>
+        </page>
     </extension>
     <extension
-            id="fractalitf.check.normal"
-            name="FractalItf Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.normal"/>
-        <persistent value="true"/>
-    </extension>
-    <extension
-            id="fractalitf.check.expensive"
-            name="FractalItf Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.expensive"/>
-        <persistent value="true"/>
+            point="org.eclipse.ui.propertyPages">
+        <page
+            category="org.ow2.mindEd.itf.editor.textual.FractalItf"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.ow2.mindEd.itf.editor.textual.FractalItf.compiler.propertyPage"
+            name="Compiler">
+            <keywordReference id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
     </extension>
 
 	<!-- Quick Outline -->

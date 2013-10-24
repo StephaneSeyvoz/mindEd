@@ -8,7 +8,7 @@ import org.ow2.mindEd.itf.editor.textual.fractalIDL.FractalIDLPackage;
 import org.ow2.mindEd.itf.editor.textual.fractalIDL.InterfaceDefinition;
 import org.ow2.mindEd.itf.editor.textual.fractalIDL.impl.ItfFileImpl;
 
-public class FractalItfJavaValidator extends AbstractFractalItfJavaValidator {
+public class FractalItfJavaValidator extends AbstractFractalItfValidator {
 
 	public final static String WRONG_NAME = "org.ow2.mindEd.itf.editor.textual.validation.wrong_name";
 	

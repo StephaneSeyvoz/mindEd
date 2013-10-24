@@ -343,23 +343,4 @@
 	    </page>
 	</extension>
 
-  <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.ow2.mindEd.idt.editor.textual.FractalIdt.compare.contentViewers"
-            class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="idt">
-    </viewer>
-  </extension>
-  <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.ow2.mindEd.idt.editor.textual.FractalIdt.compare.contentMergeViewers"
-            class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="idt" label="FractalIdt Compare">
-     </viewer>
-  </extension>
-  <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.ow2.mindEd.idt.editor.textual.FractalIdt.editors.documentProviders"
-            class="org.ow2.mindEd.idt.editor.textual.ui.FractalIdtExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="idt">
-    </provider>
-  </extension>
-
 </plugin>

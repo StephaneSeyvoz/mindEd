@@ -58,7 +58,7 @@ Workflow {
 			
 			// a custom ResourceFactory for use with EMF 
 			fragment = resourceFactory.ResourceFactoryFragment auto-inject {
-				fileExtensions = file.extensions
+				//fileExtensions = file.extensions
 			}
 				
 			// the following fragment tries to use the Antlr Generator fragment which can be installed via update manager from http://download.itemis.com/updates/
@@ -68,7 +68,7 @@ Workflow {
 			fragment = org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment auto-inject {
 				options = {
 					backtrack = true
-					classSplitting = true
+					//classSplitting = true
 				}
 			}
 			
@@ -82,11 +82,11 @@ Workflow {
 			fragment = validation.CheckFragment {}
 			*/
 			 
-			// java-based API for validation 
-			fragment = validation.JavaValidatorFragment auto-inject {
-                composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
-                composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
-            }
+			// Xtend-based API for validation
+    		fragment = validation.ValidatorFragment auto-inject {
+    		//    composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
+    		//    composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+    		}
             
 			// scoping and exporting API
 			/*
@@ -98,6 +98,9 @@ Workflow {
 			fragment = scoping.ImportNamespacesScopingFragment auto-inject {}
 			fragment = exporting.QualifiedNamesFragment auto-inject {}
 			fragment = builder.BuilderIntegrationFragment auto-inject {}
+			
+			// generator API
+    		fragment = generator.GeneratorFragment auto-inject {}
 			
 			// formatter API 
 			fragment = formatting.FormatterFragment auto-inject {}
@@ -123,15 +126,15 @@ Workflow {
 			// quickfix API
 			fragment = quickfix.QuickfixProviderFragment auto-inject {}
 			
-			fragment = org.eclipse.xtext.generator.parser.antlr.XtextAntlrUiGeneratorFragment auto-inject { 
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject { 
 				options = {
 					backtrack = true
-					classSplitting = true
+					//classSplitting = true
 				}
 			}
 
 			// generates junit test support classes into Generator#pathTestProject
-			fragment = junit.Junit4Fragment auto-inject {}
+			//fragment = junit.Junit4Fragment auto-inject {}
 
 			// project wizard (optional) 
 			/*
@@ -143,6 +146,9 @@ Workflow {
 			
 			// rename refactoring
 			fragment = refactoring.RefactorElementNameFragment auto-inject {}
+			
+			// provides the necessary bindings for java types integration
+    		fragment = types.TypesGeneratorFragment auto-inject {}
 			
 			// provides a compare view
 			fragment = compare.CompareFragment auto-inject {

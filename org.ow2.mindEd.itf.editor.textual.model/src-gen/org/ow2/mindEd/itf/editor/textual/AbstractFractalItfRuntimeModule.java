@@ -35,11 +35,6 @@ public abstract class AbstractFractalItfRuntimeModule extends DefaultRuntimeModu
 	}
 	
 	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
-	public java.lang.ClassLoader bindClassLoaderToInstance() {
-		return getClass().getClassLoader();
-	}
-
-	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
 	public Class<? extends org.eclipse.xtext.IGrammarAccess> bindIGrammarAccess() {
 		return org.ow2.mindEd.itf.editor.textual.services.FractalItfGrammarAccess.class;
 	}
@@ -94,9 +89,9 @@ public abstract class AbstractFractalItfRuntimeModule extends DefaultRuntimeModu
 		return org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.ow2.mindEd.itf.editor.textual.validation.FractalItfJavaValidator> bindFractalItfJavaValidator() {
-		return org.ow2.mindEd.itf.editor.textual.validation.FractalItfJavaValidator.class;
+	// contributed by org.eclipse.xtext.generator.validation.ValidatorFragment
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.ow2.mindEd.itf.editor.textual.validation.FractalItfValidator> bindFractalItfValidator() {
+		return org.ow2.mindEd.itf.editor.textual.validation.FractalItfValidator.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
@@ -107,11 +102,6 @@ public abstract class AbstractFractalItfRuntimeModule extends DefaultRuntimeModu
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
 	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider.class);
-	}
-
-	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
-	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
@@ -144,9 +134,39 @@ public abstract class AbstractFractalItfRuntimeModule extends DefaultRuntimeModu
 		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider.NAMED_BUILDER_SCOPE)).to(org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions.class);
 	}
 
+	// contributed by org.eclipse.xtext.generator.generator.GeneratorFragment
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return org.ow2.mindEd.itf.editor.textual.generator.FractalItfGenerator.class;
+	}
+
 	// contributed by org.eclipse.xtext.generator.formatting.FormatterFragment
 	public Class<? extends org.eclipse.xtext.formatting.IFormatter> bindIFormatter() {
 		return org.ow2.mindEd.itf.editor.textual.formatting.FractalItfFormatter.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
+	public java.lang.ClassLoader bindClassLoaderToInstance() {
+		return getClass().getClassLoader();
+	}
+
+	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
+	public org.eclipse.xtext.common.types.TypesFactory bindTypesFactoryToInstance() {
+		return org.eclipse.xtext.common.types.TypesFactory.eINSTANCE;
+	}
+
+	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
+	public Class<? extends org.eclipse.xtext.common.types.access.IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+		return org.eclipse.xtext.common.types.access.ClasspathTypeProviderFactory.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
+	public Class<? extends org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+		return org.eclipse.xtext.common.types.xtext.ClasspathBasedTypeScopeProvider.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.types.TypesGeneratorFragment
+	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return org.eclipse.xtext.common.types.xtext.TypesAwareDefaultGlobalScopeProvider.class;
 	}
 
 }

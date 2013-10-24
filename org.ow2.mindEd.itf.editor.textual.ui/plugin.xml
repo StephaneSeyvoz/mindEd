@@ -35,11 +35,41 @@
             </reference>
          </activeWhen>
       </handler>
+      <!-- copy qualified name -->
+        <handler
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
+            <activeWhen>
+				<reference definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened" />
+            </activeWhen>
+        </handler>
+        <handler
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+            <activeWhen>
+            	<and>
+            		<reference definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.XtextEditor.opened" />
+	                <iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+            </activeWhen>
+        </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
         <definition id="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="org.ow2.mindEd.itf.editor.textual.FractalItf" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+        <definition id="org.ow2.mindEd.itf.editor.textual.FractalItf.XtextEditor.opened">
+            <and>
+                <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
                         value="org.ow2.mindEd.itf.editor.textual.FractalItf" 
@@ -72,6 +102,19 @@
         </page>
     </extension>
     <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.ow2.mindEd.itf.editor.textual.FractalItf"
+            name="FractalItf">
+            <keywordReference id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
         point="org.eclipse.ui.keywords">
         <keyword
             id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"
@@ -83,6 +126,19 @@
             description="Trigger expensive validation"
             id="org.ow2.mindEd.itf.editor.textual.FractalItf.validate"
             name="Validate">
+      </command>
+    <!-- copy qualified name -->
+      <command
+            id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+            categoryId="org.eclipse.ui.category.edit"
+            description="Copy the qualified name for the selected element"
+            name="Copy Qualified Name">
+      </command>
+      <command
+            id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+            categoryId="org.eclipse.ui.category.edit"
+            description="Copy the qualified name for the selected element"
+            name="Copy Qualified Name">
       </command>
     </extension>
     <extension point="org.eclipse.ui.menus">
@@ -98,6 +154,36 @@
                 </reference>
             </visibleWhen>
          </command>  
+         </menuContribution>
+    	<!-- copy qualified name -->
+         <menuContribution locationURI="popup:#TextEditorContext?after=copy">
+         	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
+         		style="push" tooltip="Copy Qualified Name">
+            	<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened" />
+            	</visibleWhen>
+         	</command>  
+         </menuContribution>
+         <menuContribution locationURI="menu:edit?after=copy">
+         	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+            	style="push" tooltip="Copy Qualified Name">
+            	<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened" />
+            	</visibleWhen>
+         	</command>  
+         </menuContribution>
+         <menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName" 
+				style="push" tooltip="Copy Qualified Name">
+         		<visibleWhen checkEnabled="false">
+	            	<and>
+	            		<reference definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
          </menuContribution>
     </extension>
     <extension point="org.eclipse.ui.menus">
@@ -137,8 +223,175 @@
             uriExtension="itf">
         </resourceServiceProvider>
     </extension>
+	
+	
+	<!-- marker definitions for org.ow2.mindEd.itf.editor.textual.FractalItf -->
+	<extension
+	        id="itf.check.fast"
+	        name="FractalItf Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.fast"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="itf.check.normal"
+	        name="FractalItf Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.normal"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="itf.check.expensive"
+	        name="FractalItf Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.expensive"/>
+	    <persistent value="true"/>
+	</extension>
 
+   <extension
+         point="org.eclipse.xtext.builder.participant">
+      <participant
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+      </participant>
+   </extension>
+   <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            category="org.ow2.mindEd.itf.editor.textual.FractalItf"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.ow2.mindEd.itf.editor.textual.FractalItf.compiler.preferencePage"
+            name="Compiler">
+            <keywordReference id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"/>
+        </page>
+    </extension>
+    <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            category="org.ow2.mindEd.itf.editor.textual.FractalItf"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.ow2.mindEd.itf.editor.textual.FractalItf.compiler.propertyPage"
+            name="Compiler">
+            <keywordReference id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
 
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+    <!-- quickfix marker resolution generator for org.ow2.mindEd.itf.editor.textual.FractalItf -->
+    <extension
+            point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.ow2.mindEd.itf.editor.textual.ui.fractalitf.check.fast">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.ow2.mindEd.itf.editor.textual.ui.fractalitf.check.normal">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.ow2.mindEd.itf.editor.textual.ui.fractalitf.check.expensive">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+    </extension>
+	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+    <extension point="org.eclipse.ui.menus">
+         <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+         <command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+               style="push">
+            <visibleWhen checkEnabled="false">
+               <reference
+                     definitionId="org.ow2.mindEd.itf.editor.textual.FractalItf.Editor.opened">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+	    <page
+	        category="org.ow2.mindEd.itf.editor.textual.FractalItf"
+	        class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.ow2.mindEd.itf.editor.textual.FractalItf.refactoring"
+	        name="Refactoring">
+	        <keywordReference id="org.ow2.mindEd.itf.editor.textual.ui.keyword_FractalItf"/>
+	    </page>
+	</extension>
 
-
+  <extension point="org.eclipse.compare.contentViewers">
+    <viewer id="org.ow2.mindEd.itf.editor.textual.FractalItf.compare.contentViewers"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="itf">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer id="org.ow2.mindEd.itf.editor.textual.FractalItf.compare.contentMergeViewers"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="itf" label="FractalItf Compare">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.ui.editors.documentProviders">
+    <provider id="org.ow2.mindEd.itf.editor.textual.FractalItf.editors.documentProviders"
+            class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            extensions="itf">
+    </provider>
+  </extension>
+  
 </plugin>
