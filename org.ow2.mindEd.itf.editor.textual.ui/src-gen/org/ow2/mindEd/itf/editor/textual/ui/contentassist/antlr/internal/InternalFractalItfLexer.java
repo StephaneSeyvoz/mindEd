@@ -2545,7 +2545,7 @@ public class InternalFractalItfLexer extends Lexer {
         }
     }
 
-    static class DFA1 extends DFA {
+    class DFA1 extends DFA {
 
         public DFA1(BaseRecognizer recognizer) {
             this.recognizer = recognizer;

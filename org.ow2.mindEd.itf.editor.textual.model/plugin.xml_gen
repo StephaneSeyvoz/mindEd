@@ -7,10 +7,9 @@
     <package 
        uri = "http://www.ow2.org/mindEd/itf/" 
        class = "org.ow2.mindEd.itf.editor.textual.fractalIDL.FractalIDLPackage"
-       genModel = "org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel" /> 
+       genModel = "model/generated/FractalItf.genmodel" /> 
 	
   </extension>
-
 
 
 

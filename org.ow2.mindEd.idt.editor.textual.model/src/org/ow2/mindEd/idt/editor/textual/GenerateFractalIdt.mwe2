@@ -18,7 +18,7 @@ Workflow {
 		scanClassPath = true
 		platformUri = ".."
 		registerGeneratedEPackage = "org.ow2.mindEd.itf.editor.textual.fractalIDL.FractalIDLPackage"
-		registerGenModelFile = "platform:/resource/org.ow2.mindEd.itf.editor.textual.model/src-gen/org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel"
+		registerGenModelFile = "platform:/resource/org.ow2.mindEd.itf.editor.textual.model/model/generated/FractalItf.genmodel"
 	}
 	
 	component = DirectoryCleaner {
@@ -44,7 +44,7 @@ Workflow {
 			
 			// generates Java API for the generated EPackages 
 			fragment = ecore.EcoreGeneratorFragment {
-			  referencedGenModels = "platform:/resource/org.ow2.mindEd.itf.editor.textual.model/src-gen/org/ow2/mindEd/itf/editor/textual/FractalItf.genmodel"
+			  referencedGenModels = "platform:/resource/org.ow2.mindEd.itf.editor.textual.model/model/generated/FractalItf.genmodel"
 			}
 			
 			// the serialization component
@@ -131,7 +131,10 @@ Workflow {
 			*/
 			
 			// quickfix API 
-			fragment = quickfix.QuickfixProviderFragment {}			
+			fragment = quickfix.QuickfixProviderFragment {}
+			
+			// rename refactoring
+			fragment = refactoring.RefactorElementNameFragment auto-inject {}			
 		}
 	}
 }

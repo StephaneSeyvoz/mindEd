@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.ow2.mindEd.idt.editor.textual.fractalIdt.impl;
 
@@ -34,7 +30,7 @@ public class FractalIdtFactoryImpl extends EFactoryImpl implements FractalIdtFac
   {
     try
     {
-      FractalIdtFactory theFractalIdtFactory = (FractalIdtFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.ow2.org/fractal/mind/idl/FractalIdt"); 
+      FractalIdtFactory theFractalIdtFactory = (FractalIdtFactory)EPackage.Registry.INSTANCE.getEFactory(FractalIdtPackage.eNS_URI);
       if (theFractalIdtFactory != null)
       {
         return theFractalIdtFactory;
