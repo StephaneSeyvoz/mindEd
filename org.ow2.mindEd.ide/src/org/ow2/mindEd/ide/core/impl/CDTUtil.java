@@ -480,9 +480,12 @@ public class CDTUtil {
 
 		ITool compiler = getCompiler(toolChain);
 		ITool linker = getLinker(toolChain);
+		ITool assembler = getAssembler(toolChain);
+
 
 		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found compiler with command " + compiler.getToolCommand()));
 		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found linker with command " + linker.getToolCommand()));
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found assembler with command " + assembler.getToolCommand()));
 
 	}
 
@@ -542,6 +545,24 @@ public class CDTUtil {
 				}
 
 			}
+		}
+		return null;
+	}
+
+	/**
+	 * Finds an assembler. Since I didn't find a clean way I just test if one of the segments
+	 * in the tool id contains "assembler", which is pretty hackish... sorry :(
+	 * This returns the first tool found.
+	 */
+	private static ITool getAssembler(IToolChain toolchain) {
+
+		ITool[] tools = toolchain.getTools();
+		for (ITool tool : tools) {
+			// split package-like string with dots
+			String[] idTokens = tool.getId().split("\\.");
+			for (String currToken : idTokens)
+				if (currToken.equals("assembler"))
+					return tool;
 		}
 		return null;
 	}
