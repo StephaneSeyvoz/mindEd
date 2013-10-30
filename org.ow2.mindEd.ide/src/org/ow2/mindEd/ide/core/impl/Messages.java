@@ -5,7 +5,7 @@ import org.eclipse.osgi.util.NLS;
  * Messages for wizard page.
  */
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.ow2.mindEd.ide.core.ide"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.ow2.mindEd.ide.core.impl.messages"; //$NON-NLS-1$
 	public static String CDTUtil_ASFlags;
 	public static String CDTUtil_ASFlagsComment;
 	public static String CDTUtil_AssemblerCommand;
@@ -50,7 +50,7 @@ public class Messages extends NLS {
 	public static String CDTUtil_RemovingCSourceFolder_Trace;
 	public static String CDTUtil_SourcePath;
 	public static String CDTUtil_SourcePathComment;
-	
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

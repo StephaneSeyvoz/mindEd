@@ -9,45 +9,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
-import java.util.logging.Level;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.PropertiesConfigurationLayout;
-import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CProjectNature;
 import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.settings.model.COutputEntry;
 import org.eclipse.cdt.core.settings.model.CSourceEntry;
-import org.eclipse.cdt.core.settings.model.ICConfigExtensionReference;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICOutputEntry;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
 import org.eclipse.cdt.core.settings.model.ICSettingEntry;
 import org.eclipse.cdt.core.settings.model.ICSourceEntry;
-import org.eclipse.cdt.core.settings.model.ICTargetPlatformSetting;
 import org.eclipse.cdt.core.settings.model.WriteAccessException;
 import org.eclipse.cdt.core.settings.model.extension.CConfigurationData;
 import org.eclipse.cdt.internal.core.envvar.EnvironmentVariableManager;
 import org.eclipse.cdt.internal.core.envvar.UserDefinedEnvironmentSupplier;
-import org.eclipse.cdt.internal.core.model.BinaryParserConfig;
-import org.eclipse.cdt.internal.core.model.CModelManager;
 import org.eclipse.cdt.managedbuilder.core.IBuilder;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
-import org.eclipse.cdt.managedbuilder.core.IInputType;
 import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
 import org.eclipse.cdt.managedbuilder.core.ITool;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
-import org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin;
 import org.eclipse.cdt.managedbuilder.internal.core.Configuration;
 import org.eclipse.cdt.managedbuilder.internal.core.ManagedProject;
 import org.eclipse.cdt.managedbuilder.internal.core.Tool;
-import org.eclipse.cdt.managedbuilder.internal.core.ToolChain;
 import org.eclipse.cdt.utils.envvar.StorableEnvironment;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -67,7 +57,6 @@ import org.ow2.mindEd.ide.core.MindModel;
 import org.ow2.mindEd.ide.core.MindModelManager;
 import org.ow2.mindEd.ide.core.MindNature;
 import org.ow2.mindEd.ide.core.template.TemplateMake;
-import org.ow2.mindEd.ide.core.impl.Messages;
 import org.ow2.mindEd.ide.model.MindProject;
 
 public class CDTUtil {
@@ -495,9 +484,9 @@ public class CDTUtil {
 		ITool assembler = getAssembler(toolChain);
 
 
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "\\#" + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "\\#" + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundLinker + linker.getToolCommand())); //$NON-NLS-1$
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "\\#" + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundAssembler + assembler.getToolCommand())); //$NON-NLS-1$
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundLinker + linker.getToolCommand())); //$NON-NLS-1$
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundAssembler + assembler.getToolCommand())); //$NON-NLS-1$
 
 		// generate build properties file
 		IFile properties = newProject.getFile(configuration.getName() + Messages.CDTUtil_PropertiesSuffix);
