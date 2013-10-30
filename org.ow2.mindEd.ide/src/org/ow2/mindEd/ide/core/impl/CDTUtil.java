@@ -1,6 +1,7 @@
 package org.ow2.mindEd.ide.core.impl;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -8,9 +9,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.configuration.PropertiesConfigurationLayout;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CProjectNature;
 import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
@@ -56,6 +61,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.ow2.mindEd.ide.core.FamilyJobCST;
+import org.ow2.mindEd.ide.core.Messages;
 import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.MindModel;
@@ -72,7 +78,7 @@ public class CDTUtil {
 		private final IFolder f;
 
 		private RemoveCSourceFolderJob(IFolder f) {
-			super("remove CSource folder "+f.getFullPath());
+			super(Messages.CDTUtil_RemoveCSourceFolder_Job+f.getFullPath());
 			this.f = f;
 		}
 
@@ -80,7 +86,7 @@ public class CDTUtil {
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
 				if (MindModelImpl.TRACING)
-					System.out.println("REMOVE? CSOURCE FOLDER " + f);
+					System.out.println(Messages.CDTUtil_RemoveCSourceFolder_Trace + f);
 				final ICProjectDescriptionManager mgr = CoreModel
 						.getDefault().getProjectDescriptionManager();
 				final ICProjectDescription des = mgr.getProjectDescription(
@@ -89,7 +95,7 @@ public class CDTUtil {
 					return Status.OK_STATUS; // Not C project pas encore ou enlever
 
 				ICConfigurationDescription config = des
-						.getConfigurationByName("Default");
+						.getConfigurationByName("Default"); //$NON-NLS-1$
 				ArrayList<ICSourceEntry> srcs = new ArrayList<ICSourceEntry>(
 						Arrays.asList(config.getSourceEntries()));
 				for (ICSourceEntry icSourceEntry : srcs) {
@@ -98,7 +104,7 @@ public class CDTUtil {
 						return Status.OK_STATUS;
 					if (icSourceEntry.getFullPath().equals(f.getFullPath())) {
 						if (MindModelImpl.TRACING)
-							System.out.println("REMOVING CSOURCE FOLDER "
+							System.out.println(Messages.CDTUtil_RemovingCSourceFolder_Trace
 									+ f);
 						srcs.remove(icSourceEntry);
 						config.setSourceEntries((ICSourceEntry[]) srcs
@@ -108,7 +114,7 @@ public class CDTUtil {
 						mgr.setProjectDescription(f.getProject(), des);
 						if (MindModelImpl.TRACING)
 							System.out
-							.println("DONE REMOVE CSOURCE FOLDER "
+							.println(Messages.CDTUtil_DoneRemovingCSourceFolder_Trace
 									+ f);
 						return Status.OK_STATUS;
 					}
@@ -129,7 +135,7 @@ public class CDTUtil {
 		private final IFolder f;
 
 		private CreateCSourceFolderJob(IFolder f) {
-			super("Create CSource folder for "+f.getFullPath());
+			super(Messages.CDTUtil_CreateCSourceFolderFor_Job+f.getFullPath());
 			this.f = f;
 		}
 
@@ -137,7 +143,7 @@ public class CDTUtil {
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
 				if (MindModelImpl.TRACING)
-					System.out.println("CREATE? CSOURCE FOLDER " + f);
+					System.out.println(Messages.CDTUtil_CreateCSourceFolderFor_Trace + f);
 				ICProjectDescriptionManager mgr = CoreModel.getDefault()
 						.getProjectDescriptionManager();
 				ICProjectDescription des = mgr.getProjectDescription(f
@@ -147,7 +153,7 @@ public class CDTUtil {
 				ICSourceEntry srcEntry = new CSourceEntry(f, null,
 						ICSettingEntry.VALUE_WORKSPACE_PATH);
 				ICConfigurationDescription config = des
-						.getConfigurationByName("Default");
+						.getConfigurationByName("Default"); //$NON-NLS-1$
 				ArrayList<ICSourceEntry> srcs = new ArrayList<ICSourceEntry>(
 						Arrays.asList(config.getSourceEntries()));
 				for (ICSourceEntry icSourceEntry : srcs) {
@@ -155,13 +161,13 @@ public class CDTUtil {
 						return Status.OK_STATUS;
 				}
 				if (MindModelImpl.TRACING)
-					System.out.println("CREATING CSOURCE FOLDER " + f);
+					System.out.println(Messages.CDTUtil_CreatingCSourceFolder_Trace + f);
 				srcs.add(srcEntry);
 				config.setSourceEntries((ICSourceEntry[]) srcs
 						.toArray(new ICSourceEntry[srcs.size()]));
 				mgr.setProjectDescription(f.getProject(), des);
 				if (MindModelImpl.TRACING)
-					System.out.println("DONE CREATE CSOURCE FOLDER " + f);
+					System.out.println(Messages.CDTUtil_DoneCreatingCSourceFolder_Trace + f);
 			} catch (WriteAccessException e) {
 				return new Status(Status.ERROR,MindActivator.ID,getName(),e);
 			} catch (CoreException e) {
@@ -180,7 +186,7 @@ public class CDTUtil {
 		private final String mindcLocation;
 
 		private ChangeMindcLocation(String mindcLocation) {
-			super("Change the MINDC Location: create variable MIND_ROOT in CDT");
+			super(Messages.CDTUtil_ChangeMindcLocation_MINDROOTvar_Job);
 			this.mindcLocation = mindcLocation;
 		}
 
@@ -188,7 +194,7 @@ public class CDTUtil {
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
 				if (MindModelImpl.TRACING)
-					System.out.println("CHANGE MIND_ROOT to "
+					System.out.println(Messages.CDTUtil_ChangeMINDROOT_Trace
 							+ mindcLocation);
 				UserDefinedEnvironmentSupplier usersupplier = EnvironmentVariableManager.fUserSupplier;
 				StorableEnvironment wsEnv = usersupplier
@@ -201,7 +207,7 @@ public class CDTUtil {
 				usersupplier.setWorkspaceEnvironment(wsEnv);
 				MindIdeCore.rebuidAll();
 				if (MindModelImpl.TRACING)
-					System.out.println("DONE CHANGING MIND_ROOT to "
+					System.out.println(Messages.CDTUtil_DoneChangingMINDROOT_Trace
 							+ mindcLocation);
 
 			} catch (WriteAccessException e) {
@@ -221,7 +227,7 @@ public class CDTUtil {
 		private final String mindcRuntimeLocation;
 
 		private ChangeMindcRuntimeLocation(String mindcRuntimeLocation) {
-			super("Change the runtime folders location in every concerned project");
+			super(Messages.CDTUtil_ChangeRuntimeFolders_Job);
 			this.mindcRuntimeLocation = mindcRuntimeLocation;
 		}
 
@@ -229,23 +235,23 @@ public class CDTUtil {
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
 				if (MindModelImpl.TRACING)
-					System.out.println("CHANGE RUNTIME FOLDERS LINK DESTINATION to "
+					System.out.println(Messages.CDTUtil_ChangeRuntimeFolders_Trace
 							+ mindcRuntimeLocation);
 
 				List<MindProject> allMindProjects = MindIdeCore.getModel().getAllProject();
 				for (MindProject currProject : allMindProjects) {
 					if (mindcRuntimeLocation == null) {
-						MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"runtime\" linked folder could not be created, set mindc location in preference"));
+						MindActivator.log(new Status(Status.ERROR, MindActivator.ID, Messages.CDTUtil_ChangeRuntimeFolders_ErrorNoLocation_Log));
 					} else {
 						// is a "folder" but File is the Java way :)
 						File mindRuntimeFile = new File(mindcRuntimeLocation);
 						if (!mindRuntimeFile.exists()) {
-							MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "Mindc location subfolder \"runtime\" doesn't exist !"));
+							MindActivator.log(new Status(Status.ERROR, MindActivator.ID, Messages.CDTUtil_ChangeRuntimeFolders_ErrorNoRuntimeSubFolder_Log));
 							continue;
 						}
 
 						// get the IProject runtime
-						IFolder eclipseRuntimeFolder = currProject.getProject().getFolder("runtime");
+						IFolder eclipseRuntimeFolder = currProject.getProject().getFolder("runtime"); //$NON-NLS-1$
 
 						// Only redefine the folder link destination if it's a link
 						// otherwise we would crush possibly hand-made local (not linked) runtimes.
@@ -257,7 +263,7 @@ public class CDTUtil {
 				// Why not
 				MindIdeCore.rebuidAll();
 				if (MindModelImpl.TRACING)
-					System.out.println("DONE CHANGING RUNTIME FOLDERS LINK DESTINATION to "
+					System.out.println(Messages.CDTUtil_DoneChangingRuntimeFolders_Trace
 							+ mindcRuntimeLocation);
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
@@ -273,7 +279,7 @@ public class CDTUtil {
 		}
 	}
 
-	private static final String MIND_ROOT = "MIND_ROOT";
+	private static final String MIND_ROOT = "MIND_ROOT"; //$NON-NLS-1$
 
 	public static void createCSourceFolder(final IFolder f)
 			throws CoreException {
@@ -299,7 +305,7 @@ public class CDTUtil {
 		rMindc.schedule();
 
 		// Changing runtime linked folders destination
-		Job rRuntime = new ChangeMindcRuntimeLocation(mindcLocation + File.separator + "runtime");
+		Job rRuntime = new ChangeMindcRuntimeLocation(mindcLocation + File.separator + "runtime"); //$NON-NLS-1$
 		rRuntime.setRule(ResourcesPlugin.getWorkspace().getRoot());
 		rRuntime.schedule();
 	}
@@ -329,21 +335,21 @@ public class CDTUtil {
 			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
 
-		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor);
+		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor); //$NON-NLS-1$
 		CProjectNature.addNature(newProject, MindNature.NATURE_ID, monitor);
 
 		// create Makefile first
-		IFile makefile = newProject.getFile("Makefile");
+		IFile makefile = newProject.getFile("Makefile"); //$NON-NLS-1$
 		if (!makefile.exists())
 			makefile.create(
 					new ByteArrayInputStream(createMakeTemplate(newProject)), true,
 					monitor);
 
 		// Create the default structure
-		IFolder buildFolder = newProject.getFolder("build");
+		IFolder buildFolder = newProject.getFolder("build"); //$NON-NLS-1$
 		if (!buildFolder.exists())
 			buildFolder.create(true, true, monitor);
-		IFolder srcFolder = newProject.getFolder("src");
+		IFolder srcFolder = newProject.getFolder("src"); //$NON-NLS-1$
 		if (!srcFolder.exists())
 			srcFolder.create(true, true, monitor);
 
@@ -353,12 +359,12 @@ public class CDTUtil {
 		if (importRuntime) {
 			mindLocation = MindActivator.getPref().getMindCLocation();
 			if (mindLocation == null) {
-				MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference"));
+				MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference")); //$NON-NLS-1$
 			} else {
 				// is a "folder" but File is the Java way :)
-				File mindRuntimeFile = new File(mindLocation + "/runtime");
+				File mindRuntimeFile = new File(mindLocation + "/runtime"); //$NON-NLS-1$
 
-				runtimeFolder = newProject.getFolder("runtime");
+				runtimeFolder = newProject.getFolder("runtime"); //$NON-NLS-1$
 				if (mindRuntimeFile.exists() && !runtimeFolder.exists())
 					runtimeFolder.createLink(new Path(mindRuntimeFile.getAbsolutePath()), IResource.ALLOW_MISSING_LOCAL, monitor);
 			}
@@ -413,7 +419,7 @@ public class CDTUtil {
 			// It's make (not eclipse)
 			bld.setManagedBuildOn(false);
 			// The makefile is in the project root
-			bld.setBuildPath("${workspace_loc:/" + newProject.getName() + "}");
+			bld.setBuildPath("${workspace_loc:/" + newProject.getName() + "}"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			// the build directory ('build')
 			ICOutputEntry buildEntry = new COutputEntry(buildFolder, null,
@@ -422,22 +428,24 @@ public class CDTUtil {
 					new ICOutputEntry[] { buildEntry });
 			bld.getBuildData();
 		}
-		// the name of this configuration is Default
 
-		config.setName("Default");
+		// the name of this configuration is Default
+		String defaultConfName = "Default"; //$NON-NLS-1$
+
+		config.setName(defaultConfName);
 		config.setArtifactName(mProj.getDefaultArtifactName());
 
 		// Create a source entries ArrayList
 		List<ICSourceEntry> sourceEntries = new ArrayList<ICSourceEntry>();
 
 		// ADD the source entry 'src'
-		ICSourceEntry srcEntry = new CSourceEntry(newProject.getFolder("src"),
+		ICSourceEntry srcEntry = new CSourceEntry(newProject.getFolder("src"), //$NON-NLS-1$
 				null, ICSettingEntry.VALUE_WORKSPACE_PATH);
 		sourceEntries.add(srcEntry);
 
 		// ADD the source entry 'runtime'
 		if (mindLocation != null) {
-			ICSourceEntry runtimeEntry = new CSourceEntry(newProject.getFolder("runtime"),
+			ICSourceEntry runtimeEntry = new CSourceEntry(newProject.getFolder("runtime"), //$NON-NLS-1$
 					null, ICSettingEntry.VALUE_WORKSPACE_PATH);
 			sourceEntries.add(runtimeEntry);
 		}
@@ -449,7 +457,7 @@ public class CDTUtil {
 		String[] defaultErrorParserListArray = config.getErrorParserList();
 		List<String> defaultErrorParserList = new ArrayList<String>(Arrays.asList(defaultErrorParserListArray));
 		// See plugin.xml extension MindcErrorParser (we're in project org.ow2.mindEd.ide)
-		defaultErrorParserList.add("org.ow2.mindEd.ide.MindcErrorParser");
+		defaultErrorParserList.add(Messages.CDTUtil_ErrorParserId);
 		config.setErrorParserList(defaultErrorParserList.toArray(new String[defaultErrorParserList.size()]));
 
 		// ADD CPL Macro settingsfff
@@ -478,15 +486,97 @@ public class CDTUtil {
 			e.printStackTrace();
 		}
 
+		generatePropertiesFile(newProject, toolChain, config, monitor);
+	}
+
+	private static void generatePropertiesFile(IProject newProject, IToolChain toolChain, IConfiguration configuration, IProgressMonitor monitor) {
 		ITool compiler = getCompiler(toolChain);
 		ITool linker = getLinker(toolChain);
 		ITool assembler = getAssembler(toolChain);
 
 
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found compiler with command " + compiler.getToolCommand()));
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found linker with command " + linker.getToolCommand()));
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + ": Found assembler with command " + assembler.getToolCommand()));
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + Messages.CDTUtil_FoundLinker + linker.getToolCommand())); //$NON-NLS-1$
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + Messages.CDTUtil_FoundAssembler + assembler.getToolCommand())); //$NON-NLS-1$
 
+		// generate build properties file
+		IFile properties = newProject.getFile(configuration.getName() + Messages.CDTUtil_PropertiesSuffix);
+		if (!properties.exists()) {
+			PropertiesConfiguration defaultProps = new PropertiesConfiguration();
+			PropertiesConfigurationLayout defaultPropsLayout = defaultProps.getLayout();
+
+			// store properties in the buffer and add a comment
+			String propComments = Messages.CDTUtil_PropertiesHeader0 + configuration.getName() + Messages.CDTUtil_PropertiesHeader1;
+			defaultProps.setHeader(propComments);
+
+			// used as a buffer to convert from OutputStream to InputStream
+			ByteArrayOutputStream defaultValuesOut = new ByteArrayOutputStream();
+
+			String emptyStr = ""; //$NON-NLS-1$
+
+			// default properties
+			String sourcePath = Messages.CDTUtil_SourcePath;
+			String outputDir = Messages.CDTUtil_OutputDirectory;
+			String includePath = Messages.CDTUtil_IncludePath;
+			String sourcePathComment = Messages.CDTUtil_SourcePathComment;
+			String outputDirComment = Messages.CDTUtil_OutputDirComment;
+			String includePathComment = Messages.CDTUtil_IncludePathComment;
+			defaultProps.setProperty(sourcePath, "src"); //$NON-NLS-1$
+			defaultPropsLayout.setBlancLinesBefore(sourcePath, 1); // 1 = number of blank lines
+			defaultPropsLayout.setComment(sourcePath, sourcePathComment); // name the group: attach on the first element
+			
+			defaultProps.setProperty(outputDir, "build"); //$NON-NLS-1$
+			defaultPropsLayout.setComment(outputDir, outputDirComment);
+			defaultProps.setProperty(includePath, emptyStr); // null is not allowed
+			defaultPropsLayout.setComment(includePath, includePathComment);
+
+			// refined build info
+			String compilerCommand = Messages.CDTUtil_CompilerCommand;
+			String compilerCommandComment = Messages.CDTUtil_CompilerCommandComment;
+			defaultProps.setProperty(compilerCommand, compiler.getToolCommand());
+			defaultPropsLayout.setBlancLinesBefore(compilerCommand, 1); // 1 = number of blank lines
+			defaultPropsLayout.setComment(compilerCommand, compilerCommandComment); // name the group: attach on the first element
+			defaultProps.setProperty(Messages.CDTUtil_LinkerCommand, linker.getToolCommand());
+			defaultProps.setProperty(Messages.CDTUtil_AssemblerCommand, assembler.getToolCommand());
+			
+			// flags
+			String asFlags = Messages.CDTUtil_ASFlags;
+			String cppFlags = Messages.CDTUtil_CPPFlags;
+			String cFlags = Messages.CDTUtil_CFlags;
+			String ldFlags = Messages.CDTUtil_LDFlags;
+			String asFlagsComment = Messages.CDTUtil_ASFlagsComment;
+			String cppFlagsComment = Messages.CDTUtil_CPPFlagsComment;
+			String cFlagsComment = Messages.CDTUtil_CFlagsComment;
+			String ldFlagsComment = Messages.CDTUtil_LDFlagsComment;
+			
+			defaultProps.setProperty(asFlags, emptyStr);
+			defaultPropsLayout.setBlancLinesBefore(asFlags, 1); // 1 = number of blank lines
+			defaultPropsLayout.setComment(asFlags, asFlagsComment);
+			defaultProps.setProperty(cppFlags, emptyStr);
+			defaultPropsLayout.setComment(cppFlags, cppFlagsComment);
+			defaultProps.setProperty(cFlags, emptyStr);
+			defaultPropsLayout.setComment(cFlags, cFlagsComment);
+			defaultProps.setProperty(ldFlags, emptyStr);
+			defaultPropsLayout.setComment(ldFlags, ldFlagsComment);
+			
+			// extra properties
+			String extraOptions = Messages.CDTUtil_ExtraOptions;
+			String extraOptsComment = Messages.CDTUtil_ExtraOptionsComment;
+			defaultProps.setProperty(extraOptions, emptyStr);
+			defaultPropsLayout.setBlancLinesBefore(extraOptions, 1); // 1 = number of blank lines
+			defaultPropsLayout.setComment(extraOptions, extraOptsComment);
+			
+			
+			try {
+				defaultProps.save(defaultValuesOut);
+				properties.create(new ByteArrayInputStream(defaultValuesOut.toByteArray()), true, monitor);
+			} catch (ConfigurationException e) {
+				// do nothing: if saving failed, do not create the file
+			} catch (CoreException e) {
+				// file creation failed: do nothing as well, file will just be missing
+			}
+
+		}
 	}
 
 	/**
@@ -503,12 +593,12 @@ public class CDTUtil {
 				continue;
 
 			currTool = (Tool) tool;
-			if (currTool.supportsType("org.eclipse.cdt.build.core.buildType")) {
+			if (currTool.supportsType("org.eclipse.cdt.build.core.buildType")) { //$NON-NLS-1$
 				String[] supportedTypesArray = currTool.getSupportedTypeIds();
 				for (String currTypeStr : supportedTypesArray) {
 					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
 					for (String currValueStr : supportedValuesForCurrType) {
-						if (currValueStr.equals("org.eclipse.cdt.build.core.buildType.release") || currValueStr.equals("org.eclipse.cdt.build.core.buildType.debug"))
+						if (currValueStr.equals("org.eclipse.cdt.build.core.buildType.release") || currValueStr.equals("org.eclipse.cdt.build.core.buildType.debug")) //$NON-NLS-1$ //$NON-NLS-2$
 							return tool;
 					}
 				}
@@ -532,14 +622,14 @@ public class CDTUtil {
 				continue;
 
 			currTool = (Tool) tool;
-			if (currTool.supportsType("org.eclipse.cdt.build.core.buildArtefactType")) {
+			if (currTool.supportsType("org.eclipse.cdt.build.core.buildArtefactType")) { //$NON-NLS-1$
 				String[] supportedTypesArray = currTool.getSupportedTypeIds();
 				for (String currTypeStr : supportedTypesArray) {
 					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
 					for (String currValueStr : supportedValuesForCurrType) {
 						// we don't compare to the whole chain since GNU ARM CROSS (old version) uses a different prefix: not sure if the algo is ok
-						if (currValueStr.endsWith(".buildArtefactType.exe")
-								|| currValueStr.endsWith(".buildArtefactType.application")) // sometimes encountered with GNU ARM Eclipse 0.5 old-school toolchains 
+						if (currValueStr.endsWith(".buildArtefactType.exe") //$NON-NLS-1$
+								|| currValueStr.endsWith(".buildArtefactType.application")) // sometimes encountered with GNU ARM Eclipse 0.5 old-school toolchains  //$NON-NLS-1$
 							return tool;
 					}
 				}
@@ -559,9 +649,9 @@ public class CDTUtil {
 		ITool[] tools = toolchain.getTools();
 		for (ITool tool : tools) {
 			// split package-like string with dots
-			String[] idTokens = tool.getId().split("\\.");
+			String[] idTokens = tool.getId().split("\\."); //$NON-NLS-1$
 			for (String currToken : idTokens)
-				if (currToken.equals("assembler"))
+				if (currToken.equals("assembler")) //$NON-NLS-1$
 					return tool;
 		}
 		return null;
