@@ -61,13 +61,13 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.ow2.mindEd.ide.core.FamilyJobCST;
-import org.ow2.mindEd.ide.core.Messages;
 import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.MindModel;
 import org.ow2.mindEd.ide.core.MindModelManager;
 import org.ow2.mindEd.ide.core.MindNature;
 import org.ow2.mindEd.ide.core.template.TemplateMake;
+import org.ow2.mindEd.ide.core.impl.Messages;
 import org.ow2.mindEd.ide.model.MindProject;
 
 public class CDTUtil {
@@ -495,9 +495,9 @@ public class CDTUtil {
 		ITool assembler = getAssembler(toolChain);
 
 
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + Messages.CDTUtil_FoundLinker + linker.getToolCommand())); //$NON-NLS-1$
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "#initMindProject: " + newProject.getName() + Messages.CDTUtil_FoundAssembler + assembler.getToolCommand())); //$NON-NLS-1$
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "\\#" + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "\\#" + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundLinker + linker.getToolCommand())); //$NON-NLS-1$
+		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + "\\#" + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundAssembler + assembler.getToolCommand())); //$NON-NLS-1$
 
 		// generate build properties file
 		IFile properties = newProject.getFile(configuration.getName() + Messages.CDTUtil_PropertiesSuffix);
