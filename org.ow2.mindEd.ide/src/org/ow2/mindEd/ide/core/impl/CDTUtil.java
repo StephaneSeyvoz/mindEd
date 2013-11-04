@@ -413,6 +413,7 @@ public class CDTUtil {
 			// for the Makefile to use the good ${ConfigName}.properties file according to the active Configuration,
 			// and the usual "all" target
 			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, "CONFIGURATION=${ConfigName} all");
+			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_CLEAN, "CONFIGURATION=${ConfigName} clean");
 			
 			// The makefile is in the project root
 			bld.setBuildPath("${workspace_loc:/" + newProject.getName() + "}"); //$NON-NLS-1$ //$NON-NLS-2$

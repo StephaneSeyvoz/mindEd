@@ -135,19 +135,32 @@ public class MindProperties {
 			defaultProps.setProperty(Messages.CDTUtil_LinkerCommand, linker.getToolCommand());
 			defaultProps.setProperty(Messages.CDTUtil_AssemblerCommand, assembler.getToolCommand());
 
-			// flags
+			// target compiler flags
 			defaultProps.setProperty(Messages.CDTUtil_ASFlags, emptyStr);
 			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_ASFlags, 1); // 1 = number of blank lines
 			defaultPropsLayout.setComment(Messages.CDTUtil_ASFlags, Messages.CDTUtil_ASFlagsComment);
 			defaultProps.setProperty(Messages.CDTUtil_CPPFlags, emptyStr);
 			defaultPropsLayout.setComment(Messages.CDTUtil_CPPFlags, Messages.CDTUtil_CPPFlagsComment);
-			defaultProps.setProperty(Messages.CDTUtil_CFlags, emptyStr);
+			// default
+			String cFlags = emptyStr;
+			// special case - override with specific
+			if (_configuration.getToolChain().getId().startsWith("iar."))
+				cFlags = "-D__MIND_NO_GCC_ATTRIBUTE";
+			defaultProps.setProperty(Messages.CDTUtil_CFlags, cFlags);
 			defaultPropsLayout.setComment(Messages.CDTUtil_CFlags, Messages.CDTUtil_CFlagsComment);
 			defaultProps.setProperty(Messages.CDTUtil_LDFlags, emptyStr);
 			defaultPropsLayout.setComment(Messages.CDTUtil_LDFlags, Messages.CDTUtil_LDFlagsComment);
 
 			// extra properties
-			defaultProps.setProperty(Messages.CDTUtil_ExtraOptions, emptyStr);
+			
+				// default case
+			String extraOptsValue = emptyStr;
+			
+			// special case - override with specific
+			if (_configuration.getToolChain().getId().startsWith("iar."))
+				extraOptsValue = "--iar";
+			
+			defaultProps.setProperty(Messages.CDTUtil_ExtraOptions, extraOptsValue);
 			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_ExtraOptions, 1); // 1 = number of blank lines
 			defaultPropsLayout.setComment(Messages.CDTUtil_ExtraOptions, Messages.CDTUtil_ExtraOptionsComment);
 
