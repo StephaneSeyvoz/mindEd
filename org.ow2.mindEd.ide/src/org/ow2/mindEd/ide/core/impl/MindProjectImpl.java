@@ -119,7 +119,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 
 		@Override
 		public boolean belongsTo(Object family) {
-			return FamilyJobCST.FAMILY_CHANGE_MAKEFILE_VAR_MIND_SRC == family || FamilyJobCST.FAMILY_ALL == family;
+			return FamilyJobCST.FAMILY_CHANGE_PROPERTIES_VAR_SOURCEPATH == family || FamilyJobCST.FAMILY_ALL == family;
 		}
 
 		/**
@@ -205,7 +205,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 
 		@Override
 		public boolean belongsTo(Object family) {
-			return FamilyJobCST.FAMILY_CHANGE_MAKEFILE_VAR_MIND_INC == family || FamilyJobCST.FAMILY_ALL == family;
+			return FamilyJobCST.FAMILY_CHANGE_PROPERTIES_VAR_INCLUDEPATH == family || FamilyJobCST.FAMILY_ALL == family;
 		}
 
 	}
@@ -263,7 +263,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 
 		@Override
 		public boolean belongsTo(Object family) {
-			return FamilyJobCST.FAMILY_CHANGE_MAKEFILE_VAR_MIND_COMPONENT == family || FamilyJobCST.FAMILY_ALL == family;
+			return FamilyJobCST.FAMILY_CHANGE_PROPERTIES_VAR_COMPILATIONTARGET == family || FamilyJobCST.FAMILY_ALL == family;
 		}
 	}
 
@@ -810,7 +810,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			}
 	}
 
-	public void changeMINDSRC() {
+	public void changeMindSourcePath() {
 		Job r = new ChangeMindSourcePathPropVarJob(this);
 		r.schedule();
 	}

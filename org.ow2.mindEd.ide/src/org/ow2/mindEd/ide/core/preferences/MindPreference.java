@@ -74,14 +74,14 @@ public class MindPreference implements IPreferenceChangeListener {
 		} else if (event.getKey().equals(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY)) {
 			// Whatever the value, as the event was fired, a settings change event occured and
 			// we force the Makefile refresh
-			// In any case the Makefile MIND_SRC variable writing will consult the new value anyway
+			// In any case the Properties file 'sourcePath' variable writing will consult the new value anyways
 			
 			List<MindProject> allMindProjects = MindIdeCore.getModel().getAllProject();
 			for (MindProject currProject : allMindProjects) {
 				// Get the real object
 				MindProjectImpl currProjImpl = (MindProjectImpl) currProject;
 				// Update the path Makefile variable
-				currProjImpl.changeMINDSRC();
+				currProjImpl.changeMindSourcePath();
 			}
 		}
 	}

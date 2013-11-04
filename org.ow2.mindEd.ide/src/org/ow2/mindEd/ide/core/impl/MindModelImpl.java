@@ -748,7 +748,7 @@ public class MindModelImpl implements MindModel {
 			}
 			break;
 		}
-		mp.changeMINDSRC();
+		mp.changeMindSourcePath();
 	}
 
 	protected void notifyChangedMindProject_Mindpathentries(

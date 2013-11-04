@@ -6,15 +6,15 @@ package org.ow2.mindEd.ide.core;
  */
 public class FamilyJobCST {
 	/**
-	 * Constant identifying the job family identifier for job which set make file var "MIND_SRC".
+	 * Constant identifying the job family identifier for the job that sets the "sourcePath" variable in the properties file.
 	 */
-	public static final Object FAMILY_CHANGE_MAKEFILE_VAR_MIND_SRC = new Object();
+	public static final Object FAMILY_CHANGE_PROPERTIES_VAR_SOURCEPATH = new Object();
 	
 	/**
-	 * Constant identifying the job family identifier for job which set make file var "MIND_INC".
+	 * Constant identifying the job family identifier for job that sets the "includePath" variable in the properties file.
 	 * @since 0.8
 	 */
-	public static final Object FAMILY_CHANGE_MAKEFILE_VAR_MIND_INC = new Object();
+	public static final Object FAMILY_CHANGE_PROPERTIES_VAR_INCLUDEPATH = new Object();
 	
 	/**
 	 * Constant identifying the job family identifier for all jobs.
@@ -22,9 +22,9 @@ public class FamilyJobCST {
 	public static final Object FAMILY_ALL = new Object();
 	
 	/**
-	 * Constant identifying the job family identifier for job which set make file var "MIND_COMPONENT".
+	 * Constant identifying the job family identifier for the job that sets the "targetComponent" & "binaryName" variable in the properties file.
 	 */
-	public static final Object FAMILY_CHANGE_MAKEFILE_VAR_MIND_COMPONENT = new Object();
+	public static final Object FAMILY_CHANGE_PROPERTIES_VAR_COMPILATIONTARGET = new Object();
 
 	/**
 	 * Constant identifying the job family identifier for job which remove csource folder".
