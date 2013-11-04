@@ -38,6 +38,7 @@ import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.cdt.managedbuilder.internal.core.Configuration;
 import org.eclipse.cdt.managedbuilder.internal.core.ManagedProject;
 import org.eclipse.cdt.managedbuilder.internal.core.Tool;
+import org.eclipse.cdt.newmake.core.IMakeBuilderInfo;
 import org.eclipse.cdt.utils.envvar.StorableEnvironment;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -407,6 +408,12 @@ public class CDTUtil {
 
 			// It's make (not eclipse)
 			bld.setManagedBuildOn(false);
+			
+			// For the time being we force Make, we use ${ConfigName}
+			// for the Makefile to use the good ${ConfigName}.properties file according to the active Configuration,
+			// and the usual "all" target
+			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, "CONFIGURATION=${ConfigName} all");
+			
 			// The makefile is in the project root
 			bld.setBuildPath("${workspace_loc:/" + newProject.getName() + "}"); //$NON-NLS-1$ //$NON-NLS-2$
 
@@ -475,175 +482,9 @@ public class CDTUtil {
 			e.printStackTrace();
 		}
 
-		generatePropertiesFile(newProject, toolChain, config, monitor);
-	}
-
-	private static void generatePropertiesFile(IProject newProject, IToolChain toolChain, IConfiguration configuration, IProgressMonitor monitor) {
-		ITool compiler = getCompiler(toolChain);
-		ITool linker = getLinker(toolChain);
-		ITool assembler = getAssembler(toolChain);
-
-
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundLinker + linker.getToolCommand())); //$NON-NLS-1$
-		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + newProject.getName() + ": " + Messages.CDTUtil_FoundAssembler + assembler.getToolCommand())); //$NON-NLS-1$
-
-		// generate build properties file
-		IFile properties = newProject.getFile(configuration.getName() + Messages.CDTUtil_PropertiesSuffix);
-		if (!properties.exists()) {
-			PropertiesConfiguration defaultProps = new PropertiesConfiguration();
-			PropertiesConfigurationLayout defaultPropsLayout = defaultProps.getLayout();
-
-			// store properties in the buffer and add a comment
-			String propComments = Messages.CDTUtil_PropertiesHeader0 + configuration.getName() + Messages.CDTUtil_PropertiesHeader1;
-			defaultProps.setHeader(propComments);
-
-			// used as a buffer to convert from OutputStream to InputStream
-			ByteArrayOutputStream defaultValuesOut = new ByteArrayOutputStream();
-
-			String emptyStr = ""; //$NON-NLS-1$
-
-			// default properties
-			String sourcePath = Messages.CDTUtil_SourcePath;
-			String outputDir = Messages.CDTUtil_OutputDirectory;
-			String includePath = Messages.CDTUtil_IncludePath;
-			String sourcePathComment = Messages.CDTUtil_SourcePathComment;
-			String outputDirComment = Messages.CDTUtil_OutputDirComment;
-			String includePathComment = Messages.CDTUtil_IncludePathComment;
-			defaultProps.setProperty(sourcePath, "src"); //$NON-NLS-1$
-			defaultPropsLayout.setBlancLinesBefore(sourcePath, 1); // 1 = number of blank lines
-			defaultPropsLayout.setComment(sourcePath, sourcePathComment); // name the group: attach on the first element
-			
-			defaultProps.setProperty(outputDir, "build"); //$NON-NLS-1$
-			defaultPropsLayout.setComment(outputDir, outputDirComment);
-			defaultProps.setProperty(includePath, emptyStr); // null is not allowed
-			defaultPropsLayout.setComment(includePath, includePathComment);
-
-			// refined build info
-			String compilerCommand = Messages.CDTUtil_CompilerCommand;
-			String compilerCommandComment = Messages.CDTUtil_CompilerCommandComment;
-			defaultProps.setProperty(compilerCommand, compiler.getToolCommand());
-			defaultPropsLayout.setBlancLinesBefore(compilerCommand, 1); // 1 = number of blank lines
-			defaultPropsLayout.setComment(compilerCommand, compilerCommandComment); // name the group: attach on the first element
-			defaultProps.setProperty(Messages.CDTUtil_LinkerCommand, linker.getToolCommand());
-			defaultProps.setProperty(Messages.CDTUtil_AssemblerCommand, assembler.getToolCommand());
-			
-			// flags
-			String asFlags = Messages.CDTUtil_ASFlags;
-			String cppFlags = Messages.CDTUtil_CPPFlags;
-			String cFlags = Messages.CDTUtil_CFlags;
-			String ldFlags = Messages.CDTUtil_LDFlags;
-			String asFlagsComment = Messages.CDTUtil_ASFlagsComment;
-			String cppFlagsComment = Messages.CDTUtil_CPPFlagsComment;
-			String cFlagsComment = Messages.CDTUtil_CFlagsComment;
-			String ldFlagsComment = Messages.CDTUtil_LDFlagsComment;
-			
-			defaultProps.setProperty(asFlags, emptyStr);
-			defaultPropsLayout.setBlancLinesBefore(asFlags, 1); // 1 = number of blank lines
-			defaultPropsLayout.setComment(asFlags, asFlagsComment);
-			defaultProps.setProperty(cppFlags, emptyStr);
-			defaultPropsLayout.setComment(cppFlags, cppFlagsComment);
-			defaultProps.setProperty(cFlags, emptyStr);
-			defaultPropsLayout.setComment(cFlags, cFlagsComment);
-			defaultProps.setProperty(ldFlags, emptyStr);
-			defaultPropsLayout.setComment(ldFlags, ldFlagsComment);
-			
-			// extra properties
-			String extraOptions = Messages.CDTUtil_ExtraOptions;
-			String extraOptsComment = Messages.CDTUtil_ExtraOptionsComment;
-			defaultProps.setProperty(extraOptions, emptyStr);
-			defaultPropsLayout.setBlancLinesBefore(extraOptions, 1); // 1 = number of blank lines
-			defaultPropsLayout.setComment(extraOptions, extraOptsComment);
-			
-			
-			try {
-				defaultProps.save(defaultValuesOut);
-				properties.create(new ByteArrayInputStream(defaultValuesOut.toByteArray()), true, monitor);
-			} catch (ConfigurationException e) {
-				// do nothing: if saving failed, do not create the file
-			} catch (CoreException e) {
-				// file creation failed: do nothing as well, file will just be missing
-			}
-
-		}
-	}
-
-	/**
-	 * Finds a compiler from its build type in the tool-chain.
-	 * This returns the first tool found.
-	 */
-	private static ITool getCompiler(IToolChain toolchain) {
-
-		ITool[] tools = toolchain.getTools();
-		Tool currTool = null;
-		for (ITool tool : tools) {
-			// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
-			if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
-				continue;
-
-			currTool = (Tool) tool;
-			if (currTool.supportsType("org.eclipse.cdt.build.core.buildType")) { //$NON-NLS-1$
-				String[] supportedTypesArray = currTool.getSupportedTypeIds();
-				for (String currTypeStr : supportedTypesArray) {
-					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
-					for (String currValueStr : supportedValuesForCurrType) {
-						if (currValueStr.equals("org.eclipse.cdt.build.core.buildType.release") || currValueStr.equals("org.eclipse.cdt.build.core.buildType.debug")) //$NON-NLS-1$ //$NON-NLS-2$
-							return tool;
-					}
-				}
-
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Finds a linker from its build type in the tool-chain.
-	 * This returns the first tool found.
-	 */
-	private static ITool getLinker(IToolChain toolchain) {
-
-		ITool[] tools = toolchain.getTools();
-		Tool currTool = null;
-		for (ITool tool : tools) {
-			// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
-			if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
-				continue;
-
-			currTool = (Tool) tool;
-			if (currTool.supportsType("org.eclipse.cdt.build.core.buildArtefactType")) { //$NON-NLS-1$
-				String[] supportedTypesArray = currTool.getSupportedTypeIds();
-				for (String currTypeStr : supportedTypesArray) {
-					String[] supportedValuesForCurrType = currTool.getSupportedValueIds(currTypeStr);
-					for (String currValueStr : supportedValuesForCurrType) {
-						// we don't compare to the whole chain since GNU ARM CROSS (old version) uses a different prefix: not sure if the algo is ok
-						if (currValueStr.endsWith(".buildArtefactType.exe") //$NON-NLS-1$
-								|| currValueStr.endsWith(".buildArtefactType.application")) // sometimes encountered with GNU ARM Eclipse 0.5 old-school toolchains  //$NON-NLS-1$
-							return tool;
-					}
-				}
-
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Finds an assembler. Since I didn't find a clean way I just test if one of the segments
-	 * in the tool id contains "assembler", which is pretty hackish... sorry :(
-	 * This returns the first tool found.
-	 */
-	private static ITool getAssembler(IToolChain toolchain) {
-
-		ITool[] tools = toolchain.getTools();
-		for (ITool tool : tools) {
-			// split package-like string with dots
-			String[] idTokens = tool.getId().split("\\."); //$NON-NLS-1$
-			for (String currToken : idTokens)
-				if (currToken.equals("assembler")) //$NON-NLS-1$
-					return tool;
-		}
-		return null;
+		MindProperties configProperties = new MindProperties(newProject, config);
+		configProperties.generateFile(monitor);
+		
 	}
 
 	/**

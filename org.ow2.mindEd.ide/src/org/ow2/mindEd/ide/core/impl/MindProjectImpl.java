@@ -84,11 +84,11 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		}
 	}
 
-	private static final class ChangeMindSRCVarJob extends Job {
+	private static final class ChangeMindSourcePathPropVarJob extends Job {
 		private MindProjectImpl _mp;
 
-		private ChangeMindSRCVarJob(MindProjectImpl mp) {
-			super("Change the make file variable MIND_SRC for "+mp.getProject().getName());
+		private ChangeMindSourcePathPropVarJob(MindProjectImpl mp) {
+			super("Change the " + Messages.CDTUtil_SourcePath + " properties variable for " + mp.getProject().getName());
 			_mp = mp;
 			setRule(mp.getProject());
 		}
@@ -109,11 +109,9 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 				if (srcVar.length() != 0)
 					srcVar.setLength(srcVar.length() - 1); //remove last collon if length > 0
 
-				MindMakefile mf = new MindMakefile(_mp.getProject());
-				mf.setVarAndSave(MindMakefile.MIND_SRC, srcVar.toString(), "all");
+				MindProperties mp = new MindProperties(_mp.getProject());
+				mp.setVarAndSave(Messages.CDTUtil_SourcePath, srcVar.toString());
 			} catch (CoreException e) {
-				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
-			} catch (IOException e) {
 				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
 			}
 			return Status.OK_STATUS;
@@ -144,11 +142,11 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		}
 	}
 
-	private static final class ChangeMindINCVarJob extends Job {
+	private static final class ChangeMindIncludePathPropVarJob extends Job {
 		private MindProjectImpl _mp;
 
-		private ChangeMindINCVarJob(MindProjectImpl mp) {
-			super("Change the make file variable MIND_INC for "+mp.getProject().getName());
+		private ChangeMindIncludePathPropVarJob(MindProjectImpl mp) {
+			super("Change the " + Messages.CDTUtil_IncludePath + " properties variable for " + mp.getProject().getName());
 			_mp = mp;
 			setRule(mp.getProject());
 		}
@@ -197,11 +195,9 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 				if (incVar.length() != 0)
 					incVar.setLength(incVar.length() - 1); //remove last collon if length > 0
 
-				MindMakefile mf = new MindMakefile(_mp.getProject());
-				mf.setVarAndSave(MindMakefile.MIND_INC, incVar.toString(), "all");
+				MindProperties mp = new MindProperties(_mp.getProject());
+				mp.setVarAndSave(Messages.CDTUtil_IncludePath, incVar.toString());
 			} catch (CoreException e) {
-				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
-			} catch (IOException e) {
 				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
 			}
 			return Status.OK_STATUS;
@@ -219,7 +215,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		private MindProjectImpl _mp;
 
 		private ChangeMindCOMPVarJob(MindProjectImpl mp) {
-			super("Change the Makefile variable MIND_TARGETS for "+mp.getProject().getName());
+			super("Change the " + Messages.CDTUtil_TargetComponent + " and " +  Messages.CDTUtil_BinaryName + " properties variables for " + mp.getProject().getName());
 			_mp = mp;
 			setRule(mp.getProject());
 		}
@@ -237,17 +233,27 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 				StringBuilder srcVar = new StringBuilder();
 				for (String a : appli) {
 					srcVar.append(a);
-					srcVar.append("\\\n");
+					srcVar.append(" ");
 				}
 				if (srcVar.length() != 0)
 					srcVar.setLength(srcVar.length() - 2); //remove last collon if length > 0
 
-				MindMakefile mf = new MindMakefile(_mp.getProject());
-				mf.setVarAndSave(MindMakefile.MIND_TARGETS, srcVar.toString(), "all");
+				// TODO: enable multi-target + robustness				
+				MindProperties mp = new MindProperties(_mp.getProject());
+				if (!appli.isEmpty()) {
+					// Nowadays since our properties file format only can define ONE target/binary combination, we take field 0 only
+					// and skip the other ones
+					String appli0 = appli.get(0);
+					String[] appli0Split = appli0.split(":");
+					mp.setVarAndSave(Messages.CDTUtil_TargetComponent, appli0Split[0] != null ? appli0Split[0] : "");
+					mp.setVarAndSave(Messages.CDTUtil_BinaryName, appli0Split[1] != null ? appli0Split[1] : "");
+				} else {
+					mp.setVarAndSave(Messages.CDTUtil_TargetComponent, "");
+					mp.setVarAndSave(Messages.CDTUtil_BinaryName, "");
+				}
+
 				MindIdeCore.rebuild(_mp);
 			} catch (CoreException e) {
-				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
-			} catch (IOException e) {
 				MindActivator.log( new Status(Status.ERROR, MindActivator.ID, getName(), e));
 			}
 			return Status.OK_STATUS;
@@ -805,7 +811,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 	}
 
 	public void changeMINDSRC() {
-		Job r = new ChangeMindSRCVarJob(this);
+		Job r = new ChangeMindSourcePathPropVarJob(this);
 		r.schedule();
 	}
 
@@ -818,7 +824,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 	 * @since 0.8
 	 */
 	public void changeMINDINC() {
-		Job r = new ChangeMindINCVarJob(this);	
+		Job r = new ChangeMindIncludePathPropVarJob(this);	
 		r.schedule();
 	}
 

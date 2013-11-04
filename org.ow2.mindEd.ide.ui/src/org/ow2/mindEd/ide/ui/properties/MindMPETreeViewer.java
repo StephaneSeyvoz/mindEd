@@ -136,7 +136,7 @@ public class MindMPETreeViewer implements ExtendedModel, MpeMindPathModel {
 		dialog.setIgnoreCase(false);
 		dialog.setAllowDuplicates(false);
 		dialog.setMultipleSelection(false);
-		dialog.setTitle("Application entry");
+		dialog.setTitle("Select an applicative component for compilation");
 		
 		ArrayList<MindAdl> packages = new ArrayList<MindAdl>(MindModelManager.getMindModelManager().getMindModel().getAllComponents(p));
 		dialog.setElements(packages.toArray());

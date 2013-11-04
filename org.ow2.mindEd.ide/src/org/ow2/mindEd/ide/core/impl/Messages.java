@@ -50,6 +50,10 @@ public class Messages extends NLS {
 	public static String CDTUtil_RemovingCSourceFolder_Trace;
 	public static String CDTUtil_SourcePath;
 	public static String CDTUtil_SourcePathComment;
+	public static String CDTUtil_TargetComponent;
+	public static String CDTUtil_BinaryName;
+	public static String CDTUtil_TargetComponentComment;
+	public static String CDTUtil_BinaryNameComment;
 
 	static {
 		// initialize resource bundle

@@ -8,27 +8,36 @@ else
   MINDC = mindc
 endif
 
-# runtime is a built-in value
-MIND_SRC=src
+include $(CONFIGURATION).properties
 
-MIND_INC=""
-MIND_INC_FLAG=
-ifdef MIND_INC
-	ifneq ($(MIND_INC), "")
-		MIND_INC_FLAG=--inc-path=$(MIND_INC)
-	endif	
+#Platform Separator handling
+PATH_SEPARATOR =:
+ifneq (,$(findstring Windows, $(OS))) # Handle Windows-specific separators (':' otherwise)
+    PATH_SEPARATOR =;
 endif
 
-MIND_TARGETS=
+includePathArg=
+ifdef includePath
+	ifneq ($(includePath), "")
+		includePathArg=--inc-path="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(includePath))))"
+	endif
+endif
+
+sourcePathArg=
+ifdef sourcePath
+	ifneq ($(sourcePath), "")
+		sourcePathArg=--src-path="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(sourcePath))))"
+	endif
+endif
 
 all: build
-ifdef MIND_TARGETS
+ifdef targetComponent
 	if test ! -x $(MINDC); \
         then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
-    	else $(MINDC) -src-path=$(MIND_SRC) $(MIND_INC_FLAG) -o=build $(MIND_TARGETS) ;\
+    	else $(MINDC) $(sourcePathArg) $(includePathArg) -o=$(outputDirectory) $(targetComponent):$(binaryName) ;\
     fi
 else
-	echo "no application defined"
+	echo "No application defined - Please configure with the 'Mind Path' -> 'New application' menu."
 endif
 
 build:
