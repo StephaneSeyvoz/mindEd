@@ -336,12 +336,25 @@ public class CDTUtil {
 					monitor);
 
 		// Create the default structure
-		IFolder buildFolder = newProject.getFolder("build"); //$NON-NLS-1$
-		if (!buildFolder.exists())
-			buildFolder.create(true, true, monitor);
-		IFolder srcFolder = newProject.getFolder("src"); //$NON-NLS-1$
-		if (!srcFolder.exists())
-			srcFolder.create(true, true, monitor);
+		IFolder targetFolder = newProject.getFolder("target"); //$NON-NLS-1$
+		if (!targetFolder.exists())
+			targetFolder.create(true, true, monitor);
+		
+		// Make the folder tree ready - Should both work for simple keys such as "src" or more complicated ones like "src/main/mind"
+		String[] splitDefaultSrcPath = Messages.CDTUtil_DefaultSourcePath.split("/"); //$NON-NLS-1$
+		String currSubPath = null;
+		for (String currSubFolderName : splitDefaultSrcPath) {
+			if (currSubPath == null)
+				currSubPath = currSubFolderName;
+			else
+				currSubPath = currSubPath + "/" + currSubFolderName; //$NON-NLS-1$
+			IFolder currSubFolder = newProject.getFolder(currSubPath);
+			if (!currSubFolder.exists())
+				currSubFolder.create(true, true, monitor);
+		}
+		
+		// is now always ready thanks to the previous loop
+		IFolder srcFolder = newProject.getFolder(Messages.CDTUtil_DefaultSourcePath); //$NON-NLS-1$
 
 		// Link the runtime folder to the compiler runtime from the Mindc location variable (in preference store)
 		IFolder runtimeFolder = null;
@@ -349,7 +362,7 @@ public class CDTUtil {
 		if (importRuntime) {
 			mindLocation = MindActivator.getPref().getMindCLocation();
 			if (mindLocation == null) {
-				MindActivator.log(new Status(Status.ERROR, MindActivator.ID, "\"Runtime\" linked folder could not be created, set mindc location in preference")); //$NON-NLS-1$
+				MindActivator.log(new Status(Status.ERROR, MindActivator.ID, Messages.CDTUtil_RuntimeLocationNotCreatedCauseNotConfigured));
 			} else {
 				// is a "folder" but File is the Java way :)
 				File mindRuntimeFile = new File(mindLocation + "/runtime"); //$NON-NLS-1$
@@ -412,14 +425,14 @@ public class CDTUtil {
 			// For the time being we force Make, we use ${ConfigName}
 			// for the Makefile to use the good ${ConfigName}.properties file according to the active Configuration,
 			// and the usual "all" target
-			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, "CONFIGURATION=${ConfigName} all");
-			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_CLEAN, "CONFIGURATION=${ConfigName} clean");
+			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, Messages.CDTUtil_MakeConfigAllArgument);
+			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_CLEAN, Messages.CDTUtil_MakeConfigCleanArgument);
 			
 			// The makefile is in the project root
 			bld.setBuildPath("${workspace_loc:/" + newProject.getName() + "}"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			// the build directory ('build')
-			ICOutputEntry buildEntry = new COutputEntry(buildFolder, null,
+			ICOutputEntry buildEntry = new COutputEntry(targetFolder, null,
 					ICSettingEntry.VALUE_WORKSPACE_PATH);
 			bld.getBuildData().setOutputDirectories(
 					new ICOutputEntry[] { buildEntry });
@@ -436,14 +449,12 @@ public class CDTUtil {
 		List<ICSourceEntry> sourceEntries = new ArrayList<ICSourceEntry>();
 
 		// ADD the source entry 'src'
-		ICSourceEntry srcEntry = new CSourceEntry(newProject.getFolder("src"), //$NON-NLS-1$
-				null, ICSettingEntry.VALUE_WORKSPACE_PATH);
+		ICSourceEntry srcEntry = new CSourceEntry(srcFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
 		sourceEntries.add(srcEntry);
 
 		// ADD the source entry 'runtime'
 		if (mindLocation != null) {
-			ICSourceEntry runtimeEntry = new CSourceEntry(newProject.getFolder("runtime"), //$NON-NLS-1$
-					null, ICSettingEntry.VALUE_WORKSPACE_PATH);
+			ICSourceEntry runtimeEntry = new CSourceEntry(runtimeFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
 			sourceEntries.add(runtimeEntry);
 		}
 
@@ -483,9 +494,8 @@ public class CDTUtil {
 			e.printStackTrace();
 		}
 
-		MindProperties configProperties = new MindProperties(newProject, config);
+		MindProperties configProperties = new MindProperties(newProject, config, srcFolder, targetFolder);
 		configProperties.generateFile(monitor);
-		
 	}
 
 	/**

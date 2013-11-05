@@ -24,6 +24,7 @@ public class Messages extends NLS {
 	public static String CDTUtil_CreateCSourceFolderFor_Job;
 	public static String CDTUtil_CreateCSourceFolderFor_Trace;
 	public static String CDTUtil_CreatingCSourceFolder_Trace;
+	public static String CDTUtil_DefaultSourcePath;
 	public static String CDTUtil_DoneChangingMINDROOT_Trace;
 	public static String CDTUtil_DoneChangingRuntimeFolders_Trace;
 	public static String CDTUtil_DoneCreatingCSourceFolder_Trace;
@@ -48,12 +49,15 @@ public class Messages extends NLS {
 	public static String CDTUtil_RemoveCSourceFolder_Job;
 	public static String CDTUtil_RemoveCSourceFolder_Trace;
 	public static String CDTUtil_RemovingCSourceFolder_Trace;
+	public static String CDTUtil_RuntimeLocationNotCreatedCauseNotConfigured;
 	public static String CDTUtil_SourcePath;
 	public static String CDTUtil_SourcePathComment;
 	public static String CDTUtil_TargetComponent;
 	public static String CDTUtil_BinaryName;
 	public static String CDTUtil_TargetComponentComment;
 	public static String CDTUtil_BinaryNameComment;
+	public static String CDTUtil_MakeConfigAllArgument;
+	public static String CDTUtil_MakeConfigCleanArgument;
 
 	static {
 		// initialize resource bundle

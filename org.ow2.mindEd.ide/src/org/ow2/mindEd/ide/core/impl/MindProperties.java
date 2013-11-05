@@ -5,13 +5,7 @@ package org.ow2.mindEd.ide.core.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -20,25 +14,16 @@ import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
-import org.eclipse.cdt.make.core.makefile.IDirective;
-import org.eclipse.cdt.make.core.makefile.IMakefile;
-import org.eclipse.cdt.make.core.makefile.IMakefileReaderProvider;
-import org.eclipse.cdt.make.core.makefile.IParent;
-import org.eclipse.cdt.make.core.makefile.ITargetRule;
-import org.eclipse.cdt.make.core.makefile.gnu.IGNUMakefile;
-import org.eclipse.cdt.make.core.makefile.gnu.IVariableDefinition;
-import org.eclipse.cdt.make.internal.core.makefile.gnu.GNUMakefile;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.core.ITool;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.cdt.managedbuilder.internal.core.Tool;
-import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.ow2.mindEd.ide.core.MindActivator;
 
@@ -46,6 +31,8 @@ public class MindProperties {
 
 	private IProject _project;
 	private IConfiguration _configuration;
+	private IFolder _srcFolder;
+	private IFolder _outFolder;
 	private IFile propertiesIFile;
 
 	/**
@@ -53,10 +40,13 @@ public class MindProperties {
 	 * @param p
 	 * @param toolChain
 	 * @param c
+	 * @param outFolder 
 	 */
-	public MindProperties(IProject p, IConfiguration c) {
+	public MindProperties(IProject p, IConfiguration c, IFolder srcFolder, IFolder outFolder) {
 		_project = p;
 		_configuration = c;
+		_srcFolder = srcFolder;
+		_outFolder = outFolder;
 	}
 
 	/**
@@ -112,11 +102,10 @@ public class MindProperties {
 			String emptyStr = ""; //$NON-NLS-1$
 
 			// default properties
-			defaultProps.setProperty(Messages.CDTUtil_SourcePath, "src"); //$NON-NLS-1$
-			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_SourcePath, 1); // 1 = number of blank lines
+			defaultProps.setProperty(Messages.CDTUtil_SourcePath, _srcFolder.getProjectRelativePath().toPortableString()); //$NON-NLS-1$
 			defaultPropsLayout.setComment(Messages.CDTUtil_SourcePath, Messages.CDTUtil_SourcePathComment); // name the group: attach on the first element
 
-			defaultProps.setProperty(Messages.CDTUtil_OutputDirectory, "build"); //$NON-NLS-1$
+			defaultProps.setProperty(Messages.CDTUtil_OutputDirectory, _outFolder.getProjectRelativePath().toPortableString()); //$NON-NLS-1$
 			defaultPropsLayout.setComment(Messages.CDTUtil_OutputDirectory, Messages.CDTUtil_OutputDirComment);
 			defaultProps.setProperty(Messages.CDTUtil_IncludePath, emptyStr); // null is not allowed
 			defaultPropsLayout.setComment(Messages.CDTUtil_IncludePath, Messages.CDTUtil_IncludePathComment);
@@ -181,7 +170,7 @@ public class MindProperties {
 		PropertiesConfiguration propertiesConf = new PropertiesConfiguration();
 		try {
 			IFile propertiesFile = getPropertiesIFile(); 
-			if (propertiesFile == null)
+			if (propertiesFile == null || !propertiesFile.exists())
 				return null;
 			is = propertiesFile.getContents();
 			propertiesConf.load(is);
