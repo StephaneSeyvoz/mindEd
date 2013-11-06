@@ -354,8 +354,24 @@ public class CDTUtil {
 		}
 		
 		// is now always ready thanks to the previous loop
-		IFolder srcFolder = newProject.getFolder(Messages.CDTUtil_DefaultSourcePath); //$NON-NLS-1$
-
+		IFolder srcFolder = newProject.getFolder(Messages.CDTUtil_DefaultSourcePath);
+		
+		// repeat same task for tests
+		String[] splitDefaultTestSrcPath = Messages.CDTUtil_DefaultTestSourcePath.split("/"); //$NON-NLS-1$
+		currSubPath = null;
+		for (String currSubFolderName : splitDefaultTestSrcPath) {
+			if (currSubPath == null)
+				currSubPath = currSubFolderName;
+			else
+				currSubPath = currSubPath + "/" + currSubFolderName; //$NON-NLS-1$
+			IFolder currSubFolder = newProject.getFolder(currSubPath);
+			if (!currSubFolder.exists())
+				currSubFolder.create(true, true, monitor);
+		}
+		
+		// is now always ready thanks to the previous loop
+		IFolder testFolder = newProject.getFolder(Messages.CDTUtil_DefaultTestSourcePath);
+		
 		// Link the runtime folder to the compiler runtime from the Mindc location variable (in preference store)
 		IFolder runtimeFolder = null;
 		String mindLocation = null;
@@ -448,10 +464,14 @@ public class CDTUtil {
 		// Create a source entries ArrayList
 		List<ICSourceEntry> sourceEntries = new ArrayList<ICSourceEntry>();
 
-		// ADD the source entry 'src'
+		// ADD the user source entry ("src/main/mind")
 		ICSourceEntry srcEntry = new CSourceEntry(srcFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
 		sourceEntries.add(srcEntry);
 
+		// ADD the user test source entry ("src/test/mind")
+		ICSourceEntry testEntry = new CSourceEntry(testFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
+		sourceEntries.add(testEntry);
+		
 		// ADD the source entry 'runtime'
 		if (mindLocation != null) {
 			ICSourceEntry runtimeEntry = new CSourceEntry(runtimeFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
@@ -494,7 +514,7 @@ public class CDTUtil {
 			e.printStackTrace();
 		}
 
-		MindProperties configProperties = new MindProperties(newProject, config, srcFolder, targetFolder);
+		MindProperties configProperties = new MindProperties(newProject, config, srcFolder, testFolder, targetFolder);
 		configProperties.generateFile(monitor);
 	}
 

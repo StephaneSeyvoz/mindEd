@@ -32,6 +32,7 @@ public class MindProperties {
 	private IProject _project;
 	private IConfiguration _configuration;
 	private IFolder _srcFolder;
+	private IFolder _testFolder;
 	private IFolder _outFolder;
 	private IFile propertiesIFile;
 
@@ -42,10 +43,11 @@ public class MindProperties {
 	 * @param c
 	 * @param outFolder 
 	 */
-	public MindProperties(IProject p, IConfiguration c, IFolder srcFolder, IFolder outFolder) {
+	public MindProperties(IProject p, IConfiguration c, IFolder srcFolder, IFolder testFolder, IFolder outFolder) {
 		_project = p;
 		_configuration = c;
 		_srcFolder = srcFolder;
+		_testFolder = testFolder;
 		_outFolder = outFolder;
 	}
 
@@ -102,10 +104,11 @@ public class MindProperties {
 			String emptyStr = ""; //$NON-NLS-1$
 
 			// default properties
-			defaultProps.setProperty(Messages.CDTUtil_SourcePath, _srcFolder.getProjectRelativePath().toPortableString()); //$NON-NLS-1$
-			defaultPropsLayout.setComment(Messages.CDTUtil_SourcePath, Messages.CDTUtil_SourcePathComment); // name the group: attach on the first element
-
-			defaultProps.setProperty(Messages.CDTUtil_OutputDirectory, _outFolder.getProjectRelativePath().toPortableString()); //$NON-NLS-1$
+			defaultProps.setProperty(Messages.CDTUtil_SourcePath, _srcFolder.getProjectRelativePath().toPortableString());
+			defaultPropsLayout.setComment(Messages.CDTUtil_SourcePath, Messages.CDTUtil_SourcePathComment);
+			defaultProps.setProperty(Messages.CDTUtil_TestSourcePath, _testFolder.getProjectRelativePath().toPortableString());
+			defaultPropsLayout.setComment(Messages.CDTUtil_TestSourcePath, Messages.CDTUtil_TestSourcePathComment);
+			defaultProps.setProperty(Messages.CDTUtil_OutputDirectory, _outFolder.getProjectRelativePath().toPortableString()); 
 			defaultPropsLayout.setComment(Messages.CDTUtil_OutputDirectory, Messages.CDTUtil_OutputDirComment);
 			defaultProps.setProperty(Messages.CDTUtil_IncludePath, emptyStr); // null is not allowed
 			defaultPropsLayout.setComment(Messages.CDTUtil_IncludePath, Messages.CDTUtil_IncludePathComment);
