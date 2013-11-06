@@ -10,6 +10,9 @@ else
   MINDC = mindc
 endif
 
+# Documentation generator command
+MINDOC = mindoc
+
 # Non-MindEd users should invoke this Makefile using "make CONFIGURATION=<configName> all" to run the build,
 # where <configName> matches the desired <configName>.properties file.
 include $(CONFIGURATION).properties
@@ -29,10 +32,10 @@ ifdef sourcePath
 	endif
 endif
 
-outputDirVar=build/$(CONFIGURATION) #default value
+confOutputDirVar=build/$(CONFIGURATION) #default value
 ifdef outputDirectory
 	ifneq ($(outputDirectory), "")
-		outputDirVar="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(outputDirectory))))/$(CONFIGURATION)"
+		confOutputDirVar="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(outputDirectory))))/$(CONFIGURATION)"
 	endif
 endif
 
@@ -105,19 +108,38 @@ all: build
 ifdef targetComponent
 	if test ! -x $(MINDC); \
         then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
-    	else $(MINDC) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(outputDirVar) $(targetComponent):$(binaryName) ;\
+    	else $(MINDC) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(confOutputDirVar)/binaries $(targetComponent):$(binaryName) ;\
     fi
 else
 	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
 endif
 
+empty=
+space= $(empty) $(empty)
+# if MIND_ROOT is not defined, 'runtime' folder components such as the Bootstrap or the Main interface
+# will not be documented and this can lead to broken links. Within MindEd, MIND_ROOT should always be
+# automatically defined. However, for common builds from the terminal, you should define it or at least
+# do a dry run of "mindc" once for MIND_ROOT to be defined for the terminal session. 
+RUNTIME_PATH=$(subst \,/, $(MIND_ROOT))/runtime
+docOutputDir=$(confOutputDirVar)/doc
+
+doc: build_doc
+	$(MINDOC) $(subst ;,$(space),$(sourcePath)) $(RUNTIME_PATH) -d $(docOutputDir)
+
 # Output folder handling.
 
 build:
-	mkdir -p $(outputDirVar)
+	mkdir -p $(confOutputDirVar)/binaries
+	
+build_doc:
+	mkdir -p $(docOutputDir)
 
 clean:
-	rm -Rf $(outputDirVar); \
-	mkdir -p $(outputDirVar)
+	rm -Rf $(confOutputDirVar)/binaries; \
+	mkdir -p $(confOutputDirVar)/binaries
+	
+clean_doc:
+	rm -Rf $(docOutputDir); \
+	mkdir -p $(docOutputDir)
 
 .PHONY: all clean build
