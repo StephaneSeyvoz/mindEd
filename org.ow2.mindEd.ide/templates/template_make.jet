@@ -120,6 +120,7 @@ RUNTIME_PATH=$(subst \,/, $(MIND_ROOT))/runtime
 
 binOutputDir=$(confOutputDirVar)/binaries
 docOutputDir=$(confOutputDirVar)/doc
+graphOutputDir=$(confOutputDirVar)/graph
 testBinOutputDir=$(confOutputDirVar)/test-binaries
 testDocOutputDir=$(confOutputDirVar)/test-doc
 
@@ -135,8 +136,18 @@ else
 	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
 endif
 
+graph: build_graph
+ifdef targetComponent
+	if test ! -x $(MINDC); \
+        then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+    	else $(MINDC) --check-adl $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(graphOutputDir) 'dot.DumpComponentDot<'$(targetComponent)'>' ;\
+    fi
+else
+	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
+endif
+
 doc: build_doc
-	$(MINDOC) $(subst $(PATH_SEPARATOR),$(space),$(subst ;,$(PATH_SEPARATOR),$(sourcePath)) $(RUNTIME_PATH) -d $(docOutputDir)
+	$(MINDOC) $(subst $(PATH_SEPARATOR),$(space),$(subst ;,$(PATH_SEPARATOR),$(sourcePath))) $(RUNTIME_PATH) -d $(docOutputDir)
 
 # here we reuse the same flags as the common build ones
 test: build_test
@@ -152,6 +163,9 @@ build_doc:
 	
 build_test:
 	mkdir -p $(testBinOutputDir)
+	
+build_graph:
+	mkdir -p $(graphOutputDir)
 
 clean:
 	rm -Rf $(binOutputDir); \
@@ -164,5 +178,9 @@ clean_doc:
 clean_test:
 	rm -Rf $(testBinOutputDir); \
 	mkdir -p $(testBinOutputDir)
+	
+clean_graph:
+	rm -Rf $(graphOutputDir); \
+	mkdir -p $(graphOutputDir)
 
 .PHONY: all clean build
