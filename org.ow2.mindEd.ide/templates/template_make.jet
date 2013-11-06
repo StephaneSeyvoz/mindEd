@@ -1,6 +1,4 @@
 <%@ jet package="org.ow2.mindEd.ide.core.template" class="TemplateMake" %>
-# Generated Makefile - Manual changes will not be reflected in the Eclipse project configuration.
-
 # If the MIND_ROOT variable is defined, look for 'mindc' and 'mindunit' in this directory
 # otherwise, expect that 'mindc' and 'mindunit' are in the PATH.
 ifdef MIND_ROOT
@@ -123,6 +121,7 @@ RUNTIME_PATH=$(subst \,/, $(MIND_ROOT))/runtime
 binOutputDir=$(confOutputDirVar)/binaries
 docOutputDir=$(confOutputDirVar)/doc
 testBinOutputDir=$(confOutputDirVar)/test-binaries
+testDocOutputDir=$(confOutputDirVar)/test-doc
 
 # The real build command.
 
@@ -137,7 +136,7 @@ else
 endif
 
 doc: build_doc
-	$(MINDOC) $(subst ;,$(space),$(sourcePath)) $(RUNTIME_PATH) -d $(docOutputDir)
+	$(MINDOC) $(subst $(PATH_SEPARATOR),$(space),$(subst ;,$(PATH_SEPARATOR),$(sourcePath)) $(RUNTIME_PATH) -d $(docOutputDir)
 
 # here we reuse the same flags as the common build ones
 test: build_test
