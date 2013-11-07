@@ -123,12 +123,7 @@ public class MindMakefile {
 				IVariableDefinition v = (IVariableDefinition) d;
 				if (v.getName().equals(nameVar)) {
 					v.getValue().setLength(0);
-					if ((nameVar.equals("MIND_SRC") || nameVar.equals("MIND_INC")) && MindActivator.getPref().getGNUMakefileCompatibilityStatus())
-						v.getValue().append("\"" + value + "\"");
-					else
-						// On all other OS-es than Windows, and when on Windows with no
-						// GNU Makefile compatibility needed
-						v.getValue().append(value);
+					v.getValue().append(value);
 					changeLines(v);
 					return v;
 				}

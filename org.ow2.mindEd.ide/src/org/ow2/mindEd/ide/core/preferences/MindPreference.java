@@ -37,13 +37,6 @@ public class MindPreference implements IPreferenceChangeListener {
 		getPreferences().put(PreferenceConstants.P_MINDC_MAIN_CLASS, classMain);
 	}
 
-	public boolean getGNUMakefileCompatibilityStatus(){
-		// second argument is for default value: default is when the compatibility variable
-		// hasn't even been created (we can't access it), so we must be on a non-windows OS,
-		// and the GNU Make compatibility is false
-		return getPreferences().getBoolean(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY, false);
-	}
-
 	public IEclipsePreferences getPreferences() {
 		if (_preference == null) {
 			_preference = ConfigurationScope.INSTANCE.getNode(MindActivator.ID);
@@ -71,18 +64,6 @@ public class MindPreference implements IPreferenceChangeListener {
 			if (newValue == null)
 				newValue = ""; // fix null pointer in cdt env
 			CDTUtil.changeMINDCLocation((String) newValue);
-		} else if (event.getKey().equals(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY)) {
-			// Whatever the value, as the event was fired, a settings change event occured and
-			// we force the Makefile refresh
-			// In any case the Properties file 'sourcePath' variable writing will consult the new value anyways
-			
-			List<MindProject> allMindProjects = MindIdeCore.getModel().getAllProject();
-			for (MindProject currProject : allMindProjects) {
-				// Get the real object
-				MindProjectImpl currProjImpl = (MindProjectImpl) currProject;
-				// Update the path Makefile variable
-				currProjImpl.changeMindSourcePath();
-			}
 		}
 	}
 

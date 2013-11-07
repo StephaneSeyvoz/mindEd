@@ -41,13 +41,6 @@ public class MindcPreferencePage
 				"&Mindc location:", getFieldEditorParent()));
 		addField(new StringFieldEditor(PreferenceConstants.P_MINDC_MAIN_CLASS, 
 				"&Mindc main class:", getFieldEditorParent()));
-		
-		// Windows-specific property to allow compatibility with GNU Make (enables quote characters writing
-		// in the Makefile "MIND_SRC" variable value) ; same with the "sourcePath" variable in the Properties file (new behavior)
-		if (System.getProperty("os.name").startsWith("Windows")){
-			addField(new BooleanFieldEditor(PreferenceConstants.P_GNU_MAKEFILE_COMPATIBILITY,
-					"&GNU Make compatibility (Windows-only setting)", getFieldEditorParent()));
-		}
 	}
 
 	/* (non-Javadoc)

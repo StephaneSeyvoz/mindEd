@@ -103,7 +103,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 					// a useless separator
 					if (!fileStr.equals("")) {
 						srcVar.append(fileStr);
-						srcVar.append(File.pathSeparator);
+						srcVar.append(":");
 					}
 				}
 				if (srcVar.length() != 0)
@@ -133,10 +133,10 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			IFolder f = MindIdeCore.getResource(rs);
 			String path = "";
 
-			if (f.isLinked() && f.getProjectRelativePath().toOSString().equals("runtime"))
+			if (f.isLinked() && f.getProjectRelativePath().toPortableString().equals("runtime"))
 				return path;
 
-			path = (f.isLinked()) ? f.getLocation().toOSString() : f.getProjectRelativePath().toOSString(); 
+			path = (f.isLinked()) ? f.getLocation().toPortableString() : f.getProjectRelativePath().toPortableString(); 
 
 			return path;
 		}
@@ -171,24 +171,17 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							// should be
 							if (file.exists() && file.isDirectory()) {
 								incVar.append(entry.getName());
-								incVar.append(File.pathSeparator);
+								incVar.append(":");
 							}
 							// else error case: do nothing ?
 						} else {
 							/* 
-							 * check if folder is linked
-							 * if it is, take the file system path
-							 * if it's a local folder, either it's in the current project, and
-							 * we want the relative path,
-							 * or in another, and then we need a relative path ../proj/resource
+							 * Only keep values internal to the current project, skip others
+							 * maybe one day we should modify it to serialize inferred paths
+							 * from project dependencies.
 							 */
-							String path = (f.isLinked()) ?
-									f.getLocation().toOSString()
-									: (f.getFullPath().segment(0).equals(_mp.getName())) ?
-											f.getProjectRelativePath().toOSString()
-											: ".." + f.getFullPath().toOSString(); 
-											incVar.append(path);
-											incVar.append(File.pathSeparator);
+							if (!f.isLinked() && f.getFullPath().segment(0).equals(_mp.getName()))
+								incVar.append(f.getProjectRelativePath().toPortableString()).append(":");
 						}
 					}
 				}

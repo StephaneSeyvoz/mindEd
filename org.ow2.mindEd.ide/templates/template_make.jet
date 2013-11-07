@@ -28,21 +28,21 @@ endif
 sourcePathArg=
 ifdef sourcePath
 	ifneq ($(sourcePath), "")
-		sourcePathArg=--src-path="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(sourcePath))))"
+		sourcePathArg=--src-path="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(sourcePath)))"
 	endif
 endif
 
 testSourcePathArg=
 ifdef testSourcePath
 	ifneq ($(sourcePath), "")
-		testSourcePathArg="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(testSourcePath))))"
+		testSourcePathArg="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(testSourcePath)))"
 	endif
 endif
 
 includePathArg=
 ifdef includePath
 	ifneq ($(includePath), "")
-		includePathArg=--inc-path="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(includePath))))"
+		includePathArg=--inc-path="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(includePath)))"
 	endif
 endif
 
@@ -105,7 +105,7 @@ endif
 confOutputDirVar=build/$(CONFIGURATION) #default value
 ifdef outputDirectory
 	ifneq ($(outputDirectory), "")
-		confOutputDirVar="$(subst \,/,$(subst ;,$(PATH_SEPARATOR),$(subst ;;,;,$(outputDirectory))))/$(CONFIGURATION)"
+		confOutputDirVar="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(outputDirectory)))/$(CONFIGURATION)"
 	endif
 endif
 
@@ -147,7 +147,7 @@ else
 endif
 
 doc: build_doc
-	$(MINDOC) $(subst $(PATH_SEPARATOR),$(space),$(subst ;,$(PATH_SEPARATOR),$(sourcePath))) $(RUNTIME_PATH) -d $(docOutputDir)
+	$(MINDOC) $(subst $(PATH_SEPARATOR),$(space),$(subst :,$(PATH_SEPARATOR),$(sourcePath))) $(RUNTIME_PATH) -d $(docOutputDir)
 
 # here we reuse the same flags as the common build ones
 test: build_test
