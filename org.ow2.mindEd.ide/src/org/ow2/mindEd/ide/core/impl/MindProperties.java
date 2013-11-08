@@ -154,8 +154,8 @@ public class MindProperties {
 			// test extra properties (such as --automated, --console, --gcov)
 			String testExtraOptsValue = emptyStr;
 			defaultProps.setProperty(Messages.CDTUtil_TestExtraOptions, testExtraOptsValue);
-			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_ExtraOptions, 1); // 1 = number of blank lines
-			defaultPropsLayout.setComment(Messages.CDTUtil_ExtraOptions, Messages.CDTUtil_TestExtraOptionsComment);
+			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_TestExtraOptions, 1); // 1 = number of blank lines
+			defaultPropsLayout.setComment(Messages.CDTUtil_TestExtraOptions, Messages.CDTUtil_TestExtraOptionsComment);
 
 			try {
 				defaultProps.save(defaultValuesOut);
