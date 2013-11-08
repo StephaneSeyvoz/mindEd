@@ -144,17 +144,18 @@ public class MindProperties {
 			defaultPropsLayout.setComment(Messages.CDTUtil_LDFlags, Messages.CDTUtil_LDFlagsComment);
 
 			// extra properties
-			
-				// default case
-			String extraOptsValue = emptyStr;
-			
-			// special case - override with specific
-			if (_configuration.getToolChain().getId().startsWith("iar."))
+			String extraOptsValue = emptyStr; // default case
+			if (_configuration.getToolChain().getId().startsWith("iar.")) // special case - override with specific
 				extraOptsValue = "--iar";
-			
 			defaultProps.setProperty(Messages.CDTUtil_ExtraOptions, extraOptsValue);
 			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_ExtraOptions, 1); // 1 = number of blank lines
 			defaultPropsLayout.setComment(Messages.CDTUtil_ExtraOptions, Messages.CDTUtil_ExtraOptionsComment);
+
+			// test extra properties (such as --automated, --console, --gcov)
+			String testExtraOptsValue = emptyStr;
+			defaultProps.setProperty(Messages.CDTUtil_TestExtraOptions, testExtraOptsValue);
+			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_ExtraOptions, 1); // 1 = number of blank lines
+			defaultPropsLayout.setComment(Messages.CDTUtil_ExtraOptions, Messages.CDTUtil_TestExtraOptionsComment);
 
 			try {
 				defaultProps.save(defaultValuesOut);
@@ -187,10 +188,10 @@ public class MindProperties {
 		IFile propertiesFile = getPropertiesIFile(); 
 		if (propertiesFile == null)
 			return;
-		
+
 		// used as a buffer to convert from OutputStream to InputStream
 		ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-		
+
 		try {
 			propertiesConf.save(outStream);
 			propertiesFile.setContents(new ByteArrayInputStream(outStream.toByteArray()), IFile.FORCE, null);

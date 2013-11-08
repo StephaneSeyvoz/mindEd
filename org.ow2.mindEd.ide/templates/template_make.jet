@@ -102,6 +102,13 @@ ifdef extraOptions
 	endif
 endif
 
+testExtraOptionsArg=
+ifdef testExtraOptions
+	ifneq ($(testExtraOptions), "")
+		testExtraOptionsArg="$(testExtraOptions)"
+	endif
+endif
+
 confOutputDirVar=build/$(CONFIGURATION) #default value
 ifdef outputDirectory
 	ifneq ($(outputDirectory), "")
@@ -151,7 +158,7 @@ doc: build_doc
 
 # here we reuse the same flags as the common build ones
 test: build_test
-	$(MINDUNIT) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(testBinOutputDir) $(testSourcePathArg)
+	$(MINDUNIT) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) $(testExtraOptionsArg) -o=$(testBinOutputDir) $(testSourcePathArg)
 
 # Output folder handling.
 

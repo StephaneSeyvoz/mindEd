@@ -61,6 +61,8 @@ public class Messages extends NLS {
 	public static String CDTUtil_BinaryNameComment;
 	public static String CDTUtil_MakeConfigAllArgument;
 	public static String CDTUtil_MakeConfigCleanArgument;
+	public static String CDTUtil_TestExtraOptions;
+	public static String CDTUtil_TestExtraOptionsComment;
 
 	static {
 		// initialize resource bundle
