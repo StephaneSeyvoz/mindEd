@@ -273,6 +273,9 @@ public class CDTUtil {
 
 	public static void createCSourceFolder(final IFolder f)
 			throws CoreException {
+		
+		if (f == null) return; // Defensive programming: don't do the job if there is nothing to configure
+		
 		Job r = new CreateCSourceFolderJob(f);
 		r.setRule(f.getWorkspace().getRoot());
 		r.schedule();
