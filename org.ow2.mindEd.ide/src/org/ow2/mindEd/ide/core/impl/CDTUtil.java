@@ -84,8 +84,7 @@ public class CDTUtil {
 				if (des == null)
 					return Status.OK_STATUS; // Not C project pas encore ou enlever
 
-				ICConfigurationDescription config = des
-						.getConfigurationByName("Default"); //$NON-NLS-1$
+				ICConfigurationDescription config = des.getActiveConfiguration();
 				ArrayList<ICSourceEntry> srcs = new ArrayList<ICSourceEntry>(
 						Arrays.asList(config.getSourceEntries()));
 				for (ICSourceEntry icSourceEntry : srcs) {
@@ -142,8 +141,7 @@ public class CDTUtil {
 					return Status.OK_STATUS; // Not C project pas encore ou enlever
 				ICSourceEntry srcEntry = new CSourceEntry(f, null,
 						ICSettingEntry.VALUE_WORKSPACE_PATH);
-				ICConfigurationDescription config = des
-						.getConfigurationByName("Default"); //$NON-NLS-1$
+				ICConfigurationDescription config = des.getActiveConfiguration();
 				ArrayList<ICSourceEntry> srcs = new ArrayList<ICSourceEntry>(
 						Arrays.asList(config.getSourceEntries()));
 				for (ICSourceEntry icSourceEntry : srcs) {
