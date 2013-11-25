@@ -109,7 +109,8 @@ ifdef testExtraOptions
 	endif
 endif
 
-confOutputDirVar=build/$(CONFIGURATION) #default value
+#default value
+confOutputDirVar=target/$(CONFIGURATION)
 ifdef outputDirectory
 	ifneq ($(outputDirectory), "")
 		confOutputDirVar="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(outputDirectory)))/$(CONFIGURATION)"
@@ -136,21 +137,21 @@ testDocOutputDir=$(confOutputDirVar)/test-doc
 all: build
 ifdef targetComponent
 	if test ! -x $(MINDC); \
-        then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+        then @echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
     	else $(MINDC) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(binOutputDir) $(targetComponent):$(binaryName) ;\
     fi
 else
-	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
+	@echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
 endif
 
 graph: build_graph
 ifdef targetComponent
 	if test ! -x $(MINDC); \
-        then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+        then @echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
     	else $(MINDC) --check-adl $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(graphOutputDir) 'dot.DumpComponentDot<'$(targetComponent)'>' ;\
     fi
 else
-	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
+	@echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
 endif
 
 doc: build_doc
