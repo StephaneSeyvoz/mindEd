@@ -26,7 +26,7 @@ public class TemplatePrimitiveADL
     final StringBuffer stringBuffer = new StringBuffer();
     
  String qualifiedName = adl.getQualifiedName();
- String cfile = adl.getName().substring(0,1).toLowerCase()+adl.getName().substring(1);
+ String cfile = adl.getName();
 
 
     stringBuffer.append(TEXT_1);
