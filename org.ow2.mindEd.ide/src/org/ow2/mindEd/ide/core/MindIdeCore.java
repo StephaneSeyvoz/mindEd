@@ -483,8 +483,7 @@ public class MindIdeCore {
 	static public void createCTemplate(IContainer container, String componentName, String qn,
 			IProgressMonitor monitor)
 			throws CoreException {
-		String cfileName = componentName.substring(0, 1).toLowerCase()
-				+ componentName.substring(1);
+		String cfileName = componentName;
 		final IFile cfile = container.getFile(new Path(cfileName + ".c")); //$NON-NLS-1$
 		try {
 			InputStream stream = openCContentStream(qn);
