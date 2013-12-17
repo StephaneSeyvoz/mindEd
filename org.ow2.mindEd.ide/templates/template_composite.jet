@@ -5,7 +5,7 @@
 
 %>
 composite <%=qualifiedName%> {
-  
+	
 <%for(String l : contains) {%>
 	<%=l%>
 <%}%>
