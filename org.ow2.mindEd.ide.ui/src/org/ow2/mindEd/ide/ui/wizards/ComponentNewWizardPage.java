@@ -64,7 +64,7 @@ public class ComponentNewWizardPage extends WizardPage implements PageUpdateStat
 	private ComboViewer _kind_viewer;
 	
 	public ComponentNewWizardPage(MindModel model, ISelection selection) {
-		super("ComponentNewWizardPage");
+		super("ComponentNewWizardPage"); //$NON-NLS-1$
 		setTitle(Messages.ComponentNewWizardPage_title);
 		setDescription(Messages.ComponentNewWizardPage_description);
 		this._selection = selection;
@@ -164,8 +164,8 @@ public class ComponentNewWizardPage extends WizardPage implements PageUpdateStat
 	protected List<MindPackage> getPackageFrom(MindRootSrc srcFolder) {
 		Map<String, MindPackage> ret = new HashMap<String, MindPackage>();
 		MindPackage subpnPackage = MindideFactory.eINSTANCE.createMindPackage();
-		subpnPackage.setName("");
-		ret.put("", subpnPackage);
+		subpnPackage.setName(""); //$NON-NLS-1$
+		ret.put("", subpnPackage); //$NON-NLS-1$
 		
 		for (MindPackage mp : srcFolder.getPackages()) {
 			ret.put(mp.getName(), mp);
@@ -187,7 +187,7 @@ public class ComponentNewWizardPage extends WizardPage implements PageUpdateStat
 	}
 
 	private void initialize() {
-		_componentNameText.setText("");
+		_componentNameText.setText(""); //$NON-NLS-1$
 		if (_selection != null && _selection.isEmpty() == false
 				&& _selection instanceof IStructuredSelection) {
 			IStructuredSelection ssel = (IStructuredSelection) _selection;
@@ -272,32 +272,40 @@ public class ComponentNewWizardPage extends WizardPage implements PageUpdateStat
 			return;
 		
 		if (componentName.length() == 0) {
-			updateStatus(Messages.ComponentNewWizardPage_error_msg_component_name_must_be_specified);
+			updateStatus(Messages.ComponentNewWizardPage_error_msg_component_name_must_be_specified, ERROR);
 			return;
 		}
 		if (componentName.replace('\\', '/').indexOf('/', 1) > 0) {
-			updateStatus(Messages.ComponentNewWizardPage_error_msg_component_name_must_be_valid);
+			updateStatus(Messages.ComponentNewWizardPage_error_msg_component_name_must_be_valid, ERROR);
 			return;
 		}
 		
 		if (componentName.indexOf('.', 1) > 0) {
-			updateStatus(Messages.ComponentNewWizardPage_20);
+			updateStatus(Messages.ComponentNewWizardPage_20, ERROR);
 			return;
 		}
 		
 		MindAdl adl = _model.getAdl((MindProject) _sourceFolderField.getSourceFolder().getProject(),
 				getPackageName(), componentName);
 		if (adl != null) {
-			updateStatus("Component already exists");
+			updateStatus("Component already exists", ERROR); //$NON-NLS-1$
 			return;
 		}
 		
-		updateStatus(null);
+		char firstChar = componentName.charAt(0);
+		if (firstChar >= 'a' && firstChar <= 'z') {
+			updateStatus(Messages.ComponentNewWizardPage_warning_LowerCaseTypeNameDiscouraged_Convention, WARNING);
+			return;
+		}	
+		
+		updateStatus(null, NONE);
 	}
 
-	private void updateStatus(String message) {
-		setErrorMessage(message);
-		setPageComplete(message == null);
+	private void updateStatus(String message, int type) {
+		setMessage(message, type);
+		
+		// Allow finishing if NONE/INFO/WARNING
+		setPageComplete(type != ERROR);
 	}
 
 	public String getSourceFolderName() {
@@ -309,6 +317,8 @@ public class ComponentNewWizardPage extends WizardPage implements PageUpdateStat
 	}
 
 	public String getPackageName() {
+		if (_package == null)
+			return "";
 		return _package.getName();
 	}
 	
@@ -341,7 +351,7 @@ public class ComponentNewWizardPage extends WizardPage implements PageUpdateStat
 	}
 
 	public void updateErrorStatus(String msg) {
-		updateStatus(msg);
+		updateStatus(msg, ERROR);
 	}
 
 }

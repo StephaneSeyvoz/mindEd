@@ -262,8 +262,14 @@ public class MindInterfaceWizardPage extends WizardPage implements PageUpdateSta
 	}
 
 	public void updateErrorStatus(String msg) {
-		setErrorMessage(msg);
-		setPageComplete(msg == null);
+		updateStatus(msg, ERROR);
+	}
+	
+	private void updateStatus(String message, int type) {
+		setMessage(message, type);
+		
+		// Allow finishing if NONE/INFO/WARNING
+		setPageComplete(type != ERROR);
 	}
 
 	/**
@@ -295,6 +301,12 @@ public class MindInterfaceWizardPage extends WizardPage implements PageUpdateSta
 			updateErrorStatus("Interface already exists");
 			return;
 		}
+		
+		char firstChar = interfaceName.charAt(0);
+		if (firstChar >= 'a' && firstChar <= 'z') {
+			updateStatus(Messages.MindInterfaceWizardPage_warning_LowerCaseTypeNameDiscouraged_Convention, WARNING);
+			return;
+		}	
 
 		updateErrorStatus(null);
 	}

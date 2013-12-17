@@ -25,6 +25,7 @@ public class Messages extends NLS {
 	public static String ComponentNewWizardPage_error_msg_source_folder_must_exist;
 	public static String ComponentNewWizardPage_error_msg_source_folder_must_valid;	
 	public static String ComponentNewWizardPage_kind_field_label;
+	public static String ComponentNewWizardPage_warning_LowerCaseTypeNameDiscouraged_Convention;
 	public static String ComponentNewWizardPage_package_field_browser;
 	public static String ComponentNewWizardPage_package_field_label;
 	public static String ComponentNewWizardPage_package_field_package_title;
@@ -120,6 +121,7 @@ public class Messages extends NLS {
 	public static String MindProjectWizardPage_MindToolChain_InvalidOrNotConfigured;
 	public static String MindProjectWizardPage_MindConfig;
 	public static String MindProjectWizardPage_MindcLocation;
+	public static String MindInterfaceWizardPage_warning_LowerCaseTypeNameDiscouraged_Convention;
 	
 	static {
 		// initialize resource bundle
