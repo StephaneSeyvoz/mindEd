@@ -446,7 +446,7 @@ public class CDTUtil {
 			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_CLEAN, Messages.CDTUtil_MakeConfigCleanArgument);
 			
 			// The makefile is in the project root
-			bld.setBuildPath("${workspace_loc:/" + newProject.getName() + "}"); //$NON-NLS-1$ //$NON-NLS-2$
+			bld.setBuildPath("${project_loc}"); //$NON-NLS-1$
 
 			// the build directory ('build')
 			ICOutputEntry buildEntry = new COutputEntry(targetFolder, null,
