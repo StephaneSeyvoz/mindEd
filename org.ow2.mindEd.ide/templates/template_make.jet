@@ -15,6 +15,9 @@ MINDOC = mindoc
 
 # Non-MindEd users should invoke this Makefile using "make CONFIGURATION=<configName> all" to run the build,
 # where <configName> matches the desired <configName>.properties file.
+# Set CONFIGURATION to Default if not set
+
+CONFIGURATION ?= Default
 include $(CONFIGURATION).properties
 
 # Strings and comments management - Skip to "all:" for the real build.
