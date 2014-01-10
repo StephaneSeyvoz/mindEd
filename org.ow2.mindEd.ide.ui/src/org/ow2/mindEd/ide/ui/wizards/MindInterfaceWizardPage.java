@@ -308,7 +308,7 @@ public class MindInterfaceWizardPage extends WizardPage implements PageUpdateSta
 			return;
 		}	
 
-		updateErrorStatus(null);
+		updateStatus(null, NONE);
 	}
 
 	public String getSourceFolderName() {
