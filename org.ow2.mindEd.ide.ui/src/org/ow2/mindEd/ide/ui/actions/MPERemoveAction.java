@@ -19,7 +19,7 @@ public class MPERemoveAction extends Action  {
 	protected MpeMindPathModel _model;
 
 	public MPERemoveAction(MpeMindPathModel model, MindPathEntry selectedobj) {
-		super("Remove source entry");
+		super("Remove");
 		setDescription("Removes the selected entry from classpath");
 
 		ISharedImages workbenchImages = Activator.getDefault().getWorkbench().getSharedImages();
