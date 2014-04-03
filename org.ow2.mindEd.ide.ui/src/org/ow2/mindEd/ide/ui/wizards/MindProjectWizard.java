@@ -145,8 +145,11 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 
 					newProject = newProjectHandle;
 
-					CDTUtil.initMindProject(newProject, monitor, mainPage.getUserRuntimeChoice(), mainPage.getUserCToolChainchoice());
-					
+					CDTUtil.initMindProject(newProject, monitor,
+							mainPage.getUserRuntimeChoice(),
+							mainPage.getUserCCChoice(),
+							mainPage.getUserCToolChainchoice());
+
 					newProject.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
 				} catch (OperationCanceledException e) {
 					throw new InvocationTargetException(e);

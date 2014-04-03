@@ -98,6 +98,7 @@ public class Messages extends NLS {
 	 */
 	public static String MindProjectWizardPage_Toolchains;
 	public static String MindProjectWizardPage_MindRuntime;
+	public static String MindProjectWizardPage_MindCPP;
 	/**
 	 * And those have been imported from CDT (with prefix)
 	 * care about licence issues ?

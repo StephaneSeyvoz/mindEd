@@ -78,10 +78,10 @@ public class MindProperties {
 		return propertiesIFile; // may be null in the case of a new MindProperties(IProject)
 	}
 
-	public void generateFile(IProgressMonitor monitor) {
-		ITool compiler = getCompiler(_configuration.getToolChain());
-		ITool linker = getLinker(_configuration.getToolChain());
-		ITool assembler = getAssembler(_configuration.getToolChain());
+	public void generateFile(IProgressMonitor monitor, boolean isCPP) {
+		ITool compiler = getCompiler(_configuration.getToolChain(), isCPP);
+		ITool linker = getLinker(_configuration.getToolChain(), isCPP);
+		ITool assembler = getAssembler(_configuration.getToolChain()); // we do not handle C++ here yet, use default
 
 
 		MindActivator.log(new Status(Status.INFO, MindActivator.ID, MindActivator.ID + Messages.CDTUtil_initMindProjectMethod + _project.getName() + ": " + Messages.CDTUtil_FoundCompiler + compiler.getToolCommand()));
@@ -146,7 +146,9 @@ public class MindProperties {
 			// extra properties
 			String extraOptsValue = emptyStr; // default case
 			if (_configuration.getToolChain().getId().startsWith("iar.")) // special case - override with specific
-				extraOptsValue = "--iar";
+				extraOptsValue = extraOptsValue + "--iar ";
+			if (isCPP)
+				extraOptsValue = extraOptsValue + "--cpp --flatten ";
 			defaultProps.setProperty(Messages.CDTUtil_ExtraOptions, extraOptsValue);
 			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_ExtraOptions, 1); // 1 = number of blank lines
 			defaultPropsLayout.setComment(Messages.CDTUtil_ExtraOptions, Messages.CDTUtil_ExtraOptionsComment);
@@ -204,14 +206,20 @@ public class MindProperties {
 	 * Finds a compiler from its build type in the tool-chain.
 	 * This returns the first tool found.
 	 */
-	private ITool getCompiler(IToolChain toolchain) {
+	private ITool getCompiler(IToolChain toolchain, boolean isCPP) {
 
 		ITool[] tools = toolchain.getTools();
 		Tool currTool = null;
 		for (ITool tool : tools) {
-			// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
-			if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
-				continue;
+			if (isCPP) {
+				// We want a C++ compiler as a default or at least a compiler supporting both C and C++ but NOT only C
+				if (!(tool.getNatureFilter() == ITool.FILTER_CC) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
+					continue;
+			} else { 			
+				// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
+				if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
+					continue;
+			}
 
 			currTool = (Tool) tool;
 			if (currTool.supportsType("org.eclipse.cdt.build.core.buildType")) { //$NON-NLS-1$
@@ -233,14 +241,20 @@ public class MindProperties {
 	 * Finds a linker from its build type in the tool-chain.
 	 * This returns the first tool found.
 	 */
-	private ITool getLinker(IToolChain toolchain) {
+	private ITool getLinker(IToolChain toolchain, boolean isCPP) {
 
 		ITool[] tools = toolchain.getTools();
 		Tool currTool = null;
 		for (ITool tool : tools) {
-			// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
-			if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
-				continue;
+			if (isCPP) {
+				// We want a C++ compiler as a default or at least a compiler supporting both C and C++ but NOT only C
+				if (!(tool.getNatureFilter() == ITool.FILTER_CC) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
+					continue;
+			} else { 			
+				// We want a C compiler as a default or at least a compiler supporting both C and C++ but NOT only C++
+				if (!(tool.getNatureFilter() == ITool.FILTER_C) && !(tool.getNatureFilter() == ITool.FILTER_BOTH))
+					continue;
+			}
 
 			currTool = (Tool) tool;
 			if (currTool.supportsType("org.eclipse.cdt.build.core.buildArtefactType")) { //$NON-NLS-1$

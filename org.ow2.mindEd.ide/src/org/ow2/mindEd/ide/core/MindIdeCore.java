@@ -204,7 +204,7 @@ public class MindIdeCore {
 		p.create(monitor);
 		p.open(monitor);
 		// Here we ususally don't need the runtime folder, and neither to specify a choice of C toolchain
-		CDTUtil.initMindProject(p, monitor, false, null);
+		CDTUtil.initMindProject(p, monitor, false, false, null);
 		return MindModelManager.getMindModelManager().getMindProject(p);
 	}
 

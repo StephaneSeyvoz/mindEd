@@ -14,6 +14,7 @@ import java.util.Set;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.PropertiesConfigurationLayout;
+import org.eclipse.cdt.core.CCProjectNature;
 import org.eclipse.cdt.core.CProjectNature;
 import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
 import org.eclipse.cdt.core.model.CoreModel;
@@ -50,6 +51,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.ow2.mindEd.ide.core.FamilyJobCST;
 import org.ow2.mindEd.ide.core.MindActivator;
@@ -323,7 +325,7 @@ public class CDTUtil {
 	 * @throws UnsupportedEncodingException
 	 */
 	public static void initMindProject(IProject newProject,
-			IProgressMonitor monitor, boolean importRuntime, IToolChain toolChain) throws CoreException,
+			IProgressMonitor monitor, boolean importRuntime, boolean isCPP, IToolChain toolChain) throws CoreException,
 			UnsupportedEncodingException {
 
 		CProjectNature.addNature(newProject, "org.eclipse.xtext.ui.shared.xtextNature",	monitor); //$NON-NLS-1$
@@ -501,8 +503,12 @@ public class CDTUtil {
 		// add nature
 		// Note: this task HAS TO BE LAST, AFTER configuration
 		// (the C_NATURE triggers lots of C configuration, with default values, leading to troublesome situations otherwise)
-		CProjectNature.addNature(newProject, CProjectNature.C_NATURE_ID, monitor);
+		CProjectNature.addCNature(newProject, monitor);
 
+		// Optionally C++ nature
+		if (isCPP)
+			CCProjectNature.addCCNature(newProject, monitor);
+		
 		// Add the runtime if needed
 		// Only do so after Mind nature is enabled, in order for things to be ready to configure
 		try {
@@ -516,7 +522,7 @@ public class CDTUtil {
 		}
 
 		MindProperties configProperties = new MindProperties(newProject, config, srcFolder, testFolder, targetFolder);
-		configProperties.generateFile(monitor);
+		configProperties.generateFile(monitor, isCPP);
 	}
 
 	/**

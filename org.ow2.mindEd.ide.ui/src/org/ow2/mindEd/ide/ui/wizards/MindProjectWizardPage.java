@@ -63,11 +63,13 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 	private Label mindconf_label;
 	private Button mindcLoc_button;
 	private Button runtime_checkbox;
+	private Button cc_checkbox;
 	private Composite tcs_choice;
 	private Button show_sup;
 	private Label toolchains_label;
 
 	private boolean userRuntimeChoice = true;
+	private boolean userCCChoice = false;
 
 	private IToolChain UserCToolChainChoice = null;
 
@@ -218,6 +220,21 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				userRuntimeChoice = runtime_checkbox.getSelection();
 			}} );
 
+		// C++ checkbox
+		cc_checkbox = new Button(c, SWT.CHECK);
+		cc_checkbox.setText(Messages.MindProjectWizardPage_MindCPP); 
+		cc_checkbox.setFont(parent.getFont());
+		GridData gd1 = new GridData(GridData.FILL_HORIZONTAL);
+		cc_checkbox.setLayoutData(gd1);
+		// default as false
+		cc_checkbox.setSelection(userCCChoice);
+		cc_checkbox.addSelectionListener(new SelectionAdapter() {
+			// update configuration on box event
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				userCCChoice = cc_checkbox.getSelection();
+			}} );
+
 		// Configure compiler path preference if not already configured
 		if (!isMindcToolchainConfigured() || !isMindToolchainValid()) {
 			mindcLoc_button = new Button(c, SWT.NONE);
@@ -265,8 +282,8 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		// lower part of the window
 		show_sup = new Button(c, SWT.CHECK);
 		show_sup.setText(Messages.MindProjectWizardPage_CMainWizardPage_1); // "Show project types and toolchains only if they are supported on the platform" string
-		GridData gd1 = new GridData(GridData.FILL_HORIZONTAL);
-		show_sup.setLayoutData(gd1);
+		GridData gd2 = new GridData(GridData.FILL_HORIZONTAL);
+		show_sup.setLayoutData(gd2);
 
 		// adapter will update the right part of the window according to checkbox
 		show_sup.addSelectionListener(new SelectionAdapter() {
@@ -316,7 +333,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		// init configuration
 		table.setSelection(0);
 		UserCToolChainChoice = (IToolChain) table.getSelection()[0].getData(); // supposing selection is unique ; FIXME: enforce that ?
-		
+
 		// go
 		table.setVisible(true);
 
@@ -393,16 +410,16 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				return false;
 			}
 		}
-		
+
 		if (!isMindcToolchainConfigured() || !isMindToolchainValid()) { 
 			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_InvalidOrNotConfigured);
 			return false;
 		}
 
-//		if (user_tc_choice == null) {
-//			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
-//			return false;
-//		}
+		//		if (user_tc_choice == null) {
+		//			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
+		//			return false;
+		//		}
 
 		setErrorMessage(null);
 		return true;
@@ -524,6 +541,10 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 	public boolean getUserRuntimeChoice() {
 		return userRuntimeChoice;
+	}
+
+	public boolean getUserCCChoice() {
+		return userCCChoice;
 	}
 
 	public IToolChain getUserCToolChainchoice() {
