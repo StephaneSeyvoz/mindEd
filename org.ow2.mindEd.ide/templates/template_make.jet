@@ -127,7 +127,7 @@ space= $(empty) $(empty)
 # will not be documented and this can lead to broken links. Within MindEd, MIND_ROOT should always be
 # automatically defined. However, for common builds from the terminal, you should define it or at least
 # do a dry run of "mindc" once for MIND_ROOT to be defined for the terminal session. 
-RUNTIME_PATH=$(subst \,/, $(MIND_ROOT))/runtime
+RUNTIME_PATH=$(subst \,/,$(MIND_ROOT))/runtime
 
 binOutputDir=$(confOutputDirVar)/binaries
 docOutputDir=$(confOutputDirVar)/doc
@@ -158,7 +158,7 @@ else
 endif
 
 doc: build_doc
-	$(MINDOC) $(subst $(PATH_SEPARATOR),$(space),$(subst :,$(PATH_SEPARATOR),$(sourcePath))) $(RUNTIME_PATH) -d $(docOutputDir)
+	$(MINDOC) $(sourcePathArg) -S=$(RUNTIME_PATH) -o=$(docOutputDir)
 
 # here we reuse the same flags as the common build ones
 test: build_test
