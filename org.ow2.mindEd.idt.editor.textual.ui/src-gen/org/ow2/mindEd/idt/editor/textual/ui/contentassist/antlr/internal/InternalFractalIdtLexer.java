@@ -13,9 +13,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalFractalIdtLexer extends Lexer {
     public static final int T__68=68;
+    public static final int T__69=69;
     public static final int RULE_MUL_OPERATION=12;
     public static final int RULE_BOOLEAN=4;
-    public static final int T__69=69;
     public static final int T__66=66;
     public static final int RULE_ID=6;
     public static final int T__67=67;

@@ -11,7 +11,6 @@ import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.cdt.ui.CUIPlugin;
 import org.eclipse.cdt.ui.newui.CDTPrefUtil;
 import org.eclipse.cdt.ui.newui.PageLayout;
-import org.eclipse.cdt.ui.newui.UIMessages;
 import org.eclipse.cdt.ui.wizards.IWizardWithMemory;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileInfo;
@@ -24,7 +23,6 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.IPageChangedListener;
 import org.eclipse.jface.dialogs.PageChangedEvent;
 import org.eclipse.jface.preference.PreferenceDialog;
-import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.swt.SWT;
@@ -32,15 +30,13 @@ import org.eclipse.swt.accessibility.AccessibleAdapter;
 import org.eclipse.swt.accessibility.AccessibleEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.MenuItem;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Widget;
@@ -48,7 +44,7 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.MindIdeBuilder;
-import org.ow2.mindEd.ide.core.preferences.PreferenceConstants;
+import org.ow2.mindEd.ide.ui.wizards.MindProjectWizard.LanguageChoice;
 
 /**
  * It's the default page for Fractal MIND Project Wizard.
@@ -61,16 +57,19 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 	// widgets
 	protected Table table;
 	private Label mindconf_label;
+	private Label mindlanguage_label;
 	private Button mindcLoc_button;
 	private Button runtime_checkbox;
-	private Button cc_checkbox;
+	private Button c_radiobutton;
+	private Button cc_radiobutton;
 	private Composite tcs_choice;
 	private Button show_sup;
 	private Label toolchains_label;
 
 	private boolean userRuntimeChoice = true;
-	private boolean userCCChoice = false;
-
+	
+	private LanguageChoice userLanguageChoice = LanguageChoice.NONE;
+	
 	private IToolChain UserCToolChainChoice = null;
 
 	/**
@@ -196,7 +195,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		Label separatorLabel0 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
 		GridData sl0gd = new GridData(GridData.HORIZONTAL_ALIGN_CENTER);
 		// reserve some space to enhance readability
-		sl0gd.verticalSpan = 4;
+		sl0gd.verticalSpan = 1;
 		separatorLabel0.setLayoutData(sl0gd);
 
 		// mind-specific settings label
@@ -220,21 +219,52 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 				userRuntimeChoice = runtime_checkbox.getSelection();
 			}} );
 
-		// C++ checkbox
-		cc_checkbox = new Button(c, SWT.CHECK);
-		cc_checkbox.setText(Messages.MindProjectWizardPage_MindCPP); 
-		cc_checkbox.setFont(parent.getFont());
-		GridData gd1 = new GridData(GridData.FILL_HORIZONTAL);
-		cc_checkbox.setLayoutData(gd1);
-		// default as false
-		cc_checkbox.setSelection(userCCChoice);
-		cc_checkbox.addSelectionListener(new SelectionAdapter() {
+		// Separate parts of the window
+		Label separatorLabel1 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
+		GridData sl1gd = new GridData(SWT.CENTER, SWT.CENTER, false, false);
+		// reserve some space to enhance readability
+		sl1gd.verticalSpan = 1;
+		separatorLabel1.setLayoutData(sl1gd);
+		
+		// C / C++ radio buttons hosted in a RowLayout
+		mindlanguage_label = new Label(c, SWT.NONE);
+		mindlanguage_label.setFont(parent.getFont());
+		mindlanguage_label.setLayoutData(new GridData(GridData.BEGINNING));
+		mindlanguage_label.setText(Messages.MindProjectWizardPage_MindLanguage);
+		
+		Composite languageComposite = new Composite(c, SWT.NULL);
+		GridLayout languageLayout = new GridLayout(2, true);
+		GridData languageLayoutData = new GridData(SWT.CENTER, SWT.CENTER, true, true);
+		languageComposite.setLayout(languageLayout);
+		languageComposite.setLayoutData(languageLayoutData);
+		
+		c_radiobutton = new Button(languageComposite, SWT.RADIO);
+		c_radiobutton.setText(Messages.MindProjectWizardPage_MindC);
+		c_radiobutton.setFont(parent.getFont());
+		
+		cc_radiobutton = new Button(languageComposite, SWT.RADIO);
+		cc_radiobutton.setText(Messages.MindProjectWizardPage_MindCPP);
+		cc_radiobutton.setFont(parent.getFont());
+		
+		c_radiobutton.setSelection(userLanguageChoice == LanguageChoice.C ? true : false);
+		cc_radiobutton.setSelection(userLanguageChoice == LanguageChoice.CC ? true : false);
+		
+		c_radiobutton.addSelectionListener(new SelectionAdapter() {
 			// update configuration on box event
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				userCCChoice = cc_checkbox.getSelection();
+				userLanguageChoice = LanguageChoice.C;
+				setPageComplete(validatePage());
 			}} );
-
+		
+		cc_radiobutton.addSelectionListener(new SelectionAdapter() {
+			// update configuration on box event
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				userLanguageChoice = LanguageChoice.CC;
+				setPageComplete(validatePage());
+			}} );
+		
 		// Configure compiler path preference if not already configured
 		if (!isMindcToolchainConfigured() || !isMindToolchainValid()) {
 			mindcLoc_button = new Button(c, SWT.NONE);
@@ -259,11 +289,11 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		}
 
 		// Separate parts of the window
-		Label separatorLabel1 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
-		GridData sl1gd = new GridData(GridData.HORIZONTAL_ALIGN_CENTER);
+		Label separatorLabel2 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
+		GridData sl2gd = new GridData(GridData.HORIZONTAL_ALIGN_CENTER);
 		// reserve some space to enhance readability
-		sl1gd.verticalSpan = 4;
-		separatorLabel1.setLayoutData(sl1gd);
+		sl2gd.verticalSpan = 1;
+		separatorLabel2.setLayoutData(sl2gd);
 
 		// toolchains choice label
 		toolchains_label = new Label(c, SWT.NONE);
@@ -415,6 +445,11 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_InvalidOrNotConfigured);
 			return false;
 		}
+		
+		if (userLanguageChoice == LanguageChoice.NONE) { 
+			setErrorMessage(Messages.MindProjectWizardPage_LanguageNotSelected);
+			return false;
+		}
 
 		//		if (user_tc_choice == null) {
 		//			setErrorMessage(Messages.MindProjectWizardPage_CNoToolChainSelected);
@@ -543,8 +578,8 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		return userRuntimeChoice;
 	}
 
-	public boolean getUserCCChoice() {
-		return userCCChoice;
+	public LanguageChoice getUserLanguageChoice() {
+		return userLanguageChoice;
 	}
 
 	public IToolChain getUserCToolChainchoice() {

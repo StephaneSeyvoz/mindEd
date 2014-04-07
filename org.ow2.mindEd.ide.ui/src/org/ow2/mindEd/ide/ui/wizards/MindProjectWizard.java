@@ -56,11 +56,14 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 	private MindProjectWizardPage mainPage;
 	private IProject newProject;
 
+	public enum LanguageChoice {
+		NONE, C, CC
+	}
+	
 	public MindProjectWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
-
 
 	@Override
 	public void addPages() {
@@ -147,7 +150,7 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 
 					CDTUtil.initMindProject(newProject, monitor,
 							mainPage.getUserRuntimeChoice(),
-							mainPage.getUserCCChoice(),
+							mainPage.getUserLanguageChoice() == LanguageChoice.CC,
 							mainPage.getUserCToolChainchoice());
 
 					newProject.build(IncrementalProjectBuilder.FULL_BUILD, monitor);

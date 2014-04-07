@@ -101,6 +101,7 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import plugin="org.objectweb.asm"/>
       <import plugin="org.ow2.mindEd.ide.model" version="0.2.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.editors" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.m2e.maven.runtime"/>
       <import plugin="org.eclipse.emf.common.ui"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
@@ -126,8 +127,6 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import plugin="org.junit"/>
       <import plugin="org.hamcrest.core"/>
       <import plugin="org.ow2.mindEd.ide.editor" version="0.2.1" match="greaterOrEqual"/>
-      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.m2e.maven.runtime"/>
    </requires>
 
    <plugin

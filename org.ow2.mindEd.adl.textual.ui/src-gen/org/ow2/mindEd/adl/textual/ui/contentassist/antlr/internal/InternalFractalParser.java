@@ -31983,11 +31983,11 @@ public class InternalFractalParser extends AbstractInternalContentAssistParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred6_InternalFractal() {
+    public final boolean synpred16_InternalFractal() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred6_InternalFractal_fragment(); // can never throw exception
+            synpred16_InternalFractal_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -31997,11 +31997,11 @@ public class InternalFractalParser extends AbstractInternalContentAssistParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred16_InternalFractal() {
+    public final boolean synpred6_InternalFractal() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred16_InternalFractal_fragment(); // can never throw exception
+            synpred6_InternalFractal_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }

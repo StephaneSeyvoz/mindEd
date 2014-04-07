@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.ow2.mindEd.feature_0.8.2.qualifier.jar" id="org.ow2.mindEd.feature" version="0.8.2.qualifier">
+   <feature url="features/org.ow2.mindEd.feature_0.8.3.jar" id="org.ow2.mindEd.feature" version="0.8.3">
       <category name="MindEd"/>
    </feature>
    <category-def name="MindEd" label="MindEd">

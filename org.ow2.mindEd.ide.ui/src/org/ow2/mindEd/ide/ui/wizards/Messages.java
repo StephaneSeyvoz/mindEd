@@ -98,7 +98,10 @@ public class Messages extends NLS {
 	 */
 	public static String MindProjectWizardPage_Toolchains;
 	public static String MindProjectWizardPage_MindRuntime;
+	public static String MindProjectWizardPage_MindLanguage;
+	public static String MindProjectWizardPage_MindC;
 	public static String MindProjectWizardPage_MindCPP;
+	
 	/**
 	 * And those have been imported from CDT (with prefix)
 	 * care about licence issues ?
@@ -120,6 +123,7 @@ public class Messages extends NLS {
 
 	public static String MindProjectWizardPage_CNoToolChainSelected;
 	public static String MindProjectWizardPage_MindToolChain_InvalidOrNotConfigured;
+	public static String MindProjectWizardPage_LanguageNotSelected;
 	public static String MindProjectWizardPage_MindConfig;
 	public static String MindProjectWizardPage_MindcLocation;
 	public static String MindInterfaceWizardPage_warning_LowerCaseTypeNameDiscouraged_Convention;

@@ -11044,11 +11044,11 @@ public class InternalFractalParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred37_InternalFractal() {
+    public final boolean synpred56_InternalFractal() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred37_InternalFractal_fragment(); // can never throw exception
+            synpred56_InternalFractal_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -11058,11 +11058,11 @@ public class InternalFractalParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred56_InternalFractal() {
+    public final boolean synpred37_InternalFractal() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred56_InternalFractal_fragment(); // can never throw exception
+            synpred37_InternalFractal_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
