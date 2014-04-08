@@ -28,12 +28,14 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.ow2.mindEd.ide.core.impl.CDTUtil;
 import org.ow2.mindEd.ide.core.template.TemplateCompositeADL;
 import org.ow2.mindEd.ide.core.template.TemplateITF;
 import org.ow2.mindEd.ide.core.template.TemplatePrimitiveADL;
 import org.ow2.mindEd.ide.core.template.TemplatePrimitiveC;
+import org.ow2.mindEd.ide.core.template.TemplatePrimitiveCC;
 import org.ow2.mindEd.ide.core.template.TemplateTypeADL;
 import org.ow2.mindEd.ide.model.ComponentKind;
 import org.ow2.mindEd.ide.model.MindAdl;
@@ -471,8 +473,20 @@ public class MindIdeCore {
 		createCTemplate(MindIdeCore.getResource(adl).getParent(), componentName, adl.getQualifiedName(), monitor);
 	}
 	
+	static public void createCCTemplate(MindPackage adl, String qn, String componentName,
+			IProgressMonitor monitor)
+			throws CoreException {		
+		createCCTemplate(MindIdeCore.getResource(adl), componentName, qn, monitor);
+	}
+	
+	static public void createCCTemplate(MindAdl adl, String componentName,
+			IProgressMonitor monitor)
+			throws CoreException {
+		createCCTemplate(MindIdeCore.getResource(adl).getParent(), componentName, adl.getQualifiedName(), monitor);
+	}
+	
 	/**
-	 * Create a file .c with a template.
+	 * Create a .c file from a template.
 	 * 
 	 * @param container where put the file c
 	 * @param componentName the componant of the adl or the name of file c
@@ -498,7 +512,33 @@ public class MindIdeCore {
 	}
 	
 	/**
-	 * Create a file .c with a template.
+	 * Create a .cpp file from a template.
+	 * 
+	 * @param container where put the file c
+	 * @param componentName the componant of the adl or the name of file c
+	 * @param qn reference to qualified name of the component
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	static public void createCCTemplate(IContainer container, String componentName, String qn,
+			IProgressMonitor monitor)
+			throws CoreException {
+		String ccfileName = componentName;
+		final IFile ccfile = container.getFile(new Path(ccfileName + ".cpp")); //$NON-NLS-1$
+		try {
+			InputStream stream = openCCContentStream(qn);
+			if (ccfile.exists()) {
+				//file.setContents(stream, true, true, monitor);
+			} else {
+				ccfile.create(stream, true, monitor);
+			}
+			stream.close();
+		} catch (IOException e) {
+		}
+	}
+	
+	/**
+	 * Create a .c file from a template.
 	 * 
 	 * @param f file of the new CFile to create
 	 * @param monitor
@@ -509,7 +549,7 @@ public class MindIdeCore {
 		if (p == null)
 			throw new MindException("The project '"+f.getProject().getName()+"' isn't a mind project.");
 		if (!f.getName().endsWith(".c"))
-			throw new MindException("Bad extendsion for '"+f.getName()+"'");
+			throw new MindException("Bad extension for '"+f.getName()+"'");
 		String cn = f.getName().substring(0, f.getName().length() - 2);
 		if (cn.contains(".")) {
 			throw new MindException("The component name '"+f.getName()+"' contains '.'.");
@@ -528,6 +568,44 @@ public class MindIdeCore {
 				}
 				qn.append(cn);
 				createCTemplate(f.getParent(), cn, qn.toString(), monitor);
+				return;
+			}
+		}
+		throw new MindException("Cannot found the root source for '"+mindItfPath.toPortableString()+"'.");
+		
+	}
+	
+	/**
+	 * Create a .cpp file from a template.
+	 * 
+	 * @param f file of the new CPPFile to create
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	static public void createCCTemplate(IFile f, IProgressMonitor monitor) throws MindException, CoreException {
+		MindProject p = get(f.getProject());
+		if (p == null)
+			throw new MindException("The project '"+f.getProject().getName()+"' isn't a mind project.");
+		if (!f.getName().endsWith(".cpp"))
+			throw new MindException("Bad extension for '"+f.getName()+"'");
+		String cn = f.getName().substring(0, f.getName().length() - 2);
+		if (cn.contains(".")) {
+			throw new MindException("The component name '"+f.getName()+"' contains '.'.");
+		}
+		IPath mindItfPath = f.getFullPath();
+		
+		// search the goot root source for compute package
+		for (MindRootSrc rs : p.getRootsrcs()) {
+			IFolder rsContainer = getResource(rs);
+			if (rsContainer.getFullPath().isPrefixOf(mindItfPath)) {
+				StringBuilder qn = new StringBuilder();
+				IPath packagePath = f.getParent().getFullPath().removeFirstSegments(rsContainer.getFullPath().segmentCount());
+				for (String s : packagePath.segments()) {
+					qn.append(s);
+					qn.append('.');
+				}
+				qn.append(cn);
+				createCCTemplate(f.getParent(), cn, qn.toString(), monitor);
 				return;
 			}
 		}
@@ -601,6 +679,10 @@ public class MindIdeCore {
 	
 	static private InputStream openCContentStream(String qn) {
 		return new ByteArrayInputStream(new TemplatePrimitiveC().generate(qn).getBytes());
+	}
+	
+	static private InputStream openCCContentStream(String qn) {
+		return new ByteArrayInputStream(new TemplatePrimitiveCC().generate(qn).getBytes());
 	}
 	
 	static private InputStream openITFContentStream(String qn) {
@@ -714,8 +796,25 @@ static public void createADL(IFile f, IProgressMonitor monitor, ComponentKind ki
 		adl.setKind(kind);
 		adl.setPackage(p);
 		if (kind == ComponentKind.PRIMITIVE) {
-			MindIdeCore.createCTemplate(container, 
-					componentName, adl.getQualifiedName(), monitor);
+			IProject hostingProject = getProjectFromMindAdl(adl);
+			if (hostingProject != null) {
+				try {
+					// Is project of C++ nature ?
+					if (CDTUtil.getCCNature(hostingProject))
+						MindIdeCore.createCCTemplate(container, 
+								componentName, adl.getQualifiedName(), monitor);
+					else 
+						// C by default
+						MindIdeCore.createCTemplate(container, 
+								componentName, adl.getQualifiedName(), monitor);
+				} catch (CoreException e) {
+					// We couldn't obtain the project's nature
+					// Use default extension, by doing nothing
+				}
+			} else
+				// couldn't resolve parent project (should never happen)
+				MindIdeCore.createCTemplate(container, 
+						componentName, adl.getQualifiedName(), monitor);
 		}
 		
 		InputStream stream = openContentStream(adl);
@@ -726,13 +825,49 @@ static public void createADL(IFile f, IProgressMonitor monitor, ComponentKind ki
 		}
 	}
 	
+	/**
+	 * Obtain the IProject hosting the MindAdl.
+	 * 
+	 * @param a the MindAdl to obtain the project from
+	 * @return the generic IProject, or null if not found
+	 */
+	private static IProject getProjectFromMindAdl(MindAdl a) {
+		EObject aContainer;
+		EObject aPackageContainer;
+		
+		aContainer = a.eContainer();
+		if (aContainer != null && aContainer instanceof MindPackage) {
+			aPackageContainer = aContainer.eContainer();
+			if (aPackageContainer != null && aPackageContainer instanceof MindRootSrc) {
+				MindLibOrProject mProj = (MindProject) ((MindRootSrc) aPackageContainer).getProject();
+				if (mProj instanceof MindProject)
+					return ((MindProject) mProj).getProject();
+			}
+		}
+		
+		return null;
+	}
+	
 	private static InputStream openContentStream(MindAdl a) {
 		
 		String contents = ""; //$NON-NLS-1$
+		String srcExtension = ".c"; 
+		
+		IProject hostingProject = getProjectFromMindAdl(a);
+		if (hostingProject != null) {
+			try {
+				// Is project of C++ nature ?
+				if (CDTUtil.getCCNature(hostingProject))
+					srcExtension = ".cpp";
+			} catch (CoreException e) {
+				// We couldn't obtain the project's nature
+				// Use default extension, by doing nothing
+			}
+		}
 		
 		switch (a.getKind()) {
 		case PRIMITIVE:
-			contents = new TemplatePrimitiveADL().generate(a);
+			contents = new TemplatePrimitiveADL().generate(a, srcExtension);
 			break;
 		case TYPE:
 			contents = new TemplateTypeADL().generate(a);

@@ -1,13 +1,14 @@
-<%@ jet package="org.ow2.mindEd.ide.core.template" class="TemplatePrimitiveADL" skeleton="mindadl2.skeleton" %>
+<%@ jet package="org.ow2.mindEd.ide.core.template" class="TemplatePrimitiveADL" skeleton="mindprimitive.skeleton" %>
 <%
  String qualifiedName = adl.getQualifiedName();
- String cfile = adl.getName();
+ String srcFile = adl.getName();
 
 %>
 primitive <%=qualifiedName%> {
- 
+ 	
 <%for(String l : contains) {%>
 	<%=l%>
 <%}%>
-  	source <%=cfile%>.c;
+	// TODO Auto-generated component implementation
+	source <%=srcFile%>.<%=srcExtension%>;
 }

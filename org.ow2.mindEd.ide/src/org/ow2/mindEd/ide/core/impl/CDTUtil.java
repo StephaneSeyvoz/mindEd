@@ -44,6 +44,7 @@ import org.eclipse.cdt.utils.envvar.StorableEnvironment;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -273,9 +274,9 @@ public class CDTUtil {
 
 	public static void createCSourceFolder(final IFolder f)
 			throws CoreException {
-		
+
 		if (f == null) return; // Defensive programming: don't do the job if there is nothing to configure
-		
+
 		Job r = new CreateCSourceFolderJob(f);
 		r.setRule(f.getWorkspace().getRoot());
 		r.schedule();
@@ -342,7 +343,7 @@ public class CDTUtil {
 		IFolder targetFolder = newProject.getFolder("target"); //$NON-NLS-1$
 		if (!targetFolder.exists())
 			targetFolder.create(true, true, monitor);
-		
+
 		// Make the folder tree ready - Should both work for simple keys such as "src" or more complicated ones like "src/main/mind"
 		String[] splitDefaultSrcPath = Messages.CDTUtil_DefaultSourcePath.split("/"); //$NON-NLS-1$
 		String currSubPath = null;
@@ -355,10 +356,10 @@ public class CDTUtil {
 			if (!currSubFolder.exists())
 				currSubFolder.create(true, true, monitor);
 		}
-		
+
 		// is now always ready thanks to the previous loop
 		IFolder srcFolder = newProject.getFolder(Messages.CDTUtil_DefaultSourcePath);
-		
+
 		// repeat same task for tests
 		String[] splitDefaultTestSrcPath = Messages.CDTUtil_DefaultTestSourcePath.split("/"); //$NON-NLS-1$
 		currSubPath = null;
@@ -371,10 +372,10 @@ public class CDTUtil {
 			if (!currSubFolder.exists())
 				currSubFolder.create(true, true, monitor);
 		}
-		
+
 		// is now always ready thanks to the previous loop
 		IFolder testFolder = newProject.getFolder(Messages.CDTUtil_DefaultTestSourcePath);
-		
+
 		// Link the runtime folder to the compiler runtime from the Mindc location variable (in preference store)
 		IFolder runtimeFolder = null;
 		String mindLocation = null;
@@ -440,13 +441,13 @@ public class CDTUtil {
 
 			// It's make (not eclipse)
 			bld.setManagedBuildOn(false);
-			
+
 			// For the time being we force Make, we use ${ConfigName}
 			// for the Makefile to use the good ${ConfigName}.properties file according to the active Configuration,
 			// and the usual "all" target
 			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, Messages.CDTUtil_MakeConfigAllArgument);
 			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_CLEAN, Messages.CDTUtil_MakeConfigCleanArgument);
-			
+
 			// The makefile is in the project root
 			bld.setBuildPath("${project_loc}"); //$NON-NLS-1$
 
@@ -474,7 +475,7 @@ public class CDTUtil {
 		// ADD the user test source entry ("src/test/mind")
 		ICSourceEntry testEntry = new CSourceEntry(testFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
 		sourceEntries.add(testEntry);
-		
+
 		// ADD the source entry 'runtime'
 		if (mindLocation != null) {
 			ICSourceEntry runtimeEntry = new CSourceEntry(runtimeFolder, null, ICSettingEntry.VALUE_WORKSPACE_PATH);
@@ -508,7 +509,7 @@ public class CDTUtil {
 		// Optionally C++ nature
 		if (isCPP)
 			CCProjectNature.addCCNature(newProject, monitor);
-		
+
 		// Add the runtime if needed
 		// Only do so after Mind nature is enabled, in order for things to be ready to configure
 		try {
@@ -540,5 +541,16 @@ public class CDTUtil {
 			throws UnsupportedEncodingException, CoreException {
 		return (new TemplateMake().generate(newProject2)).getBytes(newProject2
 				.getDefaultCharset());
+	}
+
+	/**
+	 * Returns true if project has C++ nature, false otherwise.
+	 * Inspired from @see CCProjectNature and @see CProjectNature. 
+	 * 
+	 * @return true if project has C++ nature, false otherwise.
+	 * @throws CoreException 
+	 */
+	public static boolean getCCNature(IProject project) throws CoreException { 
+		return project.hasNature(CCProjectNature.CC_NATURE_ID);
 	}
 }

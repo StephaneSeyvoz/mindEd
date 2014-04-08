@@ -2,20 +2,20 @@
 
 package org.ow2.mindEd.ide.core.template;
 
-public class TemplateITFADL
+public class TemplatePrimitiveCC
  {
   protected static String nl;
-  public static synchronized TemplateITFADL create(String lineSeparator)
+  public static synchronized TemplatePrimitiveCC create(String lineSeparator)
   {
     nl = lineSeparator;
-    TemplateITFADL result = new TemplateITFADL();
+    TemplatePrimitiveCC result = new TemplatePrimitiveCC();
     nl = null;
     return result;
   }
 
   public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
-  protected final String TEXT_1 = NL + "interface ";
-  protected final String TEXT_2 = " {" + NL + "\t" + NL + "}";
+  protected final String TEXT_1 = NL + "// -----------------------------------------------------------------------------" + NL + "// Implementation of the primitive ";
+  protected final String TEXT_2 = "." + NL + "// -----------------------------------------------------------------------------" + NL + NL;
   protected final String TEXT_3 = NL;
 
    public String generate(String qn)

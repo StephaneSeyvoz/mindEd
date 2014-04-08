@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -17,6 +18,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
@@ -28,12 +30,15 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.MindModel;
+import org.ow2.mindEd.ide.core.impl.CDTUtil;
 import org.ow2.mindEd.ide.core.template.TemplateCompositeADL;
 import org.ow2.mindEd.ide.core.template.TemplatePrimitiveADL;
 import org.ow2.mindEd.ide.core.template.TemplateTypeADL;
 import org.ow2.mindEd.ide.model.ComponentKind;
 import org.ow2.mindEd.ide.model.MindAdl;
+import org.ow2.mindEd.ide.model.MindLibOrProject;
 import org.ow2.mindEd.ide.model.MindPackage;
+import org.ow2.mindEd.ide.model.MindProject;
 import org.ow2.mindEd.ide.model.MindRootSrc;
 import org.ow2.mindEd.ide.model.MindideFactory;
 import org.ow2.mindEd.ide.ui.Activator;
@@ -141,8 +146,25 @@ public class ComponentNewWizard extends Wizard implements INewWizard {
 		adl.setKind(kind);
 		adl.setPackage(p);
 		if (kind == ComponentKind.PRIMITIVE) {
-			MindIdeCore.createCTemplate(container, 
-					componentName, adl.getQualifiedName(), monitor);
+			IProject hostingProject = getProjectFromMindAdl(adl);
+			if (hostingProject != null) {
+				try {
+					// Is project of C++ nature ?
+					if (CDTUtil.getCCNature(hostingProject))
+						MindIdeCore.createCCTemplate(container, 
+								componentName, adl.getQualifiedName(), monitor);
+					else 
+						// C by default
+						MindIdeCore.createCTemplate(container, 
+								componentName, adl.getQualifiedName(), monitor);
+				} catch (CoreException e) {
+					// We couldn't obtain the project's nature
+					// Use default extension, by doing nothing
+				}
+			} else
+				// couldn't resolve parent project (should never happen)
+				MindIdeCore.createCTemplate(container, 
+						componentName, adl.getQualifiedName(), monitor);
 		}
 		InputStream stream = openContentStream(adl);
 		if (file.exists()) {
@@ -174,17 +196,52 @@ public class ComponentNewWizard extends Wizard implements INewWizard {
 	}
 
 	/**
+	 * Obtain the IProject hosting the MindAdl.
+	 * 
+	 * @param a the MindAdl to obtain the project from
+	 * @return the generic IProject, or null if not found
+	 */
+	private IProject getProjectFromMindAdl(MindAdl a) {
+		EObject aContainer;
+		EObject aPackageContainer;
+		
+		aContainer = a.eContainer();
+		if (aContainer != null && aContainer instanceof MindPackage) {
+			aPackageContainer = aContainer.eContainer();
+			if (aPackageContainer != null && aPackageContainer instanceof MindRootSrc) {
+				MindLibOrProject mProj = (MindProject) ((MindRootSrc) aPackageContainer).getProject();
+				if (mProj instanceof MindProject)
+					return ((MindProject) mProj).getProject();
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
 	 * We will initialize file contents with a sample text.
 	 * @param a 
 	 */
-
 	private InputStream openContentStream(MindAdl a) {
 		
 		String contents = ""; //$NON-NLS-1$
+		String srcExtension = "c"; 
+		
+		IProject hostingProject = getProjectFromMindAdl(a);
+		if (hostingProject != null) {
+			try {
+				// Is project of C++ nature ?
+				if (CDTUtil.getCCNature(hostingProject))
+					srcExtension = "cpp";
+			} catch (CoreException e) {
+				// We couldn't obtain the project's nature
+				// Use default extension, by doing nothing
+			}
+		}
 		
 		switch (a.getKind()) {
 		case PRIMITIVE:
-			contents = new TemplatePrimitiveADL().generate(a);
+			contents = new TemplatePrimitiveADL().generate(a, srcExtension);
 			break;
 		case TYPE:
 			contents = new TemplateTypeADL().generate(a);

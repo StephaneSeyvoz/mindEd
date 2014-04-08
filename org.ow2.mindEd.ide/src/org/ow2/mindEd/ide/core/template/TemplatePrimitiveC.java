@@ -15,7 +15,7 @@ public class TemplatePrimitiveC
 
   public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
   protected final String TEXT_1 = NL + "// -----------------------------------------------------------------------------" + NL + "// Implementation of the primitive ";
-  protected final String TEXT_2 = "." + NL + "// -----------------------------------------------------------------------------" + NL;
+  protected final String TEXT_2 = "." + NL + "// -----------------------------------------------------------------------------" + NL + NL;
   protected final String TEXT_3 = NL;
 
    public String generate(String qn)
