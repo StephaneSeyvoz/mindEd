@@ -279,7 +279,7 @@ terminal DOUBLE_RIGHT_CURLY_BRACKETS:
 ;
 
 terminal SL :
-	(('\\')|('\\\\')|('/'));
+	'/';
 
 //enum Role :
 //	provides="provides" | requires="requires";

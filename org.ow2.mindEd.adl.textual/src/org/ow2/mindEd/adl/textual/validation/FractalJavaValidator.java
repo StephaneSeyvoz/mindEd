@@ -1,26 +1,36 @@
 package org.ow2.mindEd.adl.textual.validation;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.Check;
 import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
 import org.ow2.mindEd.adl.textual.fractal.CompositeDefinition;
 import org.ow2.mindEd.adl.textual.fractal.CompositeElement;
+import org.ow2.mindEd.adl.textual.fractal.FileC;
 import org.ow2.mindEd.adl.textual.fractal.FractalPackage;
 import org.ow2.mindEd.adl.textual.fractal.HostedInterfaceDefinition;
 import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
@@ -28,7 +38,13 @@ import org.ow2.mindEd.adl.textual.fractal.PrimitiveElement;
 import org.ow2.mindEd.adl.textual.fractal.SubComponentDefinition;
 import org.ow2.mindEd.adl.textual.fractal.TypeDefinition;
 import org.ow2.mindEd.adl.textual.fractal.impl.AdlDefinitionImpl;
+import org.ow2.mindEd.adl.textual.fractal.impl.FileCImpl;
+import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.ModelToProjectUtil;
+import org.ow2.mindEd.ide.model.MindPackage;
+import org.ow2.mindEd.ide.model.MindPathEntry;
+import org.ow2.mindEd.ide.model.MindPathKind;
+import org.ow2.mindEd.ide.model.MindProject;
 
 import com.google.inject.Inject;
 
@@ -43,7 +59,8 @@ public class FractalJavaValidator extends AbstractFractalJavaValidator {
 	public static final String DUPLICATE_TEMPLATE_SPECIFIER_NAME = "org.ow2.fractal.mind.xtext.validation.duplicate_template_specifier_name";
 	public static final String DUPLICATE_INTERFACE_NAME = "org.ow2.fractal.mind.xtext.validation.duplicate_interface_name";
 	public static final String UNKNOWN_INTERFACE = "org.ow2.fractal.mind.xtext.validation.unknown_interface";
-	public static final String UNKNOWN_SOURCE_FILE = "org.ow2.fractal.mind.xtext.validation.unknown_source";
+	public static final String UNKNOWN_RELATIVE_SOURCE_FILE = "org.ow2.fractal.mind.xtext.validation.unknown_relative_source";
+	public static final String UNKNOWN_ABSOLUTE_SOURCE_FILE = "org.ow2.fractal.mind.xtext.validation.unknown_absolute_source";
 
 	public final static String WRONG_NAME = "org.ow2.mindEd.adl.editor.textual.validation.wrong_name";
 	public final static String NOT_IN_SRC_PATH = "org.ow2.mindEd.adl.editor.textual.validation.not_in_src_path";
@@ -116,9 +133,9 @@ public class FractalJavaValidator extends AbstractFractalJavaValidator {
 	 */
 	@Check
 	public void checkDefinitionNameIsUnique(ArchitectureDefinition archDef) {
-		
+
 		//System.out.println("[SSZ Dirty Debug] FractalJavaValidator#checkDefinitionNameIsUnique - Base archDef: " + archDef.getName());
-		
+
 		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider.getResourceDescriptions(archDef.eResource());
 		IResourceDescription resourceDescription = resourceDescriptions.getResourceDescription(archDef.eResource().getURI());
 		for (IContainer c : containerManager.getVisibleContainers(resourceDescription, resourceDescriptions)) {
@@ -160,6 +177,119 @@ public class FractalJavaValidator extends AbstractFractalJavaValidator {
 		else if (container instanceof TypeDefinition)
 			checkHostedInterfaceIsUniqueInType((TypeDefinition) container, itfDef);
 		// else... nothing
+	}
+
+	/**
+	 * Checks if the specified source file exists at the indicated place.
+	 * Inspired from navigation class @see FractalHyperlink.
+	 * 
+	 * @param fileC The Xtext FileC element following the "source" keyword.
+	 */
+	@Check
+	public void checkSourceFileExists(FileC fileC) {
+
+		// Used to search host ArchitectureDefinition
+		EObject eObject = fileC;
+
+		// Used to get the current package
+		XtextResource resource = (XtextResource) fileC.eResource();
+
+		// File info
+		String fileName = fileC.getName();
+		String directory = fileC.getDirectory();
+		IFile file = null;
+
+		// No directory
+		if (directory == null || directory.equals("")){
+			// Find the file according to the host component package
+			// Here the resource is the ADL from where the link was called
+			MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
+			if (pack != null) {
+				IFolder f = MindIdeCore.getResource(pack);
+				file = f.getFile(fileName);
+			}
+		} else {
+			// Absolute: we need to search from the root of the source-path for every source-path entry
+			if (directory.startsWith("/")) {
+				//					uri = URI.createPlatformResourceURI(f.getPath(), true);
+				//					MindFile mf = ModelToProjectUtil.INSTANCE.getCurrentMindFile(uri);
+
+				ArchitectureDefinition parentAdl = null;
+				// parent adl is...?
+				while (!(eObject instanceof ArchitectureDefinition))
+					eObject = eObject.eContainer();
+				parentAdl = (ArchitectureDefinition) eObject;
+
+				MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(parentAdl.eResource().getURI());
+
+				String projectPath = adlHostProject.getProject().getFullPath().toString();
+
+				// for all path entries, try to locate the C file
+				EList<MindPathEntry> path = adlHostProject.getMindpathentries();
+				URI cFileURI = null;
+				for (MindPathEntry currentPath : path)
+					if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
+
+						// let's use some defensive programming: it should always be false anyway, BUT... better check.
+						if (!currentPath.getName().startsWith("/" + adlHostProject.getName() + "/"))
+							continue;
+
+						// path entries names are in such format: /project_name/currentPath, so we remove the first substring "/project_name", and keep "/currPath"
+						String shortCurrPath = currentPath.getName().substring(adlHostProject.getName().length() + 1);
+						cFileURI = URI.createPlatformResourceURI(projectPath + shortCurrPath + directory + fileName, true);
+
+						// check file existence
+						file = ModelToProjectUtil.INSTANCE.getIFile(cFileURI);
+						if ((file != null) && file.exists()) // found !
+							break;
+					}
+			} else {
+				// Relative
+
+				// handle host definition path for resource resolution
+				File f = new File(directory, fileName);
+
+				// Find the file according to the host component package  
+				// Here the resource is the ADL from where the link was called
+				MindPackage hostComponentPackage = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
+				if (hostComponentPackage != null) {
+					IFolder compFolder = MindIdeCore.getResource(hostComponentPackage);
+
+					// Don't forget we want to locate the complete folder "container" : add the "/"
+					URI compFolderURI = URI.createPlatformResourceURI(compFolder.getFullPath().toString() + "/", true);
+
+					URI currentRelativeURI = URI.createFileURI(f.getPath());
+					URI resolvedFinalURI = currentRelativeURI.resolve(compFolderURI);
+
+					file = ModelToProjectUtil.INSTANCE.getIFile(resolvedFinalURI);
+				}
+			}
+		}
+
+		if (directory != null && directory.startsWith("/")) {
+			// Get the file URI
+			// If file doesn't exist, raise an error with a code so we can attach a quickfix
+			if (file == null || !(file.exists())) {
+				error("Source file with absolute path does not exist",
+						FractalPackage.Literals.FILE_C__NAME,
+						FractalJavaValidator.UNKNOWN_ABSOLUTE_SOURCE_FILE,
+						(fileC.getDirectory() == null ? "" : fileC.getDirectory()),
+						(fileC.getName() == null ? "" : fileC.getName()));
+				return;
+			}
+
+		} else {
+			if (file == null || !(file.exists())) {
+				error("Source file does not exist",
+						FractalPackage.Literals.FILE_C__NAME,
+						FractalJavaValidator.UNKNOWN_RELATIVE_SOURCE_FILE,
+						(fileC.getDirectory() == null ? "" : fileC.getDirectory()),
+						(fileC.getName() == null ? "" : fileC.getName()));
+				return;
+			}
+		}
+
+
 	}
 
 	private void checkHostedInterfaceIsUniqueInPrimitive(PrimitiveDefinition compDef, HostedInterfaceDefinition itfDef) {

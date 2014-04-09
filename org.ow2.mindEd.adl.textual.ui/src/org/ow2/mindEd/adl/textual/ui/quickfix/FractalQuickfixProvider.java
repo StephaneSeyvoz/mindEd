@@ -1,25 +1,48 @@
 
 package org.ow2.mindEd.adl.textual.ui.quickfix;
 
+import java.io.File;
+
+import org.eclipse.core.filesystem.URIUtil;
+import org.eclipse.core.internal.resources.Folder;
+import org.eclipse.core.internal.resources.Workspace;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
+import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
+import org.ow2.mindEd.adl.textual.fractal.FileC;
 import org.ow2.mindEd.adl.textual.fractal.FormalArgument;
 import org.ow2.mindEd.adl.textual.fractal.HostedInterfaceDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ImportDefinition;
 import org.ow2.mindEd.adl.textual.fractal.TemplateSpecifier;
 import org.ow2.mindEd.adl.textual.fractal.impl.ArchitectureDefinitionImpl;
+import org.ow2.mindEd.adl.textual.fractal.impl.FileCImpl;
 import org.ow2.mindEd.adl.textual.validation.FractalJavaValidator;
 /*
 	import org.eclipse.xtext.parsetree.AbstractNode;
 	import org.eclipse.xtext.parsetree.CompositeNode;
 	import org.eclipse.xtext.parsetree.NodeUtil;
  */
+import org.ow2.mindEd.ide.core.MindIdeCore;
+import org.ow2.mindEd.ide.core.ModelToProjectUtil;
+import org.ow2.mindEd.ide.core.impl.CDTUtil;
+import org.ow2.mindEd.ide.model.MindLibOrProject;
+import org.ow2.mindEd.ide.model.MindPackage;
+import org.ow2.mindEd.ide.model.MindProject;
 
 public class FractalQuickfixProvider extends DefaultQuickfixProvider {
 
@@ -58,18 +81,18 @@ public class FractalQuickfixProvider extends DefaultQuickfixProvider {
 				new ISemanticModification() {
 					public void apply(EObject element,
 							IModificationContext context) throws Exception {
-						
+
 						if (element instanceof ArchitectureDefinitionImpl) {
-							
+
 							ArchitectureDefinitionImpl archDefImpl = (ArchitectureDefinitionImpl) element;							
 							String expectedName = FractalJavaValidator.getExpectedComponentName(archDefImpl);							
 							archDefImpl.setName(expectedName);
 						}
-						
+
 					}
 				});
 	}
-	
+
 	//	@Fix(MyJavaValidator.INVALID_NAME)
 	//	public void capitalizeName(final Issue issue, IssueResolutionAcceptor acceptor) {
 	//		acceptor.accept(issue, "Capitalize name", "Capitalize the name.", "upcase.png", new IModification() {
@@ -118,7 +141,7 @@ public class FractalQuickfixProvider extends DefaultQuickfixProvider {
 			}
 		});
 	}
-	
+
 	/**
 	 * Rename, for example : 
 	 * 		toto -> toto1
@@ -176,38 +199,38 @@ public class FractalQuickfixProvider extends DefaultQuickfixProvider {
 	}	
 
 
-//	@Fix(FractalJavaValidator.UNKNOWN_INTERFACE)
-//	public void createInterface(final Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 
-//				"Create interface " + issue.getData()[0],
-//				"Create a new interface definition file " 
-//						+ issue.getData()[0]
-//								+ " in package " 
-//								+ issue.getData()[1] 
-//										+ ".",
-//										null,
-//										new ISemanticModification() {
-//			@Override
-//			public void apply(EObject element,
-//					IModificationContext context) throws Exception {
-//
-//				if (element instanceof HostedInterfaceDefinition){
-//
-//					HostedInterfaceDefinition itf = (HostedInterfaceDefinition) element;
-//					AdlDefinitionImpl adlDefinition = (AdlDefinitionImpl) FractalUtil.getArchitecureDefinitionFromChild(itf).eContainer();
-//
-//					URI uri = adlDefinition.eDirectResource().getURI();
-//					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);
-//
-//					MindIdeCore.createITFTemplate(
-//							pack,
-//							itf.getSignature().getName,
-//							adlDefinition.getName(),
-//							null);
-//				}
-//			}
-//		});
-//	}
+	//	@Fix(FractalJavaValidator.UNKNOWN_INTERFACE)
+	//	public void createInterface(final Issue issue, IssueResolutionAcceptor acceptor) {
+	//		acceptor.accept(issue, 
+	//				"Create interface " + issue.getData()[0],
+	//				"Create a new interface definition file " 
+	//						+ issue.getData()[0]
+	//								+ " in package " 
+	//								+ issue.getData()[1] 
+	//										+ ".",
+	//										null,
+	//										new ISemanticModification() {
+	//			@Override
+	//			public void apply(EObject element,
+	//					IModificationContext context) throws Exception {
+	//
+	//				if (element instanceof HostedInterfaceDefinition){
+	//
+	//					HostedInterfaceDefinition itf = (HostedInterfaceDefinition) element;
+	//					AdlDefinitionImpl adlDefinition = (AdlDefinitionImpl) FractalUtil.getArchitecureDefinitionFromChild(itf).eContainer();
+	//
+	//					URI uri = adlDefinition.eDirectResource().getURI();
+	//					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);
+	//
+	//					MindIdeCore.createITFTemplate(
+	//							pack,
+	//							itf.getSignature().getName,
+	//							adlDefinition.getName(),
+	//							null);
+	//				}
+	//			}
+	//		});
+	//	}
 
 
 	// SSZ: Quick dirty fix migrating from 1.0 to 2.0 ; TODO: check what should be done !
@@ -252,39 +275,142 @@ public class FractalQuickfixProvider extends DefaultQuickfixProvider {
 
 		}*/
 
-//	@Fix(FractalJavaValidator.UNKNOWN_SOURCE_FILE)
-//	public void createSourceFile(final Issue issue,
-//			IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 
-//				"Create source " + issue.getData()[0],
-//				"Create the associated source file " 
-//						+ issue.getData()[0] + ".",
-//						null,
-//						new ISemanticModification() {
-//			@Override
-//			public void apply(EObject element,
-//					IModificationContext context) throws Exception {
-//
-//				if (element instanceof ImplementationDefinition){
-//
-//					ImplementationDefinition impl = (ImplementationDefinitionImpl) element;
-//					AdlDefinitionImpl adlDefinition = (AdlDefinitionImpl) FractalUtil.getArchitecureDefinitionFromChild(impl).eContainer();
-//
-//					URI uri = adlDefinition.eDirectResource().getURI();
-//					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);
-//
-//					// we remove the .c extension for being compliant with the MindIdeCore C template creator
-//					String sourceFileName = issue.getData()[0];
-//					int i = sourceFileName.lastIndexOf(".");
-//					sourceFileName = sourceFileName.substring(0, i);
-//
-//					MindIdeCore.createCTemplate(
-//							pack,
-//							adlDefinition.getArchitectureDefinition().getName(),
-//							sourceFileName,
-//							null);
-//				}
-//			}
-//		});
-//	}
+	@Fix(FractalJavaValidator.UNKNOWN_RELATIVE_SOURCE_FILE)
+	public void createSourceOrDataRelativeFile(final Issue issue,
+			IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 
+				"Create source " + issue.getData()[0] + issue.getData()[1],
+				"Create the associated source file " + issue.getData()[0] + issue.getData()[1],
+						null,
+						new ISemanticModification() {
+			public void apply(EObject element,
+					IModificationContext context) throws Exception {
+				
+				if (element instanceof FileC){
+
+					FileC fileC = (FileC) element;
+
+					// used to find parent ArchitectureDefinition
+					EObject eObject = fileC;
+
+					// Find host ArchitectureDefinition
+					ArchitectureDefinition parentAdl = null;
+					// parent adl is...?
+					while (!(eObject instanceof ArchitectureDefinition))
+						eObject = eObject.eContainer();
+					parentAdl = (ArchitectureDefinition) eObject;
+
+					// We need the package C template serialization (top comment)
+					URI uri = parentAdl.eResource().getURI();
+					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);
+
+					// We need the IProject to know if we should use the C or C++ template
+					MindLibOrProject libOrProj = pack.getRootsrc().getProject();
+					IProject currProj = null;
+					if (libOrProj instanceof MindProject)
+						currProj = ((MindProject) libOrProj).getProject(); 
+
+					// we remove the .c extension to be compliant with the MindIdeCore C template creator
+					String sourceFileName = issue.getData()[1];
+					int i = sourceFileName.lastIndexOf(".");
+					
+					String extension = sourceFileName.substring(i, sourceFileName.length());
+					
+					String sourceFileNameNoExt = sourceFileName.substring(0, i);
+
+					if (CDTUtil.getCCNature(currProj))
+						MindIdeCore.createCCTemplate(
+								pack,
+								parentAdl.getName(),
+								sourceFileNameNoExt,
+								extension,
+								null);
+					else
+						MindIdeCore.createCTemplate(
+								pack,
+								parentAdl.getName(),
+								sourceFileNameNoExt,
+								extension,
+								null);
+					
+					// Make the framework believe we made a modification so it updates the ADL editor
+					IXtextDocument xtextDocument = context.getXtextDocument();
+					xtextDocument.replace(issue.getOffset(), issue.getLength(), sourceFileName);
+				}
+			}
+		});
+	}
+	
+	@Fix(FractalJavaValidator.UNKNOWN_ABSOLUTE_SOURCE_FILE)
+	public void createSourceOrDataAbsoluteFile(final Issue issue,
+			IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 
+				"Create source " + issue.getData()[0] + issue.getData()[1] + " in current source path",
+				"Create the associated source file " + issue.getData()[0] + issue.getData()[1] + " in current source path",
+						null,
+						new ISemanticModification() {
+			public void apply(EObject element,
+					IModificationContext context) throws Exception {
+				
+				if (element instanceof FileC){
+
+					FileC fileC = (FileC) element;
+
+					// used to find parent ArchitectureDefinition
+					EObject eObject = fileC;
+
+					// Find host ArchitectureDefinition
+					ArchitectureDefinition parentAdl = null;
+					// parent adl is...?
+					while (!(eObject instanceof ArchitectureDefinition))
+						eObject = eObject.eContainer();
+					parentAdl = (ArchitectureDefinition) eObject;
+
+					// We need the package C template serialization (top comment)
+					URI adlURI = parentAdl.eResource().getURI();
+					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(adlURI);
+
+					// We need the IProject to know if we should use the C or C++ template
+					MindLibOrProject libOrProj = pack.getRootsrc().getProject();
+					IProject currProj = null;
+					if (libOrProj instanceof MindProject)
+						currProj = ((MindProject) libOrProj).getProject(); 
+
+					// Create a IFile object from current source path with our absolute source/data fileC
+					IFolder srcPathFolder = MindIdeCore.getResource(pack.getRootsrc());
+					
+					IFolder subFolder = srcPathFolder.getFolder(issue.getData()[0]);
+					if (!subFolder.exists())
+						subFolder.create(true, false, new NullProgressMonitor());
+					
+					// we remove the .c extension to be compliant with the MindIdeCore C template creator
+					String sourceFileName = issue.getData()[1];
+					int i = sourceFileName.lastIndexOf(".");
+					
+					String extension = sourceFileName.substring(i, sourceFileName.length());
+					
+					String sourceFileNameNoExt = sourceFileName.substring(0, i);
+
+					if (CDTUtil.getCCNature(currProj))
+						MindIdeCore.createCCTemplate(
+								subFolder,
+								sourceFileNameNoExt,
+								parentAdl.getName(),
+								extension,
+								null);
+					else
+						MindIdeCore.createCTemplate(
+								subFolder,
+								sourceFileNameNoExt,
+								parentAdl.getName(),
+								extension,
+								null);
+					
+					// Make the framework believe we made a modification so it updates the ADL editor
+					IXtextDocument xtextDocument = context.getXtextDocument();
+					xtextDocument.replace(issue.getOffset(), issue.getLength(), sourceFileName);
+				}
+			}
+		});
+	}
 }

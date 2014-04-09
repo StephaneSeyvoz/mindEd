@@ -460,47 +460,58 @@ public class MindIdeCore {
 		throw new CoreException(status);
 	}
 	
-	
-	static public void createCTemplate(MindPackage adl, String qn, String componentName,
+	static public void createCTemplate(MindPackage adl, String componentQName, String cFileName, String extension,
 			IProgressMonitor monitor)
 			throws CoreException {		
-		createCTemplate(MindIdeCore.getResource(adl), componentName, qn, monitor);
+		createCTemplate(MindIdeCore.getResource(adl), cFileName, componentQName, extension, monitor);
 	}
 	
-	static public void createCTemplate(MindAdl adl, String componentName,
-			IProgressMonitor monitor)
-			throws CoreException {
-		createCTemplate(MindIdeCore.getResource(adl).getParent(), componentName, adl.getQualifiedName(), monitor);
-	}
-	
-	static public void createCCTemplate(MindPackage adl, String qn, String componentName,
+	static public void createCTemplate(MindPackage adl, String componentQName, String cFileName,
 			IProgressMonitor monitor)
 			throws CoreException {		
-		createCCTemplate(MindIdeCore.getResource(adl), componentName, qn, monitor);
+		createCTemplate(MindIdeCore.getResource(adl), cFileName, componentQName, ".c", monitor);
 	}
 	
-	static public void createCCTemplate(MindAdl adl, String componentName,
+	static public void createCTemplate(MindAdl adl, String cFileName,
 			IProgressMonitor monitor)
 			throws CoreException {
-		createCCTemplate(MindIdeCore.getResource(adl).getParent(), componentName, adl.getQualifiedName(), monitor);
+		createCTemplate(MindIdeCore.getResource(adl).getParent(), cFileName, adl.getQualifiedName(), ".c", monitor);
+	}
+	
+	static public void createCCTemplate(MindPackage adl, String componentQName, String cFileName, String extension,
+			IProgressMonitor monitor)
+			throws CoreException {		
+		createCCTemplate(MindIdeCore.getResource(adl), cFileName, componentQName, extension, monitor);
+	}
+	
+	static public void createCCTemplate(MindPackage adl, String componentQName, String cFileName,
+			IProgressMonitor monitor)
+			throws CoreException {		
+		createCCTemplate(MindIdeCore.getResource(adl), cFileName, componentQName, ".cpp", monitor);
+	}
+	
+	static public void createCCTemplate(MindAdl adl, String cFileName,
+			IProgressMonitor monitor)
+			throws CoreException {
+		createCCTemplate(MindIdeCore.getResource(adl).getParent(), cFileName, adl.getQualifiedName(), ".cpp", monitor);
 	}
 	
 	/**
 	 * Create a .c file from a template.
 	 * 
 	 * @param container where put the file c
-	 * @param componentName the componant of the adl or the name of file c
-	 * @param qn reference to qualified name of the component
+	 * @param cFileName the componant of the adl or the name of file c
+	 * @param componentQName reference to qualified name of the component
 	 * @param monitor
 	 * @throws CoreException
 	 */
-	static public void createCTemplate(IContainer container, String componentName, String qn,
+	static public void createCTemplate(IContainer container, String cFileName, String componentQName, String extension,
 			IProgressMonitor monitor)
 			throws CoreException {
-		String cfileName = componentName;
-		final IFile cfile = container.getFile(new Path(cfileName + ".c")); //$NON-NLS-1$
+		String ext = (extension == null ? "" : extension);
+		final IFile cfile = container.getFile(new Path(cFileName + ext)); //$NON-NLS-1$
 		try {
-			InputStream stream = openCContentStream(qn);
+			InputStream stream = openCContentStream(componentQName);
 			if (cfile.exists()) {
 				//file.setContents(stream, true, true, monitor);
 			} else {
@@ -509,6 +520,11 @@ public class MindIdeCore {
 			stream.close();
 		} catch (IOException e) {
 		}
+	}
+	
+	static public void createCTemplate(IContainer container, String cFileName, String componentQName,
+			IProgressMonitor monitor) throws CoreException {
+		createCTemplate(container, cFileName, componentQName, ".c",	monitor);
 	}
 	
 	/**
@@ -520,13 +536,13 @@ public class MindIdeCore {
 	 * @param monitor
 	 * @throws CoreException
 	 */
-	static public void createCCTemplate(IContainer container, String componentName, String qn,
+	static public void createCCTemplate(IContainer container, String ccFileName, String componentQName, String extension,
 			IProgressMonitor monitor)
 			throws CoreException {
-		String ccfileName = componentName;
-		final IFile ccfile = container.getFile(new Path(ccfileName + ".cpp")); //$NON-NLS-1$
+		String ext = (extension == null ? "" : extension);
+		final IFile ccfile = container.getFile(new Path(ccFileName + ext)); //$NON-NLS-1$
 		try {
-			InputStream stream = openCCContentStream(qn);
+			InputStream stream = openCCContentStream(componentQName);
 			if (ccfile.exists()) {
 				//file.setContents(stream, true, true, monitor);
 			} else {
@@ -535,6 +551,11 @@ public class MindIdeCore {
 			stream.close();
 		} catch (IOException e) {
 		}
+	}
+	
+	static public void createCCTemplate(IContainer container, String ccFileName, String componentQName,
+			IProgressMonitor monitor) throws CoreException {
+		createCCTemplate(container, ccFileName, componentQName, ".cpp", monitor);
 	}
 	
 	/**

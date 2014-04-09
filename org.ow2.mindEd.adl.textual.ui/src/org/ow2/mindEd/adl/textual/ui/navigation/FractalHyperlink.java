@@ -167,15 +167,15 @@ public class FractalHyperlink extends HyperlinkHelper {
 
 		}            
 
-		if (uri != null ){
-			// here we create the link
-
-			XtextHyperlink hyperlink = getHyperlinkProvider().get();
-			hyperlink.setURI(uri);
-			hyperlink.setHyperlinkRegion(new Region(loc.getOffset(), loc.getLength()));
-
-			acceptor.accept(hyperlink);
-		}        
+//		if (uri != null ){
+//			// here we create the link
+//
+//			XtextHyperlink hyperlink = getHyperlinkProvider().get();
+//			hyperlink.setURI(uri);
+//			hyperlink.setHyperlinkRegion(new Region(loc.getOffset(), loc.getLength()));
+//
+//			acceptor.accept(hyperlink);
+//		}        
 
 	}
 
