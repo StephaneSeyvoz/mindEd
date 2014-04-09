@@ -10835,7 +10835,7 @@ RULE_DOUBLE_LEFT_CURLY_BRACKETS : '{{';
 
 RULE_DOUBLE_RIGHT_CURLY_BRACKETS : '}}';
 
-RULE_SL : ('\\'|'\\\\'|'/');
+RULE_SL : '/';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

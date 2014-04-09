@@ -3001,7 +3001,7 @@ public class FractalGrammarAccess extends AbstractGrammarElementFinder {
 	////enum Role :
 	// //	provides="provides" | requires="requires";
 	// terminal SL:
-	//	"\\" | "\\\\" | "/";
+	//	"/";
 	public TerminalRule getSLRule() {
 		return (tSL != null) ? tSL : (tSL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL"));
 	} 
