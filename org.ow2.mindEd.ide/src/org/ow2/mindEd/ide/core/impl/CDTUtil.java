@@ -574,31 +574,38 @@ public class CDTUtil {
 		try {
 			// make CONFIGURATION=${ConfigName} all
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "all", Messages.CDTUtil_MakeConfigAllArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 			// make CONFIGURATION=${ConfigName} compile
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "compile", Messages.CDTUtil_MakeConfigCompileArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 			// make CONFIGURATION=${ConfigName} clean
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "clean", Messages.CDTUtil_MakeConfigCleanArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 			// make CONFIGURATION=${ConfigName} clean_all
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "clean_all", Messages.CDTUtil_MakeConfigCleanAllArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 			// make CONFIGURATION=${ConfigName} graph
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "graph", Messages.CDTUtil_MakeConfigGraphArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 			// make CONFIGURATION=${ConfigName} doc
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "doc", Messages.CDTUtil_MakeConfigDocArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 			// make CONFIGURATION=${ConfigName} test
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "test", Messages.CDTUtil_MakeConfigTestArgument);
-			fTargetManager.addTarget(project, currentMakeTarget);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
 
 		} catch (CoreException e) {
 			// Simply do not create the Make Target element
@@ -612,12 +619,16 @@ public class CDTUtil {
 	 * @param project
 	 * @param fTargetManager
 	 * @param targetFriendlyName
-	 * @return
+	 * @return A IMakeTarget object allowing to run a Makefile task, or null if no TargetBuilder was found.
 	 * @throws CoreException 
 	 */
 	private static IMakeTarget createMakeTarget(IProject project, IMakeTargetManager fTargetManager, String targetFriendlyName, String buildTargetName) throws CoreException {
 
 		String[] id = fTargetManager.getTargetBuilders(project);
+		
+		if (id.length == 0)
+			return null;
+		
 		String targetBuildID = id[0];
 
 		IMakeTarget target = fTargetManager.createTarget(project, targetFriendlyName, targetBuildID);
