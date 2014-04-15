@@ -67,9 +67,9 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 	private Label toolchains_label;
 
 	private boolean userRuntimeChoice = true;
-	
+
 	private LanguageChoice userLanguageChoice = LanguageChoice.NONE;
-	
+
 	private IToolChain UserCToolChainChoice = null;
 
 	/**
@@ -204,67 +204,6 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 		mindconf_label.setLayoutData(new GridData(GridData.BEGINNING));
 		mindconf_label.setText(Messages.MindProjectWizardPage_MindConfig);
 
-		// runtime checkbox
-		runtime_checkbox = new Button(c, SWT.CHECK);
-		runtime_checkbox.setText(Messages.MindProjectWizardPage_MindRuntime); 
-		runtime_checkbox.setFont(parent.getFont());
-		GridData gd0 = new GridData(GridData.FILL_HORIZONTAL);
-		runtime_checkbox.setLayoutData(gd0);
-		// default as true
-		runtime_checkbox.setSelection(userRuntimeChoice);
-		runtime_checkbox.addSelectionListener(new SelectionAdapter() {
-			// update configuration on box event
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				userRuntimeChoice = runtime_checkbox.getSelection();
-			}} );
-
-		// Separate parts of the window
-		Label separatorLabel1 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
-		GridData sl1gd = new GridData(SWT.CENTER, SWT.CENTER, false, false);
-		// reserve some space to enhance readability
-		sl1gd.verticalSpan = 1;
-		separatorLabel1.setLayoutData(sl1gd);
-		
-		// C / C++ radio buttons hosted in a RowLayout
-		mindlanguage_label = new Label(c, SWT.NONE);
-		mindlanguage_label.setFont(parent.getFont());
-		mindlanguage_label.setLayoutData(new GridData(GridData.BEGINNING));
-		mindlanguage_label.setText(Messages.MindProjectWizardPage_MindLanguage);
-		
-		Composite languageComposite = new Composite(c, SWT.NULL);
-		GridLayout languageLayout = new GridLayout(2, true);
-		GridData languageLayoutData = new GridData(SWT.CENTER, SWT.CENTER, true, true);
-		languageComposite.setLayout(languageLayout);
-		languageComposite.setLayoutData(languageLayoutData);
-		
-		c_radiobutton = new Button(languageComposite, SWT.RADIO);
-		c_radiobutton.setText(Messages.MindProjectWizardPage_MindC);
-		c_radiobutton.setFont(parent.getFont());
-		
-		cc_radiobutton = new Button(languageComposite, SWT.RADIO);
-		cc_radiobutton.setText(Messages.MindProjectWizardPage_MindCPP);
-		cc_radiobutton.setFont(parent.getFont());
-		
-		c_radiobutton.setSelection(userLanguageChoice == LanguageChoice.C ? true : false);
-		cc_radiobutton.setSelection(userLanguageChoice == LanguageChoice.CC ? true : false);
-		
-		c_radiobutton.addSelectionListener(new SelectionAdapter() {
-			// update configuration on box event
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				userLanguageChoice = LanguageChoice.C;
-				setPageComplete(validatePage());
-			}} );
-		
-		cc_radiobutton.addSelectionListener(new SelectionAdapter() {
-			// update configuration on box event
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				userLanguageChoice = LanguageChoice.CC;
-				setPageComplete(validatePage());
-			}} );
-		
 		// Configure compiler path preference if not already configured
 		if (!isMindcToolchainConfigured() || !isMindToolchainValid()) {
 			mindcLoc_button = new Button(c, SWT.NONE);
@@ -287,6 +226,67 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 					setPageComplete(validatePage());
 				}} );
 		}
+
+		// runtime checkbox
+		runtime_checkbox = new Button(c, SWT.CHECK);
+		runtime_checkbox.setText(Messages.MindProjectWizardPage_MindRuntime); 
+		runtime_checkbox.setFont(parent.getFont());
+		GridData gd0 = new GridData(GridData.FILL_HORIZONTAL);
+		runtime_checkbox.setLayoutData(gd0);
+		// default as true
+		runtime_checkbox.setSelection(userRuntimeChoice);
+		runtime_checkbox.addSelectionListener(new SelectionAdapter() {
+			// update configuration on box event
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				userRuntimeChoice = runtime_checkbox.getSelection();
+			}} );
+
+		// Separate parts of the window
+		Label separatorLabel1 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
+		GridData sl1gd = new GridData(SWT.CENTER, SWT.CENTER, false, false);
+		// reserve some space to enhance readability
+		sl1gd.verticalSpan = 1;
+		separatorLabel1.setLayoutData(sl1gd);
+
+		// C / C++ radio buttons hosted in a RowLayout
+		mindlanguage_label = new Label(c, SWT.NONE);
+		mindlanguage_label.setFont(parent.getFont());
+		mindlanguage_label.setLayoutData(new GridData(GridData.BEGINNING));
+		mindlanguage_label.setText(Messages.MindProjectWizardPage_MindLanguage);
+
+		Composite languageComposite = new Composite(c, SWT.NULL);
+		GridLayout languageLayout = new GridLayout(2, true);
+		GridData languageLayoutData = new GridData(SWT.CENTER, SWT.CENTER, true, true);
+		languageComposite.setLayout(languageLayout);
+		languageComposite.setLayoutData(languageLayoutData);
+
+		c_radiobutton = new Button(languageComposite, SWT.RADIO);
+		c_radiobutton.setText(Messages.MindProjectWizardPage_MindC);
+		c_radiobutton.setFont(parent.getFont());
+
+		cc_radiobutton = new Button(languageComposite, SWT.RADIO);
+		cc_radiobutton.setText(Messages.MindProjectWizardPage_MindCPP);
+		cc_radiobutton.setFont(parent.getFont());
+
+		c_radiobutton.setSelection(userLanguageChoice == LanguageChoice.C ? true : false);
+		cc_radiobutton.setSelection(userLanguageChoice == LanguageChoice.CC ? true : false);
+
+		c_radiobutton.addSelectionListener(new SelectionAdapter() {
+			// update configuration on box event
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				userLanguageChoice = LanguageChoice.C;
+				setPageComplete(validatePage());
+			}} );
+
+		cc_radiobutton.addSelectionListener(new SelectionAdapter() {
+			// update configuration on box event
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				userLanguageChoice = LanguageChoice.CC;
+				setPageComplete(validatePage());
+			}} );
 
 		// Separate parts of the window
 		Label separatorLabel2 = new Label(c, SWT.SEPARATOR | SWT.HORIZONTAL | SWT.SHADOW_OUT);
@@ -445,7 +445,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 			setErrorMessage(Messages.MindProjectWizardPage_MindToolChain_InvalidOrNotConfigured);
 			return false;
 		}
-		
+
 		if (userLanguageChoice == LanguageChoice.NONE) { 
 			setErrorMessage(Messages.MindProjectWizardPage_LanguageNotSelected);
 			return false;
