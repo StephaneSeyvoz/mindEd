@@ -30,6 +30,10 @@ import org.eclipse.cdt.core.settings.model.WriteAccessException;
 import org.eclipse.cdt.core.settings.model.extension.CConfigurationData;
 import org.eclipse.cdt.internal.core.envvar.EnvironmentVariableManager;
 import org.eclipse.cdt.internal.core.envvar.UserDefinedEnvironmentSupplier;
+import org.eclipse.cdt.make.core.IMakeCommonBuildInfo;
+import org.eclipse.cdt.make.core.IMakeTarget;
+import org.eclipse.cdt.make.core.IMakeTargetManager;
+import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.cdt.managedbuilder.core.IBuilder;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
@@ -524,6 +528,9 @@ public class CDTUtil {
 
 		MindProperties configProperties = new MindProperties(newProject, config, srcFolder, testFolder, targetFolder);
 		configProperties.generateFile(monitor, isCPP);
+
+		// create Make Target-s so the Make Target view is ready for the user to build by double-click
+		addMakeTargets(newProject);
 	}
 
 	/**
@@ -552,5 +559,77 @@ public class CDTUtil {
 	 */
 	public static boolean getCCNature(IProject project) throws CoreException { 
 		return project.hasNature(CCProjectNature.CC_NATURE_ID);
+	}
+
+	/**
+	 * Used to populate the "Make Targets" View with pre-filled targets.
+	 * Inspired from @see MakeTargetDialog#okPressed
+	 * 
+	 * @param project
+	 */
+	public static void addMakeTargets(IProject project) {
+		IMakeTargetManager fTargetManager = MakeCorePlugin.getDefault().getTargetManager();
+		IMakeTarget currentMakeTarget;
+
+		try {
+			// make CONFIGURATION=${ConfigName} all
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "all", Messages.CDTUtil_MakeConfigAllArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+			// make CONFIGURATION=${ConfigName} compile
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "compile", Messages.CDTUtil_MakeConfigCompileArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+			// make CONFIGURATION=${ConfigName} clean
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "clean", Messages.CDTUtil_MakeConfigCleanArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+			// make CONFIGURATION=${ConfigName} clean_all
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "clean_all", Messages.CDTUtil_MakeConfigCleanAllArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+			// make CONFIGURATION=${ConfigName} graph
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "graph", Messages.CDTUtil_MakeConfigGraphArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+			// make CONFIGURATION=${ConfigName} doc
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "doc", Messages.CDTUtil_MakeConfigDocArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+			// make CONFIGURATION=${ConfigName} test
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "test", Messages.CDTUtil_MakeConfigTestArgument);
+			fTargetManager.addTarget(project, currentMakeTarget);
+
+		} catch (CoreException e) {
+			// Simply do not create the Make Target element
+		}
+	}
+
+	/**
+	 * Create a IMakeTarget object for a project and target. 
+	 * Inspired from @see MakeTargetDialog#okPressed
+	 * 
+	 * @param project
+	 * @param fTargetManager
+	 * @param targetFriendlyName
+	 * @return
+	 * @throws CoreException 
+	 */
+	private static IMakeTarget createMakeTarget(IProject project, IMakeTargetManager fTargetManager, String targetFriendlyName, String buildTargetName) throws CoreException {
+
+		String[] id = fTargetManager.getTargetBuilders(project);
+		String targetBuildID = id[0];
+
+		IMakeTarget target = fTargetManager.createTarget(project, targetFriendlyName, targetBuildID);
+		target.setStopOnError(true);
+		target.setRunAllBuilders(true);
+		target.setUseDefaultBuildCmd(true);
+
+		target.setBuildAttribute(IMakeCommonBuildInfo.BUILD_COMMAND, "make");
+		target.setBuildAttribute(IMakeCommonBuildInfo.BUILD_ARGUMENTS, "");
+
+		target.setBuildAttribute(IMakeTarget.BUILD_TARGET, buildTargetName);
+
+		return target;
 	}
 }

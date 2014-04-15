@@ -153,7 +153,7 @@ public class MindProjectWizard extends BasicNewResourceWizard implements INewWiz
 							mainPage.getUserLanguageChoice() == LanguageChoice.CC,
 							mainPage.getUserCToolChainchoice());
 
-					newProject.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
+					//newProject.build(IncrementalProjectBuilder.CLEAN_BUILD, monitor);
 				} catch (OperationCanceledException e) {
 					throw new InvocationTargetException(e);
 				} catch (CoreException e) {

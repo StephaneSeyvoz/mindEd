@@ -137,7 +137,11 @@ testDocOutputDir=$(confOutputDirVar)/test-doc
 
 # The real build command.
 
-all: build
+all: compile graph doc test  
+
+clean_all: clean clean_graph clean_doc clean_test
+
+compile: build
 ifdef targetComponent
 	if test ! -x $(MINDC); \
         then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \

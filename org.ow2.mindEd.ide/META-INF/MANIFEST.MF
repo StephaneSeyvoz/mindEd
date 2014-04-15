@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Mind IDE MODEL
 Bundle-SymbolicName: org.ow2.mindEd.ide;singleton:=true
-Bundle-Version: 0.8.2.2
+Bundle-Version: 0.8.2.3
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.eclipse.cdt.core,
  org.eclipse.cdt.core.envvar,
@@ -17,6 +17,7 @@ Import-Package: org.eclipse.cdt.core,
  org.eclipse.cdt.make.core.makefile.gnu,
  org.eclipse.cdt.make.internal.core.makefile,
  org.eclipse.cdt.make.internal.core.makefile.gnu,
+ org.eclipse.cdt.make.ui.views,
  org.eclipse.cdt.managedbuilder.buildproperties,
  org.eclipse.cdt.managedbuilder.core,
  org.eclipse.cdt.managedbuilder.internal.core,
