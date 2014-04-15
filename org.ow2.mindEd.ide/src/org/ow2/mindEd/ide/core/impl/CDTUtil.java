@@ -449,7 +449,7 @@ public class CDTUtil {
 			// For the time being we force Make, we use ${ConfigName}
 			// for the Makefile to use the good ${ConfigName}.properties file according to the active Configuration,
 			// and the usual "all" target
-			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, Messages.CDTUtil_MakeConfigAllArgument);
+			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_INCREMENTAL, Messages.CDTUtil_MakeConfigCompileArgument);
 			bld.setBuildAttribute(IMakeBuilderInfo.BUILD_TARGET_CLEAN, Messages.CDTUtil_MakeConfigCleanArgument);
 
 			// The makefile is in the project root
