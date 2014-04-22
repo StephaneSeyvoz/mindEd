@@ -10,6 +10,7 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -97,25 +98,17 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
 				StringBuilder srcVar = new StringBuilder();
-				
-				// Old algo
-//				for (MindRootSrc rs : new ArrayList<MindRootSrc>(_mp._allsrc)) {
-//					// Uncomment toFile to make it work 
-//					String fileStr = toFile(rs); 
-//					// As we skip the runtime and return "" in this case, let's not write
-//					// a useless separator
-//					if (!fileStr.equals("")) {
-//						srcVar.append(fileStr);
-//						srcVar.append(":");
-//					}
-//				}
-//				if (srcVar.length() != 0)
-//					srcVar.setLength(srcVar.length() - 1); //remove last colon if length > 0
 
-				EList<MindPathEntry> entries = _mp.getMindpathentries();
-				for (int i = 0 ; i < entries.size() ; i++) {
+				// Filter by type
+				List<MindPathEntry> sourceEntries = new ArrayList<MindPathEntry>();
+				for (MindPathEntry currEntry : _mp.getMindpathentries()) {
+					if (currEntry.getEntryKind() == MindPathKind.SOURCE)
+						sourceEntries.add(currEntry);
+				}
+				
+				for (int i = 0 ; i < sourceEntries.size() ; i++) {
 					
-					MindPathEntry entry = entries.get(i);
+					MindPathEntry entry = sourceEntries.get(i);
 					
 					if (entry.getEntryKind() == MindPathKind.SOURCE) {
 						// Handle differently workspace paths and absolute file system paths
@@ -142,7 +135,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 						}
 						
 						// In any case, append ':' for all entries except the last
-						if (i < entries.size() - 1)
+						if (i < sourceEntries.size() - 1)
 							srcVar.append(":");
 					}
 				}
@@ -160,34 +153,6 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			return FamilyJobCST.FAMILY_CHANGE_PROPERTIES_VAR_SOURCEPATH == family || FamilyJobCST.FAMILY_ALL == family;
 		}
 
-//		/**
-//		 * SSZ
-//		 * Used to write path variables in the Makefile
-//		 * The previous version used to write absolute paths: here we write relative paths.
-//		 * We also write the linked folders destination, and skip adding the reserved
-//		 * runtime path element (already added by the compiler as a default).
-//		 * 
-//		 * We also skip the dependency folders, since the computed relative paths are internal to
-//		 * their own host project, and not relatively to the current project (leading to erroneous entries).
-//		 */
-//		private String toFile(MindRootSrc rs) {
-//			IFolder f = MindIdeCore.getResource(rs);
-//
-//			// Is the MindRootSrc in the current project or transitively one of a dependency ?
-//			// If it's not ours: skip
-//			if (f.getProject() != _mp.getProject())
-//				return "";
-//			
-//			// Do not serialize runtime
-//			if (f.isLinked() && f.getProjectRelativePath().toPortableString().equals("runtime"))
-//				return "";
-//
-//			if (f.isLinked())
-//				return f.getLocation().toPortableString();
-//			else 
-//				return f.getProjectRelativePath().toPortableString();
-//
-//		}
 	}
 
 	private static final class ChangeMindIncludePathPropVarJob extends Job {
@@ -204,10 +169,16 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			try {
 				StringBuilder incVar = new StringBuilder();
 				
-				EList<MindPathEntry> entries = _mp.getMindpathentries();
-				for (int i = 0 ; i < entries.size() ; i++) {
+				// Filter by type
+				List<MindPathEntry> includeEntries = new ArrayList<MindPathEntry>();
+				for (MindPathEntry currEntry : _mp.getMindpathentries()) {
+					if (currEntry.getEntryKind() == MindPathKind.INCLUDE_PATH)
+						includeEntries.add(currEntry);
+				}
+				
+				for (int i = 0 ; i < includeEntries.size() ; i++) {
 					
-					MindPathEntry entry = entries.get(i);
+					MindPathEntry entry = includeEntries.get(i);
 					
 					if (entry.getEntryKind() == MindPathKind.INCLUDE_PATH) {
 						// Handle differently workspace paths and absolute file system paths
@@ -234,7 +205,7 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 						}
 						
 						// In any case, append ':' for all entries except the last
-						if (i < entries.size() - 1)
+						if (i < includeEntries.size() - 1)
 							incVar.append(":");
 					}
 				}
