@@ -97,18 +97,56 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
 				StringBuilder srcVar = new StringBuilder();
-				for (MindRootSrc rs : new ArrayList<MindRootSrc>(_mp._allsrc)) {
-					String fileStr = toFile(rs);
-					// As we skip the runtime and return "" in this case, let's not write
-					// a useless separator
-					if (!fileStr.equals("")) {
-						srcVar.append(fileStr);
-						srcVar.append(":");
+				
+				// Old algo
+//				for (MindRootSrc rs : new ArrayList<MindRootSrc>(_mp._allsrc)) {
+//					// Uncomment toFile to make it work 
+//					String fileStr = toFile(rs); 
+//					// As we skip the runtime and return "" in this case, let's not write
+//					// a useless separator
+//					if (!fileStr.equals("")) {
+//						srcVar.append(fileStr);
+//						srcVar.append(":");
+//					}
+//				}
+//				if (srcVar.length() != 0)
+//					srcVar.setLength(srcVar.length() - 1); //remove last colon if length > 0
+
+				EList<MindPathEntry> entries = _mp.getMindpathentries();
+				for (int i = 0 ; i < entries.size() ; i++) {
+					
+					MindPathEntry entry = entries.get(i);
+					
+					if (entry.getEntryKind() == MindPathKind.SOURCE) {
+						// Handle differently workspace paths and absolute file system paths
+						// Note: Name MAY NOT be the best attribute...
+						IPath p = new Path(entry.getName());
+						// does the folder exist in the workspace ? 
+						IFolder f = ResourcesPlugin.getWorkspace().getRoot().getFolder(p);
+						if ((f == null) || !f.exists()) {
+							// Try to find it on the hard drive
+							File file = p.toFile();
+							// should be
+							if (file.exists() && file.isDirectory()) {
+								srcVar.append(entry.getName());
+							}
+							// else error case: do nothing ?
+						} else {
+							/* 
+							 * Only keep values internal to the current project, skip others
+							 * maybe one day we should modify it to serialize inferred paths
+							 * from project dependencies.
+							 */
+							if (!f.isLinked() && f.getProject() == _mp.getProject())
+								srcVar.append(f.getProjectRelativePath().toPortableString());
+						}
+						
+						// In any case, append ':' for all entries except the last
+						if (i < entries.size() - 1)
+							srcVar.append(":");
 					}
 				}
-				if (srcVar.length() != 0)
-					srcVar.setLength(srcVar.length() - 1); //remove last collon if length > 0
-
+				
 				MindProperties mp = new MindProperties(_mp.getProject());
 				mp.setVarAndSave(Messages.CDTUtil_SourcePath, srcVar.toString());
 			} catch (CoreException e) {
@@ -122,24 +160,34 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			return FamilyJobCST.FAMILY_CHANGE_PROPERTIES_VAR_SOURCEPATH == family || FamilyJobCST.FAMILY_ALL == family;
 		}
 
-		/**
-		 * SSZ
-		 * Used to write path variables in the Makefile
-		 * The previous version used to write absolute paths: here we write relative paths.
-		 * We also write the linked folders destination, and skip adding the reserved
-		 * runtime path element (already added by the compiler as a default).
-		 */
-		private String toFile(MindRootSrc rs) {
-			IFolder f = MindIdeCore.getResource(rs);
-			String path = "";
-
-			if (f.isLinked() && f.getProjectRelativePath().toPortableString().equals("runtime"))
-				return path;
-
-			path = (f.isLinked()) ? f.getLocation().toPortableString() : f.getProjectRelativePath().toPortableString(); 
-
-			return path;
-		}
+//		/**
+//		 * SSZ
+//		 * Used to write path variables in the Makefile
+//		 * The previous version used to write absolute paths: here we write relative paths.
+//		 * We also write the linked folders destination, and skip adding the reserved
+//		 * runtime path element (already added by the compiler as a default).
+//		 * 
+//		 * We also skip the dependency folders, since the computed relative paths are internal to
+//		 * their own host project, and not relatively to the current project (leading to erroneous entries).
+//		 */
+//		private String toFile(MindRootSrc rs) {
+//			IFolder f = MindIdeCore.getResource(rs);
+//
+//			// Is the MindRootSrc in the current project or transitively one of a dependency ?
+//			// If it's not ours: skip
+//			if (f.getProject() != _mp.getProject())
+//				return "";
+//			
+//			// Do not serialize runtime
+//			if (f.isLinked() && f.getProjectRelativePath().toPortableString().equals("runtime"))
+//				return "";
+//
+//			if (f.isLinked())
+//				return f.getLocation().toPortableString();
+//			else 
+//				return f.getProjectRelativePath().toPortableString();
+//
+//		}
 	}
 
 	private static final class ChangeMindIncludePathPropVarJob extends Job {
@@ -154,14 +202,16 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 		@Override
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
-				// SSZ	
 				StringBuilder incVar = new StringBuilder();
-				for (MindPathEntry entry : _mp.getMindpathentries()) {
+				
+				EList<MindPathEntry> entries = _mp.getMindpathentries();
+				for (int i = 0 ; i < entries.size() ; i++) {
+					
+					MindPathEntry entry = entries.get(i);
+					
 					if (entry.getEntryKind() == MindPathKind.INCLUDE_PATH) {
-						// Name MAY NOT be the best attribute...
-						// If change, also modify the 2 MindIdeCore.newMPEIncludePath(...) methods
-
-						// handle differently workspace paths and absolute file system paths
+						// Handle differently workspace paths and absolute file system paths
+						// Note: Name MAY NOT be the best attribute...
 						IPath p = new Path(entry.getName());
 						// does the folder exist in the workspace ? 
 						IFolder f = ResourcesPlugin.getWorkspace().getRoot().getFolder(p);
@@ -171,7 +221,6 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							// should be
 							if (file.exists() && file.isDirectory()) {
 								incVar.append(entry.getName());
-								incVar.append(":");
 							}
 							// else error case: do nothing ?
 						} else {
@@ -180,13 +229,15 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							 * maybe one day we should modify it to serialize inferred paths
 							 * from project dependencies.
 							 */
-							if (!f.isLinked() && f.getFullPath().segment(0).equals(_mp.getName()))
-								incVar.append(f.getProjectRelativePath().toPortableString()).append(":");
+							if (!f.isLinked() && f.getProject() == _mp.getProject())
+								incVar.append(f.getProjectRelativePath().toPortableString());
 						}
+						
+						// In any case, append ':' for all entries except the last
+						if (i < entries.size() - 1)
+							incVar.append(":");
 					}
 				}
-				if (incVar.length() != 0)
-					incVar.setLength(incVar.length() - 1); //remove last collon if length > 0
 
 				MindProperties mp = new MindProperties(_mp.getProject());
 				mp.setVarAndSave(Messages.CDTUtil_IncludePath, incVar.toString());
