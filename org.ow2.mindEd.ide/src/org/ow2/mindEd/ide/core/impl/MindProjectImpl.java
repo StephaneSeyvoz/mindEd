@@ -122,6 +122,10 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							// should be
 							if (file.exists() && file.isDirectory()) {
 								srcVar.append(entry.getName());
+								
+								// In any case, append ':' for all entries except the last
+								if (i < sourceEntries.size() - 1)
+									srcVar.append(":");
 							}
 							// else error case: do nothing ?
 						} else {
@@ -130,13 +134,14 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							 * maybe one day we should modify it to serialize inferred paths
 							 * from project dependencies.
 							 */
-							if (!f.isLinked() && f.getProject() == _mp.getProject())
+							if (!f.isLinked() && f.getProject() == _mp.getProject()) {
 								srcVar.append(f.getProjectRelativePath().toPortableString());
+								
+								// In any case, append ':' for all entries except the last
+								if (i < sourceEntries.size() - 1)
+									srcVar.append(":");
+							}
 						}
-						
-						// In any case, append ':' for all entries except the last
-						if (i < sourceEntries.size() - 1)
-							srcVar.append(":");
 					}
 				}
 				
