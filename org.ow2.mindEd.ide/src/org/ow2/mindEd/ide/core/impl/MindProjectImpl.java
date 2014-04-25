@@ -99,21 +99,12 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			try {
 				StringBuilder srcVar = new StringBuilder();
 
-				// Filter by type
-				List<MindPathEntry> sourceEntries = new ArrayList<MindPathEntry>();
+				boolean isFirst = true;
 				for (MindPathEntry currEntry : _mp.getMindpathentries()) {
-					if (currEntry.getEntryKind() == MindPathKind.SOURCE)
-						sourceEntries.add(currEntry);
-				}
-				
-				for (int i = 0 ; i < sourceEntries.size() ; i++) {
-					
-					MindPathEntry entry = sourceEntries.get(i);
-					
-					if (entry.getEntryKind() == MindPathKind.SOURCE) {
+					if (currEntry.getEntryKind() == MindPathKind.SOURCE) {
 						// Handle differently workspace paths and absolute file system paths
 						// Note: Name MAY NOT be the best attribute...
-						IPath p = new Path(entry.getName());
+						IPath p = new Path(currEntry.getName());
 						// does the folder exist in the workspace ? 
 						IFolder f = ResourcesPlugin.getWorkspace().getRoot().getFolder(p);
 						if ((f == null) || !f.exists()) {
@@ -121,13 +112,14 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							File file = p.toFile();
 							// should be
 							if (file.exists() && file.isDirectory()) {
-								srcVar.append(entry.getName());
 								
-								// In any case, append ':' for all entries except the last
-								if (i < sourceEntries.size() - 1)
+								if (isFirst)
+									isFirst = false; // for next values
+								else
 									srcVar.append(":");
+								
+								srcVar.append(currEntry.getName());
 							}
-							// else error case: do nothing ?
 						} else {
 							/* 
 							 * Only keep values internal to the current project, skip others
@@ -135,11 +127,12 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							 * from project dependencies.
 							 */
 							if (!f.isLinked() && f.getProject() == _mp.getProject()) {
-								srcVar.append(f.getProjectRelativePath().toPortableString());
-								
-								// In any case, append ':' for all entries except the last
-								if (i < sourceEntries.size() - 1)
+								if (isFirst)
+									isFirst = false; // for next values
+								else
 									srcVar.append(":");
+								
+								srcVar.append(f.getProjectRelativePath().toPortableString());
 							}
 						}
 					}
@@ -174,21 +167,12 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 			try {
 				StringBuilder incVar = new StringBuilder();
 				
-				// Filter by type
-				List<MindPathEntry> includeEntries = new ArrayList<MindPathEntry>();
+				boolean isFirst = true;
 				for (MindPathEntry currEntry : _mp.getMindpathentries()) {
-					if (currEntry.getEntryKind() == MindPathKind.INCLUDE_PATH)
-						includeEntries.add(currEntry);
-				}
-				
-				for (int i = 0 ; i < includeEntries.size() ; i++) {
-					
-					MindPathEntry entry = includeEntries.get(i);
-					
-					if (entry.getEntryKind() == MindPathKind.INCLUDE_PATH) {
+					if (currEntry.getEntryKind() == MindPathKind.INCLUDE_PATH) {
 						// Handle differently workspace paths and absolute file system paths
 						// Note: Name MAY NOT be the best attribute...
-						IPath p = new Path(entry.getName());
+						IPath p = new Path(currEntry.getName());
 						// does the folder exist in the workspace ? 
 						IFolder f = ResourcesPlugin.getWorkspace().getRoot().getFolder(p);
 						if ((f == null) || !f.exists()) {
@@ -196,22 +180,29 @@ public class MindProjectImpl extends org.ow2.mindEd.ide.model.impl.MindProjectIm
 							File file = p.toFile();
 							// should be
 							if (file.exists() && file.isDirectory()) {
-								incVar.append(entry.getName());
+								
+								if (isFirst)
+									isFirst = false; // for next values
+								else
+									incVar.append(":");
+								
+								incVar.append(currEntry.getName());
 							}
-							// else error case: do nothing ?
 						} else {
 							/* 
 							 * Only keep values internal to the current project, skip others
 							 * maybe one day we should modify it to serialize inferred paths
 							 * from project dependencies.
 							 */
-							if (!f.isLinked() && f.getProject() == _mp.getProject())
+							if (!f.isLinked() && f.getProject() == _mp.getProject()) {
+								if (isFirst)
+									isFirst = false; // for next values
+								else
+									incVar.append(":");
+								
 								incVar.append(f.getProjectRelativePath().toPortableString());
+							}
 						}
-						
-						// In any case, append ':' for all entries except the last
-						if (i < includeEntries.size() - 1)
-							incVar.append(":");
 					}
 				}
 

@@ -2,7 +2,7 @@
 <feature
       id="org.ow2.mindEd.feature"
       label="%featureName"
-      version="0.8.3.6"
+      version="0.8.3.7"
       provider-name="%providerName">
 
    <description>
