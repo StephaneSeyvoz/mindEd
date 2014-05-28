@@ -319,5 +319,19 @@
             extensions="adl">
     </provider>
   </extension>
+  <extension
+        point="org.eclipse.ltk.core.refactoring.renameParticipants">
+     <renameParticipant
+           class="org.ow2.mindEd.adl.textual.ui.refactoring.FractalRenameParticipant"
+           id="org.ow2.mindEd.adl.textual.ui.renameParticipant"
+           name="FractalRenameParticipant">
+           <enablement>
+           	<and>
+           		<adapt type="org.eclipse.core.resources.IResource"/>
+           		<test property="org.eclipse.core.resources.extension" value="adl"/>
+           	</and>
+           </enablement>
+     </renameParticipant>
+  </extension>
 
 </plugin>
