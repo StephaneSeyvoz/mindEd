@@ -19,7 +19,10 @@ Require-Bundle: org.ow2.mindEd.adl.textual;visibility:=reexport,
  org.ow2.mindEd.ide.ui;bundle-version="0.2.1",
  org.eclipse.emf.common,
  org.eclipse.core.resources,
- org.eclipse.core.filesystem
+ org.eclipse.core.filesystem,
+ org.eclipse.xtext.util,
+ org.eclipse.xtext,
+ org.eclipse.ltk.core.refactoring
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.ow2.mindEd.adl,
