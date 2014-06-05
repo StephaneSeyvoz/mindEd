@@ -27,7 +27,7 @@ import com.google.inject.Inject;
  * 
  * @see plugin.xml for <extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
  * and the generated @see FractalExecutableExtensionFactory that will give Equinox a well
- * injected object.
+ * injected object. The renameParticipant is associated to the "adl" file extension.
  * 
  * It extends the Xtext standard behaviour for renaming, and forces a computed name
  * to be used by the DefaultRenameStrategy and RenameElementProcessor.
@@ -71,6 +71,14 @@ AbstractProcessorBasedRenameParticipant {
 		return forcedNewName;
 	};
 
+	/**
+	 * This method has two roles:
+	 * 1/ Preparing the IRenameElementContext with the good EObject (our ArchitectureDefinition in
+	 * the .adl file)
+	 * 2/ Prepare the good forcedNewName for the DefaultRenameStrategy and RenameElementProcessor
+	 * 
+	 * @param element The original .adl IFile being renamed.
+	 */
 	@Override
 	protected List<? extends IRenameElementContext> createRenameElementContexts(Object element) {
 
