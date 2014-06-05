@@ -51,7 +51,7 @@ import com.google.inject.Inject;
  * http://koehnlein.blogspot.de/2012/11/xtext-tip-how-do-i-get-guice-injector.html
  */
 @SuppressWarnings("restriction")
-public class FractalRenameParticipant extends
+public class FractalFileRenameParticipant extends
 AbstractProcessorBasedRenameParticipant {
 
 	private String forcedNewName = null;
@@ -67,7 +67,7 @@ AbstractProcessorBasedRenameParticipant {
 	 * 
 	 * We override this behaviour with the computed new ArchitectureDefinition name, according to the
 	 * user-provided file name. "forcedNewName" is computed in our
-	 * {@link FractalRenameParticipant#createRenameElementContexts} method.
+	 * {@link FractalFileRenameParticipant#createRenameElementContexts} method.
 	 */
 	@Override
 	protected String getNewName() {
