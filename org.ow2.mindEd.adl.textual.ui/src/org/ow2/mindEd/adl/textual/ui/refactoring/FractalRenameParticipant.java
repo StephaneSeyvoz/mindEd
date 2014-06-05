@@ -32,6 +32,9 @@ import com.google.inject.Inject;
  * It extends the Xtext standard behaviour for renaming, and forces a computed name
  * to be used by the DefaultRenameStrategy and RenameElementProcessor.
  * 
+ * The {@link AbstractRenameStrategy#setName} method does the modification to our
+ * ArchitectureDefinition in the model.
+ * 
  * We also force the TextFileChange elements to be created by the framework in the
  * "createPreChange" method for it to happen before the triggering change (RenameResourceChange),
  * using the standard parent "createChange", and hiding it by our our returning null, for it not
