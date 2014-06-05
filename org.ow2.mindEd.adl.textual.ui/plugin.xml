@@ -334,4 +334,21 @@
      </renameParticipant>
   </extension>
 
+  <extension
+        point="org.eclipse.ltk.core.refactoring.renameParticipants">    
+    <!-- For the class to be injected: http://koehnlein.blogspot.de/2012/11/xtext-tip-how-do-i-get-guice-injector.html -->
+    <renameParticipant
+           class="org.ow2.mindEd.adl.textual.ui.FractalExecutableExtensionFactory:org.ow2.mindEd.adl.textual.ui.refactoring.FractalRenameParticipant"
+           id="org.ow2.mindEd.adl.textual.ui.renameParticipant"
+           name="FractalRenameParticipant">
+           <enablement>
+           	<and>
+           		<adapt type="org.eclipse.core.resources.IResource"/>
+           		<test property="org.eclipse.core.resources.extension" value="adl"/>
+           	</and>
+           </enablement>
+     </renameParticipant>
+  </extension>
+
+
 </plugin>

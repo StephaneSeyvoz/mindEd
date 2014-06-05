@@ -3,24 +3,17 @@
  */
 package org.ow2.mindEd.adl.textual.ui;
 
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
-import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategyProvider;
-import org.eclipse.xtext.ui.editor.contentassist.ContentProposalLabelProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.ow2.mindEd.adl.textual.ui.navigation.FractalHyperlink;
-import org.ow2.mindEd.adl.textual.ui.refactoring.FractalRenameStrategy;
 import org.ow2.mindEd.adl.textual.ui.resource.FractalResourceUIServiceProvider;
-import org.ow2.mindEd.ide.ui.navigator.MindLabelProvider;
-
-import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used within the IDE.
  */
+@SuppressWarnings("restriction")
 public class FractalUiModule extends org.ow2.mindEd.adl.textual.ui.AbstractFractalUiModule {
 	public FractalUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
@@ -68,15 +61,6 @@ public class FractalUiModule extends org.ow2.mindEd.adl.textual.ui.AbstractFract
 	//		.annotatedWith(ContentProposalLabelProvider.class)
 	//		.to(MindLabelProvider.class);
 	//	}
-
-	/**
-	 * register refactoring rename strategy
-	 * we want to be able to relocate a component according to its new package
-	 */
-	
-	public Class<? extends org.eclipse.xtext.ui.refactoring.IRenameStrategy> bindIRenameStrategy() {
-		return FractalRenameStrategy.class;
-	}
 
 	public Class<? extends org.eclipse.xtext.ui.resource.IResourceUIServiceProvider> bindResourceUIServiceProvider() {
 		return FractalResourceUIServiceProvider.class;
