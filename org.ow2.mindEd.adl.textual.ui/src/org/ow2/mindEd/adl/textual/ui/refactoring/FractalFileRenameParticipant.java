@@ -115,7 +115,7 @@ AbstractProcessorBasedRenameParticipant {
 			// We also skip the parent {@link AbstractProcessorBasedRenameParticipant#createRenameElementContexts} method since
 			// it doesn't give us any more useful information in our scenario.
 			URI renamedArchDefURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(renamedArchDef);
-			IRenameElementContext context = new IRenameElementContext.Impl(renamedArchDefURI, renamedArchDef.eClass());
+			IRenameElementContext context = new FractalFileRenameElementContext(renamedArchDefURI, renamedArchDef.eClass());
 			List<IRenameElementContext> contexts = com.google.common.collect.Lists.newArrayListWithCapacity(1);
 			contexts.add(context);
 

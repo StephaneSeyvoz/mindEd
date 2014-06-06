@@ -319,20 +319,6 @@
             extensions="adl">
     </provider>
   </extension>
-  <extension
-        point="org.eclipse.ltk.core.refactoring.renameParticipants">
-     <renameParticipant
-           class="org.ow2.mindEd.adl.textual.ui.refactoring.FractalFileRenameParticipant"
-           id="org.ow2.mindEd.adl.textual.ui.renameParticipant"
-           name="FractalRenameParticipant">
-           <enablement>
-           	<and>
-           		<adapt type="org.eclipse.core.resources.IResource"/>
-           		<test property="org.eclipse.core.resources.extension" value="adl"/>
-           	</and>
-           </enablement>
-     </renameParticipant>
-  </extension>
 
   <extension
         point="org.eclipse.ltk.core.refactoring.renameParticipants">    
@@ -340,12 +326,23 @@
     <renameParticipant
            class="org.ow2.mindEd.adl.textual.ui.FractalExecutableExtensionFactory:org.ow2.mindEd.adl.textual.ui.refactoring.FractalFileRenameParticipant"
            id="org.ow2.mindEd.adl.textual.ui.renameParticipant"
-           name="FractalRenameParticipant">
+           name="FractalFileRenameParticipant">
            <enablement>
            	<and>
            		<adapt type="org.eclipse.core.resources.IResource"/>
            		<test property="org.eclipse.core.resources.extension" value="adl"/>
            	</and>
+           </enablement>
+     </renameParticipant>
+     <renameParticipant
+           class="org.ow2.mindEd.adl.textual.ui.FractalExecutableExtensionFactory:org.ow2.mindEd.adl.textual.ui.refactoring.FractalArchDefRenameParticipant"
+           id="org.ow2.mindEd.adl.textual.ui.renameParticipant"
+           name="FractalArchDefRenameParticipant">
+           <enablement>
+           	<!--<and>-->
+           		<adapt type="org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext" />
+           		<!--<test--> 
+           	<!--</and>-->
            </enablement>
      </renameParticipant>
   </extension>
