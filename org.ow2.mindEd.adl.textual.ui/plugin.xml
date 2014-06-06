@@ -320,6 +320,7 @@
     </provider>
   </extension>
 
+  <!-- TODO: Maybe improve like in the "Rename Refactoring" extension point="org.eclipse.ui.handlers" earlier in the file ? -->
   <extension
         point="org.eclipse.ltk.core.refactoring.renameParticipants">    
     <!-- For the class to be injected: http://koehnlein.blogspot.de/2012/11/xtext-tip-how-do-i-get-guice-injector.html -->
