@@ -339,10 +339,7 @@
            id="org.ow2.mindEd.adl.textual.ui.renameParticipant"
            name="FractalArchDefRenameParticipant">
            <enablement>
-           	<!--<and>-->
            		<adapt type="org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext" />
-           		<!--<test--> 
-           	<!--</and>-->
            </enablement>
      </renameParticipant>
   </extension>
