@@ -394,4 +394,29 @@
     </provider>
   </extension>
   
+  <!-- TODO: Maybe improve like in the "Rename Refactoring" extension point="org.eclipse.ui.handlers" earlier in the file ? -->
+  <extension
+        point="org.eclipse.ltk.core.refactoring.renameParticipants">    
+    <!-- For the class to be injected: http://koehnlein.blogspot.de/2012/11/xtext-tip-how-do-i-get-guice-injector.html -->
+    <renameParticipant
+           class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.ow2.mindEd.itf.editor.textual.ui.refactoring.FractalItfFileRenameParticipant"
+           id="org.ow2.mindEd.itf.textual.ui.renameParticipant"
+           name="FractalFileRenameParticipant">
+           <enablement>
+           	<and>
+           		<adapt type="org.eclipse.core.resources.IResource"/>
+           		<test property="org.eclipse.core.resources.extension" value="itf"/>
+           	</and>
+           </enablement>
+     </renameParticipant>
+     <renameParticipant
+           class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.ow2.mindEd.itf.editor.textual.ui.refactoring.FractalItfDefRenameParticipant"
+           id="org.ow2.mindEd.itf.textual.ui.renameParticipant"
+           name="Fractal InterfaceDefinition Rename Participant">
+           <enablement>
+           		<adapt type="org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext" />
+           </enablement>
+     </renameParticipant>
+  </extension>
+  
 </plugin>
