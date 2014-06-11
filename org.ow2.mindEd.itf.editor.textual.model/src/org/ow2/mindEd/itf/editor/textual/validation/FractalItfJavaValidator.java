@@ -11,6 +11,7 @@ import org.ow2.mindEd.itf.editor.textual.fractalIDL.impl.ItfFileImpl;
 public class FractalItfJavaValidator extends AbstractFractalItfValidator {
 
 	public final static String WRONG_NAME = "org.ow2.mindEd.itf.editor.textual.validation.wrong_name";
+	public final static String NOT_IN_SRC_PATH = "org.ow2.mindEd.adl.editor.textual.validation.not_in_src_path";
 	
 	@Check
 	public void checkItfSimpleName(InterfaceDefinition interfaceDefinition) {
@@ -18,8 +19,14 @@ public class FractalItfJavaValidator extends AbstractFractalItfValidator {
 		String simpleName = interfaceDefinition.getName();
 		
 		String expectedName = FractalItfJavaValidator.getExpectedInterfaceName(interfaceDefinition); 
-				
-		if (! simpleName.equals(expectedName)) {
+		
+		if (expectedName == null) {
+			warning("definition not in source path",
+					FractalIDLPackage.Literals.INTERFACE_DEFINITION__NAME,
+					FractalIDLPackage.INTERFACE_DEFINITION,
+					FractalItfJavaValidator.NOT_IN_SRC_PATH);
+			return;
+		} else if (! simpleName.equals(expectedName)) {
 			warning("interface should be named : " + expectedName,
 					FractalIDLPackage.Literals.INTERFACE_DEFINITION__NAME,
 					FractalIDLPackage.INTERFACE_DEFINITION,
