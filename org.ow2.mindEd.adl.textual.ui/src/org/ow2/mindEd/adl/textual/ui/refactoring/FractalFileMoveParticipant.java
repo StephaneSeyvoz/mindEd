@@ -95,6 +95,8 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 			if (!(container instanceof IFolder))
 				return null;
 			
+			String shortName = oldFullyQualifiedName.substring(oldFullyQualifiedName.lastIndexOf('.') + 1);
+			
 			IFolder targetFolder = (IFolder) container;
 			String newPackage = "";
 			
@@ -103,21 +105,27 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 			EList<MindPathEntry> mindPath = adlHostProject.getMindpathentries();
 			for (MindPathEntry currentPath : mindPath)
 				if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
+					String currentPathName = currentPath.getName();
+					
 					// let's use some defensive programming: it should always be false anyway, BUT... better check.
-					if (!currentPath.getName().startsWith("/" + adlHostProject.getName() + "/"))
+					if (!currentPathName.startsWith("/" + adlHostProject.getName() + "/"))
 						continue;
 					
-					if (targetFolder.getFullPath().toPortableString().startsWith(currentPath.getName())) {
+					String targetFolderPortableFullPath = targetFolder.getFullPath().toPortableString();
+					
+					
+					if (targetFolderPortableFullPath.startsWith(currentPathName)) {
 						// found the corresponding mind path entry
-						newPackage = targetFolder.getFullPath().toPortableString().substring(currentPath.getName().length() + 1).replace('/', '.');
+						
+						// protect from no-package case
+						if (targetFolderPortableFullPath.equals(currentPathName))
+							forcedNewName = shortName;
+						else {
+							newPackage = targetFolderPortableFullPath.substring(currentPathName.length() + 1).replace('/', '.');
+							forcedNewName = newPackage + '.' + shortName;
+						}
 					}	
 				}
-			
-			// Compute new Fully Qualified Name according to the new folder + file name
-			
-			String shortName = oldFullyQualifiedName.substring(oldFullyQualifiedName.lastIndexOf('.') + 1);
-			forcedNewName = newPackage + '.' + shortName;
-			//
 			
 			// We create a IRenameElementContext.Impl object with no "editor" information since it's not coming from an editor.
 			// The framework resolves the right text sections from the EObjects informations anyway :)
