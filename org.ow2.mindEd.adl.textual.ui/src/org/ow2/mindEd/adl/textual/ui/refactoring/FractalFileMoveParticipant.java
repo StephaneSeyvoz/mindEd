@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.ltk.core.refactoring.Change;
+import org.eclipse.ltk.core.refactoring.CompositeChange;
+import org.eclipse.ltk.core.refactoring.resource.MoveResourceChange;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.refactoring.impl.AbstractProcessorBasedRenameParticipant;
@@ -21,6 +23,8 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
+import org.ow2.mindEd.adl.textual.fractal.FileC;
+import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
 import org.ow2.mindEd.ide.core.ModelToProjectUtil;
 import org.ow2.mindEd.ide.model.MindPathEntry;
 import org.ow2.mindEd.ide.model.MindPathKind;
@@ -53,6 +57,16 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	};
 	
 	/**
+	 * The currently edited ArchitectureDefinition grammar element.
+	 */
+	private ArchitectureDefinition renamedArchDef;
+	
+	/**
+	 * The file targeted by the "Move" action.
+	 */
+	private IFile adlFile;
+	
+	/**
 	 * This method has two roles:
 	 * 1/ Preparing the IRenameElementContext with the good EObject (our ArchitectureDefinition in
 	 * the .adl file)
@@ -70,7 +84,7 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 		if (renameContextFactory == null)
 			return null;
 
-		IFile adlFile = (IFile) element;
+		adlFile = (IFile) element;
 		String path = adlFile.getFullPath().toString();
 		URI uri = URI.createPlatformResourceURI(path, true);
 		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
@@ -80,7 +94,7 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
 
 			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
-			ArchitectureDefinition renamedArchDef = hostAdlDef.getArchitectureDefinition();
+			renamedArchDef = hostAdlDef.getArchitectureDefinition();
 
 			// New name computation for our inherited
 			// AbstractProcessorBasedRenameParticipant#checkConditions
@@ -88,35 +102,35 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 			String oldFullyQualifiedName = renamedArchDef.getName();
 
 			// Comes from file refactoring UI (LTK)
-			
+
 			IContainer container = getDestination();
-			
+
 			// Protection
 			if (!(container instanceof IFolder))
 				return null;
-			
+
 			String shortName = oldFullyQualifiedName.substring(oldFullyQualifiedName.lastIndexOf('.') + 1);
-			
+
 			IFolder targetFolder = (IFolder) container;
 			String newPackage = "";
-			
+
 			// TODO: Is the IFolder is a valid MindPathEntry in the current project ?
 			MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(hostAdlDef.eResource().getURI());
 			EList<MindPathEntry> mindPath = adlHostProject.getMindpathentries();
 			for (MindPathEntry currentPath : mindPath)
 				if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
 					String currentPathName = currentPath.getName();
-					
+
 					// let's use some defensive programming: it should always be false anyway, BUT... better check.
 					if (!currentPathName.startsWith("/" + adlHostProject.getName() + "/"))
 						continue;
-					
+
 					String targetFolderPortableFullPath = targetFolder.getFullPath().toPortableString();
-					
-					
+
+
 					if (targetFolderPortableFullPath.startsWith(currentPathName)) {
 						// found the corresponding mind path entry
-						
+
 						// protect from no-package case
 						if (targetFolderPortableFullPath.equals(currentPathName))
 							forcedNewName = shortName;
@@ -126,7 +140,7 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 						}
 					}	
 				}
-			
+
 			// We create a IRenameElementContext.Impl object with no "editor" information since it's not coming from an editor.
 			// The framework resolves the right text sections from the EObjects informations anyway :)
 			// We also skip the parent {@link AbstractProcessorBasedRenameParticipant#createRenameElementContexts} method since
@@ -141,7 +155,7 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 
 		return null;
 	}
-	
+
 	/**
 	 * In some cases the order of changes is wrong, and MoveResourceChange
 	 * happens before our CompositeChange and TextFileChange elements, leading to
@@ -198,9 +212,41 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	 */
 	@Override
 	public Change createChange(IProgressMonitor pm) throws CoreException ,OperationCanceledException {
-		return null;
+		
+		CompositeChange sourceChanges = null;
+		
+		if (renamedArchDef instanceof PrimitiveDefinition) {
+			for(FileC containedSource: EcoreUtil2.eAllOfType((PrimitiveDefinition) renamedArchDef, FileC.class)) {
+				
+				// We only handle simple names for now (getDirectory == null)
+				if (containedSource.getDirectory() == null && adlFile.getParent() instanceof IFolder) {
+					IFolder originalFolder = (IFolder) adlFile.getParent();
+					IFile sourceFile = originalFolder.getFile(containedSource.getName());
+					
+					// File needs to be here
+					if (sourceFile == null || !sourceFile.exists())
+						continue;
+					
+					// Comes from file refactoring UI (LTK)
+					IContainer container = getDestination();
+					// Protection
+					if (!(container instanceof IFolder))
+						return null;
+					IFolder targetFolder = (IFolder) container;
+					
+					// The C/C++ source file change
+					Change currSourceChange = new MoveResourceChange(sourceFile, targetFolder);
+					
+					if (sourceChanges == null)
+						sourceChanges = new CompositeChange("Component implementation changes from participant: " + getName());
+					sourceChanges.add(currSourceChange);
+				}
+			}	
+		}
+		
+		return sourceChanges;
 	};
-	
+
 	/**
 	 * 
 	 */
@@ -210,5 +256,5 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 		list.add(originalTarget);
 		return list;
 	}
-	
+
 }
