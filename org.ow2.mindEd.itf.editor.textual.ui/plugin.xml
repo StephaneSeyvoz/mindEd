@@ -418,5 +418,20 @@
            </enablement>
      </renameParticipant>
   </extension>
+  <extension
+        point="org.eclipse.ltk.core.refactoring.moveParticipants">    
+    <!-- For the class to be injected: http://koehnlein.blogspot.de/2012/11/xtext-tip-how-do-i-get-guice-injector.html -->
+    <moveParticipant
+           class="org.ow2.mindEd.itf.editor.textual.ui.FractalItfExecutableExtensionFactory:org.ow2.mindEd.itf.editor.textual.ui.refactoring.FractalItfFileMoveParticipant"
+           id="org.ow2.mindEd.adl.textual.ui.moveParticipant"
+           name="FractalItfFileMoveParticipant">
+           <enablement>
+           	<and>
+           		<adapt type="org.eclipse.core.resources.IResource"/>
+           		<test property="org.eclipse.core.resources.extension" value="itf"/>
+           	</and>
+           </enablement>
+     </moveParticipant>
+  </extension>
   
 </plugin>
