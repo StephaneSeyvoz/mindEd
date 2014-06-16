@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 0.8.1
+Bundle-Version: 0.8.2
 Bundle-SymbolicName: org.ow2.mindEd.itf.editor.textual.model.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.ui.editors;bundle-version="3.5.0",
@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
  org.eclipse.compare,
- org.eclipse.xtext.common.types.ui
+ org.eclipse.xtext.common.types.ui,
+ org.ow2.mindEd.adl.textual.ui
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.ui,
  org.ow2.mindEd.ide.core;version="0.2.1",

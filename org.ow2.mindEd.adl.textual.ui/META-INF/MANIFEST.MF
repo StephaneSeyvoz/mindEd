@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 1.0.0.4
+Bundle-Version: 1.0.0.5
 Bundle-SymbolicName: org.ow2.mindEd.adl.textual.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.ow2.mindEd.adl.textual;visibility:=reexport,
@@ -35,7 +35,8 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.ow2.mindEd.adl.textual.ui,
  org.ow2.mindEd.adl.textual.ui.contentassist,
+ org.ow2.mindEd.adl.textual.ui.contentassist.antlr,
  org.ow2.mindEd.adl.textual.ui.internal,
  org.ow2.mindEd.adl.textual.ui.quickfix,
- org.ow2.mindEd.adl.textual.ui.contentassist.antlr
+ org.ow2.mindEd.adl.textual.ui.refactoring
 Bundle-Activator: org.ow2.mindEd.adl.textual.ui.internal.FractalActivator
