@@ -1,5 +1,6 @@
 package org.ow2.mindEd.adl.textual.ui.refactoring;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,12 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
 import org.ow2.mindEd.adl.textual.fractal.FileC;
+import org.ow2.mindEd.adl.textual.fractal.FractalPackage;
 import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
+import org.ow2.mindEd.adl.textual.validation.FractalJavaValidator;
+import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.ModelToProjectUtil;
+import org.ow2.mindEd.ide.model.MindPackage;
 import org.ow2.mindEd.ide.model.MindPathEntry;
 import org.ow2.mindEd.ide.model.MindPathKind;
 import org.ow2.mindEd.ide.model.MindProject;
@@ -55,17 +60,17 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	protected String getNewName() {
 		return forcedNewName;
 	};
-	
+
 	/**
 	 * The currently edited ArchitectureDefinition grammar element.
 	 */
 	private ArchitectureDefinition renamedArchDef;
-	
+
 	/**
 	 * The file targeted by the "Move" action.
 	 */
 	private IFile adlFile;
-	
+
 	/**
 	 * This method has two roles:
 	 * 1/ Preparing the IRenameElementContext with the good EObject (our ArchitectureDefinition in
@@ -212,40 +217,131 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	 */
 	@Override
 	public Change createChange(IProgressMonitor pm) throws CoreException ,OperationCanceledException {
-		
+
 		CompositeChange sourceChanges = null;
-		
+
 		if (renamedArchDef instanceof PrimitiveDefinition) {
 			for(FileC containedSource: EcoreUtil2.eAllOfType((PrimitiveDefinition) renamedArchDef, FileC.class)) {
-				
-				// We only handle simple names for now (getDirectory == null)
-				if (containedSource.getDirectory() == null && adlFile.getParent() instanceof IFolder) {
-					IFolder originalFolder = (IFolder) adlFile.getParent();
-					IFile sourceFile = originalFolder.getFile(containedSource.getName());
-					
-					// File needs to be here
-					if (sourceFile == null || !sourceFile.exists())
-						continue;
-					
-					// Comes from file refactoring UI (LTK)
-					IContainer container = getDestination();
-					// Protection
-					if (!(container instanceof IFolder))
-						return null;
-					IFolder targetFolder = (IFolder) container;
-					
-					// The C/C++ source file change
-					Change currSourceChange = new MoveResourceChange(sourceFile, targetFolder);
-					
-					if (sourceChanges == null)
-						sourceChanges = new CompositeChange("Component implementation changes from participant: " + getName());
-					sourceChanges.add(currSourceChange);
-				}
+
+				IFile sourceFile = findSource(containedSource);
+
+				// File needs to be here
+				if (sourceFile == null || !sourceFile.exists())
+					continue;
+
+				// Comes from file refactoring UI (LTK)
+				IContainer container = getDestination();
+				// Protection
+				if (!(container instanceof IFolder))
+					return null;
+				IFolder targetFolder = (IFolder) container;
+
+				// The C/C++ source file change
+				Change currSourceChange = new MoveResourceChange(sourceFile, targetFolder);
+
+				if (sourceChanges == null)
+					sourceChanges = new CompositeChange("Component implementation changes from participant: " + getName());
+				sourceChanges.add(currSourceChange);
 			}	
 		}
-		
+
 		return sourceChanges;
 	};
+
+	/**
+	 * Obtain an IFile reference in our workspace, from the user FileC entry.
+	 * A method very similar to {@link FractalJavaValidator#checkSourceFileExists}:
+	 * Maybe factorize somewhere in a helper ?
+	 * 
+	 * @param fileC The user implementation reference from an ADL
+	 * @return the according IFile in the workspace
+	 */
+	private IFile findSource(FileC fileC) {
+		IFolder originalFolder = (IFolder) adlFile.getParent();
+		IFile file = null;
+
+		if (!(adlFile.getParent() instanceof IFolder))
+			return null;
+
+		// File info
+		String fileName = fileC.getName();
+		String directory = fileC.getDirectory();
+
+		
+		if (directory == null || directory.equals(""))
+			file = originalFolder.getFile(fileName);
+		
+		/*
+		 * The following commented part implies multiple things:
+		 * 
+		 * - What do we really want to do ?
+		 * 
+		 * If we keep the already written algorithm, we will move the target sources in the user-specified destination folder,
+		 * next to the moved .adl file: is it what we want or should we try to keep paths as relative as possible ?
+		 * 
+		 * - If we choose to move the implementation source files to the user-specified destination folder next to the .adl file,
+		 * we have to set the FileC object "directory" and "name" features (mostly, set the directory to null) in a custom new
+		 * {@link IRenameStrategy} refining the {@link DefaultRenameStrategy} / {@link AbstractRenameStrategy} setName method,
+		 * filtered on "FileC" elements.
+		 * 
+		 * Filtering should look like what is done in {@link JvmMemberRenameStrategy} with JvmMember elements, but setting the
+		 * value should be done with eGet and eSet of the right attribute like in {@link AbstractRenameStrategy}.
+		 * 
+		 * - Or we can choose to always re-write the path to be absolute (from the source path) in the FileC node in the model
+		 * only (RenameStrategy), and not to move the file at all (the user should take care about it).
+		 */
+//		else {
+//			// Absolute: we need to search from the root of the source-path for every source-path entry
+//			if (directory.startsWith("/")) {
+//
+//				MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(renamedArchDef.eResource().getURI());
+//
+//				String projectPath = adlHostProject.getProject().getFullPath().toString();
+//
+//				// for all path entries, try to locate the C file
+//				EList<MindPathEntry> path = adlHostProject.getMindpathentries();
+//				URI cFileURI = null;
+//				for (MindPathEntry currentPath : path)
+//					if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
+//
+//						// let's use some defensive programming: it should always be false anyway, BUT... better check.
+//						if (!currentPath.getName().startsWith("/" + adlHostProject.getName() + "/"))
+//							continue;
+//
+//						// path entries names are in such format: /project_name/currentPath, so we remove the first substring "/project_name", and keep "/currPath"
+//						String shortCurrPath = currentPath.getName().substring(adlHostProject.getName().length() + 1);
+//						cFileURI = URI.createPlatformResourceURI(projectPath + shortCurrPath + directory + fileName, true);
+//
+//						// check file existence
+//						file = ModelToProjectUtil.INSTANCE.getIFile(cFileURI);
+//						if ((file != null) && file.exists()) // found !
+//							break;
+//					}
+//			} else {
+//				// Relative
+//
+//				// handle host definition path for resource resolution
+//				File f = new File(directory, fileName);
+//
+//				// Find the file according to the host component package  
+//				// Here the resource is the ADL from where the link was called
+//				MindPackage hostComponentPackage = ModelToProjectUtil.INSTANCE.getCurrentPackage(renamedArchDef.eResource().getURI());
+//				if (hostComponentPackage != null) {
+//					IFolder compFolder = MindIdeCore.getResource(hostComponentPackage);
+//
+//					// Don't forget we want to locate the complete folder "container" : add the "/"
+//					URI compFolderURI = URI.createPlatformResourceURI(compFolder.getFullPath().toString() + "/", true);
+//
+//					URI currentRelativeURI = URI.createFileURI(f.getPath());
+//					URI resolvedFinalURI = currentRelativeURI.resolve(compFolderURI);
+//
+//					file = ModelToProjectUtil.INSTANCE.getIFile(resolvedFinalURI);
+//				}
+//			}
+//		}
+		
+		return file;
+	}
 
 	/**
 	 * 
