@@ -44,7 +44,7 @@ AbstractProcessorBasedRenameParticipant {
 	private ArchitectureDefinition renamedArchDef = null;
 
 	/**
-	 * Do we really want to enable this Participant or not ? (is it targetting an ArchitectureDefinition ?)
+	 * Do we really want to enable this Participant or not ? (is it targeting an ArchitectureDefinition ?)
 	 */
 	@Override
 	protected boolean initialize(Object originalTargetElement) {
