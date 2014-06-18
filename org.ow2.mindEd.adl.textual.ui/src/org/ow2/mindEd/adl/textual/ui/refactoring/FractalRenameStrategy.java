@@ -1,7 +1,10 @@
 package org.ow2.mindEd.adl.textual.ui.refactoring;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
+import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
+import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
 
 /**
  * This class is used to complete {@link FractalArchDefRenameParticipant} to validate the new name:
@@ -19,31 +22,51 @@ import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
 @SuppressWarnings("restriction")
 public class FractalRenameStrategy extends DefaultRenameStrategy {
 
+	private EObject targetElement;
+
+	/**
+	 * Since the strategy applies to any element, and we only want to refine the ArchitectureDefinition
+	 * case, we need to save the targetElement for our check in the "validateNewName" method, for adequate
+	 * filtering.
+	 * 
+	 * @param targetElement
+	 * @param context
+	 * @return
+	 */
+	@Override
+	public boolean initialize(EObject targetElement, IRenameElementContext context) {
+		this.targetElement = targetElement;
+		return super.initialize(targetElement, context);
+	}
+
 	/**
 	 * Prevent package and short name renaming at the same time.
 	 */
 	@Override
 	public RefactoringStatus validateNewName(String newName) {
-		
-		
-		RefactoringStatus status = super.validateNewName(newName);
-		
-		String originalName = getOriginalName();
-		
-		int lastIndexOfDotInOld = originalName.lastIndexOf('.');
-		int lastIndexOfDotInNew = newName.lastIndexOf('.');
-		
-		String oldPackageName 	= originalName.substring(0, lastIndexOfDotInOld);
-		String newPackageName 	= newName.substring(0, lastIndexOfDotInNew);
 
-		String oldSimpleName 	= originalName.substring(lastIndexOfDotInOld + 1);
-		String newSimpleName 	= newName.substring(lastIndexOfDotInNew + 1);
-		
-		// Have both changed ?
-		if (!oldPackageName.equals(newPackageName) && !oldSimpleName.equals(newSimpleName))
-			status.addError("Unsupported renaming: Renaming both package and short name at the same time isn't supported yet. Consider renaming one and then the other instead.");
-		
+
+		RefactoringStatus status = super.validateNewName(newName);
+
+		if (targetElement instanceof ArchitectureDefinition) {
+			
+			String originalName = getOriginalName();
+
+			int lastIndexOfDotInOld = originalName.lastIndexOf('.');
+			int lastIndexOfDotInNew = newName.lastIndexOf('.');
+
+			String oldPackageName 	= originalName.substring(0, lastIndexOfDotInOld);
+			String newPackageName 	= newName.substring(0, lastIndexOfDotInNew);
+
+			String oldSimpleName 	= originalName.substring(lastIndexOfDotInOld + 1);
+			String newSimpleName 	= newName.substring(lastIndexOfDotInNew + 1);
+
+			// Have both changed ?
+			if (!oldPackageName.equals(newPackageName) && !oldSimpleName.equals(newSimpleName))
+				status.addError("Unsupported renaming: Renaming both package and short name at the same time isn't supported yet. Consider renaming one and then the other instead.");
+		}
+
 		return status;
 	}
-	
+
 }
