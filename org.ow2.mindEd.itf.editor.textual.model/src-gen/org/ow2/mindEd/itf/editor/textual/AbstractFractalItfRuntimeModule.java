@@ -89,9 +89,9 @@ public abstract class AbstractFractalItfRuntimeModule extends DefaultRuntimeModu
 		return org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.validation.ValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.ow2.mindEd.itf.editor.textual.validation.FractalItfValidator> bindFractalItfValidator() {
-		return org.ow2.mindEd.itf.editor.textual.validation.FractalItfValidator.class;
+	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.ow2.mindEd.itf.editor.textual.validation.FractalItfJavaValidator> bindFractalItfJavaValidator() {
+		return org.ow2.mindEd.itf.editor.textual.validation.FractalItfJavaValidator.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment

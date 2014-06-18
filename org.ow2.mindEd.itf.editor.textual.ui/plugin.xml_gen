@@ -224,28 +224,28 @@
     </extension>
 
 
-	<!-- marker definitions for org.ow2.mindEd.itf.editor.textual.FractalItf -->
-	<extension
-	        id="fractalitf.check.fast"
-	        name="FractalItf Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.fast"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="fractalitf.check.normal"
-	        name="FractalItf Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.normal"/>
-	    <persistent value="true"/>
-	</extension>
-	<extension
-	        id="fractalitf.check.expensive"
-	        name="FractalItf Problem"
-	        point="org.eclipse.core.resources.markers">
-	    <super type="org.eclipse.xtext.ui.check.expensive"/>
-	    <persistent value="true"/>
-	</extension>
+    <!-- marker definitions for org.ow2.mindEd.itf.editor.textual.FractalItf -->
+    <extension
+            id="fractalitf.check.fast"
+            name="FractalItf Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="fractalitf.check.normal"
+            name="FractalItf Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="fractalitf.check.expensive"
+            name="FractalItf Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
+    </extension>
 
    <extension
          point="org.eclipse.xtext.builder.participant">
