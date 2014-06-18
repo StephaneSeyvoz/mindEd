@@ -386,7 +386,7 @@ public class FractalScopeProvider extends AbstractDeclarativeScopeProvider {
 		for (TypeDefinition currSuperArchDef : superTypes) {
 			reqItfList.addAll(getAllArchDefRequiredInterfaces(currSuperArchDef));
 			// we need a recursion in all supertypes
-			listAllRequiredInterfacesFromArchDefSuperTypes(currSuperArchDef);
+			reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes(currSuperArchDef));
 		}
 
 		return reqItfList;
@@ -531,7 +531,7 @@ public class FractalScopeProvider extends AbstractDeclarativeScopeProvider {
 
 			for (CompositeSuperType currSuperArchDef : superTypes) {
 				CompositeSuperTypeDefinition superType = currSuperArchDef.getTargetArchDef();
-				if (superType instanceof PrimitiveDefinition)
+				if (superType instanceof CompositeDefinition)
 					prvdItfList.addAll(getAllArchDefProvidedInterfaces((CompositeDefinition) superType));
 				else if (superType instanceof TypeDefinition)
 					prvdItfList.addAll(getAllArchDefProvidedInterfaces((TypeDefinition) superType));
@@ -546,7 +546,7 @@ public class FractalScopeProvider extends AbstractDeclarativeScopeProvider {
 			SubComponentDefinition hostSubCompDef = (SubComponentDefinition) archDef.eContainer();
 
 			TypeReference superType = hostSubCompDef.getType();
-			if (superType instanceof PrimitiveDefinition)
+			if (superType instanceof CompositeDefinition)
 				prvdItfList.addAll(getAllArchDefProvidedInterfaces((CompositeDefinition) superType));
 			else if (superType instanceof TypeDefinition)
 				prvdItfList.addAll(getAllArchDefProvidedInterfaces((TypeDefinition) superType));
