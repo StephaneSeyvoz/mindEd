@@ -7,7 +7,9 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.ow2.mindEd.adl.textual.ui.navigation.FractalHyperlink;
+import org.ow2.mindEd.adl.textual.ui.refactoring.FractalRenameStrategy;
 import org.ow2.mindEd.adl.textual.ui.resource.FractalResourceUIServiceProvider;
 
 /**
@@ -64,6 +66,10 @@ public class FractalUiModule extends org.ow2.mindEd.adl.textual.ui.AbstractFract
 
 	public Class<? extends org.eclipse.xtext.ui.resource.IResourceUIServiceProvider> bindResourceUIServiceProvider() {
 		return FractalResourceUIServiceProvider.class;
+	}
+	
+	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
+		return FractalRenameStrategy.class;
 	}
 	
 }
