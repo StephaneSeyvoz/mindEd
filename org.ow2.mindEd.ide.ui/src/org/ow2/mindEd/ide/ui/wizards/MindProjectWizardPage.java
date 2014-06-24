@@ -257,7 +257,7 @@ public class MindProjectWizardPage extends WizardNewProjectCreationPage  {
 
 		Composite languageComposite = new Composite(c, SWT.NULL);
 		GridLayout languageLayout = new GridLayout(2, true);
-		GridData languageLayoutData = new GridData(SWT.CENTER, SWT.CENTER, true, true);
+		GridData languageLayoutData = new GridData(SWT.CENTER, SWT.CENTER, true, false);
 		languageComposite.setLayout(languageLayout);
 		languageComposite.setLayoutData(languageLayoutData);
 
