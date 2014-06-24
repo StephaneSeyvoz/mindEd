@@ -1,71 +1,162 @@
 package org.ow2.mindEd.adl.textual.ui.refactoring;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
-import org.eclipse.ltk.core.refactoring.resource.MoveResourceChange;
+import org.eclipse.ltk.core.refactoring.RefactoringStatus;
+import org.eclipse.ltk.core.refactoring.TextChange;
+import org.eclipse.ltk.core.refactoring.TextFileChange;
+import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
+import org.eclipse.ltk.core.refactoring.participants.ISharableParticipant;
+import org.eclipse.ltk.core.refactoring.participants.RefactoringArguments;
+import org.eclipse.ltk.core.refactoring.participants.RenameProcessor;
+import org.eclipse.text.edits.MultiTextEdit;
+import org.eclipse.text.edits.TextEdit;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.ui.refactoring.impl.AbstractProcessorBasedRenameParticipant;
-import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.refactoring.impl.AbstractRenameProcessor;
+import org.eclipse.xtext.ui.refactoring.impl.EditorDocumentChange;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
-import org.ow2.mindEd.adl.textual.fractal.FileC;
-import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
 import org.ow2.mindEd.ide.core.ModelToProjectUtil;
 import org.ow2.mindEd.ide.model.MindPathEntry;
 import org.ow2.mindEd.ide.model.MindPathKind;
 import org.ow2.mindEd.ide.model.MindProject;
+import org.ow2.mindEd.itf.editor.textual.fractalIDL.InterfaceDefinition;
+import org.ow2.mindEd.itf.editor.textual.fractalIDL.ItfFile;
 
-import com.google.inject.Inject;
-
+/**
+ * This class is intended to allow moving BOTH .adl AND .itf files, and is shared for both types of content, so as not
+ * to cause files corruption while moving .adl and .itf files cross-referenced by a same composite.
+ *  
+ * @author sesa231795
+ *
+ */
 @SuppressWarnings("restriction")
-public class FractalFileMoveParticipant extends AbstractProcessorBasedMoveParticipant {
+public class FractalFileMoveParticipant extends AbstractProcessorBasedMoveParticipant implements ISharableParticipant {
 
-	private String forcedNewName = null;
+	private static final Logger LOG = Logger.getLogger(FractalFileMoveParticipant.class);
 
-	@Inject
-	private IRenameContextFactory renameContextFactory;
+	private Map<RenameProcessor, IFile>	processorAndFilePairs;
+	private Map<IFile, String> 			fileAndNewNamePairs;
 
-	/**
-	 * The new name to be used by the RenameProcessor (Xtext's RenameElementProcessor in our case).
-	 * 
-	 * Our code inspired by {@link AbstractProcessorBasedRenameParticipant#getNewName} method usually
-	 * returns the LTK UI user input argument: the new file name, which we do not want to apply to our model.
-	 * 
-	 * We refine this behaviour with the computed new ArchitectureDefinition name, according to the
-	 * user-provided file name. "forcedNewName" is computed in our
-	 * {@link FractalFileRenameParticipant#createRenameElementContexts} method.
-	 * The getNewName method is used to configure the RenameProcessor in our parent {@link checkConditions}
-	 * method.
-	 */
-	protected String getNewName() {
-		return forcedNewName;
+	protected String getNewName(RenameProcessor processor) {
+		IFile targetFile = processorAndFilePairs.get(processor);
+		return fileAndNewNamePairs.get(targetFile);
 	};
-	
+
+	protected void setNewName(RenameProcessor processor) {
+		((AbstractRenameProcessor) processor).setNewName(getNewName(processor));
+	}
+
+	@Override
+	public RefactoringStatus checkConditions(IProgressMonitor pm, CheckConditionsContext context)
+			throws OperationCanceledException {
+		SubMonitor progress = SubMonitor.convert(pm).setWorkRemaining(100);
+		try {
+			for (RenameProcessor wrappedProcessor : wrappedProcessors) {
+				List<Object> targetElements = Arrays.asList(wrappedProcessor.getElements());
+				if (!disabledTargets.containsAll(targetElements)) {
+					setNewName(wrappedProcessor);
+					status.merge(wrappedProcessor.checkInitialConditions(progress.newChild(20)));
+					if(!status.getRefactoringStatus().hasFatalError())
+						status.merge(wrappedProcessor.checkFinalConditions(progress.newChild(80), context));
+				}
+			}
+		} catch (Exception ce) {
+			status.add(IStatus.ERROR, "Error checking conditions in refactoring participant: {0}. See log for details", ce, LOG);
+		}
+		return status.getRefactoringStatus();
+	}
+
 	/**
-	 * The currently edited ArchitectureDefinition grammar element.
+	 * Enhanced version of @see {@link AbstractProcessorBasedMoveParticipant#initialize(Object)}
+	 * to handle multiple files and according processors.
 	 */
-	private ArchitectureDefinition renamedArchDef;
-	
-	/**
-	 * The file targeted by the "Move" action.
-	 */
-	private IFile adlFile;
-	
+	@Override
+	protected boolean initialize(Object currentElement) {
+
+		if (!(currentElement instanceof IFile))
+			return super.initialize(currentElement);
+
+		try {
+			if (wrappedProcessors == null)
+				wrappedProcessors = new ArrayList<RenameProcessor>();
+			if (processorAndFilePairs == null)
+				processorAndFilePairs = new HashMap<RenameProcessor, IFile>();
+
+			List<RenameProcessor> renameProcessors = getRenameProcessors(currentElement);
+			wrappedProcessors.addAll(renameProcessors);
+
+			for (RenameProcessor currProcessor : renameProcessors)
+				processorAndFilePairs.put(currProcessor, (IFile) currentElement);
+
+			if(wrappedProcessors != null) {
+				syncUtil.totalSync(preferences.isSaveAllBeforeRefactoring());
+				return true;
+			}	
+		} catch (Exception exc) {
+			status.add(RefactoringStatus.ERROR, "Error initializing refactoring participant.", exc, LOG);
+		}
+		return false;
+
+	}
+
+	public ArchitectureDefinition getArchitectureDefinitionFromFile(IFile file) {
+		ArchitectureDefinition archDef = null;
+
+		String path = file.getFullPath().toString();
+		URI uri = URI.createPlatformResourceURI(path, true);
+		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
+		EList<EObject> xtextContents = xtextResource.getContents();
+
+		// We have only one ADLDefinition per file
+		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
+			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
+			archDef = hostAdlDef.getArchitectureDefinition();
+		}
+
+		return archDef;
+	}
+
+	public InterfaceDefinition getInterfaceDefinitionFromFile(IFile file) {
+		InterfaceDefinition itfDef = null;
+
+		String path = file.getFullPath().toString();
+		URI uri = URI.createPlatformResourceURI(path, true);
+		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
+		EList<EObject> xtextContents = xtextResource.getContents();
+
+		// We have only one ItfFile per file
+		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof ItfFile) {
+			ItfFile hostItfFile = (ItfFile) xtextContents.get(0);
+			itfDef = hostItfFile.getInterface();
+		}
+
+		return itfDef;
+	}
+
 	/**
 	 * This method has two roles:
 	 * 1/ Preparing the IRenameElementContext with the good EObject (our ArchitectureDefinition in
@@ -81,79 +172,102 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	@Override
 	protected List<? extends IRenameElementContext> createRenameElementContexts(Object element) {
 
-		if (renameContextFactory == null)
+		String forcedNewName = null;
+		String oldFullyQualifiedName = null;
+		MindProject mindProject = null;
+		
+		// Used for mutual model work
+		EObject currentEObject = null;
+
+		if (!(element instanceof IFile))
 			return null;
 
-		adlFile = (IFile) element;
-		String path = adlFile.getFullPath().toString();
-		URI uri = URI.createPlatformResourceURI(path, true);
-		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
-		EList<EObject> xtextContents = xtextResource.getContents();
-
-		// We have only one ADLDefinition per file
-		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
-
-			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
-			renamedArchDef = hostAdlDef.getArchitectureDefinition();
-
+		IFile file = (IFile) element;
+		if (file.getFileExtension().equals("adl")) {
+			ArchitectureDefinition archDef = getArchitectureDefinitionFromFile(file);
+			currentEObject = archDef;
+			
 			// New name computation for our inherited
 			// AbstractProcessorBasedRenameParticipant#checkConditions
 			// to get the right one (instead of the file name coming from AbstractProcessorBasedRenameParticipant#getNewName()
-			String oldFullyQualifiedName = renamedArchDef.getName();
+			oldFullyQualifiedName = archDef.getName();
+			
+			
+		} else if (file.getFileExtension().equals("itf")) {
+			InterfaceDefinition itfDef = getInterfaceDefinitionFromFile(file);
+			currentEObject = itfDef;
 
-			// Comes from file refactoring UI (LTK)
+			// Same as above
+			oldFullyQualifiedName = itfDef.getName();
+		} else
+			// This file doesn't concern us
+			return null;
 
-			IContainer container = getDestination();
+		mindProject = ModelToProjectUtil.INSTANCE.getMindProject(currentEObject.eResource().getURI());
+		
+		// Comes from file refactoring UI (LTK)
 
-			// Protection
-			if (!(container instanceof IFolder))
-				return null;
+		IContainer container = getDestination();
 
-			String shortName = oldFullyQualifiedName.substring(oldFullyQualifiedName.lastIndexOf('.') + 1);
+		// Protection
+		if (!(container instanceof IFolder))
+			return null;
 
-			IFolder targetFolder = (IFolder) container;
-			String newPackage = "";
+		String shortName = oldFullyQualifiedName.substring(oldFullyQualifiedName.lastIndexOf('.') + 1);
 
-			// TODO: Is the IFolder is a valid MindPathEntry in the current project ?
-			MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(hostAdlDef.eResource().getURI());
-			EList<MindPathEntry> mindPath = adlHostProject.getMindpathentries();
-			for (MindPathEntry currentPath : mindPath)
-				if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
-					String currentPathName = currentPath.getName();
+		IFolder targetFolder = (IFolder) container;
+		String newPackage = "";
+		
+		EList<MindPathEntry> mindPath = mindProject.getMindpathentries();
+		for (MindPathEntry currentPath : mindPath)
+			if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
+				String currentPathName = currentPath.getName();
 
-					// let's use some defensive programming: it should always be false anyway, BUT... better check.
-					if (!currentPathName.startsWith("/" + adlHostProject.getName() + "/"))
-						continue;
+				// let's use some defensive programming: it should always be false anyway, BUT... better check.
+				if (!currentPathName.startsWith("/" + mindProject.getName() + "/"))
+					continue;
 
-					String targetFolderPortableFullPath = targetFolder.getFullPath().toPortableString();
+				String targetFolderPortableFullPath = targetFolder.getFullPath().toPortableString();
 
 
-					if (targetFolderPortableFullPath.startsWith(currentPathName)) {
-						// found the corresponding mind path entry
+				if (targetFolderPortableFullPath.startsWith(currentPathName)) {
+					// found the corresponding mind path entry
 
-						// protect from no-package case
-						if (targetFolderPortableFullPath.equals(currentPathName))
-							forcedNewName = shortName;
-						else {
-							newPackage = targetFolderPortableFullPath.substring(currentPathName.length() + 1).replace('/', '.');
-							forcedNewName = newPackage + '.' + shortName;
-						}
-					}	
-				}
+					// protect from no-package case
+					if (targetFolderPortableFullPath.equals(currentPathName))
+						forcedNewName = shortName;
+					else {
+						newPackage = targetFolderPortableFullPath.substring(currentPathName.length() + 1).replace('/', '.');
+						forcedNewName = newPackage + '.' + shortName;
+					}
+				}	
+			}
 
-			// We create a IRenameElementContext.Impl object with no "editor" information since it's not coming from an editor.
-			// The framework resolves the right text sections from the EObjects informations anyway :)
-			// We also skip the parent {@link AbstractProcessorBasedRenameParticipant#createRenameElementContexts} method since
-			// it doesn't give us any more useful information in our scenario.
-			URI renamedArchDefURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(renamedArchDef);
-			IRenameElementContext context = new FractalFileRenameElementContext(renamedArchDefURI, renamedArchDef.eClass());
-			List<IRenameElementContext> contexts = com.google.common.collect.Lists.newArrayListWithCapacity(1);
-			contexts.add(context);
+		if (fileAndNewNamePairs == null)
+			fileAndNewNamePairs = new HashMap<IFile, String>();
+		fileAndNewNamePairs.put(file, forcedNewName);
 
-			return contexts;
-		}
+		// We create a IRenameElementContext.Impl object with no "editor" information since it's not coming from an editor.
+		// The framework resolves the right text sections from the EObjects informations anyway :)
+		// We also skip the parent {@link AbstractProcessorBasedRenameParticipant#createRenameElementContexts} method since
+		// it doesn't give us any more useful information in our scenario.
+		URI renamedArchDefURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(currentEObject);
+		IRenameElementContext context = new FractalFileRenameElementContext(renamedArchDefURI, currentEObject.eClass());
+		List<IRenameElementContext> contexts = com.google.common.collect.Lists.newArrayListWithCapacity(1);
+		contexts.add(context);
 
-		return null;
+		return contexts;
+
+	}
+
+	/**
+	 * Initialize is run on the first element (before addElement), the all following elements
+	 * are added here. And for each of them we want to create the according processors.
+	 */
+	public void addElement(Object element, RefactoringArguments arguments) {
+
+		if (element instanceof IFile)
+			initialize(element);
 	}
 
 	/**
@@ -182,7 +296,128 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	 * 
 	 */
 	public Change createPreChange(IProgressMonitor pm) throws CoreException, OperationCanceledException {
-		return super.createChange(pm);
+
+		/*
+		 * This change is composite and comes as an aggregation of the different processors results.
+		 * As we have one processor per moved file and its according definition, we need to deal with
+		 * cross-references and mutualize their TextEdit-s.
+		 * 
+		 * For example, if we have a "Composite" that "contains" 2 other components A and B, cross-referencing
+		 * them, and A.adl and B.adl are targeted by a group "move" action:
+		 * - This participant creates 2 processors, one for A definition, one for B definition 
+		 * - Each processor will take care of the current definition / file and the cross-references
+		 * - Each processor owns its own IRefactoringUpdateAcceptor (default implem : RefactoringUpdateAcceptor)
+		 * that it calls to createCompositeChange (when our participant asks its parent class to createChange)
+		 * - The RefactoringUpdateAcceptor#createCompositeChange method uses a document2textEdits map and should
+		 * regroup each TextEdit per document in a MultiTextEdit to avoid file corruption (here, Composite.adl) ;
+		 * however since we have 2 acceptors that have no knowledge of each other, we still obtain separate
+		 * MultiTextEdit-s that can concern the same file (here, A's processor and acceptor impact Composite.adl,
+		 * and B's processor and acceptor fill impact Composite.adl as well).
+		 * 
+		 * The TextEdit-s are created in RefactoringUpdateAcceptor#createCompositeChange with a call to
+		 * Change change = document.createChange(name, multiTextEdit);
+		 * where document is of type IRefactoringDocument which subtypes are defined in the
+		 * DefaultRefactoringDocumentProvider inner classes, and the created Changes can be of the following types:
+		 * - EditorDocumentChange
+		 * - TextFileChange
+		 * We use those elements to retrieve the concerned documents and regroup the Edits per file under mutual
+		 * TextEdits.
+		 * 
+		 * The flatten + merge of the whole changes are done here.
+		 * 
+		 * Note: The same logic applies for our interfaces, that can be cross-referenced and moved as well,
+		 * at the same time together, or moved together with ADLs (same file corruption issue fixed by 
+		 * this shared MoveParticipant). 
+		 */
+		Change standardUnfilteredChange = super.createChange(pm);
+
+		// Our logic
+		CompositeChange flattenedAndMergedChange = new CompositeChange("Changes from participant: " + getName());
+		flattenChanges(flattenedAndMergedChange, standardUnfilteredChange);
+		mergeSameDocumentEdits(flattenedAndMergedChange, pm);
+
+		return flattenedAndMergedChange;
+	}
+
+	private void mergeSameDocumentEdits(CompositeChange newChange, IProgressMonitor pm) {
+
+		Map<IFile, Change> file2changeMap = new HashMap<IFile, Change>();
+		List<Change> changes2remove = new ArrayList<Change>();
+
+		Change[] children = newChange.getChildren();
+		for (Change currChild : children) {
+
+			IFile currChildFile = null;
+
+			if (currChild instanceof TextFileChange) {
+
+				TextFileChange textFileChange = (TextFileChange) currChild;
+				currChildFile = textFileChange.getFile();
+
+			} else if (currChild instanceof EditorDocumentChange) {
+
+				EditorDocumentChange editorDocumentChange = (EditorDocumentChange) currChild;
+				XtextEditor currEditor = (XtextEditor) editorDocumentChange.getEditor();
+				IResource currResource = currEditor.getResource();
+				if (currResource instanceof IFile) // what else ?
+					currChildFile = (IFile) currResource;
+			}
+
+			if (currChildFile != null) {
+
+				// IResources implement equals so maps work well here
+				// see {@link IResource#equals(Object other)} documentation
+
+				if (file2changeMap.containsKey(currChildFile)) {
+					// A previous key exists ? do the merge !
+					Change previousChange = file2changeMap.get(currChildFile);
+					if (previousChange instanceof TextChange && currChild instanceof TextChange) {
+						TextEdit previousTextEdit = ((TextChange) previousChange).getEdit();
+						TextEdit currTextEdit = ((TextChange) currChild).getEdit();
+
+						// both should always be according to {@link RefactoringUpdateAcceptor#createCompositeChange(String name, IProgressMonitor monitor)}
+						if (previousTextEdit instanceof MultiTextEdit && currTextEdit instanceof MultiTextEdit) {
+							TextEdit[] childrenOfCurrentEdit = ((MultiTextEdit) currTextEdit).removeChildren();
+							previousTextEdit.addChildren(childrenOfCurrentEdit);
+
+							// remove the Change from the list since it's been merged in the previous one
+							changes2remove.add(currChild);
+						}
+					}
+				} else
+					// Unknown ? Add !
+					file2changeMap.put(currChildFile, currChild);
+			}
+
+		}
+
+		// Cleanup
+		for (Change currChange2Remove : changes2remove)
+			newChange.remove(currChange2Remove);
+
+	}
+
+	/**
+	 * Flatten all sub-changes tree from CompositeChange-s into our newChange given as an argument.
+	 * @param newChange
+	 * @param change
+	 */
+	private void flattenChanges(CompositeChange newChange,
+			Change change) {
+
+		if (change instanceof CompositeChange) {
+
+			Change[] childrenChanges = ((CompositeChange) change).getChildren();
+			for (Change currChange : childrenChanges)
+				flattenChanges(newChange, currChange);
+
+		} else {
+			CompositeChange parentChange = (CompositeChange) change.getParent();
+			parentChange.remove(change);
+			newChange.add(change);
+		}
+
+
 	}
 
 	/**
@@ -212,38 +447,38 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 	 */
 	@Override
 	public Change createChange(IProgressMonitor pm) throws CoreException ,OperationCanceledException {
-		
+
 		CompositeChange sourceChanges = null;
-		
-		if (renamedArchDef instanceof PrimitiveDefinition) {
-			for(FileC containedSource: EcoreUtil2.eAllOfType((PrimitiveDefinition) renamedArchDef, FileC.class)) {
-				
-				// We only handle simple names for now (getDirectory == null)
-				if (containedSource.getDirectory() == null && adlFile.getParent() instanceof IFolder) {
-					IFolder originalFolder = (IFolder) adlFile.getParent();
-					IFile sourceFile = originalFolder.getFile(containedSource.getName());
-					
-					// File needs to be here
-					if (sourceFile == null || !sourceFile.exists())
-						continue;
-					
-					// Comes from file refactoring UI (LTK)
-					IContainer container = getDestination();
-					// Protection
-					if (!(container instanceof IFolder))
-						return null;
-					IFolder targetFolder = (IFolder) container;
-					
-					// The C/C++ source file change
-					Change currSourceChange = new MoveResourceChange(sourceFile, targetFolder);
-					
-					if (sourceChanges == null)
-						sourceChanges = new CompositeChange("Component implementation changes from participant: " + getName());
-					sourceChanges.add(currSourceChange);
-				}
-			}	
-		}
-		
+
+		//		if (renamedArchDef instanceof PrimitiveDefinition) {
+		//			for(FileC containedSource: EcoreUtil2.eAllOfType((PrimitiveDefinition) renamedArchDef, FileC.class)) {
+		//				
+		//				// We only handle simple names for now (getDirectory == null)
+		//				if (containedSource.getDirectory() == null && adlFile.getParent() instanceof IFolder) {
+		//					IFolder originalFolder = (IFolder) adlFile.getParent();
+		//					IFile sourceFile = originalFolder.getFile(containedSource.getName());
+		//					
+		//					// File needs to be here
+		//					if (sourceFile == null || !sourceFile.exists())
+		//						continue;
+		//					
+		//					// Comes from file refactoring UI (LTK)
+		//					IContainer container = getDestination();
+		//					// Protection
+		//					if (!(container instanceof IFolder))
+		//						return null;
+		//					IFolder targetFolder = (IFolder) container;
+		//					
+		//					// The C/C++ source file change
+		//					Change currSourceChange = new MoveResourceChange(sourceFile, targetFolder);
+		//					
+		//					if (sourceChanges == null)
+		//						sourceChanges = new CompositeChange("Component implementation changes from participant: " + getName());
+		//					sourceChanges.add(currSourceChange);
+		//				}
+		//			}	
+		//		}
+
 		return sourceChanges;
 	};
 

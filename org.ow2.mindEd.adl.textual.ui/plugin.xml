@@ -352,10 +352,16 @@
            id="org.ow2.mindEd.adl.textual.ui.moveParticipant"
            name="FractalFileMoveParticipant">
            <enablement>
-           	<and>
-           		<adapt type="org.eclipse.core.resources.IResource"/>
-           		<test property="org.eclipse.core.resources.extension" value="adl"/>
-           	</and>
+           	<or>
+           		<and>
+           			<adapt type="org.eclipse.core.resources.IResource"/>
+           			<test property="org.eclipse.core.resources.extension" value="adl"/>
+           		</and>
+           		<and>
+           			<adapt type="org.eclipse.core.resources.IResource"/>
+           			<test property="org.eclipse.core.resources.extension" value="itf"/>
+           		</and>
+           	</or>
            </enablement>
      </moveParticipant>
   </extension>

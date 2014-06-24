@@ -3,13 +3,10 @@ package org.ow2.mindEd.adl.textual.ui.refactoring;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
@@ -20,14 +17,11 @@ import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.resource.MoveResourceChange;
 import org.eclipse.ltk.core.refactoring.resource.RenameResourceChange;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.refactoring.impl.AbstractProcessorBasedRenameParticipant;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.eclipse.xtext.ui.util.ResourceUtil;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
-import org.ow2.mindEd.ide.core.ModelToProjectUtil;
-import org.ow2.mindEd.ide.model.MindProject;
 
 /**
  * This Participant is used when a "Rename Element" right-click action is used in the ADL Xtext Editor.

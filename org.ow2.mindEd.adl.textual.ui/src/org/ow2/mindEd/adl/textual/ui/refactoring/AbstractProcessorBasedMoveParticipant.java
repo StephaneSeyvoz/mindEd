@@ -18,26 +18,22 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
-import org.eclipse.ltk.core.refactoring.RefactoringStatus;
-import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.MoveParticipant;
 import org.eclipse.ltk.core.refactoring.participants.RenameProcessor;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.resource.IGlobalServiceProvider;
 import org.eclipse.xtext.ui.refactoring.IRenameRefactoringProvider;
-import org.eclipse.xtext.ui.refactoring.impl.AbstractRenameProcessor;
 import org.eclipse.xtext.ui.refactoring.impl.ProjectUtil;
-import org.eclipse.xtext.ui.refactoring.impl.RefactoringResourceSetProvider;
 import org.eclipse.xtext.ui.refactoring.impl.StatusWrapper;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferences;
 import org.eclipse.xtext.ui.refactoring.ui.SyncUtil;
+import org.eclipse.xtext.ui.resource.XtextLiveScopeResourceSetProvider;
 import org.ow2.mindEd.adl.textual.ui.internal.FractalActivator;
 
 import com.google.inject.Inject;
@@ -63,7 +59,7 @@ public abstract class AbstractProcessorBasedMoveParticipant extends MoveParticip
 	private IGlobalServiceProvider globalServiceProvider;
 	
 	@Inject
-	private RefactoringResourceSetProvider resourceSetProvider;
+	private XtextLiveScopeResourceSetProvider resourceSetProvider;
 
 	@Inject
 	private ProjectUtil projectUtil;
@@ -73,17 +69,17 @@ public abstract class AbstractProcessorBasedMoveParticipant extends MoveParticip
 	private String languageName;
 
 	@Inject
-	private StatusWrapper status;
+	protected StatusWrapper status;
 	
 	@Inject 
-	private SyncUtil syncUtil;
+	protected SyncUtil syncUtil;
 	
 	@Inject
-	private RefactoringPreferences preferences;
+	protected RefactoringPreferences preferences;
 
-	private List<RenameProcessor> wrappedProcessors;
+	protected List<RenameProcessor> wrappedProcessors;
 
-	private Set<Object> disabledTargets = newHashSet();
+	protected Set<Object> disabledTargets = newHashSet();
 	
 	@Override
 	protected boolean initialize(Object originalTargetElement) {
@@ -142,40 +138,6 @@ public abstract class AbstractProcessorBasedMoveParticipant extends MoveParticip
 
 	public void disableFor(Object... elements) {
 		disabledTargets.addAll(Arrays.asList(elements));
-	}
-
-	@Override
-	public RefactoringStatus checkConditions(IProgressMonitor pm, CheckConditionsContext context)
-			throws OperationCanceledException {
-		SubMonitor progress = SubMonitor.convert(pm).setWorkRemaining(100);
-		try {
-			for (RenameProcessor wrappedProcessor : wrappedProcessors) {
-				List<Object> targetElements = Arrays.asList(wrappedProcessor.getElements());
-				if (!disabledTargets.containsAll(targetElements)) {
-					setNewName(wrappedProcessor, getNewName());
-					status.merge(wrappedProcessor.checkInitialConditions(progress.newChild(20)));
-					if(!status.getRefactoringStatus().hasFatalError())
-						status.merge(wrappedProcessor.checkFinalConditions(progress.newChild(80), context));
-				}
-			}
-		} catch (Exception ce) {
-			status.add(ERROR, "Error checking conditions in refactoring participant: {0}. See log for details", ce, LOG);
-		}
-		return status.getRefactoringStatus();
-	}
-	
-	/**
-	 * Changed from {@link AbstractProcessorBasedRenameParticipant} for our logic.
-	 * Define it in the children class to provide Xtext's RenameElementProcessor the new name
-	 * for our ArchitectureDefinition.
-	 * 
-	 * @param processor
-	 * @param newName
-	 */
-	protected abstract String getNewName();
-	
-	protected void setNewName(RenameProcessor processor, String newName) {
-		((AbstractRenameProcessor) processor).setNewName(newName);
 	}
 
 	@Override
