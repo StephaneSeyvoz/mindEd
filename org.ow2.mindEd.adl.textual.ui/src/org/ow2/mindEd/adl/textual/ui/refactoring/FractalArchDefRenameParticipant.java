@@ -74,6 +74,8 @@ AbstractProcessorBasedRenameParticipant {
 
 		// Only use if package is renamed
 		IFolder newFolder = null;
+		String oldPackageName = null;
+		String newPackageName = null;
 
 		// At this point, the modification was already applied and then reverted,
 		// so our renamedArchDef has already been restored to its original name.
@@ -92,9 +94,17 @@ AbstractProcessorBasedRenameParticipant {
 		int lastIndexOfDotInNew = newFullyQualifiedName.lastIndexOf('.');
 
 		// Prepare to detect package changes and trigger MoveResourceChange and / or RenameResourceChange when needed !
-		String oldPackageName 	= oldFullyQualifiedName.substring(0, lastIndexOfDotInOld);
-		String newPackageName 	= newFullyQualifiedName.substring(0, lastIndexOfDotInNew);
-
+		if (lastIndexOfDotInOld < 0)
+			oldPackageName = "";
+		else
+			oldPackageName 	= oldFullyQualifiedName.substring(0, lastIndexOfDotInOld);
+		
+		if (lastIndexOfDotInNew < 0)
+			newPackageName = "";
+		else
+			newPackageName 	= newFullyQualifiedName.substring(0, lastIndexOfDotInNew);
+		
+		// No < 0 here since if it's -1 we won't have any problem anyway...
 		String oldSimpleName 	= oldFullyQualifiedName.substring(lastIndexOfDotInOld + 1);
 		String newSimpleName 	= newFullyQualifiedName.substring(lastIndexOfDotInNew + 1);
 

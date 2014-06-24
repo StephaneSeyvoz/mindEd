@@ -45,7 +45,9 @@ public class FractalRenameStrategy extends DefaultRenameStrategy {
 	@Override
 	public RefactoringStatus validateNewName(String newName) {
 
-
+		String oldPackageName = null;
+		String newPackageName = null;
+		
 		RefactoringStatus status = super.validateNewName(newName);
 
 		if (targetElement instanceof ArchitectureDefinition) {
@@ -55,9 +57,18 @@ public class FractalRenameStrategy extends DefaultRenameStrategy {
 			int lastIndexOfDotInOld = originalName.lastIndexOf('.');
 			int lastIndexOfDotInNew = newName.lastIndexOf('.');
 
-			String oldPackageName 	= originalName.substring(0, lastIndexOfDotInOld);
-			String newPackageName 	= newName.substring(0, lastIndexOfDotInNew);
-
+			
+			if (lastIndexOfDotInOld < 0)
+				oldPackageName = "";
+			else
+				oldPackageName 	= originalName.substring(0, lastIndexOfDotInOld);
+			
+			if (lastIndexOfDotInNew < 0)
+				newPackageName = "";
+			else
+				newPackageName 	= newName.substring(0, lastIndexOfDotInNew);
+			
+			// No < 0 here since if it's -1 we won't have any problem anyway...
 			String oldSimpleName 	= originalName.substring(lastIndexOfDotInOld + 1);
 			String newSimpleName 	= newName.substring(lastIndexOfDotInNew + 1);
 
