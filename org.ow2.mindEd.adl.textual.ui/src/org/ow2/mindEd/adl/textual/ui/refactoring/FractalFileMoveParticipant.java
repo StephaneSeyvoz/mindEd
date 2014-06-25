@@ -174,25 +174,33 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 
 		String forcedNewName = null;
 		String oldFullyQualifiedName = null;
-		MindProject mindProject = null;
-		
+		MindProject targetMindProject = null;
+
 		// Used for mutual model work
 		EObject currentEObject = null;
 
 		if (!(element instanceof IFile))
 			return null;
-
 		IFile file = (IFile) element;
+		
+		// Comes from file refactoring UI (LTK)
+		IContainer container = getDestination();
+
+		// Protection
+		if (!(container instanceof IFolder))
+			return null;
+		IFolder targetFolder = (IFolder) container;
+
 		if (file.getFileExtension().equals("adl")) {
 			ArchitectureDefinition archDef = getArchitectureDefinitionFromFile(file);
 			currentEObject = archDef;
-			
+
 			// New name computation for our inherited
 			// AbstractProcessorBasedRenameParticipant#checkConditions
 			// to get the right one (instead of the file name coming from AbstractProcessorBasedRenameParticipant#getNewName()
 			oldFullyQualifiedName = archDef.getName();
-			
-			
+
+
 		} else if (file.getFileExtension().equals("itf")) {
 			InterfaceDefinition itfDef = getInterfaceDefinitionFromFile(file);
 			currentEObject = itfDef;
@@ -202,29 +210,24 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 		} else
 			// This file doesn't concern us
 			return null;
-
-		mindProject = ModelToProjectUtil.INSTANCE.getMindProject(currentEObject.eResource().getURI());
 		
-		// Comes from file refactoring UI (LTK)
+		targetMindProject = ModelToProjectUtil.INSTANCE.getMindProject(targetFolder.getProject());
 
-		IContainer container = getDestination();
-
-		// Protection
-		if (!(container instanceof IFolder))
+		// Target folder is not a Mind Project
+		if (targetMindProject == null)
 			return null;
 
 		String shortName = oldFullyQualifiedName.substring(oldFullyQualifiedName.lastIndexOf('.') + 1);
 
-		IFolder targetFolder = (IFolder) container;
 		String newPackage = "";
-		
-		EList<MindPathEntry> mindPath = mindProject.getMindpathentries();
+
+		EList<MindPathEntry> mindPath = targetMindProject.getMindpathentries();
 		for (MindPathEntry currentPath : mindPath)
 			if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
 				String currentPathName = currentPath.getName();
 
 				// let's use some defensive programming: it should always be false anyway, BUT... better check.
-				if (!currentPathName.startsWith("/" + mindProject.getName() + "/"))
+				if (!currentPathName.startsWith("/" + targetMindProject.getName() + "/"))
 					continue;
 
 				String targetFolderPortableFullPath = targetFolder.getFullPath().toPortableString();
@@ -243,8 +246,13 @@ public class FractalFileMoveParticipant extends AbstractProcessorBasedMovePartic
 				}	
 			}
 
+		// Target folder wasn't in the Path of the target project: Do nothing
+		if (forcedNewName == null)
+			return null;
+		
 		if (fileAndNewNamePairs == null)
 			fileAndNewNamePairs = new HashMap<IFile, String>();
+			
 		fileAndNewNamePairs.put(file, forcedNewName);
 
 		// We create a IRenameElementContext.Impl object with no "editor" information since it's not coming from an editor.
