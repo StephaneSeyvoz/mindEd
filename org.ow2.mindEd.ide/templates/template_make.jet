@@ -19,6 +19,15 @@ endif
 CONFIGURATION ?= Default
 include $(CONFIGURATION).properties
 
+confOutputDirVar=target/$(CONFIGURATION)
+
+binOutputDir=$(confOutputDirVar)/binaries
+depsOutputDir=$(confOutputDirVar)/dependencies
+docOutputDir=$(confOutputDirVar)/doc
+graphOutputDir=$(confOutputDirVar)/graph
+testBinOutputDir=$(confOutputDirVar)/test-binaries
+testDocOutputDir=$(confOutputDirVar)/test-doc
+
 # Strings and comments management - Skip to "all:" for the real build.
 
 #Platform Separator handling
@@ -30,7 +39,7 @@ endif
 sourcePathArg=
 ifdef sourcePath
 	ifneq ($(sourcePath), "")
-		sourcePathArg=--src-path="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(sourcePath)))"
+		sourcePathArg=--src-path="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(sourcePath):$(depsOutputDir)))"
 	endif
 endif
 
@@ -111,13 +120,7 @@ ifdef testExtraOptions
 	endif
 endif
 
-#default value
-confOutputDirVar=target/$(CONFIGURATION)
-ifdef outputDirectory
-	ifneq ($(outputDirectory), "")
-		confOutputDirVar="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(outputDirectory)))/$(CONFIGURATION)"
-	endif
-endif
+
 
 # folder utilities
 empty=
@@ -128,19 +131,16 @@ space= $(empty) $(empty)
 # do a dry run of "mindc" once for MIND_ROOT to be defined for the terminal session. 
 RUNTIME_PATH=$(subst \,/,$(MIND_ROOT))/runtime
 
-binOutputDir=$(confOutputDirVar)/binaries
-docOutputDir=$(confOutputDirVar)/doc
-graphOutputDir=$(confOutputDirVar)/graph
-testBinOutputDir=$(confOutputDirVar)/test-binaries
-testDocOutputDir=$(confOutputDirVar)/test-doc
-
 # The real build command.
 
 all: compile graph doc test  
 
-clean_all: clean clean_graph clean_doc clean_test
+clean_all: clean clean_dependencies clean_graph clean_doc clean_test
 
-compile: build
+dependencies: build_dependencies
+# Add 'cp' commands here to copy your project dependencies files to depsOutputDir
+
+compile: build dependencies 
 ifdef targetComponent
 	if test ! -x $(MINDC); \
         then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
@@ -171,28 +171,35 @@ test: build_test
 
 build:
 	mkdir -p $(binOutputDir)
-	
+
+build_dependencies:
+	mkdir -p $(depsOutputDir)
+
 build_doc:
 	mkdir -p $(docOutputDir)
-	
+
 build_test:
 	mkdir -p $(testBinOutputDir)
-	
+
 build_graph:
 	mkdir -p $(graphOutputDir)
 
 clean:
 	rm -Rf $(binOutputDir); \
 	mkdir -p $(binOutputDir)
-	
+
+clean_dependencies:
+	rm -Rf $(depsOutputDir); \
+	mkdir -p $(depsOutputDir)
+
 clean_doc:
 	rm -Rf $(docOutputDir); \
 	mkdir -p $(docOutputDir)
-	
+
 clean_test:
 	rm -Rf $(testBinOutputDir); \
 	mkdir -p $(testBinOutputDir)
-	
+
 clean_graph:
 	rm -Rf $(graphOutputDir); \
 	mkdir -p $(graphOutputDir)

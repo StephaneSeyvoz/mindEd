@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.ow2.mindEd.ide.core.MindActivator;
 
+@SuppressWarnings("restriction")
 public class MindProperties {
 
 	private IProject _project;
@@ -154,7 +155,7 @@ public class MindProperties {
 			defaultPropsLayout.setComment(Messages.CDTUtil_ExtraOptions, Messages.CDTUtil_ExtraOptionsComment);
 
 			// test extra properties (such as --automated, --console, --gcov)
-			String testExtraOptsValue = emptyStr;
+			String testExtraOptsValue = "--ld-flags=-lcunit ";
 			defaultProps.setProperty(Messages.CDTUtil_TestExtraOptions, testExtraOptsValue);
 			defaultPropsLayout.setBlancLinesBefore(Messages.CDTUtil_TestExtraOptions, 1); // 1 = number of blank lines
 			defaultPropsLayout.setComment(Messages.CDTUtil_TestExtraOptions, Messages.CDTUtil_TestExtraOptionsComment);
