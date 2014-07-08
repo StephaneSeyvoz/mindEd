@@ -7,6 +7,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
@@ -14,10 +15,6 @@ import org.ow2.mindEd.adl.textual.fractal.BindingDefinition;
 import org.ow2.mindEd.adl.textual.fractal.CompositeDefinition;
 import org.ow2.mindEd.adl.textual.fractal.CompositeSuperType;
 import org.ow2.mindEd.adl.textual.fractal.CompositeSuperTypeDefinition;
-import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
-import org.ow2.mindEd.adl.textual.fractal.PrimitiveSuperType;
-import org.ow2.mindEd.adl.textual.fractal.PrimitiveSuperTypeDefinition;
-import org.ow2.mindEd.adl.textual.fractal.SubComponentDefinition;
 import org.ow2.mindEd.adl.textual.fractal.TypeDefinition;
 
 import com.google.inject.Inject;
@@ -100,5 +97,24 @@ ImportedNamespaceAwareLocalScopeProvider {
 
 		return superTypes;
 	}
-
+	
+	/**
+	 * Create our own ImportNormalizer that rejects relative sub-packages names for sub-components.
+	 * For example, if we have the following components in a project:<br>
+	 * - pkg.Composite<br>
+	 * - pkg.Primitive1<br>
+	 * - pkg.subpkg.Primitive2<br>
+	 * <br>
+	 * In pkg.Composite, we want to tolerate only:<br>
+	 * "contains pkg.Primitive1 as someInstanceName;"<br>
+	 * or<br>
+	 * "contains pkg.subpkg.Primitive2 as someInstanceName;"<br>
+	 * but NEVER:<br>
+	 * "contains subpkg.Primitive2"
+	 * 
+	 */
+	@Override
+	protected ImportNormalizer doCreateImportNormalizer(QualifiedName importedNamespace, boolean wildcard, boolean ignoreCase) {
+		return new FractalImportNormalizer(importedNamespace, wildcard, ignoreCase);
+	}
 }

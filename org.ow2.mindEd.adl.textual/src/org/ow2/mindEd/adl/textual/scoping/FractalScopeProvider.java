@@ -9,23 +9,16 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.eclipse.xtext.scoping.impl.MultimapBasedScope;
 import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
 import org.ow2.mindEd.adl.textual.fractal.BindingDefinition;
 import org.ow2.mindEd.adl.textual.fractal.CompositeDefinition;
 import org.ow2.mindEd.adl.textual.fractal.CompositeElement;
 import org.ow2.mindEd.adl.textual.fractal.CompositeSuperType;
 import org.ow2.mindEd.adl.textual.fractal.CompositeSuperTypeDefinition;
-import org.ow2.mindEd.adl.textual.fractal.FileC;
-import org.ow2.mindEd.adl.textual.fractal.FractalFactory;
-import org.ow2.mindEd.adl.textual.fractal.FractalPackage;
 import org.ow2.mindEd.adl.textual.fractal.HostedInterfaceDefinition;
 import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
 import org.ow2.mindEd.adl.textual.fractal.PrimitiveElement;
@@ -37,8 +30,6 @@ import org.ow2.mindEd.adl.textual.fractal.SubComponentDefinition;
 import org.ow2.mindEd.adl.textual.fractal.TemplateSpecifier;
 import org.ow2.mindEd.adl.textual.fractal.TypeDefinition;
 import org.ow2.mindEd.adl.textual.fractal.TypeReference;
-import org.ow2.mindEd.adl.textual.fractal.impl.RequiredInterfaceDefinitionImpl;
-import org.ow2.mindEd.itf.editor.textual.fractalIDL.InterfaceDefinition;
 
 /**
  * This class contains custom scoping description.
@@ -58,9 +49,10 @@ public class FractalScopeProvider extends AbstractDeclarativeScopeProvider {
 //				+ "_" + reference.getName()
 //				+ "(" + context.eClass().getName() + ", ..)"
 //				);
-//		return super.getScope(context, reference);
+//		IScope scope = super.getScope(context, reference);
+//		return scope;
 //	}
-
+	
 	/**
 	 * Override to fix a refactoring issue, that led to a ValueConverterException with message
 	 * "Missconfigured language: New reference text has invalid syntax" in
