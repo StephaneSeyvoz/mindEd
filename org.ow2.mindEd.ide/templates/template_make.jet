@@ -14,8 +14,8 @@ endif
 
 # Non-MindEd users should invoke this Makefile using "make CONFIGURATION=<configName> all" to run the build,
 # where <configName> matches the desired <configName>.properties file.
-# Set CONFIGURATION to Default if not set
 
+# Set CONFIGURATION to Default if not set
 CONFIGURATION ?= Default
 include $(CONFIGURATION).properties
 
@@ -121,16 +121,6 @@ ifdef testExtraOptions
 endif
 
 
-
-# folder utilities
-empty=
-space= $(empty) $(empty)
-# if MIND_ROOT is not defined, 'runtime' folder components such as the Bootstrap or the Main interface
-# will not be documented and this can lead to broken links. Within MindEd, MIND_ROOT should always be
-# automatically defined. However, for common builds from the terminal, you should define it or at least
-# do a dry run of "mindc" once for MIND_ROOT to be defined for the terminal session. 
-RUNTIME_PATH=$(subst \,/,$(MIND_ROOT))/runtime
-
 # The real build command.
 
 all: compile graph doc test  
@@ -161,7 +151,7 @@ else
 endif
 
 doc: build_doc
-	$(MINDOC) $(sourcePathArg) -S=$(RUNTIME_PATH) -o=$(docOutputDir)
+	$(MINDOC) $(sourcePathArg) -o=$(docOutputDir)
 
 # here we reuse the same flags as the common build ones
 test: build_test
