@@ -592,8 +592,8 @@ public class CDTUtil {
 			if (currentMakeTarget != null)
 				fTargetManager.addTarget(project, currentMakeTarget);
 
-			// make CONFIGURATION=${ConfigName} clean_all
-			currentMakeTarget = createMakeTarget(project, fTargetManager, "clean_all", Messages.CDTUtil_MakeConfigCleanAllArgument);
+			// make CONFIGURATION=${ConfigName} clean_compile
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "clean_compile", Messages.CDTUtil_MakeConfigCleanCompileArgument);
 			if (currentMakeTarget != null)
 				fTargetManager.addTarget(project, currentMakeTarget);
 
