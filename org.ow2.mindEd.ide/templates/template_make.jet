@@ -132,30 +132,40 @@ dependencies: build_dependencies
 
 compile: build 
 ifdef targetComponent
-	if test ! -x $(MINDC); \
-        then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+	@if test ! -x $(MINDC); \
+        then echo ' Mindc not found! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
     	else $(MINDC) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagsArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) -o=$(binOutputDir) $(targetComponent):$(binaryName) ;\
     fi
 else
-	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
+	@echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
 endif
 
 graph: build_graph
 ifdef targetComponent
-	if test ! -x $(MINDC); \
-        then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+	@if test ! -x $(MINDC); \
+        then echo ' Mindc not found! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
     	else $(MINDC) --check-adl $(sourcePathArg) $(includePathArg) -o=$(graphOutputDir) 'dot.DumpComponentDot<'$(targetComponent)'>' ;\
     fi
 else
-	echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
+	@echo "No application defined - MindEd users: Please configure your project target with the 'Mind Path' -> (right click) 'New application' menu."
 endif
 
 doc: build_doc
-	$(MINDOC) $(sourcePathArg) -o=$(docOutputDir)
+	@if test ! -x $(MINDOC); \
+		then echo ' Mindoc not found! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+		else $(MINDOC) $(sourcePathArg) -o=$(docOutputDir);\
+	fi
 
 # here we reuse the same flags as the common build ones
 test: build_test
-	$(MINDUNIT) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagsArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) $(testExtraOptionsArg) -o=$(testBinOutputDir) $(testSourcePathArg)
+ifdef testSourcePath
+	@if test ! -x $(MINDUNIT); \
+		then echo ' Mindunit not found! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \
+		else $(MINDUNIT) $(sourcePathArg) $(includePathArg) $(compilerCommandArg) $(linkerCommandArg) $(assemblerCommandArg) $(asFlagsArg) $(cppFlagsArg) $(cFlagsArg) $(ldFlagsArg) $(extraOptionsArg) $(testExtraOptionsArg) -o=$(testBinOutputDir) $(testSourcePathArg);\
+	fi
+else
+	@echo "No test folder defined: Please configure the 'testSourcePath' variable in your $(CONFIGURATION).properties file."
+endif
 
 # Output folder handling.
 
