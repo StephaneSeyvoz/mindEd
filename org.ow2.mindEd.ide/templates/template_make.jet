@@ -123,14 +123,14 @@ endif
 
 # The real build command.
 
-all: compile graph doc test  
+all: dependencies compile graph doc test  
 
-clean_all: clean clean_dependencies clean_graph clean_doc clean_test
+clean_all: clean_dependencies clean clean_graph clean_doc clean_test
 
 dependencies: build_dependencies
 # Add 'cp' commands here to copy your project dependencies files to depsOutputDir
 
-compile: build dependencies 
+compile: build 
 ifdef targetComponent
 	if test ! -x $(MINDC); \
         then echo ' Not found mindc ! Set MIND_ROOT variable or go to 'Mindc location' eclipse preference page'; \

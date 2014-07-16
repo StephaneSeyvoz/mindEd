@@ -577,6 +577,11 @@ public class CDTUtil {
 			if (currentMakeTarget != null)
 				fTargetManager.addTarget(project, currentMakeTarget);
 
+			// make CONFIGURATION=${ConfigName} dependencies
+			currentMakeTarget = createMakeTarget(project, fTargetManager, "dependencies", Messages.CDTUtil_MakeConfigDependenciesArgument);
+			if (currentMakeTarget != null)
+				fTargetManager.addTarget(project, currentMakeTarget);
+			
 			// make CONFIGURATION=${ConfigName} compile
 			currentMakeTarget = createMakeTarget(project, fTargetManager, "compile", Messages.CDTUtil_MakeConfigCompileArgument);
 			if (currentMakeTarget != null)

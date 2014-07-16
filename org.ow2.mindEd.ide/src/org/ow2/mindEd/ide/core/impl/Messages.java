@@ -66,8 +66,10 @@ public class Messages extends NLS {
 	public static String CDTUtil_MakeConfigGraphArgument;
 	public static String CDTUtil_MakeConfigDocArgument;
 	public static String CDTUtil_MakeConfigTestArgument;
+	public static String CDTUtil_MakeConfigDependenciesArgument;
 	public static String CDTUtil_TestExtraOptions;
 	public static String CDTUtil_TestExtraOptionsComment;
+	
 	
 	
 	static {
