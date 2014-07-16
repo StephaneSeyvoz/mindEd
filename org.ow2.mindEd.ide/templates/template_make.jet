@@ -170,38 +170,38 @@ endif
 # Output folder handling.
 
 build:
-	mkdir -p $(binOutputDir)
+	@mkdir -p $(binOutputDir)
 
 build_dependencies:
-	mkdir -p $(depsOutputDir)
+	@mkdir -p $(depsOutputDir)
 
 build_doc:
-	mkdir -p $(docOutputDir)
+	@mkdir -p $(docOutputDir)
 
 build_test:
-	mkdir -p $(testBinOutputDir)
+	@mkdir -p $(testBinOutputDir)
 
 build_graph:
-	mkdir -p $(graphOutputDir)
+	@mkdir -p $(graphOutputDir)
 
 clean:
-	rm -Rf $(binOutputDir); \
+	@rm -Rf $(binOutputDir); \
 	mkdir -p $(binOutputDir)
 
 clean_dependencies:
-	rm -Rf $(depsOutputDir); \
+	@rm -Rf $(depsOutputDir); \
 	mkdir -p $(depsOutputDir)
 
 clean_doc:
-	rm -Rf $(docOutputDir); \
+	@rm -Rf $(docOutputDir); \
 	mkdir -p $(docOutputDir)
 
 clean_test:
-	rm -Rf $(testBinOutputDir); \
+	@rm -Rf $(testBinOutputDir); \
 	mkdir -p $(testBinOutputDir)
 
 clean_graph:
-	rm -Rf $(graphOutputDir); \
+	@rm -Rf $(graphOutputDir); \
 	mkdir -p $(graphOutputDir)
 
-.PHONY: all clean build
+.PHONY: all dependencies compile graph doc test clean clean_dependencies clean_doc clean_test clean_graph build build_dependencies build_doc build_test build_graph
