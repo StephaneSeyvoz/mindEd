@@ -45,7 +45,7 @@ endif
 
 testSourcePathArg=
 ifdef testSourcePath
-	ifneq ($(sourcePath), "")
+	ifneq ($(testSourcePath), "")
 		testSourcePathArg="$(subst :,$(PATH_SEPARATOR),$(subst ::,:,$(testSourcePath)))"
 	endif
 endif
