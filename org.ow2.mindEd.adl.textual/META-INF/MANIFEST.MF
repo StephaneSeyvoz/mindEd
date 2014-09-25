@@ -20,7 +20,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.core.resources,
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench,
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.ow2.mindEd.adl.textual.model;bundle-version="1.0.0",
+ org.ow2.mindEd.itf.editor.textual.model;bundle-version="1.0.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.ow2.mindEd.ide.core;version="0.2.1",
@@ -30,13 +32,10 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.ow2.mindEd.adl.textual,
  org.ow2.mindEd.adl.textual.formatting,
- org.ow2.mindEd.adl.textual.fractal,
- org.ow2.mindEd.adl.textual.fractal.impl,
- org.ow2.mindEd.adl.textual.fractal.util,
+ org.ow2.mindEd.adl.textual.generator,
  org.ow2.mindEd.adl.textual.parser.antlr,
  org.ow2.mindEd.adl.textual.parser.antlr.internal,
  org.ow2.mindEd.adl.textual.scoping,
  org.ow2.mindEd.adl.textual.serializer,
  org.ow2.mindEd.adl.textual.services,
- org.ow2.mindEd.adl.textual.validation,
- org.ow2.mindEd.adl.textual.generator
+ org.ow2.mindEd.adl.textual.validation

@@ -18,7 +18,7 @@ var encoding = "UTF-8"
 
 Workflow {
     bean = StandaloneSetup {
-		platformUri = ".."
+		platformUri = "${platformProject}"
 	}
 	
 	component = DirectoryCleaner {
@@ -30,9 +30,9 @@ Workflow {
 	}
 	
 	component = Generator {
-		pathRtProject = platformProject
+		pathRtProject = "${platformProject}"
 		pathUiProject = "${runtimeProject}.ui"
-		projectNameRt = projectName
+		projectNameRt = "${projectName}"
 		projectNameUi = "${packageName}.ui"
 		encoding = encoding
 		
