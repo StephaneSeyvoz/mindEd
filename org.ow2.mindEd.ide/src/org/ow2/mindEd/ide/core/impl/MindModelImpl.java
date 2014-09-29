@@ -13,15 +13,27 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.eclipse.cdt.core.language.settings.providers.LanguageSettingsManager;
 import org.eclipse.cdt.core.model.CoreModel;
+import org.eclipse.cdt.core.settings.model.CIncludeFileEntry;
+import org.eclipse.cdt.core.settings.model.CIncludePathEntry;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
+import org.eclipse.cdt.core.settings.model.ICFileDescription;
 import org.eclipse.cdt.core.settings.model.ICFolderDescription;
 import org.eclipse.cdt.core.settings.model.ICLanguageSetting;
 import org.eclipse.cdt.core.settings.model.ICLanguageSettingEntry;
+import org.eclipse.cdt.core.settings.model.ICMultiFolderDescription;
+import org.eclipse.cdt.core.settings.model.ICOutputEntry;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
+import org.eclipse.cdt.core.settings.model.ICResourceDescription;
+import org.eclipse.cdt.core.settings.model.ICSettingBase;
 import org.eclipse.cdt.core.settings.model.ICSettingEntry;
 import org.eclipse.cdt.core.settings.model.ICSourceEntry;
+import org.eclipse.cdt.core.settings.model.WriteAccessException;
+import org.eclipse.cdt.core.settings.model.util.CDataUtil;
+import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
+import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.URIUtil;
 import org.eclipse.core.resources.IContainer;
@@ -47,12 +59,23 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
+import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
+import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
+import org.ow2.mindEd.adl.textual.fractal.FileC;
+import org.ow2.mindEd.adl.textual.fractal.ImplementationDefinition;
+import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
 import org.ow2.mindEd.ide.core.FamilyJobCST;
 import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.MindModel;
 import org.ow2.mindEd.ide.core.MindNature;
+import org.ow2.mindEd.ide.core.ModelToProjectUtil;
 import org.ow2.mindEd.ide.core.RepoTypeAdapter;
 import org.ow2.mindEd.ide.model.MindAdl;
 import org.ow2.mindEd.ide.model.MindAllRepo;
@@ -1756,6 +1779,267 @@ public class MindModelImpl implements MindModel {
 			destFile.setResourceAttributes(attributes);
 		} catch (CoreException e) {
 			//failure is not an option
+		}
+	}
+
+	public void registerIncludeFilesForDefinitionImplementationSources(
+			IProject p, IFile resFile) throws WriteAccessException, CoreException {
+
+		// TODO FIXME Do the job in the _model instead, possibly with a dedicated job (thread)
+
+		String path = resFile.getFullPath().toString();
+		org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createPlatformResourceURI(path, true);
+		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
+		EList<EObject> xtextContents = xtextResource.getContents();
+
+		// We have only one ADLDefinition per file
+		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
+			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
+			ArchitectureDefinition archDef = hostAdlDef.getArchitectureDefinition();
+
+			if (archDef instanceof PrimitiveDefinition) {
+				PrimitiveDefinition archDefAsPrimitive = (PrimitiveDefinition) archDef;
+
+				List<ImplementationDefinition> allSources = EcoreUtil2.getAllContentsOfType(archDefAsPrimitive, ImplementationDefinition.class);
+				for (ImplementationDefinition currSource : allSources) {
+					FileC currSourceFile = currSource.getFileC();
+
+					// the C file
+					IFile sourceFile = getFileFromDefinitionImplementation(archDef, currSourceFile);
+
+					if (sourceFile != null && sourceFile.exists()) {
+						AddIncludeOnImplementationSourceJob job = new AddIncludeOnImplementationSourceJob(p, resFile, sourceFile);
+
+						// needed for the job's call to CoreModel.getDefault().setProjectDescription(p, des); to work
+						// java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/<projectName>
+						// is raised otherwise
+						job.setRule(ResourcesPlugin.getWorkspace().getRoot());
+						job.schedule();
+					}
+				}
+			}
+		}
+	}
+
+	private IFile getFileFromDefinitionImplementation(ArchitectureDefinition archDef, FileC fileC) {
+
+		IFile file = null; // result
+
+		String directory = fileC.getDirectory();
+		String fileName = fileC.getName();
+
+		// Used to get the current package
+		XtextResource resource = (XtextResource) fileC.eResource();
+
+		// No directory
+		if (directory == null || directory.equals("")){
+			// Find the file according to the host component package
+			// Here the resource is the ADL from where the link was called
+			MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
+			if (pack != null) {
+				IFolder f = MindIdeCore.getResource(pack);
+				file = f.getFile(fileName);
+			}
+		} else {
+			// Absolute: we need to search from the root of the source-path for every source-path entry
+			if (directory.startsWith("/")) {
+
+				MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(archDef.eResource().getURI());
+
+				String projectPath = adlHostProject.getProject().getFullPath().toString();
+
+				// for all path entries, try to locate the C file
+				EList<MindPathEntry> path = adlHostProject.getMindpathentries();
+				org.eclipse.emf.common.util.URI cFileURI = null;
+				for (MindPathEntry currentPath : path)
+					if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
+
+						// let's use some defensive programming: it should always be false anyway, BUT... better check.
+						if (!currentPath.getName().startsWith("/" + adlHostProject.getName() + "/"))
+							continue;
+
+						// path entries names are in such format: /project_name/currentPath, so we remove the first substring "/project_name", and keep "/currPath"
+						String shortCurrPath = currentPath.getName().substring(adlHostProject.getName().length() + 1);
+						cFileURI =
+								org.eclipse.emf.common.util.URI.createPlatformResourceURI(projectPath + shortCurrPath + directory + fileName, true);
+
+						// check file existence
+						file = ModelToProjectUtil.INSTANCE.getIFile(cFileURI);
+						if ((file != null) && file.exists()) // found !
+							break;
+					}
+			} else {
+				// Relative
+
+				// handle host definition path for resource resolution
+				File f = new File(directory, fileName);
+
+				// Find the file according to the host component package  
+				// Here the resource is the ADL from where the link was called
+				MindPackage hostComponentPackage = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
+				if (hostComponentPackage != null) {
+					IFolder compFolder = MindIdeCore.getResource(hostComponentPackage);
+
+					// Don't forget we want to locate the complete folder "container" : add the "/"
+					org.eclipse.emf.common.util.URI compFolderURI =
+							org.eclipse.emf.common.util.URI.createPlatformResourceURI(compFolder.getFullPath().toString() + "/", true);
+
+					org.eclipse.emf.common.util.URI currentRelativeURI = org.eclipse.emf.common.util.URI.createFileURI(f.getPath());
+					org.eclipse.emf.common.util.URI resolvedFinalURI = currentRelativeURI.resolve(compFolderURI);
+
+					file = ModelToProjectUtil.INSTANCE.getIFile(resolvedFinalURI);
+				}
+			}
+		}
+
+		//		if (directory != null && directory.startsWith("/")) {
+		//			// Get the file URI
+		//			// If file doesn't exist, raise an error with a code so we can attach a quickfix
+		//			if (file == null || !(file.exists()))
+		//				return null;
+		//
+		//		} else {
+		//			if (file == null || !(file.exists()))
+		//				return null;
+		//		}
+
+		return file;
+	}
+
+	private static final class AddIncludeOnImplementationSourceJob extends Job {
+		IProject p;
+		IResource adlFile;
+		IResource sourceFile;
+
+		public AddIncludeOnImplementationSourceJob(IProject p, IFile adlFile, IFile sourceFile) {
+			super("add include to resource " + sourceFile.getName());
+			this.p = p;
+			this.adlFile = adlFile;
+			this.sourceFile = sourceFile;
+		}
+
+		@Override
+		protected IStatus run(IProgressMonitor monitor) {
+
+			try {
+
+				// FIXME the out path is hardcoded in CDTUtil#initMindProject and set in CDT but never stored
+				// in the Mind model...
+
+				IManagedBuildInfo info = ManagedBuildManager.getBuildInfo(p);
+				// we suppose "getSelectedConfiguration" will return the active one
+				//IConfiguration selectedConfiguration = info.getDefaultConfiguration();
+
+				final ICProjectDescriptionManager mgr = CoreModel
+						.getDefault().getProjectDescriptionManager();
+				final ICProjectDescription des = mgr.getProjectDescription(p, true);
+
+				// Is C project
+				if (des != null) {
+					ICConfigurationDescription configDesc = des.getActiveConfiguration();
+
+					ICOutputEntry[] outputDirectories = configDesc.getConfigurationData().getBuildData().getOutputDirectories();
+
+					// search package in order to compute relative path to source path
+					org.eclipse.emf.common.util.URI sourceFileURI = org.eclipse.emf.common.util.URI.createPlatformResourceURI(sourceFile.getFullPath().toString(), false);
+					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(sourceFileURI);
+
+					// base ourselves only on a name convention for now
+					String packagePath = pack.getName().replace('.', '/');
+
+					// try to find the generated .c.h in the same sub-folder (package) in the outputs
+
+					for (ICOutputEntry currOutEntry : outputDirectories) {
+						IPath currOutEntryPath = currOutEntry.getFullPath(); 	// "target/"
+
+						String simpleHeaderPathStr = currOutEntryPath.toPortableString() + "/";
+						simpleHeaderPathStr = simpleHeaderPathStr + configDesc.getName() + "/";		// ${ConfigName}/
+						simpleHeaderPathStr = simpleHeaderPathStr + "binaries" + "/";			// "binaries/"
+						simpleHeaderPathStr = simpleHeaderPathStr + packagePath + "/";		// "package/"
+						simpleHeaderPathStr = simpleHeaderPathStr + sourceFile.getName();		// "fileName"
+						simpleHeaderPathStr = simpleHeaderPathStr + ".h";						// suffix according to naming convention
+
+						IResource sourceFileSimpleHeader = ResourcesPlugin.getWorkspace().getRoot().findMember(simpleHeaderPathStr);
+						if (sourceFileSimpleHeader != null && sourceFileSimpleHeader.exists()) {
+							CIncludeFileEntry cIncFileEntry = CDataUtil.createCIncludeFileEntry(sourceFileSimpleHeader.getFullPath().toString(), ICSettingEntry.VALUE_WORKSPACE_PATH);
+
+
+							// FOR ALL CONFIGURATIONS
+							//ICConfigurationDescription configDecriptions[] = des.getConfigurations();
+							//	for (ICConfigurationDescription configDescription : configDecriptions) {
+
+							//	ICFolderDescription projectRoot = configDescription.getRootFolderDescription();
+
+
+							ICResourceDescription resDesc = configDesc.getResourceDescription(sourceFile.getProjectRelativePath(), false);
+							if (! sourceFile.getProjectRelativePath().equals(resDesc.getPath()) )
+								resDesc = configDesc.createFileDescription(sourceFile.getProjectRelativePath(), resDesc);
+
+							ICLanguageSetting setting = null;
+							List<ICLanguageSettingEntry> includes = null;
+
+							// Obtain Language IDs
+							List<String> languageIds = LanguageSettingsManager.getLanguages(sourceFile, configDesc);
+							// FIXME: do "for all" instead of "get(0)"
+							includes = LanguageSettingsManager.getSettingEntriesByKind(configDesc, sourceFile, languageIds.get(0), ICSettingEntry.INCLUDE_FILE);					
+
+							// WE SHOULD BE THERE ACCORDING TO THE IncludeFileTab / AbstractLangsListTab !!!
+							// TODO FIXME: Return the array ?
+							setting = getLangSetting(resDesc)[0];
+
+
+							if (includes == null)
+								includes = new ArrayList<ICLanguageSettingEntry>();
+
+							if (setting != null) {
+
+								// keep previous entries
+								includes.addAll(setting.getSettingEntriesList(ICSettingEntry.INCLUDE_FILE));
+
+								// add ours
+								includes.add(cIncFileEntry);
+
+								// set the info
+								setting.setSettingEntries(ICSettingEntry.INCLUDE_FILE, includes);
+
+								/*
+								 * See its Javadoc:
+								 * this method is called to save/apply the project description the method should be called to apply changes made to the project description returned by the getProjectDescription(IProject, boolean) or createProjectDescription(IProject, boolean) 
+								 */
+								CoreModel.getDefault().setProjectDescription(p, des);
+
+								/*
+								}
+							} */
+
+							}
+
+							break;
+						}
+					}
+				}
+			} catch (WriteAccessException e) {
+				MindIdeCore.log(e, "could not add -include to resource "+ sourceFile.getName());
+			} catch (CoreException e) {
+				MindIdeCore.log(e, "could not add -include to resource "+ sourceFile.getName() + " - Error: " + e.getMessage());
+				e.printStackTrace();
+			}
+
+			return Status.OK_STATUS;
+		}
+
+		public ICLanguageSetting[] getLangSetting(ICResourceDescription rcDes) {
+			if (rcDes.getType() != ICSettingBase.SETTING_FILE)
+				return null;
+
+			ICFileDescription fiDes = (ICFileDescription)rcDes;
+			ICLanguageSetting langSetting = fiDes.getLanguageSetting();
+			return (langSetting != null) ? new ICLanguageSetting[] { langSetting } : null;
+		}
+
+		@Override
+		public boolean belongsTo(Object family) {
+			return FamilyJobCST.FAMILY_ALL == family;
 		}
 	}
 }

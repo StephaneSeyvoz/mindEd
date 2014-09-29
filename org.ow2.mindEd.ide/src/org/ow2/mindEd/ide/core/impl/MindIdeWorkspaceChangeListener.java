@@ -29,13 +29,12 @@ import org.ow2.mindEd.ide.model.MindPackage;
 import org.ow2.mindEd.ide.model.MindPathEntry;
 import org.ow2.mindEd.ide.model.MindPathKind;
 import org.ow2.mindEd.ide.model.MindProject;
-import org.ow2.mindEd.ide.model.MindRepo;
 import org.ow2.mindEd.ide.model.MindRootSrc;
 
 public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResourceDeltaVisitor, IResourceChangeListener {
 	Map<IResource, MindObject> _mapResourceToMind;
 	MindModelImpl _model;
-	
+
 	public MindIdeWorkspaceChangeListener(MindModelImpl model, Map<IResource, MindObject> mapResourceToMind) {
 		_model = model;
 		_mapResourceToMind = mapResourceToMind;
@@ -48,11 +47,11 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 	public boolean visit(IResource resource) throws CoreException {
 		return visit(IResourceDelta.ADDED, resource);
 	}
-	
+
 	public boolean visit(int kind, final IResource resource) throws CoreException {
 		if (resource.isTeamPrivateMember())
 			return false;
-		
+
 		if (resource.getType() == IResource.PROJECT) {
 			MindObject mp;
 			try {
@@ -69,12 +68,15 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 					_mapResourceToMind.put(resource, mp);
 					return true;
 				}
-				
+
 			} catch (IOException e) {
 				MindIdeCore.log(e, "sync project "+resource);
 			}
 			return false;
 		}
+
+		IProject p = resource.getProject();
+
 		if (resource.getType() == IResource.FOLDER) {
 			IFolder _repoContainer = _model.getLocalRepoFolder();
 			if (_repoContainer.equals(resource.getParent()))  {
@@ -82,13 +84,12 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 				_mapResourceToMind.put(resource, lib);
 				return true;
 			}
-			
-			IProject p = resource.getProject();
+
 			MindProject mp = (MindProject) _mapResourceToMind.get(p);
 			if (mp == null) {
 				mp = _model.get(p);
 			}
-			
+
 			if (mp != null) {
 				_mapResourceToMind.put(p, mp);
 				for (MindPathEntry mpe : mp.getMindpathentries()) {
@@ -115,7 +116,7 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 									return true;
 								}
 							}
-								
+
 						}
 					}
 				}
@@ -134,18 +135,17 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 				MindPackage packageFound = findOrCreateMindPackage(resource, true);
 				if (packageFound == null)
 					return false;
-				
+
 				if (packageFound.getName().length() !=0)
 					_mapResourceToMind.put(resource, packageFound);
 				return true;
 			}
 		}
-		
+
 		if (resource.getType() == IResource.FILE) {
-			// SSZ
-			// Not sure what monitoring every file in the root folder of the current project is useful for
-			// Leads to handling too many events useless events without a link to CSourceFolder sync.
-			//if (resource.getFullPath().segmentCount() == 2 || resource.getFullPath().segment(1).equals(".cproject")) {
+
+			IFile resFile = (IFile) resource;
+
 			if (resource.getFullPath().segment(1).equals(".cproject")) {
 				if (kind == IResourceDelta.CHANGED) {
 					_model.syncCSourceFolder(resource.getProject());
@@ -153,6 +153,19 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 				}
 				return false;
 			}
+
+			// handle notifications for any changed definition
+			if ("adl".equalsIgnoreCase(resource.getFileExtension())) {
+
+				if (kind == IResourceDelta.CHANGED /* || kind == IResourceDelta.ADDED */ ) {
+
+					_model.registerIncludeFilesForDefinitionImplementationSources(p, resFile);
+					
+				}
+
+			}
+
+			// In any case
 			MindFile mf = findOrCreateFile(resource, kind != IResourceDelta.REMOVED);
 			if (mf != null) {
 				if (kind == IResourceDelta.REMOVED) {
@@ -170,7 +183,7 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		}
 		return true;
 	}
-	
+
 
 	@Override
 	public boolean visit(IResourceDelta delta) throws CoreException {
@@ -198,10 +211,10 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		}
 		return visit(delta.getKind(), delta.getResource());
 	}
-	
-	
 
-	
+
+
+
 	public MindFile findOrCreateFile(IResource resource, boolean create) {
 		EClass cc = UtilMindIde.getEClassFile(resource.getName());
 		if (cc != null) {
@@ -233,10 +246,10 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		mf.setFullpath(resource.getFullPath().toPortableString());
 		mf.setMindId(p.getMindId()+"/"+resource.getName());
 		if (p.getName().equals(""))
-		   mf.setQualifiedName(nameFile);
+			mf.setQualifiedName(nameFile);
 		else
-		   mf.setQualifiedName(p.getName()+"."+nameFile);
-		
+			mf.setQualifiedName(p.getName()+"."+nameFile);
+
 		IFile iconFile = resource.getParent().getFile(new Path(nameFile+".png"));
 		if (iconFile.exists()) {
 			mf.setIcon(toURI(iconFile));
@@ -244,7 +257,7 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		p.getFiles().add(mf);
 		return mf;
 	}
-	
+
 	private URI toURI(IFile iconFile) {
 		return iconFile.getLocationURI();
 	}
@@ -260,10 +273,10 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		MindObject packageFound = (MindObject) _mapResourceToMind.get(resource);
 		if (packageFound != null && packageFound instanceof MindPackage)
 			return (MindPackage) packageFound;
-		
+
 		if (packageFound != null && packageFound instanceof MindRootSrc)
 			return UtilMindIde.findOrCreatePackage((MindRootSrc) packageFound, "", resource, create);
-		
+
 		//find root source
 		IFolder rootSrcResource = null;
 		MindRootSrc rootSrc = null;
@@ -296,7 +309,7 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		// root source found
 		IPath rootSrcPath = rootSrcResource.getFullPath();
 		String pn = 
-			resource.getFullPath().removeFirstSegments(rootSrcPath.segmentCount()).makeRelative().toPortableString().replace('/', '.');
+				resource.getFullPath().removeFirstSegments(rootSrcPath.segmentCount()).makeRelative().toPortableString().replace('/', '.');
 		// found or create if asked the MindPackage
 		packageFound = UtilMindIde.findOrCreatePackage(rootSrc, pn, resource, create);
 		return (MindPackage) packageFound;
@@ -307,9 +320,9 @@ public class MindIdeWorkspaceChangeListener implements IResourceVisitor, IResour
 		return name.substring(0, i);
 	}
 
-	
-	
-	
+
+
+
 	private void syncDelete() {
 		for (MindRootSrc rs : new ArrayList<MindRootSrc>(_model.getWSRepo().getRootsrcs())) {
 			IResource r = MindIdeCore.getResource(rs);
