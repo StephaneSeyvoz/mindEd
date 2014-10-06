@@ -65,11 +65,11 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
-import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
-import org.ow2.mindEd.adl.textual.fractal.FileC;
-import org.ow2.mindEd.adl.textual.fractal.ImplementationDefinition;
-import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
+//import org.ow2.mindEd.adl.textual.fractal.AdlDefinition;
+//import org.ow2.mindEd.adl.textual.fractal.ArchitectureDefinition;
+//import org.ow2.mindEd.adl.textual.fractal.FileC;
+//import org.ow2.mindEd.adl.textual.fractal.ImplementationDefinition;
+//import org.ow2.mindEd.adl.textual.fractal.PrimitiveDefinition;
 import org.ow2.mindEd.ide.core.FamilyJobCST;
 import org.ow2.mindEd.ide.core.MindActivator;
 import org.ow2.mindEd.ide.core.MindIdeCore;
@@ -1792,119 +1792,119 @@ public class MindModelImpl implements MindModel {
 		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
 		EList<EObject> xtextContents = xtextResource.getContents();
 
-		// We have only one ADLDefinition per file
-		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
-			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
-			ArchitectureDefinition archDef = hostAdlDef.getArchitectureDefinition();
-
-			if (archDef instanceof PrimitiveDefinition) {
-				PrimitiveDefinition archDefAsPrimitive = (PrimitiveDefinition) archDef;
-
-				List<ImplementationDefinition> allSources = EcoreUtil2.getAllContentsOfType(archDefAsPrimitive, ImplementationDefinition.class);
-				for (ImplementationDefinition currSource : allSources) {
-					FileC currSourceFile = currSource.getFileC();
-
-					// the C file
-					IFile sourceFile = getFileFromDefinitionImplementation(archDef, currSourceFile);
-
-					if (sourceFile != null && sourceFile.exists()) {
-						AddIncludeOnImplementationSourceJob job = new AddIncludeOnImplementationSourceJob(p, resFile, sourceFile);
-
-						// needed for the job's call to CoreModel.getDefault().setProjectDescription(p, des); to work
-						// java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/<projectName>
-						// is raised otherwise
-						job.setRule(ResourcesPlugin.getWorkspace().getRoot());
-						job.schedule();
-					}
-				}
-			}
-		}
+//		// We have only one ADLDefinition per file
+//		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
+//			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
+//			ArchitectureDefinition archDef = hostAdlDef.getArchitectureDefinition();
+//
+//			if (archDef instanceof PrimitiveDefinition) {
+//				PrimitiveDefinition archDefAsPrimitive = (PrimitiveDefinition) archDef;
+//
+//				List<ImplementationDefinition> allSources = EcoreUtil2.getAllContentsOfType(archDefAsPrimitive, ImplementationDefinition.class);
+//				for (ImplementationDefinition currSource : allSources) {
+//					FileC currSourceFile = currSource.getFileC();
+//
+//					// the C file
+//					IFile sourceFile = getFileFromDefinitionImplementation(archDef, currSourceFile);
+//
+//					if (sourceFile != null && sourceFile.exists()) {
+//						AddIncludeOnImplementationSourceJob job = new AddIncludeOnImplementationSourceJob(p, resFile, sourceFile);
+//
+//						// needed for the job's call to CoreModel.getDefault().setProjectDescription(p, des); to work
+//						// java.lang.IllegalArgumentException: Attempted to beginRule: R/, does not match outer scope rule: P/<projectName>
+//						// is raised otherwise
+//						job.setRule(ResourcesPlugin.getWorkspace().getRoot());
+//						job.schedule();
+//					}
+//				}
+//			}
+//		}
 	}
-
-	private IFile getFileFromDefinitionImplementation(ArchitectureDefinition archDef, FileC fileC) {
-
-		IFile file = null; // result
-
-		String directory = fileC.getDirectory();
-		String fileName = fileC.getName();
-
-		// Used to get the current package
-		XtextResource resource = (XtextResource) fileC.eResource();
-
-		// No directory
-		if (directory == null || directory.equals("")){
-			// Find the file according to the host component package
-			// Here the resource is the ADL from where the link was called
-			MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
-			if (pack != null) {
-				IFolder f = MindIdeCore.getResource(pack);
-				file = f.getFile(fileName);
-			}
-		} else {
-			// Absolute: we need to search from the root of the source-path for every source-path entry
-			if (directory.startsWith("/")) {
-
-				MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(archDef.eResource().getURI());
-
-				String projectPath = adlHostProject.getProject().getFullPath().toString();
-
-				// for all path entries, try to locate the C file
-				EList<MindPathEntry> path = adlHostProject.getMindpathentries();
-				org.eclipse.emf.common.util.URI cFileURI = null;
-				for (MindPathEntry currentPath : path)
-					if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
-
-						// let's use some defensive programming: it should always be false anyway, BUT... better check.
-						if (!currentPath.getName().startsWith("/" + adlHostProject.getName() + "/"))
-							continue;
-
-						// path entries names are in such format: /project_name/currentPath, so we remove the first substring "/project_name", and keep "/currPath"
-						String shortCurrPath = currentPath.getName().substring(adlHostProject.getName().length() + 1);
-						cFileURI =
-								org.eclipse.emf.common.util.URI.createPlatformResourceURI(projectPath + shortCurrPath + directory + fileName, true);
-
-						// check file existence
-						file = ModelToProjectUtil.INSTANCE.getIFile(cFileURI);
-						if ((file != null) && file.exists()) // found !
-							break;
-					}
-			} else {
-				// Relative
-
-				// handle host definition path for resource resolution
-				File f = new File(directory, fileName);
-
-				// Find the file according to the host component package  
-				// Here the resource is the ADL from where the link was called
-				MindPackage hostComponentPackage = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
-				if (hostComponentPackage != null) {
-					IFolder compFolder = MindIdeCore.getResource(hostComponentPackage);
-
-					// Don't forget we want to locate the complete folder "container" : add the "/"
-					org.eclipse.emf.common.util.URI compFolderURI =
-							org.eclipse.emf.common.util.URI.createPlatformResourceURI(compFolder.getFullPath().toString() + "/", true);
-
-					org.eclipse.emf.common.util.URI currentRelativeURI = org.eclipse.emf.common.util.URI.createFileURI(f.getPath());
-					org.eclipse.emf.common.util.URI resolvedFinalURI = currentRelativeURI.resolve(compFolderURI);
-
-					file = ModelToProjectUtil.INSTANCE.getIFile(resolvedFinalURI);
-				}
-			}
-		}
-
-		//		if (directory != null && directory.startsWith("/")) {
-		//			// Get the file URI
-		//			// If file doesn't exist, raise an error with a code so we can attach a quickfix
-		//			if (file == null || !(file.exists()))
-		//				return null;
-		//
-		//		} else {
-		//			if (file == null || !(file.exists()))
-		//				return null;
-		//		}
-
-		return file;
-	}
+//
+//	private IFile getFileFromDefinitionImplementation(ArchitectureDefinition archDef, FileC fileC) {
+//
+//		IFile file = null; // result
+//
+//		String directory = fileC.getDirectory();
+//		String fileName = fileC.getName();
+//
+//		// Used to get the current package
+//		XtextResource resource = (XtextResource) fileC.eResource();
+//
+//		// No directory
+//		if (directory == null || directory.equals("")){
+//			// Find the file according to the host component package
+//			// Here the resource is the ADL from where the link was called
+//			MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
+//			if (pack != null) {
+//				IFolder f = MindIdeCore.getResource(pack);
+//				file = f.getFile(fileName);
+//			}
+//		} else {
+//			// Absolute: we need to search from the root of the source-path for every source-path entry
+//			if (directory.startsWith("/")) {
+//
+//				MindProject adlHostProject = ModelToProjectUtil.INSTANCE.getMindProject(archDef.eResource().getURI());
+//
+//				String projectPath = adlHostProject.getProject().getFullPath().toString();
+//
+//				// for all path entries, try to locate the C file
+//				EList<MindPathEntry> path = adlHostProject.getMindpathentries();
+//				org.eclipse.emf.common.util.URI cFileURI = null;
+//				for (MindPathEntry currentPath : path)
+//					if (currentPath.getEntryKind() == MindPathKind.SOURCE) {
+//
+//						// let's use some defensive programming: it should always be false anyway, BUT... better check.
+//						if (!currentPath.getName().startsWith("/" + adlHostProject.getName() + "/"))
+//							continue;
+//
+//						// path entries names are in such format: /project_name/currentPath, so we remove the first substring "/project_name", and keep "/currPath"
+//						String shortCurrPath = currentPath.getName().substring(adlHostProject.getName().length() + 1);
+//						cFileURI =
+//								org.eclipse.emf.common.util.URI.createPlatformResourceURI(projectPath + shortCurrPath + directory + fileName, true);
+//
+//						// check file existence
+//						file = ModelToProjectUtil.INSTANCE.getIFile(cFileURI);
+//						if ((file != null) && file.exists()) // found !
+//							break;
+//					}
+//			} else {
+//				// Relative
+//
+//				// handle host definition path for resource resolution
+//				File f = new File(directory, fileName);
+//
+//				// Find the file according to the host component package  
+//				// Here the resource is the ADL from where the link was called
+//				MindPackage hostComponentPackage = ModelToProjectUtil.INSTANCE.getCurrentPackage(resource.getURI());
+//				if (hostComponentPackage != null) {
+//					IFolder compFolder = MindIdeCore.getResource(hostComponentPackage);
+//
+//					// Don't forget we want to locate the complete folder "container" : add the "/"
+//					org.eclipse.emf.common.util.URI compFolderURI =
+//							org.eclipse.emf.common.util.URI.createPlatformResourceURI(compFolder.getFullPath().toString() + "/", true);
+//
+//					org.eclipse.emf.common.util.URI currentRelativeURI = org.eclipse.emf.common.util.URI.createFileURI(f.getPath());
+//					org.eclipse.emf.common.util.URI resolvedFinalURI = currentRelativeURI.resolve(compFolderURI);
+//
+//					file = ModelToProjectUtil.INSTANCE.getIFile(resolvedFinalURI);
+//				}
+//			}
+//		}
+//
+//		//		if (directory != null && directory.startsWith("/")) {
+//		//			// Get the file URI
+//		//			// If file doesn't exist, raise an error with a code so we can attach a quickfix
+//		//			if (file == null || !(file.exists()))
+//		//				return null;
+//		//
+//		//		} else {
+//		//			if (file == null || !(file.exists()))
+//		//				return null;
+//		//		}
+//
+//		return file;
+//	}
 
 	private static final class AddIncludeOnImplementationSourceJob extends Job {
 		IProject p;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="idt" nsURI="http://www.ow2.org/mindEd/idt/" nsPrefix="idt">
+  <eClassifiers xsi:type="ecore:EClass" name="IdtFile">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="begindef" eType="#//ConstantDefinitionBegin"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="def" eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//ConstantDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includes" unique="false"
+        upperBound="-1" eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//IncludeDirective"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constant" unique="false"
+        upperBound="-1" eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//ConstantDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" unique="false" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//TypeDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDef" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstantDefinitionBegin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
