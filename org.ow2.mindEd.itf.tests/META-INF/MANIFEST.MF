@@ -19,7 +19,4 @@ Import-Package: org.apache.log4j,
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0",
  org.hamcrest.core
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.ow2.mindEd.itf.editor.textual,
- org.ow2.mindEd.itf,
- org.ow2.mindEd
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

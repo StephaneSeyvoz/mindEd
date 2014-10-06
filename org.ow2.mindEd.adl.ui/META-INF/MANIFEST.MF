@@ -23,8 +23,9 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.ow2.mindEd.itf
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.ow2.mindEd.ui.quickfix,
+Export-Package: org.ow2.mindEd.ui,
  org.ow2.mindEd.ui.contentassist,
  org.ow2.mindEd.ui.contentassist.antlr,
- org.ow2.mindEd.ui.internal
+ org.ow2.mindEd.ui.internal,
+ org.ow2.mindEd.ui.quickfix
 Bundle-Activator: org.ow2.mindEd.ui.internal.AdlActivator
