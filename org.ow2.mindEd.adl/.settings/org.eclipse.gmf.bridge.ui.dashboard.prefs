@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/org.ow2.mindEd.adl/model/generated/Adl.genmodel
+gmf_dashboard/domainModel=platform\:/resource/org.ow2.mindEd.adl/model/generated/Adl.ecore
+gmf_dashboard/generationModel=platform\:/resource/org.ow2.mindEd.adl.editor.graphic.model/model/mind.v2.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/org.ow2.mindEd.adl.editor.graphic.model/model/mind.v2.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/org.ow2.mindEd.adl.editor.graphic.model/model/mind.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/org.ow2.mindEd.adl.editor.graphic.model/model/mind.gmftool
