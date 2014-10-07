@@ -39,7 +39,7 @@ public class ImportsPropertyDescriptor extends ItemPropertyDescriptor {
 		
 		Collection<String> oldDefinitions = new ArrayList<String>();
 		for (ImportDefinition importDefinition : oldImports) {
-			oldDefinitions.add(importDefinition.getImportName());
+			oldDefinitions.add(importDefinition.getImportedNamespace());
 		}		
 		
 		Collection<ImportDefinition> suggestedImports = new ArrayList <ImportDefinition> ();
@@ -55,7 +55,7 @@ public class ImportsPropertyDescriptor extends ItemPropertyDescriptor {
 		for(String definition : definitions) {
 			ImportDefinition newImport = 
 				AdlPackage.eINSTANCE.getAdlFactory().createImportDefinition();
-			newImport.setImportName(definition);
+			newImport.setImportedNamespace(definition);
 			suggestedImports.add(newImport);
 		}
 		

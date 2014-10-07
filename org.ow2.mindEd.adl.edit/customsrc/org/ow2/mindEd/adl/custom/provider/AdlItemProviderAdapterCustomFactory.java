@@ -19,14 +19,5 @@ public class AdlItemProviderAdapterCustomFactory extends
 
 		return adlDefinitionItemProvider;
 	}
-	
-	@Override
-	public Adapter createInterfaceDefinitionAdapter() {
-		if (interfaceDefinitionItemProvider == null) {
-			interfaceDefinitionItemProvider = new InterfaceDefinitionCustomItemProvider(this);
-		}
-
-		return interfaceDefinitionItemProvider;
-	}
 
 }

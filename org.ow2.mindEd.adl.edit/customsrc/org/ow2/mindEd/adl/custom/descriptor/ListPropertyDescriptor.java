@@ -20,7 +20,6 @@ import org.ow2.mindEd.ide.core.ModelToProjectUtil;
 import org.ow2.mindEd.adl.AdlDefinition;
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.ImportDefinition;
-import org.ow2.mindEd.adl.InterfaceDefinition;
 
 public class ListPropertyDescriptor extends ItemPropertyDescriptor {
 
@@ -33,7 +32,7 @@ public class ListPropertyDescriptor extends ItemPropertyDescriptor {
 	{
 		if (feature.equals(AdlPackage.eINSTANCE.getAdlDefinition_Imports()))
 			return getSuggestedImports(object);
-		else if (feature.equals(AdlPackage.eINSTANCE.getInterfaceDefinition_Signature())) {
+		else if (feature.equals(AdlPackage.eINSTANCE.getHostedInterfaceDefinition_Signature())) {
 			return getSuggestedSignatures(object);
 		}
 		else 
@@ -48,7 +47,7 @@ public class ListPropertyDescriptor extends ItemPropertyDescriptor {
 		
 		Collection<String> oldDefinitions = new ArrayList<String>();
 		for (ImportDefinition importDefinition : oldImports) {
-			oldDefinitions.add(importDefinition.getImportName());
+			oldDefinitions.add(importDefinition.getImportedNamespace());
 		}		
 		
 		Collection<ImportDefinition> suggestedImports = new ArrayList <ImportDefinition> ();
@@ -69,7 +68,7 @@ public class ListPropertyDescriptor extends ItemPropertyDescriptor {
 		for(String definition : definitions) {
 			ImportDefinition newImport = 
 				AdlPackage.eINSTANCE.getAdlFactory().createImportDefinition();
-			newImport.setImportName(definition);
+			newImport.setImportedNamespace(definition);
 			suggestedImports.add(newImport);
 		}
 		
@@ -97,7 +96,7 @@ public class ListPropertyDescriptor extends ItemPropertyDescriptor {
 				// We can use simple name for all .itf already imported
 				// And add it at the beggining of the list
 				for (ImportDefinition imp : imports) {
-					String name = imp.getImportName();
+					String name = imp.getImportedNamespace();
 					for (String signature : suggestedSignatures) {
 						if (name.startsWith(signature)) {
 							toRemove.add(signature);

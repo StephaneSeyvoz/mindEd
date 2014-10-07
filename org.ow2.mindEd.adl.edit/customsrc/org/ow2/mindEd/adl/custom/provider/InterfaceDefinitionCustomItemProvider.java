@@ -1,20 +1,14 @@
 package org.ow2.mindEd.adl.custom.provider;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.ow2.mindEd.adl.custom.descriptor.ListPropertyDescriptor;
-
-import org.ow2.mindEd.adl.AdlPackage;
-import org.ow2.mindEd.adl.provider.InterfaceDefinitionItemProvider;
+import org.ow2.mindEd.adl.provider.HostedInterfaceDefinitionItemProvider;
+import org.ow2.mindEd.itf.ItfPackage;
 
 public class InterfaceDefinitionCustomItemProvider extends
-		InterfaceDefinitionItemProvider {
+		HostedInterfaceDefinitionItemProvider {
 
 	public InterfaceDefinitionCustomItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
@@ -28,7 +22,7 @@ public class InterfaceDefinitionCustomItemProvider extends
 				 getResourceLocator(),
 				 getString("_UI_InterfaceDefinition_signature_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterfaceDefinition_signature_feature", "_UI_InterfaceDefinition_type"),
-				 AdlPackage.Literals.INTERFACE_DEFINITION__SIGNATURE,
+				 ItfPackage.Literals.INTERFACE_DEFINITION__NAME,
 				 true,
 				 false,
 				 false,

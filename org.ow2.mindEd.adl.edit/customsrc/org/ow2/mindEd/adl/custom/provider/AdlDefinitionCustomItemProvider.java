@@ -13,8 +13,8 @@ public class AdlDefinitionCustomItemProvider extends AdlDefinitionItemProvider {
 		super(adapterFactory);
 	}
 	
-	
-	@Override
+	// SSZ: Used to @Override something but did not anymore after model update...
+	//@Override
 	protected void addImportsPropertyDescriptor(Object object) {
 		// Add a ListPropertyDescriptor to get a combobox with a selection of ImportDefinition
 		itemPropertyDescriptors.add
