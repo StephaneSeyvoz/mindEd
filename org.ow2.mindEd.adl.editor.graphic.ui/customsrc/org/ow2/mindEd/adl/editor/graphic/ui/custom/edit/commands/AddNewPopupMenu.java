@@ -20,7 +20,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.PluginAction;
 import org.eclipse.ui.internal.WorkbenchPlugin;
-import org.ow2.mindEd.adl.InterfaceDefinition;
+import org.ow2.mindEd.adl.HostedInterfaceDefinition;
 import org.ow2.mindEd.adl.custom.impl.InterfaceDefinitionCustomImpl;
 import org.ow2.mindEd.adl.editor.graphic.ui.custom.wizards.InterfaceInformation;
 import org.ow2.mindEd.adl.editor.graphic.ui.custom.wizards.InterfaceCreationWizard;
@@ -68,13 +68,13 @@ public class AddNewPopupMenu extends AbstractPopupMenu implements IObjectActionD
 						
 						for(Object newElement : temp)
 						{
-							if (newElement instanceof InterfaceDefinition)
+							if (newElement instanceof HostedInterfaceDefinition)
 							{
 								TransactionImpl transaction = new TransactionImpl(req.getEditingDomain(), false);
 								try {
 									transaction.start();
 
-									((InterfaceDefinitionCustomImpl)newElement).setSignature(interfaceInformation.getPath());
+									((HostedInterfaceDefinition)newElement).setSignature(interfaceInformation.getPath());
 									((InterfaceDefinitionCustomImpl)newElement).setName(interfaceInformation.getName());
 									((InterfaceDefinitionCustomImpl)newElement).setOptional(interfaceInformation.isOptional());
 									((InterfaceDefinitionCustomImpl)newElement).setCollection(interfaceInformation.isCollection());

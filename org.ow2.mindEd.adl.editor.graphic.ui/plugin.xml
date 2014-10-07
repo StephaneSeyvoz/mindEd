@@ -974,6 +974,8 @@
          </selectionEnablement>
       </linkHelper>
    </extension>
+
+<!-- SSZ disabled custom classes
    <extension point="org.eclipse.ui.commands" id="update-cmd">
       <?gmfgen generated="false"?>
       <command
@@ -983,14 +985,16 @@
          id="org.ow2.mindEd.adl.editor.graphic.ui.updateDiagram"
          name="%update.diagram.name"/>
    </extension>
-   
+ -->  
    <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
       <?gmfgen generated="true"?>
       <key 
-         commandId="org.ow2.mindEd.adl.editor.graphic.ui.updateDiagram"
          contextId="org.ow2.mindEd.adl.editor.graphic.ui.ui.diagramContext"
          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
          sequence="F5"/>
+ <!-- SSZ removed commandId since it was disabled, see above (updateDiagram)
+         commandId="org.ow2.mindEd.adl.editor.graphic.ui.updateDiagram"
+-->
    </extension>
 
    <extension point="org.eclipse.ui.menus" id="context-menus">

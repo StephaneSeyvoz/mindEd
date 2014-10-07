@@ -3,11 +3,11 @@ package org.ow2.mindEd.adl.validation.constraints;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.ow2.mindEd.adl.custom.impl.InterfaceDefinitionCustomImpl;
-import org.ow2.mindEd.adl.custom.impl.SubComponentDefinitionCustomImpl;
+//import org.ow2.mindEd.adl.custom.impl.InterfaceDefinitionCustomImpl;
+//import org.ow2.mindEd.adl.custom.impl.SubComponentDefinitionCustomImpl;
 import org.ow2.mindEd.adl.impl.AnnotationImpl;
 import org.ow2.mindEd.adl.impl.ArchitectureDefinitionImpl;
-import org.ow2.mindEd.adl.impl.ComponentReferenceImpl;
+//import org.ow2.mindEd.adl.impl.ComponentReferenceImpl;
 
 public class MindEdNameConstraints extends AbstractModelConstraint{
 
@@ -18,7 +18,7 @@ public class MindEdNameConstraints extends AbstractModelConstraint{
 		if(ctx.getTarget() instanceof ArchitectureDefinitionImpl)
 		{
 			name = ((ArchitectureDefinitionImpl)ctx.getTarget()).getName();
-		}
+		}/* SSZ: To be fixed when Custom classes are restored / fixed accordingly
 		else if(ctx.getTarget() instanceof InterfaceDefinitionCustomImpl)
 		{
 			name = ((InterfaceDefinitionCustomImpl)ctx.getTarget()).getName();
@@ -30,7 +30,7 @@ public class MindEdNameConstraints extends AbstractModelConstraint{
 		else if(ctx.getTarget() instanceof ComponentReferenceImpl )
 		{
 			name = ((ComponentReferenceImpl)ctx.getTarget()).getNameFQN();
-		}
+		}*/
 		else if(ctx.getTarget() instanceof AnnotationImpl )
 		{
 			name = ((AnnotationImpl)ctx.getTarget()).getName();

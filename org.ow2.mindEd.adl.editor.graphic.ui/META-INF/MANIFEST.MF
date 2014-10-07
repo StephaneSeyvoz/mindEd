@@ -7,9 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.ow2.mindEd.adl.editor.graphic.ui.part.MindDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.ow2.mindEd.adl.editor.graphic.ui.custom.figures,
- org.ow2.mindEd.adl.editor.graphic.ui.custom.providers,
- org.ow2.mindEd.adl.editor.graphic.ui.edit.parts,
+Export-Package: org.ow2.mindEd.adl.editor.graphic.ui.edit.parts,
  org.ow2.mindEd.adl.editor.graphic.ui.part,
  org.ow2.mindEd.adl.editor.graphic.ui.providers
 Require-Bundle: org.eclipse.core.runtime,
@@ -34,14 +32,14 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide,
  org.eclipse.draw2d;visibility:=reexport,
- org.ow2.mindEd.adl.model;bundle-version="0.2.1";visibility:=reexport,
- org.ow2.mindEd.adl.edit;bundle-version="0.2.1";visibility:=reexport,
  org.eclipse.ocl.ecore;visibility:=reexport,
  org.eclipse.gef;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
  org.eclipse.emf.validation.ocl;visibility:=reexport,
  org.ow2.mindEd.ide.ui;bundle-version="0.2.1",
- org.eclipse.gmf.tooling.runtime;bundle-version="3.1.0";resolution:=optional
+ org.eclipse.gmf.tooling.runtime;bundle-version="3.1.0";resolution:=optional,
+ org.ow2.mindEd.adl,
+ org.ow2.mindEd.adl.edit
 Eclipse-LazyStart: true
 Import-Package: org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n,
  org.eclipse.xtext.linking.lazy,
