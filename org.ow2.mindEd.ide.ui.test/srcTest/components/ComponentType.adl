@@ -1,3 +1,0 @@
-type components.ComponentType {
-	provides Control as control  
-}
