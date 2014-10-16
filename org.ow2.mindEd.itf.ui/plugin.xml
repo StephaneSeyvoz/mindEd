@@ -367,7 +367,7 @@
         point="org.eclipse.ltk.core.refactoring.renameParticipants">    
     <!-- For the class to be injected: http://koehnlein.blogspot.de/2012/11/xtext-tip-how-do-i-get-guice-injector.html -->
     <renameParticipant
-           class="org.ow2.mindEd.ItfExecutableExtensionFactory:org.ow2.mindEd.ui.refactoring.ItfFileRenameParticipant"
+           class="org.ow2.mindEd.ui.ItfExecutableExtensionFactory:org.ow2.mindEd.ui.refactoring.ItfFileRenameParticipant"
            id="org.ow2.mindEd.itf.ui.renameParticipant"
            name="Interface File Rename Participant">
            <enablement>
