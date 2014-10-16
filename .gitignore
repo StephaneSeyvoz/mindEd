@@ -1,0 +1,7 @@
+# Java #
+*.class
+# Update site #
+org.ow2.mindEd.updatesite.new/features/*.jar
+org.ow2.mindEd.updatesite.new/plugins/*.jar
+org.ow2.mindEd.updatesite.new/artifacts.jar
+org.ow2.mindEd.updatesite.new/content.jar
