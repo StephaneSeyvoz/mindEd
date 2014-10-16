@@ -1,0 +1,19 @@
+grammar org.ow2.mindEd.Idt with org.eclipse.xtext.common.Terminals
+
+generate idt "http://www.ow2.org/mindEd/idt/"
+
+import "http://www.ow2.org/mindEd/itf/" as fractalIDL
+
+IdtFile:
+	begindef=ConstantDefinitionBegin
+	def=[fractalIDL::ConstantDefinition]
+	(includes+=[fractalIDL::IncludeDirective])*
+	(constant+=[fractalIDL::ConstantDefinition]|type+=[fractalIDL::TypeDefinition])*
+	endDef=ConstantDefinitionEnd;
+
+ConstantDefinitionBegin:
+	'#ifndef' name=ID;
+
+ConstantDefinitionEnd:
+	'#endif';
+	

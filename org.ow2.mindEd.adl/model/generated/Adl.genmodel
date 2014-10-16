@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ow2.mindEd.adl/src-gen" editDirectory="/org.ow2.mindEd.adl.edit/src"
+    editorDirectory="/org.ow2.mindEd.adl.editor/src" modelPluginID="org.ow2.mindEd.adl"
+    forceOverwrite="true" modelName="Adl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.adl.edit"
+    editorPluginID="org.ow2.mindEd.adl.editor" runtimeVersion="2.9" usedGenPackages="../../../org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
+  <genPackages prefix="Adl" basePackage="org.ow2.mindEd" disposableProviderFactory="true"
+      fileExtensions="adl" ecorePackage="Adl.ecore#/">
+    <genClasses ecoreClass="Adl.ecore#//AdlDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlDefinition/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlDefinition/annotationsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlDefinition/architectureDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ArchitectureDefinition"/>
+    <genClasses ecoreClass="Adl.ecore#//ImportDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImportDefinition/annotationsList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ImportDefinition/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//CompositeDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeDefinition/templateSpecifiers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeDefinition/compositeFormalArgumentsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeDefinition/superTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeDefinition/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//PrimitiveDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//PrimitiveDefinition/abstract"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//PrimitiveDefinition/compositeFormalArgumentsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//PrimitiveDefinition/superTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//PrimitiveDefinition/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//TypeDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//TypeDefinition/superTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//TypeDefinition/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//CompositeSuperType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeSuperType/targetArchDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeSuperType/templatesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//CompositeSuperType/argumentsList"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//PrimitiveSuperType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//PrimitiveSuperType/targetArchDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//PrimitiveSuperType/argumentsList"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//CompositeSuperTypeDefinition"/>
+    <genClasses ecoreClass="Adl.ecore#//PrimitiveSuperTypeDefinition"/>
+    <genClasses ecoreClass="Adl.ecore#//HostedInterfaceDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/role"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//HostedInterfaceDefinition/signature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/collection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/collectionsize"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ProvidedInterfaceDefinition"/>
+    <genClasses ecoreClass="Adl.ecore#//RequiredInterfaceDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//RequiredInterfaceDefinition/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//TypeReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//TypeReference/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//SubComponentDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//SubComponentDefinition/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//SubComponentDefinition/templatesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//SubComponentDefinition/argumentsList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//SubComponentDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//SubComponentDefinition/bodyAnnotationsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//SubComponentDefinition/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//Element">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//Element/annotationsList"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//CompositeElement"/>
+    <genClasses ecoreClass="Adl.ecore#//PrimitiveElement"/>
+    <genClasses ecoreClass="Adl.ecore#//BindingDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//BindingDefinition/sourceParent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//BindingDefinition/isSrcParentThis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//BindingDefinition/sourceInterface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//BindingDefinition/sourceIndex"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//BindingDefinition/targetParent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//BindingDefinition/isTgtParentThis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//BindingDefinition/targetInterface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//BindingDefinition/targetIndex"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//FormalArgument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FormalArgument/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//FormalArgumentsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//FormalArgumentsList/formalArguments"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//TemplateSpecifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//TemplateSpecifier/typeReference"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ValueList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ValueList/member"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//TemplateReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//TemplateReference/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//TemplateReference/typeReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//TemplateReference/anyTypeReference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//TemplateReference/templatesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//TemplateReference/argumentsList"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ArgumentDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ArgumentDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ArgumentDefinition/argumentValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ArgumentDefinition/argumentList"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//AttributeDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AttributeDefinition/headerFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/cType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ImplementationDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImplementationDefinition/fileC"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImplementationDefinition/inlineCcode"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//DataDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//DataDefinition/fileC"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//DataDefinition/inlineCcode"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//FileC">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FileC/directory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FileC/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//InlineCodeC">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InlineCodeC/codeC"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//AnnotationsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AnnotationsList/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//Annotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//Annotation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//Annotation/annotationElements"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//AnnotationElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AnnotationElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AnnotationElement/elementValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ElementValue"/>
+    <genClasses ecoreClass="Adl.ecore#//ElementValueArrayInitializer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ElementValueArrayInitializer/values"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//ConstantValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ConstantValue/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
