@@ -758,11 +758,11 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		//// Renamed as HostedInterfaceDefinition to resolve name clash with fractalItf::InterfaceDefinition
 		//// Another way to solve the problem is to use prefixes ?
 		//ProvidedInterfaceDefinition:
-		//	annotationsList=AnnotationsList? role="provides" signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as"
-		//	name=ID (collection?="[" collectionsize=INT? "]")? ";";
+		//	annotationsList=AnnotationsList? role="provides" signature=[Itf::InterfaceDefinition|QualifiedName] "as" name=ID
+		//	(collection?="[" collectionsize=INT? "]")? ";";
 		public ParserRule getRule() { return rule; }
 
-		//annotationsList=AnnotationsList? role="provides" signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as" name=ID
+		//annotationsList=AnnotationsList? role="provides" signature=[Itf::InterfaceDefinition|QualifiedName] "as" name=ID
 		//(collection?="[" collectionsize=INT? "]")? ";"
 		public Group getGroup() { return cGroup; }
 
@@ -778,10 +778,10 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		//"provides"
 		public Keyword getRoleProvidesKeyword_1_0() { return cRoleProvidesKeyword_1_0; }
 
-		//signature=[fractalIDL::InterfaceDefinition|QualifiedName]
+		//signature=[Itf::InterfaceDefinition|QualifiedName]
 		public Assignment getSignatureAssignment_2() { return cSignatureAssignment_2; }
 
-		//[fractalIDL::InterfaceDefinition|QualifiedName]
+		//[Itf::InterfaceDefinition|QualifiedName]
 		public CrossReference getSignatureInterfaceDefinitionCrossReference_2_0() { return cSignatureInterfaceDefinitionCrossReference_2_0; }
 
 		//QualifiedName
@@ -843,12 +843,11 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//RequiredInterfaceDefinition:
 		//	annotationsList=AnnotationsList? role="requires" optional?="optional"?
-		//	signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")?
-		//	";";
+		//	signature=[Itf::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")? ";";
 		public ParserRule getRule() { return rule; }
 
 		//annotationsList=AnnotationsList? role="requires" optional?="optional"?
-		//signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")? ";"
+		//signature=[Itf::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")? ";"
 		public Group getGroup() { return cGroup; }
 
 		//annotationsList=AnnotationsList?
@@ -869,10 +868,10 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		//"optional"
 		public Keyword getOptionalOptionalKeyword_2_0() { return cOptionalOptionalKeyword_2_0; }
 
-		//signature=[fractalIDL::InterfaceDefinition|QualifiedName]
+		//signature=[Itf::InterfaceDefinition|QualifiedName]
 		public Assignment getSignatureAssignment_3() { return cSignatureAssignment_3; }
 
-		//[fractalIDL::InterfaceDefinition|QualifiedName]
+		//[Itf::InterfaceDefinition|QualifiedName]
 		public CrossReference getSignatureInterfaceDefinitionCrossReference_3_0() { return cSignatureInterfaceDefinitionCrossReference_3_0; }
 
 		//QualifiedName
@@ -2628,8 +2627,8 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//// Renamed as HostedInterfaceDefinition to resolve name clash with fractalItf::InterfaceDefinition
 	//// Another way to solve the problem is to use prefixes ?
 	//ProvidedInterfaceDefinition:
-	//	annotationsList=AnnotationsList? role="provides" signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as"
-	//	name=ID (collection?="[" collectionsize=INT? "]")? ";";
+	//	annotationsList=AnnotationsList? role="provides" signature=[Itf::InterfaceDefinition|QualifiedName] "as" name=ID
+	//	(collection?="[" collectionsize=INT? "]")? ";";
 	public ProvidedInterfaceDefinitionElements getProvidedInterfaceDefinitionAccess() {
 		return pProvidedInterfaceDefinition;
 	}
@@ -2640,8 +2639,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 
 	//RequiredInterfaceDefinition:
 	//	annotationsList=AnnotationsList? role="requires" optional?="optional"?
-	//	signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")?
-	//	";";
+	//	signature=[Itf::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")? ";";
 	public RequiredInterfaceDefinitionElements getRequiredInterfaceDefinitionAccess() {
 		return pRequiredInterfaceDefinition;
 	}

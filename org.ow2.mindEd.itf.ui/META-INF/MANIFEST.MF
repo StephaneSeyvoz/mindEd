@@ -18,7 +18,8 @@ Require-Bundle: org.ow2.mindEd.itf;visibility:=reexport,
  org.eclipse.compare,
  org.ow2.mindEd.ide,
  org.ow2.mindEd.ide.model,
- org.eclipse.cdt.core
+ org.eclipse.cdt.core,
+ org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.ow2.mindEd.itf,

@@ -207,7 +207,7 @@ public class AdlQuickfixProvider extends DefaultQuickfixProvider {
 	//				if (element instanceof HostedInterfaceDefinition){
 	//
 	//					HostedInterfaceDefinition itf = (HostedInterfaceDefinition) element;
-	//					AdlDefinitionImpl adlDefinition = (AdlDefinitionImpl) FractalUtil.getArchitecureDefinitionFromChild(itf).eContainer();
+	//					AdlFileImpl adlDefinition = (AdlFileImpl) FractalUtil.getArchitecureDefinitionFromChild(itf).eContainer();
 	//
 	//					URI uri = adlDefinition.eDirectResource().getURI();
 	//					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);

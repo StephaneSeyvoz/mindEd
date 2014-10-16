@@ -4,7 +4,7 @@
     editorDirectory="/org.ow2.mindEd.itf.editor/src" modelPluginID="org.ow2.mindEd.itf"
     forceOverwrite="true" modelName="Itf" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.itf.edit"
-    editorPluginID="org.ow2.mindEd.itf.editor" runtimeVersion="2.9">
+    editorPluginID="org.ow2.mindEd.itf.editor" runtimeVersion="2.10">
   <genPackages prefix="Itf" basePackage="org.ow2.mindEd" disposableProviderFactory="true"
       fileExtensions="itf" ecorePackage="Itf.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Itf.ecore#//TypeQualifier">

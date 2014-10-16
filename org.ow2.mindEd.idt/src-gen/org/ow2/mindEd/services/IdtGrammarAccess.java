@@ -40,12 +40,12 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEndDefConstantDefinitionEndParserRuleCall_4_0 = (RuleCall)cEndDefAssignment_4.eContents().get(0);
 		
 		//IdtFile:
-		//	begindef=ConstantDefinitionBegin def=[fractalIDL::ConstantDefinition] includes+=[fractalIDL::IncludeDirective]*
-		//	(constant+=[fractalIDL::ConstantDefinition] | type+=[fractalIDL::TypeDefinition])* endDef=ConstantDefinitionEnd;
+		//	begindef=ConstantDefinitionBegin def=[itf::ConstantDefinition] includes+=[itf::IncludeDirective]*
+		//	(constant+=[itf::ConstantDefinition] | type+=[itf::TypeDefinition])* endDef=ConstantDefinitionEnd;
 		public ParserRule getRule() { return rule; }
 
-		//begindef=ConstantDefinitionBegin def=[fractalIDL::ConstantDefinition] includes+=[fractalIDL::IncludeDirective]*
-		//(constant+=[fractalIDL::ConstantDefinition] | type+=[fractalIDL::TypeDefinition])* endDef=ConstantDefinitionEnd
+		//begindef=ConstantDefinitionBegin def=[itf::ConstantDefinition] includes+=[itf::IncludeDirective]*
+		//(constant+=[itf::ConstantDefinition] | type+=[itf::TypeDefinition])* endDef=ConstantDefinitionEnd
 		public Group getGroup() { return cGroup; }
 
 		//begindef=ConstantDefinitionBegin
@@ -54,40 +54,40 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 		//ConstantDefinitionBegin
 		public RuleCall getBegindefConstantDefinitionBeginParserRuleCall_0_0() { return cBegindefConstantDefinitionBeginParserRuleCall_0_0; }
 
-		//def=[fractalIDL::ConstantDefinition]
+		//def=[itf::ConstantDefinition]
 		public Assignment getDefAssignment_1() { return cDefAssignment_1; }
 
-		//[fractalIDL::ConstantDefinition]
+		//[itf::ConstantDefinition]
 		public CrossReference getDefConstantDefinitionCrossReference_1_0() { return cDefConstantDefinitionCrossReference_1_0; }
 
 		//ID
 		public RuleCall getDefConstantDefinitionIDTerminalRuleCall_1_0_1() { return cDefConstantDefinitionIDTerminalRuleCall_1_0_1; }
 
-		//includes+=[fractalIDL::IncludeDirective]*
+		//includes+=[itf::IncludeDirective]*
 		public Assignment getIncludesAssignment_2() { return cIncludesAssignment_2; }
 
-		//[fractalIDL::IncludeDirective]
+		//[itf::IncludeDirective]
 		public CrossReference getIncludesIncludeDirectiveCrossReference_2_0() { return cIncludesIncludeDirectiveCrossReference_2_0; }
 
 		//ID
 		public RuleCall getIncludesIncludeDirectiveIDTerminalRuleCall_2_0_1() { return cIncludesIncludeDirectiveIDTerminalRuleCall_2_0_1; }
 
-		//(constant+=[fractalIDL::ConstantDefinition] | type+=[fractalIDL::TypeDefinition])*
+		//(constant+=[itf::ConstantDefinition] | type+=[itf::TypeDefinition])*
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 
-		//constant+=[fractalIDL::ConstantDefinition]
+		//constant+=[itf::ConstantDefinition]
 		public Assignment getConstantAssignment_3_0() { return cConstantAssignment_3_0; }
 
-		//[fractalIDL::ConstantDefinition]
+		//[itf::ConstantDefinition]
 		public CrossReference getConstantConstantDefinitionCrossReference_3_0_0() { return cConstantConstantDefinitionCrossReference_3_0_0; }
 
 		//ID
 		public RuleCall getConstantConstantDefinitionIDTerminalRuleCall_3_0_0_1() { return cConstantConstantDefinitionIDTerminalRuleCall_3_0_0_1; }
 
-		//type+=[fractalIDL::TypeDefinition]
+		//type+=[itf::TypeDefinition]
 		public Assignment getTypeAssignment_3_1() { return cTypeAssignment_3_1; }
 
-		//[fractalIDL::TypeDefinition]
+		//[itf::TypeDefinition]
 		public CrossReference getTypeTypeDefinitionCrossReference_3_1_0() { return cTypeTypeDefinitionCrossReference_3_1_0; }
 
 		//ID
@@ -137,19 +137,22 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private IdtFileElements pIdtFile;
-	private ConstantDefinitionBeginElements pConstantDefinitionBegin;
-	private ConstantDefinitionEndElements pConstantDefinitionEnd;
+	private final IdtFileElements pIdtFile;
+	private final ConstantDefinitionBeginElements pConstantDefinitionBegin;
+	private final ConstantDefinitionEndElements pConstantDefinitionEnd;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public IdtGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pIdtFile = new IdtFileElements();
+		this.pConstantDefinitionBegin = new ConstantDefinitionBeginElements();
+		this.pConstantDefinitionEnd = new ConstantDefinitionEndElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -180,10 +183,10 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//IdtFile:
-	//	begindef=ConstantDefinitionBegin def=[fractalIDL::ConstantDefinition] includes+=[fractalIDL::IncludeDirective]*
-	//	(constant+=[fractalIDL::ConstantDefinition] | type+=[fractalIDL::TypeDefinition])* endDef=ConstantDefinitionEnd;
+	//	begindef=ConstantDefinitionBegin def=[itf::ConstantDefinition] includes+=[itf::IncludeDirective]*
+	//	(constant+=[itf::ConstantDefinition] | type+=[itf::TypeDefinition])* endDef=ConstantDefinitionEnd;
 	public IdtFileElements getIdtFileAccess() {
-		return (pIdtFile != null) ? pIdtFile : (pIdtFile = new IdtFileElements());
+		return pIdtFile;
 	}
 	
 	public ParserRule getIdtFileRule() {
@@ -193,7 +196,7 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantDefinitionBegin:
 	//	"#ifndef" name=ID;
 	public ConstantDefinitionBeginElements getConstantDefinitionBeginAccess() {
-		return (pConstantDefinitionBegin != null) ? pConstantDefinitionBegin : (pConstantDefinitionBegin = new ConstantDefinitionBeginElements());
+		return pConstantDefinitionBegin;
 	}
 	
 	public ParserRule getConstantDefinitionBeginRule() {
@@ -203,7 +206,7 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantDefinitionEnd:
 	//	"#endif";
 	public ConstantDefinitionEndElements getConstantDefinitionEndAccess() {
-		return (pConstantDefinitionEnd != null) ? pConstantDefinitionEnd : (pConstantDefinitionEnd = new ConstantDefinitionEndElements());
+		return pConstantDefinitionEnd;
 	}
 	
 	public ParserRule getConstantDefinitionEndRule() {
@@ -223,8 +226,8 @@ public class IdtGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

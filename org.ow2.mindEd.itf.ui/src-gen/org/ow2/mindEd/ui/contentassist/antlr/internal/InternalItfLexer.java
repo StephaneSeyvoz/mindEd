@@ -1631,10 +1631,10 @@ public class InternalItfLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1652,10 +1652,10 @@ public class InternalItfLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -1671,23 +1671,15 @@ public class InternalItfLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1712,10 +1704,10 @@ public class InternalItfLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop8:
                     do {
                         int alt8=3;
@@ -1731,23 +1723,15 @@ public class InternalItfLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.ow2.mindEd.itf.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalItf.g:9609:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();

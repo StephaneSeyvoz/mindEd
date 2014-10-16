@@ -2197,75 +2197,134 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getOutOutKeyword_1_0() { return cOutOutKeyword_1_0; }
 	}
 	
-	private ItfFileElements pItfFile;
-	private TypeDefinitionElements pTypeDefinition;
-	private TypedefSpecificationElements pTypedefSpecification;
-	private QualifiedTypeSpecificationElements pQualifiedTypeSpecification;
-	private TypeQualifierElements unknownRuleTypeQualifier;
-	private TypeSpecificationElements pTypeSpecification;
-	private TypeSpecifierElements unknownRuleTypeSpecifier;
-	private StructOrUnionSpecificationElements pStructOrUnionSpecification;
-	private StructOrUnionDefinitionElements pStructOrUnionDefinition;
-	private StructorUnionReferenceElements pStructorUnionReference;
-	private StructOrUnionElements pStructOrUnion;
-	private StructMemberElements pStructMember;
-	private EnumSpecificationElements pEnumSpecification;
-	private EnumDefinitionElements pEnumDefinition;
-	private EnumReferenceElements pEnumReference;
-	private EnumMemberListElements pEnumMemberList;
-	private EnumMemberElements pEnumMember;
-	private DeclaratorsElements pDeclarators;
-	private DeclaratorElements pDeclarator;
-	private QualifiedPointerSpecificationElements pQualifiedPointerSpecification;
-	private DirectNamedDeclaratorElements pDirectNamedDeclarator;
-	private DirectAnonymousDeclaratorElements pDirectAnonymousDeclarator;
-	private ArraySpecificationElements pArraySpecification;
-	private QualifiedNameElements pQualifiedName;
-	private ConstantDefinitionElements pConstantDefinition;
-	private InterfaceDefinitionElements pInterfaceDefinition;
-	private MethodDefinitionElements pMethodDefinition;
-	private ParameterListElements pParameterList;
-	private ParameterElements pParameter;
-	private ParameterQualifierElements unknownRuleParameterQualifier;
-	private IncludeDirectiveElements pIncludeDirective;
-	private TerminalRule tINCLUDE_LIB;
-	private AnnotationsListElements pAnnotationsList;
-	private AnnotationElements pAnnotation;
-	private AnnotationValuePairElements pAnnotationValuePair;
-	private AnnotationValueElements pAnnotationValue;
-	private ArrayAnnotationValueElements pArrayAnnotationValue;
-	private TerminalRule tBOOLEAN;
-	private SignedINTElements pSignedINT;
-	private ConstantExpressionElements pConstantExpression;
-	private LogicalOrExpressionElements pLogicalOrExpression;
-	private LogicalAndExpressionElements pLogicalAndExpression;
-	private OrExpressionElements pOrExpression;
-	private XorExpressionElements pXorExpression;
-	private AndExpressionElements pAndExpression;
-	private ShiftExpressionElements pShiftExpression;
-	private AdditiveExpressionElements pAdditiveExpression;
-	private MulExpressionElements pMulExpression;
-	private CastExpressionElements pCastExpression;
-	private UnaryExpressionElements pUnaryExpression;
-	private PrimaryExpressionElements pPrimaryExpression;
-	private LiteralElements pLiteral;
-	private TerminalRule tSHIFT_OPERATION;
-	private TerminalRule tADDITIVE_OPERATION;
-	private TerminalRule tMUL_OPERATION;
-	private TerminalRule tUNARY_OPERATION;
-	private FloatingPointLiteralElements pFloatingPointLiteral;
-	private ExponentElements pExponent;
-	private TerminalRule tFDSYMBOL;
+	private final ItfFileElements pItfFile;
+	private final TypeDefinitionElements pTypeDefinition;
+	private final TypedefSpecificationElements pTypedefSpecification;
+	private final QualifiedTypeSpecificationElements pQualifiedTypeSpecification;
+	private final TypeQualifierElements unknownRuleTypeQualifier;
+	private final TypeSpecificationElements pTypeSpecification;
+	private final TypeSpecifierElements unknownRuleTypeSpecifier;
+	private final StructOrUnionSpecificationElements pStructOrUnionSpecification;
+	private final StructOrUnionDefinitionElements pStructOrUnionDefinition;
+	private final StructorUnionReferenceElements pStructorUnionReference;
+	private final StructOrUnionElements pStructOrUnion;
+	private final StructMemberElements pStructMember;
+	private final EnumSpecificationElements pEnumSpecification;
+	private final EnumDefinitionElements pEnumDefinition;
+	private final EnumReferenceElements pEnumReference;
+	private final EnumMemberListElements pEnumMemberList;
+	private final EnumMemberElements pEnumMember;
+	private final DeclaratorsElements pDeclarators;
+	private final DeclaratorElements pDeclarator;
+	private final QualifiedPointerSpecificationElements pQualifiedPointerSpecification;
+	private final DirectNamedDeclaratorElements pDirectNamedDeclarator;
+	private final DirectAnonymousDeclaratorElements pDirectAnonymousDeclarator;
+	private final ArraySpecificationElements pArraySpecification;
+	private final QualifiedNameElements pQualifiedName;
+	private final ConstantDefinitionElements pConstantDefinition;
+	private final InterfaceDefinitionElements pInterfaceDefinition;
+	private final MethodDefinitionElements pMethodDefinition;
+	private final ParameterListElements pParameterList;
+	private final ParameterElements pParameter;
+	private final ParameterQualifierElements unknownRuleParameterQualifier;
+	private final IncludeDirectiveElements pIncludeDirective;
+	private final TerminalRule tINCLUDE_LIB;
+	private final AnnotationsListElements pAnnotationsList;
+	private final AnnotationElements pAnnotation;
+	private final AnnotationValuePairElements pAnnotationValuePair;
+	private final AnnotationValueElements pAnnotationValue;
+	private final ArrayAnnotationValueElements pArrayAnnotationValue;
+	private final TerminalRule tBOOLEAN;
+	private final SignedINTElements pSignedINT;
+	private final ConstantExpressionElements pConstantExpression;
+	private final LogicalOrExpressionElements pLogicalOrExpression;
+	private final LogicalAndExpressionElements pLogicalAndExpression;
+	private final OrExpressionElements pOrExpression;
+	private final XorExpressionElements pXorExpression;
+	private final AndExpressionElements pAndExpression;
+	private final ShiftExpressionElements pShiftExpression;
+	private final AdditiveExpressionElements pAdditiveExpression;
+	private final MulExpressionElements pMulExpression;
+	private final CastExpressionElements pCastExpression;
+	private final UnaryExpressionElements pUnaryExpression;
+	private final PrimaryExpressionElements pPrimaryExpression;
+	private final LiteralElements pLiteral;
+	private final TerminalRule tSHIFT_OPERATION;
+	private final TerminalRule tADDITIVE_OPERATION;
+	private final TerminalRule tMUL_OPERATION;
+	private final TerminalRule tUNARY_OPERATION;
+	private final FloatingPointLiteralElements pFloatingPointLiteral;
+	private final ExponentElements pExponent;
+	private final TerminalRule tFDSYMBOL;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public ItfGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pItfFile = new ItfFileElements();
+		this.pTypeDefinition = new TypeDefinitionElements();
+		this.pTypedefSpecification = new TypedefSpecificationElements();
+		this.pQualifiedTypeSpecification = new QualifiedTypeSpecificationElements();
+		this.unknownRuleTypeQualifier = new TypeQualifierElements();
+		this.pTypeSpecification = new TypeSpecificationElements();
+		this.unknownRuleTypeSpecifier = new TypeSpecifierElements();
+		this.pStructOrUnionSpecification = new StructOrUnionSpecificationElements();
+		this.pStructOrUnionDefinition = new StructOrUnionDefinitionElements();
+		this.pStructorUnionReference = new StructorUnionReferenceElements();
+		this.pStructOrUnion = new StructOrUnionElements();
+		this.pStructMember = new StructMemberElements();
+		this.pEnumSpecification = new EnumSpecificationElements();
+		this.pEnumDefinition = new EnumDefinitionElements();
+		this.pEnumReference = new EnumReferenceElements();
+		this.pEnumMemberList = new EnumMemberListElements();
+		this.pEnumMember = new EnumMemberElements();
+		this.pDeclarators = new DeclaratorsElements();
+		this.pDeclarator = new DeclaratorElements();
+		this.pQualifiedPointerSpecification = new QualifiedPointerSpecificationElements();
+		this.pDirectNamedDeclarator = new DirectNamedDeclaratorElements();
+		this.pDirectAnonymousDeclarator = new DirectAnonymousDeclaratorElements();
+		this.pArraySpecification = new ArraySpecificationElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pConstantDefinition = new ConstantDefinitionElements();
+		this.pInterfaceDefinition = new InterfaceDefinitionElements();
+		this.pMethodDefinition = new MethodDefinitionElements();
+		this.pParameterList = new ParameterListElements();
+		this.pParameter = new ParameterElements();
+		this.unknownRuleParameterQualifier = new ParameterQualifierElements();
+		this.pIncludeDirective = new IncludeDirectiveElements();
+		this.tINCLUDE_LIB = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INCLUDE_LIB");
+		this.pAnnotationsList = new AnnotationsListElements();
+		this.pAnnotation = new AnnotationElements();
+		this.pAnnotationValuePair = new AnnotationValuePairElements();
+		this.pAnnotationValue = new AnnotationValueElements();
+		this.pArrayAnnotationValue = new ArrayAnnotationValueElements();
+		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
+		this.pSignedINT = new SignedINTElements();
+		this.pConstantExpression = new ConstantExpressionElements();
+		this.pLogicalOrExpression = new LogicalOrExpressionElements();
+		this.pLogicalAndExpression = new LogicalAndExpressionElements();
+		this.pOrExpression = new OrExpressionElements();
+		this.pXorExpression = new XorExpressionElements();
+		this.pAndExpression = new AndExpressionElements();
+		this.pShiftExpression = new ShiftExpressionElements();
+		this.pAdditiveExpression = new AdditiveExpressionElements();
+		this.pMulExpression = new MulExpressionElements();
+		this.pCastExpression = new CastExpressionElements();
+		this.pUnaryExpression = new UnaryExpressionElements();
+		this.pPrimaryExpression = new PrimaryExpressionElements();
+		this.pLiteral = new LiteralElements();
+		this.tSHIFT_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SHIFT_OPERATION");
+		this.tADDITIVE_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ADDITIVE_OPERATION");
+		this.tMUL_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "MUL_OPERATION");
+		this.tUNARY_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "UNARY_OPERATION");
+		this.pFloatingPointLiteral = new FloatingPointLiteralElements();
+		this.pExponent = new ExponentElements();
+		this.tFDSYMBOL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FDSYMBOL");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2299,7 +2358,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	includes+=IncludeDirective* (constant+=ConstantDefinition | type+=TypeDefinition)* interface=InterfaceDefinition
 	//	";"?;
 	public ItfFileElements getItfFileAccess() {
-		return (pItfFile != null) ? pItfFile : (pItfFile = new ItfFileElements());
+		return pItfFile;
 	}
 	
 	public ParserRule getItfFileRule() {
@@ -2310,7 +2369,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//TypeDefinition:
 	//	(TypedefSpecification | StructOrUnionSpecification | EnumSpecification) ";";
 	public TypeDefinitionElements getTypeDefinitionAccess() {
-		return (pTypeDefinition != null) ? pTypeDefinition : (pTypeDefinition = new TypeDefinitionElements());
+		return pTypeDefinition;
 	}
 	
 	public ParserRule getTypeDefinitionRule() {
@@ -2320,7 +2379,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//TypedefSpecification:
 	//	"typedef" qualifedType=QualifiedTypeSpecification dec=Declarators;
 	public TypedefSpecificationElements getTypedefSpecificationAccess() {
-		return (pTypedefSpecification != null) ? pTypedefSpecification : (pTypedefSpecification = new TypedefSpecificationElements());
+		return pTypedefSpecification;
 	}
 	
 	public ParserRule getTypedefSpecificationRule() {
@@ -2330,7 +2389,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedTypeSpecification:
 	//	typeQualifier+=TypeQualifier* typeSpec=TypeSpecification;
 	public QualifiedTypeSpecificationElements getQualifiedTypeSpecificationAccess() {
-		return (pQualifiedTypeSpecification != null) ? pQualifiedTypeSpecification : (pQualifiedTypeSpecification = new QualifiedTypeSpecificationElements());
+		return pQualifiedTypeSpecification;
 	}
 	
 	public ParserRule getQualifiedTypeSpecificationRule() {
@@ -2340,7 +2399,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//enum TypeQualifier:
 	//	const | volatile;
 	public TypeQualifierElements getTypeQualifierAccess() {
-		return (unknownRuleTypeQualifier != null) ? unknownRuleTypeQualifier : (unknownRuleTypeQualifier = new TypeQualifierElements());
+		return unknownRuleTypeQualifier;
 	}
 	
 	public EnumRule getTypeQualifierRule() {
@@ -2351,7 +2410,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	typeDefName=QualifiedName | StructOrUnionSpecification | EnumSpecification | typeSpecifier+=TypeSpecifier
 	//	typeSpecifier+=TypeSpecifier*;
 	public TypeSpecificationElements getTypeSpecificationAccess() {
-		return (pTypeSpecification != null) ? pTypeSpecification : (pTypeSpecification = new TypeSpecificationElements());
+		return pTypeSpecification;
 	}
 	
 	public ParserRule getTypeSpecificationRule() {
@@ -2362,7 +2421,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	void | char | short | int | long | float | double | signed | unsigned | string | int8_t | uint8_t | int16_t |
 	//	uint16_t | int32_t | uint32_t | int64_t | uint64_t | intptr_t | uintptr_t;
 	public TypeSpecifierElements getTypeSpecifierAccess() {
-		return (unknownRuleTypeSpecifier != null) ? unknownRuleTypeSpecifier : (unknownRuleTypeSpecifier = new TypeSpecifierElements());
+		return unknownRuleTypeSpecifier;
 	}
 	
 	public EnumRule getTypeSpecifierRule() {
@@ -2372,7 +2431,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//StructOrUnionSpecification:
 	//	StructOrUnionDefinition | StructorUnionReference;
 	public StructOrUnionSpecificationElements getStructOrUnionSpecificationAccess() {
-		return (pStructOrUnionSpecification != null) ? pStructOrUnionSpecification : (pStructOrUnionSpecification = new StructOrUnionSpecificationElements());
+		return pStructOrUnionSpecification;
 	}
 	
 	public ParserRule getStructOrUnionSpecificationRule() {
@@ -2382,7 +2441,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//StructOrUnionDefinition:
 	//	struct=StructOrUnion id=ID? "{" structMember+=StructMember* "}";
 	public StructOrUnionDefinitionElements getStructOrUnionDefinitionAccess() {
-		return (pStructOrUnionDefinition != null) ? pStructOrUnionDefinition : (pStructOrUnionDefinition = new StructOrUnionDefinitionElements());
+		return pStructOrUnionDefinition;
 	}
 	
 	public ParserRule getStructOrUnionDefinitionRule() {
@@ -2392,7 +2451,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//StructorUnionReference:
 	//	struct=StructOrUnion id=ID;
 	public StructorUnionReferenceElements getStructorUnionReferenceAccess() {
-		return (pStructorUnionReference != null) ? pStructorUnionReference : (pStructorUnionReference = new StructorUnionReferenceElements());
+		return pStructorUnionReference;
 	}
 	
 	public ParserRule getStructorUnionReferenceRule() {
@@ -2402,7 +2461,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//StructOrUnion:
 	//	"struct" | "union";
 	public StructOrUnionElements getStructOrUnionAccess() {
-		return (pStructOrUnion != null) ? pStructOrUnion : (pStructOrUnion = new StructOrUnionElements());
+		return pStructOrUnion;
 	}
 	
 	public ParserRule getStructOrUnionRule() {
@@ -2413,7 +2472,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotationsList=AnnotationsList? qualType=QualifiedTypeSpecification dec=Declarators (":"
 	//	constExpr=ConstantExpression)? ";";
 	public StructMemberElements getStructMemberAccess() {
-		return (pStructMember != null) ? pStructMember : (pStructMember = new StructMemberElements());
+		return pStructMember;
 	}
 	
 	public ParserRule getStructMemberRule() {
@@ -2423,7 +2482,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumSpecification:
 	//	EnumDefinition | EnumReference;
 	public EnumSpecificationElements getEnumSpecificationAccess() {
-		return (pEnumSpecification != null) ? pEnumSpecification : (pEnumSpecification = new EnumSpecificationElements());
+		return pEnumSpecification;
 	}
 	
 	public ParserRule getEnumSpecificationRule() {
@@ -2433,7 +2492,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumDefinition:
 	//	"enum" id=ID? "{" enumMemberList=EnumMemberList "}";
 	public EnumDefinitionElements getEnumDefinitionAccess() {
-		return (pEnumDefinition != null) ? pEnumDefinition : (pEnumDefinition = new EnumDefinitionElements());
+		return pEnumDefinition;
 	}
 	
 	public ParserRule getEnumDefinitionRule() {
@@ -2443,7 +2502,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumReference:
 	//	"enum" id=ID;
 	public EnumReferenceElements getEnumReferenceAccess() {
-		return (pEnumReference != null) ? pEnumReference : (pEnumReference = new EnumReferenceElements());
+		return pEnumReference;
 	}
 	
 	public ParserRule getEnumReferenceRule() {
@@ -2453,7 +2512,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//EnumMemberList:
 	//	enumMember+=EnumMember ("," enumMember+=EnumMember)*;
 	public EnumMemberListElements getEnumMemberListAccess() {
-		return (pEnumMemberList != null) ? pEnumMemberList : (pEnumMemberList = new EnumMemberListElements());
+		return pEnumMemberList;
 	}
 	
 	public ParserRule getEnumMemberListRule() {
@@ -2464,7 +2523,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	////(annotationsList=AnnotationsList)?
 	//	name=ID ("=" constExpr=ConstantExpression)?;
 	public EnumMemberElements getEnumMemberAccess() {
-		return (pEnumMember != null) ? pEnumMember : (pEnumMember = new EnumMemberElements());
+		return pEnumMember;
 	}
 	
 	public ParserRule getEnumMemberRule() {
@@ -2474,7 +2533,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//Declarators:
 	//	dec=Declarator ("," declaratorList+=Declarator)*;
 	public DeclaratorsElements getDeclaratorsAccess() {
-		return (pDeclarators != null) ? pDeclarators : (pDeclarators = new DeclaratorsElements());
+		return pDeclarators;
 	}
 	
 	public ParserRule getDeclaratorsRule() {
@@ -2485,7 +2544,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	pointer+=QualifiedPointerSpecification* (dc=DirectNamedDeclarator | dc=DirectAnonymousDeclarator | "(" dec=Declarator
 	//	")");
 	public DeclaratorElements getDeclaratorAccess() {
-		return (pDeclarator != null) ? pDeclarator : (pDeclarator = new DeclaratorElements());
+		return pDeclarator;
 	}
 	
 	public ParserRule getDeclaratorRule() {
@@ -2500,7 +2559,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedPointerSpecification:
 	//	{QualifiedPointerSpecification} "*" typeQualifiers+=TypeQualifier*;
 	public QualifiedPointerSpecificationElements getQualifiedPointerSpecificationAccess() {
-		return (pQualifiedPointerSpecification != null) ? pQualifiedPointerSpecification : (pQualifiedPointerSpecification = new QualifiedPointerSpecificationElements());
+		return pQualifiedPointerSpecification;
 	}
 	
 	public ParserRule getQualifiedPointerSpecificationRule() {
@@ -2510,7 +2569,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//DirectNamedDeclarator:
 	//	id=ID array+=ArraySpecification*;
 	public DirectNamedDeclaratorElements getDirectNamedDeclaratorAccess() {
-		return (pDirectNamedDeclarator != null) ? pDirectNamedDeclarator : (pDirectNamedDeclarator = new DirectNamedDeclaratorElements());
+		return pDirectNamedDeclarator;
 	}
 	
 	public ParserRule getDirectNamedDeclaratorRule() {
@@ -2520,7 +2579,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//DirectAnonymousDeclarator:
 	//	{DirectAnonymousDeclarator} array+=ArraySpecification*;
 	public DirectAnonymousDeclaratorElements getDirectAnonymousDeclaratorAccess() {
-		return (pDirectAnonymousDeclarator != null) ? pDirectAnonymousDeclarator : (pDirectAnonymousDeclarator = new DirectAnonymousDeclaratorElements());
+		return pDirectAnonymousDeclarator;
 	}
 	
 	public ParserRule getDirectAnonymousDeclaratorRule() {
@@ -2534,7 +2593,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//ArraySpecification:
 	//	unspecifiedSize?="[" "]" | "[" fixedSize=ConstantExpression "]";
 	public ArraySpecificationElements getArraySpecificationAccess() {
-		return (pArraySpecification != null) ? pArraySpecification : (pArraySpecification = new ArraySpecificationElements());
+		return pArraySpecification;
 	}
 	
 	public ParserRule getArraySpecificationRule() {
@@ -2544,7 +2603,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -2555,7 +2614,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantDefinition:
 	//	"#define" name=ID expr=ConstantExpression?;
 	public ConstantDefinitionElements getConstantDefinitionAccess() {
-		return (pConstantDefinition != null) ? pConstantDefinition : (pConstantDefinition = new ConstantDefinitionElements());
+		return pConstantDefinition;
 	}
 	
 	public ParserRule getConstantDefinitionRule() {
@@ -2566,7 +2625,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotationsList=AnnotationsList? "interface" "unmanaged"? name=QualifiedName (":"
 	//	fqn2=[InterfaceDefinition|QualifiedName])? "{" methodDef+=MethodDefinition* "}";
 	public InterfaceDefinitionElements getInterfaceDefinitionAccess() {
-		return (pInterfaceDefinition != null) ? pInterfaceDefinition : (pInterfaceDefinition = new InterfaceDefinitionElements());
+		return pInterfaceDefinition;
 	}
 	
 	public ParserRule getInterfaceDefinitionRule() {
@@ -2578,7 +2637,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	pointerSpecification+=QualifiedPointerSpecification* name=ID ("(" "void"? ")" | "(" ParameterList=ParameterList ")")
 	//	";";
 	public MethodDefinitionElements getMethodDefinitionAccess() {
-		return (pMethodDefinition != null) ? pMethodDefinition : (pMethodDefinition = new MethodDefinitionElements());
+		return pMethodDefinition;
 	}
 	
 	public ParserRule getMethodDefinitionRule() {
@@ -2588,7 +2647,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//ParameterList:
 	//	params+=Parameter ("," params+=Parameter)* ("," "...")?;
 	public ParameterListElements getParameterListAccess() {
-		return (pParameterList != null) ? pParameterList : (pParameterList = new ParameterListElements());
+		return pParameterList;
 	}
 	
 	public ParserRule getParameterListRule() {
@@ -2599,7 +2658,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotationsList=AnnotationsList? ParameterQualifier+=ParameterQualifier* qualifiedTypeSpec=QualifiedTypeSpecification
 	//	dec=Declarator / * | absDec=AbstractDeclarator * /;
 	public ParameterElements getParameterAccess() {
-		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
+		return pParameter;
 	}
 	
 	public ParserRule getParameterRule() {
@@ -2610,7 +2669,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//enum ParameterQualifier:
 	//	in | out;
 	public ParameterQualifierElements getParameterQualifierAccess() {
-		return (unknownRuleParameterQualifier != null) ? unknownRuleParameterQualifier : (unknownRuleParameterQualifier = new ParameterQualifierElements());
+		return unknownRuleParameterQualifier;
 	}
 	
 	public EnumRule getParameterQualifierRule() {
@@ -2620,7 +2679,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//IncludeDirective:
 	//	"#include" (importedURI=STRING ("/" STRING)* | includeID=INCLUDE_LIB);
 	public IncludeDirectiveElements getIncludeDirectiveAccess() {
-		return (pIncludeDirective != null) ? pIncludeDirective : (pIncludeDirective = new IncludeDirectiveElements());
+		return pIncludeDirective;
 	}
 	
 	public ParserRule getIncludeDirectiveRule() {
@@ -2630,13 +2689,13 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal INCLUDE_LIB:
 	//	"<" (ID "/")* ID "." ID ">";
 	public TerminalRule getINCLUDE_LIBRule() {
-		return (tINCLUDE_LIB != null) ? tINCLUDE_LIB : (tINCLUDE_LIB = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INCLUDE_LIB"));
+		return tINCLUDE_LIB;
 	} 
 
 	//AnnotationsList:
 	//	annotations+=Annotation annotations+=Annotation*;
 	public AnnotationsListElements getAnnotationsListAccess() {
-		return (pAnnotationsList != null) ? pAnnotationsList : (pAnnotationsList = new AnnotationsListElements());
+		return pAnnotationsList;
 	}
 	
 	public ParserRule getAnnotationsListRule() {
@@ -2647,7 +2706,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//	"@" name=QualifiedName ("(" annotationParametersList+=AnnotationValuePair (","
 	//	annotationParametersList+=AnnotationValuePair)* ")")?;
 	public AnnotationElements getAnnotationAccess() {
-		return (pAnnotation != null) ? pAnnotation : (pAnnotation = new AnnotationElements());
+		return pAnnotation;
 	}
 	
 	public ParserRule getAnnotationRule() {
@@ -2657,7 +2716,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//AnnotationValuePair:
 	//	(name=ID "=")? value=AnnotationValue;
 	public AnnotationValuePairElements getAnnotationValuePairAccess() {
-		return (pAnnotationValuePair != null) ? pAnnotationValuePair : (pAnnotationValuePair = new AnnotationValuePairElements());
+		return pAnnotationValuePair;
 	}
 	
 	public ParserRule getAnnotationValuePairRule() {
@@ -2667,7 +2726,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//AnnotationValue:
 	//	value=(signedINT | "null" | BOOLEAN | QualifiedName | STRING) | arrayValue=ArrayAnnotationValue;
 	public AnnotationValueElements getAnnotationValueAccess() {
-		return (pAnnotationValue != null) ? pAnnotationValue : (pAnnotationValue = new AnnotationValueElements());
+		return pAnnotationValue;
 	}
 	
 	public ParserRule getAnnotationValueRule() {
@@ -2677,7 +2736,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//ArrayAnnotationValue:
 	//	"{" values+=AnnotationValue ("," values+=AnnotationValue)* "}";
 	public ArrayAnnotationValueElements getArrayAnnotationValueAccess() {
-		return (pArrayAnnotationValue != null) ? pArrayAnnotationValue : (pArrayAnnotationValue = new ArrayAnnotationValueElements());
+		return pArrayAnnotationValue;
 	}
 	
 	public ParserRule getArrayAnnotationValueRule() {
@@ -2687,13 +2746,13 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal BOOLEAN:
 	//	"true" | "false";
 	public TerminalRule getBOOLEANRule() {
-		return (tBOOLEAN != null) ? tBOOLEAN : (tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN"));
+		return tBOOLEAN;
 	} 
 
 	//signedINT:
 	//	ADDITIVE_OPERATION? INT;
 	public SignedINTElements getSignedINTAccess() {
-		return (pSignedINT != null) ? pSignedINT : (pSignedINT = new SignedINTElements());
+		return pSignedINT;
 	}
 	
 	public ParserRule getSignedINTRule() {
@@ -2703,7 +2762,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantExpression:
 	//	LogicalOrExpression;
 	public ConstantExpressionElements getConstantExpressionAccess() {
-		return (pConstantExpression != null) ? pConstantExpression : (pConstantExpression = new ConstantExpressionElements());
+		return pConstantExpression;
 	}
 	
 	public ParserRule getConstantExpressionRule() {
@@ -2713,7 +2772,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//LogicalOrExpression:
 	//	leftExpr=LogicalAndExpression ("||" rightExpr=LogicalOrExpression)?;
 	public LogicalOrExpressionElements getLogicalOrExpressionAccess() {
-		return (pLogicalOrExpression != null) ? pLogicalOrExpression : (pLogicalOrExpression = new LogicalOrExpressionElements());
+		return pLogicalOrExpression;
 	}
 	
 	public ParserRule getLogicalOrExpressionRule() {
@@ -2723,7 +2782,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//LogicalAndExpression:
 	//	leftExpr=OrExpression ("&&" rightExpr=LogicalAndExpression)?;
 	public LogicalAndExpressionElements getLogicalAndExpressionAccess() {
-		return (pLogicalAndExpression != null) ? pLogicalAndExpression : (pLogicalAndExpression = new LogicalAndExpressionElements());
+		return pLogicalAndExpression;
 	}
 	
 	public ParserRule getLogicalAndExpressionRule() {
@@ -2733,7 +2792,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//OrExpression:
 	//	leftExpr=XorExpression ("|" rightExpr=OrExpression)?;
 	public OrExpressionElements getOrExpressionAccess() {
-		return (pOrExpression != null) ? pOrExpression : (pOrExpression = new OrExpressionElements());
+		return pOrExpression;
 	}
 	
 	public ParserRule getOrExpressionRule() {
@@ -2743,7 +2802,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//XorExpression:
 	//	leftExpr=AndExpression ("^" rightExpr=XorExpression)?;
 	public XorExpressionElements getXorExpressionAccess() {
-		return (pXorExpression != null) ? pXorExpression : (pXorExpression = new XorExpressionElements());
+		return pXorExpression;
 	}
 	
 	public ParserRule getXorExpressionRule() {
@@ -2753,7 +2812,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//AndExpression:
 	//	leftExpr=ShiftExpression ("&" rightExpr=AndExpression)?;
 	public AndExpressionElements getAndExpressionAccess() {
-		return (pAndExpression != null) ? pAndExpression : (pAndExpression = new AndExpressionElements());
+		return pAndExpression;
 	}
 	
 	public ParserRule getAndExpressionRule() {
@@ -2763,7 +2822,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//ShiftExpression:
 	//	leftExpr=AdditiveExpression (op=SHIFT_OPERATION rightExpr=ShiftExpression)?;
 	public ShiftExpressionElements getShiftExpressionAccess() {
-		return (pShiftExpression != null) ? pShiftExpression : (pShiftExpression = new ShiftExpressionElements());
+		return pShiftExpression;
 	}
 	
 	public ParserRule getShiftExpressionRule() {
@@ -2773,7 +2832,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//AdditiveExpression:
 	//	leftExpr=MulExpression (op=ADDITIVE_OPERATION rightExpr=AdditiveExpression)?;
 	public AdditiveExpressionElements getAdditiveExpressionAccess() {
-		return (pAdditiveExpression != null) ? pAdditiveExpression : (pAdditiveExpression = new AdditiveExpressionElements());
+		return pAdditiveExpression;
 	}
 	
 	public ParserRule getAdditiveExpressionRule() {
@@ -2783,7 +2842,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//MulExpression:
 	//	leftExpr=CastExpression (op=MUL_OPERATION rightExpr=MulExpression)?;
 	public MulExpressionElements getMulExpressionAccess() {
-		return (pMulExpression != null) ? pMulExpression : (pMulExpression = new MulExpressionElements());
+		return pMulExpression;
 	}
 	
 	public ParserRule getMulExpressionRule() {
@@ -2793,7 +2852,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//CastExpression:
 	//	"(" type=QualifiedTypeSpecification ")" expr=CastExpression | unaryExpr=UnaryExpression;
 	public CastExpressionElements getCastExpressionAccess() {
-		return (pCastExpression != null) ? pCastExpression : (pCastExpression = new CastExpressionElements());
+		return pCastExpression;
 	}
 	
 	public ParserRule getCastExpressionRule() {
@@ -2803,7 +2862,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//UnaryExpression:
 	//	unaryExpr=UNARY_OPERATION? primaryExpr=PrimaryExpression;
 	public UnaryExpressionElements getUnaryExpressionAccess() {
-		return (pUnaryExpression != null) ? pUnaryExpression : (pUnaryExpression = new UnaryExpressionElements());
+		return pUnaryExpression;
 	}
 	
 	public ParserRule getUnaryExpressionRule() {
@@ -2813,7 +2872,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//PrimaryExpression:
 	//	literal=Literal | "(" ConstantExpression ")";
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
-		return (pPrimaryExpression != null) ? pPrimaryExpression : (pPrimaryExpression = new PrimaryExpressionElements());
+		return pPrimaryExpression;
 	}
 	
 	public ParserRule getPrimaryExpressionRule() {
@@ -2823,7 +2882,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//Literal:
 	//	ID | STRING | FloatingPointLiteral;
 	public LiteralElements getLiteralAccess() {
-		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
+		return pLiteral;
 	}
 	
 	public ParserRule getLiteralRule() {
@@ -2833,32 +2892,32 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal SHIFT_OPERATION:
 	//	"<<" | ">>";
 	public TerminalRule getSHIFT_OPERATIONRule() {
-		return (tSHIFT_OPERATION != null) ? tSHIFT_OPERATION : (tSHIFT_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SHIFT_OPERATION"));
+		return tSHIFT_OPERATION;
 	} 
 
 	//terminal ADDITIVE_OPERATION:
 	//	"+" | "-";
 	public TerminalRule getADDITIVE_OPERATIONRule() {
-		return (tADDITIVE_OPERATION != null) ? tADDITIVE_OPERATION : (tADDITIVE_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ADDITIVE_OPERATION"));
+		return tADDITIVE_OPERATION;
 	} 
 
 	//terminal MUL_OPERATION:
 	//	"*" | "/" | "%";
 	public TerminalRule getMUL_OPERATIONRule() {
-		return (tMUL_OPERATION != null) ? tMUL_OPERATION : (tMUL_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "MUL_OPERATION"));
+		return tMUL_OPERATION;
 	} 
 
 	//terminal UNARY_OPERATION:
 	//	"&" | "*" | "+" | "-" | "~" | "!";
 	public TerminalRule getUNARY_OPERATIONRule() {
-		return (tUNARY_OPERATION != null) ? tUNARY_OPERATION : (tUNARY_OPERATION = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "UNARY_OPERATION"));
+		return tUNARY_OPERATION;
 	} 
 
 	//FloatingPointLiteral:
 	//	signedINT+ "." signedINT* Exponent? FDSYMBOL? | "." signedINT+ Exponent? FDSYMBOL? | signedINT+ Exponent FDSYMBOL? |
 	//	signedINT+ Exponent? FDSYMBOL?;
 	public FloatingPointLiteralElements getFloatingPointLiteralAccess() {
-		return (pFloatingPointLiteral != null) ? pFloatingPointLiteral : (pFloatingPointLiteral = new FloatingPointLiteralElements());
+		return pFloatingPointLiteral;
 	}
 	
 	public ParserRule getFloatingPointLiteralRule() {
@@ -2868,7 +2927,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//Exponent:
 	//	("e" | "E" ADDITIVE_OPERATION)? INT+;
 	public ExponentElements getExponentAccess() {
-		return (pExponent != null) ? pExponent : (pExponent = new ExponentElements());
+		return pExponent;
 	}
 	
 	public ParserRule getExponentRule() {
@@ -2878,7 +2937,7 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal FDSYMBOL:
 	//	"f" | "F" | "d" | "D";
 	public TerminalRule getFDSYMBOLRule() {
-		return (tFDSYMBOL != null) ? tFDSYMBOL : (tFDSYMBOL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FDSYMBOL"));
+		return tFDSYMBOL;
 	} 
 
 	//terminal ID:
@@ -2894,8 +2953,8 @@ public class ItfGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

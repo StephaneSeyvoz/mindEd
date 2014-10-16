@@ -8,7 +8,7 @@ var grammarURI = "classpath:/org/ow2/mindEd/idt/Idt.xtext"
 var fileExtensions = "idt"
 var projectName = "org.ow2.mindEd.idt"
 var runtimeProject = "../${projectName}"
-var generateXtendStub = true
+var generateXtendStub = false
 var encoding = "UTF-8"
 
 Workflow {

@@ -29,7 +29,7 @@ public class AdlFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(0, 1, 1).after(f.getML_COMMENTRule());
 
 		// top level rule
-		formatAdlDefinition(c, f);
+		formatAdlFile(c, f);
 		
 		// components rules
 		// Note: the rules define indentation in a personal way
@@ -57,7 +57,7 @@ public class AdlFormatter extends AbstractDeclarativeFormatter {
 	 * import a.b.c; -> line wrap after and no space before ;
 	 * line wrap before architecture definition ... toto ... { ... }
 	 */
-	private void formatAdlDefinition(FormattingConfig c, AdlGrammarAccess f) {
+	private void formatAdlFile(FormattingConfig c, AdlGrammarAccess f) {
 		c.setLinewrap(0, 1, 2).after(f.getImportDefinitionAccess().getSemicolonKeyword_3());
 		c.setLinewrap(0, 1, 2).before(f.getArchitectureDefinitionRule());
 		c.setNoSpace().before(f.getImportDefinitionAccess().getSemicolonKeyword_3());

@@ -4,7 +4,7 @@
     editorDirectory="/org.ow2.mindEd.idt.editor/src" modelPluginID="org.ow2.mindEd.idt"
     forceOverwrite="true" modelName="Idt" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.idt.edit"
-    editorPluginID="org.ow2.mindEd.idt.editor" runtimeVersion="2.9" usedGenPackages="platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
+    editorPluginID="org.ow2.mindEd.idt.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
   <genPackages prefix="Idt" basePackage="org.ow2.mindEd" disposableProviderFactory="true"
       fileExtensions="idt" ecorePackage="Idt.ecore#/">
     <genClasses ecoreClass="Idt.ecore#//IdtFile">

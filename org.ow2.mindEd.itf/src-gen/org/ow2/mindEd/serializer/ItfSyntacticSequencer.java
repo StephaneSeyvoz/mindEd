@@ -43,8 +43,8 @@ public class ItfSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * terminal STRING	: 
-	 * 			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-	 * 			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+	 * 			'"' ( '\\' .  | !('\\'|'"') )* '"' |
+	 * 			"'" ( '\\' .  | !('\\'|"'") )* "'"
 	 * 		;
 	 */
 	protected String getSTRINGToken(EObject semanticObject, RuleCall ruleCall, INode node) {
