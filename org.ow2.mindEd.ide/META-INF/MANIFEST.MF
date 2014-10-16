@@ -65,8 +65,8 @@ Export-Package: org.ow2.mindEd.ide.core;version="0.2.1",
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.ow2.mindEd.ide.core.MindActivator
 Bundle-Vendor: Partenaire Minalogic
-Require-Bundle: org.ow2.mind.fractal-adl-bundle;bundle-version="0.2.0",
- org.eclipse.xtext
+Require-Bundle: org.eclipse.xtext,
+ org.ow2.mind.fractal-adl-bundle
 Bundle-ClassPath: lib/commons-configuration-1.10.jar,
  lib/commons-lang-2.6.jar,
  .,
