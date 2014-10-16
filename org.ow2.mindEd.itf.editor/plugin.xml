@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Itf -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.ow2.mindEd.itf.presentation.ItfModelWizardID"
+            name="%_UI_ItfModelWizard_label"
+            class="org.ow2.mindEd.itf.presentation.ItfModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ItfModelFile.gif">
+         <description>%_UI_ItfModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Itf -->
+      <editor
+            id="org.ow2.mindEd.itf.presentation.ItfEditorID"
+            name="%_UI_ItfEditor_label"
+            icon="icons/full/obj16/ItfModelFile.gif"
+            extensions="itf"
+            class="org.ow2.mindEd.itf.presentation.ItfEditor"
+            contributorClass="org.ow2.mindEd.itf.presentation.ItfActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Idt -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.ow2.mindEd.idt.presentation.IdtModelWizardID"
+            name="%_UI_IdtModelWizard_label"
+            class="org.ow2.mindEd.idt.presentation.IdtModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/IdtModelFile.gif">
+         <description>%_UI_IdtModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Idt -->
+      <editor
+            id="org.ow2.mindEd.idt.presentation.IdtEditorID"
+            name="%_UI_IdtEditor_label"
+            icon="icons/full/obj16/IdtModelFile.gif"
+            extensions="idt"
+            class="org.ow2.mindEd.idt.presentation.IdtEditor"
+            contributorClass="org.ow2.mindEd.idt.presentation.IdtActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
