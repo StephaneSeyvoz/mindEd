@@ -23,13 +23,13 @@ public interface AdlFactory extends EFactory
   AdlFactory eINSTANCE = org.ow2.mindEd.adl.impl.AdlFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Definition</em>'.
+   * Returns a new object of class '<em>File</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Definition</em>'.
+   * @return a new object of class '<em>File</em>'.
    * @generated
    */
-  AdlDefinition createAdlDefinition();
+  AdlFile createAdlFile();
 
   /**
    * Returns a new object of class '<em>Architecture Definition</em>'.

@@ -18,8 +18,8 @@ import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class AdlDefinitionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AdlDefinition");
+	public class AdlFileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AdlFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cImportsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cImportsImportDefinitionParserRuleCall_0_0 = (RuleCall)cImportsAssignment_0.eContents().get(0);
@@ -28,7 +28,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cArchitectureDefinitionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0 = (RuleCall)cArchitectureDefinitionAssignment_2.eContents().get(0);
 		
-		//AdlDefinition:
+		//AdlFile:
 		//	imports+=ImportDefinition* / *
 		//	 * Any ArchitectureDefinition can be annotated
 		//	 * The following line used to be defined in each of the kinds of ArchitectureDefinition
@@ -2345,65 +2345,114 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private AdlDefinitionElements pAdlDefinition;
-	private ArchitectureDefinitionElements pArchitectureDefinition;
-	private ImportDefinitionElements pImportDefinition;
-	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
-	private CompositeDefinitionElements pCompositeDefinition;
-	private PrimitiveDefinitionElements pPrimitiveDefinition;
-	private TypeDefinitionElements pTypeDefinition;
-	private CompositeSuperTypeElements pCompositeSuperType;
-	private PrimitiveSuperTypeElements pPrimitiveSuperType;
-	private CompositeSuperTypeDefinitionElements pCompositeSuperTypeDefinition;
-	private PrimitiveSuperTypeDefinitionElements pPrimitiveSuperTypeDefinition;
-	private HostedInterfaceDefinitionElements pHostedInterfaceDefinition;
-	private ProvidedInterfaceDefinitionElements pProvidedInterfaceDefinition;
-	private RequiredInterfaceDefinitionElements pRequiredInterfaceDefinition;
-	private TypeReferenceElements pTypeReference;
-	private SubComponentDefinitionElements pSubComponentDefinition;
-	private ElementElements pElement;
-	private CompositeElementElements pCompositeElement;
-	private PrimitiveElementElements pPrimitiveElement;
-	private BindingDefinitionElements pBindingDefinition;
-	private FormalArgumentElements pFormalArgument;
-	private FormalArgumentsListElements pFormalArgumentsList;
-	private TemplateSpecifierElements pTemplateSpecifier;
-	private AttributeTypeElements pAttributeType;
-	private SignedINTElements pSignedINT;
-	private TerminalRule tHEXADECIMAL_TYPE;
-	private ValueElements pValue;
-	private ValueListElements pValueList;
-	private TemplateReferenceElements pTemplateReference;
-	private ArgumentDefinitionElements pArgumentDefinition;
-	private AttributeDefinitionElements pAttributeDefinition;
-	private ImplementationDefinitionElements pImplementationDefinition;
-	private DataDefinitionElements pDataDefinition;
-	private QualifiedNameElements pQualifiedName;
-	private FileCElements pFileC;
-	private InlineCodeCElements pInlineCodeC;
-	private PathElements pPath;
-	private FileNameElements pFileName;
-	private AnnotationsListElements pAnnotationsList;
-	private AnnotationElements pAnnotation;
-	private AnnotationElementElements pAnnotationElement;
-	private ElementValueElements pElementValue;
-	private ElementValueArrayInitializerElements pElementValueArrayInitializer;
-	private ConstantValueElements pConstantValue;
-	private ConstantFormatElements pConstantFormat;
-	private TerminalRule tCODE_C;
-	private TerminalRule tDOUBLE_LEFT_CURLY_BRACKETS;
-	private TerminalRule tDOUBLE_RIGHT_CURLY_BRACKETS;
-	private TerminalRule tSL;
+	private final AdlFileElements pAdlFile;
+	private final ArchitectureDefinitionElements pArchitectureDefinition;
+	private final ImportDefinitionElements pImportDefinition;
+	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
+	private final CompositeDefinitionElements pCompositeDefinition;
+	private final PrimitiveDefinitionElements pPrimitiveDefinition;
+	private final TypeDefinitionElements pTypeDefinition;
+	private final CompositeSuperTypeElements pCompositeSuperType;
+	private final PrimitiveSuperTypeElements pPrimitiveSuperType;
+	private final CompositeSuperTypeDefinitionElements pCompositeSuperTypeDefinition;
+	private final PrimitiveSuperTypeDefinitionElements pPrimitiveSuperTypeDefinition;
+	private final HostedInterfaceDefinitionElements pHostedInterfaceDefinition;
+	private final ProvidedInterfaceDefinitionElements pProvidedInterfaceDefinition;
+	private final RequiredInterfaceDefinitionElements pRequiredInterfaceDefinition;
+	private final TypeReferenceElements pTypeReference;
+	private final SubComponentDefinitionElements pSubComponentDefinition;
+	private final ElementElements pElement;
+	private final CompositeElementElements pCompositeElement;
+	private final PrimitiveElementElements pPrimitiveElement;
+	private final BindingDefinitionElements pBindingDefinition;
+	private final FormalArgumentElements pFormalArgument;
+	private final FormalArgumentsListElements pFormalArgumentsList;
+	private final TemplateSpecifierElements pTemplateSpecifier;
+	private final AttributeTypeElements pAttributeType;
+	private final SignedINTElements pSignedINT;
+	private final TerminalRule tHEXADECIMAL_TYPE;
+	private final ValueElements pValue;
+	private final ValueListElements pValueList;
+	private final TemplateReferenceElements pTemplateReference;
+	private final ArgumentDefinitionElements pArgumentDefinition;
+	private final AttributeDefinitionElements pAttributeDefinition;
+	private final ImplementationDefinitionElements pImplementationDefinition;
+	private final DataDefinitionElements pDataDefinition;
+	private final QualifiedNameElements pQualifiedName;
+	private final FileCElements pFileC;
+	private final InlineCodeCElements pInlineCodeC;
+	private final PathElements pPath;
+	private final FileNameElements pFileName;
+	private final AnnotationsListElements pAnnotationsList;
+	private final AnnotationElements pAnnotation;
+	private final AnnotationElementElements pAnnotationElement;
+	private final ElementValueElements pElementValue;
+	private final ElementValueArrayInitializerElements pElementValueArrayInitializer;
+	private final ConstantValueElements pConstantValue;
+	private final ConstantFormatElements pConstantFormat;
+	private final TerminalRule tCODE_C;
+	private final TerminalRule tDOUBLE_LEFT_CURLY_BRACKETS;
+	private final TerminalRule tDOUBLE_RIGHT_CURLY_BRACKETS;
+	private final TerminalRule tSL;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public AdlGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pAdlFile = new AdlFileElements();
+		this.pArchitectureDefinition = new ArchitectureDefinitionElements();
+		this.pImportDefinition = new ImportDefinitionElements();
+		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
+		this.pCompositeDefinition = new CompositeDefinitionElements();
+		this.pPrimitiveDefinition = new PrimitiveDefinitionElements();
+		this.pTypeDefinition = new TypeDefinitionElements();
+		this.pCompositeSuperType = new CompositeSuperTypeElements();
+		this.pPrimitiveSuperType = new PrimitiveSuperTypeElements();
+		this.pCompositeSuperTypeDefinition = new CompositeSuperTypeDefinitionElements();
+		this.pPrimitiveSuperTypeDefinition = new PrimitiveSuperTypeDefinitionElements();
+		this.pHostedInterfaceDefinition = new HostedInterfaceDefinitionElements();
+		this.pProvidedInterfaceDefinition = new ProvidedInterfaceDefinitionElements();
+		this.pRequiredInterfaceDefinition = new RequiredInterfaceDefinitionElements();
+		this.pTypeReference = new TypeReferenceElements();
+		this.pSubComponentDefinition = new SubComponentDefinitionElements();
+		this.pElement = new ElementElements();
+		this.pCompositeElement = new CompositeElementElements();
+		this.pPrimitiveElement = new PrimitiveElementElements();
+		this.pBindingDefinition = new BindingDefinitionElements();
+		this.pFormalArgument = new FormalArgumentElements();
+		this.pFormalArgumentsList = new FormalArgumentsListElements();
+		this.pTemplateSpecifier = new TemplateSpecifierElements();
+		this.pAttributeType = new AttributeTypeElements();
+		this.pSignedINT = new SignedINTElements();
+		this.tHEXADECIMAL_TYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL_TYPE");
+		this.pValue = new ValueElements();
+		this.pValueList = new ValueListElements();
+		this.pTemplateReference = new TemplateReferenceElements();
+		this.pArgumentDefinition = new ArgumentDefinitionElements();
+		this.pAttributeDefinition = new AttributeDefinitionElements();
+		this.pImplementationDefinition = new ImplementationDefinitionElements();
+		this.pDataDefinition = new DataDefinitionElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pFileC = new FileCElements();
+		this.pInlineCodeC = new InlineCodeCElements();
+		this.pPath = new PathElements();
+		this.pFileName = new FileNameElements();
+		this.pAnnotationsList = new AnnotationsListElements();
+		this.pAnnotation = new AnnotationElements();
+		this.pAnnotationElement = new AnnotationElementElements();
+		this.pElementValue = new ElementValueElements();
+		this.pElementValueArrayInitializer = new ElementValueArrayInitializerElements();
+		this.pConstantValue = new ConstantValueElements();
+		this.pConstantFormat = new ConstantFormatElements();
+		this.tCODE_C = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CODE_C");
+		this.tDOUBLE_LEFT_CURLY_BRACKETS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE_LEFT_CURLY_BRACKETS");
+		this.tDOUBLE_RIGHT_CURLY_BRACKETS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE_RIGHT_CURLY_BRACKETS");
+		this.tSL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2433,7 +2482,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//AdlDefinition:
+	//AdlFile:
 	//	imports+=ImportDefinition* / *
 	//	 * Any ArchitectureDefinition can be annotated
 	//	 * The following line used to be defined in each of the kinds of ArchitectureDefinition
@@ -2441,12 +2490,12 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	 * but led to ambiguities in the grammar, leading to breaking Xtext's model and autocompletion,
 	//	 * mostly on provided and required interfaces.
 	//	 * / annotationsList=AnnotationsList? architectureDefinition=ArchitectureDefinition;
-	public AdlDefinitionElements getAdlDefinitionAccess() {
-		return (pAdlDefinition != null) ? pAdlDefinition : (pAdlDefinition = new AdlDefinitionElements());
+	public AdlFileElements getAdlFileAccess() {
+		return pAdlFile;
 	}
 	
-	public ParserRule getAdlDefinitionRule() {
-		return getAdlDefinitionAccess().getRule();
+	public ParserRule getAdlFileRule() {
+		return getAdlFileAccess().getRule();
 	}
 
 	/// *
@@ -2456,7 +2505,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	// * / ArchitectureDefinition:
 	//	CompositeDefinition | PrimitiveDefinition | TypeDefinition;
 	public ArchitectureDefinitionElements getArchitectureDefinitionAccess() {
-		return (pArchitectureDefinition != null) ? pArchitectureDefinition : (pArchitectureDefinition = new ArchitectureDefinitionElements());
+		return pArchitectureDefinition;
 	}
 	
 	public ParserRule getArchitectureDefinitionRule() {
@@ -2466,7 +2515,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ImportDefinition:
 	//	annotationsList=AnnotationsList? "import" importedNamespace=QualifiedNameWithWildcard ";";
 	public ImportDefinitionElements getImportDefinitionAccess() {
-		return (pImportDefinition != null) ? pImportDefinition : (pImportDefinition = new ImportDefinitionElements());
+		return pImportDefinition;
 	}
 	
 	public ParserRule getImportDefinitionRule() {
@@ -2476,7 +2525,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedNameWithWildcard:
 	//	QualifiedName ".*"?;
 	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
-		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
+		return pQualifiedNameWithWildcard;
 	}
 	
 	public ParserRule getQualifiedNameWithWildcardRule() {
@@ -2491,7 +2540,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	elements+=(ProvidedInterfaceDefinition | RequiredInterfaceDefinition | SubComponentDefinition | BindingDefinition)*
 	//	"}";
 	public CompositeDefinitionElements getCompositeDefinitionAccess() {
-		return (pCompositeDefinition != null) ? pCompositeDefinition : (pCompositeDefinition = new CompositeDefinitionElements());
+		return pCompositeDefinition;
 	}
 	
 	public ParserRule getCompositeDefinitionRule() {
@@ -2504,7 +2553,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	superTypes+=PrimitiveSuperType)*)? "{" elements+=(ProvidedInterfaceDefinition | RequiredInterfaceDefinition |
 	//	ImplementationDefinition | AttributeDefinition | DataDefinition)* "}";
 	public PrimitiveDefinitionElements getPrimitiveDefinitionAccess() {
-		return (pPrimitiveDefinition != null) ? pPrimitiveDefinition : (pPrimitiveDefinition = new PrimitiveDefinitionElements());
+		return pPrimitiveDefinition;
 	}
 	
 	public ParserRule getPrimitiveDefinitionRule() {
@@ -2516,7 +2565,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	superTypes+=[TypeDefinition|QualifiedName])*)? "{" elements+=(ProvidedInterfaceDefinition |
 	//	RequiredInterfaceDefinition)* "}";
 	public TypeDefinitionElements getTypeDefinitionAccess() {
-		return (pTypeDefinition != null) ? pTypeDefinition : (pTypeDefinition = new TypeDefinitionElements());
+		return pTypeDefinition;
 	}
 	
 	public ParserRule getTypeDefinitionRule() {
@@ -2528,7 +2577,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	templatesList+=TemplateReference)* ">")? ("(" argumentsList+=ArgumentDefinition (","
 	//	argumentsList+=ArgumentDefinition)* ")")?;
 	public CompositeSuperTypeElements getCompositeSuperTypeAccess() {
-		return (pCompositeSuperType != null) ? pCompositeSuperType : (pCompositeSuperType = new CompositeSuperTypeElements());
+		return pCompositeSuperType;
 	}
 	
 	public ParserRule getCompositeSuperTypeRule() {
@@ -2539,7 +2588,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	targetArchDef=[PrimitiveSuperTypeDefinition|QualifiedName] ("(" argumentsList+=ArgumentDefinition (","
 	//	argumentsList+=ArgumentDefinition)* ")")?;
 	public PrimitiveSuperTypeElements getPrimitiveSuperTypeAccess() {
-		return (pPrimitiveSuperType != null) ? pPrimitiveSuperType : (pPrimitiveSuperType = new PrimitiveSuperTypeElements());
+		return pPrimitiveSuperType;
 	}
 	
 	public ParserRule getPrimitiveSuperTypeRule() {
@@ -2549,7 +2598,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//CompositeSuperTypeDefinition:
 	//	CompositeDefinition | TypeDefinition;
 	public CompositeSuperTypeDefinitionElements getCompositeSuperTypeDefinitionAccess() {
-		return (pCompositeSuperTypeDefinition != null) ? pCompositeSuperTypeDefinition : (pCompositeSuperTypeDefinition = new CompositeSuperTypeDefinitionElements());
+		return pCompositeSuperTypeDefinition;
 	}
 	
 	public ParserRule getCompositeSuperTypeDefinitionRule() {
@@ -2559,7 +2608,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//PrimitiveSuperTypeDefinition:
 	//	PrimitiveDefinition | TypeDefinition;
 	public PrimitiveSuperTypeDefinitionElements getPrimitiveSuperTypeDefinitionAccess() {
-		return (pPrimitiveSuperTypeDefinition != null) ? pPrimitiveSuperTypeDefinition : (pPrimitiveSuperTypeDefinition = new PrimitiveSuperTypeDefinitionElements());
+		return pPrimitiveSuperTypeDefinition;
 	}
 	
 	public ParserRule getPrimitiveSuperTypeDefinitionRule() {
@@ -2569,7 +2618,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//HostedInterfaceDefinition:
 	//	ProvidedInterfaceDefinition | RequiredInterfaceDefinition;
 	public HostedInterfaceDefinitionElements getHostedInterfaceDefinitionAccess() {
-		return (pHostedInterfaceDefinition != null) ? pHostedInterfaceDefinition : (pHostedInterfaceDefinition = new HostedInterfaceDefinitionElements());
+		return pHostedInterfaceDefinition;
 	}
 	
 	public ParserRule getHostedInterfaceDefinitionRule() {
@@ -2582,7 +2631,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotationsList=AnnotationsList? role="provides" signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as"
 	//	name=ID (collection?="[" collectionsize=INT? "]")? ";";
 	public ProvidedInterfaceDefinitionElements getProvidedInterfaceDefinitionAccess() {
-		return (pProvidedInterfaceDefinition != null) ? pProvidedInterfaceDefinition : (pProvidedInterfaceDefinition = new ProvidedInterfaceDefinitionElements());
+		return pProvidedInterfaceDefinition;
 	}
 	
 	public ParserRule getProvidedInterfaceDefinitionRule() {
@@ -2594,7 +2643,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	signature=[fractalIDL::InterfaceDefinition|QualifiedName] "as" name=ID (collection?="[" collectionsize=INT? "]")?
 	//	";";
 	public RequiredInterfaceDefinitionElements getRequiredInterfaceDefinitionAccess() {
-		return (pRequiredInterfaceDefinition != null) ? pRequiredInterfaceDefinition : (pRequiredInterfaceDefinition = new RequiredInterfaceDefinitionElements());
+		return pRequiredInterfaceDefinition;
 	}
 	
 	public ParserRule getRequiredInterfaceDefinitionRule() {
@@ -2604,7 +2653,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//TypeReference:
 	//	ArchitectureDefinition | TemplateSpecifier;
 	public TypeReferenceElements getTypeReferenceAccess() {
-		return (pTypeReference != null) ? pTypeReference : (pTypeReference = new TypeReferenceElements());
+		return pTypeReference;
 	}
 	
 	public ParserRule getTypeReferenceRule() {
@@ -2618,7 +2667,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	argumentsList+=ArgumentDefinition)* ")")? "as" name=ID bodyAnnotationsList=AnnotationsList? body=(CompositeDefinition
 	//	| PrimitiveDefinition)? ";";
 	public SubComponentDefinitionElements getSubComponentDefinitionAccess() {
-		return (pSubComponentDefinition != null) ? pSubComponentDefinition : (pSubComponentDefinition = new SubComponentDefinitionElements());
+		return pSubComponentDefinition;
 	}
 	
 	public ParserRule getSubComponentDefinitionRule() {
@@ -2648,7 +2697,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//Element:
 	//	CompositeElement | PrimitiveElement | HostedInterfaceDefinition;
 	public ElementElements getElementAccess() {
-		return (pElement != null) ? pElement : (pElement = new ElementElements());
+		return pElement;
 	}
 	
 	public ParserRule getElementRule() {
@@ -2658,7 +2707,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//CompositeElement:
 	//	HostedInterfaceDefinition | SubComponentDefinition | BindingDefinition;
 	public CompositeElementElements getCompositeElementAccess() {
-		return (pCompositeElement != null) ? pCompositeElement : (pCompositeElement = new CompositeElementElements());
+		return pCompositeElement;
 	}
 	
 	public ParserRule getCompositeElementRule() {
@@ -2668,7 +2717,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//PrimitiveElement:
 	//	HostedInterfaceDefinition | ImplementationDefinition | AttributeDefinition | DataDefinition;
 	public PrimitiveElementElements getPrimitiveElementAccess() {
-		return (pPrimitiveElement != null) ? pPrimitiveElement : (pPrimitiveElement = new PrimitiveElementElements());
+		return pPrimitiveElement;
 	}
 	
 	public ParserRule getPrimitiveElementRule() {
@@ -2682,7 +2731,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	sourceInterface=[HostedInterfaceDefinition] ("[" sourceIndex=INT "]")? "to" (targetParent=[SubComponentDefinition] |
 	//	isTgtParentThis?="this") "." targetInterface=[HostedInterfaceDefinition] ("[" targetIndex=INT "]")? ";";
 	public BindingDefinitionElements getBindingDefinitionAccess() {
-		return (pBindingDefinition != null) ? pBindingDefinition : (pBindingDefinition = new BindingDefinitionElements());
+		return pBindingDefinition;
 	}
 	
 	public ParserRule getBindingDefinitionRule() {
@@ -2692,7 +2741,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//FormalArgument:
 	//	name=ID;
 	public FormalArgumentElements getFormalArgumentAccess() {
-		return (pFormalArgument != null) ? pFormalArgument : (pFormalArgument = new FormalArgumentElements());
+		return pFormalArgument;
 	}
 	
 	public ParserRule getFormalArgumentRule() {
@@ -2702,7 +2751,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//FormalArgumentsList:
 	//	"(" formalArguments+=FormalArgument ("," formalArguments+=FormalArgument)* ")";
 	public FormalArgumentsListElements getFormalArgumentsListAccess() {
-		return (pFormalArgumentsList != null) ? pFormalArgumentsList : (pFormalArgumentsList = new FormalArgumentsListElements());
+		return pFormalArgumentsList;
 	}
 	
 	public ParserRule getFormalArgumentsListRule() {
@@ -2713,7 +2762,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//TemplateSpecifier:
 	//	name=ID "conformsto" typeReference=[TypeDefinition|QualifiedName];
 	public TemplateSpecifierElements getTemplateSpecifierAccess() {
-		return (pTemplateSpecifier != null) ? pTemplateSpecifier : (pTemplateSpecifier = new TemplateSpecifierElements());
+		return pTemplateSpecifier;
 	}
 	
 	public ParserRule getTemplateSpecifierRule() {
@@ -2725,7 +2774,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//AttributeType:
 	//	"STRUCT" | "UNION" | "ENUM" | ID;
 	public AttributeTypeElements getAttributeTypeAccess() {
-		return (pAttributeType != null) ? pAttributeType : (pAttributeType = new AttributeTypeElements());
+		return pAttributeType;
 	}
 	
 	public ParserRule getAttributeTypeRule() {
@@ -2735,7 +2784,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//signedINT:
 	//	("+" | "-")? INT;
 	public SignedINTElements getSignedINTAccess() {
-		return (pSignedINT != null) ? pSignedINT : (pSignedINT = new SignedINTElements());
+		return pSignedINT;
 	}
 	
 	public ParserRule getSignedINTRule() {
@@ -2745,13 +2794,13 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal HEXADECIMAL_TYPE:
 	//	"0x" ("a".."z" | "A".."Z" | "0".."9")+;
 	public TerminalRule getHEXADECIMAL_TYPERule() {
-		return (tHEXADECIMAL_TYPE != null) ? tHEXADECIMAL_TYPE : (tHEXADECIMAL_TYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL_TYPE"));
+		return tHEXADECIMAL_TYPE;
 	} 
 
 	//Value:
 	//	ID | signedINT | HEXADECIMAL_TYPE | STRING | "null";
 	public ValueElements getValueAccess() {
-		return (pValue != null) ? pValue : (pValue = new ValueElements());
+		return pValue;
 	}
 	
 	public ParserRule getValueRule() {
@@ -2761,7 +2810,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ValueList:
 	//	"{" member+=Value ("," member+=Value)* "}";
 	public ValueListElements getValueListAccess() {
-		return (pValueList != null) ? pValueList : (pValueList = new ValueListElements());
+		return pValueList;
 	}
 	
 	public ParserRule getValueListRule() {
@@ -2773,7 +2822,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	("<" templatesList+=TemplateReference ("," templatesList+=TemplateReference)* ">")? ("("
 	//	argumentsList+=ArgumentDefinition ("," argumentsList+=ArgumentDefinition)* ")")?;
 	public TemplateReferenceElements getTemplateReferenceAccess() {
-		return (pTemplateReference != null) ? pTemplateReference : (pTemplateReference = new TemplateReferenceElements());
+		return pTemplateReference;
 	}
 	
 	public ParserRule getTemplateReferenceRule() {
@@ -2783,7 +2832,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ArgumentDefinition:
 	//	(name=ID "=")? (argumentValue=Value | argumentList=ValueList);
 	public ArgumentDefinitionElements getArgumentDefinitionAccess() {
-		return (pArgumentDefinition != null) ? pArgumentDefinition : (pArgumentDefinition = new ArgumentDefinitionElements());
+		return pArgumentDefinition;
 	}
 	
 	public ParserRule getArgumentDefinitionRule() {
@@ -2794,7 +2843,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotationsList=AnnotationsList? "attribute" (headerFile=FileC ":")? cType=AttributeType? type=ID? name=ID ("="
 	//	value=Value)? ";";
 	public AttributeDefinitionElements getAttributeDefinitionAccess() {
-		return (pAttributeDefinition != null) ? pAttributeDefinition : (pAttributeDefinition = new AttributeDefinitionElements());
+		return pAttributeDefinition;
 	}
 	
 	public ParserRule getAttributeDefinitionRule() {
@@ -2804,7 +2853,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ImplementationDefinition:
 	//	annotationsList=AnnotationsList? "source" (fileC=FileC | inlineCcode=InlineCodeC) ";";
 	public ImplementationDefinitionElements getImplementationDefinitionAccess() {
-		return (pImplementationDefinition != null) ? pImplementationDefinition : (pImplementationDefinition = new ImplementationDefinitionElements());
+		return pImplementationDefinition;
 	}
 	
 	public ParserRule getImplementationDefinitionRule() {
@@ -2814,7 +2863,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//DataDefinition:
 	//	annotationsList=AnnotationsList? "data" (fileC=FileC | inlineCcode=InlineCodeC) ";";
 	public DataDefinitionElements getDataDefinitionAccess() {
-		return (pDataDefinition != null) ? pDataDefinition : (pDataDefinition = new DataDefinitionElements());
+		return pDataDefinition;
 	}
 	
 	public ParserRule getDataDefinitionRule() {
@@ -2824,7 +2873,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -2834,7 +2883,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//FileC:
 	//	directory=Path? name=FileName;
 	public FileCElements getFileCAccess() {
-		return (pFileC != null) ? pFileC : (pFileC = new FileCElements());
+		return pFileC;
 	}
 	
 	public ParserRule getFileCRule() {
@@ -2844,7 +2893,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//InlineCodeC:
 	//	codeC=CODE_C;
 	public InlineCodeCElements getInlineCodeCAccess() {
-		return (pInlineCodeC != null) ? pInlineCodeC : (pInlineCodeC = new InlineCodeCElements());
+		return pInlineCodeC;
 	}
 	
 	public ParserRule getInlineCodeCRule() {
@@ -2854,7 +2903,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//Path:
 	//	(ID | "." | "..")? (SL ((ID "-"?)* | ".."))* SL;
 	public PathElements getPathAccess() {
-		return (pPath != null) ? pPath : (pPath = new PathElements());
+		return pPath;
 	}
 	
 	public ParserRule getPathRule() {
@@ -2864,7 +2913,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//FileName:
 	//	ID ("." ID)?;
 	public FileNameElements getFileNameAccess() {
-		return (pFileName != null) ? pFileName : (pFileName = new FileNameElements());
+		return pFileName;
 	}
 	
 	public ParserRule getFileNameRule() {
@@ -2874,7 +2923,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//AnnotationsList:
 	//	annotations+=Annotation annotations+=Annotation*;
 	public AnnotationsListElements getAnnotationsListAccess() {
-		return (pAnnotationsList != null) ? pAnnotationsList : (pAnnotationsList = new AnnotationsListElements());
+		return pAnnotationsList;
 	}
 	
 	public ParserRule getAnnotationsListRule() {
@@ -2885,7 +2934,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//	"@" name=("Override" | "Singleton" | "LDFlags" | "CFlags" | QualifiedName) ("(" annotationElements+=AnnotationElement
 	//	("," annotationElements+=AnnotationElement)* ")")?;
 	public AnnotationElements getAnnotationAccess() {
-		return (pAnnotation != null) ? pAnnotation : (pAnnotation = new AnnotationElements());
+		return pAnnotation;
 	}
 	
 	public ParserRule getAnnotationRule() {
@@ -2898,7 +2947,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//AnnotationElement:
 	//	(name=ID "=")? elementValue=ElementValue;
 	public AnnotationElementElements getAnnotationElementAccess() {
-		return (pAnnotationElement != null) ? pAnnotationElement : (pAnnotationElement = new AnnotationElementElements());
+		return pAnnotationElement;
 	}
 	
 	public ParserRule getAnnotationElementRule() {
@@ -2908,7 +2957,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ElementValue:
 	//	ConstantValue | Annotation | ElementValueArrayInitializer;
 	public ElementValueElements getElementValueAccess() {
-		return (pElementValue != null) ? pElementValue : (pElementValue = new ElementValueElements());
+		return pElementValue;
 	}
 	
 	public ParserRule getElementValueRule() {
@@ -2918,7 +2967,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ElementValueArrayInitializer:
 	//	"{" values+=ElementValue ("," values+=ElementValue)* "}";
 	public ElementValueArrayInitializerElements getElementValueArrayInitializerAccess() {
-		return (pElementValueArrayInitializer != null) ? pElementValueArrayInitializer : (pElementValueArrayInitializer = new ElementValueArrayInitializerElements());
+		return pElementValueArrayInitializer;
 	}
 	
 	public ParserRule getElementValueArrayInitializerRule() {
@@ -2928,7 +2977,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantValue:
 	//	value=ConstantFormat;
 	public ConstantValueElements getConstantValueAccess() {
-		return (pConstantValue != null) ? pConstantValue : (pConstantValue = new ConstantValueElements());
+		return pConstantValue;
 	}
 	
 	public ParserRule getConstantValueRule() {
@@ -2938,7 +2987,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantFormat:
 	//	INT | STRING | ID;
 	public ConstantFormatElements getConstantFormatAccess() {
-		return (pConstantFormat != null) ? pConstantFormat : (pConstantFormat = new ConstantFormatElements());
+		return pConstantFormat;
 	}
 	
 	public ParserRule getConstantFormatRule() {
@@ -2948,19 +2997,19 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal CODE_C:
 	//	DOUBLE_LEFT_CURLY_BRACKETS->DOUBLE_RIGHT_CURLY_BRACKETS;
 	public TerminalRule getCODE_CRule() {
-		return (tCODE_C != null) ? tCODE_C : (tCODE_C = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CODE_C"));
+		return tCODE_C;
 	} 
 
 	//terminal DOUBLE_LEFT_CURLY_BRACKETS:
 	//	"{{";
 	public TerminalRule getDOUBLE_LEFT_CURLY_BRACKETSRule() {
-		return (tDOUBLE_LEFT_CURLY_BRACKETS != null) ? tDOUBLE_LEFT_CURLY_BRACKETS : (tDOUBLE_LEFT_CURLY_BRACKETS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE_LEFT_CURLY_BRACKETS"));
+		return tDOUBLE_LEFT_CURLY_BRACKETS;
 	} 
 
 	//terminal DOUBLE_RIGHT_CURLY_BRACKETS:
 	//	"}}";
 	public TerminalRule getDOUBLE_RIGHT_CURLY_BRACKETSRule() {
-		return (tDOUBLE_RIGHT_CURLY_BRACKETS != null) ? tDOUBLE_RIGHT_CURLY_BRACKETS : (tDOUBLE_RIGHT_CURLY_BRACKETS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DOUBLE_RIGHT_CURLY_BRACKETS"));
+		return tDOUBLE_RIGHT_CURLY_BRACKETS;
 	} 
 
 	////enum Role :
@@ -2968,7 +3017,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal SL:
 	//	"/";
 	public TerminalRule getSLRule() {
-		return (tSL != null) ? tSL : (tSL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL"));
+		return tSL;
 	} 
 
 	//terminal ID:
@@ -2984,8 +3033,8 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

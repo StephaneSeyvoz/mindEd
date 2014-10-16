@@ -57,14 +57,14 @@ public interface AdlPackage extends EPackage
   AdlPackage eINSTANCE = org.ow2.mindEd.adl.impl.AdlPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.ow2.mindEd.adl.impl.AdlDefinitionImpl <em>Definition</em>}' class.
+   * The meta object id for the '{@link org.ow2.mindEd.adl.impl.AdlFileImpl <em>File</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.ow2.mindEd.adl.impl.AdlDefinitionImpl
-   * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAdlDefinition()
+   * @see org.ow2.mindEd.adl.impl.AdlFileImpl
+   * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAdlFile()
    * @generated
    */
-  int ADL_DEFINITION = 0;
+  int ADL_FILE = 0;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -73,7 +73,7 @@ public interface AdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADL_DEFINITION__IMPORTS = 0;
+  int ADL_FILE__IMPORTS = 0;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -82,7 +82,7 @@ public interface AdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADL_DEFINITION__ANNOTATIONS_LIST = 1;
+  int ADL_FILE__ANNOTATIONS_LIST = 1;
 
   /**
    * The feature id for the '<em><b>Architecture Definition</b></em>' containment reference.
@@ -91,16 +91,16 @@ public interface AdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADL_DEFINITION__ARCHITECTURE_DEFINITION = 2;
+  int ADL_FILE__ARCHITECTURE_DEFINITION = 2;
 
   /**
-   * The number of structural features of the '<em>Definition</em>' class.
+   * The number of structural features of the '<em>File</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADL_DEFINITION_FEATURE_COUNT = 3;
+  int ADL_FILE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.ow2.mindEd.adl.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
@@ -1624,47 +1624,47 @@ public interface AdlPackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link org.ow2.mindEd.adl.AdlDefinition <em>Definition</em>}'.
+   * Returns the meta object for class '{@link org.ow2.mindEd.adl.AdlFile <em>File</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Definition</em>'.
-   * @see org.ow2.mindEd.adl.AdlDefinition
+   * @return the meta object for class '<em>File</em>'.
+   * @see org.ow2.mindEd.adl.AdlFile
    * @generated
    */
-  EClass getAdlDefinition();
+  EClass getAdlFile();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.ow2.mindEd.adl.AdlDefinition#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.ow2.mindEd.adl.AdlFile#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see org.ow2.mindEd.adl.AdlDefinition#getImports()
-   * @see #getAdlDefinition()
+   * @see org.ow2.mindEd.adl.AdlFile#getImports()
+   * @see #getAdlFile()
    * @generated
    */
-  EReference getAdlDefinition_Imports();
+  EReference getAdlFile_Imports();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.AdlDefinition#getAnnotationsList <em>Annotations List</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.AdlFile#getAnnotationsList <em>Annotations List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Annotations List</em>'.
-   * @see org.ow2.mindEd.adl.AdlDefinition#getAnnotationsList()
-   * @see #getAdlDefinition()
+   * @see org.ow2.mindEd.adl.AdlFile#getAnnotationsList()
+   * @see #getAdlFile()
    * @generated
    */
-  EReference getAdlDefinition_AnnotationsList();
+  EReference getAdlFile_AnnotationsList();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.AdlDefinition#getArchitectureDefinition <em>Architecture Definition</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.AdlFile#getArchitectureDefinition <em>Architecture Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Architecture Definition</em>'.
-   * @see org.ow2.mindEd.adl.AdlDefinition#getArchitectureDefinition()
-   * @see #getAdlDefinition()
+   * @see org.ow2.mindEd.adl.AdlFile#getArchitectureDefinition()
+   * @see #getAdlFile()
    * @generated
    */
-  EReference getAdlDefinition_ArchitectureDefinition();
+  EReference getAdlFile_ArchitectureDefinition();
 
   /**
    * Returns the meta object for class '{@link org.ow2.mindEd.adl.ArchitectureDefinition <em>Architecture Definition</em>}'.
@@ -2810,14 +2810,14 @@ public interface AdlPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.AdlDefinitionImpl <em>Definition</em>}' class.
+     * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.AdlFileImpl <em>File</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.ow2.mindEd.adl.impl.AdlDefinitionImpl
-     * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAdlDefinition()
+     * @see org.ow2.mindEd.adl.impl.AdlFileImpl
+     * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAdlFile()
      * @generated
      */
-    EClass ADL_DEFINITION = eINSTANCE.getAdlDefinition();
+    EClass ADL_FILE = eINSTANCE.getAdlFile();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -2825,7 +2825,7 @@ public interface AdlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADL_DEFINITION__IMPORTS = eINSTANCE.getAdlDefinition_Imports();
+    EReference ADL_FILE__IMPORTS = eINSTANCE.getAdlFile_Imports();
 
     /**
      * The meta object literal for the '<em><b>Annotations List</b></em>' containment reference feature.
@@ -2833,7 +2833,7 @@ public interface AdlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADL_DEFINITION__ANNOTATIONS_LIST = eINSTANCE.getAdlDefinition_AnnotationsList();
+    EReference ADL_FILE__ANNOTATIONS_LIST = eINSTANCE.getAdlFile_AnnotationsList();
 
     /**
      * The meta object literal for the '<em><b>Architecture Definition</b></em>' containment reference feature.
@@ -2841,7 +2841,7 @@ public interface AdlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADL_DEFINITION__ARCHITECTURE_DEFINITION = eINSTANCE.getAdlDefinition_ArchitectureDefinition();
+    EReference ADL_FILE__ARCHITECTURE_DEFINITION = eINSTANCE.getAdlFile_ArchitectureDefinition();
 
     /**
      * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.ArchitectureDefinitionImpl <em>Architecture Definition</em>}' class.

@@ -17,7 +17,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.refactoring.impl.AbstractProcessorBasedRenameParticipant;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
-import org.ow2.mindEd.adl.AdlDefinition;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 
 import com.google.inject.Inject;
@@ -94,10 +94,10 @@ AbstractProcessorBasedRenameParticipant {
 		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
 		EList<EObject> xtextContents = xtextResource.getContents();
 
-		// We have only one ADLDefinition per file
-		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
+		// We have only one AdlFile per file
+		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlFile) {
 
-			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
+			AdlFile hostAdlDef = (AdlFile) xtextContents.get(0);
 			ArchitectureDefinition renamedArchDef = hostAdlDef.getArchitectureDefinition();
 
 			// New name computation for our inherited

@@ -14,7 +14,7 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.Check;
-import org.ow2.mindEd.adl.AdlDefinition;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 import org.ow2.mindEd.adl.CompositeDefinition;
@@ -25,7 +25,7 @@ import org.ow2.mindEd.adl.PrimitiveDefinition;
 import org.ow2.mindEd.adl.PrimitiveElement;
 import org.ow2.mindEd.adl.SubComponentDefinition;
 import org.ow2.mindEd.adl.TypeDefinition;
-import org.ow2.mindEd.adl.impl.AdlDefinitionImpl;
+import org.ow2.mindEd.adl.impl.AdlFileImpl;
 import org.ow2.mindEd.ide.core.MindIdeCore;
 import org.ow2.mindEd.ide.core.ModelToProjectUtil;
 import org.ow2.mindEd.ide.model.MindPackage;
@@ -92,10 +92,10 @@ public class AdlValidator extends AbstractAdlValidator {
 	// Utils
 	public static String getExpectedComponentName(ArchitectureDefinition archDef){
 
-		if (!(archDef.eContainer() instanceof AdlDefinition))
+		if (!(archDef.eContainer() instanceof AdlFile))
 			return null;
 
-		AdlDefinitionImpl adlFile = (AdlDefinitionImpl) archDef.eContainer();
+		AdlFileImpl adlFile = (AdlFileImpl) archDef.eContainer();
 		URI uri = adlFile.eDirectResource().getURI();
 
 		String expectedName = null;

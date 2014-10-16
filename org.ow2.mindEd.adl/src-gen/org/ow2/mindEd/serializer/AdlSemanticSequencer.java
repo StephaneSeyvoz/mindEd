@@ -13,7 +13,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.ow2.mindEd.adl.AdlDefinition;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.Annotation;
 import org.ow2.mindEd.adl.AnnotationElement;
@@ -51,9 +51,9 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == AdlPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case AdlPackage.ADL_DEFINITION:
-				if(context == grammarAccess.getAdlDefinitionRule()) {
-					sequence_AdlDefinition(context, (AdlDefinition) semanticObject); 
+			case AdlPackage.ADL_FILE:
+				if(context == grammarAccess.getAdlFileRule()) {
+					sequence_AdlFile(context, (AdlFile) semanticObject); 
 					return; 
 				}
 				else break;
@@ -253,7 +253,7 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (imports+=ImportDefinition* annotationsList=AnnotationsList? architectureDefinition=ArchitectureDefinition)
 	 */
-	protected void sequence_AdlDefinition(EObject context, AdlDefinition semanticObject) {
+	protected void sequence_AdlFile(EObject context, AdlFile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -50,7 +50,7 @@ import org.ow2.mindEd.services.AdlGrammarAccess;
     
     @Override
     protected String getFirstRuleName() {
-    	return "AdlDefinition";	
+    	return "AdlFile";	
    	}
    	
    	@Override
@@ -69,28 +69,28 @@ import org.ow2.mindEd.services.AdlGrammarAccess;
 
 
 
-// Entry rule entryRuleAdlDefinition
-entryRuleAdlDefinition returns [EObject current=null] 
+// Entry rule entryRuleAdlFile
+entryRuleAdlFile returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getAdlDefinitionRule()); }
-	 iv_ruleAdlDefinition=ruleAdlDefinition 
-	 { $current=$iv_ruleAdlDefinition.current; } 
+	{ newCompositeNode(grammarAccess.getAdlFileRule()); }
+	 iv_ruleAdlFile=ruleAdlFile 
+	 { $current=$iv_ruleAdlFile.current; } 
 	 EOF 
 ;
 
-// Rule AdlDefinition
-ruleAdlDefinition returns [EObject current=null] 
+// Rule AdlFile
+ruleAdlFile returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getAdlFileAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
 	    }
 		lv_imports_0_0=ruleImportDefinition		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAdlDefinitionRule());
+	            $current = createModelElementForParent(grammarAccess.getAdlFileRule());
 	        }
        		add(
        			$current, 
@@ -104,11 +104,11 @@ ruleAdlDefinition returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getAdlFileAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
 	    }
 		lv_annotationsList_1_0=ruleAnnotationsList		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAdlDefinitionRule());
+	            $current = createModelElementForParent(grammarAccess.getAdlFileRule());
 	        }
        		set(
        			$current, 
@@ -122,11 +122,11 @@ ruleAdlDefinition returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getAdlFileAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
 	    }
 		lv_architectureDefinition_2_0=ruleArchitectureDefinition		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getAdlDefinitionRule());
+	            $current = createModelElementForParent(grammarAccess.getAdlFileRule());
 	        }
        		set(
        			$current, 
@@ -3723,7 +3723,7 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 

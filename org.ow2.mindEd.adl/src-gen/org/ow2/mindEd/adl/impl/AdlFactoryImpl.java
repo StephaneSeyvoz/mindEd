@@ -64,7 +64,7 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
   {
     switch (eClass.getClassifierID())
     {
-      case AdlPackage.ADL_DEFINITION: return createAdlDefinition();
+      case AdlPackage.ADL_FILE: return createAdlFile();
       case AdlPackage.ARCHITECTURE_DEFINITION: return createArchitectureDefinition();
       case AdlPackage.IMPORT_DEFINITION: return createImportDefinition();
       case AdlPackage.COMPOSITE_DEFINITION: return createCompositeDefinition();
@@ -110,10 +110,10 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public AdlDefinition createAdlDefinition()
+  public AdlFile createAdlFile()
   {
-    AdlDefinitionImpl adlDefinition = new AdlDefinitionImpl();
-    return adlDefinition;
+    AdlFileImpl adlFile = new AdlFileImpl();
+    return adlFile;
   }
 
   /**

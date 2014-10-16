@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.ow2.mindEd.adl.AdlDefinition;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.AnnotationsList;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
@@ -26,20 +26,20 @@ import org.ow2.mindEd.adl.ImportDefinition;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Definition</b></em>'.
+ * An implementation of the model object '<em><b>File</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.ow2.mindEd.adl.impl.AdlDefinitionImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link org.ow2.mindEd.adl.impl.AdlDefinitionImpl#getAnnotationsList <em>Annotations List</em>}</li>
- *   <li>{@link org.ow2.mindEd.adl.impl.AdlDefinitionImpl#getArchitectureDefinition <em>Architecture Definition</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.impl.AdlFileImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.impl.AdlFileImpl#getAnnotationsList <em>Annotations List</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.impl.AdlFileImpl#getArchitectureDefinition <em>Architecture Definition</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements AdlDefinition
+public class AdlFileImpl extends MinimalEObjectImpl.Container implements AdlFile
 {
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -76,7 +76,7 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AdlDefinitionImpl()
+  protected AdlFileImpl()
   {
     super();
   }
@@ -89,7 +89,7 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   @Override
   protected EClass eStaticClass()
   {
-    return AdlPackage.Literals.ADL_DEFINITION;
+    return AdlPackage.Literals.ADL_FILE;
   }
 
   /**
@@ -101,7 +101,7 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   {
     if (imports == null)
     {
-      imports = new EObjectContainmentEList<ImportDefinition>(ImportDefinition.class, this, AdlPackage.ADL_DEFINITION__IMPORTS);
+      imports = new EObjectContainmentEList<ImportDefinition>(ImportDefinition.class, this, AdlPackage.ADL_FILE__IMPORTS);
     }
     return imports;
   }
@@ -127,7 +127,7 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
     annotationsList = newAnnotationsList;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST, oldAnnotationsList, newAnnotationsList);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_FILE__ANNOTATIONS_LIST, oldAnnotationsList, newAnnotationsList);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -144,14 +144,14 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
     {
       NotificationChain msgs = null;
       if (annotationsList != null)
-        msgs = ((InternalEObject)annotationsList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST, null, msgs);
+        msgs = ((InternalEObject)annotationsList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_FILE__ANNOTATIONS_LIST, null, msgs);
       if (newAnnotationsList != null)
-        msgs = ((InternalEObject)newAnnotationsList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST, null, msgs);
+        msgs = ((InternalEObject)newAnnotationsList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_FILE__ANNOTATIONS_LIST, null, msgs);
       msgs = basicSetAnnotationsList(newAnnotationsList, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST, newAnnotationsList, newAnnotationsList));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_FILE__ANNOTATIONS_LIST, newAnnotationsList, newAnnotationsList));
   }
 
   /**
@@ -175,7 +175,7 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
     architectureDefinition = newArchitectureDefinition;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION, oldArchitectureDefinition, newArchitectureDefinition);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION, oldArchitectureDefinition, newArchitectureDefinition);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -192,14 +192,14 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
     {
       NotificationChain msgs = null;
       if (architectureDefinition != null)
-        msgs = ((InternalEObject)architectureDefinition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION, null, msgs);
+        msgs = ((InternalEObject)architectureDefinition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION, null, msgs);
       if (newArchitectureDefinition != null)
-        msgs = ((InternalEObject)newArchitectureDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION, null, msgs);
+        msgs = ((InternalEObject)newArchitectureDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION, null, msgs);
       msgs = basicSetArchitectureDefinition(newArchitectureDefinition, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION, newArchitectureDefinition, newArchitectureDefinition));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION, newArchitectureDefinition, newArchitectureDefinition));
   }
 
   /**
@@ -212,11 +212,11 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   {
     switch (featureID)
     {
-      case AdlPackage.ADL_DEFINITION__IMPORTS:
+      case AdlPackage.ADL_FILE__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST:
+      case AdlPackage.ADL_FILE__ANNOTATIONS_LIST:
         return basicSetAnnotationsList(null, msgs);
-      case AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION:
+      case AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION:
         return basicSetArchitectureDefinition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -232,11 +232,11 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   {
     switch (featureID)
     {
-      case AdlPackage.ADL_DEFINITION__IMPORTS:
+      case AdlPackage.ADL_FILE__IMPORTS:
         return getImports();
-      case AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST:
+      case AdlPackage.ADL_FILE__ANNOTATIONS_LIST:
         return getAnnotationsList();
-      case AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION:
+      case AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION:
         return getArchitectureDefinition();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -253,14 +253,14 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   {
     switch (featureID)
     {
-      case AdlPackage.ADL_DEFINITION__IMPORTS:
+      case AdlPackage.ADL_FILE__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends ImportDefinition>)newValue);
         return;
-      case AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST:
+      case AdlPackage.ADL_FILE__ANNOTATIONS_LIST:
         setAnnotationsList((AnnotationsList)newValue);
         return;
-      case AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION:
+      case AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION:
         setArchitectureDefinition((ArchitectureDefinition)newValue);
         return;
     }
@@ -277,13 +277,13 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   {
     switch (featureID)
     {
-      case AdlPackage.ADL_DEFINITION__IMPORTS:
+      case AdlPackage.ADL_FILE__IMPORTS:
         getImports().clear();
         return;
-      case AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST:
+      case AdlPackage.ADL_FILE__ANNOTATIONS_LIST:
         setAnnotationsList((AnnotationsList)null);
         return;
-      case AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION:
+      case AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION:
         setArchitectureDefinition((ArchitectureDefinition)null);
         return;
     }
@@ -300,14 +300,14 @@ public class AdlDefinitionImpl extends MinimalEObjectImpl.Container implements A
   {
     switch (featureID)
     {
-      case AdlPackage.ADL_DEFINITION__IMPORTS:
+      case AdlPackage.ADL_FILE__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case AdlPackage.ADL_DEFINITION__ANNOTATIONS_LIST:
+      case AdlPackage.ADL_FILE__ANNOTATIONS_LIST:
         return annotationsList != null;
-      case AdlPackage.ADL_DEFINITION__ARCHITECTURE_DEFINITION:
+      case AdlPackage.ADL_FILE__ARCHITECTURE_DEFINITION:
         return architectureDefinition != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //AdlDefinitionImpl
+} //AdlFileImpl

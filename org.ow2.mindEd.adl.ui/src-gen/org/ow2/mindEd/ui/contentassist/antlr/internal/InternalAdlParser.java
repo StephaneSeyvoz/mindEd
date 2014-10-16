@@ -121,25 +121,25 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
 
 
 
-    // $ANTLR start "entryRuleAdlDefinition"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:61:1: entryRuleAdlDefinition : ruleAdlDefinition EOF ;
-    public final void entryRuleAdlDefinition() throws RecognitionException {
+    // $ANTLR start "entryRuleAdlFile"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:61:1: entryRuleAdlFile : ruleAdlFile EOF ;
+    public final void entryRuleAdlFile() throws RecognitionException {
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:62:1: ( ruleAdlDefinition EOF )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:63:1: ruleAdlDefinition EOF
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:62:1: ( ruleAdlFile EOF )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:63:1: ruleAdlFile EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionRule()); 
+               before(grammarAccess.getAdlFileRule()); 
             }
-            pushFollow(FOLLOW_ruleAdlDefinition_in_entryRuleAdlDefinition67);
-            ruleAdlDefinition();
+            pushFollow(FOLLOW_ruleAdlFile_in_entryRuleAdlFile67);
+            ruleAdlFile();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionRule()); 
+               after(grammarAccess.getAdlFileRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAdlDefinition74); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAdlFile74); if (state.failed) return ;
 
             }
 
@@ -152,30 +152,30 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleAdlDefinition"
+    // $ANTLR end "entryRuleAdlFile"
 
 
-    // $ANTLR start "ruleAdlDefinition"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:70:1: ruleAdlDefinition : ( ( rule__AdlDefinition__Group__0 ) ) ;
-    public final void ruleAdlDefinition() throws RecognitionException {
+    // $ANTLR start "ruleAdlFile"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:70:1: ruleAdlFile : ( ( rule__AdlFile__Group__0 ) ) ;
+    public final void ruleAdlFile() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:74:2: ( ( ( rule__AdlDefinition__Group__0 ) ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:75:1: ( ( rule__AdlDefinition__Group__0 ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:74:2: ( ( ( rule__AdlFile__Group__0 ) ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:75:1: ( ( rule__AdlFile__Group__0 ) )
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:75:1: ( ( rule__AdlDefinition__Group__0 ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:76:1: ( rule__AdlDefinition__Group__0 )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:75:1: ( ( rule__AdlFile__Group__0 ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:76:1: ( rule__AdlFile__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getGroup()); 
+               before(grammarAccess.getAdlFileAccess().getGroup()); 
             }
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:77:1: ( rule__AdlDefinition__Group__0 )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:77:2: rule__AdlDefinition__Group__0
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:77:1: ( rule__AdlFile__Group__0 )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:77:2: rule__AdlFile__Group__0
             {
-            pushFollow(FOLLOW_rule__AdlDefinition__Group__0_in_ruleAdlDefinition100);
-            rule__AdlDefinition__Group__0();
+            pushFollow(FOLLOW_rule__AdlFile__Group__0_in_ruleAdlFile100);
+            rule__AdlFile__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -183,7 +183,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getGroup()); 
+               after(grammarAccess.getAdlFileAccess().getGroup()); 
             }
 
             }
@@ -203,7 +203,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleAdlDefinition"
+    // $ANTLR end "ruleAdlFile"
 
 
     // $ANTLR start "entryRuleArchitectureDefinition"
@@ -6226,23 +6226,23 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ConstantFormat__Alternatives"
 
 
-    // $ANTLR start "rule__AdlDefinition__Group__0"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1825:1: rule__AdlDefinition__Group__0 : rule__AdlDefinition__Group__0__Impl rule__AdlDefinition__Group__1 ;
-    public final void rule__AdlDefinition__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__Group__0"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1825:1: rule__AdlFile__Group__0 : rule__AdlFile__Group__0__Impl rule__AdlFile__Group__1 ;
+    public final void rule__AdlFile__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1829:1: ( rule__AdlDefinition__Group__0__Impl rule__AdlDefinition__Group__1 )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1830:2: rule__AdlDefinition__Group__0__Impl rule__AdlDefinition__Group__1
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1829:1: ( rule__AdlFile__Group__0__Impl rule__AdlFile__Group__1 )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1830:2: rule__AdlFile__Group__0__Impl rule__AdlFile__Group__1
             {
-            pushFollow(FOLLOW_rule__AdlDefinition__Group__0__Impl_in_rule__AdlDefinition__Group__03957);
-            rule__AdlDefinition__Group__0__Impl();
+            pushFollow(FOLLOW_rule__AdlFile__Group__0__Impl_in_rule__AdlFile__Group__03957);
+            rule__AdlFile__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__AdlDefinition__Group__1_in_rule__AdlDefinition__Group__03960);
-            rule__AdlDefinition__Group__1();
+            pushFollow(FOLLOW_rule__AdlFile__Group__1_in_rule__AdlFile__Group__03960);
+            rule__AdlFile__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6261,26 +6261,26 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__Group__0"
+    // $ANTLR end "rule__AdlFile__Group__0"
 
 
-    // $ANTLR start "rule__AdlDefinition__Group__0__Impl"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1837:1: rule__AdlDefinition__Group__0__Impl : ( ( rule__AdlDefinition__ImportsAssignment_0 )* ) ;
-    public final void rule__AdlDefinition__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__Group__0__Impl"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1837:1: rule__AdlFile__Group__0__Impl : ( ( rule__AdlFile__ImportsAssignment_0 )* ) ;
+    public final void rule__AdlFile__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1841:1: ( ( ( rule__AdlDefinition__ImportsAssignment_0 )* ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1842:1: ( ( rule__AdlDefinition__ImportsAssignment_0 )* )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1841:1: ( ( ( rule__AdlFile__ImportsAssignment_0 )* ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1842:1: ( ( rule__AdlFile__ImportsAssignment_0 )* )
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1842:1: ( ( rule__AdlDefinition__ImportsAssignment_0 )* )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1843:1: ( rule__AdlDefinition__ImportsAssignment_0 )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1842:1: ( ( rule__AdlFile__ImportsAssignment_0 )* )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1843:1: ( rule__AdlFile__ImportsAssignment_0 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getImportsAssignment_0()); 
+               before(grammarAccess.getAdlFileAccess().getImportsAssignment_0()); 
             }
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:1: ( rule__AdlDefinition__ImportsAssignment_0 )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:1: ( rule__AdlFile__ImportsAssignment_0 )*
             loop24:
             do {
                 int alt24=2;
@@ -6302,10 +6302,10 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
 
                 switch (alt24) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:2: rule__AdlDefinition__ImportsAssignment_0
+            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:2: rule__AdlFile__ImportsAssignment_0
             	    {
-            	    pushFollow(FOLLOW_rule__AdlDefinition__ImportsAssignment_0_in_rule__AdlDefinition__Group__0__Impl3987);
-            	    rule__AdlDefinition__ImportsAssignment_0();
+            	    pushFollow(FOLLOW_rule__AdlFile__ImportsAssignment_0_in_rule__AdlFile__Group__0__Impl3987);
+            	    rule__AdlFile__ImportsAssignment_0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -6319,7 +6319,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getImportsAssignment_0()); 
+               after(grammarAccess.getAdlFileAccess().getImportsAssignment_0()); 
             }
 
             }
@@ -6339,26 +6339,26 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__Group__0__Impl"
+    // $ANTLR end "rule__AdlFile__Group__0__Impl"
 
 
-    // $ANTLR start "rule__AdlDefinition__Group__1"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1854:1: rule__AdlDefinition__Group__1 : rule__AdlDefinition__Group__1__Impl rule__AdlDefinition__Group__2 ;
-    public final void rule__AdlDefinition__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__Group__1"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1854:1: rule__AdlFile__Group__1 : rule__AdlFile__Group__1__Impl rule__AdlFile__Group__2 ;
+    public final void rule__AdlFile__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1858:1: ( rule__AdlDefinition__Group__1__Impl rule__AdlDefinition__Group__2 )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1859:2: rule__AdlDefinition__Group__1__Impl rule__AdlDefinition__Group__2
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1858:1: ( rule__AdlFile__Group__1__Impl rule__AdlFile__Group__2 )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1859:2: rule__AdlFile__Group__1__Impl rule__AdlFile__Group__2
             {
-            pushFollow(FOLLOW_rule__AdlDefinition__Group__1__Impl_in_rule__AdlDefinition__Group__14018);
-            rule__AdlDefinition__Group__1__Impl();
+            pushFollow(FOLLOW_rule__AdlFile__Group__1__Impl_in_rule__AdlFile__Group__14018);
+            rule__AdlFile__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__AdlDefinition__Group__2_in_rule__AdlDefinition__Group__14021);
-            rule__AdlDefinition__Group__2();
+            pushFollow(FOLLOW_rule__AdlFile__Group__2_in_rule__AdlFile__Group__14021);
+            rule__AdlFile__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6377,26 +6377,26 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__Group__1"
+    // $ANTLR end "rule__AdlFile__Group__1"
 
 
-    // $ANTLR start "rule__AdlDefinition__Group__1__Impl"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1866:1: rule__AdlDefinition__Group__1__Impl : ( ( rule__AdlDefinition__AnnotationsListAssignment_1 )? ) ;
-    public final void rule__AdlDefinition__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__Group__1__Impl"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1866:1: rule__AdlFile__Group__1__Impl : ( ( rule__AdlFile__AnnotationsListAssignment_1 )? ) ;
+    public final void rule__AdlFile__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1870:1: ( ( ( rule__AdlDefinition__AnnotationsListAssignment_1 )? ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1871:1: ( ( rule__AdlDefinition__AnnotationsListAssignment_1 )? )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1870:1: ( ( ( rule__AdlFile__AnnotationsListAssignment_1 )? ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1871:1: ( ( rule__AdlFile__AnnotationsListAssignment_1 )? )
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1871:1: ( ( rule__AdlDefinition__AnnotationsListAssignment_1 )? )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1872:1: ( rule__AdlDefinition__AnnotationsListAssignment_1 )?
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1871:1: ( ( rule__AdlFile__AnnotationsListAssignment_1 )? )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1872:1: ( rule__AdlFile__AnnotationsListAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAssignment_1()); 
+               before(grammarAccess.getAdlFileAccess().getAnnotationsListAssignment_1()); 
             }
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1873:1: ( rule__AdlDefinition__AnnotationsListAssignment_1 )?
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1873:1: ( rule__AdlFile__AnnotationsListAssignment_1 )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -6405,10 +6405,10 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             }
             switch (alt25) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1873:2: rule__AdlDefinition__AnnotationsListAssignment_1
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1873:2: rule__AdlFile__AnnotationsListAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__AdlDefinition__AnnotationsListAssignment_1_in_rule__AdlDefinition__Group__1__Impl4048);
-                    rule__AdlDefinition__AnnotationsListAssignment_1();
+                    pushFollow(FOLLOW_rule__AdlFile__AnnotationsListAssignment_1_in_rule__AdlFile__Group__1__Impl4048);
+                    rule__AdlFile__AnnotationsListAssignment_1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -6419,7 +6419,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAssignment_1()); 
+               after(grammarAccess.getAdlFileAccess().getAnnotationsListAssignment_1()); 
             }
 
             }
@@ -6439,21 +6439,21 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__Group__1__Impl"
+    // $ANTLR end "rule__AdlFile__Group__1__Impl"
 
 
-    // $ANTLR start "rule__AdlDefinition__Group__2"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1883:1: rule__AdlDefinition__Group__2 : rule__AdlDefinition__Group__2__Impl ;
-    public final void rule__AdlDefinition__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__Group__2"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1883:1: rule__AdlFile__Group__2 : rule__AdlFile__Group__2__Impl ;
+    public final void rule__AdlFile__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1887:1: ( rule__AdlDefinition__Group__2__Impl )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1888:2: rule__AdlDefinition__Group__2__Impl
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1887:1: ( rule__AdlFile__Group__2__Impl )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1888:2: rule__AdlFile__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__AdlDefinition__Group__2__Impl_in_rule__AdlDefinition__Group__24079);
-            rule__AdlDefinition__Group__2__Impl();
+            pushFollow(FOLLOW_rule__AdlFile__Group__2__Impl_in_rule__AdlFile__Group__24079);
+            rule__AdlFile__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6472,30 +6472,30 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__Group__2"
+    // $ANTLR end "rule__AdlFile__Group__2"
 
 
-    // $ANTLR start "rule__AdlDefinition__Group__2__Impl"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1894:1: rule__AdlDefinition__Group__2__Impl : ( ( rule__AdlDefinition__ArchitectureDefinitionAssignment_2 ) ) ;
-    public final void rule__AdlDefinition__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__Group__2__Impl"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1894:1: rule__AdlFile__Group__2__Impl : ( ( rule__AdlFile__ArchitectureDefinitionAssignment_2 ) ) ;
+    public final void rule__AdlFile__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1898:1: ( ( ( rule__AdlDefinition__ArchitectureDefinitionAssignment_2 ) ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1899:1: ( ( rule__AdlDefinition__ArchitectureDefinitionAssignment_2 ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1898:1: ( ( ( rule__AdlFile__ArchitectureDefinitionAssignment_2 ) ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1899:1: ( ( rule__AdlFile__ArchitectureDefinitionAssignment_2 ) )
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1899:1: ( ( rule__AdlDefinition__ArchitectureDefinitionAssignment_2 ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1900:1: ( rule__AdlDefinition__ArchitectureDefinitionAssignment_2 )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1899:1: ( ( rule__AdlFile__ArchitectureDefinitionAssignment_2 ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1900:1: ( rule__AdlFile__ArchitectureDefinitionAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionAssignment_2()); 
+               before(grammarAccess.getAdlFileAccess().getArchitectureDefinitionAssignment_2()); 
             }
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1901:1: ( rule__AdlDefinition__ArchitectureDefinitionAssignment_2 )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1901:2: rule__AdlDefinition__ArchitectureDefinitionAssignment_2
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1901:1: ( rule__AdlFile__ArchitectureDefinitionAssignment_2 )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1901:2: rule__AdlFile__ArchitectureDefinitionAssignment_2
             {
-            pushFollow(FOLLOW_rule__AdlDefinition__ArchitectureDefinitionAssignment_2_in_rule__AdlDefinition__Group__2__Impl4106);
-            rule__AdlDefinition__ArchitectureDefinitionAssignment_2();
+            pushFollow(FOLLOW_rule__AdlFile__ArchitectureDefinitionAssignment_2_in_rule__AdlFile__Group__2__Impl4106);
+            rule__AdlFile__ArchitectureDefinitionAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6503,7 +6503,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionAssignment_2()); 
+               after(grammarAccess.getAdlFileAccess().getArchitectureDefinitionAssignment_2()); 
             }
 
             }
@@ -6523,7 +6523,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__Group__2__Impl"
+    // $ANTLR end "rule__AdlFile__Group__2__Impl"
 
 
     // $ANTLR start "rule__ImportDefinition__Group__0"
@@ -26902,9 +26902,9 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ElementValueArrayInitializer__Group_2__1__Impl"
 
 
-    // $ANTLR start "rule__AdlDefinition__ImportsAssignment_0"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9252:1: rule__AdlDefinition__ImportsAssignment_0 : ( ruleImportDefinition ) ;
-    public final void rule__AdlDefinition__ImportsAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__ImportsAssignment_0"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9252:1: rule__AdlFile__ImportsAssignment_0 : ( ruleImportDefinition ) ;
+    public final void rule__AdlFile__ImportsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -26916,15 +26916,15 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9258:1: ruleImportDefinition
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
+               before(grammarAccess.getAdlFileAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleImportDefinition_in_rule__AdlDefinition__ImportsAssignment_018628);
+            pushFollow(FOLLOW_ruleImportDefinition_in_rule__AdlFile__ImportsAssignment_018628);
             ruleImportDefinition();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
+               after(grammarAccess.getAdlFileAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
             }
 
             }
@@ -26944,12 +26944,12 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__ImportsAssignment_0"
+    // $ANTLR end "rule__AdlFile__ImportsAssignment_0"
 
 
-    // $ANTLR start "rule__AdlDefinition__AnnotationsListAssignment_1"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9267:1: rule__AdlDefinition__AnnotationsListAssignment_1 : ( ruleAnnotationsList ) ;
-    public final void rule__AdlDefinition__AnnotationsListAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__AnnotationsListAssignment_1"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9267:1: rule__AdlFile__AnnotationsListAssignment_1 : ( ruleAnnotationsList ) ;
+    public final void rule__AdlFile__AnnotationsListAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -26961,15 +26961,15 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9273:1: ruleAnnotationsList
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
+               before(grammarAccess.getAdlFileAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleAnnotationsList_in_rule__AdlDefinition__AnnotationsListAssignment_118659);
+            pushFollow(FOLLOW_ruleAnnotationsList_in_rule__AdlFile__AnnotationsListAssignment_118659);
             ruleAnnotationsList();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
+               after(grammarAccess.getAdlFileAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
             }
 
             }
@@ -26989,12 +26989,12 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__AnnotationsListAssignment_1"
+    // $ANTLR end "rule__AdlFile__AnnotationsListAssignment_1"
 
 
-    // $ANTLR start "rule__AdlDefinition__ArchitectureDefinitionAssignment_2"
-    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9282:1: rule__AdlDefinition__ArchitectureDefinitionAssignment_2 : ( ruleArchitectureDefinition ) ;
-    public final void rule__AdlDefinition__ArchitectureDefinitionAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__AdlFile__ArchitectureDefinitionAssignment_2"
+    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9282:1: rule__AdlFile__ArchitectureDefinitionAssignment_2 : ( ruleArchitectureDefinition ) ;
+    public final void rule__AdlFile__ArchitectureDefinitionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -27006,15 +27006,15 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
             // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:9288:1: ruleArchitectureDefinition
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
+               before(grammarAccess.getAdlFileAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleArchitectureDefinition_in_rule__AdlDefinition__ArchitectureDefinitionAssignment_218690);
+            pushFollow(FOLLOW_ruleArchitectureDefinition_in_rule__AdlFile__ArchitectureDefinitionAssignment_218690);
             ruleArchitectureDefinition();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
+               after(grammarAccess.getAdlFileAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
             }
 
             }
@@ -27034,7 +27034,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__AdlDefinition__ArchitectureDefinitionAssignment_2"
+    // $ANTLR end "rule__AdlFile__ArchitectureDefinitionAssignment_2"
 
 
     // $ANTLR start "rule__ImportDefinition__AnnotationsListAssignment_0"
@@ -32060,11 +32060,11 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
 
     // $ANTLR start synpred44_InternalAdl
     public final void synpred44_InternalAdl_fragment() throws RecognitionException {   
-        // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:2: ( rule__AdlDefinition__ImportsAssignment_0 )
-        // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:2: rule__AdlDefinition__ImportsAssignment_0
+        // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:2: ( rule__AdlFile__ImportsAssignment_0 )
+        // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:1844:2: rule__AdlFile__ImportsAssignment_0
         {
-        pushFollow(FOLLOW_rule__AdlDefinition__ImportsAssignment_0_in_synpred44_InternalAdl3987);
-        rule__AdlDefinition__ImportsAssignment_0();
+        pushFollow(FOLLOW_rule__AdlFile__ImportsAssignment_0_in_synpred44_InternalAdl3987);
+        rule__AdlFile__ImportsAssignment_0();
 
         state._fsp--;
         if (state.failed) return ;
@@ -32318,9 +32318,9 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
 
  
 
-    public static final BitSet FOLLOW_ruleAdlDefinition_in_entryRuleAdlDefinition67 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAdlDefinition74 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__Group__0_in_ruleAdlDefinition100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAdlFile_in_entryRuleAdlFile67 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAdlFile74 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__Group__0_in_ruleAdlFile100 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleArchitectureDefinition_in_entryRuleArchitectureDefinition127 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleArchitectureDefinition134 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ArchitectureDefinition__Alternatives_in_ruleArchitectureDefinition160 = new BitSet(new long[]{0x0000000000000002L});
@@ -32502,14 +32502,14 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_RULE_INT_in_rule__ConstantFormat__Alternatives3893 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__ConstantFormat__Alternatives3910 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__ConstantFormat__Alternatives3927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__Group__0__Impl_in_rule__AdlDefinition__Group__03957 = new BitSet(new long[]{0x00C000C080000000L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__Group__1_in_rule__AdlDefinition__Group__03960 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__ImportsAssignment_0_in_rule__AdlDefinition__Group__0__Impl3987 = new BitSet(new long[]{0x0040000010000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__Group__1__Impl_in_rule__AdlDefinition__Group__14018 = new BitSet(new long[]{0x00C000C080000000L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__Group__2_in_rule__AdlDefinition__Group__14021 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__AnnotationsListAssignment_1_in_rule__AdlDefinition__Group__1__Impl4048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__Group__2__Impl_in_rule__AdlDefinition__Group__24079 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__ArchitectureDefinitionAssignment_2_in_rule__AdlDefinition__Group__2__Impl4106 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__Group__0__Impl_in_rule__AdlFile__Group__03957 = new BitSet(new long[]{0x00C000C080000000L});
+    public static final BitSet FOLLOW_rule__AdlFile__Group__1_in_rule__AdlFile__Group__03960 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__ImportsAssignment_0_in_rule__AdlFile__Group__0__Impl3987 = new BitSet(new long[]{0x0040000010000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__Group__1__Impl_in_rule__AdlFile__Group__14018 = new BitSet(new long[]{0x00C000C080000000L});
+    public static final BitSet FOLLOW_rule__AdlFile__Group__2_in_rule__AdlFile__Group__14021 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__AnnotationsListAssignment_1_in_rule__AdlFile__Group__1__Impl4048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__Group__2__Impl_in_rule__AdlFile__Group__24079 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__ArchitectureDefinitionAssignment_2_in_rule__AdlFile__Group__2__Impl4106 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportDefinition__Group__0__Impl_in_rule__ImportDefinition__Group__04142 = new BitSet(new long[]{0x0040000010000000L});
     public static final BitSet FOLLOW_rule__ImportDefinition__Group__1_in_rule__ImportDefinition__Group__04145 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ImportDefinition__AnnotationsListAssignment_0_in_rule__ImportDefinition__Group__0__Impl4172 = new BitSet(new long[]{0x0000000000000002L});
@@ -33138,9 +33138,9 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_36_in_rule__ElementValueArrayInitializer__Group_2__0__Impl18531 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ElementValueArrayInitializer__Group_2__1__Impl_in_rule__ElementValueArrayInitializer__Group_2__118562 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ElementValueArrayInitializer__ValuesAssignment_2_1_in_rule__ElementValueArrayInitializer__Group_2__1__Impl18589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImportDefinition_in_rule__AdlDefinition__ImportsAssignment_018628 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_rule__AdlDefinition__AnnotationsListAssignment_118659 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArchitectureDefinition_in_rule__AdlDefinition__ArchitectureDefinitionAssignment_218690 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImportDefinition_in_rule__AdlFile__ImportsAssignment_018628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_rule__AdlFile__AnnotationsListAssignment_118659 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArchitectureDefinition_in_rule__AdlFile__ArchitectureDefinitionAssignment_218690 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAnnotationsList_in_rule__ImportDefinition__AnnotationsListAssignment_018721 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__ImportDefinition__ImportedNamespaceAssignment_218752 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__CompositeDefinition__NameAssignment_218783 = new BitSet(new long[]{0x0000000000000002L});
@@ -33255,7 +33255,7 @@ public class InternalAdlParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_synpred15_InternalAdl2950 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImplementationDefinition_in_synpred16_InternalAdl2967 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAttributeDefinition_in_synpred17_InternalAdl2984 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__AdlDefinition__ImportsAssignment_0_in_synpred44_InternalAdl3987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AdlFile__ImportsAssignment_0_in_synpred44_InternalAdl3987 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__AttributeDefinition__CTypeAssignment_3_in_synpred99_InternalAdl15253 = new BitSet(new long[]{0x0000000000000002L});
 
 }

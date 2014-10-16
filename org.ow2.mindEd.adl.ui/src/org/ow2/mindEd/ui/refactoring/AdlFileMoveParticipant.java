@@ -37,7 +37,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.refactoring.impl.AbstractRenameProcessor;
 import org.eclipse.xtext.ui.refactoring.impl.EditorDocumentChange;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
-import org.ow2.mindEd.adl.AdlDefinition;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 import org.ow2.mindEd.ide.core.ModelToProjectUtil;
 import org.ow2.mindEd.ide.model.MindPathEntry;
@@ -131,9 +131,9 @@ public class AdlFileMoveParticipant extends AbstractProcessorBasedMoveParticipan
 		Resource xtextResource = new XtextResourceSet().getResource(uri, true);
 		EList<EObject> xtextContents = xtextResource.getContents();
 
-		// We have only one ADLDefinition per file
-		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlDefinition) {
-			AdlDefinition hostAdlDef = (AdlDefinition) xtextContents.get(0);
+		// We have only one AdlFile per file
+		if (xtextContents.size() == 1 && xtextContents.get(0) instanceof AdlFile) {
+			AdlFile hostAdlDef = (AdlFile) xtextContents.get(0);
 			archDef = hostAdlDef.getArchitectureDefinition();
 		}
 

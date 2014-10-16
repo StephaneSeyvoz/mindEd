@@ -63,7 +63,7 @@ public class AdlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAnnotationAccess().getNameAlternatives_1_0(), "rule__Annotation__NameAlternatives_1_0");
 					put(grammarAccess.getElementValueAccess().getAlternatives(), "rule__ElementValue__Alternatives");
 					put(grammarAccess.getConstantFormatAccess().getAlternatives(), "rule__ConstantFormat__Alternatives");
-					put(grammarAccess.getAdlDefinitionAccess().getGroup(), "rule__AdlDefinition__Group__0");
+					put(grammarAccess.getAdlFileAccess().getGroup(), "rule__AdlFile__Group__0");
 					put(grammarAccess.getImportDefinitionAccess().getGroup(), "rule__ImportDefinition__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 					put(grammarAccess.getCompositeDefinitionAccess().getGroup(), "rule__CompositeDefinition__Group__0");
@@ -133,9 +133,9 @@ public class AdlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAnnotationElementAccess().getGroup_0(), "rule__AnnotationElement__Group_0__0");
 					put(grammarAccess.getElementValueArrayInitializerAccess().getGroup(), "rule__ElementValueArrayInitializer__Group__0");
 					put(grammarAccess.getElementValueArrayInitializerAccess().getGroup_2(), "rule__ElementValueArrayInitializer__Group_2__0");
-					put(grammarAccess.getAdlDefinitionAccess().getImportsAssignment_0(), "rule__AdlDefinition__ImportsAssignment_0");
-					put(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAssignment_1(), "rule__AdlDefinition__AnnotationsListAssignment_1");
-					put(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionAssignment_2(), "rule__AdlDefinition__ArchitectureDefinitionAssignment_2");
+					put(grammarAccess.getAdlFileAccess().getImportsAssignment_0(), "rule__AdlFile__ImportsAssignment_0");
+					put(grammarAccess.getAdlFileAccess().getAnnotationsListAssignment_1(), "rule__AdlFile__AnnotationsListAssignment_1");
+					put(grammarAccess.getAdlFileAccess().getArchitectureDefinitionAssignment_2(), "rule__AdlFile__ArchitectureDefinitionAssignment_2");
 					put(grammarAccess.getImportDefinitionAccess().getAnnotationsListAssignment_0(), "rule__ImportDefinition__AnnotationsListAssignment_0");
 					put(grammarAccess.getImportDefinitionAccess().getImportedNamespaceAssignment_2(), "rule__ImportDefinition__ImportedNamespaceAssignment_2");
 					put(grammarAccess.getCompositeDefinitionAccess().getNameAssignment_2(), "rule__CompositeDefinition__NameAssignment_2");
@@ -246,7 +246,7 @@ public class AdlParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			org.ow2.mindEd.ui.contentassist.antlr.internal.InternalAdlParser typedParser = (org.ow2.mindEd.ui.contentassist.antlr.internal.InternalAdlParser) parser;
-			typedParser.entryRuleAdlDefinition();
+			typedParser.entryRuleAdlFile();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

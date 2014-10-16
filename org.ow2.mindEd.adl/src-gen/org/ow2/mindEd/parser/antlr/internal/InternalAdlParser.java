@@ -116,7 +116,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         
         @Override
         protected String getFirstRuleName() {
-        	return "AdlDefinition";	
+        	return "AdlFile";	
        	}
        	
        	@Override
@@ -126,30 +126,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
 
-    // $ANTLR start "entryRuleAdlDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:73:1: entryRuleAdlDefinition returns [EObject current=null] : iv_ruleAdlDefinition= ruleAdlDefinition EOF ;
-    public final EObject entryRuleAdlDefinition() throws RecognitionException {
+    // $ANTLR start "entryRuleAdlFile"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:73:1: entryRuleAdlFile returns [EObject current=null] : iv_ruleAdlFile= ruleAdlFile EOF ;
+    public final EObject entryRuleAdlFile() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleAdlDefinition = null;
+        EObject iv_ruleAdlFile = null;
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:74:2: (iv_ruleAdlDefinition= ruleAdlDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:75:2: iv_ruleAdlDefinition= ruleAdlDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:74:2: (iv_ruleAdlFile= ruleAdlFile EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:75:2: iv_ruleAdlFile= ruleAdlFile EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getAdlDefinitionRule()); 
+               newCompositeNode(grammarAccess.getAdlFileRule()); 
             }
-            pushFollow(FOLLOW_ruleAdlDefinition_in_entryRuleAdlDefinition81);
-            iv_ruleAdlDefinition=ruleAdlDefinition();
+            pushFollow(FOLLOW_ruleAdlFile_in_entryRuleAdlFile81);
+            iv_ruleAdlFile=ruleAdlFile();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleAdlDefinition; 
+               current =iv_ruleAdlFile; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAdlDefinition91); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAdlFile91); if (state.failed) return current;
 
             }
 
@@ -163,12 +163,12 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleAdlDefinition"
+    // $ANTLR end "entryRuleAdlFile"
 
 
-    // $ANTLR start "ruleAdlDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:82:1: ruleAdlDefinition returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImportDefinition ) )* ( (lv_annotationsList_1_0= ruleAnnotationsList ) )? ( (lv_architectureDefinition_2_0= ruleArchitectureDefinition ) ) ) ;
-    public final EObject ruleAdlDefinition() throws RecognitionException {
+    // $ANTLR start "ruleAdlFile"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:82:1: ruleAdlFile returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImportDefinition ) )* ( (lv_annotationsList_1_0= ruleAnnotationsList ) )? ( (lv_architectureDefinition_2_0= ruleArchitectureDefinition ) ) ) ;
+    public final EObject ruleAdlFile() throws RecognitionException {
         EObject current = null;
 
         EObject lv_imports_0_0 = null;
@@ -216,10 +216,10 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
+            	      	        newCompositeNode(grammarAccess.getAdlFileAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleImportDefinition_in_ruleAdlDefinition137);
+            	    pushFollow(FOLLOW_ruleImportDefinition_in_ruleAdlFile137);
             	    lv_imports_0_0=ruleImportDefinition();
 
             	    state._fsp--;
@@ -227,7 +227,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    if ( state.backtracking==0 ) {
 
             	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getAdlDefinitionRule());
+            	      	            current = createModelElementForParent(grammarAccess.getAdlFileRule());
             	      	        }
             	             		add(
             	             			current, 
@@ -265,10 +265,10 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
+                      	        newCompositeNode(grammarAccess.getAdlFileAccess().getAnnotationsListAnnotationsListParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleAdlDefinition159);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleAdlFile159);
                     lv_annotationsList_1_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -276,7 +276,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getAdlDefinitionRule());
+                      	            current = createModelElementForParent(grammarAccess.getAdlFileRule());
                       	        }
                              		set(
                              			current, 
@@ -303,10 +303,10 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
+              	        newCompositeNode(grammarAccess.getAdlFileAccess().getArchitectureDefinitionArchitectureDefinitionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleArchitectureDefinition_in_ruleAdlDefinition181);
+            pushFollow(FOLLOW_ruleArchitectureDefinition_in_ruleAdlFile181);
             lv_architectureDefinition_2_0=ruleArchitectureDefinition();
 
             state._fsp--;
@@ -314,7 +314,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getAdlDefinitionRule());
+              	            current = createModelElementForParent(grammarAccess.getAdlFileRule());
               	        }
                      		set(
                      			current, 
@@ -349,7 +349,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleAdlDefinition"
+    // $ANTLR end "ruleAdlFile"
 
 
     // $ANTLR start "entryRuleArchitectureDefinition"
@@ -10751,7 +10751,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         {
         if ( state.backtracking==0 ) {
            
-          	        newCompositeNode(grammarAccess.getAdlDefinitionAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
+          	        newCompositeNode(grammarAccess.getAdlFileAccess().getImportsImportDefinitionParserRuleCall_0_0()); 
           	    
         }
         pushFollow(FOLLOW_ruleImportDefinition_in_synpred1_InternalAdl137);
@@ -11348,11 +11348,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
  
 
-    public static final BitSet FOLLOW_ruleAdlDefinition_in_entryRuleAdlDefinition81 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAdlDefinition91 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImportDefinition_in_ruleAdlDefinition137 = new BitSet(new long[]{0x010000001C090000L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleAdlDefinition159 = new BitSet(new long[]{0x010000001C080000L});
-    public static final BitSet FOLLOW_ruleArchitectureDefinition_in_ruleAdlDefinition181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAdlFile_in_entryRuleAdlFile81 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAdlFile91 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImportDefinition_in_ruleAdlFile137 = new BitSet(new long[]{0x010000001C090000L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleAdlFile159 = new BitSet(new long[]{0x010000001C080000L});
+    public static final BitSet FOLLOW_ruleArchitectureDefinition_in_ruleAdlFile181 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleArchitectureDefinition_in_entryRuleArchitectureDefinition217 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleArchitectureDefinition227 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCompositeDefinition_in_ruleArchitectureDefinition277 = new BitSet(new long[]{0x0000000000000002L});

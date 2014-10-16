@@ -4,7 +4,7 @@ generate adl "http://www.ow2.org/mindEd/adl/Adl"
 
 import "http://www.ow2.org/mindEd/itf/" as fractalIDL
 
-AdlDefinition :
+AdlFile :
 	imports += ImportDefinition*
 	/*
 	 * Any ArchitectureDefinition can be annotated

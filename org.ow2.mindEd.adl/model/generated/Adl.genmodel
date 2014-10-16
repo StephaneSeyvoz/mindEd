@@ -4,13 +4,13 @@
     editorDirectory="/org.ow2.mindEd.adl.editor/src" modelPluginID="org.ow2.mindEd.adl"
     forceOverwrite="true" modelName="Adl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.adl.edit"
-    editorPluginID="org.ow2.mindEd.adl.editor" runtimeVersion="2.9" usedGenPackages="../../../org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
+    editorPluginID="org.ow2.mindEd.adl.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
   <genPackages prefix="Adl" basePackage="org.ow2.mindEd" disposableProviderFactory="true"
       fileExtensions="adl" ecorePackage="Adl.ecore#/">
-    <genClasses ecoreClass="Adl.ecore#//AdlDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlDefinition/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlDefinition/annotationsList"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlDefinition/architectureDefinition"/>
+    <genClasses ecoreClass="Adl.ecore#//AdlFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlFile/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlFile/annotationsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AdlFile/architectureDefinition"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//ArchitectureDefinition"/>
     <genClasses ecoreClass="Adl.ecore#//ImportDefinition">

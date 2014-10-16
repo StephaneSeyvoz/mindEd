@@ -72,10 +72,10 @@ public class AdlSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case AdlPackage.ADL_DEFINITION:
+      case AdlPackage.ADL_FILE:
       {
-        AdlDefinition adlDefinition = (AdlDefinition)theEObject;
-        T result = caseAdlDefinition(adlDefinition);
+        AdlFile adlFile = (AdlFile)theEObject;
+        T result = caseAdlFile(adlFile);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -367,17 +367,17 @@ public class AdlSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Definition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>File</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Definition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>File</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAdlDefinition(AdlDefinition object)
+  public T caseAdlFile(AdlFile object)
   {
     return null;
   }

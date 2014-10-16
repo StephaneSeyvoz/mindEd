@@ -5,7 +5,7 @@ package org.ow2.mindEd.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-import org.ow2.mindEd.adl.AdlDefinition;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.Annotation;
 import org.ow2.mindEd.adl.AnnotationsList;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
@@ -73,8 +73,8 @@ public class AdlLabelProvider extends DefaultEObjectLabelProvider {
 	
 	// All following methods prefixed by a "// !" are concerned by a difference in the 2 models 
 
-	String image(AdlDefinition adlDef) {
-		return "full/obj16/AdlDefinition.gif";
+	String image(AdlFile adlDef) {
+		return "full/obj16/AdlFile.gif";
 	}
 
 	String image(ArchitectureDefinition adlDef) {

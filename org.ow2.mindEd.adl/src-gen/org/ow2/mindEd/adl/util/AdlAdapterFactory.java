@@ -75,9 +75,9 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
     new AdlSwitch<Adapter>()
     {
       @Override
-      public Adapter caseAdlDefinition(AdlDefinition object)
+      public Adapter caseAdlFile(AdlFile object)
       {
-        return createAdlDefinitionAdapter();
+        return createAdlFileAdapter();
       }
       @Override
       public Adapter caseArchitectureDefinition(ArchitectureDefinition object)
@@ -277,16 +277,16 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.AdlDefinition <em>Definition</em>}'.
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.AdlFile <em>File</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.ow2.mindEd.adl.AdlDefinition
+   * @see org.ow2.mindEd.adl.AdlFile
    * @generated
    */
-  public Adapter createAdlDefinitionAdapter()
+  public Adapter createAdlFileAdapter()
   {
     return null;
   }

@@ -25,7 +25,7 @@ public class AdlParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParse
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "AdlDefinition";
+		return "AdlFile";
 	}
 	
 	public AdlGrammarAccess getGrammarAccess() {

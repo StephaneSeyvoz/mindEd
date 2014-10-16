@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.ow2.mindEd.adl.AdlDefinition;
 import org.ow2.mindEd.adl.AdlFactory;
+import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.Annotation;
 import org.ow2.mindEd.adl.AnnotationElement;
@@ -63,7 +63,7 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass adlDefinitionEClass = null;
+  private EClass adlFileEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -381,9 +381,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAdlDefinition()
+  public EClass getAdlFile()
   {
-    return adlDefinitionEClass;
+    return adlFileEClass;
   }
 
   /**
@@ -391,9 +391,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdlDefinition_Imports()
+  public EReference getAdlFile_Imports()
   {
-    return (EReference)adlDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)adlFileEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -401,9 +401,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdlDefinition_AnnotationsList()
+  public EReference getAdlFile_AnnotationsList()
   {
-    return (EReference)adlDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)adlFileEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -411,9 +411,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAdlDefinition_ArchitectureDefinition()
+  public EReference getAdlFile_ArchitectureDefinition()
   {
-    return (EReference)adlDefinitionEClass.getEStructuralFeatures().get(2);
+    return (EReference)adlFileEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1496,10 +1496,10 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     isCreated = true;
 
     // Create classes and their features
-    adlDefinitionEClass = createEClass(ADL_DEFINITION);
-    createEReference(adlDefinitionEClass, ADL_DEFINITION__IMPORTS);
-    createEReference(adlDefinitionEClass, ADL_DEFINITION__ANNOTATIONS_LIST);
-    createEReference(adlDefinitionEClass, ADL_DEFINITION__ARCHITECTURE_DEFINITION);
+    adlFileEClass = createEClass(ADL_FILE);
+    createEReference(adlFileEClass, ADL_FILE__IMPORTS);
+    createEReference(adlFileEClass, ADL_FILE__ANNOTATIONS_LIST);
+    createEReference(adlFileEClass, ADL_FILE__ARCHITECTURE_DEFINITION);
 
     architectureDefinitionEClass = createEClass(ARCHITECTURE_DEFINITION);
 
@@ -1700,10 +1700,10 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     constantValueEClass.getESuperTypes().add(this.getElementValue());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(adlDefinitionEClass, AdlDefinition.class, "AdlDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAdlDefinition_Imports(), this.getImportDefinition(), null, "imports", null, 0, -1, AdlDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAdlDefinition_AnnotationsList(), this.getAnnotationsList(), null, "annotationsList", null, 0, 1, AdlDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAdlDefinition_ArchitectureDefinition(), this.getArchitectureDefinition(), null, "architectureDefinition", null, 0, 1, AdlDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(adlFileEClass, AdlFile.class, "AdlFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdlFile_Imports(), this.getImportDefinition(), null, "imports", null, 0, -1, AdlFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdlFile_AnnotationsList(), this.getAnnotationsList(), null, "annotationsList", null, 0, 1, AdlFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdlFile_ArchitectureDefinition(), this.getArchitectureDefinition(), null, "architectureDefinition", null, 0, 1, AdlFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(architectureDefinitionEClass, ArchitectureDefinition.class, "ArchitectureDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

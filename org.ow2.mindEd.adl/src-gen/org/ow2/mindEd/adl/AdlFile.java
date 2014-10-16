@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Definition</b></em>'.
+ * A representation of the model object '<em><b>File</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.ow2.mindEd.adl.AdlDefinition#getImports <em>Imports</em>}</li>
- *   <li>{@link org.ow2.mindEd.adl.AdlDefinition#getAnnotationsList <em>Annotations List</em>}</li>
- *   <li>{@link org.ow2.mindEd.adl.AdlDefinition#getArchitectureDefinition <em>Architecture Definition</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.AdlFile#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.AdlFile#getAnnotationsList <em>Annotations List</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.AdlFile#getArchitectureDefinition <em>Architecture Definition</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.ow2.mindEd.adl.AdlPackage#getAdlDefinition()
+ * @see org.ow2.mindEd.adl.AdlPackage#getAdlFile()
  * @model
  * @generated
  */
-public interface AdlDefinition extends EObject
+public interface AdlFile extends EObject
 {
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
@@ -36,7 +36,7 @@ public interface AdlDefinition extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see org.ow2.mindEd.adl.AdlPackage#getAdlDefinition_Imports()
+   * @see org.ow2.mindEd.adl.AdlPackage#getAdlFile_Imports()
    * @model containment="true"
    * @generated
    */
@@ -52,14 +52,14 @@ public interface AdlDefinition extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Annotations List</em>' containment reference.
    * @see #setAnnotationsList(AnnotationsList)
-   * @see org.ow2.mindEd.adl.AdlPackage#getAdlDefinition_AnnotationsList()
+   * @see org.ow2.mindEd.adl.AdlPackage#getAdlFile_AnnotationsList()
    * @model containment="true"
    * @generated
    */
   AnnotationsList getAnnotationsList();
 
   /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.AdlDefinition#getAnnotationsList <em>Annotations List</em>}' containment reference.
+   * Sets the value of the '{@link org.ow2.mindEd.adl.AdlFile#getAnnotationsList <em>Annotations List</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Annotations List</em>' containment reference.
@@ -78,14 +78,14 @@ public interface AdlDefinition extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Architecture Definition</em>' containment reference.
    * @see #setArchitectureDefinition(ArchitectureDefinition)
-   * @see org.ow2.mindEd.adl.AdlPackage#getAdlDefinition_ArchitectureDefinition()
+   * @see org.ow2.mindEd.adl.AdlPackage#getAdlFile_ArchitectureDefinition()
    * @model containment="true"
    * @generated
    */
   ArchitectureDefinition getArchitectureDefinition();
 
   /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.AdlDefinition#getArchitectureDefinition <em>Architecture Definition</em>}' containment reference.
+   * Sets the value of the '{@link org.ow2.mindEd.adl.AdlFile#getArchitectureDefinition <em>Architecture Definition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Architecture Definition</em>' containment reference.
@@ -94,4 +94,4 @@ public interface AdlDefinition extends EObject
    */
   void setArchitectureDefinition(ArchitectureDefinition value);
 
-} // AdlDefinition
+} // AdlFile
