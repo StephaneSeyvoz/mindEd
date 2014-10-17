@@ -143,15 +143,15 @@
           <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultForeground>
         <defaultBackground>
-          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
         </defaultBackground>
       </intersection>
-      <intersection name="SourceInterfaceToComponentIntersection" lineMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='DependencyMatrix']/@ownedLineMappings[name='ComponentsLine']/@ownedSubLines[name='RequiredInterfacesLine']" columnMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='DependencyMatrix']/@ownedColumnMappings.0" labelExpression="[targetInterface.name/]" useDomainClass="true" columnFinderExpression="[targetParent/]" lineFinderExpression="[sourceInterface/]" semanticCandidatesExpression="[elements->filter(adl::BindingDefinition)/]" domainClass="adl.BindingDefinition">
+      <intersection name="SourceInterfaceToComponentIntersection" canEdit="[false/]" lineMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='DependencyMatrix']/@ownedLineMappings[name='ComponentsLine']/@ownedSubLines[name='RequiredInterfacesLine']" columnMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='DependencyMatrix']/@ownedColumnMappings.0" labelExpression="[targetInterface.name/]" useDomainClass="true" columnFinderExpression="[targetParent/]" lineFinderExpression="[sourceInterface/]" semanticCandidatesExpression="[elements->filter(adl::BindingDefinition)/]" domainClass="adl.BindingDefinition">
         <defaultForeground>
           <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultForeground>
         <defaultBackground>
-          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
         </defaultBackground>
       </intersection>
     </ownedRepresentations>
