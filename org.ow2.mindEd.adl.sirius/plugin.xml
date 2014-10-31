@@ -2,8 +2,8 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.ow2.mindEd.adl.sirius.design.Activator"
-               id="org.ow2.mindEd.adl.sirius.design"
+    <component class="org.ow2.mindEd.adl.sirius.Activator"
+               id="org.ow2.mindEd.adl.sirius"
 	       name="Adl">
     </component>
   </extension>

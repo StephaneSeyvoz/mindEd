@@ -10,7 +10,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
@@ -26,13 +25,8 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorLauncher;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.xtext.ui.resource.IResourceSetProvider;
-import org.eclipse.xtext.ui.resource.IStorage2UriMapper;
 import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
-import org.ow2.mindEd.ui.internal.AdlActivator;
-
-import com.google.inject.Injector;
 
 public class ArchitectureDiagramEditor implements IEditorLauncher {
 
