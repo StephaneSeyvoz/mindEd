@@ -34,7 +34,7 @@ import org.ow2.mindEd.ui.internal.AdlActivator;
 
 import com.google.inject.Injector;
 
-public class GraphicalArchitectureEditor implements IEditorLauncher {
+public class InternalDependencyMatrixEditor implements IEditorLauncher {
 
 	@Override
 	public void open(IPath arg0) {
@@ -82,7 +82,7 @@ public class GraphicalArchitectureEditor implements IEditorLauncher {
 			// should be anyway since we are linked to .adl files
 			if (semanticElement instanceof AdlFile) {
 				ArchitectureDefinition archDef = ((AdlFile) semanticElement).getArchitectureDefinition();
-				representationName = archDef.getName() + " Architecture Diagram";
+				representationName = archDef.getName() + " Internal Dependencies Matrix";
 
 				// try to find an existing representation
 				Collection<DRepresentation> sessionRepresentations = DialectManager.INSTANCE.getRepresentations(semanticElement, session);
@@ -95,7 +95,7 @@ public class GraphicalArchitectureEditor implements IEditorLauncher {
 						representation = sessionRepresentationsIterator.next();
 						representationDesc = DialectManager.INSTANCE.getDescription(representation);
 						
-						if (representationDesc.getName().equals("ArchitectureDiagram")) {
+						if (representationDesc.getName().equals("InternalDependenciesMatrix")) {
 							// found
 							DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
 							// TODO: do this with a Command and register a callback to close the session when the edition is finished
@@ -116,7 +116,7 @@ public class GraphicalArchitectureEditor implements IEditorLauncher {
 
 					while (representationDescIterator.hasNext()) {
 						RepresentationDescription currDesc = representationDescIterator.next();
-						if (currDesc.getName().equals("ArchitectureDiagram")) {
+						if (currDesc.getName().equals("InternalDependenciesMatrix")) {
 							representationDesc = currDesc;
 							break;
 						}

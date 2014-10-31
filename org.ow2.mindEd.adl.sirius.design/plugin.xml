@@ -8,10 +8,17 @@
     </component>
   </extension>
   <extension point="org.eclipse.ui.editors">
-  	<editor id="org.ow2.mindEd.adl.sirius.editors.GraphicalArchitectureEditor"
-       name="Adl Graph Editor"
+  	<editor id="org.ow2.mindEd.adl.sirius.editors.ArchitectureDiagramEditor"
+       name="Architecture Diagram Editor"
        extensions="adl"
-       launcher="org.ow2.mindEd.adl.sirius.editors.GraphicalArchitectureEditor">
+       launcher="org.ow2.mindEd.adl.sirius.editors.ArchitectureDiagramEditor">
+   </editor>
+  </extension>
+  <extension point="org.eclipse.ui.editors">
+  	<editor id="org.ow2.mindEd.adl.sirius.editors.InternalDependencyMatrixEditor"
+       name="Internal Dependencies Matrix Editor"
+       extensions="adl"
+       launcher="org.ow2.mindEd.adl.sirius.editors.InternalDependencyMatrixEditor">
    </editor>
   </extension>
 </plugin>
