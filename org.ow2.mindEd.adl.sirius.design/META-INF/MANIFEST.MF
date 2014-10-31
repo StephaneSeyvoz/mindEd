@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.ow2.mindEd.adl.sirius.design
-Bundle-SymbolicName: org.ow2.mindEd.adl.sirius.design;singleton:=true
-Bundle-Version: 1.0.0
-Bundle-Activator: org.ow2.mindEd.adl.sirius.design.Activator
+Bundle-Name: MindEd Sirius-Based Graphical UI Plugin
+Bundle-SymbolicName: org.ow2.mindEd.adl.sirius;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.ow2.mindEd.adl.sirius.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
@@ -24,3 +24,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.transaction;bundle-version="1.8.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Partenaire Minalogic

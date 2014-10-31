@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: MindEd Interface EMF Edit
 Bundle-SymbolicName: org.ow2.mindEd.itf.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.ow2.mindEd.itf.provider.ItfEditPlugin$Implementation
-Bundle-Vendor: %providerName
+Bundle-Vendor: Partenaire Minalogic
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.ow2.mindEd.itf.provider

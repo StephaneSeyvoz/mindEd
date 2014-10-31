@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.ow2.mindEd.idt.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.ow2.mindEd.idt.provider.IdtEditPlugin$Implementation
-Bundle-Vendor: %providerName
+Bundle-Vendor: Partenaire Minalogic
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.ow2.mindEd.idt.provider

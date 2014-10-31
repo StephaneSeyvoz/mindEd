@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.ow2.mindEd.adl.ui
-Bundle-Vendor: My Company
+Bundle-Name: MindEd Architecture Xtext UI Plugin
+Bundle-Vendor: Partenaire Minalogic
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.ow2.mindEd.adl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy

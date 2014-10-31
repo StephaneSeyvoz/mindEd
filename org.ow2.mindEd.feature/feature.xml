@@ -2,7 +2,7 @@
 <feature
       id="org.ow2.mindEd.feature"
       label="%featureName"
-      version="0.8.5"
+      version="0.8.6.1"
       provider-name="%providerName">
 
    <description>
@@ -239,6 +239,13 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
 
    <plugin
          id="org.ow2.mindEd.itf.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.ow2.mindEd.adl.sirius"
          download-size="0"
          install-size="0"
          version="0.0.0"
