@@ -1,5 +1,6 @@
 package org.ow2.mindEd.adl.sirius.editors;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -8,12 +9,14 @@ import java.util.Set;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
@@ -30,8 +33,10 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorLauncher;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressService;
 import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 import org.ow2.mindEd.adl.sirius.helpers.AdlRepresentationsFactory;
@@ -49,20 +54,27 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 	 * Sub-classes must provide a representation name suffix (for storage / user-friendliness).
 	 */
 	protected final String				representationSuffix;
-	
+
 	// Utility fields
-	
+
 	private IFile 						targetFile = null;
+	private URI 						fileURI = null;
 	private IProject 					project = null;
 
 	private Session 					session = null;
 	private Resource 					resource = null;
 	private EObject 					semanticElement = null;
 
+	private Command 					addSemanticResourceCmd = null;
+
 	private DRepresentation 			representation = null;
 	private String 						representationName = null;
 	private RepresentationDescription 	representationDesc = null;
-	
+
+	private Set<Viewpoint> 				viewpointSet = null;
+	private Set<Viewpoint> 				emptySet = new HashSet<Viewpoint>();
+	private boolean 					createNewRepresentations = false; // TODO: check if it's ok
+
 	/**
 	 * 
 	 * @param representationDescriptionName The kind of representation to be created by the sub-class (selected from our Viewpoint Specification Model, see .odesign file)
@@ -72,7 +84,7 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 		this.representationDescriptionName = representationDescriptionName;
 		this.representationSuffix = representationSuffix;
 	}
-	
+
 	/**
 	 * Open a Sirius Viewpoint ArchitectureDiagram editor instance, creating it if needed.
 	 * The action is contributed to the IDE thanks to the plugin.xml org.eclipse.ui.editors
@@ -81,9 +93,12 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 	@Override
 	public void open(IPath arg0) {
 
-		// Workbench init
-		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		
+		// Workbench access
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+
+		IProgressService progressService = workbench.getProgressService();
+
 		// redundant with arg0, but not very important...
 		IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
 
@@ -92,7 +107,7 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 			return;
 
 		targetFile = (IFile) selection.getFirstElement();
-		URI fileURI = URI.createPlatformResourceURI(targetFile.getFullPath().toOSString(), true);
+		fileURI = URI.createPlatformResourceURI(targetFile.getFullPath().toOSString(), true);
 
 		project = targetFile.getProject();
 
@@ -111,9 +126,19 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 		if (resource == null) {
 
 			// - Add resource to session
-			Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, fileURI, new NullProgressMonitor());
-			session.getTransactionalEditingDomain().getCommandStack().execute(addSemanticResourceCmd);
-			
+			try {
+				progressService.run(false, false, new IRunnableWithProgress() {
+					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						addSemanticResourceCmd = new AddSemanticResourceCommand(session, fileURI, monitor);
+						session.getTransactionalEditingDomain().getCommandStack().execute(addSemanticResourceCmd);
+					}
+				});
+			} catch (InvocationTargetException e) {
+				return;
+			} catch (InterruptedException e) {
+				return;
+			}
+
 			/*
 			 *  VERY IMPORTANT /!\
 			 *  
@@ -131,7 +156,7 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 				}
 			}
 		}
-		
+
 		// In any case
 		semanticElement = resource.getContents().get(0);
 
@@ -153,8 +178,16 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 
 					if (representationDesc.getName().equals(representationDescriptionName)) {
 						// found
-						DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
-						// TODO: do this with a Command and register a callback to close the session when the edition is finished
+						try {
+							progressService.run(false, false, new IRunnableWithProgress() {
+								public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+									DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+								}});
+						} catch (InvocationTargetException e) {
+							return;
+						} catch (InterruptedException e) {
+							return;
+						}
 						return;
 					}
 				}
@@ -180,18 +213,24 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 						if (viewpoints.isEmpty()) {
 							// Select and Initialize the Viewpoint for Session
 
-							Set<Viewpoint> viewpointSet = new HashSet<Viewpoint>();
-							Set<Viewpoint> emptySet = new HashSet<Viewpoint>();
+							viewpointSet = new HashSet<Viewpoint>();
 							viewpointSet.add(currentViewpoint);
 
 							final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
 							final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
-							boolean createNewRepresentations = false; // TODO: check if ok ?
-
-							// Maybe should we do a similar Command, but ours to not have the "restriction" warning ?
-							final Command command = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpointSet, emptySet, createNewRepresentations, new NullProgressMonitor());
-							domain.getCommandStack().execute(command);
+							try {
+								progressService.run(false, false, new IRunnableWithProgress() {
+									public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+										Command changeViewpointSelectionCommand = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpointSet, emptySet, createNewRepresentations, monitor);
+										domain.getCommandStack().execute(changeViewpointSelectionCommand);
+									}
+								});
+							} catch (InvocationTargetException e) {
+								return;
+							} catch (InterruptedException e) {
+								return;
+							}
 						}
 
 						break;
@@ -202,19 +241,28 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 					break;
 			}
 
-			CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, representationDesc, semanticElement, representationName, new NullProgressMonitor());
+			try {
+				progressService.run(false, false, new IRunnableWithProgress() {
+					public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+						CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, representationDesc, semanticElement, representationName, monitor);
 
-			IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
-			editingSession.notify(EditingSessionEvent.REPRESENTATION_ABOUT_TO_BE_CREATED_BEFORE_OPENING);
-			session.getTransactionalEditingDomain().getCommandStack().execute(createRepresentationCommand);
-			editingSession.notify(EditingSessionEvent.REPRESENTATION_CREATED_BEFORE_OPENING);
-			representation = createRepresentationCommand.getCreatedRepresentation();
+						IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
+						editingSession.notify(EditingSessionEvent.REPRESENTATION_ABOUT_TO_BE_CREATED_BEFORE_OPENING);
+						session.getTransactionalEditingDomain().getCommandStack().execute(createRepresentationCommand);
+						editingSession.notify(EditingSessionEvent.REPRESENTATION_CREATED_BEFORE_OPENING);
+						representation = createRepresentationCommand.getCreatedRepresentation();
 
-
-			DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+						DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+					}
+				});
+			} catch (InvocationTargetException e) {
+				return;
+			} catch (InterruptedException e) {
+				return;
+			}
 
 		}
 
 	}
-	
+
 }
