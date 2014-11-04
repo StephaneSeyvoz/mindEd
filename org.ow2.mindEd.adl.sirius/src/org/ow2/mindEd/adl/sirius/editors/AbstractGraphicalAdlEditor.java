@@ -35,13 +35,13 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorLauncher;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 import org.ow2.mindEd.adl.sirius.helpers.AdlRepresentationsFactory;
 
+@SuppressWarnings("restriction")
 public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 
 	/**
@@ -59,7 +59,7 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 	/**
 	 * The job to be ran.
 	 */
-	private Job graphicalEditorJob;
+	private Job job;
 
 	/**
 	 * 
@@ -89,15 +89,18 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 		if (!(selection.getFirstElement() instanceof IFile))
 			return;
 		
-		graphicalEditorJob = new GraphicalAdlEditorJob(selection, representationDescriptionName, representationSuffix);
+		job = new GraphicalAdlEditorJob(selection, representationDescriptionName, representationSuffix);
 
 		/*
 		 * The ISchedulingRule interface, provided as part of the Jobs API, allows clients to define locks that can be used to ensure exclusive access to
 		 * resources when required while preventing deadlock from occurring in the situation where multiple running jobs try to access the same resources.
 		 */
-		graphicalEditorJob.setRule(ResourcesPlugin.getWorkspace().getRoot());
+		job.setRule(ResourcesPlugin.getWorkspace().getRoot());
 
-		graphicalEditorJob.schedule();
+		// Stronger feedback, see https://www.eclipse.org/articles/Article-Concurrency/jobs-api.html
+		job.setUser(true);
+		
+		job.schedule();
 	}
 
 	protected class GraphicalAdlEditorJob extends Job {
@@ -153,7 +156,7 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 			project = targetFile.getProject();
 
 			// Create Session (aka Representation) if needed
-			session = AdlRepresentationsFactory.getInstance(project, monitor);
+			session = AdlRepresentationsFactory.getInstance(project, new SubProgressMonitor(monitor, 1));
 
 			if (session == null)
 				return Status.CANCEL_STATUS;
@@ -270,7 +273,7 @@ public abstract class AbstractGraphicalAdlEditor implements IEditorLauncher {
 				editingSession.notify(EditingSessionEvent.REPRESENTATION_CREATED_BEFORE_OPENING);
 				representation = createRepresentationCommand.getCreatedRepresentation();
 
-				DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
+				DialectUIManager.INSTANCE.openEditor(session, representation, new SubProgressMonitor(monitor, 1));
 
 
 			}

@@ -43,6 +43,7 @@ import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 import org.ow2.mindEd.adl.sirius.helpers.AdlRepresentationsFactory;
 
+@SuppressWarnings("restriction")
 public class ProjectRelationsEditor {
 
 	/**
@@ -59,6 +60,9 @@ public class ProjectRelationsEditor {
 		 */
 		job.setRule(ResourcesPlugin.getWorkspace().getRoot());
 
+		// Stronger feedback, see https://www.eclipse.org/articles/Article-Concurrency/jobs-api.html
+		job.setUser(true);
+		
 		job.schedule();
 
 	}
