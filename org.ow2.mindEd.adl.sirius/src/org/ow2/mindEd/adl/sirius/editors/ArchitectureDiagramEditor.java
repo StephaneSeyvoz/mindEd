@@ -1,139 +1,201 @@
 package org.ow2.mindEd.adl.sirius.editors;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorLauncher;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.ow2.mindEd.adl.AdlFile;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
+import org.ow2.mindEd.adl.sirius.helpers.AdlRepresentationsFactory;
+import org.ow2.mindEd.ui.internal.AdlActivator;
+
+import com.google.inject.Injector;
 
 public class ArchitectureDiagramEditor implements IEditorLauncher {
 
+	IFile 						targetFile = null;
+	IProject 					project = null;
+	IFile 						representationsFile = null;
+
+	Session 					session = null;
+	Resource 					resource = null;
+	EObject 					semanticElement = null;
+
+	DRepresentation 			representation = null;
+	String 						representationName = null;
+	RepresentationDescription 	representationDesc = null;
+
+	/**
+	 * Open a Sirius Viewpoint ArchitectureDiagram editor instance, creating it if needed.
+	 * The action is contributed to the IDE thanks to the plugin.xml org.eclipse.ui.editors
+	 * extension point.
+	 * 
+	 * TODO: Check if arg0 == selection (redundant ?)
+	 */
 	@Override
 	public void open(IPath arg0) {
 
 		// Workbench init
-		IWorkbenchWindow window = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow();
-		IStructuredSelection selection = (IStructuredSelection) window
-				.getSelectionService().getSelection();
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
 
-		if (selection.getFirstElement() instanceof IFile) {
-			IFile file = (IFile) selection.getFirstElement();
+		// shouldn't even happen
+		if (!(selection.getFirstElement() instanceof IFile))
+			return;
 
-			IProject project = file.getProject();
+		targetFile = (IFile) selection.getFirstElement();
+		URI fileURI = URI.createPlatformResourceURI(targetFile.getFullPath().toOSString(), true);
 
+		project = targetFile.getProject();
 
-			IFile airdFile = project.getFile("representations.aird");
+		// Create Session (aka Representation) if needed
+		session = AdlRepresentationsFactory.getInstance(project);
 
-			URI representationsFileURI = URI.createPlatformResourceURI(airdFile
-					.getFullPath().toOSString(), true);
+		// Try to find the semantic resource in the session
+		Collection<Resource> sessionSemanticResources = session.getSemanticResources();
+		for (Resource semanticRsc : sessionSemanticResources) {
+			if (semanticRsc.getURI().equals(fileURI)) {
+				resource = semanticRsc;
+				break;
+			}
+		}
 
-			URI fFileURI = URI.createPlatformResourceURI(file.getFullPath()
-					.toOSString(), true);
+		if (resource == null) {
 
-			Session session = SessionManager.INSTANCE.getExistingSession(representationsFileURI);
-
-			Resource 					foundResource = null;
-			DRepresentation 			representation = null;
-			String 						representationName = null;
-			RepresentationDescription 	representationDesc = null;
-
-			Collection<Resource> sessionSemanticResources = session.getSemanticResources();
+			// - Add resource to session
+			Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, fileURI, new NullProgressMonitor());
+			session.getTransactionalEditingDomain().getCommandStack().execute(addSemanticResourceCmd);
+			
+			/*
+			 *  VERY IMPORTANT /!\
+			 *  
+			 *  Do NOT use the resource.getContents().get(0) semantic element from Xtext, otherwise the CreateRepresentationCommand
+			 *  in the end will fail, trying to retrieve an "Interpreter" matching the Xtext semantic element in the Session, which
+			 *  it does NOT know. We have to do it the Sirius way to make the CreateRepresentationCommand succeed !
+			 *  
+			 *  So, now we added the semantic resource in the Session, Sirius way, we have to retrieve its corresponding object, 
+			 *  in the Sirius model.
+			 */
 			for (Resource semanticRsc : sessionSemanticResources) {
-				if (semanticRsc.getURI().equals(fFileURI)) {
-					foundResource = semanticRsc;
+				if (semanticRsc.getURI().equals(fileURI)) {
+					resource = semanticRsc;
 					break;
 				}
 			}
+		}
+		
+		// In any case
+		semanticElement = resource.getContents().get(0);
 
-			if (foundResource == null)
-				return;
+		// should be anyway since we are linked to .adl files
+		if (semanticElement instanceof AdlFile) {
+			ArchitectureDefinition archDef = ((AdlFile) semanticElement).getArchitectureDefinition();
+			representationName = archDef.getName() + " Architecture Diagram";
 
-			EObject semanticElement = foundResource.getContents().get(0);
+			// try to find an existing representation
+			Collection<DRepresentation> sessionRepresentations = DialectManager.INSTANCE.getRepresentations(semanticElement, session);
 
-			// should be anyway since we are linked to .adl files
-			if (semanticElement instanceof AdlFile) {
-				ArchitectureDefinition archDef = ((AdlFile) semanticElement).getArchitectureDefinition();
-				representationName = archDef.getName() + " Architecture Diagram";
+			if (!sessionRepresentations.isEmpty()) {
 
-				// try to find an existing representation
-				Collection<DRepresentation> sessionRepresentations = DialectManager.INSTANCE.getRepresentations(semanticElement, session);
-				
-				if (!sessionRepresentations.isEmpty()) {
-					
-					Iterator<DRepresentation> sessionRepresentationsIterator = sessionRepresentations.iterator();
+				Iterator<DRepresentation> sessionRepresentationsIterator = sessionRepresentations.iterator();
 
-					while (sessionRepresentationsIterator.hasNext()) {
-						representation = sessionRepresentationsIterator.next();
-						representationDesc = DialectManager.INSTANCE.getDescription(representation);
-						
-						if (representationDesc.getName().equals("ArchitectureDiagram")) {
-							// found
-							DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
-							// TODO: do this with a Command and register a callback to close the session when the edition is finished
-							return;
-						}
+				while (sessionRepresentationsIterator.hasNext()) {
+					representation = sessionRepresentationsIterator.next();
+					representationDesc = DialectManager.INSTANCE.getDescription(representation);
+
+					if (representationDesc.getName().equals("ArchitectureDiagram")) {
+						// found
+						DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+						// TODO: do this with a Command and register a callback to close the session when the edition is finished
+						return;
 					}
-
 				}
-
-				// No representation at all OR no matching representation exist: CREATE ONE
-				Collection<Viewpoint> viewpoints = session.getSelectedViewpoints(true);
-
-				Iterator<Viewpoint> viewpointsIterator = viewpoints.iterator();
-				while (viewpointsIterator.hasNext()) {
-
-					Collection<RepresentationDescription> representationDescs = viewpointsIterator.next().getOwnedRepresentations();
-					Iterator<RepresentationDescription> representationDescIterator = representationDescs.iterator();
-
-					while (representationDescIterator.hasNext()) {
-						RepresentationDescription currDesc = representationDescIterator.next();
-						if (currDesc.getName().equals("ArchitectureDiagram")) {
-							representationDesc = currDesc;
-							break;
-						}
-					}
-
-					if (representationDesc != null)
-						break;
-				}
-
-				CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, representationDesc, semanticElement, representationName, new NullProgressMonitor());
-
-				IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
-				editingSession.notify(EditingSessionEvent.REPRESENTATION_ABOUT_TO_BE_CREATED_BEFORE_OPENING);
-				session.getTransactionalEditingDomain().getCommandStack().execute(createRepresentationCommand);
-				editingSession.notify(EditingSessionEvent.REPRESENTATION_CREATED_BEFORE_OPENING);
-				representation = createRepresentationCommand.getCreatedRepresentation();
-
-
-				DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
 
 			}
 
+			// No representation at all OR no matching representation exist: CREATE ONE
+			Collection<Viewpoint> adlViewpoints = ViewpointSelection.getViewpoints("adl"); // by file extension
+
+			Iterator<Viewpoint> viewpointsIterator = adlViewpoints.iterator();
+			while (viewpointsIterator.hasNext()) {
+
+				Viewpoint currentViewpoint = viewpointsIterator.next();
+				Collection<RepresentationDescription> representationDescs = currentViewpoint.getOwnedRepresentations();
+				Iterator<RepresentationDescription> representationDescIterator = representationDescs.iterator();
+
+				while (representationDescIterator.hasNext()) {
+					RepresentationDescription currDesc = representationDescIterator.next();
+					if (currDesc.getName().equals("ArchitectureDiagram")) {
+						representationDesc = currDesc;
+
+						Collection<Viewpoint> viewpoints = session.getSelectedViewpoints(false);
+						if (viewpoints.isEmpty()) {
+							// Select and Initialize the Viewpoint for Session
+
+							Set<Viewpoint> viewpointSet = new HashSet<Viewpoint>();
+							Set<Viewpoint> emptySet = new HashSet<Viewpoint>();
+							viewpointSet.add(currentViewpoint);
+
+							final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
+							final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+
+							boolean createNewRepresentations = false; // TODO: check if ok ?
+
+							// Maybe should we do a similar Command, but ours to not have the "restriction" warning ?
+							final Command command = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpointSet, emptySet, createNewRepresentations, new NullProgressMonitor());
+							domain.getCommandStack().execute(command);
+						}
+
+						break;
+					}
+				}
+
+				if (representationDesc != null)
+					break;
+			}
+
+			CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, representationDesc, semanticElement, representationName, new NullProgressMonitor());
+
+			IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
+			editingSession.notify(EditingSessionEvent.REPRESENTATION_ABOUT_TO_BE_CREATED_BEFORE_OPENING);
+			session.getTransactionalEditingDomain().getCommandStack().execute(createRepresentationCommand);
+			editingSession.notify(EditingSessionEvent.REPRESENTATION_CREATED_BEFORE_OPENING);
+			representation = createRepresentationCommand.getCreatedRepresentation();
+
+
+			DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+
 		}
+
 	}
 
 }
