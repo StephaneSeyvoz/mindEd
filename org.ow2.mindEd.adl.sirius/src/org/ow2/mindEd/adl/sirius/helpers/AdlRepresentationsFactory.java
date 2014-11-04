@@ -8,11 +8,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 public class AdlRepresentationsFactory {
@@ -24,9 +22,10 @@ public class AdlRepresentationsFactory {
 	 * The session is created empty, and MUST be completed with semantical information afterwards.
 	 * 
 	 * @param project the project to create an adlRepresentations.aird file into
+	 * @param monitor 
 	 * @return the empty session (to be completed with semantical information)
 	 */
-	public static Session getInstance(IProject project) {
+	public static Session getInstance(IProject project, IProgressMonitor monitor) {
 		
 		IFile representationsFile = project.getFile(AdlRepresentationsFactory.adlRepresentationsFileName);
 		URI sessionModelURI = URI.createPlatformResourceURI(representationsFile.getFullPath().toOSString(), true);
@@ -38,17 +37,14 @@ public class AdlRepresentationsFactory {
 		// create it otherwise
 		final SimpleSessionCreationOperation simpleSessionCreationOperation = new SimpleSessionCreationOperation(sessionModelURI);
 
+
 		try {
-			PlatformUI.getWorkbench().getProgressService().run(false, false, new IRunnableWithProgress() {
-				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-					simpleSessionCreationOperation.run(monitor);
-				}
-			});
+			simpleSessionCreationOperation.run(new SubProgressMonitor(monitor, 1));
 			session = simpleSessionCreationOperation.getSession();
 		} catch (InvocationTargetException e) {
-			e.printStackTrace(); // and return null
+			return null;
 		} catch (InterruptedException e) {
-			// User cancelled, will return null
+			return null;
 		}
 		
 		return session;
