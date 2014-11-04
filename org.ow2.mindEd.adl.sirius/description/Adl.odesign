@@ -232,7 +232,7 @@
         </defaultBackground>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Project Composition Diagram" domainClass="adl.AdlFile">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ProjectRelationsDiagram" label="Project Relations Diagram" domainClass="adl.AdlFile">
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="CompositionLayer">
         <nodeMappings name="ComponentDefinition" synchronizationLock="true" domainClass="adl.ArchitectureDefinition">
@@ -242,7 +242,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Contains" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='Project%20Composition%20Diagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='Project%20Composition%20Diagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition)/]">
+        <edgeMappings name="Contains" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition)/]">
           <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -250,7 +250,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Inheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='Project%20Composition%20Diagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='Project%20Composition%20Diagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).superTypes.targetArchDef/]">
+        <edgeMappings name="Inheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).superTypes.targetArchDef/]">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
