@@ -7,6 +7,7 @@
 	       name="Adl">
     </component>
   </extension>
+  
   <extension point="org.eclipse.ui.editors">
   	<editor id="org.ow2.mindEd.adl.sirius.editors.ArchitectureDiagramEditor"
        name="Architecture Diagram Editor"
@@ -14,6 +15,7 @@
        launcher="org.ow2.mindEd.adl.sirius.editors.ArchitectureDiagramEditor">
    </editor>
   </extension>
+  
   <extension point="org.eclipse.ui.editors">
   	<editor id="org.ow2.mindEd.adl.sirius.editors.InternalDependencyMatrixEditor"
        name="Internal Dependencies Matrix Editor"
@@ -21,6 +23,7 @@
        launcher="org.ow2.mindEd.adl.sirius.editors.InternalDependencyMatrixEditor">
    </editor>
   </extension>
+  
   <extension point="org.eclipse.ui.popupMenus">
   	<objectContribution
   		adaptable="true"
@@ -40,4 +43,33 @@
          </filter>
       </objectContribution>
    </extension>
+    
+  <extension
+        id="org.ow2.mindEd.adl.sirius.MindStyleConfigurationProvider"
+        point="org.eclipse.sirius.diagram.ui.styleConfigurationProvider">
+     <styleConfigurationProvider
+           providerClass="org.ow2.mindEd.adl.sirius.providers.MindStyleConfigurationProvider">
+     </styleConfigurationProvider>
+  </extension>
+  
+  <!-- Refine bindings to set GMF's "Avoid Obstructions" property -->
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+     <viewProvider
+           class="org.ow2.mindEd.adl.sirius.providers.MindSiriusViewProvider">
+        <Priority name="Highest"/>
+        <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Sirius"/>
+        <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="Sirius"/>
+        <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="Sirius"/>
+     </viewProvider>
+  </extension>
+  <extension
+        id="org.ow2.mindEd.adl.sirius.refresh.MindCanonicalSynchronizerFactory"
+        point="org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride"
+        name="MindCanonicalSynchronizerFactory">
+     <factory
+           class="org.ow2.mindEd.adl.sirius.refresh.MindCanonicalSynchronizerFactory">
+     </factory>
+  </extension>
+   
 </plugin>
