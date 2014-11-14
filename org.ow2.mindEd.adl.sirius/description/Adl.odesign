@@ -54,9 +54,10 @@
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings name="sub_RequiredInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::RequiredInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
-              <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW" id="org.ow2.mindEd.adl.sirius.style.custom.gmf.SubRequiredInterfaceDefinitionStyle">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </borderedNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" showIcon="false" labelExpression="[type->filter(adl::TypeReference).name + '\n' +name/]">
