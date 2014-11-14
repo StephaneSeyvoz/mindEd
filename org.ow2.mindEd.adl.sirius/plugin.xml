@@ -40,4 +40,11 @@
          </filter>
       </objectContribution>
    </extension>
+   
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+   	<editpartProvider class="org.ow2.mindEd.adl.sirius.style.custom.gmf.ArchDiagEditPartProvider">
+   		<Priority name="High"/>
+    </editpartProvider>
+   </extension>
+   
 </plugin>
