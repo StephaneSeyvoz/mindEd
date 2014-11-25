@@ -6,9 +6,9 @@ MIND IDE - Eclipse plugin
 Copyrights
 ----------
 
-Copyright 2009 ObjectWeb/Fractal
-Copyright 2014 Schneider-Electric
-Partenaires Minalogic
+- Copyright 2009 ObjectWeb/Fractal
+- Copyright 2009-2011 Partenaires Minalogic
+- Copyright 2014 Schneider-Electric
 
 Description (FR)
 ----------------
