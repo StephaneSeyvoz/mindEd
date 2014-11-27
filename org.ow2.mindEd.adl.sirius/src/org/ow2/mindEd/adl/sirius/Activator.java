@@ -63,24 +63,17 @@ public class Activator extends AbstractUIPlugin {
 			public void notifyAddSession(Session newSession) {
 
 				// Only works at project .aird file initialization
-				newSession.getEventBroker().addLocalTrigger(AvoidObstructionsEdgesStyleFixTrigger.IS_EDGE, new AvoidObstructionsEdgesStyleFixTrigger());
+				newSession.getEventBroker().addLocalTrigger(AvoidObstructionsEdgesStyleFixTrigger.ADDED_EDGE_S, new AvoidObstructionsEdgesStyleFixTrigger(newSession.getTransactionalEditingDomain()));
 			}
 			
 			@Override
 			public void notify(final Session updatedSession, final int notification) {
 			
-				// For later session events
-				
-				// TODO: Not sure about the notification kinds we should care about, investigate
-				if (notification == SessionListener.OPENING 							// Session opening
-						|| notification == SessionListener.SYNC							// Save representation
-						|| notification == SessionListener.REPRESENTATION_CHANGE		// NOT SURE IF NEEDED
-						|| notification == SessionListener.SELECTED_VIEWS_CHANGE_KIND	// NOT SURE IF NEEDED
-						|| notification == SessionListener.SEMANTIC_CHANGE)				// Sync on semantic change (text edition...)
-					updatedSession.getEventBroker().addLocalTrigger(AvoidObstructionsEdgesStyleFixTrigger.IS_EDGE, new AvoidObstructionsEdgesStyleFixTrigger());
+				// For later session events - Other notifications exist but we won't want to create new trigger objects all the time !
+				if (notification == SessionListener.OPENING) 
+					updatedSession.getEventBroker().addLocalTrigger(AvoidObstructionsEdgesStyleFixTrigger.ADDED_EDGE_S, new AvoidObstructionsEdgesStyleFixTrigger(updatedSession.getTransactionalEditingDomain()));
 	        }
 			
-			// Note: Other listener methods are available to be implemented if needed.
 		};
 
 		SessionManager.INSTANCE.addSessionsListener(sessionEventNotifier);

@@ -1,16 +1,18 @@
 package org.ow2.mindEd.adl.sirius.style;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Edge;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
-import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+
+import com.google.common.collect.Lists;
 
 /**
  * Note: This solution should be a TEMPORARY FIX, and be removed if Sirius officially supports the setting one day.
@@ -18,47 +20,63 @@ import org.eclipse.sirius.ext.base.Options;
  *
  */
 public class AvoidObstructionsEdgesStyleFixTrigger implements ModelChangeTrigger {
-	
-	public static final NotificationFilter IS_EDGE = new NotificationFilter.Custom() {
 
+	/**
+	 * Changes have to happen in a transactional editing domain.
+	 */
+	private TransactionalEditingDomain domain;
+
+	public AvoidObstructionsEdgesStyleFixTrigger(TransactionalEditingDomain transactionalEditingDomain) {
+		this.domain = transactionalEditingDomain;
+	}
+
+	/**
+	 * A notification filter allowing to trigger for ADD / ADD_MANY events on Edges.
+	 */
+	public static final NotificationFilter ADDED_EDGE_S = new NotificationFilter.Custom() {
+
+		@SuppressWarnings("rawtypes")
 		public boolean matches(Notification input) {
-			
-			/*
-			 * Current target type is Edge.
-			 * Determined with a breakpoint in DEdgeViewFactory#decorateView, where only EdgeImpl objects were met.
-			 * More knowledge about Sirius behavior would be nice to be certain.
-			 * 
-			 * Note: This not only covers Edge / EdgeImpl objects but Connector / ConnectorImpl sub-types as well, just in case.
-			 */
-			return input.getNotifier() instanceof Edge; 
+
+			// Note: Checking for Edge not only covers EdgeImpl objects but Connector / ConnectorImpl sub-types as well, just in case.
+
+			switch (input.getEventType()) {
+			case Notification.ADD_MANY:
+				List newValues = (List) input.getNewValue();
+				if (newValues.get(0) instanceof Edge) // all others will be type-coherent anyway
+					return true;
+				else
+					return false;
+			case Notification.ADD:
+				return input.getNewValue() instanceof Edge;
+			default:
+				return false;
+			}
 		}
 	};
 
 	@Override
 	public Option<Command> localChangesAboutToCommit(
 			Collection<Notification> notifications) {
-		
-		// Handle the "IS_EDGE"-filtered objects
+
+		final Collection<Edge> edges = Lists.newArrayList();
+
 		for (Notification currNotification : notifications) {
-			
-			// Logic inspired by Sirius DEdgeViewFactory, see SiriusViewProvider as well
-			Edge edge = (Edge) currNotification.getNotifier();
-			
-			// Get existing style, enable GMF "Avoid obstructions"
-			RoutingStyle rstyle = (RoutingStyle) edge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
-			if (rstyle != null)
-				rstyle.setAvoidObstructions(true);
+			Object newValue = currNotification.getNewValue();
+			if (newValue instanceof Edge)
+				edges.add((Edge) newValue);
 		}
-		
-		// We do not need to execute any RecordingCommand (transaction on the model)
-		return Options.newNone();
+
+		Command command = new EnableAvoidObstructionsEdgesRoutingStyleCommand(domain, edges);
+
+		return Options.newSome(command);
 	}
 
 	public static final int PRIORITY = 0;
-	
+
 	@Override
 	public int priority() {
 		return PRIORITY;
 	}
-	
+
 }
