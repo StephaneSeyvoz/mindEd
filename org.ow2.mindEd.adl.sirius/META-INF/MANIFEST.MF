@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MindEd Sirius-Based Graphical UI Plugin
 Bundle-SymbolicName: org.ow2.mindEd.adl.sirius;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.ow2.mindEd.adl.sirius.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
