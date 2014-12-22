@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Adl" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Adl" version="8.1.0">
   <ownedViewpoints name="AdlViewpoint" modelFileExtension="adl">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ArchitectureDiagram" label="Architecture Diagram" domainClass="adl.AdlFile">
       <metamodel href="../../org.ow2.mindEd.adl/model/generated/Adl.ecore#/"/>
@@ -45,7 +45,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubComponentDelete']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
+          <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20SubComponent']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
             <borderedNodeMappings name="sub_ProvidedInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::ProvidedInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -111,17 +111,35 @@
           </style>
         </containerMappings>
         <toolSections name="ToolsSection" label="Tools Section">
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="SubComponentDelete" label="Delete SubComponent">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation/>
-          </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="NonDeletableSubComponentInterface" label="Non-Deletable SubComponent Interfaces" precondition="[false/]">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete SubComponent">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView/]">
+                  <subModelOperations xsi:type="tool_1:For" expression="[ownedBorderedNodes/]" iteratorName="currBorderedNode">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[currBorderedNode/]">
+                      <subModelOperations xsi:type="tool_1:For" expression="[currBorderedNode.eInverse()->filter(DEdge)/]" iteratorName="currDEdge">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[currDEdge.target/]">
+                          <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
