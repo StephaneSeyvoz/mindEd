@@ -67,6 +67,50 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </subContainerMappings>
+          <subContainerMappings name="CompositeDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition/]" synchronizationLock="true" domainClass="adl.CompositeDefinition">
+            <borderedNodeMappings name="CompositeProvidedInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="CompositeRequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20SubComponent']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
+              <borderedNodeMappings name="sub_ProvidedInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::ProvidedInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+                </style>
+              </borderedNodeMappings>
+              <borderedNodeMappings name="sub_RequiredInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::RequiredInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+                </style>
+              </borderedNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" showIcon="false" labelExpression="[type->filter(adl::TypeReference).name + '\n' +name/]">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcHeight="2" labelSize="10" labelFormat="bold" showIcon="false" widthComputationExpression="" heightComputationExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcHeight="2" labelSize="10" labelFormat="bold" showIcon="false" widthComputationExpression="" heightComputationExpression="">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -111,13 +155,13 @@
           </style>
         </containerMappings>
         <toolSections name="ToolsSection" label="Tools Section">
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="NonDeletableSubComponentInterface" label="Non-Deletable SubComponent Interfaces" precondition="[false/]">
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="The [false/] precondition enforces that the &quot;delete&quot; action will never allow us to modify the Definition of a sub-component transitively (since it can be shared with other sub-components)." name="NonDeletableSubComponentInterface" label="Non-Deletable SubComponent Interfaces" precondition="[false/]">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete SubComponent">
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="We refine the default inferred behaviour that did not work, so as for the framework to know what exactly to remove from the model and what to only delete from the view (not the model).&#xD;&#xA;We compute the bindings by doing:&#xD;&#xA;&quot;this component view -> for bordered nodes (= interfaces) -> eInverse->filter(DEdge) (which edges are related to the interfaces) -> for all edges -> target (which Mind binding corresponds in the model) -> remove&quot;&#xD;&#xA;We remove the bordered nodes only from the view (do not modify the component definition).&#xD;&#xA;We finally remove the component instance from the model." name="Delete SubComponent">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -137,6 +181,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                   <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New Component instance" containerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container.oclAsType(adl:CompositeDefinition)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adl.SubComponentDefinition" referenceName="elements">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newInstance"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
