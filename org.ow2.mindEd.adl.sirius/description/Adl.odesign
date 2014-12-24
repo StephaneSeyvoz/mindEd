@@ -45,7 +45,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20SubComponent']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
+          <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20SubComponent']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" doubleClickDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DoubleClickSubComponent']" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
             <borderedNodeMappings name="sub_ProvidedInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::ProvidedInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -214,6 +214,17 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="targetParent" valueExpression="[targetView.eContainer()->asSequence()->first().oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(adl::SubComponentDefinition)/]"/>
                     </subModelOperations>
                   </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="DoubleClickSubComponent" mappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(adl::SubComponentDefinition).type.oclAsType(adl::ArchitectureDefinition).eContainer(adl::AdlFile)/]">
+                  <subModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
