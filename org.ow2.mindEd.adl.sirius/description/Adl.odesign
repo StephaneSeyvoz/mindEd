@@ -167,7 +167,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView/]">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
                   <subModelOperations xsi:type="tool_1:For" expression="[ownedBorderedNodes/]" iteratorName="currBorderedNode">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[currBorderedNode/]">
                       <subModelOperations xsi:type="tool_1:For" expression="[currBorderedNode.eInverse()->filter(DEdge)/]" iteratorName="currDEdge">
@@ -185,7 +185,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New Component instance" containerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New SubComponent" containerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -193,6 +193,26 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adl.SubComponentDefinition" referenceName="elements">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newInstance"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="ABOUT FILTERING:&#xD;&#xA;All filter types (used as a cast, could also be with .oclAsType(...)) have been found by debugging the interpreter stack.&#xD;&#xA;As a reminder for places to put breakpoints at, import the org.eclipse.sirius module source, then, set them at:&#xD;&#xA;- org.eclipse.sirius.business.internal.logger.RuntimeLoggerInterpreterImpl#executeTask:114&#xD;&#xA;- org.eclipse.sirius.business.internal.logger.RuntimeLoggerInterpreterImpl#evaluateEObject:144 (description = your ContextChange operator, and result = result of the query)&#xD;&#xA;The main issue with the Interpreter is that is doesn't handle Query results such as Bag, since it's not an EObject.&#xD;&#xA;See:&#xD;&#xA;- org.eclipse.sirius.business.internal.helper.task.operations.ChangeContextTask#execute:61 call to evaluateEObject, that leads to&#xD;&#xA;- org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter#evaluateEObject:667 coerceValue call (that returns null for a Bag)&#xD;&#xA;See also:&#xD;&#xA;https://www.eclipse.org/forums/index.php/t/839689/&#xD;&#xA;Important note: the Set sourceParent and Set targetParent final actions have been computed having removed the filters since the types were not accessible there (do not know why though) and no result was returned !&#xD;&#xA;Additional note: The &quot;org.eclipse.sirius.business.api.action.printVariables&quot; external Java action (use as extension point ID) exists to debug VSMs as well." name="New Binding" edgeMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@edgeMappings[name='SimpleBindingDefinition']">
+            <sourceVariable name="sourceSemantic"/>
+            <targetVariable name="targetSemantic"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sourceView">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self->filter(DNode).eContainer()->filter(DContainer)->asSequence()->first().oclAsType(DSemanticDecorator).target/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer().oclAsType(adl::CompositeDefinition)/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adl.BindingDefinition" referenceName="elements">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceInterface" valueExpression="[sourceSemantic.oclAsType(adl::HostedInterfaceDefinition)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="targetInterface" valueExpression="[targetSemantic.oclAsType(adl::HostedInterfaceDefinition)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceParent" valueExpression="[sourceView.eContainer()->asSequence()->first().oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(adl::SubComponentDefinition)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="targetParent" valueExpression="[targetView.eContainer()->asSequence()->first().oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(adl::SubComponentDefinition)/]"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
