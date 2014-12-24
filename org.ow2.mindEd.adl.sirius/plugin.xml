@@ -40,4 +40,10 @@
          </filter>
       </objectContribution>
    </extension>
+   
+   <extension point="org.eclipse.sirius.diagram.ui.styleConfigurationProvider">
+   	 <styleConfigurationProvider providerClass="org.ow2.mindEd.adl.sirius.style.ArchDiagStyleConfigurationProvider" />
+   </extension>
+   
+   
 </plugin>
