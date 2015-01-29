@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.ow2.mindEd.adl.sirius.Activator"
+               id="org.ow2.mindEd.adl.sirius"
+	       name="Adl">
+    </component>
+  </extension>
+  <extension point="org.eclipse.ui.editors">
+  	<editor id="org.ow2.mindEd.adl.sirius.editors.ArchitectureDiagramEditor"
+       name="Architecture Diagram Editor"
+       extensions="adl"
+       launcher="org.ow2.mindEd.adl.sirius.editors.ArchitectureDiagramEditor">
+   </editor>
+  </extension>
+  <extension point="org.eclipse.ui.editors">
+  	<editor id="org.ow2.mindEd.adl.sirius.editors.InternalDependencyMatrixEditor"
+       name="Internal Dependencies Matrix Editor"
+       extensions="adl"
+       launcher="org.ow2.mindEd.adl.sirius.editors.InternalDependencyMatrixEditor">
+   </editor>
+  </extension>
+  <extension point="org.eclipse.ui.popupMenus">
+  	<objectContribution
+  		adaptable="true"
+  		objectClass="org.eclipse.core.resources.IProject"
+  		nameFilter="*"
+  		id="org.ow2.mindEd.adl.sirius.editors.ViewProjectRelations">
+         <action
+         	label="Show Mind type relations diagram"
+         	class="org.ow2.mindEd.adl.sirius.editors.ProjectRelationsEditorAction"
+         	menubarPath="additions"
+         	enablesFor="+"
+         	id="org.ow2.mindEd.adl.sirius.editors.ProjectRelationsEditorAction">
+         </action>
+         <filter
+            name="projectNature"
+            value="org.ow2.mindEd.ide.core.nature">
+         </filter>
+      </objectContribution>
+   </extension>
+</plugin>

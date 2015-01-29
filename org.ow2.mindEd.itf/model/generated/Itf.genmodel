@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ow2.mindEd.itf/src-gen" editDirectory="/org.ow2.mindEd.itf.edit/src"
+    editorDirectory="/org.ow2.mindEd.itf.editor/src" modelPluginID="org.ow2.mindEd.itf"
+    forceOverwrite="true" modelName="Itf" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.itf.edit"
+    editorPluginID="org.ow2.mindEd.itf.editor" runtimeVersion="2.10">
+  <genPackages prefix="Itf" basePackage="org.ow2.mindEd" disposableProviderFactory="true"
+      fileExtensions="itf" ecorePackage="Itf.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Itf.ecore#//TypeQualifier">
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeQualifier/const"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeQualifier/volatile"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Itf.ecore#//TypeSpecifier">
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/void"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/char"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/short"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/int"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/long"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/float"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/double"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/signed"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/unsigned"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/string"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/int8_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/uint8_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/int16_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/uint16_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/int32_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/uint32_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/int64_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/uint64_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/intptr_t"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//TypeSpecifier/uintptr_t"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Itf.ecore#//ParameterQualifier">
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//ParameterQualifier/in"/>
+      <genEnumLiterals ecoreEnumLiteral="Itf.ecore#//ParameterQualifier/out"/>
+    </genEnums>
+    <genClasses ecoreClass="Itf.ecore#//ItfFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ItfFile/includes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ItfFile/constant"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ItfFile/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ItfFile/interface"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//TypeDefinition"/>
+    <genClasses ecoreClass="Itf.ecore#//TypedefSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//TypedefSpecification/qualifedType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//TypedefSpecification/dec"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//QualifiedTypeSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//QualifiedTypeSpecification/typeQualifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//QualifiedTypeSpecification/typeSpec"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//TypeSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//TypeSpecification/typeDefName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//TypeSpecification/typeSpecifier"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//StructOrUnionSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//StructOrUnionSpecification/struct"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//StructOrUnionSpecification/id"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//StructOrUnionDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//StructOrUnionDefinition/structMember"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//StructorUnionReference"/>
+    <genClasses ecoreClass="Itf.ecore#//StructMember">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//StructMember/annotationsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//StructMember/qualType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//StructMember/dec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//StructMember/constExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//EnumSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//EnumSpecification/id"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//EnumDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//EnumDefinition/enumMemberList"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//EnumReference"/>
+    <genClasses ecoreClass="Itf.ecore#//EnumMemberList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//EnumMemberList/enumMember"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//EnumMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//EnumMember/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//EnumMember/constExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//Declarators">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Declarators/dec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Declarators/declaratorList"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//Declarator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Declarator/pointer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Declarator/dc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Declarator/dec"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//QualifiedPointerSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//QualifiedPointerSpecification/typeQualifiers"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//DirectNamedDeclarator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//DirectNamedDeclarator/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//DirectNamedDeclarator/array"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//DirectAnonymousDeclarator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//DirectAnonymousDeclarator/array"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//ArraySpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//ArraySpecification/unspecifiedSize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ArraySpecification/fixedSize"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//ConstantDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//ConstantDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ConstantDefinition/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//InterfaceDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//InterfaceDefinition/annotationsList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//InterfaceDefinition/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Itf.ecore#//InterfaceDefinition/fqn2"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//InterfaceDefinition/methodDef"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//MethodDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//MethodDefinition/annotationsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//MethodDefinition/qualifiedTypeSpec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//MethodDefinition/pointerSpecification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//MethodDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//MethodDefinition/ParameterList"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//ParameterList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ParameterList/params"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//Parameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Parameter/annotationsList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//Parameter/ParameterQualifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Parameter/qualifiedTypeSpec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Parameter/dec"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//IncludeDirective">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//IncludeDirective/importedURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//IncludeDirective/includeID"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//AnnotationsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AnnotationsList/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//Annotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//Annotation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//Annotation/annotationParametersList"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//AnnotationValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//AnnotationValuePair/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AnnotationValuePair/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//AnnotationValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//AnnotationValue/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AnnotationValue/arrayValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//ArrayAnnotationValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ArrayAnnotationValue/values"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//ConstantExpression"/>
+    <genClasses ecoreClass="Itf.ecore#//LogicalOrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//LogicalOrExpression/leftExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//LogicalOrExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//LogicalAndExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//LogicalAndExpression/leftExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//LogicalAndExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//OrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//OrExpression/leftExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//OrExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//XorExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//XorExpression/leftExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//XorExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//AndExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AndExpression/leftExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AndExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//ShiftExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ShiftExpression/leftExpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//ShiftExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//ShiftExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//AdditiveExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AdditiveExpression/leftExpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//AdditiveExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//AdditiveExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//MulExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//MulExpression/leftExpr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//MulExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//MulExpression/rightExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//CastExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//CastExpression/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//CastExpression/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//CastExpression/unaryExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//UnaryExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//UnaryExpression/unaryExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Itf.ecore#//UnaryExpression/primaryExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Itf.ecore#//PrimaryExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Itf.ecore#//PrimaryExpression/literal"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

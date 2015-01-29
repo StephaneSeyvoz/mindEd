@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MindEd Interface Xtext UI Plugin
+Bundle-Vendor: Partenaire Minalogic
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.ow2.mindEd.itf.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.ow2.mindEd.itf;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare,
+ org.ow2.mindEd.ide,
+ org.ow2.mindEd.ide.model,
+ org.eclipse.cdt.core,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib,
+ org.ow2.mindEd.itf,
+ org.ow2.mindEd.validation
+Export-Package: org.ow2.mindEd.ui.quickfix,
+ org.ow2.mindEd.ui.contentassist,
+ org.ow2.mindEd.ui.contentassist.antlr,
+ org.ow2.mindEd.ui.internal
+Bundle-Activator: org.ow2.mindEd.ui.internal.ItfActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

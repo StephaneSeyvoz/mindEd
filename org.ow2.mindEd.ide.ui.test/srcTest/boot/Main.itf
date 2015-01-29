@@ -1,5 +1,0 @@
-interface boot.Main {
-  // .itf describe interfaces using a C-like language
-  
-  int main(int argc, char **argv);
-}

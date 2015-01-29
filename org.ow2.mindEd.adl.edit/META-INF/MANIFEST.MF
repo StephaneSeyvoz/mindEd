@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: MindEd Architecture EMF Edit
 Bundle-SymbolicName: org.ow2.mindEd.adl.edit;singleton:=true
-Bundle-Version: 0.2.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.ow2.mindEd.adl.provider.MindEditPlugin$Implementation
-Bundle-Vendor: %providerName
+Bundle-Activator: org.ow2.mindEd.adl.provider.AdlEditPlugin$Implementation
+Bundle-Vendor: Partenaire Minalogic
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.ow2.mindEd.adl.provider
 Require-Bundle: org.eclipse.core.runtime,
- org.ow2.mindEd.adl.model;visibility:=reexport;bundle-version="0.2.1",
+ org.ow2.mindEd.adl;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- org.ow2.mindEd.ide;bundle-version="0.2.1"
+ org.ow2.mindEd.itf;visibility:=reexport,
+ org.ow2.mindEd.itf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Import-Package: org.ow2.mindEd.ide.core

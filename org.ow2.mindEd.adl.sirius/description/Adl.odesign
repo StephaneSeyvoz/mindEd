@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Adl" version="8.1.0">
+  <ownedViewpoints name="AdlViewpoint" modelFileExtension="adl">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ArchitectureDiagram" label="Architecture Diagram" domainClass="adl.AdlFile">
+      <metamodel href="../../org.ow2.mindEd.adl/model/generated/Adl.ecore#/"/>
+      <metamodel href="../../org.ow2.mindEd.itf/model/generated/Itf.ecore#/"/>
+      <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
+      <defaultLayer name="DefaultLayer">
+        <edgeMappings name="SimpleBindingDefinition" preconditionExpression="[sourceView.eInverse()->filter(DNodeContainer).target->includes(self.sourceParent) and targetView.eInverse()->filter(DNodeContainer).target->includes(self.targetParent)/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::BindingDefinition)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_RequiredInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@subContainerMappings[name='InheritedSubComponentDefinition']/@borderedNodeMappings[name='Inherited_sub_RequiredInterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_ProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@subContainerMappings[name='InheritedSubComponentDefinition']/@borderedNodeMappings[name='Inherited_sub_ProvidedInterfaceDefinition']" targetFinderExpression="[self.targetInterface/]" sourceFinderExpression="[self.sourceInterface/]" domainClass="adl.BindingDefinition" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ExportDelegationBindingDefinition" preconditionExpression="[targetView.eInverse()->filter(DNodeContainer).target->includes(self.targetParent)/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::BindingDefinition)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeProvidedInterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_ProvidedInterfaceDefinition']" targetFinderExpression="[self.targetInterface/]" sourceFinderExpression="[self.sourceInterface/]" domainClass="adl.BindingDefinition" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ImportDelegationBindingDefinition" preconditionExpression="[sourceView.eInverse()->filter(DNodeContainer).target->includes(self.sourceParent)/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::BindingDefinition)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_RequiredInterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeRequiredInterfaceDefinition']" targetFinderExpression="[self.targetInterface/]" sourceFinderExpression="[self.sourceInterface/]" domainClass="adl.BindingDefinition" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CompositeDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition/]" synchronizationLock="true" domainClass="adl.CompositeDefinition">
+          <borderedNodeMappings name="CompositeProvidedInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="CompositeRequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20SubComponent']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" doubleClickDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DoubleClickSubComponent']" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
+            <borderedNodeMappings name="sub_ProvidedInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::ProvidedInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="sub_RequiredInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::RequiredInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" showIcon="false" labelExpression="[type->filter(adl::TypeReference).name + '\n' +name/]">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="CompositeDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition/]" synchronizationLock="true" domainClass="adl.CompositeDefinition">
+            <borderedNodeMappings name="CompositeProvidedInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="CompositeRequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <subContainerMappings name="SubComponentDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20SubComponent']" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements/]" synchronizationLock="true" domainClass="adl.SubComponentDefinition">
+              <borderedNodeMappings name="sub_ProvidedInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::ProvidedInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+                </style>
+              </borderedNodeMappings>
+              <borderedNodeMappings name="sub_RequiredInterfaceDefinition" deletionDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NonDeletableSubComponentInterface']" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::RequiredInterfaceDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+                </style>
+              </borderedNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" showIcon="false" labelExpression="[type->filter(adl::TypeReference).name + '\n' +name/]">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcHeight="2" labelSize="10" labelFormat="bold" showIcon="false" widthComputationExpression="" heightComputationExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcHeight="2" labelSize="10" labelFormat="bold" showIcon="false" widthComputationExpression="" heightComputationExpression="">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="PrimitiveDefinition" semanticCandidatesExpression="[architectureDefinition/]" synchronizationLock="true" domainClass="adl.PrimitiveDefinition" childrenPresentation="List">
+          <borderedNodeMappings name="PrimitiveProvidedInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::PrimitiveDefinition)/]" synchronizationLock="true" domainClass="adl.ProvidedInterfaceDefinition">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="PrimitiveRequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::PrimitiveDefinition)/]" synchronizationLock="true" domainClass="adl.RequiredInterfaceDefinition">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="FileC" semanticCandidatesExpression="[self->filter(adl::PrimitiveDefinition).eAllContents()->filter(adl::FileC)/]" domainClass="adl.FileC">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[directory + name/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="InlineCodeC" semanticCandidatesExpression="[self->filter(adl::PrimitiveDefinition).eAllContents()->filter(adl::InlineCodeC)/]" domainClass="adl.InlineCodeC">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['inline code'/]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcHeight="2" labelSize="10" labelFormat="bold" showIcon="false" widthComputationExpression="" heightComputationExpression="">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="ToolsSection" label="Tools Section">
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="The [false/] precondition enforces that the &quot;delete&quot; action will never allow us to modify the Definition of a sub-component transitively (since it can be shared with other sub-components)." name="NonDeletableSubComponentInterface" label="Non-Deletable SubComponent Interfaces" precondition="[false/]">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="We refine the default inferred behaviour that did not work, so as for the framework to know what exactly to remove from the model and what to only delete from the view (not the model).&#xD;&#xA;We compute the bindings by doing:&#xD;&#xA;&quot;this component view -> for bordered nodes (= interfaces) -> eInverse->filter(DEdge) (which edges are related to the interfaces) -> for all edges -> target (which Mind binding corresponds in the model) -> remove&quot;&#xD;&#xA;We remove the bordered nodes only from the view (do not modify the component definition).&#xD;&#xA;We finally remove the component instance from the model." name="Delete SubComponent">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
+                  <subModelOperations xsi:type="tool_1:For" expression="[ownedBorderedNodes/]" iteratorName="currBorderedNode">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[currBorderedNode/]">
+                      <subModelOperations xsi:type="tool_1:For" expression="[currBorderedNode.eInverse()->filter(DEdge)/]" iteratorName="currDEdge">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[currDEdge.target/]">
+                          <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New SubComponent" containerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container.oclAsType(adl:CompositeDefinition)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adl.SubComponentDefinition" referenceName="elements">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newInstance"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="ABOUT FILTERING:&#xD;&#xA;All filter types (used as a cast, could also be with .oclAsType(...)) have been found by debugging the interpreter stack.&#xD;&#xA;As a reminder for places to put breakpoints at, import the org.eclipse.sirius module source, then, set them at:&#xD;&#xA;- org.eclipse.sirius.business.internal.logger.RuntimeLoggerInterpreterImpl#executeTask:114&#xD;&#xA;- org.eclipse.sirius.business.internal.logger.RuntimeLoggerInterpreterImpl#evaluateEObject:144 (description = your ContextChange operator, and result = result of the query)&#xD;&#xA;The main issue with the Interpreter is that is doesn't handle Query results such as Bag, since it's not an EObject.&#xD;&#xA;See:&#xD;&#xA;- org.eclipse.sirius.business.internal.helper.task.operations.ChangeContextTask#execute:61 call to evaluateEObject, that leads to&#xD;&#xA;- org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter#evaluateEObject:667 coerceValue call (that returns null for a Bag)&#xD;&#xA;See also:&#xD;&#xA;https://www.eclipse.org/forums/index.php/t/839689/&#xD;&#xA;Important note: the Set sourceParent and Set targetParent final actions have been computed having removed the filters since the types were not accessible there (do not know why though) and no result was returned !&#xD;&#xA;Additional note: The &quot;org.eclipse.sirius.business.api.action.printVariables&quot; external Java action (use as extension point ID) exists to debug VSMs as well." name="New Binding" edgeMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@edgeMappings[name='SimpleBindingDefinition']">
+            <sourceVariable name="sourceSemantic"/>
+            <targetVariable name="targetSemantic"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sourceView">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self->filter(DNode).eContainer()->filter(DContainer)->asSequence()->first().oclAsType(DSemanticDecorator).target/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer().oclAsType(adl::CompositeDefinition)/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="adl.BindingDefinition" referenceName="elements">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceInterface" valueExpression="[sourceSemantic.oclAsType(adl::HostedInterfaceDefinition)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="targetInterface" valueExpression="[targetSemantic.oclAsType(adl::HostedInterfaceDefinition)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceParent" valueExpression="[sourceView.eContainer()->asSequence()->first().oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(adl::SubComponentDefinition)/]"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="targetParent" valueExpression="[targetView.eContainer()->asSequence()->first().oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(adl::SubComponentDefinition)/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="DoubleClickSubComponent" mappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(adl::SubComponentDefinition).type.oclAsType(adl::ArchitectureDefinition).eContainer(adl::AdlFile)/]">
+                  <subModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="InheritanceLayer" label="Show Inherited Elements" activeByDefault="true">
+        <edgeMappings name="InheritedSimpleBindingDefinition" preconditionExpression="[sourceView.eInverse()->filter(DNodeContainer).target->includes(self.sourceParent) and targetView.eInverse()->filter(DNodeContainer).target->includes(self.targetParent)/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::BindingDefinition)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@subContainerMappings[name='InheritedSubComponentDefinition']/@borderedNodeMappings[name='Inherited_sub_RequiredInterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@subContainerMappings[name='InheritedSubComponentDefinition']/@borderedNodeMappings[name='Inherited_sub_ProvidedInterfaceDefinition']" targetFinderExpression="[self.targetInterface/]" sourceFinderExpression="[self.sourceInterface/]" domainClass="adl.BindingDefinition" useDomainElement="true">
+          <style lineStyle="dash" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InheritedExportDelegationBindingDefinition" preconditionExpression="[targetView.eInverse()->filter(DNodeContainer).target->includes(self.targetParent)/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::BindingDefinition)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@borderedNodeMappings[name='InheritedCompositeProvidedInterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@subContainerMappings[name='InheritedSubComponentDefinition']/@borderedNodeMappings[name='Inherited_sub_ProvidedInterfaceDefinition']" targetFinderExpression="[self.targetInterface/]" sourceFinderExpression="[self.sourceInterface/]" domainClass="adl.BindingDefinition" useDomainElement="true">
+          <style lineStyle="dash" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InheritedImportDelegationBindingDefinition" preconditionExpression="[sourceView.eInverse()->filter(DNodeContainer).target->includes(self.sourceParent)/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::BindingDefinition)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@subContainerMappings[name='InheritedSubComponentDefinition']/@borderedNodeMappings[name='Inherited_sub_RequiredInterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='InheritanceLayer']/@containerMappings[name='ExtendedCompositeDefinition']/@borderedNodeMappings[name='InheritedCompositeRequiredInterfaceDefinition']" targetFinderExpression="[self.targetInterface/]" sourceFinderExpression="[self.sourceInterface/]" domainClass="adl.BindingDefinition" useDomainElement="true">
+          <style lineStyle="dash" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ExtendedCompositeDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition/]" synchronizationLock="true" reusedBorderedNodeMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeRequiredInterfaceDefinition']" reusedContainerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']">
+          <borderedNodeMappings name="InheritedCompositeProvidedInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::ProvidedInterfaceDefinition)/]" domainClass="adl.ProvidedInterfaceDefinition">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="InheritedCompositeRequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::RequiredInterfaceDefinition)/]" domainClass="adl.RequiredInterfaceDefinition">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="InheritedSubComponentDefinition" preconditionExpression="[not container.superTypes->oclIsUndefined()/]" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::SubComponentDefinition)/]" domainClass="adl.SubComponentDefinition">
+            <borderedNodeMappings name="Inherited_sub_ProvidedInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::ProvidedInterfaceDefinition)/]" domainClass="adl.ProvidedInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="Inherited_sub_RequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition).eAllContents()->filter(adl::RequiredInterfaceDefinition)/]" domainClass="adl.RequiredInterfaceDefinition">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.signature->filter(itf::InterfaceDefinition).name + '\n' + name /]" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" showIcon="false" labelExpression="[type->filter(adl::TypeReference).name + '\n' +name/]">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </subContainerMappings>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="SubComponentsHierarchyDetail" label="Sub Components Details" reusedMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@edgeMappings[name='ExportDelegationBindingDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@edgeMappings[name='ImportDelegationBindingDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@edgeMappings[name='SimpleBindingDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeRequiredInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_ProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_RequiredInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="RootCompositeDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition/]" synchronizationLock="true" reusedBorderedNodeMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeRequiredInterfaceDefinition']" reusedContainerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="ImmediateSubComponentDefinition" semanticCandidatesExpression="[self->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition)/]" domainClass="adl.SubComponentDefinition" reusedBorderedNodeMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@borderedNodeMappings[name='CompositeRequiredInterfaceDefinition']" reusedContainerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+            <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="RecursiveSubComponentDefinition" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition)/]" domainClass="adl.SubComponentDefinition" reusedBorderedNodeMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_ProvidedInterfaceDefinition'] //@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']/@borderedNodeMappings[name='sub_RequiredInterfaceDefinition']" reusedContainerMappings="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@additionalLayers[name='SubComponentsHierarchyDetail']/@containerMappings[name='RootCompositeDefinition']/@subContainerMappings[name='ImmediateSubComponentDefinition']/@subContainerMappings[name='RecursiveSubComponentDefinition']" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ArchitectureDiagram']/@defaultLayer/@containerMappings[name='CompositeDefinition']/@subContainerMappings[name='SubComponentDefinition']">
+              <style xsi:type="style:FlatContainerStyleDescription" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" showIcon="false">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </subContainerMappings>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="InternalDependenciesMatrix" label="Internal Dependencies Matrix" domainClass="adl.AdlFile">
+      <ownedLineMappings name="ComponentsLine" domainClass="adl.SubComponentDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition)->addAll(self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::SubComponentDefinition))/]" headerLabelExpression="[name/]">
+        <ownedSubLines name="RequiredInterfacesLine" domainClass="adl.RequiredInterfaceDefinition" semanticCandidatesExpression="[self->filter(adl::SubComponentDefinition).type.eAllContents()->filter(adl::RequiredInterfaceDefinition)/]" headerLabelExpression="[name/]"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="ComponentsColumn" headerLabelExpression="[name/]" initialWidth="100" domainClass="adl.SubComponentDefinition" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition)->addAll(self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::SubComponentDefinition))/]"/>
+      <intersection name="ComponentsIntersection" lineMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='InternalDependenciesMatrix']/@ownedLineMappings[name='ComponentsLine']" columnMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='InternalDependenciesMatrix']/@ownedColumnMappings.0" useDomainClass="true" columnFinderExpression="[targetParent/]" lineFinderExpression="[sourceParent/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::BindingDefinition)->addAll(self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::BindingDefinition))/]" domainClass="adl.BindingDefinition">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultForeground>
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+        </defaultBackground>
+      </intersection>
+      <intersection name="SourceInterfaceToComponentIntersection" canEdit="[false/]" lineMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='InternalDependenciesMatrix']/@ownedLineMappings[name='ComponentsLine']/@ownedSubLines[name='RequiredInterfacesLine']" columnMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='InternalDependenciesMatrix']/@ownedColumnMappings.0" labelExpression="[targetInterface.name/]" useDomainClass="true" columnFinderExpression="[targetParent/]" lineFinderExpression="[sourceInterface/]" semanticCandidatesExpression="[self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition).elements->filter(adl::BindingDefinition)->addAll(self->filter(adl::AdlFile).architectureDefinition->filter(adl::CompositeDefinition)->closure(superTypes.targetArchDef->filter(adl::CompositeDefinition)).elements->filter(adl::BindingDefinition))/]" domainClass="adl.BindingDefinition">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultForeground>
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+        </defaultBackground>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ProjectRelationsDiagram" label="Project Relations Diagram" domainClass="adl.AdlFile">
+      <layout xsi:type="description_1:CompositeLayout"/>
+      <defaultLayer name="CompositionLayer">
+        <nodeMappings name="ComponentDefinition" synchronizationLock="true" domainClass="adl.ArchitectureDefinition">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Contains" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition)/]">
+          <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Inheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).superTypes.targetArchDef/]">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
