@@ -405,46 +405,79 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ProjectRelationsDiagram" label="Project Relations Diagram" domainClass="adl.AdlFile">
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="CompositionLayer">
-        <nodeMappings name="ComponentDefinition" synchronizationLock="true" domainClass="adl.ArchitectureDefinition">
+        <nodeMappings name="Definition" synchronizationLock="true" domainClass="adl.ArchitectureDefinition">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Contains" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition)/]">
+        <edgeMappings name="Contains" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).elements->filter(adl::SubComponentDefinition).type->filter(adl::ArchitectureDefinition)/]">
           <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CompositeInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).superTypes.targetArchDef/]">
+        <edgeMappings name="CompositeInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetFinderExpression="[self->filter(adl::CompositeDefinition).superTypes.targetArchDef/]">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PrimitiveInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::PrimitiveDefinition).superTypes.targetArchDef/]">
+        <edgeMappings name="PrimitiveInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetFinderExpression="[self->filter(adl::PrimitiveDefinition).superTypes.targetArchDef/]">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="TypeInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='ComponentDefinition']" targetFinderExpression="[self->filter(adl::TypeDefinition).superTypes.targetArchDef/]">
+        <edgeMappings name="TypeInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetFinderExpression="[self->filter(adl::TypeDefinition).superTypes.targetArchDef/]">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
       </defaultLayer>
+      <additionalLayers name="Interface Relations">
+        <nodeMappings name="InterfaceDefinition" domainClass="itf.InterfaceDefinition">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="InterfaceInheritance" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@additionalLayers[name='Interface%20Relations']/@nodeMappings[name='InterfaceDefinition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@additionalLayers[name='Interface%20Relations']/@nodeMappings[name='InterfaceDefinition']" targetFinderExpression="[self->filter(itf::InterfaceDefinition).fqn2/]">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InterfaceRealization_Primitive" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@additionalLayers[name='Interface%20Relations']/@nodeMappings[name='InterfaceDefinition']" targetFinderExpression="[self->filter(adl::PrimitiveDefinition).elements->filter(adl::ProvidedInterfaceDefinition).signature/]">
+          <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription iconPath="provides">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InterfaceRequirement_Primitive" preconditionExpression="[not self->filter(adl::CompositeDefinition).superTypes->oclIsUndefined()/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@defaultLayer/@nodeMappings[name='Definition']" targetMapping="//@ownedViewpoints[name='AdlViewpoint']/@ownedRepresentations[name='ProjectRelationsDiagram']/@additionalLayers[name='Interface%20Relations']/@nodeMappings[name='InterfaceDefinition']" targetFinderExpression="[self->filter(adl::PrimitiveDefinition).elements->filter(adl::RequiredInterfaceDefinition).signature/]">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription iconPath="provides">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </additionalLayers>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
