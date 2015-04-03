@@ -2,7 +2,7 @@
 <feature
       id="org.ow2.mindEd.feature"
       label="%featureName"
-      version="0.8.6.3"
+      version="0.8.6.7"
       provider-name="%providerName">
 
    <description>
@@ -96,14 +96,17 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui" match="perfect"/>
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.ow2.mindEd.adl" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.ow2.mindEd.adl.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius"/>
       <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
       <import plugin="org.eclipse.sirius.ui"/>
       <import plugin="org.eclipse.sirius.diagram"/>
       <import plugin="org.eclipse.sirius.diagram.sequence"/>
+      <import plugin="org.ow2.mindEd.adl.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.10.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.editor.table" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.table.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.diagram.ui" version="2.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
