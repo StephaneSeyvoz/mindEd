@@ -36,6 +36,7 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import plugin="org.eclipse.xtext" version="2.5.3.v201402240820" match="greaterOrEqual"/>
       <import plugin="org.eclipse.cdt.core"/>
       <import plugin="org.eclipse.cdt.make.core"/>
+      <import plugin="org.eclipse.cdt.make.ui"/>
       <import plugin="org.eclipse.cdt.managedbuilder.core"/>
       <import plugin="org.eclipse.cdt.managedbuilder.ui"/>
       <import plugin="org.eclipse.core.commands"/>
@@ -79,12 +80,14 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.ow2.mindEd.ide" version="0.2.1" match="greaterOrEqual"/>
       <import plugin="org.ow2.mindEd.ide.editor" version="0.2.1" match="greaterOrEqual"/>
+      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
+      <import plugin="org.ow2.mindEd.itf" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.eclipse.core.runtime" version="3.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.105.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.xbase.lib" match="perfect"/>
-      <import plugin="org.eclipse.xtext.junit4"/>
-      <import plugin="org.hamcrest.core"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui.shared" match="perfect"/>
@@ -92,16 +95,15 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
       <import plugin="org.eclipse.xtext.common.types.ui"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui" match="perfect"/>
       <import plugin="org.eclipse.compare"/>
-      <import plugin="org.eclipse.cdt.make.ui"/>
-      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.ow2.mindEd.idt" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.ow2.mindEd.idt.ui" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.ow2.mindEd.itf" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.ow2.mindEd.itf.ui" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime" version="3.9.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui" version="3.105.0" match="greaterOrEqual"/>
-      <import plugin="org.ow2.mindEd.adl.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.ow2.mindEd.adl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.ow2.mindEd.adl.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
+      <import plugin="org.eclipse.sirius.ui"/>
+      <import plugin="org.eclipse.sirius.diagram"/>
+      <import plugin="org.eclipse.sirius.diagram.sequence"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.10.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -189,13 +191,6 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
          unpack="false"/>
 
    <plugin
-         id="org.ow2.mindEd.adl.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.ow2.mindEd.adl.ui"
          download-size="0"
          install-size="0"
@@ -210,13 +205,6 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
          unpack="false"/>
 
    <plugin
-         id="org.ow2.mindEd.idt.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.ow2.mindEd.idt.ui"
          download-size="0"
          install-size="0"
@@ -225,13 +213,6 @@ Ce faisant, et avec l’appui des financements publics pour supporter le surcoû
 
    <plugin
          id="org.ow2.mindEd.itf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.ow2.mindEd.itf.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"
