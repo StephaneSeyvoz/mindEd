@@ -17,10 +17,10 @@ import org.ow2.mindEd.adl.ConstantValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.ConstantValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

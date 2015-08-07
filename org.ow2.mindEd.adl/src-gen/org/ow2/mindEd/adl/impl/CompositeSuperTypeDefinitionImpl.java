@@ -13,8 +13,6 @@ import org.ow2.mindEd.adl.CompositeSuperTypeDefinition;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Composite Super Type Definition</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

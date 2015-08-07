@@ -50,7 +50,7 @@ public class AdlSwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
+   * @param ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -185,6 +185,28 @@ public class AdlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION:
+      {
+        OutputFlowInterfaceDefinition outputFlowInterfaceDefinition = (OutputFlowInterfaceDefinition)theEObject;
+        T result = caseOutputFlowInterfaceDefinition(outputFlowInterfaceDefinition);
+        if (result == null) result = caseHostedInterfaceDefinition(outputFlowInterfaceDefinition);
+        if (result == null) result = caseCompositeElement(outputFlowInterfaceDefinition);
+        if (result == null) result = casePrimitiveElement(outputFlowInterfaceDefinition);
+        if (result == null) result = caseElement(outputFlowInterfaceDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdlPackage.INPUT_FLOW_INTERFACE_DEFINITION:
+      {
+        InputFlowInterfaceDefinition inputFlowInterfaceDefinition = (InputFlowInterfaceDefinition)theEObject;
+        T result = caseInputFlowInterfaceDefinition(inputFlowInterfaceDefinition);
+        if (result == null) result = caseHostedInterfaceDefinition(inputFlowInterfaceDefinition);
+        if (result == null) result = caseCompositeElement(inputFlowInterfaceDefinition);
+        if (result == null) result = casePrimitiveElement(inputFlowInterfaceDefinition);
+        if (result == null) result = caseElement(inputFlowInterfaceDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AdlPackage.TYPE_REFERENCE:
       {
         TypeReference typeReference = (TypeReference)theEObject;
@@ -300,13 +322,6 @@ public class AdlSwitch<T> extends Switch<T>
         T result = caseDataDefinition(dataDefinition);
         if (result == null) result = casePrimitiveElement(dataDefinition);
         if (result == null) result = caseElement(dataDefinition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AdlPackage.FILE_C:
-      {
-        FileC fileC = (FileC)theEObject;
-        T result = caseFileC(fileC);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -575,6 +590,38 @@ public class AdlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Output Flow Interface Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Output Flow Interface Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOutputFlowInterfaceDefinition(OutputFlowInterfaceDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Input Flow Interface Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Input Flow Interface Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInputFlowInterfaceDefinition(InputFlowInterfaceDefinition object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Type Reference</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -810,22 +857,6 @@ public class AdlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDataDefinition(DataDefinition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>File C</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>File C</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFileC(FileC object)
   {
     return null;
   }

@@ -77,6 +77,8 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
       case AdlPackage.HOSTED_INTERFACE_DEFINITION: return createHostedInterfaceDefinition();
       case AdlPackage.PROVIDED_INTERFACE_DEFINITION: return createProvidedInterfaceDefinition();
       case AdlPackage.REQUIRED_INTERFACE_DEFINITION: return createRequiredInterfaceDefinition();
+      case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION: return createOutputFlowInterfaceDefinition();
+      case AdlPackage.INPUT_FLOW_INTERFACE_DEFINITION: return createInputFlowInterfaceDefinition();
       case AdlPackage.TYPE_REFERENCE: return createTypeReference();
       case AdlPackage.SUB_COMPONENT_DEFINITION: return createSubComponentDefinition();
       case AdlPackage.ELEMENT: return createElement();
@@ -92,7 +94,6 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
       case AdlPackage.ATTRIBUTE_DEFINITION: return createAttributeDefinition();
       case AdlPackage.IMPLEMENTATION_DEFINITION: return createImplementationDefinition();
       case AdlPackage.DATA_DEFINITION: return createDataDefinition();
-      case AdlPackage.FILE_C: return createFileC();
       case AdlPackage.INLINE_CODE_C: return createInlineCodeC();
       case AdlPackage.ANNOTATIONS_LIST: return createAnnotationsList();
       case AdlPackage.ANNOTATION: return createAnnotation();
@@ -246,6 +247,28 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
   {
     RequiredInterfaceDefinitionImpl requiredInterfaceDefinition = new RequiredInterfaceDefinitionImpl();
     return requiredInterfaceDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OutputFlowInterfaceDefinition createOutputFlowInterfaceDefinition()
+  {
+    OutputFlowInterfaceDefinitionImpl outputFlowInterfaceDefinition = new OutputFlowInterfaceDefinitionImpl();
+    return outputFlowInterfaceDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InputFlowInterfaceDefinition createInputFlowInterfaceDefinition()
+  {
+    InputFlowInterfaceDefinitionImpl inputFlowInterfaceDefinition = new InputFlowInterfaceDefinitionImpl();
+    return inputFlowInterfaceDefinition;
   }
 
   /**
@@ -411,17 +434,6 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
   {
     DataDefinitionImpl dataDefinition = new DataDefinitionImpl();
     return dataDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FileC createFileC()
-  {
-    FileCImpl fileC = new FileCImpl();
-    return fileC;
   }
 
   /**

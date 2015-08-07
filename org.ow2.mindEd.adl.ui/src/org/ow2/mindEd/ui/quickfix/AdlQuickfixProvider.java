@@ -15,7 +15,7 @@ import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
-import org.ow2.mindEd.adl.FileC;
+//import org.ow2.mindEd.adl.FileC;
 import org.ow2.mindEd.adl.FormalArgument;
 import org.ow2.mindEd.adl.HostedInterfaceDefinition;
 import org.ow2.mindEd.adl.ImportDefinition;
@@ -265,142 +265,144 @@ public class AdlQuickfixProvider extends DefaultQuickfixProvider {
 
 		}*/
 
-	@Fix(AdlValidator.UNKNOWN_RELATIVE_SOURCE_FILE)
-	public void createSourceOrDataRelativeFile(final Issue issue,
-			IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 
-				"Create source " + issue.getData()[0] + issue.getData()[1],
-				"Create the associated source file " + issue.getData()[0] + issue.getData()[1],
-						null,
-						new ISemanticModification() {
-			public void apply(EObject element,
-					IModificationContext context) throws Exception {
-				
-				if (element instanceof FileC){
-
-					FileC fileC = (FileC) element;
-
-					// used to find parent ArchitectureDefinition
-					EObject eObject = fileC;
-
-					// Find host ArchitectureDefinition
-					ArchitectureDefinition parentAdl = null;
-					// parent adl is...?
-					while (!(eObject instanceof ArchitectureDefinition))
-						eObject = eObject.eContainer();
-					parentAdl = (ArchitectureDefinition) eObject;
-
-					// We need the package C template serialization (top comment)
-					URI uri = parentAdl.eResource().getURI();
-					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);
-
-					// We need the IProject to know if we should use the C or C++ template
-					MindLibOrProject libOrProj = pack.getRootsrc().getProject();
-					IProject currProj = null;
-					if (libOrProj instanceof MindProject)
-						currProj = ((MindProject) libOrProj).getProject(); 
-
-					// we remove the .c extension to be compliant with the MindIdeCore C template creator
-					String sourceFileName = issue.getData()[1];
-					int i = sourceFileName.lastIndexOf(".");
-					
-					String extension = sourceFileName.substring(i, sourceFileName.length());
-					
-					String sourceFileNameNoExt = sourceFileName.substring(0, i);
-
-					if (CDTUtil.getCCNature(currProj))
-						MindIdeCore.createCCTemplate(
-								pack,
-								parentAdl.getName(),
-								sourceFileNameNoExt,
-								extension,
-								null);
-					else
-						MindIdeCore.createCTemplate(
-								pack,
-								parentAdl.getName(),
-								sourceFileNameNoExt,
-								extension,
-								null);
-					
-					// Make the framework believe we made a modification so it updates the ADL editor
-					IXtextDocument xtextDocument = context.getXtextDocument();
-					xtextDocument.replace(issue.getOffset(), issue.getLength(), sourceFileName);
-				}
-			}
-		});
-	}
-	
-	@Fix(AdlValidator.UNKNOWN_ABSOLUTE_SOURCE_FILE)
-	public void createSourceOrDataAbsoluteFile(final Issue issue,
-			IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 
-				"Create source " + issue.getData()[0] + issue.getData()[1] + " in current source path",
-				"Create the associated source file " + issue.getData()[0] + issue.getData()[1] + " in current source path",
-						null,
-						new ISemanticModification() {
-			public void apply(EObject element,
-					IModificationContext context) throws Exception {
-				
-				if (element instanceof FileC){
-
-					FileC fileC = (FileC) element;
-
-					// used to find parent ArchitectureDefinition
-					EObject eObject = fileC;
-
-					// Find host ArchitectureDefinition
-					ArchitectureDefinition parentAdl = null;
-					// parent adl is...?
-					while (!(eObject instanceof ArchitectureDefinition))
-						eObject = eObject.eContainer();
-					parentAdl = (ArchitectureDefinition) eObject;
-
-					// We need the package C template serialization (top comment)
-					URI adlURI = parentAdl.eResource().getURI();
-					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(adlURI);
-
-					// We need the IProject to know if we should use the C or C++ template
-					MindLibOrProject libOrProj = pack.getRootsrc().getProject();
-					IProject currProj = null;
-					if (libOrProj instanceof MindProject)
-						currProj = ((MindProject) libOrProj).getProject(); 
-
-					// Create a IFile object from current source path with our absolute source/data fileC
-					IFolder srcPathFolder = MindIdeCore.getResource(pack.getRootsrc());
-					
-					IFolder subFolder = srcPathFolder.getFolder(issue.getData()[0]);
-					if (!subFolder.exists())
-						subFolder.create(true, false, new NullProgressMonitor());
-					
-					// we remove the .c extension to be compliant with the MindIdeCore C template creator
-					String sourceFileName = issue.getData()[1];
-					int i = sourceFileName.lastIndexOf(".");
-					
-					String extension = sourceFileName.substring(i, sourceFileName.length());
-					
-					String sourceFileNameNoExt = sourceFileName.substring(0, i);
-
-					if (CDTUtil.getCCNature(currProj))
-						MindIdeCore.createCCTemplate(
-								subFolder,
-								sourceFileNameNoExt,
-								parentAdl.getName(),
-								extension,
-								null);
-					else
-						MindIdeCore.createCTemplate(
-								subFolder,
-								sourceFileNameNoExt,
-								parentAdl.getName(),
-								extension,
-								null);
-					
-					// Make the framework believe we made a modification so it updates the ADL editor
-					IXtextDocument xtextDocument = context.getXtextDocument();
-					xtextDocument.replace(issue.getOffset(), issue.getLength(), sourceFileName);
-				}
-			}
-		});
-	}
+// TODO: FIXME: Restore according to the latest grammar evolutions !
+//
+//	@Fix(AdlValidator.UNKNOWN_RELATIVE_SOURCE_FILE)
+//	public void createSourceOrDataRelativeFile(final Issue issue,
+//			IssueResolutionAcceptor acceptor) {
+//		acceptor.accept(issue, 
+//				"Create source " + issue.getData()[0] + issue.getData()[1],
+//				"Create the associated source file " + issue.getData()[0] + issue.getData()[1],
+//						null,
+//						new ISemanticModification() {
+//			public void apply(EObject element,
+//					IModificationContext context) throws Exception {
+//				
+//				if (element instanceof FileC){
+//
+//					FileC fileC = (FileC) element;
+//
+//					// used to find parent ArchitectureDefinition
+//					EObject eObject = fileC;
+//
+//					// Find host ArchitectureDefinition
+//					ArchitectureDefinition parentAdl = null;
+//					// parent adl is...?
+//					while (!(eObject instanceof ArchitectureDefinition))
+//						eObject = eObject.eContainer();
+//					parentAdl = (ArchitectureDefinition) eObject;
+//
+//					// We need the package C template serialization (top comment)
+//					URI uri = parentAdl.eResource().getURI();
+//					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(uri);
+//
+//					// We need the IProject to know if we should use the C or C++ template
+//					MindLibOrProject libOrProj = pack.getRootsrc().getProject();
+//					IProject currProj = null;
+//					if (libOrProj instanceof MindProject)
+//						currProj = ((MindProject) libOrProj).getProject(); 
+//
+//					// we remove the .c extension to be compliant with the MindIdeCore C template creator
+//					String sourceFileName = issue.getData()[1];
+//					int i = sourceFileName.lastIndexOf(".");
+//					
+//					String extension = sourceFileName.substring(i, sourceFileName.length());
+//					
+//					String sourceFileNameNoExt = sourceFileName.substring(0, i);
+//
+//					if (CDTUtil.getCCNature(currProj))
+//						MindIdeCore.createCCTemplate(
+//								pack,
+//								parentAdl.getName(),
+//								sourceFileNameNoExt,
+//								extension,
+//								null);
+//					else
+//						MindIdeCore.createCTemplate(
+//								pack,
+//								parentAdl.getName(),
+//								sourceFileNameNoExt,
+//								extension,
+//								null);
+//					
+//					// Make the framework believe we made a modification so it updates the ADL editor
+//					IXtextDocument xtextDocument = context.getXtextDocument();
+//					xtextDocument.replace(issue.getOffset(), issue.getLength(), sourceFileName);
+//				}
+//			}
+//		});
+//	}
+//	
+//	@Fix(AdlValidator.UNKNOWN_ABSOLUTE_SOURCE_FILE)
+//	public void createSourceOrDataAbsoluteFile(final Issue issue,
+//			IssueResolutionAcceptor acceptor) {
+//		acceptor.accept(issue, 
+//				"Create source " + issue.getData()[0] + issue.getData()[1] + " in current source path",
+//				"Create the associated source file " + issue.getData()[0] + issue.getData()[1] + " in current source path",
+//						null,
+//						new ISemanticModification() {
+//			public void apply(EObject element,
+//					IModificationContext context) throws Exception {
+//				
+//				if (element instanceof FileC){
+//
+//					FileC fileC = (FileC) element;
+//
+//					// used to find parent ArchitectureDefinition
+//					EObject eObject = fileC;
+//
+//					// Find host ArchitectureDefinition
+//					ArchitectureDefinition parentAdl = null;
+//					// parent adl is...?
+//					while (!(eObject instanceof ArchitectureDefinition))
+//						eObject = eObject.eContainer();
+//					parentAdl = (ArchitectureDefinition) eObject;
+//
+//					// We need the package C template serialization (top comment)
+//					URI adlURI = parentAdl.eResource().getURI();
+//					MindPackage pack = ModelToProjectUtil.INSTANCE.getCurrentPackage(adlURI);
+//
+//					// We need the IProject to know if we should use the C or C++ template
+//					MindLibOrProject libOrProj = pack.getRootsrc().getProject();
+//					IProject currProj = null;
+//					if (libOrProj instanceof MindProject)
+//						currProj = ((MindProject) libOrProj).getProject(); 
+//
+//					// Create a IFile object from current source path with our absolute source/data fileC
+//					IFolder srcPathFolder = MindIdeCore.getResource(pack.getRootsrc());
+//					
+//					IFolder subFolder = srcPathFolder.getFolder(issue.getData()[0]);
+//					if (!subFolder.exists())
+//						subFolder.create(true, false, new NullProgressMonitor());
+//					
+//					// we remove the .c extension to be compliant with the MindIdeCore C template creator
+//					String sourceFileName = issue.getData()[1];
+//					int i = sourceFileName.lastIndexOf(".");
+//					
+//					String extension = sourceFileName.substring(i, sourceFileName.length());
+//					
+//					String sourceFileNameNoExt = sourceFileName.substring(0, i);
+//
+//					if (CDTUtil.getCCNature(currProj))
+//						MindIdeCore.createCCTemplate(
+//								subFolder,
+//								sourceFileNameNoExt,
+//								parentAdl.getName(),
+//								extension,
+//								null);
+//					else
+//						MindIdeCore.createCTemplate(
+//								subFolder,
+//								sourceFileNameNoExt,
+//								parentAdl.getName(),
+//								extension,
+//								null);
+//					
+//					// Make the framework believe we made a modification so it updates the ADL editor
+//					IXtextDocument xtextDocument = context.getXtextDocument();
+//					xtextDocument.replace(issue.getOffset(), issue.getLength(), sourceFileName);
+//				}
+//			}
+//		});
+//	}
 }

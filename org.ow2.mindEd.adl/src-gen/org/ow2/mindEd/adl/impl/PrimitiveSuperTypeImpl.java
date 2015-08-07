@@ -29,11 +29,11 @@ import org.ow2.mindEd.adl.PrimitiveSuperTypeDefinition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.PrimitiveSuperTypeImpl#getTargetArchDef <em>Target Arch Def</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.PrimitiveSuperTypeImpl#getArgumentsList <em>Arguments List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

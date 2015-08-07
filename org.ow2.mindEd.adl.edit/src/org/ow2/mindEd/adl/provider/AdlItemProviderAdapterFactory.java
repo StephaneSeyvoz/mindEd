@@ -371,6 +371,52 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.OutputFlowInterfaceDefinition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OutputFlowInterfaceDefinitionItemProvider outputFlowInterfaceDefinitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.ow2.mindEd.adl.OutputFlowInterfaceDefinition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOutputFlowInterfaceDefinitionAdapter() {
+		if (outputFlowInterfaceDefinitionItemProvider == null) {
+			outputFlowInterfaceDefinitionItemProvider = new OutputFlowInterfaceDefinitionItemProvider(this);
+		}
+
+		return outputFlowInterfaceDefinitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InputFlowInterfaceDefinitionItemProvider inputFlowInterfaceDefinitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInputFlowInterfaceDefinitionAdapter() {
+		if (inputFlowInterfaceDefinitionItemProvider == null) {
+			inputFlowInterfaceDefinitionItemProvider = new InputFlowInterfaceDefinitionItemProvider(this);
+		}
+
+		return inputFlowInterfaceDefinitionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.TypeReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -716,29 +762,6 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.FileC} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FileCItemProvider fileCItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.ow2.mindEd.adl.FileC}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFileCAdapter() {
-		if (fileCItemProvider == null) {
-			fileCItemProvider = new FileCItemProvider(this);
-		}
-
-		return fileCItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.InlineCodeC} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1011,6 +1034,8 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 		if (hostedInterfaceDefinitionItemProvider != null) hostedInterfaceDefinitionItemProvider.dispose();
 		if (providedInterfaceDefinitionItemProvider != null) providedInterfaceDefinitionItemProvider.dispose();
 		if (requiredInterfaceDefinitionItemProvider != null) requiredInterfaceDefinitionItemProvider.dispose();
+		if (outputFlowInterfaceDefinitionItemProvider != null) outputFlowInterfaceDefinitionItemProvider.dispose();
+		if (inputFlowInterfaceDefinitionItemProvider != null) inputFlowInterfaceDefinitionItemProvider.dispose();
 		if (typeReferenceItemProvider != null) typeReferenceItemProvider.dispose();
 		if (subComponentDefinitionItemProvider != null) subComponentDefinitionItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
@@ -1026,7 +1051,6 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 		if (attributeDefinitionItemProvider != null) attributeDefinitionItemProvider.dispose();
 		if (implementationDefinitionItemProvider != null) implementationDefinitionItemProvider.dispose();
 		if (dataDefinitionItemProvider != null) dataDefinitionItemProvider.dispose();
-		if (fileCItemProvider != null) fileCItemProvider.dispose();
 		if (inlineCodeCItemProvider != null) inlineCodeCItemProvider.dispose();
 		if (annotationsListItemProvider != null) annotationsListItemProvider.dispose();
 		if (annotationItemProvider != null) annotationItemProvider.dispose();

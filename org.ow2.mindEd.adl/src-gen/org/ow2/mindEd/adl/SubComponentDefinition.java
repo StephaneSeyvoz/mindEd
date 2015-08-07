@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.SubComponentDefinition#getType <em>Type</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.SubComponentDefinition#getTemplatesList <em>Templates List</em>}</li>
@@ -19,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.ow2.mindEd.adl.SubComponentDefinition#getBodyAnnotationsList <em>Body Annotations List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.SubComponentDefinition#getBody <em>Body</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getSubComponentDefinition()
  * @model

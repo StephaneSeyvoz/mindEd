@@ -175,6 +175,16 @@ public class CompositeDefinitionItemProvider extends ArchitectureDefinitionItemP
 		newChildDescriptors.add
 			(createChildParameter
 				(AdlPackage.Literals.COMPOSITE_DEFINITION__ELEMENTS,
+				 AdlFactory.eINSTANCE.createOutputFlowInterfaceDefinition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdlPackage.Literals.COMPOSITE_DEFINITION__ELEMENTS,
+				 AdlFactory.eINSTANCE.createInputFlowInterfaceDefinition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdlPackage.Literals.COMPOSITE_DEFINITION__ELEMENTS,
 				 AdlFactory.eINSTANCE.createCompositeElement()));
 
 		newChildDescriptors.add

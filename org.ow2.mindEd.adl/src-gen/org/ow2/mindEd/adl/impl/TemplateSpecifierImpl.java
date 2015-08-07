@@ -19,10 +19,10 @@ import org.ow2.mindEd.adl.TypeDefinition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.TemplateSpecifierImpl#getTypeReference <em>Type Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

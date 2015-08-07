@@ -3,8 +3,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ow2.mindEd.adl/src-gen" editDirectory="/org.ow2.mindEd.adl.edit/src"
     editorDirectory="/org.ow2.mindEd.adl.editor/src" modelPluginID="org.ow2.mindEd.adl"
     forceOverwrite="true" modelName="Adl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="org.ow2.mindEd.adl.edit"
-    editorPluginID="org.ow2.mindEd.adl.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.ow2.mindEd.adl.edit"
+    editorPluginID="org.ow2.mindEd.adl.editor" runtimeVersion="2.11" usedGenPackages="platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.genmodel#//itf">
   <genPackages prefix="Adl" basePackage="org.ow2.mindEd" disposableProviderFactory="true"
       fileExtensions="adl" ecorePackage="Adl.ecore#/">
     <genClasses ecoreClass="Adl.ecore#//AdlFile">
@@ -46,14 +46,23 @@
     <genClasses ecoreClass="Adl.ecore#//PrimitiveSuperTypeDefinition"/>
     <genClasses ecoreClass="Adl.ecore#//HostedInterfaceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/role"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//HostedInterfaceDefinition/signature"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/collection"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//HostedInterfaceDefinition/collectionsize"/>
     </genClasses>
-    <genClasses ecoreClass="Adl.ecore#//ProvidedInterfaceDefinition"/>
+    <genClasses ecoreClass="Adl.ecore#//ProvidedInterfaceDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//ProvidedInterfaceDefinition/signature"/>
+    </genClasses>
     <genClasses ecoreClass="Adl.ecore#//RequiredInterfaceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//RequiredInterfaceDefinition/optional"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//RequiredInterfaceDefinition/signature"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//OutputFlowInterfaceDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//OutputFlowInterfaceDefinition/signature"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//InputFlowInterfaceDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InputFlowInterfaceDefinition/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InputFlowInterfaceDefinition/signature"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//TypeReference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//TypeReference/name"/>
@@ -106,23 +115,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ArgumentDefinition/argumentList"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//AttributeDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AttributeDefinition/headerFile"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/cType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/value"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//ImplementationDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImplementationDefinition/fileC"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ImplementationDefinition/cFile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImplementationDefinition/inlineCcode"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//DataDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//DataDefinition/fileC"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//DataDefinition/cFile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//DataDefinition/inlineCcode"/>
-    </genClasses>
-    <genClasses ecoreClass="Adl.ecore#//FileC">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FileC/directory"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FileC/name"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//InlineCodeC">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InlineCodeC/codeC"/>

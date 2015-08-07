@@ -56,14 +56,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveSuperTypeDefinition"/>
   <eClassifiers xsi:type="ecore:EClass" name="HostedInterfaceDefinition" eSuperTypes="#//Element #//CompositeElement #//PrimitiveElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="signature" eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//InterfaceDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collectionsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProvidedInterfaceDefinition" eSuperTypes="#//HostedInterfaceDefinition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvidedInterfaceDefinition" eSuperTypes="#//HostedInterfaceDefinition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signature" eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//InterfaceDefinition"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RequiredInterfaceDefinition" eSuperTypes="#//HostedInterfaceDefinition">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signature" eType="ecore:EClass platform:/resource/org.ow2.mindEd.itf/model/generated/Itf.ecore#//InterfaceDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputFlowInterfaceDefinition" eSuperTypes="#//HostedInterfaceDefinition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputFlowInterfaceDefinition" eSuperTypes="#//HostedInterfaceDefinition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeReference">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -127,28 +136,19 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeDefinition" eSuperTypes="#//PrimitiveElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="headerFile" eType="#//FileC"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ImplementationDefinition" eSuperTypes="#//PrimitiveElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fileC" eType="#//FileC"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inlineCcode" eType="#//InlineCodeC"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDefinition" eSuperTypes="#//PrimitiveElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fileC" eType="#//FileC"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inlineCcode" eType="#//InlineCodeC"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FileC">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="directory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InlineCodeC">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="codeC" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

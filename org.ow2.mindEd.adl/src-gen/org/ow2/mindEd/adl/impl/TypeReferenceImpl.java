@@ -18,10 +18,10 @@ import org.ow2.mindEd.adl.TypeReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.TypeReferenceImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -48,34 +48,11 @@ public class AttributeDefinitionItemProvider extends PrimitiveElementItemProvide
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCTypePropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the CType feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AttributeDefinition_cType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_cType_feature", "_UI_AttributeDefinition_type"),
-				 AdlPackage.Literals.ATTRIBUTE_DEFINITION__CTYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -145,36 +122,6 @@ public class AttributeDefinitionItemProvider extends PrimitiveElementItemProvide
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(AdlPackage.Literals.ATTRIBUTE_DEFINITION__HEADER_FILE);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
 	 * This returns AttributeDefinition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,14 +159,10 @@ public class AttributeDefinitionItemProvider extends PrimitiveElementItemProvide
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AttributeDefinition.class)) {
-			case AdlPackage.ATTRIBUTE_DEFINITION__CTYPE:
 			case AdlPackage.ATTRIBUTE_DEFINITION__TYPE:
 			case AdlPackage.ATTRIBUTE_DEFINITION__NAME:
 			case AdlPackage.ATTRIBUTE_DEFINITION__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case AdlPackage.ATTRIBUTE_DEFINITION__HEADER_FILE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -235,11 +178,6 @@ public class AttributeDefinitionItemProvider extends PrimitiveElementItemProvide
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AdlPackage.Literals.ATTRIBUTE_DEFINITION__HEADER_FILE,
-				 AdlFactory.eINSTANCE.createFileC()));
 	}
 
 }

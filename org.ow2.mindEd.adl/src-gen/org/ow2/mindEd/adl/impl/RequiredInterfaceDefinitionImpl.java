@@ -5,11 +5,14 @@ package org.ow2.mindEd.adl.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.RequiredInterfaceDefinition;
+
+import org.ow2.mindEd.itf.InterfaceDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,10 +20,11 @@ import org.ow2.mindEd.adl.RequiredInterfaceDefinition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.RequiredInterfaceDefinitionImpl#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.impl.RequiredInterfaceDefinitionImpl#getSignature <em>Signature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -45,6 +49,16 @@ public class RequiredInterfaceDefinitionImpl extends HostedInterfaceDefinitionIm
    * @ordered
    */
   protected boolean optional = OPTIONAL_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSignature()
+   * @generated
+   * @ordered
+   */
+  protected InterfaceDefinition signature;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +109,49 @@ public class RequiredInterfaceDefinitionImpl extends HostedInterfaceDefinitionIm
    * <!-- end-user-doc -->
    * @generated
    */
+  public InterfaceDefinition getSignature()
+  {
+    if (signature != null && signature.eIsProxy())
+    {
+      InternalEObject oldSignature = (InternalEObject)signature;
+      signature = (InterfaceDefinition)eResolveProxy(oldSignature);
+      if (signature != oldSignature)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdlPackage.REQUIRED_INTERFACE_DEFINITION__SIGNATURE, oldSignature, signature));
+      }
+    }
+    return signature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InterfaceDefinition basicGetSignature()
+  {
+    return signature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSignature(InterfaceDefinition newSignature)
+  {
+    InterfaceDefinition oldSignature = signature;
+    signature = newSignature;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.REQUIRED_INTERFACE_DEFINITION__SIGNATURE, oldSignature, signature));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +159,9 @@ public class RequiredInterfaceDefinitionImpl extends HostedInterfaceDefinitionIm
     {
       case AdlPackage.REQUIRED_INTERFACE_DEFINITION__OPTIONAL:
         return isOptional();
+      case AdlPackage.REQUIRED_INTERFACE_DEFINITION__SIGNATURE:
+        if (resolve) return getSignature();
+        return basicGetSignature();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,6 +178,9 @@ public class RequiredInterfaceDefinitionImpl extends HostedInterfaceDefinitionIm
     {
       case AdlPackage.REQUIRED_INTERFACE_DEFINITION__OPTIONAL:
         setOptional((Boolean)newValue);
+        return;
+      case AdlPackage.REQUIRED_INTERFACE_DEFINITION__SIGNATURE:
+        setSignature((InterfaceDefinition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +199,9 @@ public class RequiredInterfaceDefinitionImpl extends HostedInterfaceDefinitionIm
       case AdlPackage.REQUIRED_INTERFACE_DEFINITION__OPTIONAL:
         setOptional(OPTIONAL_EDEFAULT);
         return;
+      case AdlPackage.REQUIRED_INTERFACE_DEFINITION__SIGNATURE:
+        setSignature((InterfaceDefinition)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +218,8 @@ public class RequiredInterfaceDefinitionImpl extends HostedInterfaceDefinitionIm
     {
       case AdlPackage.REQUIRED_INTERFACE_DEFINITION__OPTIONAL:
         return optional != OPTIONAL_EDEFAULT;
+      case AdlPackage.REQUIRED_INTERFACE_DEFINITION__SIGNATURE:
+        return signature != null;
     }
     return super.eIsSet(featureID);
   }

@@ -21,10 +21,10 @@ import org.ow2.mindEd.adl.Element;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.ElementImpl#getAnnotationsList <em>Annotations List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

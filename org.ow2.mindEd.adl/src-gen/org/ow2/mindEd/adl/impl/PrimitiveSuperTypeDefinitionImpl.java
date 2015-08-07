@@ -13,8 +13,6 @@ import org.ow2.mindEd.adl.PrimitiveSuperTypeDefinition;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Primitive Super Type Definition</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

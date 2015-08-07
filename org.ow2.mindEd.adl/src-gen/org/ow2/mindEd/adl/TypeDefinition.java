@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.TypeDefinition#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.TypeDefinition#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getTypeDefinition()
  * @model

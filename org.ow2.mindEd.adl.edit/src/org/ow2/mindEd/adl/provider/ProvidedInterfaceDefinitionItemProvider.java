@@ -9,8 +9,10 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.ProvidedInterfaceDefinition;
 
 /**
@@ -41,8 +43,31 @@ public class ProvidedInterfaceDefinitionItemProvider extends HostedInterfaceDefi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addSignaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Signature feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSignaturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProvidedInterfaceDefinition_signature_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProvidedInterfaceDefinition_signature_feature", "_UI_ProvidedInterfaceDefinition_type"),
+				 AdlPackage.Literals.PROVIDED_INTERFACE_DEFINITION__SIGNATURE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

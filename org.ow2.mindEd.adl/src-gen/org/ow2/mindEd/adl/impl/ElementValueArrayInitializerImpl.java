@@ -24,10 +24,10 @@ import org.ow2.mindEd.adl.ElementValueArrayInitializer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.ElementValueArrayInitializerImpl#getValues <em>Values</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

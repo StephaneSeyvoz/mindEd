@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.Annotation#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.Annotation#getAnnotationElements <em>Annotation Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getAnnotation()
  * @model

@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.ow2.mindEd.adl.AdlPackage;
-import org.ow2.mindEd.adl.FileC;
 import org.ow2.mindEd.adl.ImplementationDefinition;
 import org.ow2.mindEd.adl.InlineCodeC;
 
@@ -21,25 +20,35 @@ import org.ow2.mindEd.adl.InlineCodeC;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- *   <li>{@link org.ow2.mindEd.adl.impl.ImplementationDefinitionImpl#getFileC <em>File C</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.impl.ImplementationDefinitionImpl#getCFile <em>CFile</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.ImplementationDefinitionImpl#getInlineCcode <em>Inline Ccode</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class ImplementationDefinitionImpl extends PrimitiveElementImpl implements ImplementationDefinition
 {
   /**
-   * The cached value of the '{@link #getFileC() <em>File C</em>}' containment reference.
+   * The default value of the '{@link #getCFile() <em>CFile</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFileC()
+   * @see #getCFile()
    * @generated
    * @ordered
    */
-  protected FileC fileC;
+  protected static final String CFILE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCFile() <em>CFile</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCFile()
+   * @generated
+   * @ordered
+   */
+  protected String cFile = CFILE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getInlineCcode() <em>Inline Ccode</em>}' containment reference.
@@ -77,9 +86,9 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public FileC getFileC()
+  public String getCFile()
   {
-    return fileC;
+    return cFile;
   }
 
   /**
@@ -87,37 +96,12 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFileC(FileC newFileC, NotificationChain msgs)
+  public void setCFile(String newCFile)
   {
-    FileC oldFileC = fileC;
-    fileC = newFileC;
+    String oldCFile = cFile;
+    cFile = newCFile;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C, oldFileC, newFileC);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setFileC(FileC newFileC)
-  {
-    if (newFileC != fileC)
-    {
-      NotificationChain msgs = null;
-      if (fileC != null)
-        msgs = ((InternalEObject)fileC).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C, null, msgs);
-      if (newFileC != null)
-        msgs = ((InternalEObject)newFileC).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C, null, msgs);
-      msgs = basicSetFileC(newFileC, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C, newFileC, newFileC));
+      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.IMPLEMENTATION_DEFINITION__CFILE, oldCFile, cFile));
   }
 
   /**
@@ -178,8 +162,6 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
   {
     switch (featureID)
     {
-      case AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C:
-        return basicSetFileC(null, msgs);
       case AdlPackage.IMPLEMENTATION_DEFINITION__INLINE_CCODE:
         return basicSetInlineCcode(null, msgs);
     }
@@ -196,8 +178,8 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
   {
     switch (featureID)
     {
-      case AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C:
-        return getFileC();
+      case AdlPackage.IMPLEMENTATION_DEFINITION__CFILE:
+        return getCFile();
       case AdlPackage.IMPLEMENTATION_DEFINITION__INLINE_CCODE:
         return getInlineCcode();
     }
@@ -214,8 +196,8 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
   {
     switch (featureID)
     {
-      case AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C:
-        setFileC((FileC)newValue);
+      case AdlPackage.IMPLEMENTATION_DEFINITION__CFILE:
+        setCFile((String)newValue);
         return;
       case AdlPackage.IMPLEMENTATION_DEFINITION__INLINE_CCODE:
         setInlineCcode((InlineCodeC)newValue);
@@ -234,8 +216,8 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
   {
     switch (featureID)
     {
-      case AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C:
-        setFileC((FileC)null);
+      case AdlPackage.IMPLEMENTATION_DEFINITION__CFILE:
+        setCFile(CFILE_EDEFAULT);
         return;
       case AdlPackage.IMPLEMENTATION_DEFINITION__INLINE_CCODE:
         setInlineCcode((InlineCodeC)null);
@@ -254,12 +236,29 @@ public class ImplementationDefinitionImpl extends PrimitiveElementImpl implement
   {
     switch (featureID)
     {
-      case AdlPackage.IMPLEMENTATION_DEFINITION__FILE_C:
-        return fileC != null;
+      case AdlPackage.IMPLEMENTATION_DEFINITION__CFILE:
+        return CFILE_EDEFAULT == null ? cFile != null : !CFILE_EDEFAULT.equals(cFile);
       case AdlPackage.IMPLEMENTATION_DEFINITION__INLINE_CCODE:
         return inlineCcode != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (cFile: ");
+    result.append(cFile);
+    result.append(')');
+    return result.toString();
   }
 
 } //ImplementationDefinitionImpl

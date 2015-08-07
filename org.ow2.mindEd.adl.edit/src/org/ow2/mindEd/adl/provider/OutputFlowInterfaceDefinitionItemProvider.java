@@ -9,43 +9,28 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.ow2.mindEd.adl.AdlPackage;
-import org.ow2.mindEd.adl.FileC;
+import org.ow2.mindEd.adl.OutputFlowInterfaceDefinition;
 
 /**
- * This is the item provider adapter for a {@link org.ow2.mindEd.adl.FileC} object.
+ * This is the item provider adapter for a {@link org.ow2.mindEd.adl.OutputFlowInterfaceDefinition} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class FileCItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class OutputFlowInterfaceDefinitionItemProvider extends HostedInterfaceDefinitionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FileCItemProvider(AdapterFactory adapterFactory) {
+	public OutputFlowInterfaceDefinitionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,26 +45,25 @@ public class FileCItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDirectoryPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
+			addSignaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Directory feature.
+	 * This adds a property descriptor for the Signature feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDirectoryPropertyDescriptor(Object object) {
+	protected void addSignaturePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_FileC_directory_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FileC_directory_feature", "_UI_FileC_type"),
-				 AdlPackage.Literals.FILE_C__DIRECTORY,
+				 getString("_UI_OutputFlowInterfaceDefinition_signature_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OutputFlowInterfaceDefinition_signature_feature", "_UI_OutputFlowInterfaceDefinition_type"),
+				 AdlPackage.Literals.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE,
 				 true,
 				 false,
 				 false,
@@ -89,36 +73,14 @@ public class FileCItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FileC_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FileC_name_feature", "_UI_FileC_type"),
-				 AdlPackage.Literals.FILE_C__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns FileC.gif.
+	 * This returns OutputFlowInterfaceDefinition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FileC"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OutputFlowInterfaceDefinition"));
 	}
 
 	/**
@@ -129,10 +91,10 @@ public class FileCItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FileC)object).getName();
+		String label = ((OutputFlowInterfaceDefinition)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_FileC_type") :
-			getString("_UI_FileC_type") + " " + label;
+			getString("_UI_OutputFlowInterfaceDefinition_type") :
+			getString("_UI_OutputFlowInterfaceDefinition_type") + " " + label;
 	}
 	
 
@@ -147,9 +109,8 @@ public class FileCItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(FileC.class)) {
-			case AdlPackage.FILE_C__DIRECTORY:
-			case AdlPackage.FILE_C__NAME:
+		switch (notification.getFeatureID(OutputFlowInterfaceDefinition.class)) {
+			case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -166,17 +127,6 @@ public class FileCItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return AdlEditPlugin.INSTANCE;
 	}
 
 }

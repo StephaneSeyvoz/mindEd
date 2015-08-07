@@ -164,8 +164,8 @@ public class AdlFormatter extends AbstractDeclarativeFormatter {
 	 * @param f
 	 */	private void formatAttributeDefinition(FormattingConfig c,
 			 AdlGrammarAccess f) {
-		 c.setLinewrap(0, 1, 2).after(f.getAttributeDefinitionAccess().getSemicolonKeyword_7());
-		 c.setNoSpace().before(f.getAttributeDefinitionAccess().getSemicolonKeyword_7());
+		 c.setLinewrap(0, 1, 2).after(f.getAttributeDefinitionAccess().getSemicolonKeyword_5());
+		 c.setNoSpace().before(f.getAttributeDefinitionAccess().getSemicolonKeyword_5());
 	 }
 
 	 /**

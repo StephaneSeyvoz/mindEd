@@ -10,6 +10,7 @@ package org.ow2.mindEd.adl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.BindingDefinition#getSourceParent <em>Source Parent</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.BindingDefinition#isIsSrcParentThis <em>Is Src Parent This</em>}</li>
@@ -20,7 +21,6 @@ package org.ow2.mindEd.adl;
  *   <li>{@link org.ow2.mindEd.adl.BindingDefinition#getTargetInterface <em>Target Interface</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.BindingDefinition#getTargetIndex <em>Target Index</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getBindingDefinition()
  * @model

@@ -30,12 +30,12 @@ import org.ow2.mindEd.adl.TemplateReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeSuperTypeImpl#getTargetArchDef <em>Target Arch Def</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeSuperTypeImpl#getTemplatesList <em>Templates List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeSuperTypeImpl#getArgumentsList <em>Arguments List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

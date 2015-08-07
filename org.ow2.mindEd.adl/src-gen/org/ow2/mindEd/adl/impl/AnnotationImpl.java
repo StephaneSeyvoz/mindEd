@@ -27,11 +27,11 @@ import org.ow2.mindEd.adl.AnnotationElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.AnnotationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.AnnotationImpl#getAnnotationElements <em>Annotation Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

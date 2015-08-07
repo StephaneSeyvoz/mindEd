@@ -13,8 +13,6 @@ import org.ow2.mindEd.adl.ElementValue;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Element Value</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -5,7 +5,7 @@ package org.ow2.mindEd.ui.outline;
 
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.ow2.mindEd.adl.DataDefinition;
-import org.ow2.mindEd.adl.FileC;
+//import org.ow2.mindEd.adl.FileC;
 import org.ow2.mindEd.adl.ImplementationDefinition;
 
 /**
@@ -14,16 +14,17 @@ import org.ow2.mindEd.adl.ImplementationDefinition;
  */
 public class AdlOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
-	// SSZ
-	// Forcing FileC Outline name, default took only the directory, which is an error.
-	protected Object _text(FileC fileC) {
-		String directory = "";
-		if (fileC.getDirectory() == null)
-			directory = "";
-		else
-			directory = fileC.getDirectory();
-		return directory + fileC.getName();
-	}
+// TODO: FIXME: Restore according to the latest grammar evolutions
+//	// SSZ
+//	// Forcing FileC Outline name, default took only the directory, which is an error.
+//	protected Object _text(FileC fileC) {
+//		String directory = "";
+//		if (fileC.getDirectory() == null)
+//			directory = "";
+//		else
+//			directory = fileC.getDirectory();
+//		return directory + fileC.getName();
+//	}
 
 	// SSZ
 	// Forcing ImplementationDefinition node name as "source" as the element can't be named in the grammar

@@ -2,6 +2,7 @@
  */
 package org.ow2.mindEd.adl;
 
+import org.ow2.mindEd.itf.InterfaceDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,10 +11,11 @@ package org.ow2.mindEd.adl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.RequiredInterfaceDefinition#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.RequiredInterfaceDefinition#getSignature <em>Signature</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getRequiredInterfaceDefinition()
  * @model
@@ -46,5 +48,31 @@ public interface RequiredInterfaceDefinition extends HostedInterfaceDefinition
    * @generated
    */
   void setOptional(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Signature</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Signature</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Signature</em>' reference.
+   * @see #setSignature(InterfaceDefinition)
+   * @see org.ow2.mindEd.adl.AdlPackage#getRequiredInterfaceDefinition_Signature()
+   * @model
+   * @generated
+   */
+  InterfaceDefinition getSignature();
+
+  /**
+   * Sets the value of the '{@link org.ow2.mindEd.adl.RequiredInterfaceDefinition#getSignature <em>Signature</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Signature</em>' reference.
+   * @see #getSignature()
+   * @generated
+   */
+  void setSignature(InterfaceDefinition value);
 
 } // RequiredInterfaceDefinition

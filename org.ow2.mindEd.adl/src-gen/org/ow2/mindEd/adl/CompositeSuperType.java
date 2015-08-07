@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.CompositeSuperType#getTargetArchDef <em>Target Arch Def</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.CompositeSuperType#getTemplatesList <em>Templates List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.CompositeSuperType#getArgumentsList <em>Arguments List</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getCompositeSuperType()
  * @model

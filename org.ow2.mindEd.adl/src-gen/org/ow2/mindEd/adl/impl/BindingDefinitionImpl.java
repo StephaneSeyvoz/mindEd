@@ -20,6 +20,7 @@ import org.ow2.mindEd.adl.SubComponentDefinition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.BindingDefinitionImpl#getSourceParent <em>Source Parent</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.BindingDefinitionImpl#isIsSrcParentThis <em>Is Src Parent This</em>}</li>
@@ -30,7 +31,6 @@ import org.ow2.mindEd.adl.SubComponentDefinition;
  *   <li>{@link org.ow2.mindEd.adl.impl.BindingDefinitionImpl#getTargetInterface <em>Target Interface</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.BindingDefinitionImpl#getTargetIndex <em>Target Index</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

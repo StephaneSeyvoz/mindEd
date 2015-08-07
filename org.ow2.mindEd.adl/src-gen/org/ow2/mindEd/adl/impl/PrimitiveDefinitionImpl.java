@@ -29,13 +29,13 @@ import org.ow2.mindEd.adl.PrimitiveSuperType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.PrimitiveDefinitionImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.PrimitiveDefinitionImpl#getCompositeFormalArgumentsList <em>Composite Formal Arguments List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.PrimitiveDefinitionImpl#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.PrimitiveDefinitionImpl#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

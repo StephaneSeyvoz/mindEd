@@ -11,8 +11,6 @@ import org.ow2.mindEd.adl.CompositeElement;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Composite Element</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

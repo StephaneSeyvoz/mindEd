@@ -18,10 +18,10 @@ import org.ow2.mindEd.adl.FormalArgument;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.FormalArgumentImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.PrimitiveDefinition#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.PrimitiveDefinition#getCompositeFormalArgumentsList <em>Composite Formal Arguments List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.PrimitiveDefinition#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.PrimitiveDefinition#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getPrimitiveDefinition()
  * @model

@@ -5,14 +5,11 @@ package org.ow2.mindEd.adl.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.HostedInterfaceDefinition;
-
-import org.ow2.mindEd.itf.InterfaceDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,14 +17,13 @@ import org.ow2.mindEd.itf.InterfaceDefinition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.HostedInterfaceDefinitionImpl#getRole <em>Role</em>}</li>
- *   <li>{@link org.ow2.mindEd.adl.impl.HostedInterfaceDefinitionImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.HostedInterfaceDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.HostedInterfaceDefinitionImpl#isCollection <em>Collection</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.HostedInterfaceDefinitionImpl#getCollectionsize <em>Collectionsize</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -52,16 +48,6 @@ public class HostedInterfaceDefinitionImpl extends ElementImpl implements Hosted
    * @ordered
    */
   protected String role = ROLE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSignature()
-   * @generated
-   * @ordered
-   */
-  protected InterfaceDefinition signature;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -172,49 +158,6 @@ public class HostedInterfaceDefinitionImpl extends ElementImpl implements Hosted
    * <!-- end-user-doc -->
    * @generated
    */
-  public InterfaceDefinition getSignature()
-  {
-    if (signature != null && signature.eIsProxy())
-    {
-      InternalEObject oldSignature = (InternalEObject)signature;
-      signature = (InterfaceDefinition)eResolveProxy(oldSignature);
-      if (signature != oldSignature)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AdlPackage.HOSTED_INTERFACE_DEFINITION__SIGNATURE, oldSignature, signature));
-      }
-    }
-    return signature;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InterfaceDefinition basicGetSignature()
-  {
-    return signature;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSignature(InterfaceDefinition newSignature)
-  {
-    InterfaceDefinition oldSignature = signature;
-    signature = newSignature;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.HOSTED_INTERFACE_DEFINITION__SIGNATURE, oldSignature, signature));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getName()
   {
     return name;
@@ -291,9 +234,6 @@ public class HostedInterfaceDefinitionImpl extends ElementImpl implements Hosted
     {
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__ROLE:
         return getRole();
-      case AdlPackage.HOSTED_INTERFACE_DEFINITION__SIGNATURE:
-        if (resolve) return getSignature();
-        return basicGetSignature();
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__NAME:
         return getName();
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__COLLECTION:
@@ -316,9 +256,6 @@ public class HostedInterfaceDefinitionImpl extends ElementImpl implements Hosted
     {
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__ROLE:
         setRole((String)newValue);
-        return;
-      case AdlPackage.HOSTED_INTERFACE_DEFINITION__SIGNATURE:
-        setSignature((InterfaceDefinition)newValue);
         return;
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__NAME:
         setName((String)newValue);
@@ -346,9 +283,6 @@ public class HostedInterfaceDefinitionImpl extends ElementImpl implements Hosted
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__ROLE:
         setRole(ROLE_EDEFAULT);
         return;
-      case AdlPackage.HOSTED_INTERFACE_DEFINITION__SIGNATURE:
-        setSignature((InterfaceDefinition)null);
-        return;
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -374,8 +308,6 @@ public class HostedInterfaceDefinitionImpl extends ElementImpl implements Hosted
     {
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__ROLE:
         return ROLE_EDEFAULT == null ? role != null : !ROLE_EDEFAULT.equals(role);
-      case AdlPackage.HOSTED_INTERFACE_DEFINITION__SIGNATURE:
-        return signature != null;
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AdlPackage.HOSTED_INTERFACE_DEFINITION__COLLECTION:

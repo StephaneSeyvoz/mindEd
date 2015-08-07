@@ -21,11 +21,11 @@ import org.ow2.mindEd.adl.ElementValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.AnnotationElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.AnnotationElementImpl#getElementValue <em>Element Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

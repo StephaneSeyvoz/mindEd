@@ -15,7 +15,6 @@ import org.ow2.mindEd.adl.CompositeDefinition;
 import org.ow2.mindEd.adl.CompositeSuperType;
 import org.ow2.mindEd.adl.CompositeSuperTypeDefinition;
 import org.ow2.mindEd.adl.DataDefinition;
-import org.ow2.mindEd.adl.FileC;
 import org.ow2.mindEd.adl.FormalArgument;
 import org.ow2.mindEd.adl.FormalArgumentsList;
 import org.ow2.mindEd.adl.ImplementationDefinition;
@@ -117,10 +116,6 @@ public class AdlLabelProvider extends DefaultEObjectLabelProvider {
 	// !
 	String image(TypeDefinition compositeDef) {
 		return "full/obj16/TypeBody.gif";
-	}
-
-	String image(FileC fileCDef) {
-		return "full/obj16/FileC.gif";
 	}
 
 	// !

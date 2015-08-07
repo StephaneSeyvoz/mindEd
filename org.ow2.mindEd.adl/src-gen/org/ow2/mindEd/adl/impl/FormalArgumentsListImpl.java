@@ -26,10 +26,10 @@ import org.ow2.mindEd.adl.FormalArgumentsList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.FormalArgumentsListImpl#getFormalArguments <em>Formal Arguments</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

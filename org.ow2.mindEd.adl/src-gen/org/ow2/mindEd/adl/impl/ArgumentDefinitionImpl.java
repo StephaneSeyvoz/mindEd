@@ -21,12 +21,12 @@ import org.ow2.mindEd.adl.ValueList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.ArgumentDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.ArgumentDefinitionImpl#getArgumentValue <em>Argument Value</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.ArgumentDefinitionImpl#getArgumentList <em>Argument List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

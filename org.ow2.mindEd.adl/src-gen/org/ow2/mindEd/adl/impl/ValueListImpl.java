@@ -21,10 +21,10 @@ import org.ow2.mindEd.adl.ValueList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.ValueListImpl#getMember <em>Member</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

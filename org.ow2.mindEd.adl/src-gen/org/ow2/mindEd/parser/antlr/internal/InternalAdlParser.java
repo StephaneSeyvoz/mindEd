@@ -22,66 +22,80 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalAdlParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_HEXADECIMAL_TYPE", "RULE_STRING", "RULE_CODE_C", "RULE_SL", "RULE_DOUBLE_LEFT_CURLY_BRACKETS", "RULE_DOUBLE_RIGHT_CURLY_BRACKETS", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "';'", "'.*'", "'composite'", "'<'", "','", "'>'", "'extends'", "'{'", "'}'", "'abstract'", "'primitive'", "'type'", "'('", "')'", "'provides'", "'as'", "'['", "']'", "'requires'", "'optional'", "'contains'", "'binds'", "'this'", "'.'", "'to'", "'conformsto'", "'STRUCT'", "'UNION'", "'ENUM'", "'+'", "'-'", "'null'", "'='", "'?'", "'attribute'", "':'", "'source'", "'data'", "'..'", "'@'", "'Override'", "'Singleton'", "'LDFlags'", "'CFlags'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_HEXADECIMAL_TYPE", "RULE_STRING", "RULE_CODE_C", "RULE_SL", "RULE_DOUBLE_LEFT_CURLY_BRACKETS", "RULE_DOUBLE_RIGHT_CURLY_BRACKETS", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "';'", "'.*'", "'composite'", "'<'", "','", "'>'", "'extends'", "'{'", "'}'", "'abstract'", "'primitive'", "'type'", "'('", "')'", "'provides'", "'as'", "'['", "']'", "'requires'", "'optional'", "'output'", "'input'", "':'", "'struct'", "'enum'", "'union'", "'contains'", "'binds'", "'this'", "'.'", "'to'", "'conformsto'", "'int'", "'string'", "'int8_t'", "'uint8_t'", "'int16_t'", "'uint16_t'", "'int32_t'", "'uint32_t'", "'int64_t'", "'uint64_t'", "'intptr_t'", "'uintptr_t'", "'+'", "'-'", "'null'", "'='", "'?'", "'attribute'", "'source'", "'data'", "'..'", "'@'", "'Override'", "'Singleton'", "'LDFlags'", "'CFlags'"
     };
-    public static final int RULE_ID=4;
-    public static final int RULE_HEXADECIMAL_TYPE=6;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=15;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int T__60=60;
-    public static final int EOF=-1;
+    public static final int T__50=50;
+    public static final int T__19=19;
+    public static final int T__59=59;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
     public static final int T__55=55;
     public static final int T__56=56;
-    public static final int T__19=19;
     public static final int T__57=57;
     public static final int T__58=58;
-    public static final int T__16=16;
     public static final int T__51=51;
     public static final int T__52=52;
-    public static final int T__18=18;
     public static final int T__53=53;
-    public static final int T__17=17;
     public static final int T__54=54;
-    public static final int T__59=59;
+    public static final int T__60=60;
+    public static final int T__61=61;
+    public static final int RULE_ID=4;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
     public static final int RULE_INT=5;
-    public static final int T__50=50;
-    public static final int RULE_DOUBLE_RIGHT_CURLY_BRACKETS=11;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int RULE_CODE_C=8;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int RULE_SL_COMMENT=13;
-    public static final int RULE_DOUBLE_LEFT_CURLY_BRACKETS=10;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int T__66=66;
+    public static final int RULE_HEXADECIMAL_TYPE=6;
     public static final int RULE_ML_COMMENT=12;
-    public static final int T__30=30;
-    public static final int T__31=31;
+    public static final int T__23=23;
+    public static final int T__67=67;
+    public static final int T__24=24;
+    public static final int T__68=68;
+    public static final int T__25=25;
+    public static final int T__69=69;
+    public static final int T__62=62;
+    public static final int T__63=63;
+    public static final int T__20=20;
+    public static final int T__64=64;
+    public static final int T__21=21;
+    public static final int T__65=65;
+    public static final int T__70=70;
+    public static final int T__71=71;
+    public static final int T__72=72;
     public static final int RULE_STRING=7;
-    public static final int T__32=32;
+    public static final int RULE_SL_COMMENT=13;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
-    public static final int RULE_SL=9;
+    public static final int RULE_DOUBLE_RIGHT_CURLY_BRACKETS=11;
+    public static final int T__73=73;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__74=74;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_DOUBLE_LEFT_CURLY_BRACKETS=10;
     public static final int RULE_WS=14;
+    public static final int RULE_SL=9;
+    public static final int RULE_ANY_OTHER=15;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int RULE_CODE_C=8;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -193,7 +207,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==56) ) {
+                if ( (LA1_0==70) ) {
                     int LA1_1 = input.LA(2);
 
                     if ( (synpred1_InternalAdl()) ) {
@@ -253,7 +267,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==56) ) {
+            if ( (LA2_0==70) ) {
                 alt2=1;
             }
             switch (alt2) {
@@ -606,7 +620,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==56) ) {
+            if ( (LA4_0==70) ) {
                 alt4=1;
             }
             switch (alt4) {
@@ -882,7 +896,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompositeDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:319:1: ruleCompositeDefinition returns [EObject current=null] : ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) ) )* otherlv_15= '}' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:319:1: ruleCompositeDefinition returns [EObject current=null] : ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) ) )* otherlv_15= '}' ) ;
     public final EObject ruleCompositeDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -914,15 +928,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         EObject lv_elements_14_4 = null;
 
+        EObject lv_elements_14_5 = null;
+
+        EObject lv_elements_14_6 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:322:28: ( ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) ) )* otherlv_15= '}' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:1: ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) ) )* otherlv_15= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:322:28: ( ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) ) )* otherlv_15= '}' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:1: ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) ) )* otherlv_15= '}' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:1: ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) ) )* otherlv_15= '}' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:2: () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) ) )* otherlv_15= '}'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:1: ( () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) ) )* otherlv_15= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:2: () otherlv_1= 'composite' ( (lv_name_2_0= ruleQualifiedName ) )? (otherlv_3= '<' ( ( (lv_templateSpecifiers_4_0= ruleTemplateSpecifier ) ) (otherlv_5= ',' ( (lv_templateSpecifiers_6_0= ruleTemplateSpecifier ) ) )* ) otherlv_7= '>' )? ( (lv_compositeFormalArgumentsList_8_0= ruleFormalArgumentsList ) )? (otherlv_9= 'extends' ( (lv_superTypes_10_0= ruleCompositeSuperType ) ) (otherlv_11= ',' ( (lv_superTypes_12_0= ruleCompositeSuperType ) ) )* )? otherlv_13= '{' ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) ) )* otherlv_15= '}'
             {
             // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:323:2: ()
             // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:324:2: 
@@ -1304,28 +1322,28 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_13, grammarAccess.getCompositeDefinitionAccess().getLeftCurlyBracketKeyword_6());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:468:1: ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) ) )*
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:468:1: ( ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) ) )*
             loop13:
             do {
                 int alt13=2;
                 int LA13_0 = input.LA(1);
 
-                if ( (LA13_0==31||LA13_0==35||(LA13_0>=37 && LA13_0<=38)||LA13_0==56) ) {
+                if ( (LA13_0==31||LA13_0==35||(LA13_0>=37 && LA13_0<=38)||(LA13_0>=43 && LA13_0<=44)||LA13_0==70) ) {
                     alt13=1;
                 }
 
 
                 switch (alt13) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:469:1: ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:469:1: ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:469:1: ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition ) )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:470:1: (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:469:1: ( (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:470:1: (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:470:1: (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition )
-            	    int alt12=4;
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:470:1: (lv_elements_14_1= ruleProvidedInterfaceDefinition | lv_elements_14_2= ruleRequiredInterfaceDefinition | lv_elements_14_3= ruleSubComponentDefinition | lv_elements_14_4= ruleBindingDefinition | lv_elements_14_5= ruleOutputFlowInterfaceDefinition | lv_elements_14_6= ruleInputFlowInterfaceDefinition )
+            	    int alt12=6;
             	    switch ( input.LA(1) ) {
-            	    case 56:
+            	    case 70:
             	        {
             	        int LA12_1 = input.LA(2);
 
@@ -1338,8 +1356,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	        else if ( (synpred15_InternalAdl()) ) {
             	            alt12=3;
             	        }
-            	        else if ( (true) ) {
+            	        else if ( (synpred16_InternalAdl()) ) {
             	            alt12=4;
+            	        }
+            	        else if ( (synpred17_InternalAdl()) ) {
+            	            alt12=5;
+            	        }
+            	        else if ( (true) ) {
+            	            alt12=6;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -1360,14 +1384,24 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	        alt12=2;
             	        }
             	        break;
-            	    case 37:
+            	    case 43:
             	        {
             	        alt12=3;
             	        }
             	        break;
-            	    case 38:
+            	    case 44:
             	        {
             	        alt12=4;
+            	        }
+            	        break;
+            	    case 37:
+            	        {
+            	        alt12=5;
+            	        }
+            	        break;
+            	    case 38:
+            	        {
+            	        alt12=6;
             	        }
             	        break;
             	    default:
@@ -1495,6 +1529,64 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             	            }
             	            break;
+            	        case 5 :
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:531:8: lv_elements_14_5= ruleOutputFlowInterfaceDefinition
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getCompositeDefinitionAccess().getElementsOutputFlowInterfaceDefinitionParserRuleCall_7_0_4()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_ruleCompositeDefinition1002);
+            	            lv_elements_14_5=ruleOutputFlowInterfaceDefinition();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getCompositeDefinitionRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"elements",
+            	                      		lv_elements_14_5, 
+            	                      		"OutputFlowInterfaceDefinition");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:546:8: lv_elements_14_6= ruleInputFlowInterfaceDefinition
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getCompositeDefinitionAccess().getElementsInputFlowInterfaceDefinitionParserRuleCall_7_0_5()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleInputFlowInterfaceDefinition_in_ruleCompositeDefinition1021);
+            	            lv_elements_14_6=ruleInputFlowInterfaceDefinition();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getCompositeDefinitionRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"elements",
+            	                      		lv_elements_14_6, 
+            	                      		"InputFlowInterfaceDefinition");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
 
             	    }
 
@@ -1510,7 +1602,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_15=(Token)match(input,25,FOLLOW_25_in_ruleCompositeDefinition999); if (state.failed) return current;
+            otherlv_15=(Token)match(input,25,FOLLOW_25_in_ruleCompositeDefinition1037); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_15, grammarAccess.getCompositeDefinitionAccess().getRightCurlyBracketKeyword_8());
@@ -1539,7 +1631,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitiveDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:546:1: entryRulePrimitiveDefinition returns [EObject current=null] : iv_rulePrimitiveDefinition= rulePrimitiveDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:576:1: entryRulePrimitiveDefinition returns [EObject current=null] : iv_rulePrimitiveDefinition= rulePrimitiveDefinition EOF ;
     public final EObject entryRulePrimitiveDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -1547,13 +1639,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:547:2: (iv_rulePrimitiveDefinition= rulePrimitiveDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:548:2: iv_rulePrimitiveDefinition= rulePrimitiveDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:577:2: (iv_rulePrimitiveDefinition= rulePrimitiveDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:578:2: iv_rulePrimitiveDefinition= rulePrimitiveDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrimitiveDefinitionRule()); 
             }
-            pushFollow(FOLLOW_rulePrimitiveDefinition_in_entryRulePrimitiveDefinition1035);
+            pushFollow(FOLLOW_rulePrimitiveDefinition_in_entryRulePrimitiveDefinition1073);
             iv_rulePrimitiveDefinition=rulePrimitiveDefinition();
 
             state._fsp--;
@@ -1561,7 +1653,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_rulePrimitiveDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveDefinition1045); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveDefinition1083); if (state.failed) return current;
 
             }
 
@@ -1579,7 +1671,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitiveDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:555:1: rulePrimitiveDefinition returns [EObject current=null] : ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) ) )* otherlv_11= '}' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:585:1: rulePrimitiveDefinition returns [EObject current=null] : ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) ) )* otherlv_11= '}' ) ;
     public final EObject rulePrimitiveDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -1607,18 +1699,22 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         EObject lv_elements_10_5 = null;
 
+        EObject lv_elements_10_6 = null;
+
+        EObject lv_elements_10_7 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:558:28: ( ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) ) )* otherlv_11= '}' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:559:1: ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) ) )* otherlv_11= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:588:28: ( ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) ) )* otherlv_11= '}' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:589:1: ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) ) )* otherlv_11= '}' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:559:1: ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) ) )* otherlv_11= '}' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:559:2: () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) ) )* otherlv_11= '}'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:589:1: ( () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) ) )* otherlv_11= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:589:2: () ( (lv_abstract_1_0= 'abstract' ) )? otherlv_2= 'primitive' ( (lv_name_3_0= ruleQualifiedName ) )? ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )? (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )? otherlv_9= '{' ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) ) )* otherlv_11= '}'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:559:2: ()
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:560:2: 
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:589:2: ()
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:590:2: 
             {
             if ( state.backtracking==0 ) {
                
@@ -1635,7 +1731,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:568:2: ( (lv_abstract_1_0= 'abstract' ) )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:598:2: ( (lv_abstract_1_0= 'abstract' ) )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1644,12 +1740,12 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:569:1: (lv_abstract_1_0= 'abstract' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:599:1: (lv_abstract_1_0= 'abstract' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:569:1: (lv_abstract_1_0= 'abstract' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:570:3: lv_abstract_1_0= 'abstract'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:599:1: (lv_abstract_1_0= 'abstract' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:600:3: lv_abstract_1_0= 'abstract'
                     {
-                    lv_abstract_1_0=(Token)match(input,26,FOLLOW_26_in_rulePrimitiveDefinition1100); if (state.failed) return current;
+                    lv_abstract_1_0=(Token)match(input,26,FOLLOW_26_in_rulePrimitiveDefinition1138); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_abstract_1_0, grammarAccess.getPrimitiveDefinitionAccess().getAbstractAbstractKeyword_1_0());
@@ -1672,13 +1768,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,27,FOLLOW_27_in_rulePrimitiveDefinition1126); if (state.failed) return current;
+            otherlv_2=(Token)match(input,27,FOLLOW_27_in_rulePrimitiveDefinition1164); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getPrimitiveDefinitionAccess().getPrimitiveKeyword_2());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:587:1: ( (lv_name_3_0= ruleQualifiedName ) )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:617:1: ( (lv_name_3_0= ruleQualifiedName ) )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1687,17 +1783,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:588:1: (lv_name_3_0= ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:618:1: (lv_name_3_0= ruleQualifiedName )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:588:1: (lv_name_3_0= ruleQualifiedName )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:589:3: lv_name_3_0= ruleQualifiedName
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:618:1: (lv_name_3_0= ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:619:3: lv_name_3_0= ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getNameQualifiedNameParserRuleCall_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_rulePrimitiveDefinition1147);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_rulePrimitiveDefinition1185);
                     lv_name_3_0=ruleQualifiedName();
 
                     state._fsp--;
@@ -1724,7 +1820,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:605:3: ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:635:3: ( (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList ) )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1733,17 +1829,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:606:1: (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:636:1: (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:606:1: (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:607:3: lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:636:1: (lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:637:3: lv_compositeFormalArgumentsList_4_0= ruleFormalArgumentsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getCompositeFormalArgumentsListFormalArgumentsListParserRuleCall_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFormalArgumentsList_in_rulePrimitiveDefinition1169);
+                    pushFollow(FOLLOW_ruleFormalArgumentsList_in_rulePrimitiveDefinition1207);
                     lv_compositeFormalArgumentsList_4_0=ruleFormalArgumentsList();
 
                     state._fsp--;
@@ -1770,7 +1866,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:623:3: (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:653:3: (otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )* )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -1779,26 +1875,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:623:5: otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:653:5: otherlv_5= 'extends' ( (lv_superTypes_6_0= rulePrimitiveSuperType ) ) (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )*
                     {
-                    otherlv_5=(Token)match(input,23,FOLLOW_23_in_rulePrimitiveDefinition1183); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,23,FOLLOW_23_in_rulePrimitiveDefinition1221); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getPrimitiveDefinitionAccess().getExtendsKeyword_5_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:627:1: ( (lv_superTypes_6_0= rulePrimitiveSuperType ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:628:1: (lv_superTypes_6_0= rulePrimitiveSuperType )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:657:1: ( (lv_superTypes_6_0= rulePrimitiveSuperType ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:658:1: (lv_superTypes_6_0= rulePrimitiveSuperType )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:628:1: (lv_superTypes_6_0= rulePrimitiveSuperType )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:629:3: lv_superTypes_6_0= rulePrimitiveSuperType
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:658:1: (lv_superTypes_6_0= rulePrimitiveSuperType )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:659:3: lv_superTypes_6_0= rulePrimitiveSuperType
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getSuperTypesPrimitiveSuperTypeParserRuleCall_5_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1204);
+                    pushFollow(FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1242);
                     lv_superTypes_6_0=rulePrimitiveSuperType();
 
                     state._fsp--;
@@ -1822,7 +1918,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:645:2: (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:675:2: (otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) ) )*
                     loop17:
                     do {
                         int alt17=2;
@@ -1835,26 +1931,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                         switch (alt17) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:645:4: otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:675:4: otherlv_7= ',' ( (lv_superTypes_8_0= rulePrimitiveSuperType ) )
                     	    {
-                    	    otherlv_7=(Token)match(input,21,FOLLOW_21_in_rulePrimitiveDefinition1217); if (state.failed) return current;
+                    	    otherlv_7=(Token)match(input,21,FOLLOW_21_in_rulePrimitiveDefinition1255); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_7, grammarAccess.getPrimitiveDefinitionAccess().getCommaKeyword_5_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:649:1: ( (lv_superTypes_8_0= rulePrimitiveSuperType ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:650:1: (lv_superTypes_8_0= rulePrimitiveSuperType )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:679:1: ( (lv_superTypes_8_0= rulePrimitiveSuperType ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:680:1: (lv_superTypes_8_0= rulePrimitiveSuperType )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:650:1: (lv_superTypes_8_0= rulePrimitiveSuperType )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:651:3: lv_superTypes_8_0= rulePrimitiveSuperType
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:680:1: (lv_superTypes_8_0= rulePrimitiveSuperType )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:681:3: lv_superTypes_8_0= rulePrimitiveSuperType
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getSuperTypesPrimitiveSuperTypeParserRuleCall_5_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1238);
+                    	    pushFollow(FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1276);
                     	    lv_superTypes_8_0=rulePrimitiveSuperType();
 
                     	    state._fsp--;
@@ -1893,51 +1989,57 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,24,FOLLOW_24_in_rulePrimitiveDefinition1254); if (state.failed) return current;
+            otherlv_9=(Token)match(input,24,FOLLOW_24_in_rulePrimitiveDefinition1292); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_9, grammarAccess.getPrimitiveDefinitionAccess().getLeftCurlyBracketKeyword_6());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:671:1: ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) ) )*
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:701:1: ( ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) ) )*
             loop20:
             do {
                 int alt20=2;
                 int LA20_0 = input.LA(1);
 
-                if ( (LA20_0==31||LA20_0==35||LA20_0==51||(LA20_0>=53 && LA20_0<=54)||LA20_0==56) ) {
+                if ( (LA20_0==31||LA20_0==35||(LA20_0>=37 && LA20_0<=38)||(LA20_0>=66 && LA20_0<=68)||LA20_0==70) ) {
                     alt20=1;
                 }
 
 
                 switch (alt20) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:672:1: ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:702:1: ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:672:1: ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition ) )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:673:1: (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:702:1: ( (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:703:1: (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:673:1: (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition )
-            	    int alt19=5;
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:703:1: (lv_elements_10_1= ruleProvidedInterfaceDefinition | lv_elements_10_2= ruleRequiredInterfaceDefinition | lv_elements_10_3= ruleImplementationDefinition | lv_elements_10_4= ruleAttributeDefinition | lv_elements_10_5= ruleDataDefinition | lv_elements_10_6= ruleOutputFlowInterfaceDefinition | lv_elements_10_7= ruleInputFlowInterfaceDefinition )
+            	    int alt19=7;
             	    switch ( input.LA(1) ) {
-            	    case 56:
+            	    case 70:
             	        {
             	        int LA19_1 = input.LA(2);
 
-            	        if ( (synpred22_InternalAdl()) ) {
+            	        if ( (synpred24_InternalAdl()) ) {
             	            alt19=1;
             	        }
-            	        else if ( (synpred23_InternalAdl()) ) {
+            	        else if ( (synpred25_InternalAdl()) ) {
             	            alt19=2;
             	        }
-            	        else if ( (synpred24_InternalAdl()) ) {
+            	        else if ( (synpred26_InternalAdl()) ) {
             	            alt19=3;
             	        }
-            	        else if ( (synpred25_InternalAdl()) ) {
+            	        else if ( (synpred27_InternalAdl()) ) {
             	            alt19=4;
             	        }
-            	        else if ( (true) ) {
+            	        else if ( (synpred28_InternalAdl()) ) {
             	            alt19=5;
+            	        }
+            	        else if ( (synpred29_InternalAdl()) ) {
+            	            alt19=6;
+            	        }
+            	        else if ( (true) ) {
+            	            alt19=7;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -1958,19 +2060,29 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	        alt19=2;
             	        }
             	        break;
-            	    case 53:
+            	    case 67:
             	        {
             	        alt19=3;
             	        }
             	        break;
-            	    case 51:
+            	    case 66:
             	        {
             	        alt19=4;
             	        }
             	        break;
-            	    case 54:
+            	    case 68:
             	        {
             	        alt19=5;
+            	        }
+            	        break;
+            	    case 37:
+            	        {
+            	        alt19=6;
+            	        }
+            	        break;
+            	    case 38:
+            	        {
+            	        alt19=7;
             	        }
             	        break;
             	    default:
@@ -1983,14 +2095,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             	    switch (alt19) {
             	        case 1 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:674:3: lv_elements_10_1= ruleProvidedInterfaceDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:704:3: lv_elements_10_1= ruleProvidedInterfaceDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsProvidedInterfaceDefinitionParserRuleCall_7_0_0()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_rulePrimitiveDefinition1277);
+            	            pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_rulePrimitiveDefinition1315);
             	            lv_elements_10_1=ruleProvidedInterfaceDefinition();
 
             	            state._fsp--;
@@ -2012,14 +2124,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:689:8: lv_elements_10_2= ruleRequiredInterfaceDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:719:8: lv_elements_10_2= ruleRequiredInterfaceDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsRequiredInterfaceDefinitionParserRuleCall_7_0_1()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_rulePrimitiveDefinition1296);
+            	            pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_rulePrimitiveDefinition1334);
             	            lv_elements_10_2=ruleRequiredInterfaceDefinition();
 
             	            state._fsp--;
@@ -2041,14 +2153,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:704:8: lv_elements_10_3= ruleImplementationDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:734:8: lv_elements_10_3= ruleImplementationDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsImplementationDefinitionParserRuleCall_7_0_2()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleImplementationDefinition_in_rulePrimitiveDefinition1315);
+            	            pushFollow(FOLLOW_ruleImplementationDefinition_in_rulePrimitiveDefinition1353);
             	            lv_elements_10_3=ruleImplementationDefinition();
 
             	            state._fsp--;
@@ -2070,14 +2182,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 4 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:719:8: lv_elements_10_4= ruleAttributeDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:749:8: lv_elements_10_4= ruleAttributeDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsAttributeDefinitionParserRuleCall_7_0_3()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleAttributeDefinition_in_rulePrimitiveDefinition1334);
+            	            pushFollow(FOLLOW_ruleAttributeDefinition_in_rulePrimitiveDefinition1372);
             	            lv_elements_10_4=ruleAttributeDefinition();
 
             	            state._fsp--;
@@ -2099,14 +2211,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 5 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:734:8: lv_elements_10_5= ruleDataDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:764:8: lv_elements_10_5= ruleDataDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsDataDefinitionParserRuleCall_7_0_4()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleDataDefinition_in_rulePrimitiveDefinition1353);
+            	            pushFollow(FOLLOW_ruleDataDefinition_in_rulePrimitiveDefinition1391);
             	            lv_elements_10_5=ruleDataDefinition();
 
             	            state._fsp--;
@@ -2121,6 +2233,64 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	                     			"elements",
             	                      		lv_elements_10_5, 
             	                      		"DataDefinition");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:779:8: lv_elements_10_6= ruleOutputFlowInterfaceDefinition
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsOutputFlowInterfaceDefinitionParserRuleCall_7_0_5()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_rulePrimitiveDefinition1410);
+            	            lv_elements_10_6=ruleOutputFlowInterfaceDefinition();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getPrimitiveDefinitionRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"elements",
+            	                      		lv_elements_10_6, 
+            	                      		"OutputFlowInterfaceDefinition");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 7 :
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:794:8: lv_elements_10_7= ruleInputFlowInterfaceDefinition
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsInputFlowInterfaceDefinitionParserRuleCall_7_0_6()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleInputFlowInterfaceDefinition_in_rulePrimitiveDefinition1429);
+            	            lv_elements_10_7=ruleInputFlowInterfaceDefinition();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getPrimitiveDefinitionRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"elements",
+            	                      		lv_elements_10_7, 
+            	                      		"InputFlowInterfaceDefinition");
             	              	        afterParserOrEnumRuleCall();
             	              	    
             	            }
@@ -2142,7 +2312,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_11=(Token)match(input,25,FOLLOW_25_in_rulePrimitiveDefinition1369); if (state.failed) return current;
+            otherlv_11=(Token)match(input,25,FOLLOW_25_in_rulePrimitiveDefinition1445); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_11, grammarAccess.getPrimitiveDefinitionAccess().getRightCurlyBracketKeyword_8());
@@ -2171,7 +2341,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypeDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:764:1: entryRuleTypeDefinition returns [EObject current=null] : iv_ruleTypeDefinition= ruleTypeDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:824:1: entryRuleTypeDefinition returns [EObject current=null] : iv_ruleTypeDefinition= ruleTypeDefinition EOF ;
     public final EObject entryRuleTypeDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -2179,13 +2349,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:765:2: (iv_ruleTypeDefinition= ruleTypeDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:766:2: iv_ruleTypeDefinition= ruleTypeDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:825:2: (iv_ruleTypeDefinition= ruleTypeDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:826:2: iv_ruleTypeDefinition= ruleTypeDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleTypeDefinition_in_entryRuleTypeDefinition1405);
+            pushFollow(FOLLOW_ruleTypeDefinition_in_entryRuleTypeDefinition1481);
             iv_ruleTypeDefinition=ruleTypeDefinition();
 
             state._fsp--;
@@ -2193,7 +2363,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTypeDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTypeDefinition1415); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTypeDefinition1491); if (state.failed) return current;
 
             }
 
@@ -2211,7 +2381,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:773:1: ruleTypeDefinition returns [EObject current=null] : (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) ) )* otherlv_8= '}' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:833:1: ruleTypeDefinition returns [EObject current=null] : (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) ) )* otherlv_8= '}' ) ;
     public final EObject ruleTypeDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -2226,34 +2396,38 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         EObject lv_elements_7_2 = null;
 
+        EObject lv_elements_7_3 = null;
+
+        EObject lv_elements_7_4 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:776:28: ( (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) ) )* otherlv_8= '}' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:777:1: (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) ) )* otherlv_8= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:836:28: ( (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) ) )* otherlv_8= '}' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:837:1: (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) ) )* otherlv_8= '}' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:777:1: (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) ) )* otherlv_8= '}' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:777:3: otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) ) )* otherlv_8= '}'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:837:1: (otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) ) )* otherlv_8= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:837:3: otherlv_0= 'type' ( (lv_name_1_0= ruleQualifiedName ) ) (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )? otherlv_6= '{' ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) ) )* otherlv_8= '}'
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_28_in_ruleTypeDefinition1452); if (state.failed) return current;
+            otherlv_0=(Token)match(input,28,FOLLOW_28_in_ruleTypeDefinition1528); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getTypeDefinitionAccess().getTypeKeyword_0());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:781:1: ( (lv_name_1_0= ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:782:1: (lv_name_1_0= ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:841:1: ( (lv_name_1_0= ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:842:1: (lv_name_1_0= ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:782:1: (lv_name_1_0= ruleQualifiedName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:783:3: lv_name_1_0= ruleQualifiedName
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:842:1: (lv_name_1_0= ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:843:3: lv_name_1_0= ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getNameQualifiedNameParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1473);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1549);
             lv_name_1_0=ruleQualifiedName();
 
             state._fsp--;
@@ -2277,7 +2451,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:799:2: (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:859:2: (otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )* )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -2286,19 +2460,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:799:4: otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:859:4: otherlv_2= 'extends' ( ( ruleQualifiedName ) ) (otherlv_4= ',' ( ( ruleQualifiedName ) ) )*
                     {
-                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleTypeDefinition1486); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleTypeDefinition1562); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getTypeDefinitionAccess().getExtendsKeyword_2_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:803:1: ( ( ruleQualifiedName ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:804:1: ( ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:863:1: ( ( ruleQualifiedName ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:864:1: ( ruleQualifiedName )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:804:1: ( ruleQualifiedName )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:805:3: ruleQualifiedName
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:864:1: ( ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:865:3: ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2317,7 +2491,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getSuperTypesTypeDefinitionCrossReference_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1513);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1589);
                     ruleQualifiedName();
 
                     state._fsp--;
@@ -2333,7 +2507,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:821:2: (otherlv_4= ',' ( ( ruleQualifiedName ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:881:2: (otherlv_4= ',' ( ( ruleQualifiedName ) ) )*
                     loop21:
                     do {
                         int alt21=2;
@@ -2346,19 +2520,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                         switch (alt21) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:821:4: otherlv_4= ',' ( ( ruleQualifiedName ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:881:4: otherlv_4= ',' ( ( ruleQualifiedName ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,21,FOLLOW_21_in_ruleTypeDefinition1526); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,21,FOLLOW_21_in_ruleTypeDefinition1602); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getTypeDefinitionAccess().getCommaKeyword_2_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:825:1: ( ( ruleQualifiedName ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:826:1: ( ruleQualifiedName )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:885:1: ( ( ruleQualifiedName ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:886:1: ( ruleQualifiedName )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:826:1: ( ruleQualifiedName )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:827:3: ruleQualifiedName
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:886:1: ( ruleQualifiedName )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:887:3: ruleQualifiedName
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
@@ -2377,7 +2551,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getSuperTypesTypeDefinitionCrossReference_2_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1553);
+                    	    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1629);
                     	    ruleQualifiedName();
 
                     	    state._fsp--;
@@ -2408,42 +2582,48 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,24,FOLLOW_24_in_ruleTypeDefinition1569); if (state.failed) return current;
+            otherlv_6=(Token)match(input,24,FOLLOW_24_in_ruleTypeDefinition1645); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getTypeDefinitionAccess().getLeftCurlyBracketKeyword_3());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:847:1: ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) ) )*
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:907:1: ( ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) ) )*
             loop24:
             do {
                 int alt24=2;
                 int LA24_0 = input.LA(1);
 
-                if ( (LA24_0==31||LA24_0==35||LA24_0==56) ) {
+                if ( (LA24_0==31||LA24_0==35||(LA24_0>=37 && LA24_0<=38)||LA24_0==70) ) {
                     alt24=1;
                 }
 
 
                 switch (alt24) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:848:1: ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:908:1: ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:848:1: ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition ) )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:849:1: (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:908:1: ( (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:909:1: (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:849:1: (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition )
-            	    int alt23=2;
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:909:1: (lv_elements_7_1= ruleProvidedInterfaceDefinition | lv_elements_7_2= ruleRequiredInterfaceDefinition | lv_elements_7_3= ruleOutputFlowInterfaceDefinition | lv_elements_7_4= ruleInputFlowInterfaceDefinition )
+            	    int alt23=4;
             	    switch ( input.LA(1) ) {
-            	    case 56:
+            	    case 70:
             	        {
             	        int LA23_1 = input.LA(2);
 
-            	        if ( (synpred29_InternalAdl()) ) {
+            	        if ( (synpred33_InternalAdl()) ) {
             	            alt23=1;
             	        }
-            	        else if ( (true) ) {
+            	        else if ( (synpred34_InternalAdl()) ) {
             	            alt23=2;
+            	        }
+            	        else if ( (synpred35_InternalAdl()) ) {
+            	            alt23=3;
+            	        }
+            	        else if ( (true) ) {
+            	            alt23=4;
             	        }
             	        else {
             	            if (state.backtracking>0) {state.failed=true; return current;}
@@ -2464,6 +2644,16 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	        alt23=2;
             	        }
             	        break;
+            	    case 37:
+            	        {
+            	        alt23=3;
+            	        }
+            	        break;
+            	    case 38:
+            	        {
+            	        alt23=4;
+            	        }
+            	        break;
             	    default:
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        NoViableAltException nvae =
@@ -2474,14 +2664,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             	    switch (alt23) {
             	        case 1 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:850:3: lv_elements_7_1= ruleProvidedInterfaceDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:910:3: lv_elements_7_1= ruleProvidedInterfaceDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsProvidedInterfaceDefinitionParserRuleCall_4_0_0()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_ruleTypeDefinition1592);
+            	            pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_ruleTypeDefinition1668);
             	            lv_elements_7_1=ruleProvidedInterfaceDefinition();
 
             	            state._fsp--;
@@ -2503,14 +2693,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:865:8: lv_elements_7_2= ruleRequiredInterfaceDefinition
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:925:8: lv_elements_7_2= ruleRequiredInterfaceDefinition
             	            {
             	            if ( state.backtracking==0 ) {
             	               
             	              	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsRequiredInterfaceDefinitionParserRuleCall_4_0_1()); 
             	              	    
             	            }
-            	            pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_ruleTypeDefinition1611);
+            	            pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_ruleTypeDefinition1687);
             	            lv_elements_7_2=ruleRequiredInterfaceDefinition();
 
             	            state._fsp--;
@@ -2525,6 +2715,64 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	                     			"elements",
             	                      		lv_elements_7_2, 
             	                      		"RequiredInterfaceDefinition");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:940:8: lv_elements_7_3= ruleOutputFlowInterfaceDefinition
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsOutputFlowInterfaceDefinitionParserRuleCall_4_0_2()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_ruleTypeDefinition1706);
+            	            lv_elements_7_3=ruleOutputFlowInterfaceDefinition();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getTypeDefinitionRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"elements",
+            	                      		lv_elements_7_3, 
+            	                      		"OutputFlowInterfaceDefinition");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:955:8: lv_elements_7_4= ruleInputFlowInterfaceDefinition
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsInputFlowInterfaceDefinitionParserRuleCall_4_0_3()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleInputFlowInterfaceDefinition_in_ruleTypeDefinition1725);
+            	            lv_elements_7_4=ruleInputFlowInterfaceDefinition();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getTypeDefinitionRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"elements",
+            	                      		lv_elements_7_4, 
+            	                      		"InputFlowInterfaceDefinition");
             	              	        afterParserOrEnumRuleCall();
             	              	    
             	            }
@@ -2546,7 +2794,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_8=(Token)match(input,25,FOLLOW_25_in_ruleTypeDefinition1627); if (state.failed) return current;
+            otherlv_8=(Token)match(input,25,FOLLOW_25_in_ruleTypeDefinition1741); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_8, grammarAccess.getTypeDefinitionAccess().getRightCurlyBracketKeyword_5());
@@ -2575,7 +2823,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCompositeSuperType"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:895:1: entryRuleCompositeSuperType returns [EObject current=null] : iv_ruleCompositeSuperType= ruleCompositeSuperType EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:985:1: entryRuleCompositeSuperType returns [EObject current=null] : iv_ruleCompositeSuperType= ruleCompositeSuperType EOF ;
     public final EObject entryRuleCompositeSuperType() throws RecognitionException {
         EObject current = null;
 
@@ -2583,13 +2831,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:896:2: (iv_ruleCompositeSuperType= ruleCompositeSuperType EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:897:2: iv_ruleCompositeSuperType= ruleCompositeSuperType EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:986:2: (iv_ruleCompositeSuperType= ruleCompositeSuperType EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:987:2: iv_ruleCompositeSuperType= ruleCompositeSuperType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCompositeSuperTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleCompositeSuperType_in_entryRuleCompositeSuperType1663);
+            pushFollow(FOLLOW_ruleCompositeSuperType_in_entryRuleCompositeSuperType1777);
             iv_ruleCompositeSuperType=ruleCompositeSuperType();
 
             state._fsp--;
@@ -2597,7 +2845,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCompositeSuperType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCompositeSuperType1673); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCompositeSuperType1787); if (state.failed) return current;
 
             }
 
@@ -2615,7 +2863,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompositeSuperType"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:904:1: ruleCompositeSuperType returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:994:1: ruleCompositeSuperType returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? ) ;
     public final EObject ruleCompositeSuperType() throws RecognitionException {
         EObject current = null;
 
@@ -2637,17 +2885,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:907:28: ( ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:908:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:997:28: ( ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:998:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:908:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:908:2: ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:998:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:998:2: ( ( ruleQualifiedName ) ) (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )? (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )?
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:908:2: ( ( ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:909:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:998:2: ( ( ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:999:1: ( ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:909:1: ( ruleQualifiedName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:910:3: ruleQualifiedName
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:999:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1000:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
@@ -2666,7 +2914,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getCompositeSuperTypeAccess().getTargetArchDefCompositeSuperTypeDefinitionCrossReference_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleCompositeSuperType1725);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleCompositeSuperType1839);
             ruleQualifiedName();
 
             state._fsp--;
@@ -2682,7 +2930,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:926:2: (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1016:2: (otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>' )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -2691,26 +2939,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:926:4: otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1016:4: otherlv_1= '<' ( (lv_templatesList_2_0= ruleTemplateReference ) ) (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )* otherlv_5= '>'
                     {
-                    otherlv_1=(Token)match(input,20,FOLLOW_20_in_ruleCompositeSuperType1738); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,20,FOLLOW_20_in_ruleCompositeSuperType1852); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getCompositeSuperTypeAccess().getLessThanSignKeyword_1_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:930:1: ( (lv_templatesList_2_0= ruleTemplateReference ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:931:1: (lv_templatesList_2_0= ruleTemplateReference )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1020:1: ( (lv_templatesList_2_0= ruleTemplateReference ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1021:1: (lv_templatesList_2_0= ruleTemplateReference )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:931:1: (lv_templatesList_2_0= ruleTemplateReference )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:932:3: lv_templatesList_2_0= ruleTemplateReference
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1021:1: (lv_templatesList_2_0= ruleTemplateReference )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1022:3: lv_templatesList_2_0= ruleTemplateReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getCompositeSuperTypeAccess().getTemplatesListTemplateReferenceParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1759);
+                    pushFollow(FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1873);
                     lv_templatesList_2_0=ruleTemplateReference();
 
                     state._fsp--;
@@ -2734,7 +2982,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:948:2: (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1038:2: (otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) ) )*
                     loop25:
                     do {
                         int alt25=2;
@@ -2747,26 +2995,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                         switch (alt25) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:948:4: otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1038:4: otherlv_3= ',' ( (lv_templatesList_4_0= ruleTemplateReference ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleCompositeSuperType1772); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleCompositeSuperType1886); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getCompositeSuperTypeAccess().getCommaKeyword_1_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:952:1: ( (lv_templatesList_4_0= ruleTemplateReference ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:953:1: (lv_templatesList_4_0= ruleTemplateReference )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1042:1: ( (lv_templatesList_4_0= ruleTemplateReference ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1043:1: (lv_templatesList_4_0= ruleTemplateReference )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:953:1: (lv_templatesList_4_0= ruleTemplateReference )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:954:3: lv_templatesList_4_0= ruleTemplateReference
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1043:1: (lv_templatesList_4_0= ruleTemplateReference )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1044:3: lv_templatesList_4_0= ruleTemplateReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getCompositeSuperTypeAccess().getTemplatesListTemplateReferenceParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1793);
+                    	    pushFollow(FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1907);
                     	    lv_templatesList_4_0=ruleTemplateReference();
 
                     	    state._fsp--;
@@ -2799,7 +3047,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,22,FOLLOW_22_in_ruleCompositeSuperType1807); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,22,FOLLOW_22_in_ruleCompositeSuperType1921); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getCompositeSuperTypeAccess().getGreaterThanSignKeyword_1_3());
@@ -2811,7 +3059,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:974:3: (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1064:3: (otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')' )?
             int alt28=2;
             int LA28_0 = input.LA(1);
 
@@ -2820,26 +3068,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt28) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:974:5: otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1064:5: otherlv_6= '(' ( (lv_argumentsList_7_0= ruleArgumentDefinition ) ) (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )* otherlv_10= ')'
                     {
-                    otherlv_6=(Token)match(input,29,FOLLOW_29_in_ruleCompositeSuperType1822); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,29,FOLLOW_29_in_ruleCompositeSuperType1936); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getCompositeSuperTypeAccess().getLeftParenthesisKeyword_2_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:978:1: ( (lv_argumentsList_7_0= ruleArgumentDefinition ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:979:1: (lv_argumentsList_7_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1068:1: ( (lv_argumentsList_7_0= ruleArgumentDefinition ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1069:1: (lv_argumentsList_7_0= ruleArgumentDefinition )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:979:1: (lv_argumentsList_7_0= ruleArgumentDefinition )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:980:3: lv_argumentsList_7_0= ruleArgumentDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1069:1: (lv_argumentsList_7_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1070:3: lv_argumentsList_7_0= ruleArgumentDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getCompositeSuperTypeAccess().getArgumentsListArgumentDefinitionParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1843);
+                    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1957);
                     lv_argumentsList_7_0=ruleArgumentDefinition();
 
                     state._fsp--;
@@ -2863,7 +3111,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:996:2: (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1086:2: (otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) )*
                     loop27:
                     do {
                         int alt27=2;
@@ -2876,26 +3124,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                         switch (alt27) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:996:4: otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1086:4: otherlv_8= ',' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) )
                     	    {
-                    	    otherlv_8=(Token)match(input,21,FOLLOW_21_in_ruleCompositeSuperType1856); if (state.failed) return current;
+                    	    otherlv_8=(Token)match(input,21,FOLLOW_21_in_ruleCompositeSuperType1970); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_8, grammarAccess.getCompositeSuperTypeAccess().getCommaKeyword_2_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1000:1: ( (lv_argumentsList_9_0= ruleArgumentDefinition ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1001:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1090:1: ( (lv_argumentsList_9_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1091:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1001:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1002:3: lv_argumentsList_9_0= ruleArgumentDefinition
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1091:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1092:3: lv_argumentsList_9_0= ruleArgumentDefinition
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getCompositeSuperTypeAccess().getArgumentsListArgumentDefinitionParserRuleCall_2_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1877);
+                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1991);
                     	    lv_argumentsList_9_0=ruleArgumentDefinition();
 
                     	    state._fsp--;
@@ -2928,7 +3176,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_10=(Token)match(input,30,FOLLOW_30_in_ruleCompositeSuperType1891); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,30,FOLLOW_30_in_ruleCompositeSuperType2005); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_10, grammarAccess.getCompositeSuperTypeAccess().getRightParenthesisKeyword_2_3());
@@ -2963,7 +3211,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitiveSuperType"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1030:1: entryRulePrimitiveSuperType returns [EObject current=null] : iv_rulePrimitiveSuperType= rulePrimitiveSuperType EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1120:1: entryRulePrimitiveSuperType returns [EObject current=null] : iv_rulePrimitiveSuperType= rulePrimitiveSuperType EOF ;
     public final EObject entryRulePrimitiveSuperType() throws RecognitionException {
         EObject current = null;
 
@@ -2971,13 +3219,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1031:2: (iv_rulePrimitiveSuperType= rulePrimitiveSuperType EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1032:2: iv_rulePrimitiveSuperType= rulePrimitiveSuperType EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1121:2: (iv_rulePrimitiveSuperType= rulePrimitiveSuperType EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1122:2: iv_rulePrimitiveSuperType= rulePrimitiveSuperType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrimitiveSuperTypeRule()); 
             }
-            pushFollow(FOLLOW_rulePrimitiveSuperType_in_entryRulePrimitiveSuperType1929);
+            pushFollow(FOLLOW_rulePrimitiveSuperType_in_entryRulePrimitiveSuperType2043);
             iv_rulePrimitiveSuperType=rulePrimitiveSuperType();
 
             state._fsp--;
@@ -2985,7 +3233,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_rulePrimitiveSuperType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveSuperType1939); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveSuperType2053); if (state.failed) return current;
 
             }
 
@@ -3003,7 +3251,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitiveSuperType"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1039:1: rulePrimitiveSuperType returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1129:1: rulePrimitiveSuperType returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? ) ;
     public final EObject rulePrimitiveSuperType() throws RecognitionException {
         EObject current = null;
 
@@ -3018,17 +3266,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1042:28: ( ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1043:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1132:28: ( ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1133:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1043:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1043:2: ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1133:1: ( ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1133:2: ( ( ruleQualifiedName ) ) (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )?
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1043:2: ( ( ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1044:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1133:2: ( ( ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1134:1: ( ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1044:1: ( ruleQualifiedName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1045:3: ruleQualifiedName
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1134:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1135:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
@@ -3047,7 +3295,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getPrimitiveSuperTypeAccess().getTargetArchDefPrimitiveSuperTypeDefinitionCrossReference_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rulePrimitiveSuperType1991);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rulePrimitiveSuperType2105);
             ruleQualifiedName();
 
             state._fsp--;
@@ -3063,7 +3311,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1061:2: (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1151:2: (otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')' )?
             int alt30=2;
             int LA30_0 = input.LA(1);
 
@@ -3072,26 +3320,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt30) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1061:4: otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1151:4: otherlv_1= '(' ( (lv_argumentsList_2_0= ruleArgumentDefinition ) ) (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )* otherlv_5= ')'
                     {
-                    otherlv_1=(Token)match(input,29,FOLLOW_29_in_rulePrimitiveSuperType2004); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,29,FOLLOW_29_in_rulePrimitiveSuperType2118); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getPrimitiveSuperTypeAccess().getLeftParenthesisKeyword_1_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1065:1: ( (lv_argumentsList_2_0= ruleArgumentDefinition ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1066:1: (lv_argumentsList_2_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1155:1: ( (lv_argumentsList_2_0= ruleArgumentDefinition ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1156:1: (lv_argumentsList_2_0= ruleArgumentDefinition )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1066:1: (lv_argumentsList_2_0= ruleArgumentDefinition )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1067:3: lv_argumentsList_2_0= ruleArgumentDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1156:1: (lv_argumentsList_2_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1157:3: lv_argumentsList_2_0= ruleArgumentDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getPrimitiveSuperTypeAccess().getArgumentsListArgumentDefinitionParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2025);
+                    pushFollow(FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2139);
                     lv_argumentsList_2_0=ruleArgumentDefinition();
 
                     state._fsp--;
@@ -3115,7 +3363,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1083:2: (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )*
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1173:2: (otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) ) )*
                     loop29:
                     do {
                         int alt29=2;
@@ -3128,26 +3376,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                         switch (alt29) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1083:4: otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1173:4: otherlv_3= ',' ( (lv_argumentsList_4_0= ruleArgumentDefinition ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,21,FOLLOW_21_in_rulePrimitiveSuperType2038); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,21,FOLLOW_21_in_rulePrimitiveSuperType2152); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getPrimitiveSuperTypeAccess().getCommaKeyword_1_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1087:1: ( (lv_argumentsList_4_0= ruleArgumentDefinition ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1088:1: (lv_argumentsList_4_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1177:1: ( (lv_argumentsList_4_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1178:1: (lv_argumentsList_4_0= ruleArgumentDefinition )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1088:1: (lv_argumentsList_4_0= ruleArgumentDefinition )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1089:3: lv_argumentsList_4_0= ruleArgumentDefinition
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1178:1: (lv_argumentsList_4_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1179:3: lv_argumentsList_4_0= ruleArgumentDefinition
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getPrimitiveSuperTypeAccess().getArgumentsListArgumentDefinitionParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2059);
+                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2173);
                     	    lv_argumentsList_4_0=ruleArgumentDefinition();
 
                     	    state._fsp--;
@@ -3180,7 +3428,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,30,FOLLOW_30_in_rulePrimitiveSuperType2073); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,30,FOLLOW_30_in_rulePrimitiveSuperType2187); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getPrimitiveSuperTypeAccess().getRightParenthesisKeyword_1_3());
@@ -3215,7 +3463,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleHostedInterfaceDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1121:1: entryRuleHostedInterfaceDefinition returns [EObject current=null] : iv_ruleHostedInterfaceDefinition= ruleHostedInterfaceDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1211:1: entryRuleHostedInterfaceDefinition returns [EObject current=null] : iv_ruleHostedInterfaceDefinition= ruleHostedInterfaceDefinition EOF ;
     public final EObject entryRuleHostedInterfaceDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3223,13 +3471,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1122:2: (iv_ruleHostedInterfaceDefinition= ruleHostedInterfaceDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1123:2: iv_ruleHostedInterfaceDefinition= ruleHostedInterfaceDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1212:2: (iv_ruleHostedInterfaceDefinition= ruleHostedInterfaceDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1213:2: iv_ruleHostedInterfaceDefinition= ruleHostedInterfaceDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getHostedInterfaceDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_entryRuleHostedInterfaceDefinition2115);
+            pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_entryRuleHostedInterfaceDefinition2229);
             iv_ruleHostedInterfaceDefinition=ruleHostedInterfaceDefinition();
 
             state._fsp--;
@@ -3237,7 +3485,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleHostedInterfaceDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleHostedInterfaceDefinition2125); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleHostedInterfaceDefinition2239); if (state.failed) return current;
 
             }
 
@@ -3255,7 +3503,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHostedInterfaceDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1130:1: ruleHostedInterfaceDefinition returns [EObject current=null] : (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1220:1: ruleHostedInterfaceDefinition returns [EObject current=null] : (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition | this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition | this_InputFlowInterfaceDefinition_3= ruleInputFlowInterfaceDefinition ) ;
     public final EObject ruleHostedInterfaceDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3263,25 +3511,35 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         EObject this_RequiredInterfaceDefinition_1 = null;
 
+        EObject this_OutputFlowInterfaceDefinition_2 = null;
+
+        EObject this_InputFlowInterfaceDefinition_3 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1133:28: ( (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1134:1: (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1223:28: ( (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition | this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition | this_InputFlowInterfaceDefinition_3= ruleInputFlowInterfaceDefinition ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1224:1: (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition | this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition | this_InputFlowInterfaceDefinition_3= ruleInputFlowInterfaceDefinition )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1134:1: (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition )
-            int alt31=2;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1224:1: (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition | this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition | this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition | this_InputFlowInterfaceDefinition_3= ruleInputFlowInterfaceDefinition )
+            int alt31=4;
             switch ( input.LA(1) ) {
-            case 56:
+            case 70:
                 {
                 int LA31_1 = input.LA(2);
 
-                if ( (synpred37_InternalAdl()) ) {
+                if ( (synpred43_InternalAdl()) ) {
                     alt31=1;
                 }
-                else if ( (true) ) {
+                else if ( (synpred44_InternalAdl()) ) {
                     alt31=2;
+                }
+                else if ( (synpred45_InternalAdl()) ) {
+                    alt31=3;
+                }
+                else if ( (true) ) {
+                    alt31=4;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -3302,6 +3560,16 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 alt31=2;
                 }
                 break;
+            case 37:
+                {
+                alt31=3;
+                }
+                break;
+            case 38:
+                {
+                alt31=4;
+                }
+                break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
@@ -3312,7 +3580,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             switch (alt31) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1135:2: this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1225:2: this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -3324,7 +3592,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getHostedInterfaceDefinitionAccess().getProvidedInterfaceDefinitionParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_ruleHostedInterfaceDefinition2175);
+                    pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_ruleHostedInterfaceDefinition2289);
                     this_ProvidedInterfaceDefinition_0=ruleProvidedInterfaceDefinition();
 
                     state._fsp--;
@@ -3339,7 +3607,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1148:2: this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1238:2: this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -3351,7 +3619,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getHostedInterfaceDefinitionAccess().getRequiredInterfaceDefinitionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_ruleHostedInterfaceDefinition2205);
+                    pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_ruleHostedInterfaceDefinition2319);
                     this_RequiredInterfaceDefinition_1=ruleRequiredInterfaceDefinition();
 
                     state._fsp--;
@@ -3359,6 +3627,60 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
                        
                               current = this_RequiredInterfaceDefinition_1; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1251:2: this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getHostedInterfaceDefinitionAccess().getOutputFlowInterfaceDefinitionParserRuleCall_2()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_ruleHostedInterfaceDefinition2349);
+                    this_OutputFlowInterfaceDefinition_2=ruleOutputFlowInterfaceDefinition();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_OutputFlowInterfaceDefinition_2; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1264:2: this_InputFlowInterfaceDefinition_3= ruleInputFlowInterfaceDefinition
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getHostedInterfaceDefinitionAccess().getInputFlowInterfaceDefinitionParserRuleCall_3()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleInputFlowInterfaceDefinition_in_ruleHostedInterfaceDefinition2379);
+                    this_InputFlowInterfaceDefinition_3=ruleInputFlowInterfaceDefinition();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_InputFlowInterfaceDefinition_3; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -3388,7 +3710,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProvidedInterfaceDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1167:1: entryRuleProvidedInterfaceDefinition returns [EObject current=null] : iv_ruleProvidedInterfaceDefinition= ruleProvidedInterfaceDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1283:1: entryRuleProvidedInterfaceDefinition returns [EObject current=null] : iv_ruleProvidedInterfaceDefinition= ruleProvidedInterfaceDefinition EOF ;
     public final EObject entryRuleProvidedInterfaceDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3396,13 +3718,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1168:2: (iv_ruleProvidedInterfaceDefinition= ruleProvidedInterfaceDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1169:2: iv_ruleProvidedInterfaceDefinition= ruleProvidedInterfaceDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1284:2: (iv_ruleProvidedInterfaceDefinition= ruleProvidedInterfaceDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1285:2: iv_ruleProvidedInterfaceDefinition= ruleProvidedInterfaceDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getProvidedInterfaceDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_entryRuleProvidedInterfaceDefinition2240);
+            pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_entryRuleProvidedInterfaceDefinition2414);
             iv_ruleProvidedInterfaceDefinition=ruleProvidedInterfaceDefinition();
 
             state._fsp--;
@@ -3410,7 +3732,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleProvidedInterfaceDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleProvidedInterfaceDefinition2250); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleProvidedInterfaceDefinition2424); if (state.failed) return current;
 
             }
 
@@ -3428,7 +3750,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProvidedInterfaceDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1176:1: ruleProvidedInterfaceDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1292:1: ruleProvidedInterfaceDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' ) ;
     public final EObject ruleProvidedInterfaceDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3445,32 +3767,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1179:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1180:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1295:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1296:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1180:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1180:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1296:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1296:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'provides' ) ) ( ( ruleQualifiedName ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1180:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1296:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
-            if ( (LA32_0==56) ) {
+            if ( (LA32_0==70) ) {
                 alt32=1;
             }
             switch (alt32) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1181:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1297:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1181:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1182:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1297:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1298:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getProvidedInterfaceDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleProvidedInterfaceDefinition2296);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleProvidedInterfaceDefinition2470);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -3497,13 +3819,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1198:3: ( (lv_role_1_0= 'provides' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1199:1: (lv_role_1_0= 'provides' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1314:3: ( (lv_role_1_0= 'provides' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1315:1: (lv_role_1_0= 'provides' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1199:1: (lv_role_1_0= 'provides' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1200:3: lv_role_1_0= 'provides'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1315:1: (lv_role_1_0= 'provides' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1316:3: lv_role_1_0= 'provides'
             {
-            lv_role_1_0=(Token)match(input,31,FOLLOW_31_in_ruleProvidedInterfaceDefinition2315); if (state.failed) return current;
+            lv_role_1_0=(Token)match(input,31,FOLLOW_31_in_ruleProvidedInterfaceDefinition2489); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_role_1_0, grammarAccess.getProvidedInterfaceDefinitionAccess().getRoleProvidesKeyword_1_0());
@@ -3523,11 +3845,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1213:2: ( ( ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1214:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1329:2: ( ( ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1330:1: ( ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1214:1: ( ruleQualifiedName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1215:3: ruleQualifiedName
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1330:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1331:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
@@ -3546,7 +3868,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getProvidedInterfaceDefinitionAccess().getSignatureInterfaceDefinitionCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleProvidedInterfaceDefinition2355);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleProvidedInterfaceDefinition2529);
             ruleQualifiedName();
 
             state._fsp--;
@@ -3562,19 +3884,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,32,FOLLOW_32_in_ruleProvidedInterfaceDefinition2367); if (state.failed) return current;
+            otherlv_3=(Token)match(input,32,FOLLOW_32_in_ruleProvidedInterfaceDefinition2541); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getProvidedInterfaceDefinitionAccess().getAsKeyword_3());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1235:1: ( (lv_name_4_0= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1236:1: (lv_name_4_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1351:1: ( (lv_name_4_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1352:1: (lv_name_4_0= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1236:1: (lv_name_4_0= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1237:3: lv_name_4_0= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1352:1: (lv_name_4_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1353:3: lv_name_4_0= RULE_ID
             {
-            lv_name_4_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleProvidedInterfaceDefinition2384); if (state.failed) return current;
+            lv_name_4_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleProvidedInterfaceDefinition2558); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_4_0, grammarAccess.getProvidedInterfaceDefinitionAccess().getNameIDTerminalRuleCall_4_0()); 
@@ -3598,7 +3920,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1253:2: ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1369:2: ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )?
             int alt34=2;
             int LA34_0 = input.LA(1);
 
@@ -3607,15 +3929,15 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt34) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1253:3: ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1369:3: ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']'
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1253:3: ( (lv_collection_5_0= '[' ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1254:1: (lv_collection_5_0= '[' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1369:3: ( (lv_collection_5_0= '[' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1370:1: (lv_collection_5_0= '[' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1254:1: (lv_collection_5_0= '[' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1255:3: lv_collection_5_0= '['
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1370:1: (lv_collection_5_0= '[' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1371:3: lv_collection_5_0= '['
                     {
-                    lv_collection_5_0=(Token)match(input,33,FOLLOW_33_in_ruleProvidedInterfaceDefinition2408); if (state.failed) return current;
+                    lv_collection_5_0=(Token)match(input,33,FOLLOW_33_in_ruleProvidedInterfaceDefinition2582); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_collection_5_0, grammarAccess.getProvidedInterfaceDefinitionAccess().getCollectionLeftSquareBracketKeyword_5_0_0());
@@ -3635,7 +3957,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1268:2: ( (lv_collectionsize_6_0= RULE_INT ) )?
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1384:2: ( (lv_collectionsize_6_0= RULE_INT ) )?
                     int alt33=2;
                     int LA33_0 = input.LA(1);
 
@@ -3644,12 +3966,12 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt33) {
                         case 1 :
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1269:1: (lv_collectionsize_6_0= RULE_INT )
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1385:1: (lv_collectionsize_6_0= RULE_INT )
                             {
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1269:1: (lv_collectionsize_6_0= RULE_INT )
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1270:3: lv_collectionsize_6_0= RULE_INT
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1385:1: (lv_collectionsize_6_0= RULE_INT )
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1386:3: lv_collectionsize_6_0= RULE_INT
                             {
-                            lv_collectionsize_6_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleProvidedInterfaceDefinition2438); if (state.failed) return current;
+                            lv_collectionsize_6_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleProvidedInterfaceDefinition2612); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               			newLeafNode(lv_collectionsize_6_0, grammarAccess.getProvidedInterfaceDefinitionAccess().getCollectionsizeINTTerminalRuleCall_5_1_0()); 
@@ -3676,7 +3998,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleProvidedInterfaceDefinition2456); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleProvidedInterfaceDefinition2630); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getProvidedInterfaceDefinitionAccess().getRightSquareBracketKeyword_5_2());
@@ -3688,7 +4010,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,17,FOLLOW_17_in_ruleProvidedInterfaceDefinition2470); if (state.failed) return current;
+            otherlv_8=(Token)match(input,17,FOLLOW_17_in_ruleProvidedInterfaceDefinition2644); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_8, grammarAccess.getProvidedInterfaceDefinitionAccess().getSemicolonKeyword_6());
@@ -3717,7 +4039,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRequiredInterfaceDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1302:1: entryRuleRequiredInterfaceDefinition returns [EObject current=null] : iv_ruleRequiredInterfaceDefinition= ruleRequiredInterfaceDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1418:1: entryRuleRequiredInterfaceDefinition returns [EObject current=null] : iv_ruleRequiredInterfaceDefinition= ruleRequiredInterfaceDefinition EOF ;
     public final EObject entryRuleRequiredInterfaceDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3725,13 +4047,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1303:2: (iv_ruleRequiredInterfaceDefinition= ruleRequiredInterfaceDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1304:2: iv_ruleRequiredInterfaceDefinition= ruleRequiredInterfaceDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1419:2: (iv_ruleRequiredInterfaceDefinition= ruleRequiredInterfaceDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1420:2: iv_ruleRequiredInterfaceDefinition= ruleRequiredInterfaceDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRequiredInterfaceDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_entryRuleRequiredInterfaceDefinition2506);
+            pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_entryRuleRequiredInterfaceDefinition2680);
             iv_ruleRequiredInterfaceDefinition=ruleRequiredInterfaceDefinition();
 
             state._fsp--;
@@ -3739,7 +4061,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRequiredInterfaceDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRequiredInterfaceDefinition2516); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRequiredInterfaceDefinition2690); if (state.failed) return current;
 
             }
 
@@ -3757,7 +4079,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRequiredInterfaceDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1311:1: ruleRequiredInterfaceDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1427:1: ruleRequiredInterfaceDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' ) ;
     public final EObject ruleRequiredInterfaceDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3775,32 +4097,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1314:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1315:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1430:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1431:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1315:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1315:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1431:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1431:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'requires' ) ) ( (lv_optional_2_0= 'optional' ) )? ( ( ruleQualifiedName ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1315:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1431:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
-            if ( (LA35_0==56) ) {
+            if ( (LA35_0==70) ) {
                 alt35=1;
             }
             switch (alt35) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1316:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1432:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1316:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1317:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1432:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1433:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getRequiredInterfaceDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleRequiredInterfaceDefinition2562);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleRequiredInterfaceDefinition2736);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -3827,13 +4149,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1333:3: ( (lv_role_1_0= 'requires' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1334:1: (lv_role_1_0= 'requires' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1449:3: ( (lv_role_1_0= 'requires' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1450:1: (lv_role_1_0= 'requires' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1334:1: (lv_role_1_0= 'requires' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1335:3: lv_role_1_0= 'requires'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1450:1: (lv_role_1_0= 'requires' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1451:3: lv_role_1_0= 'requires'
             {
-            lv_role_1_0=(Token)match(input,35,FOLLOW_35_in_ruleRequiredInterfaceDefinition2581); if (state.failed) return current;
+            lv_role_1_0=(Token)match(input,35,FOLLOW_35_in_ruleRequiredInterfaceDefinition2755); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_role_1_0, grammarAccess.getRequiredInterfaceDefinitionAccess().getRoleRequiresKeyword_1_0());
@@ -3853,7 +4175,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1348:2: ( (lv_optional_2_0= 'optional' ) )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1464:2: ( (lv_optional_2_0= 'optional' ) )?
             int alt36=2;
             int LA36_0 = input.LA(1);
 
@@ -3862,12 +4184,12 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt36) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1349:1: (lv_optional_2_0= 'optional' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1465:1: (lv_optional_2_0= 'optional' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1349:1: (lv_optional_2_0= 'optional' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1350:3: lv_optional_2_0= 'optional'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1465:1: (lv_optional_2_0= 'optional' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1466:3: lv_optional_2_0= 'optional'
                     {
-                    lv_optional_2_0=(Token)match(input,36,FOLLOW_36_in_ruleRequiredInterfaceDefinition2612); if (state.failed) return current;
+                    lv_optional_2_0=(Token)match(input,36,FOLLOW_36_in_ruleRequiredInterfaceDefinition2786); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_optional_2_0, grammarAccess.getRequiredInterfaceDefinitionAccess().getOptionalOptionalKeyword_2_0());
@@ -3890,11 +4212,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1363:3: ( ( ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1364:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1479:3: ( ( ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1480:1: ( ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1364:1: ( ruleQualifiedName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1365:3: ruleQualifiedName
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1480:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1481:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
@@ -3913,7 +4235,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getRequiredInterfaceDefinitionAccess().getSignatureInterfaceDefinitionCrossReference_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleRequiredInterfaceDefinition2653);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleRequiredInterfaceDefinition2827);
             ruleQualifiedName();
 
             state._fsp--;
@@ -3929,19 +4251,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,32,FOLLOW_32_in_ruleRequiredInterfaceDefinition2665); if (state.failed) return current;
+            otherlv_4=(Token)match(input,32,FOLLOW_32_in_ruleRequiredInterfaceDefinition2839); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getRequiredInterfaceDefinitionAccess().getAsKeyword_4());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1385:1: ( (lv_name_5_0= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1386:1: (lv_name_5_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1501:1: ( (lv_name_5_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1502:1: (lv_name_5_0= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1386:1: (lv_name_5_0= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1387:3: lv_name_5_0= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1502:1: (lv_name_5_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1503:3: lv_name_5_0= RULE_ID
             {
-            lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRequiredInterfaceDefinition2682); if (state.failed) return current;
+            lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRequiredInterfaceDefinition2856); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_5_0, grammarAccess.getRequiredInterfaceDefinitionAccess().getNameIDTerminalRuleCall_5_0()); 
@@ -3965,7 +4287,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1403:2: ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1519:2: ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )?
             int alt38=2;
             int LA38_0 = input.LA(1);
 
@@ -3974,15 +4296,15 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             }
             switch (alt38) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1403:3: ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1519:3: ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']'
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1403:3: ( (lv_collection_6_0= '[' ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1404:1: (lv_collection_6_0= '[' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1519:3: ( (lv_collection_6_0= '[' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1520:1: (lv_collection_6_0= '[' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1404:1: (lv_collection_6_0= '[' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1405:3: lv_collection_6_0= '['
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1520:1: (lv_collection_6_0= '[' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1521:3: lv_collection_6_0= '['
                     {
-                    lv_collection_6_0=(Token)match(input,33,FOLLOW_33_in_ruleRequiredInterfaceDefinition2706); if (state.failed) return current;
+                    lv_collection_6_0=(Token)match(input,33,FOLLOW_33_in_ruleRequiredInterfaceDefinition2880); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_collection_6_0, grammarAccess.getRequiredInterfaceDefinitionAccess().getCollectionLeftSquareBracketKeyword_6_0_0());
@@ -4002,7 +4324,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1418:2: ( (lv_collectionsize_7_0= RULE_INT ) )?
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1534:2: ( (lv_collectionsize_7_0= RULE_INT ) )?
                     int alt37=2;
                     int LA37_0 = input.LA(1);
 
@@ -4011,12 +4333,12 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt37) {
                         case 1 :
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1419:1: (lv_collectionsize_7_0= RULE_INT )
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1535:1: (lv_collectionsize_7_0= RULE_INT )
                             {
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1419:1: (lv_collectionsize_7_0= RULE_INT )
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1420:3: lv_collectionsize_7_0= RULE_INT
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1535:1: (lv_collectionsize_7_0= RULE_INT )
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1536:3: lv_collectionsize_7_0= RULE_INT
                             {
-                            lv_collectionsize_7_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleRequiredInterfaceDefinition2736); if (state.failed) return current;
+                            lv_collectionsize_7_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleRequiredInterfaceDefinition2910); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               			newLeafNode(lv_collectionsize_7_0, grammarAccess.getRequiredInterfaceDefinitionAccess().getCollectionsizeINTTerminalRuleCall_6_1_0()); 
@@ -4043,7 +4365,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleRequiredInterfaceDefinition2754); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleRequiredInterfaceDefinition2928); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getRequiredInterfaceDefinitionAccess().getRightSquareBracketKeyword_6_2());
@@ -4055,7 +4377,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleRequiredInterfaceDefinition2768); if (state.failed) return current;
+            otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleRequiredInterfaceDefinition2942); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_9, grammarAccess.getRequiredInterfaceDefinitionAccess().getSemicolonKeyword_7());
@@ -4083,8 +4405,1036 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleRequiredInterfaceDefinition"
 
 
+    // $ANTLR start "entryRuleOutputFlowInterfaceDefinition"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1568:1: entryRuleOutputFlowInterfaceDefinition returns [EObject current=null] : iv_ruleOutputFlowInterfaceDefinition= ruleOutputFlowInterfaceDefinition EOF ;
+    public final EObject entryRuleOutputFlowInterfaceDefinition() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleOutputFlowInterfaceDefinition = null;
+
+
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1569:2: (iv_ruleOutputFlowInterfaceDefinition= ruleOutputFlowInterfaceDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1570:2: iv_ruleOutputFlowInterfaceDefinition= ruleOutputFlowInterfaceDefinition EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getOutputFlowInterfaceDefinitionRule()); 
+            }
+            pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_entryRuleOutputFlowInterfaceDefinition2978);
+            iv_ruleOutputFlowInterfaceDefinition=ruleOutputFlowInterfaceDefinition();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleOutputFlowInterfaceDefinition; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOutputFlowInterfaceDefinition2988); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleOutputFlowInterfaceDefinition"
+
+
+    // $ANTLR start "ruleOutputFlowInterfaceDefinition"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1577:1: ruleOutputFlowInterfaceDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'output' ) ) ( (lv_signature_2_0= ruleFlowType ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' ) ;
+    public final EObject ruleOutputFlowInterfaceDefinition() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_role_1_0=null;
+        Token otherlv_3=null;
+        Token lv_name_4_0=null;
+        Token lv_collection_5_0=null;
+        Token lv_collectionsize_6_0=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        EObject lv_annotationsList_0_0 = null;
+
+        AntlrDatatypeRuleToken lv_signature_2_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1580:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'output' ) ) ( (lv_signature_2_0= ruleFlowType ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1581:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'output' ) ) ( (lv_signature_2_0= ruleFlowType ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1581:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'output' ) ) ( (lv_signature_2_0= ruleFlowType ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1581:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'output' ) ) ( (lv_signature_2_0= ruleFlowType ) ) otherlv_3= 'as' ( (lv_name_4_0= RULE_ID ) ) ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )? otherlv_8= ';'
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1581:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt39=2;
+            int LA39_0 = input.LA(1);
+
+            if ( (LA39_0==70) ) {
+                alt39=1;
+            }
+            switch (alt39) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1582:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1582:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1583:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getOutputFlowInterfaceDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleOutputFlowInterfaceDefinition3034);
+                    lv_annotationsList_0_0=ruleAnnotationsList();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getOutputFlowInterfaceDefinitionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"annotationsList",
+                              		lv_annotationsList_0_0, 
+                              		"AnnotationsList");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1599:3: ( (lv_role_1_0= 'output' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1600:1: (lv_role_1_0= 'output' )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1600:1: (lv_role_1_0= 'output' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1601:3: lv_role_1_0= 'output'
+            {
+            lv_role_1_0=(Token)match(input,37,FOLLOW_37_in_ruleOutputFlowInterfaceDefinition3053); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                      newLeafNode(lv_role_1_0, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getRoleOutputKeyword_1_0());
+                  
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getOutputFlowInterfaceDefinitionRule());
+              	        }
+                     		setWithLastConsumed(current, "role", lv_role_1_0, "output");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1614:2: ( (lv_signature_2_0= ruleFlowType ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1615:1: (lv_signature_2_0= ruleFlowType )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1615:1: (lv_signature_2_0= ruleFlowType )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1616:3: lv_signature_2_0= ruleFlowType
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getOutputFlowInterfaceDefinitionAccess().getSignatureFlowTypeParserRuleCall_2_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFlowType_in_ruleOutputFlowInterfaceDefinition3087);
+            lv_signature_2_0=ruleFlowType();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getOutputFlowInterfaceDefinitionRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"signature",
+                      		lv_signature_2_0, 
+                      		"FlowType");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_3=(Token)match(input,32,FOLLOW_32_in_ruleOutputFlowInterfaceDefinition3099); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_3, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getAsKeyword_3());
+                  
+            }
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1636:1: ( (lv_name_4_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1637:1: (lv_name_4_0= RULE_ID )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1637:1: (lv_name_4_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1638:3: lv_name_4_0= RULE_ID
+            {
+            lv_name_4_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleOutputFlowInterfaceDefinition3116); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_name_4_0, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getNameIDTerminalRuleCall_4_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getOutputFlowInterfaceDefinitionRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_4_0, 
+                      		"ID");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1654:2: ( ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']' )?
+            int alt41=2;
+            int LA41_0 = input.LA(1);
+
+            if ( (LA41_0==33) ) {
+                alt41=1;
+            }
+            switch (alt41) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1654:3: ( (lv_collection_5_0= '[' ) ) ( (lv_collectionsize_6_0= RULE_INT ) )? otherlv_7= ']'
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1654:3: ( (lv_collection_5_0= '[' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1655:1: (lv_collection_5_0= '[' )
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1655:1: (lv_collection_5_0= '[' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1656:3: lv_collection_5_0= '['
+                    {
+                    lv_collection_5_0=(Token)match(input,33,FOLLOW_33_in_ruleOutputFlowInterfaceDefinition3140); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_collection_5_0, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getCollectionLeftSquareBracketKeyword_5_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getOutputFlowInterfaceDefinitionRule());
+                      	        }
+                             		setWithLastConsumed(current, "collection", true, "[");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1669:2: ( (lv_collectionsize_6_0= RULE_INT ) )?
+                    int alt40=2;
+                    int LA40_0 = input.LA(1);
+
+                    if ( (LA40_0==RULE_INT) ) {
+                        alt40=1;
+                    }
+                    switch (alt40) {
+                        case 1 :
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1670:1: (lv_collectionsize_6_0= RULE_INT )
+                            {
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1670:1: (lv_collectionsize_6_0= RULE_INT )
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1671:3: lv_collectionsize_6_0= RULE_INT
+                            {
+                            lv_collectionsize_6_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleOutputFlowInterfaceDefinition3170); if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              			newLeafNode(lv_collectionsize_6_0, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getCollectionsizeINTTerminalRuleCall_5_1_0()); 
+                              		
+                            }
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElement(grammarAccess.getOutputFlowInterfaceDefinitionRule());
+                              	        }
+                                     		setWithLastConsumed(
+                                     			current, 
+                                     			"collectionsize",
+                                      		lv_collectionsize_6_0, 
+                                      		"INT");
+                              	    
+                            }
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleOutputFlowInterfaceDefinition3188); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_7, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getRightSquareBracketKeyword_5_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            otherlv_8=(Token)match(input,17,FOLLOW_17_in_ruleOutputFlowInterfaceDefinition3202); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_8, grammarAccess.getOutputFlowInterfaceDefinitionAccess().getSemicolonKeyword_6());
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleOutputFlowInterfaceDefinition"
+
+
+    // $ANTLR start "entryRuleInputFlowInterfaceDefinition"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1703:1: entryRuleInputFlowInterfaceDefinition returns [EObject current=null] : iv_ruleInputFlowInterfaceDefinition= ruleInputFlowInterfaceDefinition EOF ;
+    public final EObject entryRuleInputFlowInterfaceDefinition() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleInputFlowInterfaceDefinition = null;
+
+
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1704:2: (iv_ruleInputFlowInterfaceDefinition= ruleInputFlowInterfaceDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1705:2: iv_ruleInputFlowInterfaceDefinition= ruleInputFlowInterfaceDefinition EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getInputFlowInterfaceDefinitionRule()); 
+            }
+            pushFollow(FOLLOW_ruleInputFlowInterfaceDefinition_in_entryRuleInputFlowInterfaceDefinition3238);
+            iv_ruleInputFlowInterfaceDefinition=ruleInputFlowInterfaceDefinition();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleInputFlowInterfaceDefinition; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInputFlowInterfaceDefinition3248); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleInputFlowInterfaceDefinition"
+
+
+    // $ANTLR start "ruleInputFlowInterfaceDefinition"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1712:1: ruleInputFlowInterfaceDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'input' ) ) ( (lv_optional_2_0= 'optional' ) )? ( (lv_signature_3_0= ruleFlowType ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' ) ;
+    public final EObject ruleInputFlowInterfaceDefinition() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_role_1_0=null;
+        Token lv_optional_2_0=null;
+        Token otherlv_4=null;
+        Token lv_name_5_0=null;
+        Token lv_collection_6_0=null;
+        Token lv_collectionsize_7_0=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        EObject lv_annotationsList_0_0 = null;
+
+        AntlrDatatypeRuleToken lv_signature_3_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1715:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'input' ) ) ( (lv_optional_2_0= 'optional' ) )? ( (lv_signature_3_0= ruleFlowType ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1716:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'input' ) ) ( (lv_optional_2_0= 'optional' ) )? ( (lv_signature_3_0= ruleFlowType ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1716:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'input' ) ) ( (lv_optional_2_0= 'optional' ) )? ( (lv_signature_3_0= ruleFlowType ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1716:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? ( (lv_role_1_0= 'input' ) ) ( (lv_optional_2_0= 'optional' ) )? ( (lv_signature_3_0= ruleFlowType ) ) otherlv_4= 'as' ( (lv_name_5_0= RULE_ID ) ) ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )? otherlv_9= ';'
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1716:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt42=2;
+            int LA42_0 = input.LA(1);
+
+            if ( (LA42_0==70) ) {
+                alt42=1;
+            }
+            switch (alt42) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1717:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1717:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1718:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getInputFlowInterfaceDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleInputFlowInterfaceDefinition3294);
+                    lv_annotationsList_0_0=ruleAnnotationsList();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getInputFlowInterfaceDefinitionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"annotationsList",
+                              		lv_annotationsList_0_0, 
+                              		"AnnotationsList");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1734:3: ( (lv_role_1_0= 'input' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1735:1: (lv_role_1_0= 'input' )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1735:1: (lv_role_1_0= 'input' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1736:3: lv_role_1_0= 'input'
+            {
+            lv_role_1_0=(Token)match(input,38,FOLLOW_38_in_ruleInputFlowInterfaceDefinition3313); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                      newLeafNode(lv_role_1_0, grammarAccess.getInputFlowInterfaceDefinitionAccess().getRoleInputKeyword_1_0());
+                  
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getInputFlowInterfaceDefinitionRule());
+              	        }
+                     		setWithLastConsumed(current, "role", lv_role_1_0, "input");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1749:2: ( (lv_optional_2_0= 'optional' ) )?
+            int alt43=2;
+            int LA43_0 = input.LA(1);
+
+            if ( (LA43_0==36) ) {
+                alt43=1;
+            }
+            switch (alt43) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1750:1: (lv_optional_2_0= 'optional' )
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1750:1: (lv_optional_2_0= 'optional' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1751:3: lv_optional_2_0= 'optional'
+                    {
+                    lv_optional_2_0=(Token)match(input,36,FOLLOW_36_in_ruleInputFlowInterfaceDefinition3344); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_optional_2_0, grammarAccess.getInputFlowInterfaceDefinitionAccess().getOptionalOptionalKeyword_2_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getInputFlowInterfaceDefinitionRule());
+                      	        }
+                             		setWithLastConsumed(current, "optional", true, "optional");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1764:3: ( (lv_signature_3_0= ruleFlowType ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1765:1: (lv_signature_3_0= ruleFlowType )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1765:1: (lv_signature_3_0= ruleFlowType )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1766:3: lv_signature_3_0= ruleFlowType
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getInputFlowInterfaceDefinitionAccess().getSignatureFlowTypeParserRuleCall_3_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFlowType_in_ruleInputFlowInterfaceDefinition3379);
+            lv_signature_3_0=ruleFlowType();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getInputFlowInterfaceDefinitionRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"signature",
+                      		lv_signature_3_0, 
+                      		"FlowType");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_4=(Token)match(input,32,FOLLOW_32_in_ruleInputFlowInterfaceDefinition3391); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_4, grammarAccess.getInputFlowInterfaceDefinitionAccess().getAsKeyword_4());
+                  
+            }
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1786:1: ( (lv_name_5_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1787:1: (lv_name_5_0= RULE_ID )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1787:1: (lv_name_5_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1788:3: lv_name_5_0= RULE_ID
+            {
+            lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInputFlowInterfaceDefinition3408); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_name_5_0, grammarAccess.getInputFlowInterfaceDefinitionAccess().getNameIDTerminalRuleCall_5_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getInputFlowInterfaceDefinitionRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_5_0, 
+                      		"ID");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1804:2: ( ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']' )?
+            int alt45=2;
+            int LA45_0 = input.LA(1);
+
+            if ( (LA45_0==33) ) {
+                alt45=1;
+            }
+            switch (alt45) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1804:3: ( (lv_collection_6_0= '[' ) ) ( (lv_collectionsize_7_0= RULE_INT ) )? otherlv_8= ']'
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1804:3: ( (lv_collection_6_0= '[' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1805:1: (lv_collection_6_0= '[' )
+                    {
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1805:1: (lv_collection_6_0= '[' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1806:3: lv_collection_6_0= '['
+                    {
+                    lv_collection_6_0=(Token)match(input,33,FOLLOW_33_in_ruleInputFlowInterfaceDefinition3432); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_collection_6_0, grammarAccess.getInputFlowInterfaceDefinitionAccess().getCollectionLeftSquareBracketKeyword_6_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getInputFlowInterfaceDefinitionRule());
+                      	        }
+                             		setWithLastConsumed(current, "collection", true, "[");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1819:2: ( (lv_collectionsize_7_0= RULE_INT ) )?
+                    int alt44=2;
+                    int LA44_0 = input.LA(1);
+
+                    if ( (LA44_0==RULE_INT) ) {
+                        alt44=1;
+                    }
+                    switch (alt44) {
+                        case 1 :
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1820:1: (lv_collectionsize_7_0= RULE_INT )
+                            {
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1820:1: (lv_collectionsize_7_0= RULE_INT )
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1821:3: lv_collectionsize_7_0= RULE_INT
+                            {
+                            lv_collectionsize_7_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleInputFlowInterfaceDefinition3462); if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              			newLeafNode(lv_collectionsize_7_0, grammarAccess.getInputFlowInterfaceDefinitionAccess().getCollectionsizeINTTerminalRuleCall_6_1_0()); 
+                              		
+                            }
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElement(grammarAccess.getInputFlowInterfaceDefinitionRule());
+                              	        }
+                                     		setWithLastConsumed(
+                                     			current, 
+                                     			"collectionsize",
+                                      		lv_collectionsize_7_0, 
+                                      		"INT");
+                              	    
+                            }
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleInputFlowInterfaceDefinition3480); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_8, grammarAccess.getInputFlowInterfaceDefinitionAccess().getRightSquareBracketKeyword_6_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleInputFlowInterfaceDefinition3494); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_9, grammarAccess.getInputFlowInterfaceDefinitionAccess().getSemicolonKeyword_7());
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleInputFlowInterfaceDefinition"
+
+
+    // $ANTLR start "entryRuleFlowType"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1853:1: entryRuleFlowType returns [String current=null] : iv_ruleFlowType= ruleFlowType EOF ;
+    public final String entryRuleFlowType() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleFlowType = null;
+
+
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1854:2: (iv_ruleFlowType= ruleFlowType EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1855:2: iv_ruleFlowType= ruleFlowType EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getFlowTypeRule()); 
+            }
+            pushFollow(FOLLOW_ruleFlowType_in_entryRuleFlowType3531);
+            iv_ruleFlowType=ruleFlowType();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleFlowType.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFlowType3542); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleFlowType"
+
+
+    // $ANTLR start "ruleFlowType"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1862:1: ruleFlowType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_AttributeType_0= ruleAttributeType | this_IDTType_1= ruleIDTType ) ;
+    public final AntlrDatatypeRuleToken ruleFlowType() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        AntlrDatatypeRuleToken this_AttributeType_0 = null;
+
+        AntlrDatatypeRuleToken this_IDTType_1 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1865:28: ( (this_AttributeType_0= ruleAttributeType | this_IDTType_1= ruleIDTType ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1866:1: (this_AttributeType_0= ruleAttributeType | this_IDTType_1= ruleIDTType )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1866:1: (this_AttributeType_0= ruleAttributeType | this_IDTType_1= ruleIDTType )
+            int alt46=2;
+            int LA46_0 = input.LA(1);
+
+            if ( ((LA46_0>=49 && LA46_0<=60)) ) {
+                alt46=1;
+            }
+            else if ( (LA46_0==RULE_ID||LA46_0==RULE_SL||LA46_0==46||LA46_0==69) ) {
+                alt46=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 46, 0, input);
+
+                throw nvae;
+            }
+            switch (alt46) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1867:5: this_AttributeType_0= ruleAttributeType
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getFlowTypeAccess().getAttributeTypeParserRuleCall_0()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleAttributeType_in_ruleFlowType3589);
+                    this_AttributeType_0=ruleAttributeType();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_AttributeType_0);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1879:5: this_IDTType_1= ruleIDTType
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getFlowTypeAccess().getIDTTypeParserRuleCall_1()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleIDTType_in_ruleFlowType3622);
+                    this_IDTType_1=ruleIDTType();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_IDTType_1);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleFlowType"
+
+
+    // $ANTLR start "entryRuleIDTType"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1897:1: entryRuleIDTType returns [String current=null] : iv_ruleIDTType= ruleIDTType EOF ;
+    public final String entryRuleIDTType() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleIDTType = null;
+
+
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1898:2: (iv_ruleIDTType= ruleIDTType EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1899:2: iv_ruleIDTType= ruleIDTType EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getIDTTypeRule()); 
+            }
+            pushFollow(FOLLOW_ruleIDTType_in_entryRuleIDTType3668);
+            iv_ruleIDTType=ruleIDTType();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleIDTType.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIDTType3679); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleIDTType"
+
+
+    // $ANTLR start "ruleIDTType"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1906:1: ruleIDTType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_FilePath_0= ruleFilePath kw= ':' (kw= 'struct' | kw= 'enum' | kw= 'union' ) this_ID_5= RULE_ID ) ;
+    public final AntlrDatatypeRuleToken ruleIDTType() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+        Token this_ID_5=null;
+        AntlrDatatypeRuleToken this_FilePath_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1909:28: ( (this_FilePath_0= ruleFilePath kw= ':' (kw= 'struct' | kw= 'enum' | kw= 'union' ) this_ID_5= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1910:1: (this_FilePath_0= ruleFilePath kw= ':' (kw= 'struct' | kw= 'enum' | kw= 'union' ) this_ID_5= RULE_ID )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1910:1: (this_FilePath_0= ruleFilePath kw= ':' (kw= 'struct' | kw= 'enum' | kw= 'union' ) this_ID_5= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1911:5: this_FilePath_0= ruleFilePath kw= ':' (kw= 'struct' | kw= 'enum' | kw= 'union' ) this_ID_5= RULE_ID
+            {
+            if ( state.backtracking==0 ) {
+               
+                      newCompositeNode(grammarAccess.getIDTTypeAccess().getFilePathParserRuleCall_0()); 
+                  
+            }
+            pushFollow(FOLLOW_ruleFilePath_in_ruleIDTType3726);
+            this_FilePath_0=ruleFilePath();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              		current.merge(this_FilePath_0);
+                  
+            }
+            if ( state.backtracking==0 ) {
+               
+                      afterParserOrEnumRuleCall();
+                  
+            }
+            kw=(Token)match(input,39,FOLLOW_39_in_ruleIDTType3744); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                      current.merge(kw);
+                      newLeafNode(kw, grammarAccess.getIDTTypeAccess().getColonKeyword_1()); 
+                  
+            }
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1927:1: (kw= 'struct' | kw= 'enum' | kw= 'union' )
+            int alt47=3;
+            switch ( input.LA(1) ) {
+            case 40:
+                {
+                alt47=1;
+                }
+                break;
+            case 41:
+                {
+                alt47=2;
+                }
+                break;
+            case 42:
+                {
+                alt47=3;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 47, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt47) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1928:2: kw= 'struct'
+                    {
+                    kw=(Token)match(input,40,FOLLOW_40_in_ruleIDTType3758); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getIDTTypeAccess().getStructKeyword_2_0()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1935:2: kw= 'enum'
+                    {
+                    kw=(Token)match(input,41,FOLLOW_41_in_ruleIDTType3777); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getIDTTypeAccess().getEnumKeyword_2_1()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1942:2: kw= 'union'
+                    {
+                    kw=(Token)match(input,42,FOLLOW_42_in_ruleIDTType3796); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getIDTTypeAccess().getUnionKeyword_2_2()); 
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            this_ID_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleIDTType3812); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              		current.merge(this_ID_5);
+                  
+            }
+            if ( state.backtracking==0 ) {
+               
+                  newLeafNode(this_ID_5, grammarAccess.getIDTTypeAccess().getIDTerminalRuleCall_3()); 
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleIDTType"
+
+
     // $ANTLR start "entryRuleSubComponentDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1454:1: entryRuleSubComponentDefinition returns [EObject current=null] : iv_ruleSubComponentDefinition= ruleSubComponentDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1964:1: entryRuleSubComponentDefinition returns [EObject current=null] : iv_ruleSubComponentDefinition= ruleSubComponentDefinition EOF ;
     public final EObject entryRuleSubComponentDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -4092,13 +5442,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1455:2: (iv_ruleSubComponentDefinition= ruleSubComponentDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1456:2: iv_ruleSubComponentDefinition= ruleSubComponentDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1965:2: (iv_ruleSubComponentDefinition= ruleSubComponentDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1966:2: iv_ruleSubComponentDefinition= ruleSubComponentDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSubComponentDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleSubComponentDefinition_in_entryRuleSubComponentDefinition2806);
+            pushFollow(FOLLOW_ruleSubComponentDefinition_in_entryRuleSubComponentDefinition3859);
             iv_ruleSubComponentDefinition=ruleSubComponentDefinition();
 
             state._fsp--;
@@ -4106,7 +5456,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleSubComponentDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSubComponentDefinition2816); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSubComponentDefinition3869); if (state.failed) return current;
 
             }
 
@@ -4124,7 +5474,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSubComponentDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1463:1: ruleSubComponentDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1973:1: ruleSubComponentDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' ) ;
     public final EObject ruleSubComponentDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -4158,32 +5508,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1466:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1467:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1976:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1977:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1467:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1467:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1977:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1977:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'contains' ( ( ruleQualifiedName ) )? (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )? (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )? otherlv_13= 'as' ( (lv_name_14_0= RULE_ID ) ) ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )? ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )? otherlv_17= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1467:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
-            int alt39=2;
-            int LA39_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1977:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt48=2;
+            int LA48_0 = input.LA(1);
 
-            if ( (LA39_0==56) ) {
-                alt39=1;
+            if ( (LA48_0==70) ) {
+                alt48=1;
             }
-            switch (alt39) {
+            switch (alt48) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1468:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1978:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1468:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1469:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1978:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1979:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition2862);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition3915);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -4210,25 +5560,25 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,37,FOLLOW_37_in_ruleSubComponentDefinition2875); if (state.failed) return current;
+            otherlv_1=(Token)match(input,43,FOLLOW_43_in_ruleSubComponentDefinition3928); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getSubComponentDefinitionAccess().getContainsKeyword_1());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1489:1: ( ( ruleQualifiedName ) )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1999:1: ( ( ruleQualifiedName ) )?
+            int alt49=2;
+            int LA49_0 = input.LA(1);
 
-            if ( (LA40_0==RULE_ID) ) {
-                alt40=1;
+            if ( (LA49_0==RULE_ID) ) {
+                alt49=1;
             }
-            switch (alt40) {
+            switch (alt49) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1490:1: ( ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2000:1: ( ruleQualifiedName )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1490:1: ( ruleQualifiedName )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1491:3: ruleQualifiedName
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2000:1: ( ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2001:3: ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -4247,7 +5597,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getTypeTypeReferenceCrossReference_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleSubComponentDefinition2902);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleSubComponentDefinition3955);
                     ruleQualifiedName();
 
                     state._fsp--;
@@ -4266,35 +5616,35 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1507:3: (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )?
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2017:3: (otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>' )?
+            int alt51=2;
+            int LA51_0 = input.LA(1);
 
-            if ( (LA42_0==20) ) {
-                alt42=1;
+            if ( (LA51_0==20) ) {
+                alt51=1;
             }
-            switch (alt42) {
+            switch (alt51) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1507:5: otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2017:5: otherlv_3= '<' ( (lv_templatesList_4_0= ruleTemplateReference ) ) (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )* otherlv_7= '>'
                     {
-                    otherlv_3=(Token)match(input,20,FOLLOW_20_in_ruleSubComponentDefinition2916); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,20,FOLLOW_20_in_ruleSubComponentDefinition3969); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getSubComponentDefinitionAccess().getLessThanSignKeyword_3_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1511:1: ( (lv_templatesList_4_0= ruleTemplateReference ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1512:1: (lv_templatesList_4_0= ruleTemplateReference )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2021:1: ( (lv_templatesList_4_0= ruleTemplateReference ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2022:1: (lv_templatesList_4_0= ruleTemplateReference )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1512:1: (lv_templatesList_4_0= ruleTemplateReference )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1513:3: lv_templatesList_4_0= ruleTemplateReference
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2022:1: (lv_templatesList_4_0= ruleTemplateReference )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2023:3: lv_templatesList_4_0= ruleTemplateReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getTemplatesListTemplateReferenceParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition2937);
+                    pushFollow(FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition3990);
                     lv_templatesList_4_0=ruleTemplateReference();
 
                     state._fsp--;
@@ -4318,39 +5668,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1529:2: (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )*
-                    loop41:
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2039:2: (otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) ) )*
+                    loop50:
                     do {
-                        int alt41=2;
-                        int LA41_0 = input.LA(1);
+                        int alt50=2;
+                        int LA50_0 = input.LA(1);
 
-                        if ( (LA41_0==21) ) {
-                            alt41=1;
+                        if ( (LA50_0==21) ) {
+                            alt50=1;
                         }
 
 
-                        switch (alt41) {
+                        switch (alt50) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1529:4: otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2039:4: otherlv_5= ',' ( (lv_templatesList_6_0= ruleTemplateReference ) )
                     	    {
-                    	    otherlv_5=(Token)match(input,21,FOLLOW_21_in_ruleSubComponentDefinition2950); if (state.failed) return current;
+                    	    otherlv_5=(Token)match(input,21,FOLLOW_21_in_ruleSubComponentDefinition4003); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_5, grammarAccess.getSubComponentDefinitionAccess().getCommaKeyword_3_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1533:1: ( (lv_templatesList_6_0= ruleTemplateReference ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1534:1: (lv_templatesList_6_0= ruleTemplateReference )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2043:1: ( (lv_templatesList_6_0= ruleTemplateReference ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2044:1: (lv_templatesList_6_0= ruleTemplateReference )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1534:1: (lv_templatesList_6_0= ruleTemplateReference )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1535:3: lv_templatesList_6_0= ruleTemplateReference
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2044:1: (lv_templatesList_6_0= ruleTemplateReference )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2045:3: lv_templatesList_6_0= ruleTemplateReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getTemplatesListTemplateReferenceParserRuleCall_3_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition2971);
+                    	    pushFollow(FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition4024);
                     	    lv_templatesList_6_0=ruleTemplateReference();
 
                     	    state._fsp--;
@@ -4379,11 +5729,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop41;
+                    	    break loop50;
                         }
                     } while (true);
 
-                    otherlv_7=(Token)match(input,22,FOLLOW_22_in_ruleSubComponentDefinition2985); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,22,FOLLOW_22_in_ruleSubComponentDefinition4038); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getSubComponentDefinitionAccess().getGreaterThanSignKeyword_3_3());
@@ -4395,35 +5745,35 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1555:3: (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )?
-            int alt44=2;
-            int LA44_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2065:3: (otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')' )?
+            int alt53=2;
+            int LA53_0 = input.LA(1);
 
-            if ( (LA44_0==29) ) {
-                alt44=1;
+            if ( (LA53_0==29) ) {
+                alt53=1;
             }
-            switch (alt44) {
+            switch (alt53) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1555:5: otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2065:5: otherlv_8= '(' ( (lv_argumentsList_9_0= ruleArgumentDefinition ) ) (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )* otherlv_12= ')'
                     {
-                    otherlv_8=(Token)match(input,29,FOLLOW_29_in_ruleSubComponentDefinition3000); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,29,FOLLOW_29_in_ruleSubComponentDefinition4053); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getSubComponentDefinitionAccess().getLeftParenthesisKeyword_4_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1559:1: ( (lv_argumentsList_9_0= ruleArgumentDefinition ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1560:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2069:1: ( (lv_argumentsList_9_0= ruleArgumentDefinition ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2070:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1560:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1561:3: lv_argumentsList_9_0= ruleArgumentDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2070:1: (lv_argumentsList_9_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2071:3: lv_argumentsList_9_0= ruleArgumentDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getArgumentsListArgumentDefinitionParserRuleCall_4_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition3021);
+                    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition4074);
                     lv_argumentsList_9_0=ruleArgumentDefinition();
 
                     state._fsp--;
@@ -4447,39 +5797,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1577:2: (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )*
-                    loop43:
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2087:2: (otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) ) )*
+                    loop52:
                     do {
-                        int alt43=2;
-                        int LA43_0 = input.LA(1);
+                        int alt52=2;
+                        int LA52_0 = input.LA(1);
 
-                        if ( (LA43_0==21) ) {
-                            alt43=1;
+                        if ( (LA52_0==21) ) {
+                            alt52=1;
                         }
 
 
-                        switch (alt43) {
+                        switch (alt52) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1577:4: otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2087:4: otherlv_10= ',' ( (lv_argumentsList_11_0= ruleArgumentDefinition ) )
                     	    {
-                    	    otherlv_10=(Token)match(input,21,FOLLOW_21_in_ruleSubComponentDefinition3034); if (state.failed) return current;
+                    	    otherlv_10=(Token)match(input,21,FOLLOW_21_in_ruleSubComponentDefinition4087); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_10, grammarAccess.getSubComponentDefinitionAccess().getCommaKeyword_4_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1581:1: ( (lv_argumentsList_11_0= ruleArgumentDefinition ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1582:1: (lv_argumentsList_11_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2091:1: ( (lv_argumentsList_11_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2092:1: (lv_argumentsList_11_0= ruleArgumentDefinition )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1582:1: (lv_argumentsList_11_0= ruleArgumentDefinition )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1583:3: lv_argumentsList_11_0= ruleArgumentDefinition
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2092:1: (lv_argumentsList_11_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2093:3: lv_argumentsList_11_0= ruleArgumentDefinition
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getArgumentsListArgumentDefinitionParserRuleCall_4_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition3055);
+                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition4108);
                     	    lv_argumentsList_11_0=ruleArgumentDefinition();
 
                     	    state._fsp--;
@@ -4508,11 +5858,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop43;
+                    	    break loop52;
                         }
                     } while (true);
 
-                    otherlv_12=(Token)match(input,30,FOLLOW_30_in_ruleSubComponentDefinition3069); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,30,FOLLOW_30_in_ruleSubComponentDefinition4122); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_12, grammarAccess.getSubComponentDefinitionAccess().getRightParenthesisKeyword_4_3());
@@ -4524,19 +5874,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_13=(Token)match(input,32,FOLLOW_32_in_ruleSubComponentDefinition3083); if (state.failed) return current;
+            otherlv_13=(Token)match(input,32,FOLLOW_32_in_ruleSubComponentDefinition4136); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_13, grammarAccess.getSubComponentDefinitionAccess().getAsKeyword_5());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1607:1: ( (lv_name_14_0= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1608:1: (lv_name_14_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2117:1: ( (lv_name_14_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2118:1: (lv_name_14_0= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1608:1: (lv_name_14_0= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1609:3: lv_name_14_0= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2118:1: (lv_name_14_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2119:3: lv_name_14_0= RULE_ID
             {
-            lv_name_14_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSubComponentDefinition3100); if (state.failed) return current;
+            lv_name_14_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSubComponentDefinition4153); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_14_0, grammarAccess.getSubComponentDefinitionAccess().getNameIDTerminalRuleCall_6_0()); 
@@ -4560,26 +5910,26 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1625:2: ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )?
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2135:2: ( (lv_bodyAnnotationsList_15_0= ruleAnnotationsList ) )?
+            int alt54=2;
+            int LA54_0 = input.LA(1);
 
-            if ( (LA45_0==56) ) {
-                alt45=1;
+            if ( (LA54_0==70) ) {
+                alt54=1;
             }
-            switch (alt45) {
+            switch (alt54) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1626:1: (lv_bodyAnnotationsList_15_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2136:1: (lv_bodyAnnotationsList_15_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1626:1: (lv_bodyAnnotationsList_15_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1627:3: lv_bodyAnnotationsList_15_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2136:1: (lv_bodyAnnotationsList_15_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2137:3: lv_bodyAnnotationsList_15_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getBodyAnnotationsListAnnotationsListParserRuleCall_7_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition3126);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition4179);
                     lv_bodyAnnotationsList_15_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -4606,47 +5956,47 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1643:3: ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )?
-            int alt47=2;
-            int LA47_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2153:3: ( ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) ) )?
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( (LA47_0==19||(LA47_0>=26 && LA47_0<=27)) ) {
-                alt47=1;
+            if ( (LA56_0==19||(LA56_0>=26 && LA56_0<=27)) ) {
+                alt56=1;
             }
-            switch (alt47) {
+            switch (alt56) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1644:1: ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2154:1: ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1644:1: ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1645:1: (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2154:1: ( (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2155:1: (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1645:1: (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition )
-                    int alt46=2;
-                    int LA46_0 = input.LA(1);
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2155:1: (lv_body_16_1= ruleCompositeDefinition | lv_body_16_2= rulePrimitiveDefinition )
+                    int alt55=2;
+                    int LA55_0 = input.LA(1);
 
-                    if ( (LA46_0==19) ) {
-                        alt46=1;
+                    if ( (LA55_0==19) ) {
+                        alt55=1;
                     }
-                    else if ( ((LA46_0>=26 && LA46_0<=27)) ) {
-                        alt46=2;
+                    else if ( ((LA55_0>=26 && LA55_0<=27)) ) {
+                        alt55=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 46, 0, input);
+                            new NoViableAltException("", 55, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt46) {
+                    switch (alt55) {
                         case 1 :
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1646:3: lv_body_16_1= ruleCompositeDefinition
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2156:3: lv_body_16_1= ruleCompositeDefinition
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getBodyCompositeDefinitionParserRuleCall_8_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleCompositeDefinition_in_ruleSubComponentDefinition3150);
+                            pushFollow(FOLLOW_ruleCompositeDefinition_in_ruleSubComponentDefinition4203);
                             lv_body_16_1=ruleCompositeDefinition();
 
                             state._fsp--;
@@ -4668,14 +6018,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1661:8: lv_body_16_2= rulePrimitiveDefinition
+                            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2171:8: lv_body_16_2= rulePrimitiveDefinition
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getSubComponentDefinitionAccess().getBodyPrimitiveDefinitionParserRuleCall_8_0_1()); 
                               	    
                             }
-                            pushFollow(FOLLOW_rulePrimitiveDefinition_in_ruleSubComponentDefinition3169);
+                            pushFollow(FOLLOW_rulePrimitiveDefinition_in_ruleSubComponentDefinition4222);
                             lv_body_16_2=rulePrimitiveDefinition();
 
                             state._fsp--;
@@ -4708,7 +6058,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_17=(Token)match(input,17,FOLLOW_17_in_ruleSubComponentDefinition3185); if (state.failed) return current;
+            otherlv_17=(Token)match(input,17,FOLLOW_17_in_ruleSubComponentDefinition4238); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_17, grammarAccess.getSubComponentDefinitionAccess().getSemicolonKeyword_9());
@@ -4737,7 +6087,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCompositeElement"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1693:1: entryRuleCompositeElement returns [EObject current=null] : iv_ruleCompositeElement= ruleCompositeElement EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2203:1: entryRuleCompositeElement returns [EObject current=null] : iv_ruleCompositeElement= ruleCompositeElement EOF ;
     public final EObject entryRuleCompositeElement() throws RecognitionException {
         EObject current = null;
 
@@ -4745,13 +6095,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1694:2: (iv_ruleCompositeElement= ruleCompositeElement EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1695:2: iv_ruleCompositeElement= ruleCompositeElement EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2204:2: (iv_ruleCompositeElement= ruleCompositeElement EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2205:2: iv_ruleCompositeElement= ruleCompositeElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCompositeElementRule()); 
             }
-            pushFollow(FOLLOW_ruleCompositeElement_in_entryRuleCompositeElement3223);
+            pushFollow(FOLLOW_ruleCompositeElement_in_entryRuleCompositeElement4276);
             iv_ruleCompositeElement=ruleCompositeElement();
 
             state._fsp--;
@@ -4759,7 +6109,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCompositeElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCompositeElement3233); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCompositeElement4286); if (state.failed) return current;
 
             }
 
@@ -4777,7 +6127,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompositeElement"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1702:1: ruleCompositeElement returns [EObject current=null] : (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2212:1: ruleCompositeElement returns [EObject current=null] : (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition ) ;
     public final EObject ruleCompositeElement() throws RecognitionException {
         EObject current = null;
 
@@ -4791,29 +6141,29 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1705:28: ( (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1706:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2215:28: ( (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2216:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1706:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition )
-            int alt48=3;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2216:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_SubComponentDefinition_1= ruleSubComponentDefinition | this_BindingDefinition_2= ruleBindingDefinition )
+            int alt57=3;
             switch ( input.LA(1) ) {
-            case 56:
+            case 70:
                 {
-                int LA48_1 = input.LA(2);
+                int LA57_1 = input.LA(2);
 
-                if ( (synpred54_InternalAdl()) ) {
-                    alt48=1;
+                if ( (synpred72_InternalAdl()) ) {
+                    alt57=1;
                 }
-                else if ( (synpred55_InternalAdl()) ) {
-                    alt48=2;
+                else if ( (synpred73_InternalAdl()) ) {
+                    alt57=2;
                 }
                 else if ( (true) ) {
-                    alt48=3;
+                    alt57=3;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 48, 1, input);
+                        new NoViableAltException("", 57, 1, input);
 
                     throw nvae;
                 }
@@ -4821,31 +6171,33 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 break;
             case 31:
             case 35:
-                {
-                alt48=1;
-                }
-                break;
             case 37:
-                {
-                alt48=2;
-                }
-                break;
             case 38:
                 {
-                alt48=3;
+                alt57=1;
+                }
+                break;
+            case 43:
+                {
+                alt57=2;
+                }
+                break;
+            case 44:
+                {
+                alt57=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 48, 0, input);
+                    new NoViableAltException("", 57, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt48) {
+            switch (alt57) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1707:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2217:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -4857,7 +6209,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getCompositeElementAccess().getHostedInterfaceDefinitionParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_ruleCompositeElement3283);
+                    pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_ruleCompositeElement4336);
                     this_HostedInterfaceDefinition_0=ruleHostedInterfaceDefinition();
 
                     state._fsp--;
@@ -4872,7 +6224,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1720:2: this_SubComponentDefinition_1= ruleSubComponentDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2230:2: this_SubComponentDefinition_1= ruleSubComponentDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -4884,7 +6236,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getCompositeElementAccess().getSubComponentDefinitionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSubComponentDefinition_in_ruleCompositeElement3313);
+                    pushFollow(FOLLOW_ruleSubComponentDefinition_in_ruleCompositeElement4366);
                     this_SubComponentDefinition_1=ruleSubComponentDefinition();
 
                     state._fsp--;
@@ -4899,7 +6251,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1733:2: this_BindingDefinition_2= ruleBindingDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2243:2: this_BindingDefinition_2= ruleBindingDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -4911,7 +6263,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getCompositeElementAccess().getBindingDefinitionParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleBindingDefinition_in_ruleCompositeElement3343);
+                    pushFollow(FOLLOW_ruleBindingDefinition_in_ruleCompositeElement4396);
                     this_BindingDefinition_2=ruleBindingDefinition();
 
                     state._fsp--;
@@ -4948,7 +6300,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitiveElement"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1752:1: entryRulePrimitiveElement returns [EObject current=null] : iv_rulePrimitiveElement= rulePrimitiveElement EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2262:1: entryRulePrimitiveElement returns [EObject current=null] : iv_rulePrimitiveElement= rulePrimitiveElement EOF ;
     public final EObject entryRulePrimitiveElement() throws RecognitionException {
         EObject current = null;
 
@@ -4956,13 +6308,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1753:2: (iv_rulePrimitiveElement= rulePrimitiveElement EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1754:2: iv_rulePrimitiveElement= rulePrimitiveElement EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2263:2: (iv_rulePrimitiveElement= rulePrimitiveElement EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2264:2: iv_rulePrimitiveElement= rulePrimitiveElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrimitiveElementRule()); 
             }
-            pushFollow(FOLLOW_rulePrimitiveElement_in_entryRulePrimitiveElement3378);
+            pushFollow(FOLLOW_rulePrimitiveElement_in_entryRulePrimitiveElement4431);
             iv_rulePrimitiveElement=rulePrimitiveElement();
 
             state._fsp--;
@@ -4970,7 +6322,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_rulePrimitiveElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveElement3388); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveElement4441); if (state.failed) return current;
 
             }
 
@@ -4988,7 +6340,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitiveElement"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1761:1: rulePrimitiveElement returns [EObject current=null] : (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2271:1: rulePrimitiveElement returns [EObject current=null] : (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition ) ;
     public final EObject rulePrimitiveElement() throws RecognitionException {
         EObject current = null;
 
@@ -5004,32 +6356,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1764:28: ( (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1765:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2274:28: ( (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2275:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1765:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition )
-            int alt49=4;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2275:1: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition | this_ImplementationDefinition_1= ruleImplementationDefinition | this_AttributeDefinition_2= ruleAttributeDefinition | this_DataDefinition_3= ruleDataDefinition )
+            int alt58=4;
             switch ( input.LA(1) ) {
-            case 56:
+            case 70:
                 {
-                int LA49_1 = input.LA(2);
+                int LA58_1 = input.LA(2);
 
-                if ( (synpred56_InternalAdl()) ) {
-                    alt49=1;
+                if ( (synpred74_InternalAdl()) ) {
+                    alt58=1;
                 }
-                else if ( (synpred57_InternalAdl()) ) {
-                    alt49=2;
+                else if ( (synpred75_InternalAdl()) ) {
+                    alt58=2;
                 }
-                else if ( (synpred58_InternalAdl()) ) {
-                    alt49=3;
+                else if ( (synpred76_InternalAdl()) ) {
+                    alt58=3;
                 }
                 else if ( (true) ) {
-                    alt49=4;
+                    alt58=4;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 49, 1, input);
+                        new NoViableAltException("", 58, 1, input);
 
                     throw nvae;
                 }
@@ -5037,36 +6389,38 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                 break;
             case 31:
             case 35:
+            case 37:
+            case 38:
                 {
-                alt49=1;
+                alt58=1;
                 }
                 break;
-            case 53:
+            case 67:
                 {
-                alt49=2;
+                alt58=2;
                 }
                 break;
-            case 51:
+            case 66:
                 {
-                alt49=3;
+                alt58=3;
                 }
                 break;
-            case 54:
+            case 68:
                 {
-                alt49=4;
+                alt58=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 49, 0, input);
+                    new NoViableAltException("", 58, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt49) {
+            switch (alt58) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1766:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2276:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5078,7 +6432,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getPrimitiveElementAccess().getHostedInterfaceDefinitionParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_rulePrimitiveElement3438);
+                    pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_rulePrimitiveElement4491);
                     this_HostedInterfaceDefinition_0=ruleHostedInterfaceDefinition();
 
                     state._fsp--;
@@ -5093,7 +6447,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1779:2: this_ImplementationDefinition_1= ruleImplementationDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2289:2: this_ImplementationDefinition_1= ruleImplementationDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5105,7 +6459,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getPrimitiveElementAccess().getImplementationDefinitionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleImplementationDefinition_in_rulePrimitiveElement3468);
+                    pushFollow(FOLLOW_ruleImplementationDefinition_in_rulePrimitiveElement4521);
                     this_ImplementationDefinition_1=ruleImplementationDefinition();
 
                     state._fsp--;
@@ -5120,7 +6474,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1792:2: this_AttributeDefinition_2= ruleAttributeDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2302:2: this_AttributeDefinition_2= ruleAttributeDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5132,7 +6486,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getPrimitiveElementAccess().getAttributeDefinitionParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleAttributeDefinition_in_rulePrimitiveElement3498);
+                    pushFollow(FOLLOW_ruleAttributeDefinition_in_rulePrimitiveElement4551);
                     this_AttributeDefinition_2=ruleAttributeDefinition();
 
                     state._fsp--;
@@ -5147,7 +6501,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1805:2: this_DataDefinition_3= ruleDataDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2315:2: this_DataDefinition_3= ruleDataDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5159,7 +6513,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getPrimitiveElementAccess().getDataDefinitionParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleDataDefinition_in_rulePrimitiveElement3528);
+                    pushFollow(FOLLOW_ruleDataDefinition_in_rulePrimitiveElement4581);
                     this_DataDefinition_3=ruleDataDefinition();
 
                     state._fsp--;
@@ -5196,7 +6550,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBindingDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1824:1: entryRuleBindingDefinition returns [EObject current=null] : iv_ruleBindingDefinition= ruleBindingDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2334:1: entryRuleBindingDefinition returns [EObject current=null] : iv_ruleBindingDefinition= ruleBindingDefinition EOF ;
     public final EObject entryRuleBindingDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -5204,13 +6558,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1825:2: (iv_ruleBindingDefinition= ruleBindingDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1826:2: iv_ruleBindingDefinition= ruleBindingDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2335:2: (iv_ruleBindingDefinition= ruleBindingDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2336:2: iv_ruleBindingDefinition= ruleBindingDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBindingDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleBindingDefinition_in_entryRuleBindingDefinition3563);
+            pushFollow(FOLLOW_ruleBindingDefinition_in_entryRuleBindingDefinition4616);
             iv_ruleBindingDefinition=ruleBindingDefinition();
 
             state._fsp--;
@@ -5218,7 +6572,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBindingDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBindingDefinition3573); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBindingDefinition4626); if (state.failed) return current;
 
             }
 
@@ -5236,7 +6590,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBindingDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1833:1: ruleBindingDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2343:1: ruleBindingDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' ) ;
     public final EObject ruleBindingDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -5263,32 +6617,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1836:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1837:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2346:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2347:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1837:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1837:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2347:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2347:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'binds' ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) ) otherlv_4= '.' ( (otherlv_5= RULE_ID ) ) (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )? otherlv_9= 'to' ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) ) otherlv_12= '.' ( (otherlv_13= RULE_ID ) ) (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )? otherlv_17= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1837:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
-            int alt50=2;
-            int LA50_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2347:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt59=2;
+            int LA59_0 = input.LA(1);
 
-            if ( (LA50_0==56) ) {
-                alt50=1;
+            if ( (LA59_0==70) ) {
+                alt59=1;
             }
-            switch (alt50) {
+            switch (alt59) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1838:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2348:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1838:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1839:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2348:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2349:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getBindingDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleBindingDefinition3619);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleBindingDefinition4672);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -5315,38 +6669,38 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleBindingDefinition3632); if (state.failed) return current;
+            otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleBindingDefinition4685); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getBindingDefinitionAccess().getBindsKeyword_1());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1859:1: ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) )
-            int alt51=2;
-            int LA51_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2369:1: ( ( (otherlv_2= RULE_ID ) ) | ( (lv_isSrcParentThis_3_0= 'this' ) ) )
+            int alt60=2;
+            int LA60_0 = input.LA(1);
 
-            if ( (LA51_0==RULE_ID) ) {
-                alt51=1;
+            if ( (LA60_0==RULE_ID) ) {
+                alt60=1;
             }
-            else if ( (LA51_0==39) ) {
-                alt51=2;
+            else if ( (LA60_0==45) ) {
+                alt60=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 51, 0, input);
+                    new NoViableAltException("", 60, 0, input);
 
                 throw nvae;
             }
-            switch (alt51) {
+            switch (alt60) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1859:2: ( (otherlv_2= RULE_ID ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2369:2: ( (otherlv_2= RULE_ID ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1859:2: ( (otherlv_2= RULE_ID ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1860:1: (otherlv_2= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2369:2: ( (otherlv_2= RULE_ID ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2370:1: (otherlv_2= RULE_ID )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1860:1: (otherlv_2= RULE_ID )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1861:3: otherlv_2= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2370:1: (otherlv_2= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2371:3: otherlv_2= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5360,7 +6714,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition3657); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition4710); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_2, grammarAccess.getBindingDefinitionAccess().getSourceParentSubComponentDefinitionCrossReference_2_0_0()); 
@@ -5376,15 +6730,15 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1876:6: ( (lv_isSrcParentThis_3_0= 'this' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2386:6: ( (lv_isSrcParentThis_3_0= 'this' ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1876:6: ( (lv_isSrcParentThis_3_0= 'this' ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1877:1: (lv_isSrcParentThis_3_0= 'this' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2386:6: ( (lv_isSrcParentThis_3_0= 'this' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2387:1: (lv_isSrcParentThis_3_0= 'this' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1877:1: (lv_isSrcParentThis_3_0= 'this' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1878:3: lv_isSrcParentThis_3_0= 'this'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2387:1: (lv_isSrcParentThis_3_0= 'this' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2388:3: lv_isSrcParentThis_3_0= 'this'
                     {
-                    lv_isSrcParentThis_3_0=(Token)match(input,39,FOLLOW_39_in_ruleBindingDefinition3681); if (state.failed) return current;
+                    lv_isSrcParentThis_3_0=(Token)match(input,45,FOLLOW_45_in_ruleBindingDefinition4734); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isSrcParentThis_3_0, grammarAccess.getBindingDefinitionAccess().getIsSrcParentThisThisKeyword_2_1_0());
@@ -5410,17 +6764,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,40,FOLLOW_40_in_ruleBindingDefinition3707); if (state.failed) return current;
+            otherlv_4=(Token)match(input,46,FOLLOW_46_in_ruleBindingDefinition4760); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getBindingDefinitionAccess().getFullStopKeyword_3());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1895:1: ( (otherlv_5= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1896:1: (otherlv_5= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2405:1: ( (otherlv_5= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2406:1: (otherlv_5= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1896:1: (otherlv_5= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1897:3: otherlv_5= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2406:1: (otherlv_5= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2407:3: otherlv_5= RULE_ID
             {
             if ( state.backtracking==0 ) {
                
@@ -5434,7 +6788,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition3731); if (state.failed) return current;
+            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition4784); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_5, grammarAccess.getBindingDefinitionAccess().getSourceInterfaceHostedInterfaceDefinitionCrossReference_4_0()); 
@@ -5446,30 +6800,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1911:2: (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )?
-            int alt52=2;
-            int LA52_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2421:2: (otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']' )?
+            int alt61=2;
+            int LA61_0 = input.LA(1);
 
-            if ( (LA52_0==33) ) {
-                alt52=1;
+            if ( (LA61_0==33) ) {
+                alt61=1;
             }
-            switch (alt52) {
+            switch (alt61) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1911:4: otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2421:4: otherlv_6= '[' ( (lv_sourceIndex_7_0= RULE_INT ) ) otherlv_8= ']'
                     {
-                    otherlv_6=(Token)match(input,33,FOLLOW_33_in_ruleBindingDefinition3744); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,33,FOLLOW_33_in_ruleBindingDefinition4797); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getBindingDefinitionAccess().getLeftSquareBracketKeyword_5_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1915:1: ( (lv_sourceIndex_7_0= RULE_INT ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1916:1: (lv_sourceIndex_7_0= RULE_INT )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2425:1: ( (lv_sourceIndex_7_0= RULE_INT ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2426:1: (lv_sourceIndex_7_0= RULE_INT )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1916:1: (lv_sourceIndex_7_0= RULE_INT )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1917:3: lv_sourceIndex_7_0= RULE_INT
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2426:1: (lv_sourceIndex_7_0= RULE_INT )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2427:3: lv_sourceIndex_7_0= RULE_INT
                     {
-                    lv_sourceIndex_7_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleBindingDefinition3761); if (state.failed) return current;
+                    lv_sourceIndex_7_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleBindingDefinition4814); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_sourceIndex_7_0, grammarAccess.getBindingDefinitionAccess().getSourceIndexINTTerminalRuleCall_5_1_0()); 
@@ -5493,7 +6847,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleBindingDefinition3778); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleBindingDefinition4831); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getBindingDefinitionAccess().getRightSquareBracketKeyword_5_2());
@@ -5505,38 +6859,38 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,41,FOLLOW_41_in_ruleBindingDefinition3792); if (state.failed) return current;
+            otherlv_9=(Token)match(input,47,FOLLOW_47_in_ruleBindingDefinition4845); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_9, grammarAccess.getBindingDefinitionAccess().getToKeyword_6());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1941:1: ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) )
-            int alt53=2;
-            int LA53_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2451:1: ( ( (otherlv_10= RULE_ID ) ) | ( (lv_isTgtParentThis_11_0= 'this' ) ) )
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( (LA53_0==RULE_ID) ) {
-                alt53=1;
+            if ( (LA62_0==RULE_ID) ) {
+                alt62=1;
             }
-            else if ( (LA53_0==39) ) {
-                alt53=2;
+            else if ( (LA62_0==45) ) {
+                alt62=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 53, 0, input);
+                    new NoViableAltException("", 62, 0, input);
 
                 throw nvae;
             }
-            switch (alt53) {
+            switch (alt62) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1941:2: ( (otherlv_10= RULE_ID ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2451:2: ( (otherlv_10= RULE_ID ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1941:2: ( (otherlv_10= RULE_ID ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1942:1: (otherlv_10= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2451:2: ( (otherlv_10= RULE_ID ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2452:1: (otherlv_10= RULE_ID )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1942:1: (otherlv_10= RULE_ID )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1943:3: otherlv_10= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2452:1: (otherlv_10= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2453:3: otherlv_10= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -5550,7 +6904,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_10=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition3817); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition4870); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_10, grammarAccess.getBindingDefinitionAccess().getTargetParentSubComponentDefinitionCrossReference_7_0_0()); 
@@ -5566,15 +6920,15 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1958:6: ( (lv_isTgtParentThis_11_0= 'this' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2468:6: ( (lv_isTgtParentThis_11_0= 'this' ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1958:6: ( (lv_isTgtParentThis_11_0= 'this' ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1959:1: (lv_isTgtParentThis_11_0= 'this' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2468:6: ( (lv_isTgtParentThis_11_0= 'this' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2469:1: (lv_isTgtParentThis_11_0= 'this' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1959:1: (lv_isTgtParentThis_11_0= 'this' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1960:3: lv_isTgtParentThis_11_0= 'this'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2469:1: (lv_isTgtParentThis_11_0= 'this' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2470:3: lv_isTgtParentThis_11_0= 'this'
                     {
-                    lv_isTgtParentThis_11_0=(Token)match(input,39,FOLLOW_39_in_ruleBindingDefinition3841); if (state.failed) return current;
+                    lv_isTgtParentThis_11_0=(Token)match(input,45,FOLLOW_45_in_ruleBindingDefinition4894); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isTgtParentThis_11_0, grammarAccess.getBindingDefinitionAccess().getIsTgtParentThisThisKeyword_7_1_0());
@@ -5600,17 +6954,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,40,FOLLOW_40_in_ruleBindingDefinition3867); if (state.failed) return current;
+            otherlv_12=(Token)match(input,46,FOLLOW_46_in_ruleBindingDefinition4920); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_12, grammarAccess.getBindingDefinitionAccess().getFullStopKeyword_8());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1977:1: ( (otherlv_13= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1978:1: (otherlv_13= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2487:1: ( (otherlv_13= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2488:1: (otherlv_13= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1978:1: (otherlv_13= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1979:3: otherlv_13= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2488:1: (otherlv_13= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2489:3: otherlv_13= RULE_ID
             {
             if ( state.backtracking==0 ) {
                
@@ -5624,7 +6978,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_13=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition3891); if (state.failed) return current;
+            otherlv_13=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBindingDefinition4944); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_13, grammarAccess.getBindingDefinitionAccess().getTargetInterfaceHostedInterfaceDefinitionCrossReference_9_0()); 
@@ -5636,30 +6990,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1993:2: (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )?
-            int alt54=2;
-            int LA54_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2503:2: (otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']' )?
+            int alt63=2;
+            int LA63_0 = input.LA(1);
 
-            if ( (LA54_0==33) ) {
-                alt54=1;
+            if ( (LA63_0==33) ) {
+                alt63=1;
             }
-            switch (alt54) {
+            switch (alt63) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1993:4: otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2503:4: otherlv_14= '[' ( (lv_targetIndex_15_0= RULE_INT ) ) otherlv_16= ']'
                     {
-                    otherlv_14=(Token)match(input,33,FOLLOW_33_in_ruleBindingDefinition3904); if (state.failed) return current;
+                    otherlv_14=(Token)match(input,33,FOLLOW_33_in_ruleBindingDefinition4957); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_14, grammarAccess.getBindingDefinitionAccess().getLeftSquareBracketKeyword_10_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1997:1: ( (lv_targetIndex_15_0= RULE_INT ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1998:1: (lv_targetIndex_15_0= RULE_INT )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2507:1: ( (lv_targetIndex_15_0= RULE_INT ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2508:1: (lv_targetIndex_15_0= RULE_INT )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1998:1: (lv_targetIndex_15_0= RULE_INT )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1999:3: lv_targetIndex_15_0= RULE_INT
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2508:1: (lv_targetIndex_15_0= RULE_INT )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2509:3: lv_targetIndex_15_0= RULE_INT
                     {
-                    lv_targetIndex_15_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleBindingDefinition3921); if (state.failed) return current;
+                    lv_targetIndex_15_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleBindingDefinition4974); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_targetIndex_15_0, grammarAccess.getBindingDefinitionAccess().getTargetIndexINTTerminalRuleCall_10_1_0()); 
@@ -5683,7 +7037,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_16=(Token)match(input,34,FOLLOW_34_in_ruleBindingDefinition3938); if (state.failed) return current;
+                    otherlv_16=(Token)match(input,34,FOLLOW_34_in_ruleBindingDefinition4991); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_16, grammarAccess.getBindingDefinitionAccess().getRightSquareBracketKeyword_10_2());
@@ -5695,7 +7049,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_17=(Token)match(input,17,FOLLOW_17_in_ruleBindingDefinition3952); if (state.failed) return current;
+            otherlv_17=(Token)match(input,17,FOLLOW_17_in_ruleBindingDefinition5005); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_17, grammarAccess.getBindingDefinitionAccess().getSemicolonKeyword_11());
@@ -5724,7 +7078,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFormalArgument"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2031:1: entryRuleFormalArgument returns [EObject current=null] : iv_ruleFormalArgument= ruleFormalArgument EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2541:1: entryRuleFormalArgument returns [EObject current=null] : iv_ruleFormalArgument= ruleFormalArgument EOF ;
     public final EObject entryRuleFormalArgument() throws RecognitionException {
         EObject current = null;
 
@@ -5732,13 +7086,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2032:2: (iv_ruleFormalArgument= ruleFormalArgument EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2033:2: iv_ruleFormalArgument= ruleFormalArgument EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2542:2: (iv_ruleFormalArgument= ruleFormalArgument EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2543:2: iv_ruleFormalArgument= ruleFormalArgument EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFormalArgumentRule()); 
             }
-            pushFollow(FOLLOW_ruleFormalArgument_in_entryRuleFormalArgument3988);
+            pushFollow(FOLLOW_ruleFormalArgument_in_entryRuleFormalArgument5041);
             iv_ruleFormalArgument=ruleFormalArgument();
 
             state._fsp--;
@@ -5746,7 +7100,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFormalArgument; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFormalArgument3998); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFormalArgument5051); if (state.failed) return current;
 
             }
 
@@ -5764,7 +7118,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormalArgument"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2040:1: ruleFormalArgument returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2550:1: ruleFormalArgument returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
     public final EObject ruleFormalArgument() throws RecognitionException {
         EObject current = null;
 
@@ -5773,16 +7127,16 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2043:28: ( ( (lv_name_0_0= RULE_ID ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2044:1: ( (lv_name_0_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2553:28: ( ( (lv_name_0_0= RULE_ID ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2554:1: ( (lv_name_0_0= RULE_ID ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2044:1: ( (lv_name_0_0= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2045:1: (lv_name_0_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2554:1: ( (lv_name_0_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2555:1: (lv_name_0_0= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2045:1: (lv_name_0_0= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2046:3: lv_name_0_0= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2555:1: (lv_name_0_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2556:3: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFormalArgument4039); if (state.failed) return current;
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFormalArgument5092); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_0_0, grammarAccess.getFormalArgumentAccess().getNameIDTerminalRuleCall_0()); 
@@ -5826,7 +7180,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFormalArgumentsList"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2070:1: entryRuleFormalArgumentsList returns [EObject current=null] : iv_ruleFormalArgumentsList= ruleFormalArgumentsList EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2580:1: entryRuleFormalArgumentsList returns [EObject current=null] : iv_ruleFormalArgumentsList= ruleFormalArgumentsList EOF ;
     public final EObject entryRuleFormalArgumentsList() throws RecognitionException {
         EObject current = null;
 
@@ -5834,13 +7188,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2071:2: (iv_ruleFormalArgumentsList= ruleFormalArgumentsList EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2072:2: iv_ruleFormalArgumentsList= ruleFormalArgumentsList EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2581:2: (iv_ruleFormalArgumentsList= ruleFormalArgumentsList EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2582:2: iv_ruleFormalArgumentsList= ruleFormalArgumentsList EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFormalArgumentsListRule()); 
             }
-            pushFollow(FOLLOW_ruleFormalArgumentsList_in_entryRuleFormalArgumentsList4079);
+            pushFollow(FOLLOW_ruleFormalArgumentsList_in_entryRuleFormalArgumentsList5132);
             iv_ruleFormalArgumentsList=ruleFormalArgumentsList();
 
             state._fsp--;
@@ -5848,7 +7202,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFormalArgumentsList; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFormalArgumentsList4089); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFormalArgumentsList5142); if (state.failed) return current;
 
             }
 
@@ -5866,7 +7220,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormalArgumentsList"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2079:1: ruleFormalArgumentsList returns [EObject current=null] : (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2589:1: ruleFormalArgumentsList returns [EObject current=null] : (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' ) ;
     public final EObject ruleFormalArgumentsList() throws RecognitionException {
         EObject current = null;
 
@@ -5881,30 +7235,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2082:28: ( (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2083:1: (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2592:28: ( (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2593:1: (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2083:1: (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2083:3: otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2593:1: (otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2593:3: otherlv_0= '(' ( (lv_formalArguments_1_0= ruleFormalArgument ) ) (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )* otherlv_4= ')'
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_29_in_ruleFormalArgumentsList4126); if (state.failed) return current;
+            otherlv_0=(Token)match(input,29,FOLLOW_29_in_ruleFormalArgumentsList5179); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getFormalArgumentsListAccess().getLeftParenthesisKeyword_0());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2087:1: ( (lv_formalArguments_1_0= ruleFormalArgument ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2088:1: (lv_formalArguments_1_0= ruleFormalArgument )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2597:1: ( (lv_formalArguments_1_0= ruleFormalArgument ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2598:1: (lv_formalArguments_1_0= ruleFormalArgument )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2088:1: (lv_formalArguments_1_0= ruleFormalArgument )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2089:3: lv_formalArguments_1_0= ruleFormalArgument
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2598:1: (lv_formalArguments_1_0= ruleFormalArgument )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2599:3: lv_formalArguments_1_0= ruleFormalArgument
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getFormalArgumentsListAccess().getFormalArgumentsFormalArgumentParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList4147);
+            pushFollow(FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList5200);
             lv_formalArguments_1_0=ruleFormalArgument();
 
             state._fsp--;
@@ -5928,39 +7282,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2105:2: (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )*
-            loop55:
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2615:2: (otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) ) )*
+            loop64:
             do {
-                int alt55=2;
-                int LA55_0 = input.LA(1);
+                int alt64=2;
+                int LA64_0 = input.LA(1);
 
-                if ( (LA55_0==21) ) {
-                    alt55=1;
+                if ( (LA64_0==21) ) {
+                    alt64=1;
                 }
 
 
-                switch (alt55) {
+                switch (alt64) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2105:4: otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2615:4: otherlv_2= ',' ( (lv_formalArguments_3_0= ruleFormalArgument ) )
             	    {
-            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleFormalArgumentsList4160); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleFormalArgumentsList5213); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_2, grammarAccess.getFormalArgumentsListAccess().getCommaKeyword_2_0());
             	          
             	    }
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2109:1: ( (lv_formalArguments_3_0= ruleFormalArgument ) )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2110:1: (lv_formalArguments_3_0= ruleFormalArgument )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2619:1: ( (lv_formalArguments_3_0= ruleFormalArgument ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2620:1: (lv_formalArguments_3_0= ruleFormalArgument )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2110:1: (lv_formalArguments_3_0= ruleFormalArgument )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2111:3: lv_formalArguments_3_0= ruleFormalArgument
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2620:1: (lv_formalArguments_3_0= ruleFormalArgument )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2621:3: lv_formalArguments_3_0= ruleFormalArgument
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getFormalArgumentsListAccess().getFormalArgumentsFormalArgumentParserRuleCall_2_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList4181);
+            	    pushFollow(FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList5234);
             	    lv_formalArguments_3_0=ruleFormalArgument();
 
             	    state._fsp--;
@@ -5989,11 +7343,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop55;
+            	    break loop64;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,30,FOLLOW_30_in_ruleFormalArgumentsList4195); if (state.failed) return current;
+            otherlv_4=(Token)match(input,30,FOLLOW_30_in_ruleFormalArgumentsList5248); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getFormalArgumentsListAccess().getRightParenthesisKeyword_3());
@@ -6022,7 +7376,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTemplateSpecifier"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2139:1: entryRuleTemplateSpecifier returns [EObject current=null] : iv_ruleTemplateSpecifier= ruleTemplateSpecifier EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2649:1: entryRuleTemplateSpecifier returns [EObject current=null] : iv_ruleTemplateSpecifier= ruleTemplateSpecifier EOF ;
     public final EObject entryRuleTemplateSpecifier() throws RecognitionException {
         EObject current = null;
 
@@ -6030,13 +7384,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2140:2: (iv_ruleTemplateSpecifier= ruleTemplateSpecifier EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2141:2: iv_ruleTemplateSpecifier= ruleTemplateSpecifier EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2650:2: (iv_ruleTemplateSpecifier= ruleTemplateSpecifier EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2651:2: iv_ruleTemplateSpecifier= ruleTemplateSpecifier EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTemplateSpecifierRule()); 
             }
-            pushFollow(FOLLOW_ruleTemplateSpecifier_in_entryRuleTemplateSpecifier4231);
+            pushFollow(FOLLOW_ruleTemplateSpecifier_in_entryRuleTemplateSpecifier5284);
             iv_ruleTemplateSpecifier=ruleTemplateSpecifier();
 
             state._fsp--;
@@ -6044,7 +7398,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTemplateSpecifier; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateSpecifier4241); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateSpecifier5294); if (state.failed) return current;
 
             }
 
@@ -6062,7 +7416,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTemplateSpecifier"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2148:1: ruleTemplateSpecifier returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2658:1: ruleTemplateSpecifier returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) ) ;
     public final EObject ruleTemplateSpecifier() throws RecognitionException {
         EObject current = null;
 
@@ -6072,19 +7426,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2151:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2152:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2661:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2662:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2152:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2152:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2662:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2662:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'conformsto' ( ( ruleQualifiedName ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2152:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2153:1: (lv_name_0_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2662:2: ( (lv_name_0_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2663:1: (lv_name_0_0= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2153:1: (lv_name_0_0= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2154:3: lv_name_0_0= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2663:1: (lv_name_0_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2664:3: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTemplateSpecifier4283); if (state.failed) return current;
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTemplateSpecifier5336); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_name_0_0, grammarAccess.getTemplateSpecifierAccess().getNameIDTerminalRuleCall_0_0()); 
@@ -6108,17 +7462,17 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,42,FOLLOW_42_in_ruleTemplateSpecifier4300); if (state.failed) return current;
+            otherlv_1=(Token)match(input,48,FOLLOW_48_in_ruleTemplateSpecifier5353); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getTemplateSpecifierAccess().getConformstoKeyword_1());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2174:1: ( ( ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2175:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2684:1: ( ( ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2685:1: ( ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2175:1: ( ruleQualifiedName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2176:3: ruleQualifiedName
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2685:1: ( ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2686:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
@@ -6137,7 +7491,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTemplateSpecifierAccess().getTypeReferenceTypeDefinitionCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleTemplateSpecifier4327);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleTemplateSpecifier5380);
             ruleQualifiedName();
 
             state._fsp--;
@@ -6176,7 +7530,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAttributeType"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2200:1: entryRuleAttributeType returns [String current=null] : iv_ruleAttributeType= ruleAttributeType EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2710:1: entryRuleAttributeType returns [String current=null] : iv_ruleAttributeType= ruleAttributeType EOF ;
     public final String entryRuleAttributeType() throws RecognitionException {
         String current = null;
 
@@ -6184,13 +7538,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2201:2: (iv_ruleAttributeType= ruleAttributeType EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2202:2: iv_ruleAttributeType= ruleAttributeType EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2711:2: (iv_ruleAttributeType= ruleAttributeType EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2712:2: iv_ruleAttributeType= ruleAttributeType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAttributeTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleAttributeType_in_entryRuleAttributeType4364);
+            pushFollow(FOLLOW_ruleAttributeType_in_entryRuleAttributeType5417);
             iv_ruleAttributeType=ruleAttributeType();
 
             state._fsp--;
@@ -6198,7 +7552,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAttributeType.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttributeType4375); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttributeType5428); if (state.failed) return current;
 
             }
 
@@ -6216,102 +7570,241 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttributeType"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2209:1: ruleAttributeType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'STRUCT' | kw= 'UNION' | kw= 'ENUM' | this_ID_3= RULE_ID ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2719:1: ruleAttributeType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'int' | kw= 'string' | kw= 'int8_t' | kw= 'uint8_t' | kw= 'int16_t' | kw= 'uint16_t' | kw= 'int32_t' | kw= 'uint32_t' | kw= 'int64_t' | kw= 'uint64_t' | kw= 'intptr_t' | kw= 'uintptr_t' ) ;
     public final AntlrDatatypeRuleToken ruleAttributeType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
-        Token this_ID_3=null;
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2212:28: ( (kw= 'STRUCT' | kw= 'UNION' | kw= 'ENUM' | this_ID_3= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2213:1: (kw= 'STRUCT' | kw= 'UNION' | kw= 'ENUM' | this_ID_3= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2722:28: ( (kw= 'int' | kw= 'string' | kw= 'int8_t' | kw= 'uint8_t' | kw= 'int16_t' | kw= 'uint16_t' | kw= 'int32_t' | kw= 'uint32_t' | kw= 'int64_t' | kw= 'uint64_t' | kw= 'intptr_t' | kw= 'uintptr_t' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2723:1: (kw= 'int' | kw= 'string' | kw= 'int8_t' | kw= 'uint8_t' | kw= 'int16_t' | kw= 'uint16_t' | kw= 'int32_t' | kw= 'uint32_t' | kw= 'int64_t' | kw= 'uint64_t' | kw= 'intptr_t' | kw= 'uintptr_t' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2213:1: (kw= 'STRUCT' | kw= 'UNION' | kw= 'ENUM' | this_ID_3= RULE_ID )
-            int alt56=4;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2723:1: (kw= 'int' | kw= 'string' | kw= 'int8_t' | kw= 'uint8_t' | kw= 'int16_t' | kw= 'uint16_t' | kw= 'int32_t' | kw= 'uint32_t' | kw= 'int64_t' | kw= 'uint64_t' | kw= 'intptr_t' | kw= 'uintptr_t' )
+            int alt65=12;
             switch ( input.LA(1) ) {
-            case 43:
+            case 49:
                 {
-                alt56=1;
+                alt65=1;
                 }
                 break;
-            case 44:
+            case 50:
                 {
-                alt56=2;
+                alt65=2;
                 }
                 break;
-            case 45:
+            case 51:
                 {
-                alt56=3;
+                alt65=3;
                 }
                 break;
-            case RULE_ID:
+            case 52:
                 {
-                alt56=4;
+                alt65=4;
+                }
+                break;
+            case 53:
+                {
+                alt65=5;
+                }
+                break;
+            case 54:
+                {
+                alt65=6;
+                }
+                break;
+            case 55:
+                {
+                alt65=7;
+                }
+                break;
+            case 56:
+                {
+                alt65=8;
+                }
+                break;
+            case 57:
+                {
+                alt65=9;
+                }
+                break;
+            case 58:
+                {
+                alt65=10;
+                }
+                break;
+            case 59:
+                {
+                alt65=11;
+                }
+                break;
+            case 60:
+                {
+                alt65=12;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 56, 0, input);
+                    new NoViableAltException("", 65, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt56) {
+            switch (alt65) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2214:2: kw= 'STRUCT'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2724:2: kw= 'int'
                     {
-                    kw=(Token)match(input,43,FOLLOW_43_in_ruleAttributeType4413); if (state.failed) return current;
+                    kw=(Token)match(input,49,FOLLOW_49_in_ruleAttributeType5466); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getSTRUCTKeyword_0()); 
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getIntKeyword_0()); 
                           
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2221:2: kw= 'UNION'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2731:2: kw= 'string'
                     {
-                    kw=(Token)match(input,44,FOLLOW_44_in_ruleAttributeType4432); if (state.failed) return current;
+                    kw=(Token)match(input,50,FOLLOW_50_in_ruleAttributeType5485); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getUNIONKeyword_1()); 
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getStringKeyword_1()); 
                           
                     }
 
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2228:2: kw= 'ENUM'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2738:2: kw= 'int8_t'
                     {
-                    kw=(Token)match(input,45,FOLLOW_45_in_ruleAttributeType4451); if (state.failed) return current;
+                    kw=(Token)match(input,51,FOLLOW_51_in_ruleAttributeType5504); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getENUMKeyword_2()); 
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getInt8_tKeyword_2()); 
                           
                     }
 
                     }
                     break;
                 case 4 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2234:10: this_ID_3= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2745:2: kw= 'uint8_t'
                     {
-                    this_ID_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeType4472); if (state.failed) return current;
+                    kw=(Token)match(input,52,FOLLOW_52_in_ruleAttributeType5523); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      		current.merge(this_ID_3);
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getUint8_tKeyword_3()); 
                           
                     }
+
+                    }
+                    break;
+                case 5 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2752:2: kw= 'int16_t'
+                    {
+                    kw=(Token)match(input,53,FOLLOW_53_in_ruleAttributeType5542); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                          newLeafNode(this_ID_3, grammarAccess.getAttributeTypeAccess().getIDTerminalRuleCall_3()); 
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getInt16_tKeyword_4()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 6 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2759:2: kw= 'uint16_t'
+                    {
+                    kw=(Token)match(input,54,FOLLOW_54_in_ruleAttributeType5561); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getUint16_tKeyword_5()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 7 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2766:2: kw= 'int32_t'
+                    {
+                    kw=(Token)match(input,55,FOLLOW_55_in_ruleAttributeType5580); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getInt32_tKeyword_6()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 8 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2773:2: kw= 'uint32_t'
+                    {
+                    kw=(Token)match(input,56,FOLLOW_56_in_ruleAttributeType5599); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getUint32_tKeyword_7()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 9 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2780:2: kw= 'int64_t'
+                    {
+                    kw=(Token)match(input,57,FOLLOW_57_in_ruleAttributeType5618); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getInt64_tKeyword_8()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 10 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2787:2: kw= 'uint64_t'
+                    {
+                    kw=(Token)match(input,58,FOLLOW_58_in_ruleAttributeType5637); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getUint64_tKeyword_9()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 11 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2794:2: kw= 'intptr_t'
+                    {
+                    kw=(Token)match(input,59,FOLLOW_59_in_ruleAttributeType5656); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getIntptr_tKeyword_10()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 12 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2801:2: kw= 'uintptr_t'
+                    {
+                    kw=(Token)match(input,60,FOLLOW_60_in_ruleAttributeType5675); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getAttributeTypeAccess().getUintptr_tKeyword_11()); 
                           
                     }
 
@@ -6340,7 +7833,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulesignedINT"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2249:1: entryRulesignedINT returns [String current=null] : iv_rulesignedINT= rulesignedINT EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2814:1: entryRulesignedINT returns [String current=null] : iv_rulesignedINT= rulesignedINT EOF ;
     public final String entryRulesignedINT() throws RecognitionException {
         String current = null;
 
@@ -6348,13 +7841,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2250:2: (iv_rulesignedINT= rulesignedINT EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2251:2: iv_rulesignedINT= rulesignedINT EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2815:2: (iv_rulesignedINT= rulesignedINT EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2816:2: iv_rulesignedINT= rulesignedINT EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSignedINTRule()); 
             }
-            pushFollow(FOLLOW_rulesignedINT_in_entryRulesignedINT4518);
+            pushFollow(FOLLOW_rulesignedINT_in_entryRulesignedINT5716);
             iv_rulesignedINT=rulesignedINT();
 
             state._fsp--;
@@ -6362,7 +7855,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_rulesignedINT.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulesignedINT4529); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRulesignedINT5727); if (state.failed) return current;
 
             }
 
@@ -6380,7 +7873,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulesignedINT"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2258:1: rulesignedINT returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2823:1: rulesignedINT returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT ) ;
     public final AntlrDatatypeRuleToken rulesignedINT() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -6390,27 +7883,27 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2261:28: ( ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2262:1: ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2826:28: ( ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2827:1: ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2262:1: ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2262:2: (kw= '+' | kw= '-' )? this_INT_2= RULE_INT
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2827:1: ( (kw= '+' | kw= '-' )? this_INT_2= RULE_INT )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2827:2: (kw= '+' | kw= '-' )? this_INT_2= RULE_INT
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2262:2: (kw= '+' | kw= '-' )?
-            int alt57=3;
-            int LA57_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2827:2: (kw= '+' | kw= '-' )?
+            int alt66=3;
+            int LA66_0 = input.LA(1);
 
-            if ( (LA57_0==46) ) {
-                alt57=1;
+            if ( (LA66_0==61) ) {
+                alt66=1;
             }
-            else if ( (LA57_0==47) ) {
-                alt57=2;
+            else if ( (LA66_0==62) ) {
+                alt66=2;
             }
-            switch (alt57) {
+            switch (alt66) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2263:2: kw= '+'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2828:2: kw= '+'
                     {
-                    kw=(Token)match(input,46,FOLLOW_46_in_rulesignedINT4568); if (state.failed) return current;
+                    kw=(Token)match(input,61,FOLLOW_61_in_rulesignedINT5766); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6421,9 +7914,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2270:2: kw= '-'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2835:2: kw= '-'
                     {
-                    kw=(Token)match(input,47,FOLLOW_47_in_rulesignedINT4587); if (state.failed) return current;
+                    kw=(Token)match(input,62,FOLLOW_62_in_rulesignedINT5785); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6436,7 +7929,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            this_INT_2=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_rulesignedINT4604); if (state.failed) return current;
+            this_INT_2=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_rulesignedINT5802); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_INT_2);
@@ -6470,7 +7963,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValue"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2290:1: entryRuleValue returns [String current=null] : iv_ruleValue= ruleValue EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2855:1: entryRuleValue returns [String current=null] : iv_ruleValue= ruleValue EOF ;
     public final String entryRuleValue() throws RecognitionException {
         String current = null;
 
@@ -6478,13 +7971,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2291:2: (iv_ruleValue= ruleValue EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2292:2: iv_ruleValue= ruleValue EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2856:2: (iv_ruleValue= ruleValue EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2857:2: iv_ruleValue= ruleValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValueRule()); 
             }
-            pushFollow(FOLLOW_ruleValue_in_entryRuleValue4650);
+            pushFollow(FOLLOW_ruleValue_in_entryRuleValue5848);
             iv_ruleValue=ruleValue();
 
             state._fsp--;
@@ -6492,7 +7985,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValue.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValue4661); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValue5859); if (state.failed) return current;
 
             }
 
@@ -6510,7 +8003,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValue"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2299:1: ruleValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2864:1: ruleValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' ) ;
     public final AntlrDatatypeRuleToken ruleValue() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -6524,52 +8017,52 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2302:28: ( (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2303:1: (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2867:28: ( (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2868:1: (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2303:1: (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' )
-            int alt58=5;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2868:1: (this_ID_0= RULE_ID | this_signedINT_1= rulesignedINT | this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE | this_STRING_3= RULE_STRING | kw= 'null' )
+            int alt67=5;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt58=1;
+                alt67=1;
                 }
                 break;
             case RULE_INT:
-            case 46:
-            case 47:
+            case 61:
+            case 62:
                 {
-                alt58=2;
+                alt67=2;
                 }
                 break;
             case RULE_HEXADECIMAL_TYPE:
                 {
-                alt58=3;
+                alt67=3;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt58=4;
+                alt67=4;
                 }
                 break;
-            case 48:
+            case 63:
                 {
-                alt58=5;
+                alt67=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 58, 0, input);
+                    new NoViableAltException("", 67, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt58) {
+            switch (alt67) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2303:6: this_ID_0= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2868:6: this_ID_0= RULE_ID
                     {
-                    this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValue4701); if (state.failed) return current;
+                    this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValue5899); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_0);
@@ -6584,14 +8077,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2312:5: this_signedINT_1= rulesignedINT
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2877:5: this_signedINT_1= rulesignedINT
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getValueAccess().getSignedINTParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_rulesignedINT_in_ruleValue4734);
+                    pushFollow(FOLLOW_rulesignedINT_in_ruleValue5932);
                     this_signedINT_1=rulesignedINT();
 
                     state._fsp--;
@@ -6610,9 +8103,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2323:10: this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2888:10: this_HEXADECIMAL_TYPE_2= RULE_HEXADECIMAL_TYPE
                     {
-                    this_HEXADECIMAL_TYPE_2=(Token)match(input,RULE_HEXADECIMAL_TYPE,FOLLOW_RULE_HEXADECIMAL_TYPE_in_ruleValue4760); if (state.failed) return current;
+                    this_HEXADECIMAL_TYPE_2=(Token)match(input,RULE_HEXADECIMAL_TYPE,FOLLOW_RULE_HEXADECIMAL_TYPE_in_ruleValue5958); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_HEXADECIMAL_TYPE_2);
@@ -6627,9 +8120,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2331:10: this_STRING_3= RULE_STRING
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2896:10: this_STRING_3= RULE_STRING
                     {
-                    this_STRING_3=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleValue4786); if (state.failed) return current;
+                    this_STRING_3=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleValue5984); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_STRING_3);
@@ -6644,9 +8137,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2340:2: kw= 'null'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2905:2: kw= 'null'
                     {
-                    kw=(Token)match(input,48,FOLLOW_48_in_ruleValue4810); if (state.failed) return current;
+                    kw=(Token)match(input,63,FOLLOW_63_in_ruleValue6008); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -6679,7 +8172,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValueList"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2353:1: entryRuleValueList returns [EObject current=null] : iv_ruleValueList= ruleValueList EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2918:1: entryRuleValueList returns [EObject current=null] : iv_ruleValueList= ruleValueList EOF ;
     public final EObject entryRuleValueList() throws RecognitionException {
         EObject current = null;
 
@@ -6687,13 +8180,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2354:2: (iv_ruleValueList= ruleValueList EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2355:2: iv_ruleValueList= ruleValueList EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2919:2: (iv_ruleValueList= ruleValueList EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2920:2: iv_ruleValueList= ruleValueList EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValueListRule()); 
             }
-            pushFollow(FOLLOW_ruleValueList_in_entryRuleValueList4850);
+            pushFollow(FOLLOW_ruleValueList_in_entryRuleValueList6048);
             iv_ruleValueList=ruleValueList();
 
             state._fsp--;
@@ -6701,7 +8194,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValueList; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValueList4860); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValueList6058); if (state.failed) return current;
 
             }
 
@@ -6719,7 +8212,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValueList"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2362:1: ruleValueList returns [EObject current=null] : (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2927:1: ruleValueList returns [EObject current=null] : (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' ) ;
     public final EObject ruleValueList() throws RecognitionException {
         EObject current = null;
 
@@ -6734,30 +8227,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2365:28: ( (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2366:1: (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2930:28: ( (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2931:1: (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2366:1: (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2366:3: otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2931:1: (otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2931:3: otherlv_0= '{' ( (lv_member_1_0= ruleValue ) ) (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleValueList4897); if (state.failed) return current;
+            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleValueList6095); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getValueListAccess().getLeftCurlyBracketKeyword_0());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2370:1: ( (lv_member_1_0= ruleValue ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2371:1: (lv_member_1_0= ruleValue )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2935:1: ( (lv_member_1_0= ruleValue ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2936:1: (lv_member_1_0= ruleValue )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2371:1: (lv_member_1_0= ruleValue )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2372:3: lv_member_1_0= ruleValue
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2936:1: (lv_member_1_0= ruleValue )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2937:3: lv_member_1_0= ruleValue
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getValueListAccess().getMemberValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValue_in_ruleValueList4918);
+            pushFollow(FOLLOW_ruleValue_in_ruleValueList6116);
             lv_member_1_0=ruleValue();
 
             state._fsp--;
@@ -6781,39 +8274,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2388:2: (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )*
-            loop59:
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2953:2: (otherlv_2= ',' ( (lv_member_3_0= ruleValue ) ) )*
+            loop68:
             do {
-                int alt59=2;
-                int LA59_0 = input.LA(1);
+                int alt68=2;
+                int LA68_0 = input.LA(1);
 
-                if ( (LA59_0==21) ) {
-                    alt59=1;
+                if ( (LA68_0==21) ) {
+                    alt68=1;
                 }
 
 
-                switch (alt59) {
+                switch (alt68) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2388:4: otherlv_2= ',' ( (lv_member_3_0= ruleValue ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2953:4: otherlv_2= ',' ( (lv_member_3_0= ruleValue ) )
             	    {
-            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleValueList4931); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleValueList6129); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_2, grammarAccess.getValueListAccess().getCommaKeyword_2_0());
             	          
             	    }
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2392:1: ( (lv_member_3_0= ruleValue ) )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2393:1: (lv_member_3_0= ruleValue )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2957:1: ( (lv_member_3_0= ruleValue ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2958:1: (lv_member_3_0= ruleValue )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2393:1: (lv_member_3_0= ruleValue )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2394:3: lv_member_3_0= ruleValue
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2958:1: (lv_member_3_0= ruleValue )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2959:3: lv_member_3_0= ruleValue
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getValueListAccess().getMemberValueParserRuleCall_2_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleValue_in_ruleValueList4952);
+            	    pushFollow(FOLLOW_ruleValue_in_ruleValueList6150);
             	    lv_member_3_0=ruleValue();
 
             	    state._fsp--;
@@ -6842,11 +8335,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop59;
+            	    break loop68;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleValueList4966); if (state.failed) return current;
+            otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleValueList6164); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getValueListAccess().getRightCurlyBracketKeyword_3());
@@ -6875,7 +8368,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTemplateReference"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2422:1: entryRuleTemplateReference returns [EObject current=null] : iv_ruleTemplateReference= ruleTemplateReference EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2987:1: entryRuleTemplateReference returns [EObject current=null] : iv_ruleTemplateReference= ruleTemplateReference EOF ;
     public final EObject entryRuleTemplateReference() throws RecognitionException {
         EObject current = null;
 
@@ -6883,13 +8376,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2423:2: (iv_ruleTemplateReference= ruleTemplateReference EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2424:2: iv_ruleTemplateReference= ruleTemplateReference EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2988:2: (iv_ruleTemplateReference= ruleTemplateReference EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2989:2: iv_ruleTemplateReference= ruleTemplateReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTemplateReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleTemplateReference_in_entryRuleTemplateReference5002);
+            pushFollow(FOLLOW_ruleTemplateReference_in_entryRuleTemplateReference6200);
             iv_ruleTemplateReference=ruleTemplateReference();
 
             state._fsp--;
@@ -6897,7 +8390,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTemplateReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateReference5012); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateReference6210); if (state.failed) return current;
 
             }
 
@@ -6915,7 +8408,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTemplateReference"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2431:1: ruleTemplateReference returns [EObject current=null] : ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2996:1: ruleTemplateReference returns [EObject current=null] : ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? ) ;
     public final EObject ruleTemplateReference() throws RecognitionException {
         EObject current = null;
 
@@ -6941,39 +8434,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2434:28: ( ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2435:1: ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2999:28: ( ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:1: ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2435:1: ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2435:2: ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:1: ( ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:2: ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )? ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) ) (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )? (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )?
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2435:2: ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )?
-            int alt60=2;
-            int LA60_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:2: ( ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '=' )?
+            int alt69=2;
+            int LA69_0 = input.LA(1);
 
-            if ( (LA60_0==RULE_ID) ) {
-                int LA60_1 = input.LA(2);
+            if ( (LA69_0==RULE_ID) ) {
+                int LA69_1 = input.LA(2);
 
-                if ( (LA60_1==42) ) {
-                    alt60=1;
+                if ( (LA69_1==48) ) {
+                    alt69=1;
                 }
             }
-            switch (alt60) {
+            switch (alt69) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2435:3: ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '='
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:3: ( (lv_name_0_0= ruleTemplateSpecifier ) ) otherlv_1= '='
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2435:3: ( (lv_name_0_0= ruleTemplateSpecifier ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2436:1: (lv_name_0_0= ruleTemplateSpecifier )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:3: ( (lv_name_0_0= ruleTemplateSpecifier ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3001:1: (lv_name_0_0= ruleTemplateSpecifier )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2436:1: (lv_name_0_0= ruleTemplateSpecifier )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2437:3: lv_name_0_0= ruleTemplateSpecifier
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3001:1: (lv_name_0_0= ruleTemplateSpecifier )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3002:3: lv_name_0_0= ruleTemplateSpecifier
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getTemplateReferenceAccess().getNameTemplateSpecifierParserRuleCall_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTemplateSpecifier_in_ruleTemplateReference5059);
+                    pushFollow(FOLLOW_ruleTemplateSpecifier_in_ruleTemplateReference6257);
                     lv_name_0_0=ruleTemplateSpecifier();
 
                     state._fsp--;
@@ -6997,7 +8490,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,49,FOLLOW_49_in_ruleTemplateReference5071); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,64,FOLLOW_64_in_ruleTemplateReference6269); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getTemplateReferenceAccess().getEqualsSignKeyword_0_1());
@@ -7009,32 +8502,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2457:3: ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) )
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3022:3: ( ( ( ruleQualifiedName ) ) | ( (lv_anyTypeReference_3_0= '?' ) ) )
+            int alt70=2;
+            int LA70_0 = input.LA(1);
 
-            if ( (LA61_0==RULE_ID) ) {
-                alt61=1;
+            if ( (LA70_0==RULE_ID) ) {
+                alt70=1;
             }
-            else if ( (LA61_0==50) ) {
-                alt61=2;
+            else if ( (LA70_0==65) ) {
+                alt70=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 61, 0, input);
+                    new NoViableAltException("", 70, 0, input);
 
                 throw nvae;
             }
-            switch (alt61) {
+            switch (alt70) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2457:4: ( ( ruleQualifiedName ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3022:4: ( ( ruleQualifiedName ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2457:4: ( ( ruleQualifiedName ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2458:1: ( ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3022:4: ( ( ruleQualifiedName ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3023:1: ( ruleQualifiedName )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2458:1: ( ruleQualifiedName )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2459:3: ruleQualifiedName
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3023:1: ( ruleQualifiedName )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3024:3: ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -7053,7 +8546,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getTemplateReferenceAccess().getTypeReferenceTypeReferenceCrossReference_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTemplateReference5101);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTemplateReference6299);
                     ruleQualifiedName();
 
                     state._fsp--;
@@ -7073,15 +8566,15 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2476:6: ( (lv_anyTypeReference_3_0= '?' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3041:6: ( (lv_anyTypeReference_3_0= '?' ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2476:6: ( (lv_anyTypeReference_3_0= '?' ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2477:1: (lv_anyTypeReference_3_0= '?' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3041:6: ( (lv_anyTypeReference_3_0= '?' ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3042:1: (lv_anyTypeReference_3_0= '?' )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2477:1: (lv_anyTypeReference_3_0= '?' )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2478:3: lv_anyTypeReference_3_0= '?'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3042:1: (lv_anyTypeReference_3_0= '?' )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3043:3: lv_anyTypeReference_3_0= '?'
                     {
-                    lv_anyTypeReference_3_0=(Token)match(input,50,FOLLOW_50_in_ruleTemplateReference5125); if (state.failed) return current;
+                    lv_anyTypeReference_3_0=(Token)match(input,65,FOLLOW_65_in_ruleTemplateReference6323); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_anyTypeReference_3_0, grammarAccess.getTemplateReferenceAccess().getAnyTypeReferenceQuestionMarkKeyword_1_1_0());
@@ -7107,35 +8600,35 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2491:3: (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )?
-            int alt63=2;
-            int LA63_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3056:3: (otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>' )?
+            int alt72=2;
+            int LA72_0 = input.LA(1);
 
-            if ( (LA63_0==20) ) {
-                alt63=1;
+            if ( (LA72_0==20) ) {
+                alt72=1;
             }
-            switch (alt63) {
+            switch (alt72) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2491:5: otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3056:5: otherlv_4= '<' ( (lv_templatesList_5_0= ruleTemplateReference ) ) (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )* otherlv_8= '>'
                     {
-                    otherlv_4=(Token)match(input,20,FOLLOW_20_in_ruleTemplateReference5152); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,20,FOLLOW_20_in_ruleTemplateReference6350); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getTemplateReferenceAccess().getLessThanSignKeyword_2_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2495:1: ( (lv_templatesList_5_0= ruleTemplateReference ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2496:1: (lv_templatesList_5_0= ruleTemplateReference )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3060:1: ( (lv_templatesList_5_0= ruleTemplateReference ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3061:1: (lv_templatesList_5_0= ruleTemplateReference )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2496:1: (lv_templatesList_5_0= ruleTemplateReference )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2497:3: lv_templatesList_5_0= ruleTemplateReference
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3061:1: (lv_templatesList_5_0= ruleTemplateReference )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3062:3: lv_templatesList_5_0= ruleTemplateReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getTemplateReferenceAccess().getTemplatesListTemplateReferenceParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTemplateReference_in_ruleTemplateReference5173);
+                    pushFollow(FOLLOW_ruleTemplateReference_in_ruleTemplateReference6371);
                     lv_templatesList_5_0=ruleTemplateReference();
 
                     state._fsp--;
@@ -7159,39 +8652,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2513:2: (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )*
-                    loop62:
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3078:2: (otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) ) )*
+                    loop71:
                     do {
-                        int alt62=2;
-                        int LA62_0 = input.LA(1);
+                        int alt71=2;
+                        int LA71_0 = input.LA(1);
 
-                        if ( (LA62_0==21) ) {
-                            alt62=1;
+                        if ( (LA71_0==21) ) {
+                            alt71=1;
                         }
 
 
-                        switch (alt62) {
+                        switch (alt71) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2513:4: otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3078:4: otherlv_6= ',' ( (lv_templatesList_7_0= ruleTemplateReference ) )
                     	    {
-                    	    otherlv_6=(Token)match(input,21,FOLLOW_21_in_ruleTemplateReference5186); if (state.failed) return current;
+                    	    otherlv_6=(Token)match(input,21,FOLLOW_21_in_ruleTemplateReference6384); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_6, grammarAccess.getTemplateReferenceAccess().getCommaKeyword_2_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2517:1: ( (lv_templatesList_7_0= ruleTemplateReference ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2518:1: (lv_templatesList_7_0= ruleTemplateReference )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3082:1: ( (lv_templatesList_7_0= ruleTemplateReference ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3083:1: (lv_templatesList_7_0= ruleTemplateReference )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2518:1: (lv_templatesList_7_0= ruleTemplateReference )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2519:3: lv_templatesList_7_0= ruleTemplateReference
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3083:1: (lv_templatesList_7_0= ruleTemplateReference )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3084:3: lv_templatesList_7_0= ruleTemplateReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getTemplateReferenceAccess().getTemplatesListTemplateReferenceParserRuleCall_2_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleTemplateReference_in_ruleTemplateReference5207);
+                    	    pushFollow(FOLLOW_ruleTemplateReference_in_ruleTemplateReference6405);
                     	    lv_templatesList_7_0=ruleTemplateReference();
 
                     	    state._fsp--;
@@ -7220,11 +8713,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop62;
+                    	    break loop71;
                         }
                     } while (true);
 
-                    otherlv_8=(Token)match(input,22,FOLLOW_22_in_ruleTemplateReference5221); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,22,FOLLOW_22_in_ruleTemplateReference6419); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getTemplateReferenceAccess().getGreaterThanSignKeyword_2_3());
@@ -7236,35 +8729,35 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2539:3: (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )?
-            int alt65=2;
-            int LA65_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3104:3: (otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')' )?
+            int alt74=2;
+            int LA74_0 = input.LA(1);
 
-            if ( (LA65_0==29) ) {
-                alt65=1;
+            if ( (LA74_0==29) ) {
+                alt74=1;
             }
-            switch (alt65) {
+            switch (alt74) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2539:5: otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3104:5: otherlv_9= '(' ( (lv_argumentsList_10_0= ruleArgumentDefinition ) ) (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )* otherlv_13= ')'
                     {
-                    otherlv_9=(Token)match(input,29,FOLLOW_29_in_ruleTemplateReference5236); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,29,FOLLOW_29_in_ruleTemplateReference6434); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_9, grammarAccess.getTemplateReferenceAccess().getLeftParenthesisKeyword_3_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2543:1: ( (lv_argumentsList_10_0= ruleArgumentDefinition ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2544:1: (lv_argumentsList_10_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3108:1: ( (lv_argumentsList_10_0= ruleArgumentDefinition ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3109:1: (lv_argumentsList_10_0= ruleArgumentDefinition )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2544:1: (lv_argumentsList_10_0= ruleArgumentDefinition )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2545:3: lv_argumentsList_10_0= ruleArgumentDefinition
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3109:1: (lv_argumentsList_10_0= ruleArgumentDefinition )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3110:3: lv_argumentsList_10_0= ruleArgumentDefinition
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getTemplateReferenceAccess().getArgumentsListArgumentDefinitionParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference5257);
+                    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference6455);
                     lv_argumentsList_10_0=ruleArgumentDefinition();
 
                     state._fsp--;
@@ -7288,39 +8781,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2561:2: (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )*
-                    loop64:
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3126:2: (otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) ) )*
+                    loop73:
                     do {
-                        int alt64=2;
-                        int LA64_0 = input.LA(1);
+                        int alt73=2;
+                        int LA73_0 = input.LA(1);
 
-                        if ( (LA64_0==21) ) {
-                            alt64=1;
+                        if ( (LA73_0==21) ) {
+                            alt73=1;
                         }
 
 
-                        switch (alt64) {
+                        switch (alt73) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2561:4: otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3126:4: otherlv_11= ',' ( (lv_argumentsList_12_0= ruleArgumentDefinition ) )
                     	    {
-                    	    otherlv_11=(Token)match(input,21,FOLLOW_21_in_ruleTemplateReference5270); if (state.failed) return current;
+                    	    otherlv_11=(Token)match(input,21,FOLLOW_21_in_ruleTemplateReference6468); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_11, grammarAccess.getTemplateReferenceAccess().getCommaKeyword_3_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2565:1: ( (lv_argumentsList_12_0= ruleArgumentDefinition ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2566:1: (lv_argumentsList_12_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3130:1: ( (lv_argumentsList_12_0= ruleArgumentDefinition ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3131:1: (lv_argumentsList_12_0= ruleArgumentDefinition )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2566:1: (lv_argumentsList_12_0= ruleArgumentDefinition )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2567:3: lv_argumentsList_12_0= ruleArgumentDefinition
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3131:1: (lv_argumentsList_12_0= ruleArgumentDefinition )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3132:3: lv_argumentsList_12_0= ruleArgumentDefinition
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getTemplateReferenceAccess().getArgumentsListArgumentDefinitionParserRuleCall_3_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference5291);
+                    	    pushFollow(FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference6489);
                     	    lv_argumentsList_12_0=ruleArgumentDefinition();
 
                     	    state._fsp--;
@@ -7349,11 +8842,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop64;
+                    	    break loop73;
                         }
                     } while (true);
 
-                    otherlv_13=(Token)match(input,30,FOLLOW_30_in_ruleTemplateReference5305); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,30,FOLLOW_30_in_ruleTemplateReference6503); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_13, grammarAccess.getTemplateReferenceAccess().getRightParenthesisKeyword_3_3());
@@ -7388,7 +8881,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArgumentDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2595:1: entryRuleArgumentDefinition returns [EObject current=null] : iv_ruleArgumentDefinition= ruleArgumentDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3160:1: entryRuleArgumentDefinition returns [EObject current=null] : iv_ruleArgumentDefinition= ruleArgumentDefinition EOF ;
     public final EObject entryRuleArgumentDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -7396,13 +8889,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2596:2: (iv_ruleArgumentDefinition= ruleArgumentDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2597:2: iv_ruleArgumentDefinition= ruleArgumentDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3161:2: (iv_ruleArgumentDefinition= ruleArgumentDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3162:2: iv_ruleArgumentDefinition= ruleArgumentDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArgumentDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleArgumentDefinition_in_entryRuleArgumentDefinition5343);
+            pushFollow(FOLLOW_ruleArgumentDefinition_in_entryRuleArgumentDefinition6541);
             iv_ruleArgumentDefinition=ruleArgumentDefinition();
 
             state._fsp--;
@@ -7410,7 +8903,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArgumentDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArgumentDefinition5353); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArgumentDefinition6551); if (state.failed) return current;
 
             }
 
@@ -7428,7 +8921,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArgumentDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2604:1: ruleArgumentDefinition returns [EObject current=null] : ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3169:1: ruleArgumentDefinition returns [EObject current=null] : ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) ) ;
     public final EObject ruleArgumentDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -7442,34 +8935,34 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2607:28: ( ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2608:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3172:28: ( ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2608:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2608:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2608:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )?
-            int alt66=2;
-            int LA66_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )?
+            int alt75=2;
+            int LA75_0 = input.LA(1);
 
-            if ( (LA66_0==RULE_ID) ) {
-                int LA66_1 = input.LA(2);
+            if ( (LA75_0==RULE_ID) ) {
+                int LA75_1 = input.LA(2);
 
-                if ( (LA66_1==49) ) {
-                    alt66=1;
+                if ( (LA75_1==64) ) {
+                    alt75=1;
                 }
             }
-            switch (alt66) {
+            switch (alt75) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2608:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '='
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '='
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2608:3: ( (lv_name_0_0= RULE_ID ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2609:1: (lv_name_0_0= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:3: ( (lv_name_0_0= RULE_ID ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3174:1: (lv_name_0_0= RULE_ID )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2609:1: (lv_name_0_0= RULE_ID )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2610:3: lv_name_0_0= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3174:1: (lv_name_0_0= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3175:3: lv_name_0_0= RULE_ID
                     {
-                    lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleArgumentDefinition5396); if (state.failed) return current;
+                    lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleArgumentDefinition6594); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_name_0_0, grammarAccess.getArgumentDefinitionAccess().getNameIDTerminalRuleCall_0_0_0()); 
@@ -7493,7 +8986,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,49,FOLLOW_49_in_ruleArgumentDefinition5413); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,64,FOLLOW_64_in_ruleArgumentDefinition6611); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getArgumentDefinitionAccess().getEqualsSignKeyword_0_1());
@@ -7505,39 +8998,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2630:3: ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) )
-            int alt67=2;
-            int LA67_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3195:3: ( ( (lv_argumentValue_2_0= ruleValue ) ) | ( (lv_argumentList_3_0= ruleValueList ) ) )
+            int alt76=2;
+            int LA76_0 = input.LA(1);
 
-            if ( ((LA67_0>=RULE_ID && LA67_0<=RULE_STRING)||(LA67_0>=46 && LA67_0<=48)) ) {
-                alt67=1;
+            if ( ((LA76_0>=RULE_ID && LA76_0<=RULE_STRING)||(LA76_0>=61 && LA76_0<=63)) ) {
+                alt76=1;
             }
-            else if ( (LA67_0==24) ) {
-                alt67=2;
+            else if ( (LA76_0==24) ) {
+                alt76=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 67, 0, input);
+                    new NoViableAltException("", 76, 0, input);
 
                 throw nvae;
             }
-            switch (alt67) {
+            switch (alt76) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2630:4: ( (lv_argumentValue_2_0= ruleValue ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3195:4: ( (lv_argumentValue_2_0= ruleValue ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2630:4: ( (lv_argumentValue_2_0= ruleValue ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2631:1: (lv_argumentValue_2_0= ruleValue )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3195:4: ( (lv_argumentValue_2_0= ruleValue ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3196:1: (lv_argumentValue_2_0= ruleValue )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2631:1: (lv_argumentValue_2_0= ruleValue )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2632:3: lv_argumentValue_2_0= ruleValue
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3196:1: (lv_argumentValue_2_0= ruleValue )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3197:3: lv_argumentValue_2_0= ruleValue
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getArgumentDefinitionAccess().getArgumentValueValueParserRuleCall_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleValue_in_ruleArgumentDefinition5437);
+                    pushFollow(FOLLOW_ruleValue_in_ruleArgumentDefinition6635);
                     lv_argumentValue_2_0=ruleValue();
 
                     state._fsp--;
@@ -7565,20 +9058,20 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2649:6: ( (lv_argumentList_3_0= ruleValueList ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3214:6: ( (lv_argumentList_3_0= ruleValueList ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2649:6: ( (lv_argumentList_3_0= ruleValueList ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2650:1: (lv_argumentList_3_0= ruleValueList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3214:6: ( (lv_argumentList_3_0= ruleValueList ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3215:1: (lv_argumentList_3_0= ruleValueList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2650:1: (lv_argumentList_3_0= ruleValueList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2651:3: lv_argumentList_3_0= ruleValueList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3215:1: (lv_argumentList_3_0= ruleValueList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3216:3: lv_argumentList_3_0= ruleValueList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getArgumentDefinitionAccess().getArgumentListValueListParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleValueList_in_ruleArgumentDefinition5464);
+                    pushFollow(FOLLOW_ruleValueList_in_ruleArgumentDefinition6662);
                     lv_argumentList_3_0=ruleValueList();
 
                     state._fsp--;
@@ -7631,7 +9124,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAttributeDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2675:1: entryRuleAttributeDefinition returns [EObject current=null] : iv_ruleAttributeDefinition= ruleAttributeDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3240:1: entryRuleAttributeDefinition returns [EObject current=null] : iv_ruleAttributeDefinition= ruleAttributeDefinition EOF ;
     public final EObject entryRuleAttributeDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -7639,13 +9132,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2676:2: (iv_ruleAttributeDefinition= ruleAttributeDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2677:2: iv_ruleAttributeDefinition= ruleAttributeDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3241:2: (iv_ruleAttributeDefinition= ruleAttributeDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3242:2: iv_ruleAttributeDefinition= ruleAttributeDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAttributeDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleAttributeDefinition_in_entryRuleAttributeDefinition5501);
+            pushFollow(FOLLOW_ruleAttributeDefinition_in_entryRuleAttributeDefinition6699);
             iv_ruleAttributeDefinition=ruleAttributeDefinition();
 
             state._fsp--;
@@ -7653,7 +9146,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAttributeDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttributeDefinition5511); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttributeDefinition6709); if (state.failed) return current;
 
             }
 
@@ -7671,54 +9164,50 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAttributeDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2684:1: ruleAttributeDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':' )? ( (lv_cType_4_0= ruleAttributeType ) )? ( (lv_type_5_0= RULE_ID ) )? ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= '=' ( (lv_value_8_0= ruleValue ) ) )? otherlv_9= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3249:1: ruleAttributeDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( (lv_type_2_0= ruleFlowType ) ) ( (lv_name_3_0= RULE_ID ) ) (otherlv_4= '=' ( (lv_value_5_0= ruleValue ) ) )? otherlv_6= ';' ) ;
     public final EObject ruleAttributeDefinition() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token lv_type_5_0=null;
-        Token lv_name_6_0=null;
-        Token otherlv_7=null;
-        Token otherlv_9=null;
+        Token lv_name_3_0=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
         EObject lv_annotationsList_0_0 = null;
 
-        EObject lv_headerFile_2_0 = null;
+        AntlrDatatypeRuleToken lv_type_2_0 = null;
 
-        AntlrDatatypeRuleToken lv_cType_4_0 = null;
-
-        AntlrDatatypeRuleToken lv_value_8_0 = null;
+        AntlrDatatypeRuleToken lv_value_5_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2687:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':' )? ( (lv_cType_4_0= ruleAttributeType ) )? ( (lv_type_5_0= RULE_ID ) )? ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= '=' ( (lv_value_8_0= ruleValue ) ) )? otherlv_9= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2688:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':' )? ( (lv_cType_4_0= ruleAttributeType ) )? ( (lv_type_5_0= RULE_ID ) )? ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= '=' ( (lv_value_8_0= ruleValue ) ) )? otherlv_9= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3252:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( (lv_type_2_0= ruleFlowType ) ) ( (lv_name_3_0= RULE_ID ) ) (otherlv_4= '=' ( (lv_value_5_0= ruleValue ) ) )? otherlv_6= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3253:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( (lv_type_2_0= ruleFlowType ) ) ( (lv_name_3_0= RULE_ID ) ) (otherlv_4= '=' ( (lv_value_5_0= ruleValue ) ) )? otherlv_6= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2688:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':' )? ( (lv_cType_4_0= ruleAttributeType ) )? ( (lv_type_5_0= RULE_ID ) )? ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= '=' ( (lv_value_8_0= ruleValue ) ) )? otherlv_9= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2688:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':' )? ( (lv_cType_4_0= ruleAttributeType ) )? ( (lv_type_5_0= RULE_ID ) )? ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= '=' ( (lv_value_8_0= ruleValue ) ) )? otherlv_9= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3253:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( (lv_type_2_0= ruleFlowType ) ) ( (lv_name_3_0= RULE_ID ) ) (otherlv_4= '=' ( (lv_value_5_0= ruleValue ) ) )? otherlv_6= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3253:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'attribute' ( (lv_type_2_0= ruleFlowType ) ) ( (lv_name_3_0= RULE_ID ) ) (otherlv_4= '=' ( (lv_value_5_0= ruleValue ) ) )? otherlv_6= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2688:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
-            int alt68=2;
-            int LA68_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3253:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt77=2;
+            int LA77_0 = input.LA(1);
 
-            if ( (LA68_0==56) ) {
-                alt68=1;
+            if ( (LA77_0==70) ) {
+                alt77=1;
             }
-            switch (alt68) {
+            switch (alt77) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2689:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3254:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2689:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2690:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3254:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3255:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleAttributeDefinition5557);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleAttributeDefinition6755);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -7745,185 +9234,57 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,51,FOLLOW_51_in_ruleAttributeDefinition5570); if (state.failed) return current;
+            otherlv_1=(Token)match(input,66,FOLLOW_66_in_ruleAttributeDefinition6768); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getAttributeDefinitionAccess().getAttributeKeyword_1());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2710:1: ( ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':' )?
-            int alt69=2;
-            int LA69_0 = input.LA(1);
-
-            if ( (LA69_0==RULE_ID) ) {
-                int LA69_1 = input.LA(2);
-
-                if ( (LA69_1==RULE_SL||LA69_1==40||LA69_1==52) ) {
-                    alt69=1;
-                }
-            }
-            else if ( (LA69_0==RULE_SL||LA69_0==40||LA69_0==55) ) {
-                alt69=1;
-            }
-            switch (alt69) {
-                case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2710:2: ( (lv_headerFile_2_0= ruleFileC ) ) otherlv_3= ':'
-                    {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2710:2: ( (lv_headerFile_2_0= ruleFileC ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2711:1: (lv_headerFile_2_0= ruleFileC )
-                    {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2711:1: (lv_headerFile_2_0= ruleFileC )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2712:3: lv_headerFile_2_0= ruleFileC
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getHeaderFileFileCParserRuleCall_2_0_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleFileC_in_ruleAttributeDefinition5592);
-                    lv_headerFile_2_0=ruleFileC();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getAttributeDefinitionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"headerFile",
-                              		lv_headerFile_2_0, 
-                              		"FileC");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    otherlv_3=(Token)match(input,52,FOLLOW_52_in_ruleAttributeDefinition5604); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_3, grammarAccess.getAttributeDefinitionAccess().getColonKeyword_2_1());
-                          
-                    }
-
-                    }
-                    break;
-
-            }
-
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2732:3: ( (lv_cType_4_0= ruleAttributeType ) )?
-            int alt70=2;
-            int LA70_0 = input.LA(1);
-
-            if ( ((LA70_0>=43 && LA70_0<=45)) ) {
-                alt70=1;
-            }
-            else if ( (LA70_0==RULE_ID) ) {
-                int LA70_2 = input.LA(2);
-
-                if ( (synpred85_InternalAdl()) ) {
-                    alt70=1;
-                }
-            }
-            switch (alt70) {
-                case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2733:1: (lv_cType_4_0= ruleAttributeType )
-                    {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2733:1: (lv_cType_4_0= ruleAttributeType )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2734:3: lv_cType_4_0= ruleAttributeType
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getCTypeAttributeTypeParserRuleCall_3_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleAttributeType_in_ruleAttributeDefinition5627);
-                    lv_cType_4_0=ruleAttributeType();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getAttributeDefinitionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"cType",
-                              		lv_cType_4_0, 
-                              		"AttributeType");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2750:3: ( (lv_type_5_0= RULE_ID ) )?
-            int alt71=2;
-            int LA71_0 = input.LA(1);
-
-            if ( (LA71_0==RULE_ID) ) {
-                int LA71_1 = input.LA(2);
-
-                if ( (LA71_1==RULE_ID) ) {
-                    alt71=1;
-                }
-            }
-            switch (alt71) {
-                case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2751:1: (lv_type_5_0= RULE_ID )
-                    {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2751:1: (lv_type_5_0= RULE_ID )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2752:3: lv_type_5_0= RULE_ID
-                    {
-                    lv_type_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeDefinition5645); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			newLeafNode(lv_type_5_0, grammarAccess.getAttributeDefinitionAccess().getTypeIDTerminalRuleCall_4_0()); 
-                      		
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getAttributeDefinitionRule());
-                      	        }
-                             		setWithLastConsumed(
-                             			current, 
-                             			"type",
-                              		lv_type_5_0, 
-                              		"ID");
-                      	    
-                    }
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2768:3: ( (lv_name_6_0= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2769:1: (lv_name_6_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3275:1: ( (lv_type_2_0= ruleFlowType ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3276:1: (lv_type_2_0= ruleFlowType )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2769:1: (lv_name_6_0= RULE_ID )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2770:3: lv_name_6_0= RULE_ID
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3276:1: (lv_type_2_0= ruleFlowType )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3277:3: lv_type_2_0= ruleFlowType
             {
-            lv_name_6_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeDefinition5668); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getTypeFlowTypeParserRuleCall_2_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFlowType_in_ruleAttributeDefinition6789);
+            lv_type_2_0=ruleFlowType();
+
+            state._fsp--;
+            if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_name_6_0, grammarAccess.getAttributeDefinitionAccess().getNameIDTerminalRuleCall_5_0()); 
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getAttributeDefinitionRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"type",
+                      		lv_type_2_0, 
+                      		"FlowType");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3293:2: ( (lv_name_3_0= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3294:1: (lv_name_3_0= RULE_ID )
+            {
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3294:1: (lv_name_3_0= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3295:3: lv_name_3_0= RULE_ID
+            {
+            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttributeDefinition6806); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_name_3_0, grammarAccess.getAttributeDefinitionAccess().getNameIDTerminalRuleCall_3_0()); 
               		
             }
             if ( state.backtracking==0 ) {
@@ -7934,7 +9295,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                      		setWithLastConsumed(
                      			current, 
                      			"name",
-                      		lv_name_6_0, 
+                      		lv_name_3_0, 
                       		"ID");
               	    
             }
@@ -7944,36 +9305,36 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2786:2: (otherlv_7= '=' ( (lv_value_8_0= ruleValue ) ) )?
-            int alt72=2;
-            int LA72_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3311:2: (otherlv_4= '=' ( (lv_value_5_0= ruleValue ) ) )?
+            int alt78=2;
+            int LA78_0 = input.LA(1);
 
-            if ( (LA72_0==49) ) {
-                alt72=1;
+            if ( (LA78_0==64) ) {
+                alt78=1;
             }
-            switch (alt72) {
+            switch (alt78) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2786:4: otherlv_7= '=' ( (lv_value_8_0= ruleValue ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3311:4: otherlv_4= '=' ( (lv_value_5_0= ruleValue ) )
                     {
-                    otherlv_7=(Token)match(input,49,FOLLOW_49_in_ruleAttributeDefinition5686); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,64,FOLLOW_64_in_ruleAttributeDefinition6824); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_7, grammarAccess.getAttributeDefinitionAccess().getEqualsSignKeyword_6_0());
+                          	newLeafNode(otherlv_4, grammarAccess.getAttributeDefinitionAccess().getEqualsSignKeyword_4_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2790:1: ( (lv_value_8_0= ruleValue ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2791:1: (lv_value_8_0= ruleValue )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3315:1: ( (lv_value_5_0= ruleValue ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3316:1: (lv_value_5_0= ruleValue )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2791:1: (lv_value_8_0= ruleValue )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2792:3: lv_value_8_0= ruleValue
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3316:1: (lv_value_5_0= ruleValue )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3317:3: lv_value_5_0= ruleValue
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getValueValueParserRuleCall_6_1_0()); 
+                      	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getValueValueParserRuleCall_4_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleValue_in_ruleAttributeDefinition5707);
-                    lv_value_8_0=ruleValue();
+                    pushFollow(FOLLOW_ruleValue_in_ruleAttributeDefinition6845);
+                    lv_value_5_0=ruleValue();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -7985,7 +9346,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"value",
-                              		lv_value_8_0, 
+                              		lv_value_5_0, 
                               		"Value");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -8002,10 +9363,10 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleAttributeDefinition5721); if (state.failed) return current;
+            otherlv_6=(Token)match(input,17,FOLLOW_17_in_ruleAttributeDefinition6859); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_9, grammarAccess.getAttributeDefinitionAccess().getSemicolonKeyword_7());
+                  	newLeafNode(otherlv_6, grammarAccess.getAttributeDefinitionAccess().getSemicolonKeyword_5());
                   
             }
 
@@ -8031,7 +9392,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImplementationDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2820:1: entryRuleImplementationDefinition returns [EObject current=null] : iv_ruleImplementationDefinition= ruleImplementationDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3345:1: entryRuleImplementationDefinition returns [EObject current=null] : iv_ruleImplementationDefinition= ruleImplementationDefinition EOF ;
     public final EObject entryRuleImplementationDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -8039,13 +9400,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2821:2: (iv_ruleImplementationDefinition= ruleImplementationDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2822:2: iv_ruleImplementationDefinition= ruleImplementationDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3346:2: (iv_ruleImplementationDefinition= ruleImplementationDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3347:2: iv_ruleImplementationDefinition= ruleImplementationDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getImplementationDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleImplementationDefinition_in_entryRuleImplementationDefinition5757);
+            pushFollow(FOLLOW_ruleImplementationDefinition_in_entryRuleImplementationDefinition6895);
             iv_ruleImplementationDefinition=ruleImplementationDefinition();
 
             state._fsp--;
@@ -8053,7 +9414,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleImplementationDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleImplementationDefinition5767); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleImplementationDefinition6905); if (state.failed) return current;
 
             }
 
@@ -8071,7 +9432,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImplementationDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2829:1: ruleImplementationDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3354:1: ruleImplementationDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) ;
     public final EObject ruleImplementationDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -8079,7 +9440,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         Token otherlv_4=null;
         EObject lv_annotationsList_0_0 = null;
 
-        EObject lv_fileC_2_0 = null;
+        AntlrDatatypeRuleToken lv_cFile_2_0 = null;
 
         EObject lv_inlineCcode_3_0 = null;
 
@@ -8087,32 +9448,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2832:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2833:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3357:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3358:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2833:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2833:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3358:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3358:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'source' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2833:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
-            int alt73=2;
-            int LA73_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3358:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt79=2;
+            int LA79_0 = input.LA(1);
 
-            if ( (LA73_0==56) ) {
-                alt73=1;
+            if ( (LA79_0==70) ) {
+                alt79=1;
             }
-            switch (alt73) {
+            switch (alt79) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2834:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3359:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2834:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2835:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3359:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3360:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getImplementationDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleImplementationDefinition5813);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleImplementationDefinition6951);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -8139,46 +9500,46 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,53,FOLLOW_53_in_ruleImplementationDefinition5826); if (state.failed) return current;
+            otherlv_1=(Token)match(input,67,FOLLOW_67_in_ruleImplementationDefinition6964); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getImplementationDefinitionAccess().getSourceKeyword_1());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2855:1: ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) )
-            int alt74=2;
-            int LA74_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3380:1: ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) )
+            int alt80=2;
+            int LA80_0 = input.LA(1);
 
-            if ( (LA74_0==RULE_ID||LA74_0==RULE_SL||LA74_0==40||LA74_0==55) ) {
-                alt74=1;
+            if ( (LA80_0==RULE_ID||LA80_0==RULE_SL||LA80_0==46||LA80_0==69) ) {
+                alt80=1;
             }
-            else if ( (LA74_0==RULE_CODE_C) ) {
-                alt74=2;
+            else if ( (LA80_0==RULE_CODE_C) ) {
+                alt80=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 74, 0, input);
+                    new NoViableAltException("", 80, 0, input);
 
                 throw nvae;
             }
-            switch (alt74) {
+            switch (alt80) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2855:2: ( (lv_fileC_2_0= ruleFileC ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3380:2: ( (lv_cFile_2_0= ruleFilePath ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2855:2: ( (lv_fileC_2_0= ruleFileC ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2856:1: (lv_fileC_2_0= ruleFileC )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3380:2: ( (lv_cFile_2_0= ruleFilePath ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3381:1: (lv_cFile_2_0= ruleFilePath )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2856:1: (lv_fileC_2_0= ruleFileC )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2857:3: lv_fileC_2_0= ruleFileC
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3381:1: (lv_cFile_2_0= ruleFilePath )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3382:3: lv_cFile_2_0= ruleFilePath
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getImplementationDefinitionAccess().getFileCFileCParserRuleCall_2_0_0()); 
+                      	        newCompositeNode(grammarAccess.getImplementationDefinitionAccess().getCFileFilePathParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFileC_in_ruleImplementationDefinition5848);
-                    lv_fileC_2_0=ruleFileC();
+                    pushFollow(FOLLOW_ruleFilePath_in_ruleImplementationDefinition6986);
+                    lv_cFile_2_0=ruleFilePath();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8189,9 +9550,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"fileC",
-                              		lv_fileC_2_0, 
-                              		"FileC");
+                             			"cFile",
+                              		lv_cFile_2_0, 
+                              		"FilePath");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -8205,20 +9566,20 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2874:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3399:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2874:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2875:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3399:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3400:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2875:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2876:3: lv_inlineCcode_3_0= ruleInlineCodeC
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3400:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3401:3: lv_inlineCcode_3_0= ruleInlineCodeC
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getImplementationDefinitionAccess().getInlineCcodeInlineCodeCParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleInlineCodeC_in_ruleImplementationDefinition5875);
+                    pushFollow(FOLLOW_ruleInlineCodeC_in_ruleImplementationDefinition7013);
                     lv_inlineCcode_3_0=ruleInlineCodeC();
 
                     state._fsp--;
@@ -8248,7 +9609,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleImplementationDefinition5888); if (state.failed) return current;
+            otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleImplementationDefinition7026); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getImplementationDefinitionAccess().getSemicolonKeyword_3());
@@ -8277,7 +9638,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDataDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2904:1: entryRuleDataDefinition returns [EObject current=null] : iv_ruleDataDefinition= ruleDataDefinition EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3429:1: entryRuleDataDefinition returns [EObject current=null] : iv_ruleDataDefinition= ruleDataDefinition EOF ;
     public final EObject entryRuleDataDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -8285,13 +9646,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2905:2: (iv_ruleDataDefinition= ruleDataDefinition EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2906:2: iv_ruleDataDefinition= ruleDataDefinition EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3430:2: (iv_ruleDataDefinition= ruleDataDefinition EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3431:2: iv_ruleDataDefinition= ruleDataDefinition EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getDataDefinitionRule()); 
             }
-            pushFollow(FOLLOW_ruleDataDefinition_in_entryRuleDataDefinition5924);
+            pushFollow(FOLLOW_ruleDataDefinition_in_entryRuleDataDefinition7062);
             iv_ruleDataDefinition=ruleDataDefinition();
 
             state._fsp--;
@@ -8299,7 +9660,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleDataDefinition; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDataDefinition5934); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDataDefinition7072); if (state.failed) return current;
 
             }
 
@@ -8317,7 +9678,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDataDefinition"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2913:1: ruleDataDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3438:1: ruleDataDefinition returns [EObject current=null] : ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) ;
     public final EObject ruleDataDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -8325,7 +9686,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         Token otherlv_4=null;
         EObject lv_annotationsList_0_0 = null;
 
-        EObject lv_fileC_2_0 = null;
+        AntlrDatatypeRuleToken lv_cFile_2_0 = null;
 
         EObject lv_inlineCcode_3_0 = null;
 
@@ -8333,32 +9694,32 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2916:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2917:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3441:28: ( ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3442:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2917:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2917:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3442:1: ( ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3442:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )? otherlv_1= 'data' ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) ) otherlv_4= ';'
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2917:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
-            int alt75=2;
-            int LA75_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3442:2: ( (lv_annotationsList_0_0= ruleAnnotationsList ) )?
+            int alt81=2;
+            int LA81_0 = input.LA(1);
 
-            if ( (LA75_0==56) ) {
-                alt75=1;
+            if ( (LA81_0==70) ) {
+                alt81=1;
             }
-            switch (alt75) {
+            switch (alt81) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2918:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3443:1: (lv_annotationsList_0_0= ruleAnnotationsList )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2918:1: (lv_annotationsList_0_0= ruleAnnotationsList )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2919:3: lv_annotationsList_0_0= ruleAnnotationsList
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3443:1: (lv_annotationsList_0_0= ruleAnnotationsList )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3444:3: lv_annotationsList_0_0= ruleAnnotationsList
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getDataDefinitionAccess().getAnnotationsListAnnotationsListParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleDataDefinition5980);
+                    pushFollow(FOLLOW_ruleAnnotationsList_in_ruleDataDefinition7118);
                     lv_annotationsList_0_0=ruleAnnotationsList();
 
                     state._fsp--;
@@ -8385,46 +9746,46 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,54,FOLLOW_54_in_ruleDataDefinition5993); if (state.failed) return current;
+            otherlv_1=(Token)match(input,68,FOLLOW_68_in_ruleDataDefinition7131); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getDataDefinitionAccess().getDataKeyword_1());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2939:1: ( ( (lv_fileC_2_0= ruleFileC ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) )
-            int alt76=2;
-            int LA76_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3464:1: ( ( (lv_cFile_2_0= ruleFilePath ) ) | ( (lv_inlineCcode_3_0= ruleInlineCodeC ) ) )
+            int alt82=2;
+            int LA82_0 = input.LA(1);
 
-            if ( (LA76_0==RULE_ID||LA76_0==RULE_SL||LA76_0==40||LA76_0==55) ) {
-                alt76=1;
+            if ( (LA82_0==RULE_ID||LA82_0==RULE_SL||LA82_0==46||LA82_0==69) ) {
+                alt82=1;
             }
-            else if ( (LA76_0==RULE_CODE_C) ) {
-                alt76=2;
+            else if ( (LA82_0==RULE_CODE_C) ) {
+                alt82=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 76, 0, input);
+                    new NoViableAltException("", 82, 0, input);
 
                 throw nvae;
             }
-            switch (alt76) {
+            switch (alt82) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2939:2: ( (lv_fileC_2_0= ruleFileC ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3464:2: ( (lv_cFile_2_0= ruleFilePath ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2939:2: ( (lv_fileC_2_0= ruleFileC ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2940:1: (lv_fileC_2_0= ruleFileC )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3464:2: ( (lv_cFile_2_0= ruleFilePath ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3465:1: (lv_cFile_2_0= ruleFilePath )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2940:1: (lv_fileC_2_0= ruleFileC )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2941:3: lv_fileC_2_0= ruleFileC
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3465:1: (lv_cFile_2_0= ruleFilePath )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3466:3: lv_cFile_2_0= ruleFilePath
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getDataDefinitionAccess().getFileCFileCParserRuleCall_2_0_0()); 
+                      	        newCompositeNode(grammarAccess.getDataDefinitionAccess().getCFileFilePathParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFileC_in_ruleDataDefinition6015);
-                    lv_fileC_2_0=ruleFileC();
+                    pushFollow(FOLLOW_ruleFilePath_in_ruleDataDefinition7153);
+                    lv_cFile_2_0=ruleFilePath();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -8435,9 +9796,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                       	        }
                              		set(
                              			current, 
-                             			"fileC",
-                              		lv_fileC_2_0, 
-                              		"FileC");
+                             			"cFile",
+                              		lv_cFile_2_0, 
+                              		"FilePath");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -8451,20 +9812,20 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2958:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3483:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2958:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2959:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3483:6: ( (lv_inlineCcode_3_0= ruleInlineCodeC ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3484:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2959:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2960:3: lv_inlineCcode_3_0= ruleInlineCodeC
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3484:1: (lv_inlineCcode_3_0= ruleInlineCodeC )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3485:3: lv_inlineCcode_3_0= ruleInlineCodeC
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getDataDefinitionAccess().getInlineCcodeInlineCodeCParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleInlineCodeC_in_ruleDataDefinition6042);
+                    pushFollow(FOLLOW_ruleInlineCodeC_in_ruleDataDefinition7180);
                     lv_inlineCcode_3_0=ruleInlineCodeC();
 
                     state._fsp--;
@@ -8494,7 +9855,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleDataDefinition6055); if (state.failed) return current;
+            otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleDataDefinition7193); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getDataDefinitionAccess().getSemicolonKeyword_3());
@@ -8523,7 +9884,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2988:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3513:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -8531,13 +9892,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2989:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2990:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3514:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3515:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName6092);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName7230);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
@@ -8545,7 +9906,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName6103); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName7241); if (state.failed) return current;
 
             }
 
@@ -8563,7 +9924,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2997:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3522:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -8574,13 +9935,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3000:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3001:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3525:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3526:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3001:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3001:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3526:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3526:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName6143); if (state.failed) return current;
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName7281); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_ID_0);
@@ -8591,29 +9952,29 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                   newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3008:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop77:
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3533:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop83:
             do {
-                int alt77=2;
-                int LA77_0 = input.LA(1);
+                int alt83=2;
+                int LA83_0 = input.LA(1);
 
-                if ( (LA77_0==40) ) {
-                    alt77=1;
+                if ( (LA83_0==46) ) {
+                    alt83=1;
                 }
 
 
-                switch (alt77) {
+                switch (alt83) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3009:2: kw= '.' this_ID_2= RULE_ID
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3534:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,40,FOLLOW_40_in_ruleQualifiedName6162); if (state.failed) return current;
+            	    kw=(Token)match(input,46,FOLLOW_46_in_ruleQualifiedName7300); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
             	              newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             	          
             	    }
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName6177); if (state.failed) return current;
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName7315); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      		current.merge(this_ID_2);
@@ -8629,7 +9990,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop77;
+            	    break loop83;
                 }
             } while (true);
 
@@ -8655,177 +10016,8 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleQualifiedName"
 
 
-    // $ANTLR start "entryRuleFileC"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3029:1: entryRuleFileC returns [EObject current=null] : iv_ruleFileC= ruleFileC EOF ;
-    public final EObject entryRuleFileC() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleFileC = null;
-
-
-        try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3030:2: (iv_ruleFileC= ruleFileC EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3031:2: iv_ruleFileC= ruleFileC EOF
-            {
-            if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getFileCRule()); 
-            }
-            pushFollow(FOLLOW_ruleFileC_in_entryRuleFileC6224);
-            iv_ruleFileC=ruleFileC();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-               current =iv_ruleFileC; 
-            }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFileC6234); if (state.failed) return current;
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleFileC"
-
-
-    // $ANTLR start "ruleFileC"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3038:1: ruleFileC returns [EObject current=null] : ( ( (lv_directory_0_0= rulePath ) )? ( (lv_name_1_0= ruleFileName ) ) ) ;
-    public final EObject ruleFileC() throws RecognitionException {
-        EObject current = null;
-
-        AntlrDatatypeRuleToken lv_directory_0_0 = null;
-
-        AntlrDatatypeRuleToken lv_name_1_0 = null;
-
-
-         enterRule(); 
-            
-        try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3041:28: ( ( ( (lv_directory_0_0= rulePath ) )? ( (lv_name_1_0= ruleFileName ) ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3042:1: ( ( (lv_directory_0_0= rulePath ) )? ( (lv_name_1_0= ruleFileName ) ) )
-            {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3042:1: ( ( (lv_directory_0_0= rulePath ) )? ( (lv_name_1_0= ruleFileName ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3042:2: ( (lv_directory_0_0= rulePath ) )? ( (lv_name_1_0= ruleFileName ) )
-            {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3042:2: ( (lv_directory_0_0= rulePath ) )?
-            int alt78=2;
-            int LA78_0 = input.LA(1);
-
-            if ( (LA78_0==RULE_ID) ) {
-                int LA78_1 = input.LA(2);
-
-                if ( (LA78_1==RULE_SL) ) {
-                    alt78=1;
-                }
-            }
-            else if ( (LA78_0==RULE_SL||LA78_0==40||LA78_0==55) ) {
-                alt78=1;
-            }
-            switch (alt78) {
-                case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3043:1: (lv_directory_0_0= rulePath )
-                    {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3043:1: (lv_directory_0_0= rulePath )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3044:3: lv_directory_0_0= rulePath
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getFileCAccess().getDirectoryPathParserRuleCall_0_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_rulePath_in_ruleFileC6280);
-                    lv_directory_0_0=rulePath();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getFileCRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"directory",
-                              		lv_directory_0_0, 
-                              		"Path");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3060:3: ( (lv_name_1_0= ruleFileName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3061:1: (lv_name_1_0= ruleFileName )
-            {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3061:1: (lv_name_1_0= ruleFileName )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3062:3: lv_name_1_0= ruleFileName
-            {
-            if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getFileCAccess().getNameFileNameParserRuleCall_1_0()); 
-              	    
-            }
-            pushFollow(FOLLOW_ruleFileName_in_ruleFileC6302);
-            lv_name_1_0=ruleFileName();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getFileCRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"name",
-                      		lv_name_1_0, 
-                      		"FileName");
-              	        afterParserOrEnumRuleCall();
-              	    
-            }
-
-            }
-
-
-            }
-
-
-            }
-
-
-            }
-
-            if ( state.backtracking==0 ) {
-               leaveRule(); 
-            }
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleFileC"
-
-
     // $ANTLR start "entryRuleInlineCodeC"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3086:1: entryRuleInlineCodeC returns [EObject current=null] : iv_ruleInlineCodeC= ruleInlineCodeC EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3554:1: entryRuleInlineCodeC returns [EObject current=null] : iv_ruleInlineCodeC= ruleInlineCodeC EOF ;
     public final EObject entryRuleInlineCodeC() throws RecognitionException {
         EObject current = null;
 
@@ -8833,13 +10025,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3087:2: (iv_ruleInlineCodeC= ruleInlineCodeC EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3088:2: iv_ruleInlineCodeC= ruleInlineCodeC EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3555:2: (iv_ruleInlineCodeC= ruleInlineCodeC EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3556:2: iv_ruleInlineCodeC= ruleInlineCodeC EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInlineCodeCRule()); 
             }
-            pushFollow(FOLLOW_ruleInlineCodeC_in_entryRuleInlineCodeC6338);
+            pushFollow(FOLLOW_ruleInlineCodeC_in_entryRuleInlineCodeC7362);
             iv_ruleInlineCodeC=ruleInlineCodeC();
 
             state._fsp--;
@@ -8847,7 +10039,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInlineCodeC; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInlineCodeC6348); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInlineCodeC7372); if (state.failed) return current;
 
             }
 
@@ -8865,7 +10057,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInlineCodeC"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3095:1: ruleInlineCodeC returns [EObject current=null] : ( (lv_codeC_0_0= RULE_CODE_C ) ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3563:1: ruleInlineCodeC returns [EObject current=null] : ( (lv_codeC_0_0= RULE_CODE_C ) ) ;
     public final EObject ruleInlineCodeC() throws RecognitionException {
         EObject current = null;
 
@@ -8874,16 +10066,16 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3098:28: ( ( (lv_codeC_0_0= RULE_CODE_C ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3099:1: ( (lv_codeC_0_0= RULE_CODE_C ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3566:28: ( ( (lv_codeC_0_0= RULE_CODE_C ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3567:1: ( (lv_codeC_0_0= RULE_CODE_C ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3099:1: ( (lv_codeC_0_0= RULE_CODE_C ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3100:1: (lv_codeC_0_0= RULE_CODE_C )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3567:1: ( (lv_codeC_0_0= RULE_CODE_C ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3568:1: (lv_codeC_0_0= RULE_CODE_C )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3100:1: (lv_codeC_0_0= RULE_CODE_C )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3101:3: lv_codeC_0_0= RULE_CODE_C
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3568:1: (lv_codeC_0_0= RULE_CODE_C )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3569:3: lv_codeC_0_0= RULE_CODE_C
             {
-            lv_codeC_0_0=(Token)match(input,RULE_CODE_C,FOLLOW_RULE_CODE_C_in_ruleInlineCodeC6389); if (state.failed) return current;
+            lv_codeC_0_0=(Token)match(input,RULE_CODE_C,FOLLOW_RULE_CODE_C_in_ruleInlineCodeC7413); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_codeC_0_0, grammarAccess.getInlineCodeCAccess().getCodeCCODE_CTerminalRuleCall_0()); 
@@ -8926,30 +10118,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleInlineCodeC"
 
 
-    // $ANTLR start "entryRulePath"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3125:1: entryRulePath returns [String current=null] : iv_rulePath= rulePath EOF ;
-    public final String entryRulePath() throws RecognitionException {
+    // $ANTLR start "entryRuleFilePath"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3593:1: entryRuleFilePath returns [String current=null] : iv_ruleFilePath= ruleFilePath EOF ;
+    public final String entryRuleFilePath() throws RecognitionException {
         String current = null;
 
-        AntlrDatatypeRuleToken iv_rulePath = null;
+        AntlrDatatypeRuleToken iv_ruleFilePath = null;
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3126:2: (iv_rulePath= rulePath EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3127:2: iv_rulePath= rulePath EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3594:2: (iv_ruleFilePath= ruleFilePath EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3595:2: iv_ruleFilePath= ruleFilePath EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getPathRule()); 
+               newCompositeNode(grammarAccess.getFilePathRule()); 
             }
-            pushFollow(FOLLOW_rulePath_in_entryRulePath6430);
-            iv_rulePath=rulePath();
+            pushFollow(FOLLOW_ruleFilePath_in_entryRuleFilePath7454);
+            iv_ruleFilePath=ruleFilePath();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_rulePath.getText(); 
+               current =iv_ruleFilePath.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePath6441); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFilePath7465); if (state.failed) return current;
 
             }
 
@@ -8963,88 +10155,52 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRulePath"
+    // $ANTLR end "entryRuleFilePath"
 
 
-    // $ANTLR start "rulePath"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3134:1: rulePath returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_ID_0= RULE_ID | kw= '.' | kw= '..' )? (this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' ) )* this_SL_7= RULE_SL ) ;
-    public final AntlrDatatypeRuleToken rulePath() throws RecognitionException {
+    // $ANTLR start "ruleFilePath"
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3602:1: ruleFilePath returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_SL_0= RULE_SL )? (kw= '.' this_SL_2= RULE_SL )? (kw= '..' this_SL_4= RULE_SL )* this_ID_5= RULE_ID (this_SL_6= RULE_SL this_ID_7= RULE_ID )* (kw= '.' this_ID_9= RULE_ID )? ) ;
+    public final AntlrDatatypeRuleToken ruleFilePath() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token this_ID_0=null;
+        Token this_SL_0=null;
         Token kw=null;
-        Token this_SL_3=null;
-        Token this_ID_4=null;
-        Token this_SL_7=null;
+        Token this_SL_2=null;
+        Token this_SL_4=null;
+        Token this_ID_5=null;
+        Token this_SL_6=null;
+        Token this_ID_7=null;
+        Token this_ID_9=null;
 
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3137:28: ( ( (this_ID_0= RULE_ID | kw= '.' | kw= '..' )? (this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' ) )* this_SL_7= RULE_SL ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3138:1: ( (this_ID_0= RULE_ID | kw= '.' | kw= '..' )? (this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' ) )* this_SL_7= RULE_SL )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3605:28: ( ( (this_SL_0= RULE_SL )? (kw= '.' this_SL_2= RULE_SL )? (kw= '..' this_SL_4= RULE_SL )* this_ID_5= RULE_ID (this_SL_6= RULE_SL this_ID_7= RULE_ID )* (kw= '.' this_ID_9= RULE_ID )? ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3606:1: ( (this_SL_0= RULE_SL )? (kw= '.' this_SL_2= RULE_SL )? (kw= '..' this_SL_4= RULE_SL )* this_ID_5= RULE_ID (this_SL_6= RULE_SL this_ID_7= RULE_ID )* (kw= '.' this_ID_9= RULE_ID )? )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3138:1: ( (this_ID_0= RULE_ID | kw= '.' | kw= '..' )? (this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' ) )* this_SL_7= RULE_SL )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3138:2: (this_ID_0= RULE_ID | kw= '.' | kw= '..' )? (this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' ) )* this_SL_7= RULE_SL
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3606:1: ( (this_SL_0= RULE_SL )? (kw= '.' this_SL_2= RULE_SL )? (kw= '..' this_SL_4= RULE_SL )* this_ID_5= RULE_ID (this_SL_6= RULE_SL this_ID_7= RULE_ID )* (kw= '.' this_ID_9= RULE_ID )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3606:2: (this_SL_0= RULE_SL )? (kw= '.' this_SL_2= RULE_SL )? (kw= '..' this_SL_4= RULE_SL )* this_ID_5= RULE_ID (this_SL_6= RULE_SL this_ID_7= RULE_ID )* (kw= '.' this_ID_9= RULE_ID )?
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3138:2: (this_ID_0= RULE_ID | kw= '.' | kw= '..' )?
-            int alt79=4;
-            switch ( input.LA(1) ) {
-                case RULE_ID:
-                    {
-                    alt79=1;
-                    }
-                    break;
-                case 40:
-                    {
-                    alt79=2;
-                    }
-                    break;
-                case 55:
-                    {
-                    alt79=3;
-                    }
-                    break;
-            }
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3606:2: (this_SL_0= RULE_SL )?
+            int alt84=2;
+            int LA84_0 = input.LA(1);
 
-            switch (alt79) {
+            if ( (LA84_0==RULE_SL) ) {
+                alt84=1;
+            }
+            switch (alt84) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3138:7: this_ID_0= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3606:7: this_SL_0= RULE_SL
                     {
-                    this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePath6482); if (state.failed) return current;
+                    this_SL_0=(Token)match(input,RULE_SL,FOLLOW_RULE_SL_in_ruleFilePath7506); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      		current.merge(this_ID_0);
+                      		current.merge(this_SL_0);
                           
                     }
                     if ( state.backtracking==0 ) {
                        
-                          newLeafNode(this_ID_0, grammarAccess.getPathAccess().getIDTerminalRuleCall_0_0()); 
-                          
-                    }
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3147:2: kw= '.'
-                    {
-                    kw=(Token)match(input,40,FOLLOW_40_in_rulePath6506); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                              current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getPathAccess().getFullStopKeyword_0_1()); 
-                          
-                    }
-
-                    }
-                    break;
-                case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3154:2: kw= '..'
-                    {
-                    kw=(Token)match(input,55,FOLLOW_55_in_rulePath6525); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                              current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getPathAccess().getFullStopFullStopKeyword_0_2()); 
+                          newLeafNode(this_SL_0, grammarAccess.getFilePathAccess().getSLTerminalRuleCall_0()); 
                           
                     }
 
@@ -9053,284 +10209,167 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3159:3: (this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' ) )*
-            loop83:
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3613:3: (kw= '.' this_SL_2= RULE_SL )?
+            int alt85=2;
+            int LA85_0 = input.LA(1);
+
+            if ( (LA85_0==46) ) {
+                alt85=1;
+            }
+            switch (alt85) {
+                case 1 :
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3614:2: kw= '.' this_SL_2= RULE_SL
+                    {
+                    kw=(Token)match(input,46,FOLLOW_46_in_ruleFilePath7527); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getFilePathAccess().getFullStopKeyword_1_0()); 
+                          
+                    }
+                    this_SL_2=(Token)match(input,RULE_SL,FOLLOW_RULE_SL_in_ruleFilePath7542); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_SL_2);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_SL_2, grammarAccess.getFilePathAccess().getSLTerminalRuleCall_1_1()); 
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3626:3: (kw= '..' this_SL_4= RULE_SL )*
+            loop86:
             do {
-                int alt83=2;
-                int LA83_0 = input.LA(1);
+                int alt86=2;
+                int LA86_0 = input.LA(1);
 
-                if ( (LA83_0==RULE_SL) ) {
-                    int LA83_1 = input.LA(2);
-
-                    if ( (LA83_1==RULE_ID) ) {
-                        int LA83_2 = input.LA(3);
-
-                        if ( (LA83_2==RULE_ID||LA83_2==RULE_SL||LA83_2==47) ) {
-                            alt83=1;
-                        }
-
-
-                    }
-                    else if ( (LA83_1==RULE_SL||LA83_1==55) ) {
-                        alt83=1;
-                    }
-
-
+                if ( (LA86_0==69) ) {
+                    alt86=1;
                 }
 
 
-                switch (alt83) {
+                switch (alt86) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3159:8: this_SL_3= RULE_SL ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3627:2: kw= '..' this_SL_4= RULE_SL
             	    {
-            	    this_SL_3=(Token)match(input,RULE_SL,FOLLOW_RULE_SL_in_rulePath6543); if (state.failed) return current;
+            	    kw=(Token)match(input,69,FOLLOW_69_in_ruleFilePath7563); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		current.merge(this_SL_3);
+            	              current.merge(kw);
+            	              newLeafNode(kw, grammarAccess.getFilePathAccess().getFullStopFullStopKeyword_2_0()); 
+            	          
+            	    }
+            	    this_SL_4=(Token)match(input,RULE_SL,FOLLOW_RULE_SL_in_ruleFilePath7578); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      		current.merge(this_SL_4);
             	          
             	    }
             	    if ( state.backtracking==0 ) {
             	       
-            	          newLeafNode(this_SL_3, grammarAccess.getPathAccess().getSLTerminalRuleCall_1_0()); 
+            	          newLeafNode(this_SL_4, grammarAccess.getFilePathAccess().getSLTerminalRuleCall_2_1()); 
             	          
             	    }
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3166:1: ( (this_ID_4= RULE_ID (kw= '-' )? )* | kw= '..' )
-            	    int alt82=2;
-            	    int LA82_0 = input.LA(1);
-
-            	    if ( (LA82_0==RULE_ID||LA82_0==RULE_SL) ) {
-            	        alt82=1;
-            	    }
-            	    else if ( (LA82_0==55) ) {
-            	        alt82=2;
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 82, 0, input);
-
-            	        throw nvae;
-            	    }
-            	    switch (alt82) {
-            	        case 1 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3166:2: (this_ID_4= RULE_ID (kw= '-' )? )*
-            	            {
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3166:2: (this_ID_4= RULE_ID (kw= '-' )? )*
-            	            loop81:
-            	            do {
-            	                int alt81=2;
-            	                int LA81_0 = input.LA(1);
-
-            	                if ( (LA81_0==RULE_ID) ) {
-            	                    alt81=1;
-            	                }
-
-
-            	                switch (alt81) {
-            	            	case 1 :
-            	            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3166:7: this_ID_4= RULE_ID (kw= '-' )?
-            	            	    {
-            	            	    this_ID_4=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePath6565); if (state.failed) return current;
-            	            	    if ( state.backtracking==0 ) {
-
-            	            	      		current.merge(this_ID_4);
-            	            	          
-            	            	    }
-            	            	    if ( state.backtracking==0 ) {
-            	            	       
-            	            	          newLeafNode(this_ID_4, grammarAccess.getPathAccess().getIDTerminalRuleCall_1_1_0_0()); 
-            	            	          
-            	            	    }
-            	            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3173:1: (kw= '-' )?
-            	            	    int alt80=2;
-            	            	    int LA80_0 = input.LA(1);
-
-            	            	    if ( (LA80_0==47) ) {
-            	            	        alt80=1;
-            	            	    }
-            	            	    switch (alt80) {
-            	            	        case 1 :
-            	            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3174:2: kw= '-'
-            	            	            {
-            	            	            kw=(Token)match(input,47,FOLLOW_47_in_rulePath6584); if (state.failed) return current;
-            	            	            if ( state.backtracking==0 ) {
-
-            	            	                      current.merge(kw);
-            	            	                      newLeafNode(kw, grammarAccess.getPathAccess().getHyphenMinusKeyword_1_1_0_1()); 
-            	            	                  
-            	            	            }
-
-            	            	            }
-            	            	            break;
-
-            	            	    }
-
-
-            	            	    }
-            	            	    break;
-
-            	            	default :
-            	            	    break loop81;
-            	                }
-            	            } while (true);
-
-
-            	            }
-            	            break;
-            	        case 2 :
-            	            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3181:2: kw= '..'
-            	            {
-            	            kw=(Token)match(input,55,FOLLOW_55_in_rulePath6607); if (state.failed) return current;
-            	            if ( state.backtracking==0 ) {
-
-            	                      current.merge(kw);
-            	                      newLeafNode(kw, grammarAccess.getPathAccess().getFullStopFullStopKeyword_1_1_1()); 
-            	                  
-            	            }
-
-            	            }
-            	            break;
-
-            	    }
-
 
             	    }
             	    break;
 
             	default :
-            	    break loop83;
+            	    break loop86;
                 }
             } while (true);
 
-            this_SL_7=(Token)match(input,RULE_SL,FOLLOW_RULE_SL_in_rulePath6625); if (state.failed) return current;
+            this_ID_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFilePath7600); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		current.merge(this_SL_7);
+              		current.merge(this_ID_5);
                   
             }
             if ( state.backtracking==0 ) {
                
-                  newLeafNode(this_SL_7, grammarAccess.getPathAccess().getSLTerminalRuleCall_2()); 
+                  newLeafNode(this_ID_5, grammarAccess.getFilePathAccess().getIDTerminalRuleCall_3()); 
                   
             }
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3646:1: (this_SL_6= RULE_SL this_ID_7= RULE_ID )*
+            loop87:
+            do {
+                int alt87=2;
+                int LA87_0 = input.LA(1);
 
+                if ( (LA87_0==RULE_SL) ) {
+                    alt87=1;
+                }
+
+
+                switch (alt87) {
+            	case 1 :
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3646:6: this_SL_6= RULE_SL this_ID_7= RULE_ID
+            	    {
+            	    this_SL_6=(Token)match(input,RULE_SL,FOLLOW_RULE_SL_in_ruleFilePath7621); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      		current.merge(this_SL_6);
+            	          
+            	    }
+            	    if ( state.backtracking==0 ) {
+            	       
+            	          newLeafNode(this_SL_6, grammarAccess.getFilePathAccess().getSLTerminalRuleCall_4_0()); 
+            	          
+            	    }
+            	    this_ID_7=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFilePath7641); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      		current.merge(this_ID_7);
+            	          
+            	    }
+            	    if ( state.backtracking==0 ) {
+            	       
+            	          newLeafNode(this_ID_7, grammarAccess.getFilePathAccess().getIDTerminalRuleCall_4_1()); 
+            	          
+            	    }
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop87;
+                }
+            } while (true);
+
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3660:3: (kw= '.' this_ID_9= RULE_ID )?
+            int alt88=2;
+            int LA88_0 = input.LA(1);
+
+            if ( (LA88_0==46) ) {
+                alt88=1;
             }
-
-
-            }
-
-            if ( state.backtracking==0 ) {
-               leaveRule(); 
-            }
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "rulePath"
-
-
-    // $ANTLR start "entryRuleFileName"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3201:1: entryRuleFileName returns [String current=null] : iv_ruleFileName= ruleFileName EOF ;
-    public final String entryRuleFileName() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleFileName = null;
-
-
-        try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3202:2: (iv_ruleFileName= ruleFileName EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3203:2: iv_ruleFileName= ruleFileName EOF
-            {
-            if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getFileNameRule()); 
-            }
-            pushFollow(FOLLOW_ruleFileName_in_entryRuleFileName6671);
-            iv_ruleFileName=ruleFileName();
-
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-               current =iv_ruleFileName.getText(); 
-            }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFileName6682); if (state.failed) return current;
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleFileName"
-
-
-    // $ANTLR start "ruleFileName"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3210:1: ruleFileName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? ) ;
-    public final AntlrDatatypeRuleToken ruleFileName() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token this_ID_0=null;
-        Token kw=null;
-        Token this_ID_2=null;
-
-         enterRule(); 
-            
-        try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3213:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3214:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? )
-            {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3214:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )? )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3214:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )?
-            {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFileName6722); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              		current.merge(this_ID_0);
-                  
-            }
-            if ( state.backtracking==0 ) {
-               
-                  newLeafNode(this_ID_0, grammarAccess.getFileNameAccess().getIDTerminalRuleCall_0()); 
-                  
-            }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3221:1: (kw= '.' this_ID_2= RULE_ID )?
-            int alt84=2;
-            int LA84_0 = input.LA(1);
-
-            if ( (LA84_0==40) ) {
-                alt84=1;
-            }
-            switch (alt84) {
+            switch (alt88) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3222:2: kw= '.' this_ID_2= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3661:2: kw= '.' this_ID_9= RULE_ID
                     {
-                    kw=(Token)match(input,40,FOLLOW_40_in_ruleFileName6741); if (state.failed) return current;
+                    kw=(Token)match(input,46,FOLLOW_46_in_ruleFilePath7662); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getFileNameAccess().getFullStopKeyword_1_0()); 
+                              newLeafNode(kw, grammarAccess.getFilePathAccess().getFullStopKeyword_5_0()); 
                           
                     }
-                    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFileName6756); if (state.failed) return current;
+                    this_ID_9=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFilePath7677); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      		current.merge(this_ID_2);
+                      		current.merge(this_ID_9);
                           
                     }
                     if ( state.backtracking==0 ) {
                        
-                          newLeafNode(this_ID_2, grammarAccess.getFileNameAccess().getIDTerminalRuleCall_1_1()); 
+                          newLeafNode(this_ID_9, grammarAccess.getFilePathAccess().getIDTerminalRuleCall_5_1()); 
                           
                     }
 
@@ -9358,11 +10397,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleFileName"
+    // $ANTLR end "ruleFilePath"
 
 
     // $ANTLR start "entryRuleAnnotationsList"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3242:1: entryRuleAnnotationsList returns [EObject current=null] : iv_ruleAnnotationsList= ruleAnnotationsList EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3683:1: entryRuleAnnotationsList returns [EObject current=null] : iv_ruleAnnotationsList= ruleAnnotationsList EOF ;
     public final EObject entryRuleAnnotationsList() throws RecognitionException {
         EObject current = null;
 
@@ -9370,13 +10409,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3243:2: (iv_ruleAnnotationsList= ruleAnnotationsList EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3244:2: iv_ruleAnnotationsList= ruleAnnotationsList EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3684:2: (iv_ruleAnnotationsList= ruleAnnotationsList EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3685:2: iv_ruleAnnotationsList= ruleAnnotationsList EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAnnotationsListRule()); 
             }
-            pushFollow(FOLLOW_ruleAnnotationsList_in_entryRuleAnnotationsList6803);
+            pushFollow(FOLLOW_ruleAnnotationsList_in_entryRuleAnnotationsList7726);
             iv_ruleAnnotationsList=ruleAnnotationsList();
 
             state._fsp--;
@@ -9384,7 +10423,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAnnotationsList; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotationsList6813); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotationsList7736); if (state.failed) return current;
 
             }
 
@@ -9402,7 +10441,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAnnotationsList"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3251:1: ruleAnnotationsList returns [EObject current=null] : ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3692:1: ruleAnnotationsList returns [EObject current=null] : ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* ) ;
     public final EObject ruleAnnotationsList() throws RecognitionException {
         EObject current = null;
 
@@ -9414,24 +10453,24 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3254:28: ( ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3255:1: ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3695:28: ( ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3696:1: ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3255:1: ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3255:2: ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )*
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3696:1: ( ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )* )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3696:2: ( (lv_annotations_0_0= ruleAnnotation ) ) ( (lv_annotations_1_0= ruleAnnotation ) )*
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3255:2: ( (lv_annotations_0_0= ruleAnnotation ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3256:1: (lv_annotations_0_0= ruleAnnotation )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3696:2: ( (lv_annotations_0_0= ruleAnnotation ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3697:1: (lv_annotations_0_0= ruleAnnotation )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3256:1: (lv_annotations_0_0= ruleAnnotation )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3257:3: lv_annotations_0_0= ruleAnnotation
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3697:1: (lv_annotations_0_0= ruleAnnotation )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3698:3: lv_annotations_0_0= ruleAnnotation
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getAnnotationsListAccess().getAnnotationsAnnotationParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleAnnotation_in_ruleAnnotationsList6859);
+            pushFollow(FOLLOW_ruleAnnotation_in_ruleAnnotationsList7782);
             lv_annotations_0_0=ruleAnnotation();
 
             state._fsp--;
@@ -9455,30 +10494,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3273:2: ( (lv_annotations_1_0= ruleAnnotation ) )*
-            loop85:
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3714:2: ( (lv_annotations_1_0= ruleAnnotation ) )*
+            loop89:
             do {
-                int alt85=2;
-                int LA85_0 = input.LA(1);
+                int alt89=2;
+                int LA89_0 = input.LA(1);
 
-                if ( (LA85_0==56) ) {
-                    alt85=1;
+                if ( (LA89_0==70) ) {
+                    alt89=1;
                 }
 
 
-                switch (alt85) {
+                switch (alt89) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3274:1: (lv_annotations_1_0= ruleAnnotation )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3715:1: (lv_annotations_1_0= ruleAnnotation )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3274:1: (lv_annotations_1_0= ruleAnnotation )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3275:3: lv_annotations_1_0= ruleAnnotation
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3715:1: (lv_annotations_1_0= ruleAnnotation )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3716:3: lv_annotations_1_0= ruleAnnotation
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getAnnotationsListAccess().getAnnotationsAnnotationParserRuleCall_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleAnnotation_in_ruleAnnotationsList6880);
+            	    pushFollow(FOLLOW_ruleAnnotation_in_ruleAnnotationsList7803);
             	    lv_annotations_1_0=ruleAnnotation();
 
             	    state._fsp--;
@@ -9504,7 +10543,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop85;
+            	    break loop89;
                 }
             } while (true);
 
@@ -9531,7 +10570,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAnnotation"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3299:1: entryRuleAnnotation returns [EObject current=null] : iv_ruleAnnotation= ruleAnnotation EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3740:1: entryRuleAnnotation returns [EObject current=null] : iv_ruleAnnotation= ruleAnnotation EOF ;
     public final EObject entryRuleAnnotation() throws RecognitionException {
         EObject current = null;
 
@@ -9539,13 +10578,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3300:2: (iv_ruleAnnotation= ruleAnnotation EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3301:2: iv_ruleAnnotation= ruleAnnotation EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3741:2: (iv_ruleAnnotation= ruleAnnotation EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3742:2: iv_ruleAnnotation= ruleAnnotation EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAnnotationRule()); 
             }
-            pushFollow(FOLLOW_ruleAnnotation_in_entryRuleAnnotation6917);
+            pushFollow(FOLLOW_ruleAnnotation_in_entryRuleAnnotation7840);
             iv_ruleAnnotation=ruleAnnotation();
 
             state._fsp--;
@@ -9553,7 +10592,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAnnotation; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotation6927); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotation7850); if (state.failed) return current;
 
             }
 
@@ -9571,7 +10610,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAnnotation"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3308:1: ruleAnnotation returns [EObject current=null] : (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3749:1: ruleAnnotation returns [EObject current=null] : (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? ) ;
     public final EObject ruleAnnotation() throws RecognitionException {
         EObject current = null;
 
@@ -9593,65 +10632,65 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3311:28: ( (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3312:1: (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3752:28: ( (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3753:1: (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3312:1: (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3312:3: otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )?
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3753:1: (otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )? )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3753:3: otherlv_0= '@' ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) ) (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )?
             {
-            otherlv_0=(Token)match(input,56,FOLLOW_56_in_ruleAnnotation6964); if (state.failed) return current;
+            otherlv_0=(Token)match(input,70,FOLLOW_70_in_ruleAnnotation7887); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getAnnotationAccess().getCommercialAtKeyword_0());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3316:1: ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3317:1: ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3757:1: ( ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3758:1: ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3317:1: ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3318:1: (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3758:1: ( (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3759:1: (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3318:1: (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName )
-            int alt86=5;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3759:1: (lv_name_1_1= 'Override' | lv_name_1_2= 'Singleton' | lv_name_1_3= 'LDFlags' | lv_name_1_4= 'CFlags' | lv_name_1_5= ruleQualifiedName )
+            int alt90=5;
             switch ( input.LA(1) ) {
-            case 57:
+            case 71:
                 {
-                alt86=1;
+                alt90=1;
                 }
                 break;
-            case 58:
+            case 72:
                 {
-                alt86=2;
+                alt90=2;
                 }
                 break;
-            case 59:
+            case 73:
                 {
-                alt86=3;
+                alt90=3;
                 }
                 break;
-            case 60:
+            case 74:
                 {
-                alt86=4;
+                alt90=4;
                 }
                 break;
             case RULE_ID:
                 {
-                alt86=5;
+                alt90=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 86, 0, input);
+                    new NoViableAltException("", 90, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt86) {
+            switch (alt90) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3319:3: lv_name_1_1= 'Override'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3760:3: lv_name_1_1= 'Override'
                     {
-                    lv_name_1_1=(Token)match(input,57,FOLLOW_57_in_ruleAnnotation6984); if (state.failed) return current;
+                    lv_name_1_1=(Token)match(input,71,FOLLOW_71_in_ruleAnnotation7907); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_name_1_1, grammarAccess.getAnnotationAccess().getNameOverrideKeyword_1_0_0());
@@ -9669,9 +10708,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3331:8: lv_name_1_2= 'Singleton'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3772:8: lv_name_1_2= 'Singleton'
                     {
-                    lv_name_1_2=(Token)match(input,58,FOLLOW_58_in_ruleAnnotation7013); if (state.failed) return current;
+                    lv_name_1_2=(Token)match(input,72,FOLLOW_72_in_ruleAnnotation7936); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_name_1_2, grammarAccess.getAnnotationAccess().getNameSingletonKeyword_1_0_1());
@@ -9689,9 +10728,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3343:8: lv_name_1_3= 'LDFlags'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3784:8: lv_name_1_3= 'LDFlags'
                     {
-                    lv_name_1_3=(Token)match(input,59,FOLLOW_59_in_ruleAnnotation7042); if (state.failed) return current;
+                    lv_name_1_3=(Token)match(input,73,FOLLOW_73_in_ruleAnnotation7965); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_name_1_3, grammarAccess.getAnnotationAccess().getNameLDFlagsKeyword_1_0_2());
@@ -9709,9 +10748,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3355:8: lv_name_1_4= 'CFlags'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3796:8: lv_name_1_4= 'CFlags'
                     {
-                    lv_name_1_4=(Token)match(input,60,FOLLOW_60_in_ruleAnnotation7071); if (state.failed) return current;
+                    lv_name_1_4=(Token)match(input,74,FOLLOW_74_in_ruleAnnotation7994); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_name_1_4, grammarAccess.getAnnotationAccess().getNameCFlagsKeyword_1_0_3());
@@ -9729,14 +10768,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3367:8: lv_name_1_5= ruleQualifiedName
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3808:8: lv_name_1_5= ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getAnnotationAccess().getNameQualifiedNameParserRuleCall_1_0_4()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleAnnotation7103);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleAnnotation8026);
                     lv_name_1_5=ruleQualifiedName();
 
                     state._fsp--;
@@ -9766,35 +10805,35 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3385:2: (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )?
-            int alt88=2;
-            int LA88_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3826:2: (otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')' )?
+            int alt92=2;
+            int LA92_0 = input.LA(1);
 
-            if ( (LA88_0==29) ) {
-                alt88=1;
+            if ( (LA92_0==29) ) {
+                alt92=1;
             }
-            switch (alt88) {
+            switch (alt92) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3385:4: otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')'
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3826:4: otherlv_2= '(' ( (lv_annotationElements_3_0= ruleAnnotationElement ) ) (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )* otherlv_6= ')'
                     {
-                    otherlv_2=(Token)match(input,29,FOLLOW_29_in_ruleAnnotation7119); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,29,FOLLOW_29_in_ruleAnnotation8042); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getAnnotationAccess().getLeftParenthesisKeyword_2_0());
                           
                     }
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3389:1: ( (lv_annotationElements_3_0= ruleAnnotationElement ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3390:1: (lv_annotationElements_3_0= ruleAnnotationElement )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3830:1: ( (lv_annotationElements_3_0= ruleAnnotationElement ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3831:1: (lv_annotationElements_3_0= ruleAnnotationElement )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3390:1: (lv_annotationElements_3_0= ruleAnnotationElement )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3391:3: lv_annotationElements_3_0= ruleAnnotationElement
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3831:1: (lv_annotationElements_3_0= ruleAnnotationElement )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3832:3: lv_annotationElements_3_0= ruleAnnotationElement
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getAnnotationAccess().getAnnotationElementsAnnotationElementParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAnnotationElement_in_ruleAnnotation7140);
+                    pushFollow(FOLLOW_ruleAnnotationElement_in_ruleAnnotation8063);
                     lv_annotationElements_3_0=ruleAnnotationElement();
 
                     state._fsp--;
@@ -9818,39 +10857,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3407:2: (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )*
-                    loop87:
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3848:2: (otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) ) )*
+                    loop91:
                     do {
-                        int alt87=2;
-                        int LA87_0 = input.LA(1);
+                        int alt91=2;
+                        int LA91_0 = input.LA(1);
 
-                        if ( (LA87_0==21) ) {
-                            alt87=1;
+                        if ( (LA91_0==21) ) {
+                            alt91=1;
                         }
 
 
-                        switch (alt87) {
+                        switch (alt91) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3407:4: otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3848:4: otherlv_4= ',' ( (lv_annotationElements_5_0= ruleAnnotationElement ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,21,FOLLOW_21_in_ruleAnnotation7153); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,21,FOLLOW_21_in_ruleAnnotation8076); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getAnnotationAccess().getCommaKeyword_2_2_0());
                     	          
                     	    }
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3411:1: ( (lv_annotationElements_5_0= ruleAnnotationElement ) )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3412:1: (lv_annotationElements_5_0= ruleAnnotationElement )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3852:1: ( (lv_annotationElements_5_0= ruleAnnotationElement ) )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3853:1: (lv_annotationElements_5_0= ruleAnnotationElement )
                     	    {
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3412:1: (lv_annotationElements_5_0= ruleAnnotationElement )
-                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3413:3: lv_annotationElements_5_0= ruleAnnotationElement
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3853:1: (lv_annotationElements_5_0= ruleAnnotationElement )
+                    	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3854:3: lv_annotationElements_5_0= ruleAnnotationElement
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getAnnotationAccess().getAnnotationElementsAnnotationElementParserRuleCall_2_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleAnnotationElement_in_ruleAnnotation7174);
+                    	    pushFollow(FOLLOW_ruleAnnotationElement_in_ruleAnnotation8097);
                     	    lv_annotationElements_5_0=ruleAnnotationElement();
 
                     	    state._fsp--;
@@ -9879,11 +10918,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop87;
+                    	    break loop91;
                         }
                     } while (true);
 
-                    otherlv_6=(Token)match(input,30,FOLLOW_30_in_ruleAnnotation7188); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,30,FOLLOW_30_in_ruleAnnotation8111); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getAnnotationAccess().getRightParenthesisKeyword_2_3());
@@ -9918,7 +10957,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAnnotationElement"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3441:1: entryRuleAnnotationElement returns [EObject current=null] : iv_ruleAnnotationElement= ruleAnnotationElement EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3882:1: entryRuleAnnotationElement returns [EObject current=null] : iv_ruleAnnotationElement= ruleAnnotationElement EOF ;
     public final EObject entryRuleAnnotationElement() throws RecognitionException {
         EObject current = null;
 
@@ -9926,13 +10965,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3442:2: (iv_ruleAnnotationElement= ruleAnnotationElement EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3443:2: iv_ruleAnnotationElement= ruleAnnotationElement EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3883:2: (iv_ruleAnnotationElement= ruleAnnotationElement EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3884:2: iv_ruleAnnotationElement= ruleAnnotationElement EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAnnotationElementRule()); 
             }
-            pushFollow(FOLLOW_ruleAnnotationElement_in_entryRuleAnnotationElement7226);
+            pushFollow(FOLLOW_ruleAnnotationElement_in_entryRuleAnnotationElement8149);
             iv_ruleAnnotationElement=ruleAnnotationElement();
 
             state._fsp--;
@@ -9940,7 +10979,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAnnotationElement; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotationElement7236); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotationElement8159); if (state.failed) return current;
 
             }
 
@@ -9958,7 +10997,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAnnotationElement"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3450:1: ruleAnnotationElement returns [EObject current=null] : ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3891:1: ruleAnnotationElement returns [EObject current=null] : ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) ) ;
     public final EObject ruleAnnotationElement() throws RecognitionException {
         EObject current = null;
 
@@ -9970,34 +11009,34 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3453:28: ( ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3454:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3894:28: ( ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3895:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3454:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3454:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3895:1: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3895:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )? ( (lv_elementValue_2_0= ruleElementValue ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3454:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )?
-            int alt89=2;
-            int LA89_0 = input.LA(1);
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3895:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '=' )?
+            int alt93=2;
+            int LA93_0 = input.LA(1);
 
-            if ( (LA89_0==RULE_ID) ) {
-                int LA89_1 = input.LA(2);
+            if ( (LA93_0==RULE_ID) ) {
+                int LA93_1 = input.LA(2);
 
-                if ( (LA89_1==49) ) {
-                    alt89=1;
+                if ( (LA93_1==64) ) {
+                    alt93=1;
                 }
             }
-            switch (alt89) {
+            switch (alt93) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3454:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '='
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3895:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '='
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3454:3: ( (lv_name_0_0= RULE_ID ) )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3455:1: (lv_name_0_0= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3895:3: ( (lv_name_0_0= RULE_ID ) )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3896:1: (lv_name_0_0= RULE_ID )
                     {
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3455:1: (lv_name_0_0= RULE_ID )
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3456:3: lv_name_0_0= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3896:1: (lv_name_0_0= RULE_ID )
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3897:3: lv_name_0_0= RULE_ID
                     {
-                    lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAnnotationElement7279); if (state.failed) return current;
+                    lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAnnotationElement8202); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_name_0_0, grammarAccess.getAnnotationElementAccess().getNameIDTerminalRuleCall_0_0_0()); 
@@ -10021,7 +11060,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,49,FOLLOW_49_in_ruleAnnotationElement7296); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,64,FOLLOW_64_in_ruleAnnotationElement8219); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getAnnotationElementAccess().getEqualsSignKeyword_0_1());
@@ -10033,18 +11072,18 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3476:3: ( (lv_elementValue_2_0= ruleElementValue ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3477:1: (lv_elementValue_2_0= ruleElementValue )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3917:3: ( (lv_elementValue_2_0= ruleElementValue ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3918:1: (lv_elementValue_2_0= ruleElementValue )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3477:1: (lv_elementValue_2_0= ruleElementValue )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3478:3: lv_elementValue_2_0= ruleElementValue
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3918:1: (lv_elementValue_2_0= ruleElementValue )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3919:3: lv_elementValue_2_0= ruleElementValue
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getAnnotationElementAccess().getElementValueElementValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleElementValue_in_ruleAnnotationElement7319);
+            pushFollow(FOLLOW_ruleElementValue_in_ruleAnnotationElement8242);
             lv_elementValue_2_0=ruleElementValue();
 
             state._fsp--;
@@ -10091,7 +11130,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleElementValue"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3502:1: entryRuleElementValue returns [EObject current=null] : iv_ruleElementValue= ruleElementValue EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3943:1: entryRuleElementValue returns [EObject current=null] : iv_ruleElementValue= ruleElementValue EOF ;
     public final EObject entryRuleElementValue() throws RecognitionException {
         EObject current = null;
 
@@ -10099,13 +11138,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3503:2: (iv_ruleElementValue= ruleElementValue EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3504:2: iv_ruleElementValue= ruleElementValue EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3944:2: (iv_ruleElementValue= ruleElementValue EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3945:2: iv_ruleElementValue= ruleElementValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getElementValueRule()); 
             }
-            pushFollow(FOLLOW_ruleElementValue_in_entryRuleElementValue7355);
+            pushFollow(FOLLOW_ruleElementValue_in_entryRuleElementValue8278);
             iv_ruleElementValue=ruleElementValue();
 
             state._fsp--;
@@ -10113,7 +11152,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleElementValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleElementValue7365); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleElementValue8288); if (state.failed) return current;
 
             }
 
@@ -10131,7 +11170,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleElementValue"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3511:1: ruleElementValue returns [EObject current=null] : (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3952:1: ruleElementValue returns [EObject current=null] : (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer ) ;
     public final EObject ruleElementValue() throws RecognitionException {
         EObject current = null;
 
@@ -10145,40 +11184,40 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3514:28: ( (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3515:1: (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3955:28: ( (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3956:1: (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3515:1: (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer )
-            int alt90=3;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3956:1: (this_ConstantValue_0= ruleConstantValue | this_Annotation_1= ruleAnnotation | this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer )
+            int alt94=3;
             switch ( input.LA(1) ) {
             case RULE_ID:
             case RULE_INT:
             case RULE_STRING:
                 {
-                alt90=1;
+                alt94=1;
                 }
                 break;
-            case 56:
+            case 70:
                 {
-                alt90=2;
+                alt94=2;
                 }
                 break;
             case 24:
                 {
-                alt90=3;
+                alt94=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 90, 0, input);
+                    new NoViableAltException("", 94, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt90) {
+            switch (alt94) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3516:2: this_ConstantValue_0= ruleConstantValue
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3957:2: this_ConstantValue_0= ruleConstantValue
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -10190,7 +11229,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getElementValueAccess().getConstantValueParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleConstantValue_in_ruleElementValue7415);
+                    pushFollow(FOLLOW_ruleConstantValue_in_ruleElementValue8338);
                     this_ConstantValue_0=ruleConstantValue();
 
                     state._fsp--;
@@ -10205,7 +11244,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3529:2: this_Annotation_1= ruleAnnotation
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3970:2: this_Annotation_1= ruleAnnotation
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -10217,7 +11256,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getElementValueAccess().getAnnotationParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleAnnotation_in_ruleElementValue7445);
+                    pushFollow(FOLLOW_ruleAnnotation_in_ruleElementValue8368);
                     this_Annotation_1=ruleAnnotation();
 
                     state._fsp--;
@@ -10232,7 +11271,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3542:2: this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3983:2: this_ElementValueArrayInitializer_2= ruleElementValueArrayInitializer
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -10244,7 +11283,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getElementValueAccess().getElementValueArrayInitializerParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleElementValueArrayInitializer_in_ruleElementValue7475);
+                    pushFollow(FOLLOW_ruleElementValueArrayInitializer_in_ruleElementValue8398);
                     this_ElementValueArrayInitializer_2=ruleElementValueArrayInitializer();
 
                     state._fsp--;
@@ -10281,7 +11320,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleElementValueArrayInitializer"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3561:1: entryRuleElementValueArrayInitializer returns [EObject current=null] : iv_ruleElementValueArrayInitializer= ruleElementValueArrayInitializer EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4002:1: entryRuleElementValueArrayInitializer returns [EObject current=null] : iv_ruleElementValueArrayInitializer= ruleElementValueArrayInitializer EOF ;
     public final EObject entryRuleElementValueArrayInitializer() throws RecognitionException {
         EObject current = null;
 
@@ -10289,13 +11328,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3562:2: (iv_ruleElementValueArrayInitializer= ruleElementValueArrayInitializer EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3563:2: iv_ruleElementValueArrayInitializer= ruleElementValueArrayInitializer EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4003:2: (iv_ruleElementValueArrayInitializer= ruleElementValueArrayInitializer EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4004:2: iv_ruleElementValueArrayInitializer= ruleElementValueArrayInitializer EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getElementValueArrayInitializerRule()); 
             }
-            pushFollow(FOLLOW_ruleElementValueArrayInitializer_in_entryRuleElementValueArrayInitializer7510);
+            pushFollow(FOLLOW_ruleElementValueArrayInitializer_in_entryRuleElementValueArrayInitializer8433);
             iv_ruleElementValueArrayInitializer=ruleElementValueArrayInitializer();
 
             state._fsp--;
@@ -10303,7 +11342,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleElementValueArrayInitializer; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleElementValueArrayInitializer7520); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleElementValueArrayInitializer8443); if (state.failed) return current;
 
             }
 
@@ -10321,7 +11360,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleElementValueArrayInitializer"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3570:1: ruleElementValueArrayInitializer returns [EObject current=null] : (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4011:1: ruleElementValueArrayInitializer returns [EObject current=null] : (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' ) ;
     public final EObject ruleElementValueArrayInitializer() throws RecognitionException {
         EObject current = null;
 
@@ -10336,30 +11375,30 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3573:28: ( (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3574:1: (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4014:28: ( (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4015:1: (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3574:1: (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3574:3: otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}'
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4015:1: (otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}' )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4015:3: otherlv_0= '{' ( (lv_values_1_0= ruleElementValue ) ) (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleElementValueArrayInitializer7557); if (state.failed) return current;
+            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleElementValueArrayInitializer8480); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getElementValueArrayInitializerAccess().getLeftCurlyBracketKeyword_0());
                   
             }
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3578:1: ( (lv_values_1_0= ruleElementValue ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3579:1: (lv_values_1_0= ruleElementValue )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4019:1: ( (lv_values_1_0= ruleElementValue ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4020:1: (lv_values_1_0= ruleElementValue )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3579:1: (lv_values_1_0= ruleElementValue )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3580:3: lv_values_1_0= ruleElementValue
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4020:1: (lv_values_1_0= ruleElementValue )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4021:3: lv_values_1_0= ruleElementValue
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getElementValueArrayInitializerAccess().getValuesElementValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer7578);
+            pushFollow(FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer8501);
             lv_values_1_0=ruleElementValue();
 
             state._fsp--;
@@ -10383,39 +11422,39 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3596:2: (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )*
-            loop91:
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4037:2: (otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) ) )*
+            loop95:
             do {
-                int alt91=2;
-                int LA91_0 = input.LA(1);
+                int alt95=2;
+                int LA95_0 = input.LA(1);
 
-                if ( (LA91_0==21) ) {
-                    alt91=1;
+                if ( (LA95_0==21) ) {
+                    alt95=1;
                 }
 
 
-                switch (alt91) {
+                switch (alt95) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3596:4: otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4037:4: otherlv_2= ',' ( (lv_values_3_0= ruleElementValue ) )
             	    {
-            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleElementValueArrayInitializer7591); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleElementValueArrayInitializer8514); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_2, grammarAccess.getElementValueArrayInitializerAccess().getCommaKeyword_2_0());
             	          
             	    }
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3600:1: ( (lv_values_3_0= ruleElementValue ) )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3601:1: (lv_values_3_0= ruleElementValue )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4041:1: ( (lv_values_3_0= ruleElementValue ) )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4042:1: (lv_values_3_0= ruleElementValue )
             	    {
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3601:1: (lv_values_3_0= ruleElementValue )
-            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3602:3: lv_values_3_0= ruleElementValue
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4042:1: (lv_values_3_0= ruleElementValue )
+            	    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4043:3: lv_values_3_0= ruleElementValue
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getElementValueArrayInitializerAccess().getValuesElementValueParserRuleCall_2_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer7612);
+            	    pushFollow(FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer8535);
             	    lv_values_3_0=ruleElementValue();
 
             	    state._fsp--;
@@ -10444,11 +11483,11 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop91;
+            	    break loop95;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleElementValueArrayInitializer7626); if (state.failed) return current;
+            otherlv_4=(Token)match(input,25,FOLLOW_25_in_ruleElementValueArrayInitializer8549); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getElementValueArrayInitializerAccess().getRightCurlyBracketKeyword_3());
@@ -10477,7 +11516,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConstantValue"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3630:1: entryRuleConstantValue returns [EObject current=null] : iv_ruleConstantValue= ruleConstantValue EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4071:1: entryRuleConstantValue returns [EObject current=null] : iv_ruleConstantValue= ruleConstantValue EOF ;
     public final EObject entryRuleConstantValue() throws RecognitionException {
         EObject current = null;
 
@@ -10485,13 +11524,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3631:2: (iv_ruleConstantValue= ruleConstantValue EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3632:2: iv_ruleConstantValue= ruleConstantValue EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4072:2: (iv_ruleConstantValue= ruleConstantValue EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4073:2: iv_ruleConstantValue= ruleConstantValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConstantValueRule()); 
             }
-            pushFollow(FOLLOW_ruleConstantValue_in_entryRuleConstantValue7662);
+            pushFollow(FOLLOW_ruleConstantValue_in_entryRuleConstantValue8585);
             iv_ruleConstantValue=ruleConstantValue();
 
             state._fsp--;
@@ -10499,7 +11538,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleConstantValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstantValue7672); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConstantValue8595); if (state.failed) return current;
 
             }
 
@@ -10517,7 +11556,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstantValue"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3639:1: ruleConstantValue returns [EObject current=null] : ( (lv_value_0_0= ruleConstantFormat ) ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4080:1: ruleConstantValue returns [EObject current=null] : ( (lv_value_0_0= ruleConstantFormat ) ) ;
     public final EObject ruleConstantValue() throws RecognitionException {
         EObject current = null;
 
@@ -10527,21 +11566,21 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3642:28: ( ( (lv_value_0_0= ruleConstantFormat ) ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3643:1: ( (lv_value_0_0= ruleConstantFormat ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4083:28: ( ( (lv_value_0_0= ruleConstantFormat ) ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4084:1: ( (lv_value_0_0= ruleConstantFormat ) )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3643:1: ( (lv_value_0_0= ruleConstantFormat ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3644:1: (lv_value_0_0= ruleConstantFormat )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4084:1: ( (lv_value_0_0= ruleConstantFormat ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4085:1: (lv_value_0_0= ruleConstantFormat )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3644:1: (lv_value_0_0= ruleConstantFormat )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3645:3: lv_value_0_0= ruleConstantFormat
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4085:1: (lv_value_0_0= ruleConstantFormat )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4086:3: lv_value_0_0= ruleConstantFormat
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getConstantValueAccess().getValueConstantFormatParserRuleCall_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleConstantFormat_in_ruleConstantValue7717);
+            pushFollow(FOLLOW_ruleConstantFormat_in_ruleConstantValue8640);
             lv_value_0_0=ruleConstantFormat();
 
             state._fsp--;
@@ -10585,7 +11624,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConstantFormat"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3669:1: entryRuleConstantFormat returns [String current=null] : iv_ruleConstantFormat= ruleConstantFormat EOF ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4110:1: entryRuleConstantFormat returns [String current=null] : iv_ruleConstantFormat= ruleConstantFormat EOF ;
     public final String entryRuleConstantFormat() throws RecognitionException {
         String current = null;
 
@@ -10593,13 +11632,13 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3670:2: (iv_ruleConstantFormat= ruleConstantFormat EOF )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3671:2: iv_ruleConstantFormat= ruleConstantFormat EOF
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4111:2: (iv_ruleConstantFormat= ruleConstantFormat EOF )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4112:2: iv_ruleConstantFormat= ruleConstantFormat EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConstantFormatRule()); 
             }
-            pushFollow(FOLLOW_ruleConstantFormat_in_entryRuleConstantFormat7753);
+            pushFollow(FOLLOW_ruleConstantFormat_in_entryRuleConstantFormat8676);
             iv_ruleConstantFormat=ruleConstantFormat();
 
             state._fsp--;
@@ -10607,7 +11646,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleConstantFormat.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstantFormat7764); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConstantFormat8687); if (state.failed) return current;
 
             }
 
@@ -10625,7 +11664,7 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstantFormat"
-    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3678:1: ruleConstantFormat returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID ) ;
+    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4119:1: ruleConstantFormat returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID ) ;
     public final AntlrDatatypeRuleToken ruleConstantFormat() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -10636,40 +11675,40 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3681:28: ( (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID ) )
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3682:1: (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4122:28: ( (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID ) )
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4123:1: (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID )
             {
-            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3682:1: (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID )
-            int alt92=3;
+            // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4123:1: (this_INT_0= RULE_INT | this_STRING_1= RULE_STRING | this_ID_2= RULE_ID )
+            int alt96=3;
             switch ( input.LA(1) ) {
             case RULE_INT:
                 {
-                alt92=1;
+                alt96=1;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt92=2;
+                alt96=2;
                 }
                 break;
             case RULE_ID:
                 {
-                alt92=3;
+                alt96=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 92, 0, input);
+                    new NoViableAltException("", 96, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt92) {
+            switch (alt96) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3682:6: this_INT_0= RULE_INT
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4123:6: this_INT_0= RULE_INT
                     {
-                    this_INT_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleConstantFormat7804); if (state.failed) return current;
+                    this_INT_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleConstantFormat8727); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_INT_0);
@@ -10684,9 +11723,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3690:10: this_STRING_1= RULE_STRING
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4131:10: this_STRING_1= RULE_STRING
                     {
-                    this_STRING_1=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleConstantFormat7830); if (state.failed) return current;
+                    this_STRING_1=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleConstantFormat8753); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_STRING_1);
@@ -10701,9 +11740,9 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:3698:10: this_ID_2= RULE_ID
+                    // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:4139:10: this_ID_2= RULE_ID
                     {
-                    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleConstantFormat7856); if (state.failed) return current;
+                    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleConstantFormat8779); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_ID_2);
@@ -10836,67 +11875,67 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end synpred15_InternalAdl
 
-    // $ANTLR start synpred22_InternalAdl
-    public final void synpred22_InternalAdl_fragment() throws RecognitionException {   
+    // $ANTLR start synpred16_InternalAdl
+    public final void synpred16_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_14_4 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:516:8: (lv_elements_14_4= ruleBindingDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:516:8: lv_elements_14_4= ruleBindingDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getCompositeDefinitionAccess().getElementsBindingDefinitionParserRuleCall_7_0_3()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleBindingDefinition_in_synpred16_InternalAdl983);
+        lv_elements_14_4=ruleBindingDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred16_InternalAdl
+
+    // $ANTLR start synpred17_InternalAdl
+    public final void synpred17_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_14_5 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:531:8: (lv_elements_14_5= ruleOutputFlowInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:531:8: lv_elements_14_5= ruleOutputFlowInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getCompositeDefinitionAccess().getElementsOutputFlowInterfaceDefinitionParserRuleCall_7_0_4()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred17_InternalAdl1002);
+        lv_elements_14_5=ruleOutputFlowInterfaceDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred17_InternalAdl
+
+    // $ANTLR start synpred24_InternalAdl
+    public final void synpred24_InternalAdl_fragment() throws RecognitionException {   
         EObject lv_elements_10_1 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:674:3: (lv_elements_10_1= ruleProvidedInterfaceDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:674:3: lv_elements_10_1= ruleProvidedInterfaceDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:704:3: (lv_elements_10_1= ruleProvidedInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:704:3: lv_elements_10_1= ruleProvidedInterfaceDefinition
         {
         if ( state.backtracking==0 ) {
            
           	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsProvidedInterfaceDefinitionParserRuleCall_7_0_0()); 
           	    
         }
-        pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_synpred22_InternalAdl1277);
+        pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_synpred24_InternalAdl1315);
         lv_elements_10_1=ruleProvidedInterfaceDefinition();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred22_InternalAdl
-
-    // $ANTLR start synpred23_InternalAdl
-    public final void synpred23_InternalAdl_fragment() throws RecognitionException {   
-        EObject lv_elements_10_2 = null;
-
-
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:689:8: (lv_elements_10_2= ruleRequiredInterfaceDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:689:8: lv_elements_10_2= ruleRequiredInterfaceDefinition
-        {
-        if ( state.backtracking==0 ) {
-           
-          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsRequiredInterfaceDefinitionParserRuleCall_7_0_1()); 
-          	    
-        }
-        pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_synpred23_InternalAdl1296);
-        lv_elements_10_2=ruleRequiredInterfaceDefinition();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred23_InternalAdl
-
-    // $ANTLR start synpred24_InternalAdl
-    public final void synpred24_InternalAdl_fragment() throws RecognitionException {   
-        EObject lv_elements_10_3 = null;
-
-
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:704:8: (lv_elements_10_3= ruleImplementationDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:704:8: lv_elements_10_3= ruleImplementationDefinition
-        {
-        if ( state.backtracking==0 ) {
-           
-          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsImplementationDefinitionParserRuleCall_7_0_2()); 
-          	    
-        }
-        pushFollow(FOLLOW_ruleImplementationDefinition_in_synpred24_InternalAdl1315);
-        lv_elements_10_3=ruleImplementationDefinition();
 
         state._fsp--;
         if (state.failed) return ;
@@ -10907,19 +11946,19 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred25_InternalAdl
     public final void synpred25_InternalAdl_fragment() throws RecognitionException {   
-        EObject lv_elements_10_4 = null;
+        EObject lv_elements_10_2 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:719:8: (lv_elements_10_4= ruleAttributeDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:719:8: lv_elements_10_4= ruleAttributeDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:719:8: (lv_elements_10_2= ruleRequiredInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:719:8: lv_elements_10_2= ruleRequiredInterfaceDefinition
         {
         if ( state.backtracking==0 ) {
            
-          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsAttributeDefinitionParserRuleCall_7_0_3()); 
+          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsRequiredInterfaceDefinitionParserRuleCall_7_0_1()); 
           	    
         }
-        pushFollow(FOLLOW_ruleAttributeDefinition_in_synpred25_InternalAdl1334);
-        lv_elements_10_4=ruleAttributeDefinition();
+        pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_synpred25_InternalAdl1334);
+        lv_elements_10_2=ruleRequiredInterfaceDefinition();
 
         state._fsp--;
         if (state.failed) return ;
@@ -10928,21 +11967,90 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end synpred25_InternalAdl
 
-    // $ANTLR start synpred29_InternalAdl
-    public final void synpred29_InternalAdl_fragment() throws RecognitionException {   
-        EObject lv_elements_7_1 = null;
+    // $ANTLR start synpred26_InternalAdl
+    public final void synpred26_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_10_3 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:850:3: (lv_elements_7_1= ruleProvidedInterfaceDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:850:3: lv_elements_7_1= ruleProvidedInterfaceDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:734:8: (lv_elements_10_3= ruleImplementationDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:734:8: lv_elements_10_3= ruleImplementationDefinition
         {
         if ( state.backtracking==0 ) {
            
-          	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsProvidedInterfaceDefinitionParserRuleCall_4_0_0()); 
+          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsImplementationDefinitionParserRuleCall_7_0_2()); 
           	    
         }
-        pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_synpred29_InternalAdl1592);
-        lv_elements_7_1=ruleProvidedInterfaceDefinition();
+        pushFollow(FOLLOW_ruleImplementationDefinition_in_synpred26_InternalAdl1353);
+        lv_elements_10_3=ruleImplementationDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred26_InternalAdl
+
+    // $ANTLR start synpred27_InternalAdl
+    public final void synpred27_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_10_4 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:749:8: (lv_elements_10_4= ruleAttributeDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:749:8: lv_elements_10_4= ruleAttributeDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsAttributeDefinitionParserRuleCall_7_0_3()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleAttributeDefinition_in_synpred27_InternalAdl1372);
+        lv_elements_10_4=ruleAttributeDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred27_InternalAdl
+
+    // $ANTLR start synpred28_InternalAdl
+    public final void synpred28_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_10_5 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:764:8: (lv_elements_10_5= ruleDataDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:764:8: lv_elements_10_5= ruleDataDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsDataDefinitionParserRuleCall_7_0_4()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleDataDefinition_in_synpred28_InternalAdl1391);
+        lv_elements_10_5=ruleDataDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred28_InternalAdl
+
+    // $ANTLR start synpred29_InternalAdl
+    public final void synpred29_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_10_6 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:779:8: (lv_elements_10_6= ruleOutputFlowInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:779:8: lv_elements_10_6= ruleOutputFlowInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getPrimitiveDefinitionAccess().getElementsOutputFlowInterfaceDefinitionParserRuleCall_7_0_5()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred29_InternalAdl1410);
+        lv_elements_10_6=ruleOutputFlowInterfaceDefinition();
 
         state._fsp--;
         if (state.failed) return ;
@@ -10951,20 +12059,89 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end synpred29_InternalAdl
 
-    // $ANTLR start synpred37_InternalAdl
-    public final void synpred37_InternalAdl_fragment() throws RecognitionException {   
+    // $ANTLR start synpred33_InternalAdl
+    public final void synpred33_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_7_1 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:910:3: (lv_elements_7_1= ruleProvidedInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:910:3: lv_elements_7_1= ruleProvidedInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsProvidedInterfaceDefinitionParserRuleCall_4_0_0()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_synpred33_InternalAdl1668);
+        lv_elements_7_1=ruleProvidedInterfaceDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred33_InternalAdl
+
+    // $ANTLR start synpred34_InternalAdl
+    public final void synpred34_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_7_2 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:925:8: (lv_elements_7_2= ruleRequiredInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:925:8: lv_elements_7_2= ruleRequiredInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsRequiredInterfaceDefinitionParserRuleCall_4_0_1()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_synpred34_InternalAdl1687);
+        lv_elements_7_2=ruleRequiredInterfaceDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred34_InternalAdl
+
+    // $ANTLR start synpred35_InternalAdl
+    public final void synpred35_InternalAdl_fragment() throws RecognitionException {   
+        EObject lv_elements_7_3 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:940:8: (lv_elements_7_3= ruleOutputFlowInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:940:8: lv_elements_7_3= ruleOutputFlowInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	        newCompositeNode(grammarAccess.getTypeDefinitionAccess().getElementsOutputFlowInterfaceDefinitionParserRuleCall_4_0_2()); 
+          	    
+        }
+        pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred35_InternalAdl1706);
+        lv_elements_7_3=ruleOutputFlowInterfaceDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred35_InternalAdl
+
+    // $ANTLR start synpred43_InternalAdl
+    public final void synpred43_InternalAdl_fragment() throws RecognitionException {   
         EObject this_ProvidedInterfaceDefinition_0 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1135:2: (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1135:2: this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1225:2: (this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1225:2: this_ProvidedInterfaceDefinition_0= ruleProvidedInterfaceDefinition
         {
         if ( state.backtracking==0 ) {
            
           	  /* */ 
           	
         }
-        pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_synpred37_InternalAdl2175);
+        pushFollow(FOLLOW_ruleProvidedInterfaceDefinition_in_synpred43_InternalAdl2289);
         this_ProvidedInterfaceDefinition_0=ruleProvidedInterfaceDefinition();
 
         state._fsp--;
@@ -10972,22 +12149,68 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred37_InternalAdl
+    // $ANTLR end synpred43_InternalAdl
 
-    // $ANTLR start synpred54_InternalAdl
-    public final void synpred54_InternalAdl_fragment() throws RecognitionException {   
-        EObject this_HostedInterfaceDefinition_0 = null;
+    // $ANTLR start synpred44_InternalAdl
+    public final void synpred44_InternalAdl_fragment() throws RecognitionException {   
+        EObject this_RequiredInterfaceDefinition_1 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1707:2: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1707:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1238:2: (this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1238:2: this_RequiredInterfaceDefinition_1= ruleRequiredInterfaceDefinition
         {
         if ( state.backtracking==0 ) {
            
           	  /* */ 
           	
         }
-        pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_synpred54_InternalAdl3283);
+        pushFollow(FOLLOW_ruleRequiredInterfaceDefinition_in_synpred44_InternalAdl2319);
+        this_RequiredInterfaceDefinition_1=ruleRequiredInterfaceDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred44_InternalAdl
+
+    // $ANTLR start synpred45_InternalAdl
+    public final void synpred45_InternalAdl_fragment() throws RecognitionException {   
+        EObject this_OutputFlowInterfaceDefinition_2 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1251:2: (this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1251:2: this_OutputFlowInterfaceDefinition_2= ruleOutputFlowInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	  /* */ 
+          	
+        }
+        pushFollow(FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred45_InternalAdl2349);
+        this_OutputFlowInterfaceDefinition_2=ruleOutputFlowInterfaceDefinition();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred45_InternalAdl
+
+    // $ANTLR start synpred72_InternalAdl
+    public final void synpred72_InternalAdl_fragment() throws RecognitionException {   
+        EObject this_HostedInterfaceDefinition_0 = null;
+
+
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2217:2: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2217:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
+        {
+        if ( state.backtracking==0 ) {
+           
+          	  /* */ 
+          	
+        }
+        pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_synpred72_InternalAdl4336);
         this_HostedInterfaceDefinition_0=ruleHostedInterfaceDefinition();
 
         state._fsp--;
@@ -10995,22 +12218,22 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred54_InternalAdl
+    // $ANTLR end synpred72_InternalAdl
 
-    // $ANTLR start synpred55_InternalAdl
-    public final void synpred55_InternalAdl_fragment() throws RecognitionException {   
+    // $ANTLR start synpred73_InternalAdl
+    public final void synpred73_InternalAdl_fragment() throws RecognitionException {   
         EObject this_SubComponentDefinition_1 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1720:2: (this_SubComponentDefinition_1= ruleSubComponentDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1720:2: this_SubComponentDefinition_1= ruleSubComponentDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2230:2: (this_SubComponentDefinition_1= ruleSubComponentDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2230:2: this_SubComponentDefinition_1= ruleSubComponentDefinition
         {
         if ( state.backtracking==0 ) {
            
           	  /* */ 
           	
         }
-        pushFollow(FOLLOW_ruleSubComponentDefinition_in_synpred55_InternalAdl3313);
+        pushFollow(FOLLOW_ruleSubComponentDefinition_in_synpred73_InternalAdl4366);
         this_SubComponentDefinition_1=ruleSubComponentDefinition();
 
         state._fsp--;
@@ -11018,22 +12241,22 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred55_InternalAdl
+    // $ANTLR end synpred73_InternalAdl
 
-    // $ANTLR start synpred56_InternalAdl
-    public final void synpred56_InternalAdl_fragment() throws RecognitionException {   
+    // $ANTLR start synpred74_InternalAdl
+    public final void synpred74_InternalAdl_fragment() throws RecognitionException {   
         EObject this_HostedInterfaceDefinition_0 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1766:2: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1766:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2276:2: (this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2276:2: this_HostedInterfaceDefinition_0= ruleHostedInterfaceDefinition
         {
         if ( state.backtracking==0 ) {
            
           	  /* */ 
           	
         }
-        pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_synpred56_InternalAdl3438);
+        pushFollow(FOLLOW_ruleHostedInterfaceDefinition_in_synpred74_InternalAdl4491);
         this_HostedInterfaceDefinition_0=ruleHostedInterfaceDefinition();
 
         state._fsp--;
@@ -11041,22 +12264,22 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred56_InternalAdl
+    // $ANTLR end synpred74_InternalAdl
 
-    // $ANTLR start synpred57_InternalAdl
-    public final void synpred57_InternalAdl_fragment() throws RecognitionException {   
+    // $ANTLR start synpred75_InternalAdl
+    public final void synpred75_InternalAdl_fragment() throws RecognitionException {   
         EObject this_ImplementationDefinition_1 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1779:2: (this_ImplementationDefinition_1= ruleImplementationDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1779:2: this_ImplementationDefinition_1= ruleImplementationDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2289:2: (this_ImplementationDefinition_1= ruleImplementationDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2289:2: this_ImplementationDefinition_1= ruleImplementationDefinition
         {
         if ( state.backtracking==0 ) {
            
           	  /* */ 
           	
         }
-        pushFollow(FOLLOW_ruleImplementationDefinition_in_synpred57_InternalAdl3468);
+        pushFollow(FOLLOW_ruleImplementationDefinition_in_synpred75_InternalAdl4521);
         this_ImplementationDefinition_1=ruleImplementationDefinition();
 
         state._fsp--;
@@ -11064,22 +12287,22 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred57_InternalAdl
+    // $ANTLR end synpred75_InternalAdl
 
-    // $ANTLR start synpred58_InternalAdl
-    public final void synpred58_InternalAdl_fragment() throws RecognitionException {   
+    // $ANTLR start synpred76_InternalAdl
+    public final void synpred76_InternalAdl_fragment() throws RecognitionException {   
         EObject this_AttributeDefinition_2 = null;
 
 
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1792:2: (this_AttributeDefinition_2= ruleAttributeDefinition )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:1792:2: this_AttributeDefinition_2= ruleAttributeDefinition
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2302:2: (this_AttributeDefinition_2= ruleAttributeDefinition )
+        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2302:2: this_AttributeDefinition_2= ruleAttributeDefinition
         {
         if ( state.backtracking==0 ) {
            
           	  /* */ 
           	
         }
-        pushFollow(FOLLOW_ruleAttributeDefinition_in_synpred58_InternalAdl3498);
+        pushFollow(FOLLOW_ruleAttributeDefinition_in_synpred76_InternalAdl4551);
         this_AttributeDefinition_2=ruleAttributeDefinition();
 
         state._fsp--;
@@ -11087,39 +12310,304 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred58_InternalAdl
-
-    // $ANTLR start synpred85_InternalAdl
-    public final void synpred85_InternalAdl_fragment() throws RecognitionException {   
-        AntlrDatatypeRuleToken lv_cType_4_0 = null;
-
-
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2733:1: ( (lv_cType_4_0= ruleAttributeType ) )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2733:1: (lv_cType_4_0= ruleAttributeType )
-        {
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2733:1: (lv_cType_4_0= ruleAttributeType )
-        // ../org.ow2.mindEd.adl/src-gen/org/ow2/mindEd/parser/antlr/internal/InternalAdl.g:2734:3: lv_cType_4_0= ruleAttributeType
-        {
-        if ( state.backtracking==0 ) {
-           
-          	        newCompositeNode(grammarAccess.getAttributeDefinitionAccess().getCTypeAttributeTypeParserRuleCall_3_0()); 
-          	    
-        }
-        pushFollow(FOLLOW_ruleAttributeType_in_synpred85_InternalAdl5627);
-        lv_cType_4_0=ruleAttributeType();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred85_InternalAdl
+    // $ANTLR end synpred76_InternalAdl
 
     // Delegated rules
 
+    public final boolean synpred72_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred72_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred74_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred74_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred73_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred73_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred44_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred44_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred76_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred76_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred33_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred33_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred29_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred29_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred43_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred43_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred75_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred75_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred27_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred27_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred16_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred16_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred17_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred17_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred1_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred1_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred26_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred26_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred28_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred28_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred45_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred45_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred34_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred34_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred13_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred13_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred24_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred24_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred35_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred35_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred25_InternalAdl() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred25_InternalAdl_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
     public final boolean synpred14_InternalAdl() {
         state.backtracking++;
         int start = input.mark();
@@ -11148,210 +12636,14 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred29_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred29_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred85_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred85_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred24_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred24_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred22_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred22_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred25_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred25_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred54_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred54_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred1_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred1_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred23_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred23_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred57_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred57_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred58_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred58_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred55_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred55_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred13_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred13_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred37_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred37_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred56_InternalAdl() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred56_InternalAdl_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
 
 
  
 
     public static final BitSet FOLLOW_ruleAdlFile_in_entryRuleAdlFile81 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAdlFile91 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImportDefinition_in_ruleAdlFile137 = new BitSet(new long[]{0x010000001C090000L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleAdlFile159 = new BitSet(new long[]{0x010000001C080000L});
+    public static final BitSet FOLLOW_ruleImportDefinition_in_ruleAdlFile137 = new BitSet(new long[]{0x000000001C090000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleAdlFile159 = new BitSet(new long[]{0x000000001C080000L,0x0000000000000040L});
     public static final BitSet FOLLOW_ruleArchitectureDefinition_in_ruleAdlFile181 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleArchitectureDefinition_in_entryRuleArchitectureDefinition217 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleArchitectureDefinition227 = new BitSet(new long[]{0x0000000000000002L});
@@ -11382,313 +12674,361 @@ public class InternalAdlParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleCompositeSuperType_in_ruleCompositeDefinition853 = new BitSet(new long[]{0x0000000001200000L});
     public static final BitSet FOLLOW_21_in_ruleCompositeDefinition866 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleCompositeSuperType_in_ruleCompositeDefinition887 = new BitSet(new long[]{0x0000000001200000L});
-    public static final BitSet FOLLOW_24_in_ruleCompositeDefinition903 = new BitSet(new long[]{0x0100006882000000L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_ruleCompositeDefinition926 = new BitSet(new long[]{0x0100006882000000L});
-    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_ruleCompositeDefinition945 = new BitSet(new long[]{0x0100006882000000L});
-    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_ruleCompositeDefinition964 = new BitSet(new long[]{0x0100006882000000L});
-    public static final BitSet FOLLOW_ruleBindingDefinition_in_ruleCompositeDefinition983 = new BitSet(new long[]{0x0100006882000000L});
-    public static final BitSet FOLLOW_25_in_ruleCompositeDefinition999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveDefinition_in_entryRulePrimitiveDefinition1035 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveDefinition1045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rulePrimitiveDefinition1100 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_rulePrimitiveDefinition1126 = new BitSet(new long[]{0x0000000021800010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rulePrimitiveDefinition1147 = new BitSet(new long[]{0x0000000021800000L});
-    public static final BitSet FOLLOW_ruleFormalArgumentsList_in_rulePrimitiveDefinition1169 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_23_in_rulePrimitiveDefinition1183 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1204 = new BitSet(new long[]{0x0000000001200000L});
-    public static final BitSet FOLLOW_21_in_rulePrimitiveDefinition1217 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1238 = new BitSet(new long[]{0x0000000001200000L});
-    public static final BitSet FOLLOW_24_in_rulePrimitiveDefinition1254 = new BitSet(new long[]{0x0168000882000000L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_rulePrimitiveDefinition1277 = new BitSet(new long[]{0x0168000882000000L});
-    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_rulePrimitiveDefinition1296 = new BitSet(new long[]{0x0168000882000000L});
-    public static final BitSet FOLLOW_ruleImplementationDefinition_in_rulePrimitiveDefinition1315 = new BitSet(new long[]{0x0168000882000000L});
-    public static final BitSet FOLLOW_ruleAttributeDefinition_in_rulePrimitiveDefinition1334 = new BitSet(new long[]{0x0168000882000000L});
-    public static final BitSet FOLLOW_ruleDataDefinition_in_rulePrimitiveDefinition1353 = new BitSet(new long[]{0x0168000882000000L});
-    public static final BitSet FOLLOW_25_in_rulePrimitiveDefinition1369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeDefinition_in_entryRuleTypeDefinition1405 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTypeDefinition1415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleTypeDefinition1452 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1473 = new BitSet(new long[]{0x0000000001800000L});
-    public static final BitSet FOLLOW_23_in_ruleTypeDefinition1486 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1513 = new BitSet(new long[]{0x0000000001200000L});
-    public static final BitSet FOLLOW_21_in_ruleTypeDefinition1526 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1553 = new BitSet(new long[]{0x0000000001200000L});
-    public static final BitSet FOLLOW_24_in_ruleTypeDefinition1569 = new BitSet(new long[]{0x0100000882000000L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_ruleTypeDefinition1592 = new BitSet(new long[]{0x0100000882000000L});
-    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_ruleTypeDefinition1611 = new BitSet(new long[]{0x0100000882000000L});
-    public static final BitSet FOLLOW_25_in_ruleTypeDefinition1627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompositeSuperType_in_entryRuleCompositeSuperType1663 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCompositeSuperType1673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleCompositeSuperType1725 = new BitSet(new long[]{0x0000000020100002L});
-    public static final BitSet FOLLOW_20_in_ruleCompositeSuperType1738 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1759 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_ruleCompositeSuperType1772 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1793 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_22_in_ruleCompositeSuperType1807 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_29_in_ruleCompositeSuperType1822 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1843 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_21_in_ruleCompositeSuperType1856 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1877 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_30_in_ruleCompositeSuperType1891 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveSuperType_in_entryRulePrimitiveSuperType1929 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveSuperType1939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rulePrimitiveSuperType1991 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_29_in_rulePrimitiveSuperType2004 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2025 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_21_in_rulePrimitiveSuperType2038 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2059 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_30_in_rulePrimitiveSuperType2073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_entryRuleHostedInterfaceDefinition2115 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleHostedInterfaceDefinition2125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_ruleHostedInterfaceDefinition2175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_ruleHostedInterfaceDefinition2205 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_entryRuleProvidedInterfaceDefinition2240 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleProvidedInterfaceDefinition2250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleProvidedInterfaceDefinition2296 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_31_in_ruleProvidedInterfaceDefinition2315 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleProvidedInterfaceDefinition2355 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_ruleProvidedInterfaceDefinition2367 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleProvidedInterfaceDefinition2384 = new BitSet(new long[]{0x0000000200020000L});
-    public static final BitSet FOLLOW_33_in_ruleProvidedInterfaceDefinition2408 = new BitSet(new long[]{0x0000000400000020L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleProvidedInterfaceDefinition2438 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleProvidedInterfaceDefinition2456 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleProvidedInterfaceDefinition2470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_entryRuleRequiredInterfaceDefinition2506 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRequiredInterfaceDefinition2516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleRequiredInterfaceDefinition2562 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_35_in_ruleRequiredInterfaceDefinition2581 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_36_in_ruleRequiredInterfaceDefinition2612 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleRequiredInterfaceDefinition2653 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_ruleRequiredInterfaceDefinition2665 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRequiredInterfaceDefinition2682 = new BitSet(new long[]{0x0000000200020000L});
-    public static final BitSet FOLLOW_33_in_ruleRequiredInterfaceDefinition2706 = new BitSet(new long[]{0x0000000400000020L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleRequiredInterfaceDefinition2736 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleRequiredInterfaceDefinition2754 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleRequiredInterfaceDefinition2768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_entryRuleSubComponentDefinition2806 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSubComponentDefinition2816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition2862 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_ruleSubComponentDefinition2875 = new BitSet(new long[]{0x0000000120100010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleSubComponentDefinition2902 = new BitSet(new long[]{0x0000000120100000L});
-    public static final BitSet FOLLOW_20_in_ruleSubComponentDefinition2916 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition2937 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_ruleSubComponentDefinition2950 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition2971 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_22_in_ruleSubComponentDefinition2985 = new BitSet(new long[]{0x0000000120000000L});
-    public static final BitSet FOLLOW_29_in_ruleSubComponentDefinition3000 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition3021 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_21_in_ruleSubComponentDefinition3034 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition3055 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_30_in_ruleSubComponentDefinition3069 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_ruleSubComponentDefinition3083 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSubComponentDefinition3100 = new BitSet(new long[]{0x010000000C0A0000L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition3126 = new BitSet(new long[]{0x000000000C0A0000L});
-    public static final BitSet FOLLOW_ruleCompositeDefinition_in_ruleSubComponentDefinition3150 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rulePrimitiveDefinition_in_ruleSubComponentDefinition3169 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleSubComponentDefinition3185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompositeElement_in_entryRuleCompositeElement3223 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCompositeElement3233 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_ruleCompositeElement3283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_ruleCompositeElement3313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBindingDefinition_in_ruleCompositeElement3343 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveElement_in_entryRulePrimitiveElement3378 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveElement3388 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_rulePrimitiveElement3438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImplementationDefinition_in_rulePrimitiveElement3468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeDefinition_in_rulePrimitiveElement3498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDataDefinition_in_rulePrimitiveElement3528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBindingDefinition_in_entryRuleBindingDefinition3563 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBindingDefinition3573 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleBindingDefinition3619 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_38_in_ruleBindingDefinition3632 = new BitSet(new long[]{0x0000008000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition3657 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_39_in_ruleBindingDefinition3681 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleBindingDefinition3707 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition3731 = new BitSet(new long[]{0x0000020200000000L});
-    public static final BitSet FOLLOW_33_in_ruleBindingDefinition3744 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleBindingDefinition3761 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleBindingDefinition3778 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleBindingDefinition3792 = new BitSet(new long[]{0x0000008000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition3817 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_39_in_ruleBindingDefinition3841 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_40_in_ruleBindingDefinition3867 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition3891 = new BitSet(new long[]{0x0000000200020000L});
-    public static final BitSet FOLLOW_33_in_ruleBindingDefinition3904 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleBindingDefinition3921 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleBindingDefinition3938 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleBindingDefinition3952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFormalArgument_in_entryRuleFormalArgument3988 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFormalArgument3998 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFormalArgument4039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFormalArgumentsList_in_entryRuleFormalArgumentsList4079 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFormalArgumentsList4089 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleFormalArgumentsList4126 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList4147 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_21_in_ruleFormalArgumentsList4160 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList4181 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_30_in_ruleFormalArgumentsList4195 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTemplateSpecifier_in_entryRuleTemplateSpecifier4231 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateSpecifier4241 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTemplateSpecifier4283 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_ruleTemplateSpecifier4300 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTemplateSpecifier4327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeType_in_entryRuleAttributeType4364 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttributeType4375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleAttributeType4413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_ruleAttributeType4432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_ruleAttributeType4451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeType4472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulesignedINT_in_entryRulesignedINT4518 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulesignedINT4529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_rulesignedINT4568 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_47_in_rulesignedINT4587 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_INT_in_rulesignedINT4604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValue_in_entryRuleValue4650 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValue4661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleValue4701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulesignedINT_in_ruleValue4734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_HEXADECIMAL_TYPE_in_ruleValue4760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleValue4786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleValue4810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValueList_in_entryRuleValueList4850 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValueList4860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleValueList4897 = new BitSet(new long[]{0x0001C000000000F0L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleValueList4918 = new BitSet(new long[]{0x0000000002200000L});
-    public static final BitSet FOLLOW_21_in_ruleValueList4931 = new BitSet(new long[]{0x0001C000000000F0L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleValueList4952 = new BitSet(new long[]{0x0000000002200000L});
-    public static final BitSet FOLLOW_25_in_ruleValueList4966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_entryRuleTemplateReference5002 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateReference5012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTemplateSpecifier_in_ruleTemplateReference5059 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleTemplateReference5071 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTemplateReference5101 = new BitSet(new long[]{0x0000000020100002L});
-    public static final BitSet FOLLOW_50_in_ruleTemplateReference5125 = new BitSet(new long[]{0x0000000020100002L});
-    public static final BitSet FOLLOW_20_in_ruleTemplateReference5152 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleTemplateReference5173 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_21_in_ruleTemplateReference5186 = new BitSet(new long[]{0x0004000000000010L});
-    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleTemplateReference5207 = new BitSet(new long[]{0x0000000000600000L});
-    public static final BitSet FOLLOW_22_in_ruleTemplateReference5221 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_29_in_ruleTemplateReference5236 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference5257 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_21_in_ruleTemplateReference5270 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference5291 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_30_in_ruleTemplateReference5305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArgumentDefinition_in_entryRuleArgumentDefinition5343 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArgumentDefinition5353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleArgumentDefinition5396 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleArgumentDefinition5413 = new BitSet(new long[]{0x0001C000010000F0L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleArgumentDefinition5437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValueList_in_ruleArgumentDefinition5464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeDefinition_in_entryRuleAttributeDefinition5501 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttributeDefinition5511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleAttributeDefinition5557 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_ruleAttributeDefinition5570 = new BitSet(new long[]{0x0080390000000210L});
-    public static final BitSet FOLLOW_ruleFileC_in_ruleAttributeDefinition5592 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_ruleAttributeDefinition5604 = new BitSet(new long[]{0x0000380000000010L});
-    public static final BitSet FOLLOW_ruleAttributeType_in_ruleAttributeDefinition5627 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeDefinition5645 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeDefinition5668 = new BitSet(new long[]{0x0002000000020000L});
-    public static final BitSet FOLLOW_49_in_ruleAttributeDefinition5686 = new BitSet(new long[]{0x0001C000000000F0L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleAttributeDefinition5707 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleAttributeDefinition5721 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImplementationDefinition_in_entryRuleImplementationDefinition5757 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleImplementationDefinition5767 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleImplementationDefinition5813 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_ruleImplementationDefinition5826 = new BitSet(new long[]{0x0080010000000310L});
-    public static final BitSet FOLLOW_ruleFileC_in_ruleImplementationDefinition5848 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_ruleInlineCodeC_in_ruleImplementationDefinition5875 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleImplementationDefinition5888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDataDefinition_in_entryRuleDataDefinition5924 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDataDefinition5934 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleDataDefinition5980 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_ruleDataDefinition5993 = new BitSet(new long[]{0x0080010000000310L});
-    public static final BitSet FOLLOW_ruleFileC_in_ruleDataDefinition6015 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_ruleInlineCodeC_in_ruleDataDefinition6042 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleDataDefinition6055 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName6092 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName6103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName6143 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_40_in_ruleQualifiedName6162 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName6177 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_ruleFileC_in_entryRuleFileC6224 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFileC6234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePath_in_ruleFileC6280 = new BitSet(new long[]{0x0080010000000210L});
-    public static final BitSet FOLLOW_ruleFileName_in_ruleFileC6302 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInlineCodeC_in_entryRuleInlineCodeC6338 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInlineCodeC6348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_CODE_C_in_ruleInlineCodeC6389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePath_in_entryRulePath6430 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePath6441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePath6482 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_40_in_rulePath6506 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_55_in_rulePath6525 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_SL_in_rulePath6543 = new BitSet(new long[]{0x0080000000000210L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePath6565 = new BitSet(new long[]{0x0000800000000210L});
-    public static final BitSet FOLLOW_47_in_rulePath6584 = new BitSet(new long[]{0x0000000000000210L});
-    public static final BitSet FOLLOW_55_in_rulePath6607 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_SL_in_rulePath6625 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFileName_in_entryRuleFileName6671 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFileName6682 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFileName6722 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_40_in_ruleFileName6741 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFileName6756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationsList_in_entryRuleAnnotationsList6803 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationsList6813 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_ruleAnnotationsList6859 = new BitSet(new long[]{0x0100000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_ruleAnnotationsList6880 = new BitSet(new long[]{0x0100000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_entryRuleAnnotation6917 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotation6927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_ruleAnnotation6964 = new BitSet(new long[]{0x1E00000000000010L});
-    public static final BitSet FOLLOW_57_in_ruleAnnotation6984 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_58_in_ruleAnnotation7013 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_59_in_ruleAnnotation7042 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_60_in_ruleAnnotation7071 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleAnnotation7103 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_29_in_ruleAnnotation7119 = new BitSet(new long[]{0x01000000010000B0L});
-    public static final BitSet FOLLOW_ruleAnnotationElement_in_ruleAnnotation7140 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_21_in_ruleAnnotation7153 = new BitSet(new long[]{0x01000000010000B0L});
-    public static final BitSet FOLLOW_ruleAnnotationElement_in_ruleAnnotation7174 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_30_in_ruleAnnotation7188 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotationElement_in_entryRuleAnnotationElement7226 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationElement7236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAnnotationElement7279 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleAnnotationElement7296 = new BitSet(new long[]{0x01000000010000B0L});
-    public static final BitSet FOLLOW_ruleElementValue_in_ruleAnnotationElement7319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleElementValue_in_entryRuleElementValue7355 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleElementValue7365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantValue_in_ruleElementValue7415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAnnotation_in_ruleElementValue7445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleElementValueArrayInitializer_in_ruleElementValue7475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleElementValueArrayInitializer_in_entryRuleElementValueArrayInitializer7510 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleElementValueArrayInitializer7520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleElementValueArrayInitializer7557 = new BitSet(new long[]{0x01000000010000B0L});
-    public static final BitSet FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer7578 = new BitSet(new long[]{0x0000000002200000L});
-    public static final BitSet FOLLOW_21_in_ruleElementValueArrayInitializer7591 = new BitSet(new long[]{0x01000000010000B0L});
-    public static final BitSet FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer7612 = new BitSet(new long[]{0x0000000002200000L});
-    public static final BitSet FOLLOW_25_in_ruleElementValueArrayInitializer7626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantValue_in_entryRuleConstantValue7662 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstantValue7672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantFormat_in_ruleConstantValue7717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantFormat_in_entryRuleConstantFormat7753 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstantFormat7764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleConstantFormat7804 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleConstantFormat7830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleConstantFormat7856 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleCompositeDefinition903 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_ruleCompositeDefinition926 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_ruleCompositeDefinition945 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_ruleCompositeDefinition964 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleBindingDefinition_in_ruleCompositeDefinition983 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_ruleCompositeDefinition1002 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleInputFlowInterfaceDefinition_in_ruleCompositeDefinition1021 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_25_in_ruleCompositeDefinition1037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveDefinition_in_entryRulePrimitiveDefinition1073 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveDefinition1083 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rulePrimitiveDefinition1138 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_rulePrimitiveDefinition1164 = new BitSet(new long[]{0x0000000021800010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rulePrimitiveDefinition1185 = new BitSet(new long[]{0x0000000021800000L});
+    public static final BitSet FOLLOW_ruleFormalArgumentsList_in_rulePrimitiveDefinition1207 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_23_in_rulePrimitiveDefinition1221 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1242 = new BitSet(new long[]{0x0000000001200000L});
+    public static final BitSet FOLLOW_21_in_rulePrimitiveDefinition1255 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rulePrimitiveSuperType_in_rulePrimitiveDefinition1276 = new BitSet(new long[]{0x0000000001200000L});
+    public static final BitSet FOLLOW_24_in_rulePrimitiveDefinition1292 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_rulePrimitiveDefinition1315 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_rulePrimitiveDefinition1334 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleImplementationDefinition_in_rulePrimitiveDefinition1353 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleAttributeDefinition_in_rulePrimitiveDefinition1372 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleDataDefinition_in_rulePrimitiveDefinition1391 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_rulePrimitiveDefinition1410 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_ruleInputFlowInterfaceDefinition_in_rulePrimitiveDefinition1429 = new BitSet(new long[]{0x0000186882000000L,0x000000000000005CL});
+    public static final BitSet FOLLOW_25_in_rulePrimitiveDefinition1445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeDefinition_in_entryRuleTypeDefinition1481 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTypeDefinition1491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleTypeDefinition1528 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1549 = new BitSet(new long[]{0x0000000001800000L});
+    public static final BitSet FOLLOW_23_in_ruleTypeDefinition1562 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1589 = new BitSet(new long[]{0x0000000001200000L});
+    public static final BitSet FOLLOW_21_in_ruleTypeDefinition1602 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTypeDefinition1629 = new BitSet(new long[]{0x0000000001200000L});
+    public static final BitSet FOLLOW_24_in_ruleTypeDefinition1645 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_ruleTypeDefinition1668 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_ruleTypeDefinition1687 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_ruleTypeDefinition1706 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleInputFlowInterfaceDefinition_in_ruleTypeDefinition1725 = new BitSet(new long[]{0x0000186882000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_25_in_ruleTypeDefinition1741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCompositeSuperType_in_entryRuleCompositeSuperType1777 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCompositeSuperType1787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleCompositeSuperType1839 = new BitSet(new long[]{0x0000000020100002L});
+    public static final BitSet FOLLOW_20_in_ruleCompositeSuperType1852 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1873 = new BitSet(new long[]{0x0000000000600000L});
+    public static final BitSet FOLLOW_21_in_ruleCompositeSuperType1886 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleCompositeSuperType1907 = new BitSet(new long[]{0x0000000000600000L});
+    public static final BitSet FOLLOW_22_in_ruleCompositeSuperType1921 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_29_in_ruleCompositeSuperType1936 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1957 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_21_in_ruleCompositeSuperType1970 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleCompositeSuperType1991 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_30_in_ruleCompositeSuperType2005 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveSuperType_in_entryRulePrimitiveSuperType2043 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveSuperType2053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rulePrimitiveSuperType2105 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_29_in_rulePrimitiveSuperType2118 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2139 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_21_in_rulePrimitiveSuperType2152 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_rulePrimitiveSuperType2173 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_30_in_rulePrimitiveSuperType2187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_entryRuleHostedInterfaceDefinition2229 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleHostedInterfaceDefinition2239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_ruleHostedInterfaceDefinition2289 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_ruleHostedInterfaceDefinition2319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_ruleHostedInterfaceDefinition2349 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInputFlowInterfaceDefinition_in_ruleHostedInterfaceDefinition2379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_entryRuleProvidedInterfaceDefinition2414 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleProvidedInterfaceDefinition2424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleProvidedInterfaceDefinition2470 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_31_in_ruleProvidedInterfaceDefinition2489 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleProvidedInterfaceDefinition2529 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_ruleProvidedInterfaceDefinition2541 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleProvidedInterfaceDefinition2558 = new BitSet(new long[]{0x0000000200020000L});
+    public static final BitSet FOLLOW_33_in_ruleProvidedInterfaceDefinition2582 = new BitSet(new long[]{0x0000000400000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleProvidedInterfaceDefinition2612 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleProvidedInterfaceDefinition2630 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleProvidedInterfaceDefinition2644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_entryRuleRequiredInterfaceDefinition2680 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRequiredInterfaceDefinition2690 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleRequiredInterfaceDefinition2736 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_35_in_ruleRequiredInterfaceDefinition2755 = new BitSet(new long[]{0x0000001000000010L});
+    public static final BitSet FOLLOW_36_in_ruleRequiredInterfaceDefinition2786 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleRequiredInterfaceDefinition2827 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_ruleRequiredInterfaceDefinition2839 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleRequiredInterfaceDefinition2856 = new BitSet(new long[]{0x0000000200020000L});
+    public static final BitSet FOLLOW_33_in_ruleRequiredInterfaceDefinition2880 = new BitSet(new long[]{0x0000000400000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleRequiredInterfaceDefinition2910 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleRequiredInterfaceDefinition2928 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleRequiredInterfaceDefinition2942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_entryRuleOutputFlowInterfaceDefinition2978 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOutputFlowInterfaceDefinition2988 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleOutputFlowInterfaceDefinition3034 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_ruleOutputFlowInterfaceDefinition3053 = new BitSet(new long[]{0x1FFE400000000210L,0x0000000000000020L});
+    public static final BitSet FOLLOW_ruleFlowType_in_ruleOutputFlowInterfaceDefinition3087 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_ruleOutputFlowInterfaceDefinition3099 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleOutputFlowInterfaceDefinition3116 = new BitSet(new long[]{0x0000000200020000L});
+    public static final BitSet FOLLOW_33_in_ruleOutputFlowInterfaceDefinition3140 = new BitSet(new long[]{0x0000000400000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleOutputFlowInterfaceDefinition3170 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleOutputFlowInterfaceDefinition3188 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleOutputFlowInterfaceDefinition3202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInputFlowInterfaceDefinition_in_entryRuleInputFlowInterfaceDefinition3238 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInputFlowInterfaceDefinition3248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleInputFlowInterfaceDefinition3294 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_38_in_ruleInputFlowInterfaceDefinition3313 = new BitSet(new long[]{0x1FFE401000000210L,0x0000000000000020L});
+    public static final BitSet FOLLOW_36_in_ruleInputFlowInterfaceDefinition3344 = new BitSet(new long[]{0x1FFE400000000210L,0x0000000000000020L});
+    public static final BitSet FOLLOW_ruleFlowType_in_ruleInputFlowInterfaceDefinition3379 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_ruleInputFlowInterfaceDefinition3391 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInputFlowInterfaceDefinition3408 = new BitSet(new long[]{0x0000000200020000L});
+    public static final BitSet FOLLOW_33_in_ruleInputFlowInterfaceDefinition3432 = new BitSet(new long[]{0x0000000400000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleInputFlowInterfaceDefinition3462 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInputFlowInterfaceDefinition3480 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleInputFlowInterfaceDefinition3494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFlowType_in_entryRuleFlowType3531 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFlowType3542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeType_in_ruleFlowType3589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIDTType_in_ruleFlowType3622 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIDTType_in_entryRuleIDTType3668 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIDTType3679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFilePath_in_ruleIDTType3726 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_39_in_ruleIDTType3744 = new BitSet(new long[]{0x0000070000000000L});
+    public static final BitSet FOLLOW_40_in_ruleIDTType3758 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_41_in_ruleIDTType3777 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_42_in_ruleIDTType3796 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleIDTType3812 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_entryRuleSubComponentDefinition3859 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSubComponentDefinition3869 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition3915 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_43_in_ruleSubComponentDefinition3928 = new BitSet(new long[]{0x0000000120100010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleSubComponentDefinition3955 = new BitSet(new long[]{0x0000000120100000L});
+    public static final BitSet FOLLOW_20_in_ruleSubComponentDefinition3969 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition3990 = new BitSet(new long[]{0x0000000000600000L});
+    public static final BitSet FOLLOW_21_in_ruleSubComponentDefinition4003 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleSubComponentDefinition4024 = new BitSet(new long[]{0x0000000000600000L});
+    public static final BitSet FOLLOW_22_in_ruleSubComponentDefinition4038 = new BitSet(new long[]{0x0000000120000000L});
+    public static final BitSet FOLLOW_29_in_ruleSubComponentDefinition4053 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition4074 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_21_in_ruleSubComponentDefinition4087 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleSubComponentDefinition4108 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_30_in_ruleSubComponentDefinition4122 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_32_in_ruleSubComponentDefinition4136 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSubComponentDefinition4153 = new BitSet(new long[]{0x000000000C0A0000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleSubComponentDefinition4179 = new BitSet(new long[]{0x000000000C0A0000L});
+    public static final BitSet FOLLOW_ruleCompositeDefinition_in_ruleSubComponentDefinition4203 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rulePrimitiveDefinition_in_ruleSubComponentDefinition4222 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleSubComponentDefinition4238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCompositeElement_in_entryRuleCompositeElement4276 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCompositeElement4286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_ruleCompositeElement4336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_ruleCompositeElement4366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBindingDefinition_in_ruleCompositeElement4396 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveElement_in_entryRulePrimitiveElement4431 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveElement4441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_rulePrimitiveElement4491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImplementationDefinition_in_rulePrimitiveElement4521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeDefinition_in_rulePrimitiveElement4551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDataDefinition_in_rulePrimitiveElement4581 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBindingDefinition_in_entryRuleBindingDefinition4616 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBindingDefinition4626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleBindingDefinition4672 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_44_in_ruleBindingDefinition4685 = new BitSet(new long[]{0x0000200000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition4710 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_45_in_ruleBindingDefinition4734 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_ruleBindingDefinition4760 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition4784 = new BitSet(new long[]{0x0000800200000000L});
+    public static final BitSet FOLLOW_33_in_ruleBindingDefinition4797 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleBindingDefinition4814 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleBindingDefinition4831 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_ruleBindingDefinition4845 = new BitSet(new long[]{0x0000200000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition4870 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_45_in_ruleBindingDefinition4894 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_ruleBindingDefinition4920 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleBindingDefinition4944 = new BitSet(new long[]{0x0000000200020000L});
+    public static final BitSet FOLLOW_33_in_ruleBindingDefinition4957 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleBindingDefinition4974 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleBindingDefinition4991 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleBindingDefinition5005 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFormalArgument_in_entryRuleFormalArgument5041 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFormalArgument5051 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFormalArgument5092 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFormalArgumentsList_in_entryRuleFormalArgumentsList5132 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFormalArgumentsList5142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleFormalArgumentsList5179 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList5200 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_21_in_ruleFormalArgumentsList5213 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFormalArgument_in_ruleFormalArgumentsList5234 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_30_in_ruleFormalArgumentsList5248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateSpecifier_in_entryRuleTemplateSpecifier5284 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateSpecifier5294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleTemplateSpecifier5336 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_48_in_ruleTemplateSpecifier5353 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTemplateSpecifier5380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeType_in_entryRuleAttributeType5417 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttributeType5428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleAttributeType5466 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleAttributeType5485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleAttributeType5504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleAttributeType5523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleAttributeType5542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_ruleAttributeType5561 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_ruleAttributeType5580 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_ruleAttributeType5599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_ruleAttributeType5618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleAttributeType5637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_ruleAttributeType5656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleAttributeType5675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulesignedINT_in_entryRulesignedINT5716 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulesignedINT5727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_rulesignedINT5766 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_62_in_rulesignedINT5785 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_INT_in_rulesignedINT5802 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValue_in_entryRuleValue5848 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValue5859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleValue5899 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulesignedINT_in_ruleValue5932 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_HEXADECIMAL_TYPE_in_ruleValue5958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleValue5984 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleValue6008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValueList_in_entryRuleValueList6048 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValueList6058 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleValueList6095 = new BitSet(new long[]{0xE0000000000000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleValueList6116 = new BitSet(new long[]{0x0000000002200000L});
+    public static final BitSet FOLLOW_21_in_ruleValueList6129 = new BitSet(new long[]{0xE0000000000000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleValueList6150 = new BitSet(new long[]{0x0000000002200000L});
+    public static final BitSet FOLLOW_25_in_ruleValueList6164 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_entryRuleTemplateReference6200 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateReference6210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateSpecifier_in_ruleTemplateReference6257 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_ruleTemplateReference6269 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTemplateReference6299 = new BitSet(new long[]{0x0000000020100002L});
+    public static final BitSet FOLLOW_65_in_ruleTemplateReference6323 = new BitSet(new long[]{0x0000000020100002L});
+    public static final BitSet FOLLOW_20_in_ruleTemplateReference6350 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleTemplateReference6371 = new BitSet(new long[]{0x0000000000600000L});
+    public static final BitSet FOLLOW_21_in_ruleTemplateReference6384 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateReference_in_ruleTemplateReference6405 = new BitSet(new long[]{0x0000000000600000L});
+    public static final BitSet FOLLOW_22_in_ruleTemplateReference6419 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_29_in_ruleTemplateReference6434 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference6455 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_21_in_ruleTemplateReference6468 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_ruleTemplateReference6489 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_30_in_ruleTemplateReference6503 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArgumentDefinition_in_entryRuleArgumentDefinition6541 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArgumentDefinition6551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleArgumentDefinition6594 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_ruleArgumentDefinition6611 = new BitSet(new long[]{0xE0000000010000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleArgumentDefinition6635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValueList_in_ruleArgumentDefinition6662 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeDefinition_in_entryRuleAttributeDefinition6699 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttributeDefinition6709 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleAttributeDefinition6755 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_66_in_ruleAttributeDefinition6768 = new BitSet(new long[]{0x1FFE400000000210L,0x0000000000000020L});
+    public static final BitSet FOLLOW_ruleFlowType_in_ruleAttributeDefinition6789 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAttributeDefinition6806 = new BitSet(new long[]{0x0000000000020000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_ruleAttributeDefinition6824 = new BitSet(new long[]{0xE0000000000000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleAttributeDefinition6845 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleAttributeDefinition6859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImplementationDefinition_in_entryRuleImplementationDefinition6895 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleImplementationDefinition6905 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleImplementationDefinition6951 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_67_in_ruleImplementationDefinition6964 = new BitSet(new long[]{0x1FFE400000000310L,0x0000000000000020L});
+    public static final BitSet FOLLOW_ruleFilePath_in_ruleImplementationDefinition6986 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_ruleInlineCodeC_in_ruleImplementationDefinition7013 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleImplementationDefinition7026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDataDefinition_in_entryRuleDataDefinition7062 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDataDefinition7072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_ruleDataDefinition7118 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
+    public static final BitSet FOLLOW_68_in_ruleDataDefinition7131 = new BitSet(new long[]{0x1FFE400000000310L,0x0000000000000020L});
+    public static final BitSet FOLLOW_ruleFilePath_in_ruleDataDefinition7153 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_ruleInlineCodeC_in_ruleDataDefinition7180 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleDataDefinition7193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName7230 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName7241 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName7281 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_46_in_ruleQualifiedName7300 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName7315 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_ruleInlineCodeC_in_entryRuleInlineCodeC7362 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInlineCodeC7372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_CODE_C_in_ruleInlineCodeC7413 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFilePath_in_entryRuleFilePath7454 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFilePath7465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_SL_in_ruleFilePath7506 = new BitSet(new long[]{0x0000400000000010L,0x0000000000000020L});
+    public static final BitSet FOLLOW_46_in_ruleFilePath7527 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_RULE_SL_in_ruleFilePath7542 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000020L});
+    public static final BitSet FOLLOW_69_in_ruleFilePath7563 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_RULE_SL_in_ruleFilePath7578 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFilePath7600 = new BitSet(new long[]{0x0000400000000202L});
+    public static final BitSet FOLLOW_RULE_SL_in_ruleFilePath7621 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFilePath7641 = new BitSet(new long[]{0x0000400000000202L});
+    public static final BitSet FOLLOW_46_in_ruleFilePath7662 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFilePath7677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationsList_in_entryRuleAnnotationsList7726 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationsList7736 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleAnnotationsList7782 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleAnnotationsList7803 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_entryRuleAnnotation7840 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotation7850 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_70_in_ruleAnnotation7887 = new BitSet(new long[]{0x0000000000000010L,0x0000000000000780L});
+    public static final BitSet FOLLOW_71_in_ruleAnnotation7907 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_72_in_ruleAnnotation7936 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_73_in_ruleAnnotation7965 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_74_in_ruleAnnotation7994 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleAnnotation8026 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_29_in_ruleAnnotation8042 = new BitSet(new long[]{0x00000000010000B0L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleAnnotationElement_in_ruleAnnotation8063 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_21_in_ruleAnnotation8076 = new BitSet(new long[]{0x00000000010000B0L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleAnnotationElement_in_ruleAnnotation8097 = new BitSet(new long[]{0x0000000040200000L});
+    public static final BitSet FOLLOW_30_in_ruleAnnotation8111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotationElement_in_entryRuleAnnotationElement8149 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotationElement8159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAnnotationElement8202 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_ruleAnnotationElement8219 = new BitSet(new long[]{0x00000000010000B0L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleElementValue_in_ruleAnnotationElement8242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleElementValue_in_entryRuleElementValue8278 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleElementValue8288 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstantValue_in_ruleElementValue8338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleElementValue8368 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleElementValueArrayInitializer_in_ruleElementValue8398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleElementValueArrayInitializer_in_entryRuleElementValueArrayInitializer8433 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleElementValueArrayInitializer8443 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleElementValueArrayInitializer8480 = new BitSet(new long[]{0x00000000010000B0L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer8501 = new BitSet(new long[]{0x0000000002200000L});
+    public static final BitSet FOLLOW_21_in_ruleElementValueArrayInitializer8514 = new BitSet(new long[]{0x00000000010000B0L,0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleElementValue_in_ruleElementValueArrayInitializer8535 = new BitSet(new long[]{0x0000000002200000L});
+    public static final BitSet FOLLOW_25_in_ruleElementValueArrayInitializer8549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstantValue_in_entryRuleConstantValue8585 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConstantValue8595 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstantFormat_in_ruleConstantValue8640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstantFormat_in_entryRuleConstantFormat8676 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConstantFormat8687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleConstantFormat8727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleConstantFormat8753 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleConstantFormat8779 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImportDefinition_in_synpred1_InternalAdl137 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred13_InternalAdl926 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_synpred14_InternalAdl945 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSubComponentDefinition_in_synpred15_InternalAdl964 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred22_InternalAdl1277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_synpred23_InternalAdl1296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImplementationDefinition_in_synpred24_InternalAdl1315 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeDefinition_in_synpred25_InternalAdl1334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred29_InternalAdl1592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred37_InternalAdl2175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_synpred54_InternalAdl3283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_synpred55_InternalAdl3313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_synpred56_InternalAdl3438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImplementationDefinition_in_synpred57_InternalAdl3468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeDefinition_in_synpred58_InternalAdl3498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeType_in_synpred85_InternalAdl5627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBindingDefinition_in_synpred16_InternalAdl983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred17_InternalAdl1002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred24_InternalAdl1315 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_synpred25_InternalAdl1334 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImplementationDefinition_in_synpred26_InternalAdl1353 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeDefinition_in_synpred27_InternalAdl1372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDataDefinition_in_synpred28_InternalAdl1391 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred29_InternalAdl1410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred33_InternalAdl1668 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_synpred34_InternalAdl1687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred35_InternalAdl1706 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProvidedInterfaceDefinition_in_synpred43_InternalAdl2289 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRequiredInterfaceDefinition_in_synpred44_InternalAdl2319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOutputFlowInterfaceDefinition_in_synpred45_InternalAdl2349 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_synpred72_InternalAdl4336 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSubComponentDefinition_in_synpred73_InternalAdl4366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleHostedInterfaceDefinition_in_synpred74_InternalAdl4491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImplementationDefinition_in_synpred75_InternalAdl4521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeDefinition_in_synpred76_InternalAdl4551 = new BitSet(new long[]{0x0000000000000002L});
 
 }

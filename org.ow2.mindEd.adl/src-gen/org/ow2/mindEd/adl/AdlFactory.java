@@ -140,6 +140,24 @@ public interface AdlFactory extends EFactory
   RequiredInterfaceDefinition createRequiredInterfaceDefinition();
 
   /**
+   * Returns a new object of class '<em>Output Flow Interface Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Output Flow Interface Definition</em>'.
+   * @generated
+   */
+  OutputFlowInterfaceDefinition createOutputFlowInterfaceDefinition();
+
+  /**
+   * Returns a new object of class '<em>Input Flow Interface Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input Flow Interface Definition</em>'.
+   * @generated
+   */
+  InputFlowInterfaceDefinition createInputFlowInterfaceDefinition();
+
+  /**
    * Returns a new object of class '<em>Type Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -273,15 +291,6 @@ public interface AdlFactory extends EFactory
    * @generated
    */
   DataDefinition createDataDefinition();
-
-  /**
-   * Returns a new object of class '<em>File C</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>File C</em>'.
-   * @generated
-   */
-  FileC createFileC();
 
   /**
    * Returns a new object of class '<em>Inline Code C</em>'.

@@ -10,10 +10,10 @@ package org.ow2.mindEd.adl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.ConstantValue#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getConstantValue()
  * @model

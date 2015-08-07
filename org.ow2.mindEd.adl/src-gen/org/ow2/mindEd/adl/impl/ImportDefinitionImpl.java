@@ -21,11 +21,11 @@ import org.ow2.mindEd.adl.ImportDefinition;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.ImportDefinitionImpl#getAnnotationsList <em>Annotations List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.ImportDefinitionImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -10,11 +10,11 @@ package org.ow2.mindEd.adl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- *   <li>{@link org.ow2.mindEd.adl.ImplementationDefinition#getFileC <em>File C</em>}</li>
+ *   <li>{@link org.ow2.mindEd.adl.ImplementationDefinition#getCFile <em>CFile</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.ImplementationDefinition#getInlineCcode <em>Inline Ccode</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getImplementationDefinition()
  * @model
@@ -23,30 +23,30 @@ package org.ow2.mindEd.adl;
 public interface ImplementationDefinition extends PrimitiveElement
 {
   /**
-   * Returns the value of the '<em><b>File C</b></em>' containment reference.
+   * Returns the value of the '<em><b>CFile</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>File C</em>' containment reference isn't clear,
+   * If the meaning of the '<em>CFile</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>File C</em>' containment reference.
-   * @see #setFileC(FileC)
-   * @see org.ow2.mindEd.adl.AdlPackage#getImplementationDefinition_FileC()
-   * @model containment="true"
+   * @return the value of the '<em>CFile</em>' attribute.
+   * @see #setCFile(String)
+   * @see org.ow2.mindEd.adl.AdlPackage#getImplementationDefinition_CFile()
+   * @model
    * @generated
    */
-  FileC getFileC();
+  String getCFile();
 
   /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.ImplementationDefinition#getFileC <em>File C</em>}' containment reference.
+   * Sets the value of the '{@link org.ow2.mindEd.adl.ImplementationDefinition#getCFile <em>CFile</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>File C</em>' containment reference.
-   * @see #getFileC()
+   * @param value the new value of the '<em>CFile</em>' attribute.
+   * @see #getCFile()
    * @generated
    */
-  void setFileC(FileC value);
+  void setCFile(String value);
 
   /**
    * Returns the value of the '<em><b>Inline Ccode</b></em>' containment reference.

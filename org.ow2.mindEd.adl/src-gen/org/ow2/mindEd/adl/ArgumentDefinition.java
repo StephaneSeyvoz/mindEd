@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.ArgumentDefinition#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.ArgumentDefinition#getArgumentValue <em>Argument Value</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.ArgumentDefinition#getArgumentList <em>Argument List</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getArgumentDefinition()
  * @model

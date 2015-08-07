@@ -174,6 +174,16 @@ public class TypeDefinitionItemProvider extends ArchitectureDefinitionItemProvid
 			(createChildParameter
 				(AdlPackage.Literals.TYPE_DEFINITION__ELEMENTS,
 				 AdlFactory.eINSTANCE.createRequiredInterfaceDefinition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdlPackage.Literals.TYPE_DEFINITION__ELEMENTS,
+				 AdlFactory.eINSTANCE.createOutputFlowInterfaceDefinition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdlPackage.Literals.TYPE_DEFINITION__ELEMENTS,
+				 AdlFactory.eINSTANCE.createInputFlowInterfaceDefinition()));
 	}
 
 }

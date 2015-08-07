@@ -140,6 +140,16 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
         return createRequiredInterfaceDefinitionAdapter();
       }
       @Override
+      public Adapter caseOutputFlowInterfaceDefinition(OutputFlowInterfaceDefinition object)
+      {
+        return createOutputFlowInterfaceDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseInputFlowInterfaceDefinition(InputFlowInterfaceDefinition object)
+      {
+        return createInputFlowInterfaceDefinitionAdapter();
+      }
+      @Override
       public Adapter caseTypeReference(TypeReference object)
       {
         return createTypeReferenceAdapter();
@@ -213,11 +223,6 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDataDefinition(DataDefinition object)
       {
         return createDataDefinitionAdapter();
-      }
-      @Override
-      public Adapter caseFileC(FileC object)
-      {
-        return createFileCAdapter();
       }
       @Override
       public Adapter caseInlineCodeC(InlineCodeC object)
@@ -472,6 +477,36 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.OutputFlowInterfaceDefinition <em>Output Flow Interface Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.ow2.mindEd.adl.OutputFlowInterfaceDefinition
+   * @generated
+   */
+  public Adapter createOutputFlowInterfaceDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition <em>Input Flow Interface Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.ow2.mindEd.adl.InputFlowInterfaceDefinition
+   * @generated
+   */
+  public Adapter createInputFlowInterfaceDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.TypeReference <em>Type Reference</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -692,21 +727,6 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDataDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.FileC <em>File C</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.ow2.mindEd.adl.FileC
-   * @generated
-   */
-  public Adapter createFileCAdapter()
   {
     return null;
   }

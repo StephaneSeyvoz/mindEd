@@ -361,5 +361,11 @@
             extensions="adl">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="adl"
+            type="text">
+    </fileTypes>
+  </extension>
 
 </plugin>

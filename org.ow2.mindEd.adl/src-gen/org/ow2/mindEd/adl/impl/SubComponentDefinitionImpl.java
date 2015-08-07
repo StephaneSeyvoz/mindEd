@@ -31,6 +31,7 @@ import org.ow2.mindEd.adl.TypeReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.SubComponentDefinitionImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.SubComponentDefinitionImpl#getTemplatesList <em>Templates List</em>}</li>
@@ -39,7 +40,6 @@ import org.ow2.mindEd.adl.TypeReference;
  *   <li>{@link org.ow2.mindEd.adl.impl.SubComponentDefinitionImpl#getBodyAnnotationsList <em>Body Annotations List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.SubComponentDefinitionImpl#getBody <em>Body</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

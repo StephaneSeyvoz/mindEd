@@ -30,6 +30,7 @@ import org.ow2.mindEd.adl.TypeReference;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.TemplateReferenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.TemplateReferenceImpl#getTypeReference <em>Type Reference</em>}</li>
@@ -37,7 +38,6 @@ import org.ow2.mindEd.adl.TypeReference;
  *   <li>{@link org.ow2.mindEd.adl.impl.TemplateReferenceImpl#getTemplatesList <em>Templates List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.TemplateReferenceImpl#getArgumentsList <em>Arguments List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

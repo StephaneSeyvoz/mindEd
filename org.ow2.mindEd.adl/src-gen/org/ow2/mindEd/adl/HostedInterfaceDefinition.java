@@ -2,7 +2,6 @@
  */
 package org.ow2.mindEd.adl;
 
-import org.ow2.mindEd.itf.InterfaceDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,14 +10,13 @@ import org.ow2.mindEd.itf.InterfaceDefinition;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.HostedInterfaceDefinition#getRole <em>Role</em>}</li>
- *   <li>{@link org.ow2.mindEd.adl.HostedInterfaceDefinition#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.HostedInterfaceDefinition#getName <em>Name</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.HostedInterfaceDefinition#isCollection <em>Collection</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.HostedInterfaceDefinition#getCollectionsize <em>Collectionsize</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.ow2.mindEd.adl.AdlPackage#getHostedInterfaceDefinition()
  * @model
@@ -51,32 +49,6 @@ public interface HostedInterfaceDefinition extends Element, CompositeElement, Pr
    * @generated
    */
   void setRole(String value);
-
-  /**
-   * Returns the value of the '<em><b>Signature</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Signature</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Signature</em>' reference.
-   * @see #setSignature(InterfaceDefinition)
-   * @see org.ow2.mindEd.adl.AdlPackage#getHostedInterfaceDefinition_Signature()
-   * @model
-   * @generated
-   */
-  InterfaceDefinition getSignature();
-
-  /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.HostedInterfaceDefinition#getSignature <em>Signature</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Signature</em>' reference.
-   * @see #getSignature()
-   * @generated
-   */
-  void setSignature(InterfaceDefinition value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

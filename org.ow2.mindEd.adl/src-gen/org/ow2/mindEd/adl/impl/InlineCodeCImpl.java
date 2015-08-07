@@ -18,10 +18,10 @@ import org.ow2.mindEd.adl.InlineCodeC;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.InlineCodeCImpl#getCodeC <em>Code C</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

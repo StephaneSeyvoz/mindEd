@@ -30,13 +30,13 @@ import org.ow2.mindEd.adl.TemplateSpecifier;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeDefinitionImpl#getTemplateSpecifiers <em>Template Specifiers</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeDefinitionImpl#getCompositeFormalArgumentsList <em>Composite Formal Arguments List</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeDefinitionImpl#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link org.ow2.mindEd.adl.impl.CompositeDefinitionImpl#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

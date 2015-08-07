@@ -43,7 +43,7 @@ CompositeDefinition: {CompositeDefinition}
 	(	'extends' superTypes += CompositeSuperType
 			(',' superTypes += CompositeSuperType)*
 	)? '{'
-		elements += (ProvidedInterfaceDefinition | RequiredInterfaceDefinition | SubComponentDefinition | BindingDefinition)*
+		elements += (ProvidedInterfaceDefinition | RequiredInterfaceDefinition | SubComponentDefinition | BindingDefinition | OutputFlowInterfaceDefinition | InputFlowInterfaceDefinition)*
 	'}'
 ;
 
@@ -54,14 +54,14 @@ PrimitiveDefinition: {PrimitiveDefinition}
 	('extends' superTypes += PrimitiveSuperType
 		(',' superTypes += PrimitiveSuperType)*
 	)? '{'
-		elements += (ProvidedInterfaceDefinition | RequiredInterfaceDefinition | ImplementationDefinition | AttributeDefinition | DataDefinition)*
+		elements += (ProvidedInterfaceDefinition | RequiredInterfaceDefinition | ImplementationDefinition | AttributeDefinition | DataDefinition | OutputFlowInterfaceDefinition | InputFlowInterfaceDefinition)*
 	'}'
 ;
 
 TypeDefinition:
 	'type' name = QualifiedName
 	('extends' superTypes += [TypeDefinition | QualifiedName] (',' superTypes += [TypeDefinition | QualifiedName])*)? '{'
-		elements += (ProvidedInterfaceDefinition | RequiredInterfaceDefinition)*
+		elements += (ProvidedInterfaceDefinition | RequiredInterfaceDefinition | OutputFlowInterfaceDefinition | InputFlowInterfaceDefinition)*
 	'}'
 ;
 
@@ -86,7 +86,7 @@ PrimitiveSuperTypeDefinition:
 
 
 HostedInterfaceDefinition:
-	ProvidedInterfaceDefinition | RequiredInterfaceDefinition
+	ProvidedInterfaceDefinition | RequiredInterfaceDefinition | OutputFlowInterfaceDefinition | InputFlowInterfaceDefinition
 ;
 
 // Renamed as HostedInterfaceDefinition to resolve name clash with fractalItf::InterfaceDefinition
@@ -101,6 +101,26 @@ RequiredInterfaceDefinition :
 	(annotationsList=AnnotationsList)?
 	role="requires" (optional?='optional')? signature = [Itf::InterfaceDefinition | QualifiedName] 'as' name=ID
 	(collection?='['(collectionsize=INT)?']')? ';'
+;
+
+OutputFlowInterfaceDefinition :
+	(annotationsList=AnnotationsList)?
+	role="output" signature = FlowType 'as' name=ID
+	(collection?='['(collectionsize=INT)?']')? ';'
+;
+
+InputFlowInterfaceDefinition :
+	(annotationsList=AnnotationsList)?
+	role="input" (optional?='optional')? signature = FlowType 'as' name=ID
+	(collection?='['(collectionsize=INT)?']')? ';'
+;
+
+FlowType: 
+	AttributeType | IDTType
+;
+
+IDTType :
+	FilePath ':' ('struct' | 'enum' | 'union' ) ID
 ;
 
 TypeReference:
@@ -185,7 +205,19 @@ TemplateSpecifier :
 //	'<' (templateSpecifiers+=TemplateSpecifier (',' templateSpecifiers+=TemplateSpecifier)*) '>';
 
 AttributeType :
-	'STRUCT'|'UNION'|'ENUM'|ID;
+    'int'
+    | 'string'
+    | 'int8_t'
+    | 'uint8_t'
+    | 'int16_t'
+    | 'uint16_t'
+    | 'int32_t'
+    | 'uint32_t'
+    | 'int64_t'
+    | 'uint64_t'
+    | 'intptr_t'
+    | 'uintptr_t'
+;
 
 signedINT :
 	('+'|'-')?INT;
@@ -213,29 +245,27 @@ ArgumentDefinition :
 
 AttributeDefinition :
 	(annotationsList=AnnotationsList)?
-	'attribute' (headerFile=FileC ':')? (cType=AttributeType)? (type=ID)? name = ID ('=' value = Value)? ';' ;
+	'attribute' type = FlowType name = ID ('=' value = Value)? ';' ;
 
 ImplementationDefinition :
 	(annotationsList=AnnotationsList)?
-	'source' ((fileC = FileC) |(inlineCcode = InlineCodeC)) ';'
+	'source' ((cFile = FilePath) |(inlineCcode = InlineCodeC)) ';'
 ;
 
 DataDefinition :
 	(annotationsList=AnnotationsList)?
-	'data' ((fileC = FileC) | (inlineCcode = InlineCodeC)) ';';
+	'data' ((cFile = FilePath) | (inlineCcode = InlineCodeC)) ';';
 
 QualifiedName:
 	ID ('.' ID)*
 ;
-
-FileC :
-	(directory = Path)? name = FileName;
 	
 InlineCodeC :
 	codeC = CODE_C;
 
-Path :
-	(ID | ('.') | ('..'))? (SL ((ID ('-')?)* | '..'))* SL;
+FilePath :
+  (SL)? ('.' SL)? ( '..' SL )* ID ( SL ID )* ( '.' ID ) ?
+;
 
 FileName :
 	ID('.'ID)?;
