@@ -79,6 +79,8 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
       case AdlPackage.REQUIRED_INTERFACE_DEFINITION: return createRequiredInterfaceDefinition();
       case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION: return createOutputFlowInterfaceDefinition();
       case AdlPackage.INPUT_FLOW_INTERFACE_DEFINITION: return createInputFlowInterfaceDefinition();
+      case AdlPackage.FLOW_TYPE: return createFlowType();
+      case AdlPackage.IDT_TYPE: return createIDTType();
       case AdlPackage.TYPE_REFERENCE: return createTypeReference();
       case AdlPackage.SUB_COMPONENT_DEFINITION: return createSubComponentDefinition();
       case AdlPackage.ELEMENT: return createElement();
@@ -88,6 +90,7 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
       case AdlPackage.FORMAL_ARGUMENT: return createFormalArgument();
       case AdlPackage.FORMAL_ARGUMENTS_LIST: return createFormalArgumentsList();
       case AdlPackage.TEMPLATE_SPECIFIER: return createTemplateSpecifier();
+      case AdlPackage.ATTRIBUTE_TYPE: return createAttributeType();
       case AdlPackage.VALUE_LIST: return createValueList();
       case AdlPackage.TEMPLATE_REFERENCE: return createTemplateReference();
       case AdlPackage.ARGUMENT_DEFINITION: return createArgumentDefinition();
@@ -95,6 +98,7 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
       case AdlPackage.IMPLEMENTATION_DEFINITION: return createImplementationDefinition();
       case AdlPackage.DATA_DEFINITION: return createDataDefinition();
       case AdlPackage.INLINE_CODE_C: return createInlineCodeC();
+      case AdlPackage.FILE_PATH: return createFilePath();
       case AdlPackage.ANNOTATIONS_LIST: return createAnnotationsList();
       case AdlPackage.ANNOTATION: return createAnnotation();
       case AdlPackage.ANNOTATION_ELEMENT: return createAnnotationElement();
@@ -276,6 +280,28 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public FlowType createFlowType()
+  {
+    FlowTypeImpl flowType = new FlowTypeImpl();
+    return flowType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IDTType createIDTType()
+  {
+    IDTTypeImpl idtType = new IDTTypeImpl();
+    return idtType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public TypeReference createTypeReference()
   {
     TypeReferenceImpl typeReference = new TypeReferenceImpl();
@@ -375,6 +401,17 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public AttributeType createAttributeType()
+  {
+    AttributeTypeImpl attributeType = new AttributeTypeImpl();
+    return attributeType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ValueList createValueList()
   {
     ValueListImpl valueList = new ValueListImpl();
@@ -445,6 +482,17 @@ public class AdlFactoryImpl extends EFactoryImpl implements AdlFactory
   {
     InlineCodeCImpl inlineCodeC = new InlineCodeCImpl();
     return inlineCodeC;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FilePath createFilePath()
+  {
+    FilePathImpl filePath = new FilePathImpl();
+    return filePath;
   }
 
   /**

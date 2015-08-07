@@ -207,6 +207,21 @@ public class AdlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AdlPackage.FLOW_TYPE:
+      {
+        FlowType flowType = (FlowType)theEObject;
+        T result = caseFlowType(flowType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdlPackage.IDT_TYPE:
+      {
+        IDTType idtType = (IDTType)theEObject;
+        T result = caseIDTType(idtType);
+        if (result == null) result = caseFlowType(idtType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AdlPackage.TYPE_REFERENCE:
       {
         TypeReference typeReference = (TypeReference)theEObject;
@@ -277,6 +292,14 @@ public class AdlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AdlPackage.ATTRIBUTE_TYPE:
+      {
+        AttributeType attributeType = (AttributeType)theEObject;
+        T result = caseAttributeType(attributeType);
+        if (result == null) result = caseFlowType(attributeType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AdlPackage.VALUE_LIST:
       {
         ValueList valueList = (ValueList)theEObject;
@@ -329,6 +352,13 @@ public class AdlSwitch<T> extends Switch<T>
       {
         InlineCodeC inlineCodeC = (InlineCodeC)theEObject;
         T result = caseInlineCodeC(inlineCodeC);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AdlPackage.FILE_PATH:
+      {
+        FilePath filePath = (FilePath)theEObject;
+        T result = caseFilePath(filePath);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -622,6 +652,38 @@ public class AdlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Flow Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Flow Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFlowType(FlowType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>IDT Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IDT Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIDTType(IDTType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Type Reference</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -766,6 +828,22 @@ public class AdlSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Attribute Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Attribute Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAttributeType(AttributeType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Value List</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -873,6 +951,22 @@ public class AdlSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseInlineCodeC(InlineCodeC object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>File Path</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>File Path</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFilePath(FilePath object)
   {
     return null;
   }

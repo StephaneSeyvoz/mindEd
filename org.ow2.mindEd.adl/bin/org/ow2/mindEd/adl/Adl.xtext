@@ -120,7 +120,7 @@ FlowType:
 ;
 
 IDTType :
-	FilePath ':' ('struct' | 'enum' | 'union' ) ID
+	path=FilePath ':' ('struct' | 'enum' | 'union' )? name=ID
 ;
 
 TypeReference:
@@ -205,6 +205,7 @@ TemplateSpecifier :
 //	'<' (templateSpecifiers+=TemplateSpecifier (',' templateSpecifiers+=TemplateSpecifier)*) '>';
 
 AttributeType :
+    name=
     'int'
     | 'string'
     | 'int8_t'
@@ -263,8 +264,8 @@ QualifiedName:
 InlineCodeC :
 	codeC = CODE_C;
 
-FilePath :
-  (SL)? ('.' SL)? ( '..' SL )* ID ( SL ID )* ( '.' ID ) ?
+FilePath : {FilePath}
+  name = (SL)? ('.' SL)? ( '..' SL )* ID ( SL ID )* ( '.' ID ) ?
 ;
 
 FileName :

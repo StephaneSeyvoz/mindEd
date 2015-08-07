@@ -3,12 +3,15 @@
 package org.ow2.mindEd.adl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.ow2.mindEd.adl.AdlPackage;
+import org.ow2.mindEd.adl.FlowType;
 import org.ow2.mindEd.adl.OutputFlowInterfaceDefinition;
 
 /**
@@ -27,24 +30,14 @@ import org.ow2.mindEd.adl.OutputFlowInterfaceDefinition;
 public class OutputFlowInterfaceDefinitionImpl extends HostedInterfaceDefinitionImpl implements OutputFlowInterfaceDefinition
 {
   /**
-   * The default value of the '{@link #getSignature() <em>Signature</em>}' attribute.
+   * The cached value of the '{@link #getSignature() <em>Signature</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSignature()
    * @generated
    * @ordered
    */
-  protected static final String SIGNATURE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getSignature() <em>Signature</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSignature()
-   * @generated
-   * @ordered
-   */
-  protected String signature = SIGNATURE_EDEFAULT;
+  protected FlowType signature;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,7 +65,7 @@ public class OutputFlowInterfaceDefinitionImpl extends HostedInterfaceDefinition
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSignature()
+  public FlowType getSignature()
   {
     return signature;
   }
@@ -82,12 +75,53 @@ public class OutputFlowInterfaceDefinitionImpl extends HostedInterfaceDefinition
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSignature(String newSignature)
+  public NotificationChain basicSetSignature(FlowType newSignature, NotificationChain msgs)
   {
-    String oldSignature = signature;
+    FlowType oldSignature = signature;
     signature = newSignature;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE, oldSignature, signature));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE, oldSignature, newSignature);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSignature(FlowType newSignature)
+  {
+    if (newSignature != signature)
+    {
+      NotificationChain msgs = null;
+      if (signature != null)
+        msgs = ((InternalEObject)signature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE, null, msgs);
+      if (newSignature != null)
+        msgs = ((InternalEObject)newSignature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE, null, msgs);
+      msgs = basicSetSignature(newSignature, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE, newSignature, newSignature));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE:
+        return basicSetSignature(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -117,7 +151,7 @@ public class OutputFlowInterfaceDefinitionImpl extends HostedInterfaceDefinition
     switch (featureID)
     {
       case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE:
-        setSignature((String)newValue);
+        setSignature((FlowType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,7 +168,7 @@ public class OutputFlowInterfaceDefinitionImpl extends HostedInterfaceDefinition
     switch (featureID)
     {
       case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE:
-        setSignature(SIGNATURE_EDEFAULT);
+        setSignature((FlowType)null);
         return;
     }
     super.eUnset(featureID);
@@ -151,26 +185,9 @@ public class OutputFlowInterfaceDefinitionImpl extends HostedInterfaceDefinition
     switch (featureID)
     {
       case AdlPackage.OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE:
-        return SIGNATURE_EDEFAULT == null ? signature != null : !SIGNATURE_EDEFAULT.equals(signature);
+        return signature != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (signature: ");
-    result.append(signature);
-    result.append(')');
-    return result.toString();
   }
 
 } //OutputFlowInterfaceDefinitionImpl

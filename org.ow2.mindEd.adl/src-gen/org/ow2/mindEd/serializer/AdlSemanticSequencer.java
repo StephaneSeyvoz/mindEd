@@ -23,14 +23,17 @@ import org.ow2.mindEd.adl.AnnotationElement;
 import org.ow2.mindEd.adl.AnnotationsList;
 import org.ow2.mindEd.adl.ArgumentDefinition;
 import org.ow2.mindEd.adl.AttributeDefinition;
+import org.ow2.mindEd.adl.AttributeType;
 import org.ow2.mindEd.adl.BindingDefinition;
 import org.ow2.mindEd.adl.CompositeDefinition;
 import org.ow2.mindEd.adl.CompositeSuperType;
 import org.ow2.mindEd.adl.ConstantValue;
 import org.ow2.mindEd.adl.DataDefinition;
 import org.ow2.mindEd.adl.ElementValueArrayInitializer;
+import org.ow2.mindEd.adl.FilePath;
 import org.ow2.mindEd.adl.FormalArgument;
 import org.ow2.mindEd.adl.FormalArgumentsList;
+import org.ow2.mindEd.adl.IDTType;
 import org.ow2.mindEd.adl.ImplementationDefinition;
 import org.ow2.mindEd.adl.ImportDefinition;
 import org.ow2.mindEd.adl.InlineCodeC;
@@ -74,6 +77,9 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case AdlPackage.ATTRIBUTE_DEFINITION:
 				sequence_AttributeDefinition(context, (AttributeDefinition) semanticObject); 
 				return; 
+			case AdlPackage.ATTRIBUTE_TYPE:
+				sequence_AttributeType(context, (AttributeType) semanticObject); 
+				return; 
 			case AdlPackage.BINDING_DEFINITION:
 				sequence_BindingDefinition(context, (BindingDefinition) semanticObject); 
 				return; 
@@ -92,11 +98,17 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case AdlPackage.ELEMENT_VALUE_ARRAY_INITIALIZER:
 				sequence_ElementValueArrayInitializer(context, (ElementValueArrayInitializer) semanticObject); 
 				return; 
+			case AdlPackage.FILE_PATH:
+				sequence_FilePath(context, (FilePath) semanticObject); 
+				return; 
 			case AdlPackage.FORMAL_ARGUMENT:
 				sequence_FormalArgument(context, (FormalArgument) semanticObject); 
 				return; 
 			case AdlPackage.FORMAL_ARGUMENTS_LIST:
 				sequence_FormalArgumentsList(context, (FormalArgumentsList) semanticObject); 
+				return; 
+			case AdlPackage.IDT_TYPE:
+				sequence_IDTType(context, (IDTType) semanticObject); 
 				return; 
 			case AdlPackage.IMPLEMENTATION_DEFINITION:
 				sequence_ImplementationDefinition(context, (ImplementationDefinition) semanticObject); 
@@ -203,6 +215,22 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     name='int'
+	 */
+	protected void sequence_AttributeType(EObject context, AttributeType semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, AdlPackage.Literals.FLOW_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdlPackage.Literals.FLOW_TYPE__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAttributeTypeAccess().getNameIntKeyword_0_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         annotationsList=AnnotationsList? 
 	 *         (sourceParent=[SubComponentDefinition|ID] | isSrcParentThis?='this') 
@@ -289,6 +317,15 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (name=SL?)
+	 */
+	protected void sequence_FilePath(EObject context, FilePath semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     name=ID
 	 */
 	protected void sequence_FormalArgument(EObject context, FormalArgument semanticObject) {
@@ -309,6 +346,25 @@ public class AdlSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_FormalArgumentsList(EObject context, FormalArgumentsList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (path=FilePath name=ID)
+	 */
+	protected void sequence_IDTType(EObject context, IDTType semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, AdlPackage.Literals.FLOW_TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdlPackage.Literals.FLOW_TYPE__NAME));
+			if(transientValues.isValueTransient(semanticObject, AdlPackage.Literals.IDT_TYPE__PATH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AdlPackage.Literals.IDT_TYPE__PATH));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getIDTTypeAccess().getPathFilePathParserRuleCall_0_0(), semanticObject.getPath());
+		feeder.accept(grammarAccess.getIDTTypeAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

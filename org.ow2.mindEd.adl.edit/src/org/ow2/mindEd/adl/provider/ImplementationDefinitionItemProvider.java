@@ -11,9 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.ow2.mindEd.adl.AdlFactory;
@@ -48,31 +46,8 @@ public class ImplementationDefinitionItemProvider extends PrimitiveElementItemPr
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCFilePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the CFile feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCFilePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ImplementationDefinition_cFile_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ImplementationDefinition_cFile_feature", "_UI_ImplementationDefinition_type"),
-				 AdlPackage.Literals.IMPLEMENTATION_DEFINITION__CFILE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -87,6 +62,7 @@ public class ImplementationDefinitionItemProvider extends PrimitiveElementItemPr
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AdlPackage.Literals.IMPLEMENTATION_DEFINITION__CFILE);
 			childrenFeatures.add(AdlPackage.Literals.IMPLEMENTATION_DEFINITION__INLINE_CCODE);
 		}
 		return childrenFeatures;
@@ -124,10 +100,7 @@ public class ImplementationDefinitionItemProvider extends PrimitiveElementItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ImplementationDefinition)object).getCFile();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ImplementationDefinition_type") :
-			getString("_UI_ImplementationDefinition_type") + " " + label;
+		return getString("_UI_ImplementationDefinition_type");
 	}
 	
 
@@ -144,8 +117,6 @@ public class ImplementationDefinitionItemProvider extends PrimitiveElementItemPr
 
 		switch (notification.getFeatureID(ImplementationDefinition.class)) {
 			case AdlPackage.IMPLEMENTATION_DEFINITION__CFILE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case AdlPackage.IMPLEMENTATION_DEFINITION__INLINE_CCODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -163,6 +134,11 @@ public class ImplementationDefinitionItemProvider extends PrimitiveElementItemPr
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AdlPackage.Literals.IMPLEMENTATION_DEFINITION__CFILE,
+				 AdlFactory.eINSTANCE.createFilePath()));
 
 		newChildDescriptors.add
 			(createChildParameter

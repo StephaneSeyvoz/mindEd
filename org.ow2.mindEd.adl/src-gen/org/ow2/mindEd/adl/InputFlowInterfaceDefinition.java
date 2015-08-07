@@ -49,29 +49,29 @@ public interface InputFlowInterfaceDefinition extends HostedInterfaceDefinition
   void setOptional(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Signature</b></em>' attribute.
+   * Returns the value of the '<em><b>Signature</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Signature</em>' attribute isn't clear,
+   * If the meaning of the '<em>Signature</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Signature</em>' attribute.
-   * @see #setSignature(String)
+   * @return the value of the '<em>Signature</em>' containment reference.
+   * @see #setSignature(FlowType)
    * @see org.ow2.mindEd.adl.AdlPackage#getInputFlowInterfaceDefinition_Signature()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getSignature();
+  FlowType getSignature();
 
   /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition#getSignature <em>Signature</em>}' attribute.
+   * Sets the value of the '{@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition#getSignature <em>Signature</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Signature</em>' attribute.
+   * @param value the new value of the '<em>Signature</em>' containment reference.
    * @see #getSignature()
    * @generated
    */
-  void setSignature(String value);
+  void setSignature(FlowType value);
 
 } // InputFlowInterfaceDefinition

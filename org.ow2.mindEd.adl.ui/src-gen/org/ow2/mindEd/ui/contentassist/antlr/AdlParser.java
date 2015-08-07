@@ -124,10 +124,10 @@ public class AdlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getFilePathAccess().getGroup(), "rule__FilePath__Group__0");
-					put(grammarAccess.getFilePathAccess().getGroup_1(), "rule__FilePath__Group_1__0");
 					put(grammarAccess.getFilePathAccess().getGroup_2(), "rule__FilePath__Group_2__0");
-					put(grammarAccess.getFilePathAccess().getGroup_4(), "rule__FilePath__Group_4__0");
+					put(grammarAccess.getFilePathAccess().getGroup_3(), "rule__FilePath__Group_3__0");
 					put(grammarAccess.getFilePathAccess().getGroup_5(), "rule__FilePath__Group_5__0");
+					put(grammarAccess.getFilePathAccess().getGroup_6(), "rule__FilePath__Group_6__0");
 					put(grammarAccess.getFileNameAccess().getGroup(), "rule__FileName__Group__0");
 					put(grammarAccess.getFileNameAccess().getGroup_1(), "rule__FileName__Group_1__0");
 					put(grammarAccess.getAnnotationsListAccess().getGroup(), "rule__AnnotationsList__Group__0");
@@ -194,6 +194,8 @@ public class AdlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInputFlowInterfaceDefinitionAccess().getNameAssignment_5(), "rule__InputFlowInterfaceDefinition__NameAssignment_5");
 					put(grammarAccess.getInputFlowInterfaceDefinitionAccess().getCollectionAssignment_6_0(), "rule__InputFlowInterfaceDefinition__CollectionAssignment_6_0");
 					put(grammarAccess.getInputFlowInterfaceDefinitionAccess().getCollectionsizeAssignment_6_1(), "rule__InputFlowInterfaceDefinition__CollectionsizeAssignment_6_1");
+					put(grammarAccess.getIDTTypeAccess().getPathAssignment_0(), "rule__IDTType__PathAssignment_0");
+					put(grammarAccess.getIDTTypeAccess().getNameAssignment_3(), "rule__IDTType__NameAssignment_3");
 					put(grammarAccess.getSubComponentDefinitionAccess().getAnnotationsListAssignment_0(), "rule__SubComponentDefinition__AnnotationsListAssignment_0");
 					put(grammarAccess.getSubComponentDefinitionAccess().getTypeAssignment_2(), "rule__SubComponentDefinition__TypeAssignment_2");
 					put(grammarAccess.getSubComponentDefinitionAccess().getTemplatesListAssignment_3_1(), "rule__SubComponentDefinition__TemplatesListAssignment_3_1");
@@ -217,6 +219,7 @@ public class AdlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFormalArgumentsListAccess().getFormalArgumentsAssignment_2_1(), "rule__FormalArgumentsList__FormalArgumentsAssignment_2_1");
 					put(grammarAccess.getTemplateSpecifierAccess().getNameAssignment_0(), "rule__TemplateSpecifier__NameAssignment_0");
 					put(grammarAccess.getTemplateSpecifierAccess().getTypeReferenceAssignment_2(), "rule__TemplateSpecifier__TypeReferenceAssignment_2");
+					put(grammarAccess.getAttributeTypeAccess().getNameAssignment_0(), "rule__AttributeType__NameAssignment_0");
 					put(grammarAccess.getValueListAccess().getMemberAssignment_1(), "rule__ValueList__MemberAssignment_1");
 					put(grammarAccess.getValueListAccess().getMemberAssignment_2_1(), "rule__ValueList__MemberAssignment_2_1");
 					put(grammarAccess.getTemplateReferenceAccess().getNameAssignment_0_0(), "rule__TemplateReference__NameAssignment_0_0");
@@ -240,6 +243,7 @@ public class AdlParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDataDefinitionAccess().getCFileAssignment_2_0(), "rule__DataDefinition__CFileAssignment_2_0");
 					put(grammarAccess.getDataDefinitionAccess().getInlineCcodeAssignment_2_1(), "rule__DataDefinition__InlineCcodeAssignment_2_1");
 					put(grammarAccess.getInlineCodeCAccess().getCodeCAssignment(), "rule__InlineCodeC__CodeCAssignment");
+					put(grammarAccess.getFilePathAccess().getNameAssignment_1(), "rule__FilePath__NameAssignment_1");
 					put(grammarAccess.getAnnotationsListAccess().getAnnotationsAssignment_0(), "rule__AnnotationsList__AnnotationsAssignment_0");
 					put(grammarAccess.getAnnotationsListAccess().getAnnotationsAssignment_1(), "rule__AnnotationsList__AnnotationsAssignment_1");
 					put(grammarAccess.getAnnotationAccess().getNameAssignment_1(), "rule__Annotation__NameAssignment_1");

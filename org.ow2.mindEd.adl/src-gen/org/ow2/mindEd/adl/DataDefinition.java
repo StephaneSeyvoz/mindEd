@@ -23,30 +23,30 @@ package org.ow2.mindEd.adl;
 public interface DataDefinition extends PrimitiveElement
 {
   /**
-   * Returns the value of the '<em><b>CFile</b></em>' attribute.
+   * Returns the value of the '<em><b>CFile</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>CFile</em>' attribute isn't clear,
+   * If the meaning of the '<em>CFile</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>CFile</em>' attribute.
-   * @see #setCFile(String)
+   * @return the value of the '<em>CFile</em>' containment reference.
+   * @see #setCFile(FilePath)
    * @see org.ow2.mindEd.adl.AdlPackage#getDataDefinition_CFile()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getCFile();
+  FilePath getCFile();
 
   /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.DataDefinition#getCFile <em>CFile</em>}' attribute.
+   * Sets the value of the '{@link org.ow2.mindEd.adl.DataDefinition#getCFile <em>CFile</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>CFile</em>' attribute.
+   * @param value the new value of the '<em>CFile</em>' containment reference.
    * @see #getCFile()
    * @generated
    */
-  void setCFile(String value);
+  void setCFile(FilePath value);
 
   /**
    * Returns the value of the '<em><b>Inline Ccode</b></em>' containment reference.

@@ -3,13 +3,16 @@
 package org.ow2.mindEd.adl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.ow2.mindEd.adl.AdlPackage;
 import org.ow2.mindEd.adl.AttributeDefinition;
+import org.ow2.mindEd.adl.FlowType;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,24 +32,14 @@ import org.ow2.mindEd.adl.AttributeDefinition;
 public class AttributeDefinitionImpl extends PrimitiveElementImpl implements AttributeDefinition
 {
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
+  protected FlowType type;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -114,7 +107,7 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public FlowType getType()
   {
     return type;
   }
@@ -124,12 +117,37 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public NotificationChain basicSetType(FlowType newType, NotificationChain msgs)
   {
-    String oldType = type;
+    FlowType oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.ATTRIBUTE_DEFINITION__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AdlPackage.ATTRIBUTE_DEFINITION__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(FlowType newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ATTRIBUTE_DEFINITION__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AdlPackage.ATTRIBUTE_DEFINITION__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AdlPackage.ATTRIBUTE_DEFINITION__TYPE, newType, newType));
   }
 
   /**
@@ -184,6 +202,22 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AdlPackage.ATTRIBUTE_DEFINITION__TYPE:
+        return basicSetType(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -209,7 +243,7 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
     switch (featureID)
     {
       case AdlPackage.ATTRIBUTE_DEFINITION__TYPE:
-        setType((String)newValue);
+        setType((FlowType)newValue);
         return;
       case AdlPackage.ATTRIBUTE_DEFINITION__NAME:
         setName((String)newValue);
@@ -232,7 +266,7 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
     switch (featureID)
     {
       case AdlPackage.ATTRIBUTE_DEFINITION__TYPE:
-        setType(TYPE_EDEFAULT);
+        setType((FlowType)null);
         return;
       case AdlPackage.ATTRIBUTE_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
@@ -255,7 +289,7 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
     switch (featureID)
     {
       case AdlPackage.ATTRIBUTE_DEFINITION__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+        return type != null;
       case AdlPackage.ATTRIBUTE_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AdlPackage.ATTRIBUTE_DEFINITION__VALUE:
@@ -275,9 +309,7 @@ public class AttributeDefinitionImpl extends PrimitiveElementImpl implements Att
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(", value: ");
     result.append(value);

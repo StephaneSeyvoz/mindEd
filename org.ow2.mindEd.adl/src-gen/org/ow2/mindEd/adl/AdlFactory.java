@@ -158,6 +158,24 @@ public interface AdlFactory extends EFactory
   InputFlowInterfaceDefinition createInputFlowInterfaceDefinition();
 
   /**
+   * Returns a new object of class '<em>Flow Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Flow Type</em>'.
+   * @generated
+   */
+  FlowType createFlowType();
+
+  /**
+   * Returns a new object of class '<em>IDT Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>IDT Type</em>'.
+   * @generated
+   */
+  IDTType createIDTType();
+
+  /**
    * Returns a new object of class '<em>Type Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -239,6 +257,15 @@ public interface AdlFactory extends EFactory
   TemplateSpecifier createTemplateSpecifier();
 
   /**
+   * Returns a new object of class '<em>Attribute Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Attribute Type</em>'.
+   * @generated
+   */
+  AttributeType createAttributeType();
+
+  /**
    * Returns a new object of class '<em>Value List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -300,6 +327,15 @@ public interface AdlFactory extends EFactory
    * @generated
    */
   InlineCodeC createInlineCodeC();
+
+  /**
+   * Returns a new object of class '<em>File Path</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>File Path</em>'.
+   * @generated
+   */
+  FilePath createFilePath();
 
   /**
    * Returns a new object of class '<em>Annotations List</em>'.

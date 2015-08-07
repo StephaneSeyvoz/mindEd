@@ -24,30 +24,30 @@ package org.ow2.mindEd.adl;
 public interface AttributeDefinition extends PrimitiveElement
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(FlowType)
    * @see org.ow2.mindEd.adl.AdlPackage#getAttributeDefinition_Type()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getType();
+  FlowType getType();
 
   /**
-   * Sets the value of the '{@link org.ow2.mindEd.adl.AttributeDefinition#getType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link org.ow2.mindEd.adl.AttributeDefinition#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
+   * @param value the new value of the '<em>Type</em>' containment reference.
    * @see #getType()
    * @generated
    */
-  void setType(String value);
+  void setType(FlowType value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

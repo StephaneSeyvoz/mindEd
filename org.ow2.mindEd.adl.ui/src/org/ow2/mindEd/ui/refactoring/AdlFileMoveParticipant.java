@@ -459,7 +459,7 @@ public class AdlFileMoveParticipant extends AbstractProcessorBasedMoveParticipan
 		CompositeChange sourceChanges = null;
 
 		//		if (renamedArchDef instanceof PrimitiveDefinition) {
-		//			for(FileC containedSource: EcoreUtil2.eAllOfType((PrimitiveDefinition) renamedArchDef, FileC.class)) {
+		//			for(FilePath containedSource: EcoreUtil2.eAllOfType((PrimitiveDefinition) renamedArchDef, FileC.class)) {
 		//				
 		//				// We only handle simple names for now (getDirectory == null)
 		//				if (containedSource.getDirectory() == null && adlFile.getParent() instanceof IFolder) {

@@ -166,10 +166,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:14:7: ( 'int' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:14:9: 'int'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:14:7: ( 'string' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:14:9: 'string'
             {
-            match("int"); 
+            match("string"); 
 
 
             }
@@ -187,10 +187,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:15:7: ( 'string' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:15:9: 'string'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:15:7: ( 'int8_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:15:9: 'int8_t'
             {
-            match("string"); 
+            match("int8_t"); 
 
 
             }
@@ -208,10 +208,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:16:7: ( 'int8_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:16:9: 'int8_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:16:7: ( 'uint8_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:16:9: 'uint8_t'
             {
-            match("int8_t"); 
+            match("uint8_t"); 
 
 
             }
@@ -229,10 +229,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:17:7: ( 'uint8_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:17:9: 'uint8_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:17:7: ( 'int16_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:17:9: 'int16_t'
             {
-            match("uint8_t"); 
+            match("int16_t"); 
 
 
             }
@@ -250,10 +250,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:18:7: ( 'int16_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:18:9: 'int16_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:18:7: ( 'uint16_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:18:9: 'uint16_t'
             {
-            match("int16_t"); 
+            match("uint16_t"); 
 
 
             }
@@ -271,10 +271,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:19:7: ( 'uint16_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:19:9: 'uint16_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:19:7: ( 'int32_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:19:9: 'int32_t'
             {
-            match("uint16_t"); 
+            match("int32_t"); 
 
 
             }
@@ -292,10 +292,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:20:7: ( 'int32_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:20:9: 'int32_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:20:7: ( 'uint32_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:20:9: 'uint32_t'
             {
-            match("int32_t"); 
+            match("uint32_t"); 
 
 
             }
@@ -313,10 +313,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:21:7: ( 'uint32_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:21:9: 'uint32_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:21:7: ( 'int64_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:21:9: 'int64_t'
             {
-            match("uint32_t"); 
+            match("int64_t"); 
 
 
             }
@@ -334,10 +334,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:22:7: ( 'int64_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:22:9: 'int64_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:22:7: ( 'uint64_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:22:9: 'uint64_t'
             {
-            match("int64_t"); 
+            match("uint64_t"); 
 
 
             }
@@ -355,10 +355,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:23:7: ( 'uint64_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:23:9: 'uint64_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:23:7: ( 'intptr_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:23:9: 'intptr_t'
             {
-            match("uint64_t"); 
+            match("intptr_t"); 
 
 
             }
@@ -376,10 +376,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:24:7: ( 'intptr_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:24:9: 'intptr_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:24:7: ( 'uintptr_t' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:24:9: 'uintptr_t'
             {
-            match("intptr_t"); 
+            match("uintptr_t"); 
 
 
             }
@@ -397,11 +397,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:25:7: ( 'uintptr_t' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:25:9: 'uintptr_t'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:25:7: ( '+' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:25:9: '+'
             {
-            match("uintptr_t"); 
-
+            match('+'); 
 
             }
 
@@ -418,10 +417,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:26:7: ( '+' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:26:9: '+'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:26:7: ( '-' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:26:9: '-'
             {
-            match('+'); 
+            match('-'); 
 
             }
 
@@ -438,10 +437,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:27:7: ( '-' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:27:9: '-'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:27:7: ( 'null' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:27:9: 'null'
             {
-            match('-'); 
+            match("null"); 
+
 
             }
 
@@ -458,10 +458,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:28:7: ( 'null' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:28:9: 'null'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:28:7: ( 'Override' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:28:9: 'Override'
             {
-            match("null"); 
+            match("Override"); 
 
 
             }
@@ -479,10 +479,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:29:7: ( 'Override' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:29:9: 'Override'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:29:7: ( 'Singleton' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:29:9: 'Singleton'
             {
-            match("Override"); 
+            match("Singleton"); 
 
 
             }
@@ -500,10 +500,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:30:7: ( 'Singleton' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:30:9: 'Singleton'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:30:7: ( 'LDFlags' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:30:9: 'LDFlags'
             {
-            match("Singleton"); 
+            match("LDFlags"); 
 
 
             }
@@ -521,10 +521,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:31:7: ( 'LDFlags' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:31:9: 'LDFlags'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:31:7: ( 'CFlags' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:31:9: 'CFlags'
             {
-            match("LDFlags"); 
+            match("CFlags"); 
 
 
             }
@@ -542,10 +542,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:32:7: ( 'CFlags' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:32:9: 'CFlags'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:32:7: ( 'import' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:32:9: 'import'
             {
-            match("CFlags"); 
+            match("import"); 
 
 
             }
@@ -563,11 +563,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:33:7: ( 'import' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:33:9: 'import'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:33:7: ( ';' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:33:9: ';'
             {
-            match("import"); 
-
+            match(';'); 
 
             }
 
@@ -584,10 +583,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:34:7: ( ';' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:34:9: ';'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:34:7: ( '.*' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:34:9: '.*'
             {
-            match(';'); 
+            match(".*"); 
+
 
             }
 
@@ -604,10 +604,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:35:7: ( '.*' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:35:9: '.*'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:35:7: ( 'composite' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:35:9: 'composite'
             {
-            match(".*"); 
+            match("composite"); 
 
 
             }
@@ -625,11 +625,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:36:7: ( 'composite' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:36:9: 'composite'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:36:7: ( '{' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:36:9: '{'
             {
-            match("composite"); 
-
+            match('{'); 
 
             }
 
@@ -646,10 +645,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:37:7: ( '{' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:37:9: '{'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:37:7: ( '}' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:37:9: '}'
             {
-            match('{'); 
+            match('}'); 
 
             }
 
@@ -666,10 +665,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:38:7: ( '}' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:38:9: '}'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:38:7: ( '<' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:38:9: '<'
             {
-            match('}'); 
+            match('<'); 
 
             }
 
@@ -686,10 +685,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:39:7: ( '<' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:39:9: '<'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:39:7: ( '>' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:39:9: '>'
             {
-            match('<'); 
+            match('>'); 
 
             }
 
@@ -706,10 +705,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:40:7: ( '>' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:40:9: '>'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:40:7: ( ',' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:40:9: ','
             {
-            match('>'); 
+            match(','); 
 
             }
 
@@ -726,10 +725,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:41:7: ( ',' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:41:9: ','
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:41:7: ( 'extends' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:41:9: 'extends'
             {
-            match(','); 
+            match("extends"); 
+
 
             }
 
@@ -746,10 +746,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:42:7: ( 'extends' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:42:9: 'extends'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:42:7: ( 'primitive' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:42:9: 'primitive'
             {
-            match("extends"); 
+            match("primitive"); 
 
 
             }
@@ -767,10 +767,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:43:7: ( 'primitive' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:43:9: 'primitive'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:43:7: ( 'type' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:43:9: 'type'
             {
-            match("primitive"); 
+            match("type"); 
 
 
             }
@@ -788,11 +788,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:44:7: ( 'type' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:44:9: 'type'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:44:7: ( '(' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:44:9: '('
             {
-            match("type"); 
-
+            match('('); 
 
             }
 
@@ -809,10 +808,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:45:7: ( '(' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:45:9: '('
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:45:7: ( ')' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:45:9: ')'
             {
-            match('('); 
+            match(')'); 
 
             }
 
@@ -829,10 +828,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:46:7: ( ')' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:46:9: ')'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:46:7: ( 'as' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:46:9: 'as'
             {
-            match(')'); 
+            match("as"); 
+
 
             }
 
@@ -849,11 +849,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:47:7: ( 'as' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:47:9: 'as'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:47:7: ( ']' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:47:9: ']'
             {
-            match("as"); 
-
+            match(']'); 
 
             }
 
@@ -870,10 +869,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:48:7: ( ']' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:48:9: ']'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:48:7: ( ':' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:48:9: ':'
             {
-            match(']'); 
+            match(':'); 
 
             }
 
@@ -890,10 +889,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:49:7: ( ':' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:49:9: ':'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:49:7: ( 'contains' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:49:9: 'contains'
             {
-            match(':'); 
+            match("contains"); 
+
 
             }
 
@@ -910,10 +910,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:50:7: ( 'contains' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:50:9: 'contains'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:50:7: ( 'binds' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:50:9: 'binds'
             {
-            match("contains"); 
+            match("binds"); 
 
 
             }
@@ -931,11 +931,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:51:7: ( 'binds' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:51:9: 'binds'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:51:7: ( '.' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:51:9: '.'
             {
-            match("binds"); 
-
+            match('.'); 
 
             }
 
@@ -952,10 +951,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:52:7: ( '.' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:52:9: '.'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:52:7: ( 'to' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:52:9: 'to'
             {
-            match('.'); 
+            match("to"); 
+
 
             }
 
@@ -972,11 +972,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:53:7: ( 'to' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:53:9: 'to'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:53:7: ( '[' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:53:9: '['
             {
-            match("to"); 
-
+            match('['); 
 
             }
 
@@ -993,10 +992,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:54:7: ( '[' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:54:9: '['
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:54:7: ( 'conformsto' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:54:9: 'conformsto'
             {
-            match('['); 
+            match("conformsto"); 
+
 
             }
 
@@ -1013,11 +1013,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:55:7: ( 'conformsto' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:55:9: 'conformsto'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:55:7: ( '=' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:55:9: '='
             {
-            match("conformsto"); 
-
+            match('='); 
 
             }
 
@@ -1034,10 +1033,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:56:7: ( '=' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:56:9: '='
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:56:7: ( 'attribute' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:56:9: 'attribute'
             {
-            match('='); 
+            match("attribute"); 
+
 
             }
 
@@ -1054,10 +1054,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:57:7: ( 'attribute' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:57:9: 'attribute'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:57:7: ( 'source' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:57:9: 'source'
             {
-            match("attribute"); 
+            match("source"); 
 
 
             }
@@ -1075,10 +1075,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:58:7: ( 'source' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:58:9: 'source'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:58:7: ( 'data' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:58:9: 'data'
             {
-            match("source"); 
+            match("data"); 
 
 
             }
@@ -1096,10 +1096,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:59:7: ( 'data' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:59:9: 'data'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:59:7: ( '..' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:59:9: '..'
             {
-            match("data"); 
+            match(".."); 
 
 
             }
@@ -1117,11 +1117,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:60:7: ( '..' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:60:9: '..'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:60:7: ( '@' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:60:9: '@'
             {
-            match(".."); 
-
+            match('@'); 
 
             }
 
@@ -1138,10 +1137,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:61:7: ( '@' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:61:9: '@'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:61:7: ( 'abstract' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:61:9: 'abstract'
             {
-            match('@'); 
+            match("abstract"); 
+
 
             }
 
@@ -1158,10 +1158,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:62:7: ( 'abstract' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:62:9: 'abstract'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:62:7: ( 'provides' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:62:9: 'provides'
             {
-            match("abstract"); 
+            match("provides"); 
 
 
             }
@@ -1179,10 +1179,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:63:7: ( 'provides' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:63:9: 'provides'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:63:7: ( 'requires' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:63:9: 'requires'
             {
-            match("provides"); 
+            match("requires"); 
 
 
             }
@@ -1200,10 +1200,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:64:7: ( 'requires' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:64:9: 'requires'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:64:7: ( 'optional' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:64:9: 'optional'
             {
-            match("requires"); 
+            match("optional"); 
 
 
             }
@@ -1221,10 +1221,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:65:7: ( 'optional' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:65:9: 'optional'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:65:7: ( 'output' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:65:9: 'output'
             {
-            match("optional"); 
+            match("output"); 
 
 
             }
@@ -1242,10 +1242,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:66:7: ( 'output' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:66:9: 'output'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:66:7: ( 'input' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:66:9: 'input'
             {
-            match("output"); 
+            match("input"); 
 
 
             }
@@ -1263,10 +1263,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:67:7: ( 'input' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:67:9: 'input'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:67:7: ( 'this' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:67:9: 'this'
             {
-            match("input"); 
+            match("this"); 
 
 
             }
@@ -1284,10 +1284,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:68:7: ( 'this' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:68:9: 'this'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:68:7: ( 'int' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:68:9: 'int'
             {
-            match("this"); 
+            match("int"); 
 
 
             }
@@ -1325,12 +1325,12 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_HEXADECIMAL_TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11969:23: ( '0x' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )+ )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11969:25: '0x' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )+
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12068:23: ( '0x' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )+ )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12068:25: '0x' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )+
             {
             match("0x"); 
 
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11969:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )+
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12068:30: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -1384,11 +1384,11 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_CODE_C;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11971:13: ( RULE_DOUBLE_LEFT_CURLY_BRACKETS ( options {greedy=false; } : . )* RULE_DOUBLE_RIGHT_CURLY_BRACKETS )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11971:15: RULE_DOUBLE_LEFT_CURLY_BRACKETS ( options {greedy=false; } : . )* RULE_DOUBLE_RIGHT_CURLY_BRACKETS
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12070:13: ( RULE_DOUBLE_LEFT_CURLY_BRACKETS ( options {greedy=false; } : . )* RULE_DOUBLE_RIGHT_CURLY_BRACKETS )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12070:15: RULE_DOUBLE_LEFT_CURLY_BRACKETS ( options {greedy=false; } : . )* RULE_DOUBLE_RIGHT_CURLY_BRACKETS
             {
             mRULE_DOUBLE_LEFT_CURLY_BRACKETS(); 
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11971:47: ( options {greedy=false; } : . )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12070:47: ( options {greedy=false; } : . )*
             loop2:
             do {
                 int alt2=2;
@@ -1413,7 +1413,7 @@ public class InternalAdlLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11971:75: .
+            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12070:75: .
             	    {
             	    matchAny(); 
 
@@ -1442,8 +1442,8 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_DOUBLE_LEFT_CURLY_BRACKETS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11973:33: ( '{{' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11973:35: '{{'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12072:33: ( '{{' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12072:35: '{{'
             {
             match("{{"); 
 
@@ -1463,8 +1463,8 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_DOUBLE_RIGHT_CURLY_BRACKETS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11975:34: ( '}}' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11975:36: '}}'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12074:34: ( '}}' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12074:36: '}}'
             {
             match("}}"); 
 
@@ -1484,8 +1484,8 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_SL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11977:9: ( '/' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11977:11: '/'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12076:9: ( '/' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12076:11: '/'
             {
             match('/'); 
 
@@ -1504,10 +1504,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11979:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11979:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12078:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12078:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11979:11: ( '^' )?
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12078:11: ( '^' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -1516,7 +1516,7 @@ public class InternalAdlLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11979:11: '^'
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12078:11: '^'
                     {
                     match('^'); 
 
@@ -1534,7 +1534,7 @@ public class InternalAdlLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11979:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12078:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop4:
             do {
                 int alt4=2;
@@ -1583,10 +1583,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11981:10: ( ( '0' .. '9' )+ )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11981:12: ( '0' .. '9' )+
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12080:10: ( ( '0' .. '9' )+ )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12080:12: ( '0' .. '9' )+
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11981:12: ( '0' .. '9' )+
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12080:12: ( '0' .. '9' )+
             int cnt5=0;
             loop5:
             do {
@@ -1600,7 +1600,7 @@ public class InternalAdlLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11981:13: '0' .. '9'
+            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12080:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1632,10 +1632,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1653,10 +1653,10 @@ public class InternalAdlLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1672,7 +1672,7 @@ public class InternalAdlLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:21: '\\\\' .
+                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1680,7 +1680,7 @@ public class InternalAdlLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1705,10 +1705,10 @@ public class InternalAdlLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop7:
                     do {
                         int alt7=3;
@@ -1724,7 +1724,7 @@ public class InternalAdlLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:54: '\\\\' .
+                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1732,7 +1732,7 @@ public class InternalAdlLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11983:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12082:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1775,12 +1775,12 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11985:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11985:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12084:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12084:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11985:24: ( options {greedy=false; } : . )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12084:24: ( options {greedy=false; } : . )*
             loop9:
             do {
                 int alt9=2;
@@ -1805,7 +1805,7 @@ public class InternalAdlLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11985:52: .
+            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12084:52: .
             	    {
             	    matchAny(); 
 
@@ -1835,12 +1835,12 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -1853,7 +1853,7 @@ public class InternalAdlLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1873,7 +1873,7 @@ public class InternalAdlLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:40: ( ( '\\r' )? '\\n' )?
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:40: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1882,9 +1882,9 @@ public class InternalAdlLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:41: ( '\\r' )? '\\n'
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:41: ( '\\r' )?
+                    // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:41: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -1893,7 +1893,7 @@ public class InternalAdlLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11987:41: '\\r'
+                            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12086:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1925,10 +1925,10 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11989:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11989:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12088:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12088:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11989:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12088:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt13=0;
             loop13:
             do {
@@ -1982,8 +1982,8 @@ public class InternalAdlLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11991:16: ( . )
-            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:11991:18: .
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12090:16: ( . )
+            // ../org.ow2.mindEd.adl.ui/src-gen/org/ow2/mindEd/ui/contentassist/antlr/internal/InternalAdl.g:12090:18: .
             {
             matchAny(); 
 
@@ -2573,21 +2573,21 @@ public class InternalAdlLexer extends Lexer {
         "\1\145\1\172\1\164\1\145\1\172\1\145\3\172\3\uffff\1\172\2\uffff"+
         "\2\172\1\uffff\1\157\1\172\1\uffff\1\172\6\uffff\1\172\3\uffff";
     static final String DFA14_acceptS =
-        "\5\uffff\1\20\1\21\5\uffff\1\30\4\uffff\1\35\1\36\1\37\2\uffff"+
-        "\1\43\1\44\1\uffff\1\46\1\47\1\uffff\1\54\1\56\1\uffff\1\63\2\uffff"+
+        "\5\uffff\1\17\1\20\5\uffff\1\27\4\uffff\1\34\1\35\1\36\2\uffff"+
+        "\1\42\1\43\1\uffff\1\45\1\46\1\uffff\1\53\1\55\1\uffff\1\62\2\uffff"+
         "\1\73\3\uffff\1\101\1\102\2\uffff\1\106\1\107\2\uffff\1\101\6\uffff"+
-        "\1\20\1\21\5\uffff\1\30\1\31\1\62\1\52\2\uffff\1\33\1\77\1\34\1"+
-        "\35\1\36\1\37\4\uffff\1\43\1\44\3\uffff\1\46\1\47\1\uffff\1\54\1"+
-        "\56\1\uffff\1\63\3\uffff\1\73\1\74\1\102\1\104\1\105\1\100\1\103"+
-        "\1\106\20\uffff\1\76\1\75\3\uffff\1\53\1\uffff\1\45\23\uffff\1\4"+
-        "\30\uffff\1\2\16\uffff\1\22\11\uffff\1\42\1\72\3\uffff\1\61\7\uffff"+
-        "\1\3\12\uffff\1\71\14\uffff\1\51\3\uffff\1\1\1\5\1\60\6\uffff\1"+
-        "\6\4\uffff\1\27\3\uffff\1\26\11\uffff\1\70\1\40\1\7\4\uffff\1\10"+
-        "\1\12\1\14\3\uffff\1\25\11\uffff\1\11\1\13\1\15\1\uffff\1\16\1\23"+
-        "\2\uffff\1\50\2\uffff\1\65\1\uffff\1\64\1\66\1\67\1\17\1\24\1\32"+
-        "\1\uffff\1\41\1\57\1\55";
+        "\1\17\1\20\5\uffff\1\27\1\30\1\61\1\51\2\uffff\1\32\1\77\1\33\1"+
+        "\34\1\35\1\36\4\uffff\1\42\1\43\3\uffff\1\45\1\46\1\uffff\1\53\1"+
+        "\55\1\uffff\1\62\3\uffff\1\73\1\74\1\102\1\104\1\105\1\100\1\103"+
+        "\1\106\20\uffff\1\76\1\75\3\uffff\1\52\1\uffff\1\44\23\uffff\1\72"+
+        "\30\uffff\1\2\16\uffff\1\21\11\uffff\1\41\1\71\3\uffff\1\60\7\uffff"+
+        "\1\3\12\uffff\1\70\14\uffff\1\50\3\uffff\1\1\1\4\1\57\6\uffff\1"+
+        "\5\4\uffff\1\26\3\uffff\1\25\11\uffff\1\67\1\37\1\6\4\uffff\1\7"+
+        "\1\11\1\13\3\uffff\1\24\11\uffff\1\10\1\12\1\14\1\uffff\1\15\1\22"+
+        "\2\uffff\1\47\2\uffff\1\64\1\uffff\1\63\1\65\1\66\1\16\1\23\1\31"+
+        "\1\uffff\1\40\1\56\1\54";
     static final String DFA14_specialS =
-        "\1\1\47\uffff\1\2\1\3\27\uffff\1\0\u00f1\uffff}>";
+        "\1\2\47\uffff\1\1\1\3\27\uffff\1\0\u00f1\uffff}>";
     static final String[] DFA14_transitionS = {
             "\11\53\2\52\2\53\1\52\22\53\1\52\1\53\1\50\4\53\1\51\1\26\1"+
             "\27\1\53\1\5\1\23\1\6\1\15\1\44\1\43\11\47\1\32\1\14\1\21\1"+
@@ -2952,6 +2952,16 @@ public class InternalAdlLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
+                        int LA14_40 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA14_40>='\u0000' && LA14_40<='\uFFFF')) ) {s = 97;}
+
+                        else s = 43;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA14_0 = input.LA(1);
 
                         s = -1;
@@ -3040,16 +3050,6 @@ public class InternalAdlLexer extends Lexer {
                         else if ( ((LA14_0>='\t' && LA14_0<='\n')||LA14_0=='\r'||LA14_0==' ') ) {s = 42;}
 
                         else if ( ((LA14_0>='\u0000' && LA14_0<='\b')||(LA14_0>='\u000B' && LA14_0<='\f')||(LA14_0>='\u000E' && LA14_0<='\u001F')||LA14_0=='!'||(LA14_0>='#' && LA14_0<='&')||LA14_0=='*'||LA14_0=='\\'||LA14_0=='`'||LA14_0=='|'||(LA14_0>='~' && LA14_0<='\uFFFF')) ) {s = 43;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA14_40 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA14_40>='\u0000' && LA14_40<='\uFFFF')) ) {s = 97;}
-
-                        else s = 43;
 
                         if ( s>=0 ) return s;
                         break;

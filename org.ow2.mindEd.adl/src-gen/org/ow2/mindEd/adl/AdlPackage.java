@@ -110,7 +110,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getTypeReference()
    * @generated
    */
-  int TYPE_REFERENCE = 15;
+  int TYPE_REFERENCE = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -498,7 +498,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getElement()
    * @generated
    */
-  int ELEMENT = 17;
+  int ELEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -793,7 +793,7 @@ public interface AdlPackage extends EPackage
   int OUTPUT_FLOW_INTERFACE_DEFINITION__COLLECTIONSIZE = HOSTED_INTERFACE_DEFINITION__COLLECTIONSIZE;
 
   /**
-   * The feature id for the '<em><b>Signature</b></em>' attribute.
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -875,7 +875,7 @@ public interface AdlPackage extends EPackage
   int INPUT_FLOW_INTERFACE_DEFINITION__OPTIONAL = HOSTED_INTERFACE_DEFINITION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Signature</b></em>' attribute.
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -893,6 +893,71 @@ public interface AdlPackage extends EPackage
   int INPUT_FLOW_INTERFACE_DEFINITION_FEATURE_COUNT = HOSTED_INTERFACE_DEFINITION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.ow2.mindEd.adl.impl.FlowTypeImpl <em>Flow Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.ow2.mindEd.adl.impl.FlowTypeImpl
+   * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getFlowType()
+   * @generated
+   */
+  int FLOW_TYPE = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOW_TYPE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Flow Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOW_TYPE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.ow2.mindEd.adl.impl.IDTTypeImpl <em>IDT Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.ow2.mindEd.adl.impl.IDTTypeImpl
+   * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getIDTType()
+   * @generated
+   */
+  int IDT_TYPE = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDT_TYPE__NAME = FLOW_TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Path</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDT_TYPE__PATH = FLOW_TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>IDT Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDT_TYPE_FEATURE_COUNT = FLOW_TYPE_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.ow2.mindEd.adl.impl.CompositeElementImpl <em>Composite Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -900,7 +965,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getCompositeElement()
    * @generated
    */
-  int COMPOSITE_ELEMENT = 18;
+  int COMPOSITE_ELEMENT = 20;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -928,7 +993,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getSubComponentDefinition()
    * @generated
    */
-  int SUB_COMPONENT_DEFINITION = 16;
+  int SUB_COMPONENT_DEFINITION = 18;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -1010,7 +1075,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getPrimitiveElement()
    * @generated
    */
-  int PRIMITIVE_ELEMENT = 19;
+  int PRIMITIVE_ELEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -1038,7 +1103,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getBindingDefinition()
    * @generated
    */
-  int BINDING_DEFINITION = 20;
+  int BINDING_DEFINITION = 22;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -1138,7 +1203,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getFormalArgument()
    * @generated
    */
-  int FORMAL_ARGUMENT = 21;
+  int FORMAL_ARGUMENT = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1166,7 +1231,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getFormalArgumentsList()
    * @generated
    */
-  int FORMAL_ARGUMENTS_LIST = 22;
+  int FORMAL_ARGUMENTS_LIST = 24;
 
   /**
    * The feature id for the '<em><b>Formal Arguments</b></em>' containment reference list.
@@ -1194,7 +1259,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getTemplateSpecifier()
    * @generated
    */
-  int TEMPLATE_SPECIFIER = 23;
+  int TEMPLATE_SPECIFIER = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1224,6 +1289,34 @@ public interface AdlPackage extends EPackage
   int TEMPLATE_SPECIFIER_FEATURE_COUNT = TYPE_REFERENCE_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.ow2.mindEd.adl.impl.AttributeTypeImpl <em>Attribute Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.ow2.mindEd.adl.impl.AttributeTypeImpl
+   * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAttributeType()
+   * @generated
+   */
+  int ATTRIBUTE_TYPE = 26;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_TYPE__NAME = FLOW_TYPE__NAME;
+
+  /**
+   * The number of structural features of the '<em>Attribute Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_TYPE_FEATURE_COUNT = FLOW_TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.ow2.mindEd.adl.impl.ValueListImpl <em>Value List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1231,7 +1324,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getValueList()
    * @generated
    */
-  int VALUE_LIST = 24;
+  int VALUE_LIST = 27;
 
   /**
    * The feature id for the '<em><b>Member</b></em>' attribute list.
@@ -1259,7 +1352,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getTemplateReference()
    * @generated
    */
-  int TEMPLATE_REFERENCE = 25;
+  int TEMPLATE_REFERENCE = 28;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -1323,7 +1416,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getArgumentDefinition()
    * @generated
    */
-  int ARGUMENT_DEFINITION = 26;
+  int ARGUMENT_DEFINITION = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1369,7 +1462,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAttributeDefinition()
    * @generated
    */
-  int ATTRIBUTE_DEFINITION = 27;
+  int ATTRIBUTE_DEFINITION = 30;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -1381,7 +1474,7 @@ public interface AdlPackage extends EPackage
   int ATTRIBUTE_DEFINITION__ANNOTATIONS_LIST = PRIMITIVE_ELEMENT__ANNOTATIONS_LIST;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1424,7 +1517,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getImplementationDefinition()
    * @generated
    */
-  int IMPLEMENTATION_DEFINITION = 28;
+  int IMPLEMENTATION_DEFINITION = 31;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -1436,7 +1529,7 @@ public interface AdlPackage extends EPackage
   int IMPLEMENTATION_DEFINITION__ANNOTATIONS_LIST = PRIMITIVE_ELEMENT__ANNOTATIONS_LIST;
 
   /**
-   * The feature id for the '<em><b>CFile</b></em>' attribute.
+   * The feature id for the '<em><b>CFile</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1470,7 +1563,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getDataDefinition()
    * @generated
    */
-  int DATA_DEFINITION = 29;
+  int DATA_DEFINITION = 32;
 
   /**
    * The feature id for the '<em><b>Annotations List</b></em>' containment reference.
@@ -1482,7 +1575,7 @@ public interface AdlPackage extends EPackage
   int DATA_DEFINITION__ANNOTATIONS_LIST = PRIMITIVE_ELEMENT__ANNOTATIONS_LIST;
 
   /**
-   * The feature id for the '<em><b>CFile</b></em>' attribute.
+   * The feature id for the '<em><b>CFile</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1516,7 +1609,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getInlineCodeC()
    * @generated
    */
-  int INLINE_CODE_C = 30;
+  int INLINE_CODE_C = 33;
 
   /**
    * The feature id for the '<em><b>Code C</b></em>' attribute.
@@ -1537,6 +1630,34 @@ public interface AdlPackage extends EPackage
   int INLINE_CODE_C_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.ow2.mindEd.adl.impl.FilePathImpl <em>File Path</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.ow2.mindEd.adl.impl.FilePathImpl
+   * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getFilePath()
+   * @generated
+   */
+  int FILE_PATH = 34;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_PATH__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>File Path</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILE_PATH_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.ow2.mindEd.adl.impl.AnnotationsListImpl <em>Annotations List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1544,7 +1665,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAnnotationsList()
    * @generated
    */
-  int ANNOTATIONS_LIST = 31;
+  int ANNOTATIONS_LIST = 35;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1572,7 +1693,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getElementValue()
    * @generated
    */
-  int ELEMENT_VALUE = 34;
+  int ELEMENT_VALUE = 38;
 
   /**
    * The number of structural features of the '<em>Element Value</em>' class.
@@ -1591,7 +1712,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAnnotation()
    * @generated
    */
-  int ANNOTATION = 32;
+  int ANNOTATION = 36;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1628,7 +1749,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAnnotationElement()
    * @generated
    */
-  int ANNOTATION_ELEMENT = 33;
+  int ANNOTATION_ELEMENT = 37;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1665,7 +1786,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getElementValueArrayInitializer()
    * @generated
    */
-  int ELEMENT_VALUE_ARRAY_INITIALIZER = 35;
+  int ELEMENT_VALUE_ARRAY_INITIALIZER = 39;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -1693,7 +1814,7 @@ public interface AdlPackage extends EPackage
    * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getConstantValue()
    * @generated
    */
-  int CONSTANT_VALUE = 36;
+  int CONSTANT_VALUE = 40;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2152,15 +2273,15 @@ public interface AdlPackage extends EPackage
   EClass getOutputFlowInterfaceDefinition();
 
   /**
-   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.OutputFlowInterfaceDefinition#getSignature <em>Signature</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.OutputFlowInterfaceDefinition#getSignature <em>Signature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Signature</em>'.
+   * @return the meta object for the containment reference '<em>Signature</em>'.
    * @see org.ow2.mindEd.adl.OutputFlowInterfaceDefinition#getSignature()
    * @see #getOutputFlowInterfaceDefinition()
    * @generated
    */
-  EAttribute getOutputFlowInterfaceDefinition_Signature();
+  EReference getOutputFlowInterfaceDefinition_Signature();
 
   /**
    * Returns the meta object for class '{@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition <em>Input Flow Interface Definition</em>}'.
@@ -2184,15 +2305,57 @@ public interface AdlPackage extends EPackage
   EAttribute getInputFlowInterfaceDefinition_Optional();
 
   /**
-   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition#getSignature <em>Signature</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.InputFlowInterfaceDefinition#getSignature <em>Signature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Signature</em>'.
+   * @return the meta object for the containment reference '<em>Signature</em>'.
    * @see org.ow2.mindEd.adl.InputFlowInterfaceDefinition#getSignature()
    * @see #getInputFlowInterfaceDefinition()
    * @generated
    */
-  EAttribute getInputFlowInterfaceDefinition_Signature();
+  EReference getInputFlowInterfaceDefinition_Signature();
+
+  /**
+   * Returns the meta object for class '{@link org.ow2.mindEd.adl.FlowType <em>Flow Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Flow Type</em>'.
+   * @see org.ow2.mindEd.adl.FlowType
+   * @generated
+   */
+  EClass getFlowType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.FlowType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.ow2.mindEd.adl.FlowType#getName()
+   * @see #getFlowType()
+   * @generated
+   */
+  EAttribute getFlowType_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.ow2.mindEd.adl.IDTType <em>IDT Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>IDT Type</em>'.
+   * @see org.ow2.mindEd.adl.IDTType
+   * @generated
+   */
+  EClass getIDTType();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.IDTType#getPath <em>Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Path</em>'.
+   * @see org.ow2.mindEd.adl.IDTType#getPath()
+   * @see #getIDTType()
+   * @generated
+   */
+  EReference getIDTType_Path();
 
   /**
    * Returns the meta object for class '{@link org.ow2.mindEd.adl.TypeReference <em>Type Reference</em>}'.
@@ -2494,6 +2657,16 @@ public interface AdlPackage extends EPackage
   EReference getTemplateSpecifier_TypeReference();
 
   /**
+   * Returns the meta object for class '{@link org.ow2.mindEd.adl.AttributeType <em>Attribute Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Attribute Type</em>'.
+   * @see org.ow2.mindEd.adl.AttributeType
+   * @generated
+   */
+  EClass getAttributeType();
+
+  /**
    * Returns the meta object for class '{@link org.ow2.mindEd.adl.ValueList <em>Value List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2633,15 +2806,15 @@ public interface AdlPackage extends EPackage
   EClass getAttributeDefinition();
 
   /**
-   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.AttributeDefinition#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.AttributeDefinition#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see org.ow2.mindEd.adl.AttributeDefinition#getType()
    * @see #getAttributeDefinition()
    * @generated
    */
-  EAttribute getAttributeDefinition_Type();
+  EReference getAttributeDefinition_Type();
 
   /**
    * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.AttributeDefinition#getName <em>Name</em>}'.
@@ -2676,15 +2849,15 @@ public interface AdlPackage extends EPackage
   EClass getImplementationDefinition();
 
   /**
-   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.ImplementationDefinition#getCFile <em>CFile</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.ImplementationDefinition#getCFile <em>CFile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>CFile</em>'.
+   * @return the meta object for the containment reference '<em>CFile</em>'.
    * @see org.ow2.mindEd.adl.ImplementationDefinition#getCFile()
    * @see #getImplementationDefinition()
    * @generated
    */
-  EAttribute getImplementationDefinition_CFile();
+  EReference getImplementationDefinition_CFile();
 
   /**
    * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.ImplementationDefinition#getInlineCcode <em>Inline Ccode</em>}'.
@@ -2708,15 +2881,15 @@ public interface AdlPackage extends EPackage
   EClass getDataDefinition();
 
   /**
-   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.DataDefinition#getCFile <em>CFile</em>}'.
+   * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.DataDefinition#getCFile <em>CFile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>CFile</em>'.
+   * @return the meta object for the containment reference '<em>CFile</em>'.
    * @see org.ow2.mindEd.adl.DataDefinition#getCFile()
    * @see #getDataDefinition()
    * @generated
    */
-  EAttribute getDataDefinition_CFile();
+  EReference getDataDefinition_CFile();
 
   /**
    * Returns the meta object for the containment reference '{@link org.ow2.mindEd.adl.DataDefinition#getInlineCcode <em>Inline Ccode</em>}'.
@@ -2749,6 +2922,27 @@ public interface AdlPackage extends EPackage
    * @generated
    */
   EAttribute getInlineCodeC_CodeC();
+
+  /**
+   * Returns the meta object for class '{@link org.ow2.mindEd.adl.FilePath <em>File Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>File Path</em>'.
+   * @see org.ow2.mindEd.adl.FilePath
+   * @generated
+   */
+  EClass getFilePath();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.ow2.mindEd.adl.FilePath#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.ow2.mindEd.adl.FilePath#getName()
+   * @see #getFilePath()
+   * @generated
+   */
+  EAttribute getFilePath_Name();
 
   /**
    * Returns the meta object for class '{@link org.ow2.mindEd.adl.AnnotationsList <em>Annotations List</em>}'.
@@ -3267,12 +3461,12 @@ public interface AdlPackage extends EPackage
     EClass OUTPUT_FLOW_INTERFACE_DEFINITION = eINSTANCE.getOutputFlowInterfaceDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Signature</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE = eINSTANCE.getOutputFlowInterfaceDefinition_Signature();
+    EReference OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE = eINSTANCE.getOutputFlowInterfaceDefinition_Signature();
 
     /**
      * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.InputFlowInterfaceDefinitionImpl <em>Input Flow Interface Definition</em>}' class.
@@ -3293,12 +3487,48 @@ public interface AdlPackage extends EPackage
     EAttribute INPUT_FLOW_INTERFACE_DEFINITION__OPTIONAL = eINSTANCE.getInputFlowInterfaceDefinition_Optional();
 
     /**
-     * The meta object literal for the '<em><b>Signature</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE = eINSTANCE.getInputFlowInterfaceDefinition_Signature();
+    EReference INPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE = eINSTANCE.getInputFlowInterfaceDefinition_Signature();
+
+    /**
+     * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.FlowTypeImpl <em>Flow Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.ow2.mindEd.adl.impl.FlowTypeImpl
+     * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getFlowType()
+     * @generated
+     */
+    EClass FLOW_TYPE = eINSTANCE.getFlowType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FLOW_TYPE__NAME = eINSTANCE.getFlowType_Name();
+
+    /**
+     * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.IDTTypeImpl <em>IDT Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.ow2.mindEd.adl.impl.IDTTypeImpl
+     * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getIDTType()
+     * @generated
+     */
+    EClass IDT_TYPE = eINSTANCE.getIDTType();
+
+    /**
+     * The meta object literal for the '<em><b>Path</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IDT_TYPE__PATH = eINSTANCE.getIDTType_Path();
 
     /**
      * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
@@ -3543,6 +3773,16 @@ public interface AdlPackage extends EPackage
     EReference TEMPLATE_SPECIFIER__TYPE_REFERENCE = eINSTANCE.getTemplateSpecifier_TypeReference();
 
     /**
+     * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.AttributeTypeImpl <em>Attribute Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.ow2.mindEd.adl.impl.AttributeTypeImpl
+     * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getAttributeType()
+     * @generated
+     */
+    EClass ATTRIBUTE_TYPE = eINSTANCE.getAttributeType();
+
+    /**
      * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.ValueListImpl <em>Value List</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3655,12 +3895,12 @@ public interface AdlPackage extends EPackage
     EClass ATTRIBUTE_DEFINITION = eINSTANCE.getAttributeDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTRIBUTE_DEFINITION__TYPE = eINSTANCE.getAttributeDefinition_Type();
+    EReference ATTRIBUTE_DEFINITION__TYPE = eINSTANCE.getAttributeDefinition_Type();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -3689,12 +3929,12 @@ public interface AdlPackage extends EPackage
     EClass IMPLEMENTATION_DEFINITION = eINSTANCE.getImplementationDefinition();
 
     /**
-     * The meta object literal for the '<em><b>CFile</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>CFile</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IMPLEMENTATION_DEFINITION__CFILE = eINSTANCE.getImplementationDefinition_CFile();
+    EReference IMPLEMENTATION_DEFINITION__CFILE = eINSTANCE.getImplementationDefinition_CFile();
 
     /**
      * The meta object literal for the '<em><b>Inline Ccode</b></em>' containment reference feature.
@@ -3715,12 +3955,12 @@ public interface AdlPackage extends EPackage
     EClass DATA_DEFINITION = eINSTANCE.getDataDefinition();
 
     /**
-     * The meta object literal for the '<em><b>CFile</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>CFile</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DATA_DEFINITION__CFILE = eINSTANCE.getDataDefinition_CFile();
+    EReference DATA_DEFINITION__CFILE = eINSTANCE.getDataDefinition_CFile();
 
     /**
      * The meta object literal for the '<em><b>Inline Ccode</b></em>' containment reference feature.
@@ -3747,6 +3987,24 @@ public interface AdlPackage extends EPackage
      * @generated
      */
     EAttribute INLINE_CODE_C__CODE_C = eINSTANCE.getInlineCodeC_CodeC();
+
+    /**
+     * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.FilePathImpl <em>File Path</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.ow2.mindEd.adl.impl.FilePathImpl
+     * @see org.ow2.mindEd.adl.impl.AdlPackageImpl#getFilePath()
+     * @generated
+     */
+    EClass FILE_PATH = eINSTANCE.getFilePath();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FILE_PATH__NAME = eINSTANCE.getFilePath_Name();
 
     /**
      * The meta object literal for the '{@link org.ow2.mindEd.adl.impl.AnnotationsListImpl <em>Annotations List</em>}' class.

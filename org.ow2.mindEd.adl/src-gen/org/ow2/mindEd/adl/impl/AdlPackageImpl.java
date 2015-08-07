@@ -18,6 +18,7 @@ import org.ow2.mindEd.adl.AnnotationsList;
 import org.ow2.mindEd.adl.ArchitectureDefinition;
 import org.ow2.mindEd.adl.ArgumentDefinition;
 import org.ow2.mindEd.adl.AttributeDefinition;
+import org.ow2.mindEd.adl.AttributeType;
 import org.ow2.mindEd.adl.BindingDefinition;
 import org.ow2.mindEd.adl.CompositeDefinition;
 import org.ow2.mindEd.adl.CompositeElement;
@@ -28,9 +29,12 @@ import org.ow2.mindEd.adl.DataDefinition;
 import org.ow2.mindEd.adl.Element;
 import org.ow2.mindEd.adl.ElementValue;
 import org.ow2.mindEd.adl.ElementValueArrayInitializer;
+import org.ow2.mindEd.adl.FilePath;
+import org.ow2.mindEd.adl.FlowType;
 import org.ow2.mindEd.adl.FormalArgument;
 import org.ow2.mindEd.adl.FormalArgumentsList;
 import org.ow2.mindEd.adl.HostedInterfaceDefinition;
+import org.ow2.mindEd.adl.IDTType;
 import org.ow2.mindEd.adl.ImplementationDefinition;
 import org.ow2.mindEd.adl.ImportDefinition;
 import org.ow2.mindEd.adl.InlineCodeC;
@@ -169,6 +173,20 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass flowTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass idtTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass typeReferenceEClass = null;
 
   /**
@@ -232,6 +250,13 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass attributeTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass valueListEClass = null;
 
   /**
@@ -275,6 +300,13 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * @generated
    */
   private EClass inlineCodeCEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass filePathEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -799,9 +831,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOutputFlowInterfaceDefinition_Signature()
+  public EReference getOutputFlowInterfaceDefinition_Signature()
   {
-    return (EAttribute)outputFlowInterfaceDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)outputFlowInterfaceDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -829,9 +861,49 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getInputFlowInterfaceDefinition_Signature()
+  public EReference getInputFlowInterfaceDefinition_Signature()
   {
-    return (EAttribute)inputFlowInterfaceDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)inputFlowInterfaceDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFlowType()
+  {
+    return flowTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFlowType_Name()
+  {
+    return (EAttribute)flowTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIDTType()
+  {
+    return idtTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIDTType_Path()
+  {
+    return (EReference)idtTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1119,6 +1191,16 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAttributeType()
+  {
+    return attributeTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getValueList()
   {
     return valueListEClass;
@@ -1249,9 +1331,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttributeDefinition_Type()
+  public EReference getAttributeDefinition_Type()
   {
-    return (EAttribute)attributeDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)attributeDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1289,9 +1371,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImplementationDefinition_CFile()
+  public EReference getImplementationDefinition_CFile()
   {
-    return (EAttribute)implementationDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)implementationDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1319,9 +1401,9 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDataDefinition_CFile()
+  public EReference getDataDefinition_CFile()
   {
-    return (EAttribute)dataDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)dataDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1352,6 +1434,26 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
   public EAttribute getInlineCodeC_CodeC()
   {
     return (EAttribute)inlineCodeCEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFilePath()
+  {
+    return filePathEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFilePath_Name()
+  {
+    return (EAttribute)filePathEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1568,11 +1670,17 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     createEReference(requiredInterfaceDefinitionEClass, REQUIRED_INTERFACE_DEFINITION__SIGNATURE);
 
     outputFlowInterfaceDefinitionEClass = createEClass(OUTPUT_FLOW_INTERFACE_DEFINITION);
-    createEAttribute(outputFlowInterfaceDefinitionEClass, OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE);
+    createEReference(outputFlowInterfaceDefinitionEClass, OUTPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE);
 
     inputFlowInterfaceDefinitionEClass = createEClass(INPUT_FLOW_INTERFACE_DEFINITION);
     createEAttribute(inputFlowInterfaceDefinitionEClass, INPUT_FLOW_INTERFACE_DEFINITION__OPTIONAL);
-    createEAttribute(inputFlowInterfaceDefinitionEClass, INPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE);
+    createEReference(inputFlowInterfaceDefinitionEClass, INPUT_FLOW_INTERFACE_DEFINITION__SIGNATURE);
+
+    flowTypeEClass = createEClass(FLOW_TYPE);
+    createEAttribute(flowTypeEClass, FLOW_TYPE__NAME);
+
+    idtTypeEClass = createEClass(IDT_TYPE);
+    createEReference(idtTypeEClass, IDT_TYPE__PATH);
 
     typeReferenceEClass = createEClass(TYPE_REFERENCE);
     createEAttribute(typeReferenceEClass, TYPE_REFERENCE__NAME);
@@ -1611,6 +1719,8 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     templateSpecifierEClass = createEClass(TEMPLATE_SPECIFIER);
     createEReference(templateSpecifierEClass, TEMPLATE_SPECIFIER__TYPE_REFERENCE);
 
+    attributeTypeEClass = createEClass(ATTRIBUTE_TYPE);
+
     valueListEClass = createEClass(VALUE_LIST);
     createEAttribute(valueListEClass, VALUE_LIST__MEMBER);
 
@@ -1627,20 +1737,23 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     createEReference(argumentDefinitionEClass, ARGUMENT_DEFINITION__ARGUMENT_LIST);
 
     attributeDefinitionEClass = createEClass(ATTRIBUTE_DEFINITION);
-    createEAttribute(attributeDefinitionEClass, ATTRIBUTE_DEFINITION__TYPE);
+    createEReference(attributeDefinitionEClass, ATTRIBUTE_DEFINITION__TYPE);
     createEAttribute(attributeDefinitionEClass, ATTRIBUTE_DEFINITION__NAME);
     createEAttribute(attributeDefinitionEClass, ATTRIBUTE_DEFINITION__VALUE);
 
     implementationDefinitionEClass = createEClass(IMPLEMENTATION_DEFINITION);
-    createEAttribute(implementationDefinitionEClass, IMPLEMENTATION_DEFINITION__CFILE);
+    createEReference(implementationDefinitionEClass, IMPLEMENTATION_DEFINITION__CFILE);
     createEReference(implementationDefinitionEClass, IMPLEMENTATION_DEFINITION__INLINE_CCODE);
 
     dataDefinitionEClass = createEClass(DATA_DEFINITION);
-    createEAttribute(dataDefinitionEClass, DATA_DEFINITION__CFILE);
+    createEReference(dataDefinitionEClass, DATA_DEFINITION__CFILE);
     createEReference(dataDefinitionEClass, DATA_DEFINITION__INLINE_CCODE);
 
     inlineCodeCEClass = createEClass(INLINE_CODE_C);
     createEAttribute(inlineCodeCEClass, INLINE_CODE_C__CODE_C);
+
+    filePathEClass = createEClass(FILE_PATH);
+    createEAttribute(filePathEClass, FILE_PATH__NAME);
 
     annotationsListEClass = createEClass(ANNOTATIONS_LIST);
     createEReference(annotationsListEClass, ANNOTATIONS_LIST__ANNOTATIONS);
@@ -1709,11 +1822,13 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     requiredInterfaceDefinitionEClass.getESuperTypes().add(this.getHostedInterfaceDefinition());
     outputFlowInterfaceDefinitionEClass.getESuperTypes().add(this.getHostedInterfaceDefinition());
     inputFlowInterfaceDefinitionEClass.getESuperTypes().add(this.getHostedInterfaceDefinition());
+    idtTypeEClass.getESuperTypes().add(this.getFlowType());
     subComponentDefinitionEClass.getESuperTypes().add(this.getCompositeElement());
     compositeElementEClass.getESuperTypes().add(this.getElement());
     primitiveElementEClass.getESuperTypes().add(this.getElement());
     bindingDefinitionEClass.getESuperTypes().add(this.getCompositeElement());
     templateSpecifierEClass.getESuperTypes().add(this.getTypeReference());
+    attributeTypeEClass.getESuperTypes().add(this.getFlowType());
     attributeDefinitionEClass.getESuperTypes().add(this.getPrimitiveElement());
     implementationDefinitionEClass.getESuperTypes().add(this.getPrimitiveElement());
     dataDefinitionEClass.getESuperTypes().add(this.getPrimitiveElement());
@@ -1776,11 +1891,17 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     initEReference(getRequiredInterfaceDefinition_Signature(), theItfPackage.getInterfaceDefinition(), null, "signature", null, 0, 1, RequiredInterfaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(outputFlowInterfaceDefinitionEClass, OutputFlowInterfaceDefinition.class, "OutputFlowInterfaceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOutputFlowInterfaceDefinition_Signature(), ecorePackage.getEString(), "signature", null, 0, 1, OutputFlowInterfaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOutputFlowInterfaceDefinition_Signature(), this.getFlowType(), null, "signature", null, 0, 1, OutputFlowInterfaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inputFlowInterfaceDefinitionEClass, InputFlowInterfaceDefinition.class, "InputFlowInterfaceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInputFlowInterfaceDefinition_Optional(), ecorePackage.getEBoolean(), "optional", null, 0, 1, InputFlowInterfaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getInputFlowInterfaceDefinition_Signature(), ecorePackage.getEString(), "signature", null, 0, 1, InputFlowInterfaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInputFlowInterfaceDefinition_Signature(), this.getFlowType(), null, "signature", null, 0, 1, InputFlowInterfaceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(flowTypeEClass, FlowType.class, "FlowType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFlowType_Name(), ecorePackage.getEString(), "name", null, 0, 1, FlowType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(idtTypeEClass, IDTType.class, "IDTType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIDTType_Path(), this.getFilePath(), null, "path", null, 0, 1, IDTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTypeReference_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1819,6 +1940,8 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     initEClass(templateSpecifierEClass, TemplateSpecifier.class, "TemplateSpecifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTemplateSpecifier_TypeReference(), this.getTypeDefinition(), null, "typeReference", null, 0, 1, TemplateSpecifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(attributeTypeEClass, AttributeType.class, "AttributeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(valueListEClass, ValueList.class, "ValueList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getValueList_Member(), ecorePackage.getEString(), "member", null, 0, -1, ValueList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1835,20 +1958,23 @@ public class AdlPackageImpl extends EPackageImpl implements AdlPackage
     initEReference(getArgumentDefinition_ArgumentList(), this.getValueList(), null, "argumentList", null, 0, 1, ArgumentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeDefinitionEClass, AttributeDefinition.class, "AttributeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAttributeDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttributeDefinition_Type(), this.getFlowType(), null, "type", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttributeDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttributeDefinition_Value(), ecorePackage.getEString(), "value", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(implementationDefinitionEClass, ImplementationDefinition.class, "ImplementationDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImplementationDefinition_CFile(), ecorePackage.getEString(), "cFile", null, 0, 1, ImplementationDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImplementationDefinition_CFile(), this.getFilePath(), null, "cFile", null, 0, 1, ImplementationDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getImplementationDefinition_InlineCcode(), this.getInlineCodeC(), null, "inlineCcode", null, 0, 1, ImplementationDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dataDefinitionEClass, DataDefinition.class, "DataDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDataDefinition_CFile(), ecorePackage.getEString(), "cFile", null, 0, 1, DataDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataDefinition_CFile(), this.getFilePath(), null, "cFile", null, 0, 1, DataDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataDefinition_InlineCcode(), this.getInlineCodeC(), null, "inlineCcode", null, 0, 1, DataDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inlineCodeCEClass, InlineCodeC.class, "InlineCodeC", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInlineCodeC_CodeC(), ecorePackage.getEString(), "codeC", null, 0, 1, InlineCodeC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(filePathEClass, FilePath.class, "FilePath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFilePath_Name(), ecorePackage.getEString(), "name", null, 0, 1, FilePath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(annotationsListEClass, AnnotationsList.class, "AnnotationsList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAnnotationsList_Annotations(), this.getAnnotation(), null, "annotations", null, 0, -1, AnnotationsList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

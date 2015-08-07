@@ -150,6 +150,16 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
         return createInputFlowInterfaceDefinitionAdapter();
       }
       @Override
+      public Adapter caseFlowType(FlowType object)
+      {
+        return createFlowTypeAdapter();
+      }
+      @Override
+      public Adapter caseIDTType(IDTType object)
+      {
+        return createIDTTypeAdapter();
+      }
+      @Override
       public Adapter caseTypeReference(TypeReference object)
       {
         return createTypeReferenceAdapter();
@@ -195,6 +205,11 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
         return createTemplateSpecifierAdapter();
       }
       @Override
+      public Adapter caseAttributeType(AttributeType object)
+      {
+        return createAttributeTypeAdapter();
+      }
+      @Override
       public Adapter caseValueList(ValueList object)
       {
         return createValueListAdapter();
@@ -228,6 +243,11 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseInlineCodeC(InlineCodeC object)
       {
         return createInlineCodeCAdapter();
+      }
+      @Override
+      public Adapter caseFilePath(FilePath object)
+      {
+        return createFilePathAdapter();
       }
       @Override
       public Adapter caseAnnotationsList(AnnotationsList object)
@@ -507,6 +527,36 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.FlowType <em>Flow Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.ow2.mindEd.adl.FlowType
+   * @generated
+   */
+  public Adapter createFlowTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.IDTType <em>IDT Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.ow2.mindEd.adl.IDTType
+   * @generated
+   */
+  public Adapter createIDTTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.TypeReference <em>Type Reference</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -642,6 +692,21 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.AttributeType <em>Attribute Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.ow2.mindEd.adl.AttributeType
+   * @generated
+   */
+  public Adapter createAttributeTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.ValueList <em>Value List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -742,6 +807,21 @@ public class AdlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createInlineCodeCAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.ow2.mindEd.adl.FilePath <em>File Path</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.ow2.mindEd.adl.FilePath
+   * @generated
+   */
+  public Adapter createFilePathAdapter()
   {
     return null;
   }

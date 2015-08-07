@@ -58,11 +58,17 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//RequiredInterfaceDefinition/signature"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//OutputFlowInterfaceDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//OutputFlowInterfaceDefinition/signature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//OutputFlowInterfaceDefinition/signature"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//InputFlowInterfaceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InputFlowInterfaceDefinition/optional"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InputFlowInterfaceDefinition/signature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//InputFlowInterfaceDefinition/signature"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//FlowType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FlowType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//IDTType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//IDTType/path"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//TypeReference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//TypeReference/name"/>
@@ -99,6 +105,7 @@
     <genClasses ecoreClass="Adl.ecore#//TemplateSpecifier">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Adl.ecore#//TemplateSpecifier/typeReference"/>
     </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//AttributeType"/>
     <genClasses ecoreClass="Adl.ecore#//ValueList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ValueList/member"/>
     </genClasses>
@@ -115,20 +122,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ArgumentDefinition/argumentList"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//AttributeDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AttributeDefinition/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//AttributeDefinition/value"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//ImplementationDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//ImplementationDefinition/cFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImplementationDefinition/cFile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//ImplementationDefinition/inlineCcode"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//DataDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//DataDefinition/cFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//DataDefinition/cFile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//DataDefinition/inlineCcode"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//InlineCodeC">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//InlineCodeC/codeC"/>
+    </genClasses>
+    <genClasses ecoreClass="Adl.ecore#//FilePath">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Adl.ecore#//FilePath/name"/>
     </genClasses>
     <genClasses ecoreClass="Adl.ecore#//AnnotationsList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Adl.ecore#//AnnotationsList/annotations"/>

@@ -417,6 +417,52 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.FlowType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FlowTypeItemProvider flowTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.ow2.mindEd.adl.FlowType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFlowTypeAdapter() {
+		if (flowTypeItemProvider == null) {
+			flowTypeItemProvider = new FlowTypeItemProvider(this);
+		}
+
+		return flowTypeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.IDTType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IDTTypeItemProvider idtTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.ow2.mindEd.adl.IDTType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIDTTypeAdapter() {
+		if (idtTypeItemProvider == null) {
+			idtTypeItemProvider = new IDTTypeItemProvider(this);
+		}
+
+		return idtTypeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.TypeReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -624,6 +670,29 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.AttributeType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AttributeTypeItemProvider attributeTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.ow2.mindEd.adl.AttributeType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAttributeTypeAdapter() {
+		if (attributeTypeItemProvider == null) {
+			attributeTypeItemProvider = new AttributeTypeItemProvider(this);
+		}
+
+		return attributeTypeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.ValueList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -782,6 +851,29 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 		}
 
 		return inlineCodeCItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.ow2.mindEd.adl.FilePath} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FilePathItemProvider filePathItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.ow2.mindEd.adl.FilePath}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFilePathAdapter() {
+		if (filePathItemProvider == null) {
+			filePathItemProvider = new FilePathItemProvider(this);
+		}
+
+		return filePathItemProvider;
 	}
 
 	/**
@@ -1036,6 +1128,8 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 		if (requiredInterfaceDefinitionItemProvider != null) requiredInterfaceDefinitionItemProvider.dispose();
 		if (outputFlowInterfaceDefinitionItemProvider != null) outputFlowInterfaceDefinitionItemProvider.dispose();
 		if (inputFlowInterfaceDefinitionItemProvider != null) inputFlowInterfaceDefinitionItemProvider.dispose();
+		if (flowTypeItemProvider != null) flowTypeItemProvider.dispose();
+		if (idtTypeItemProvider != null) idtTypeItemProvider.dispose();
 		if (typeReferenceItemProvider != null) typeReferenceItemProvider.dispose();
 		if (subComponentDefinitionItemProvider != null) subComponentDefinitionItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
@@ -1045,6 +1139,7 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 		if (formalArgumentItemProvider != null) formalArgumentItemProvider.dispose();
 		if (formalArgumentsListItemProvider != null) formalArgumentsListItemProvider.dispose();
 		if (templateSpecifierItemProvider != null) templateSpecifierItemProvider.dispose();
+		if (attributeTypeItemProvider != null) attributeTypeItemProvider.dispose();
 		if (valueListItemProvider != null) valueListItemProvider.dispose();
 		if (templateReferenceItemProvider != null) templateReferenceItemProvider.dispose();
 		if (argumentDefinitionItemProvider != null) argumentDefinitionItemProvider.dispose();
@@ -1052,6 +1147,7 @@ public class AdlItemProviderAdapterFactory extends AdlAdapterFactory implements 
 		if (implementationDefinitionItemProvider != null) implementationDefinitionItemProvider.dispose();
 		if (dataDefinitionItemProvider != null) dataDefinitionItemProvider.dispose();
 		if (inlineCodeCItemProvider != null) inlineCodeCItemProvider.dispose();
+		if (filePathItemProvider != null) filePathItemProvider.dispose();
 		if (annotationsListItemProvider != null) annotationsListItemProvider.dispose();
 		if (annotationItemProvider != null) annotationItemProvider.dispose();
 		if (annotationElementItemProvider != null) annotationElementItemProvider.dispose();

@@ -1133,28 +1133,33 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	public class IDTTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IDTType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cFilePathParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Assignment cPathAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cPathFilePathParserRuleCall_0_0 = (RuleCall)cPathAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Keyword cStructKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
 		private final Keyword cEnumKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
 		private final Keyword cUnionKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
-		private final RuleCall cIDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		
 		//IDTType:
-		//	FilePath ":" ("struct" | "enum" | "union") ID;
+		//	path=FilePath ":" ("struct" | "enum" | "union")? name=ID;
 		@Override public ParserRule getRule() { return rule; }
 
-		//FilePath ":" ("struct" | "enum" | "union") ID
+		//path=FilePath ":" ("struct" | "enum" | "union")? name=ID
 		public Group getGroup() { return cGroup; }
 
+		//path=FilePath
+		public Assignment getPathAssignment_0() { return cPathAssignment_0; }
+
 		//FilePath
-		public RuleCall getFilePathParserRuleCall_0() { return cFilePathParserRuleCall_0; }
+		public RuleCall getPathFilePathParserRuleCall_0_0() { return cPathFilePathParserRuleCall_0_0; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 
-		//"struct" | "enum" | "union"
+		//("struct" | "enum" | "union")?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//"struct"
@@ -1166,8 +1171,11 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		//"union"
 		public Keyword getUnionKeyword_2_2() { return cUnionKeyword_2_2; }
 
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
 		//ID
-		public RuleCall getIDTerminalRuleCall_3() { return cIDTerminalRuleCall_3; }
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 	}
 
 	public class TypeReferenceElements extends AbstractParserRuleElementFinder {
@@ -1699,7 +1707,8 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	public class AttributeTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AttributeType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cIntKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cNameIntKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
 		private final Keyword cStringKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cInt8_tKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		private final Keyword cUint8_tKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
@@ -1715,16 +1724,19 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 		////TemplateSpecifiersList :
 		////	'<' (templateSpecifiers+=TemplateSpecifier (',' templateSpecifiers+=TemplateSpecifier)*) '>';
 		//AttributeType:
-		//	"int" | "string" | "int8_t" | "uint8_t" | "int16_t" | "uint16_t" | "int32_t" | "uint32_t" | "int64_t" | "uint64_t" |
-		//	"intptr_t" | "uintptr_t";
+		//	name="int" | "string" | "int8_t" | "uint8_t" | "int16_t" | "uint16_t" | "int32_t" | "uint32_t" | "int64_t" |
+		//	"uint64_t" | "intptr_t" | "uintptr_t";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"int" | "string" | "int8_t" | "uint8_t" | "int16_t" | "uint16_t" | "int32_t" | "uint32_t" | "int64_t" | "uint64_t" |
-		//"intptr_t" | "uintptr_t"
+		//name="int" | "string" | "int8_t" | "uint8_t" | "int16_t" | "uint16_t" | "int32_t" | "uint32_t" | "int64_t" | "uint64_t"
+		//| "intptr_t" | "uintptr_t"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//name="int"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
 		//"int"
-		public Keyword getIntKeyword_0() { return cIntKeyword_0; }
+		public Keyword getNameIntKeyword_0_0() { return cNameIntKeyword_0_0; }
 
 		//"string"
 		public Keyword getStringKeyword_1() { return cStringKeyword_1; }
@@ -2243,69 +2255,77 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	public class FilePathElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FilePath");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cSLTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cSLTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Action cFilePathAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSLTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cFullStopFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final RuleCall cSLTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final RuleCall cSLTerminalRuleCall_4_0 = (RuleCall)cGroup_4.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cFullStopFullStopKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final RuleCall cSLTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cFullStopKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final RuleCall cSLTerminalRuleCall_5_0 = (RuleCall)cGroup_5.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cFullStopKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_6_1 = (RuleCall)cGroup_6.eContents().get(1);
 		
 		//FilePath:
-		//	SL? ("." SL)? (".." SL)* ID (SL ID)* ("." ID)?;
+		//	{FilePath} name=SL? ("." SL)? (".." SL)* ID (SL ID)* ("." ID)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//SL? ("." SL)? (".." SL)* ID (SL ID)* ("." ID)?
+		//{FilePath} name=SL? ("." SL)? (".." SL)* ID (SL ID)* ("." ID)?
 		public Group getGroup() { return cGroup; }
 
-		//SL?
-		public RuleCall getSLTerminalRuleCall_0() { return cSLTerminalRuleCall_0; }
+		//{FilePath}
+		public Action getFilePathAction_0() { return cFilePathAction_0; }
 
-		//("." SL)?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		//name=SL?
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//SL
-		public RuleCall getSLTerminalRuleCall_1_1() { return cSLTerminalRuleCall_1_1; }
+		public RuleCall getNameSLTerminalRuleCall_1_0() { return cNameSLTerminalRuleCall_1_0; }
 
-		//(".." SL)*
+		//("." SL)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//".."
-		public Keyword getFullStopFullStopKeyword_2_0() { return cFullStopFullStopKeyword_2_0; }
+		//"."
+		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
 
 		//SL
 		public RuleCall getSLTerminalRuleCall_2_1() { return cSLTerminalRuleCall_2_1; }
 
-		//ID
-		public RuleCall getIDTerminalRuleCall_3() { return cIDTerminalRuleCall_3; }
+		//(".." SL)*
+		public Group getGroup_3() { return cGroup_3; }
 
-		//(SL ID)*
-		public Group getGroup_4() { return cGroup_4; }
+		//".."
+		public Keyword getFullStopFullStopKeyword_3_0() { return cFullStopFullStopKeyword_3_0; }
 
 		//SL
-		public RuleCall getSLTerminalRuleCall_4_0() { return cSLTerminalRuleCall_4_0; }
+		public RuleCall getSLTerminalRuleCall_3_1() { return cSLTerminalRuleCall_3_1; }
 
 		//ID
-		public RuleCall getIDTerminalRuleCall_4_1() { return cIDTerminalRuleCall_4_1; }
+		public RuleCall getIDTerminalRuleCall_4() { return cIDTerminalRuleCall_4; }
 
-		//("." ID)?
+		//(SL ID)*
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"."
-		public Keyword getFullStopKeyword_5_0() { return cFullStopKeyword_5_0; }
+		//SL
+		public RuleCall getSLTerminalRuleCall_5_0() { return cSLTerminalRuleCall_5_0; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_5_1() { return cIDTerminalRuleCall_5_1; }
+
+		//("." ID)?
+		public Group getGroup_6() { return cGroup_6; }
+
+		//"."
+		public Keyword getFullStopKeyword_6_0() { return cFullStopKeyword_6_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_6_1() { return cIDTerminalRuleCall_6_1; }
 	}
 
 	public class FileNameElements extends AbstractParserRuleElementFinder {
@@ -2939,7 +2959,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IDTType:
-	//	FilePath ":" ("struct" | "enum" | "union") ID;
+	//	path=FilePath ":" ("struct" | "enum" | "union")? name=ID;
 	public IDTTypeElements getIDTTypeAccess() {
 		return pIDTType;
 	}
@@ -3070,8 +3090,8 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	////TemplateSpecifiersList :
 	////	'<' (templateSpecifiers+=TemplateSpecifier (',' templateSpecifiers+=TemplateSpecifier)*) '>';
 	//AttributeType:
-	//	"int" | "string" | "int8_t" | "uint8_t" | "int16_t" | "uint16_t" | "int32_t" | "uint32_t" | "int64_t" | "uint64_t" |
-	//	"intptr_t" | "uintptr_t";
+	//	name="int" | "string" | "int8_t" | "uint8_t" | "int16_t" | "uint16_t" | "int32_t" | "uint32_t" | "int64_t" |
+	//	"uint64_t" | "intptr_t" | "uintptr_t";
 	public AttributeTypeElements getAttributeTypeAccess() {
 		return pAttributeType;
 	}
@@ -3189,7 +3209,7 @@ public class AdlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FilePath:
-	//	SL? ("." SL)? (".." SL)* ID (SL ID)* ("." ID)?;
+	//	{FilePath} name=SL? ("." SL)? (".." SL)* ID (SL ID)* ("." ID)?;
 	public FilePathElements getFilePathAccess() {
 		return pFilePath;
 	}
