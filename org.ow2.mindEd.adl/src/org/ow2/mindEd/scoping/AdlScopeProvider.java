@@ -146,7 +146,7 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		if (sourceComponentArchDef instanceof TypeDefinition) {
 			// Get all the elements
 			EList<HostedInterfaceDefinition> elements = ((TypeDefinition) sourceComponentArchDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
 
 			if (!bindingDef.isIsSrcParentThis()) {
 				EList<HostedInterfaceDefinition> reqItfList = new BasicEList<HostedInterfaceDefinition>();
@@ -154,8 +154,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof RequiredInterfaceDefinition)
 						reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof InputFlowInterfaceDefinition)
-						reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof OutputFlowInterfaceDefinition)
+						reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all required interfaces coming from Super Types
 				reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes((TypeDefinition) sourceComponentArchDef));
@@ -167,8 +167,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof ProvidedInterfaceDefinition)
 						pvdItfList.add((ProvidedInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof OutputFlowInterfaceDefinition)
-						pvdItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof InputFlowInterfaceDefinition)
+						pvdItfList.add((InputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all provided interfaces coming from Super Types
 				pvdItfList.addAll(listAllProvidedInterfacesFromArchDefSuperTypes((TypeDefinition) sourceComponentArchDef));
@@ -178,7 +178,7 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		} else if (sourceComponentArchDef instanceof CompositeDefinition) {
 			// Get all the elements
 			EList<CompositeElement> elements = ((CompositeDefinition) sourceComponentArchDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
 
 			if (!bindingDef.isIsSrcParentThis()) {
 				EList<HostedInterfaceDefinition> reqItfList = new BasicEList<HostedInterfaceDefinition>();
@@ -186,8 +186,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof RequiredInterfaceDefinition)
 						reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof InputFlowInterfaceDefinition)
-						reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof OutputFlowInterfaceDefinition)
+						reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all required interfaces coming from Super Types
 				reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes((CompositeDefinition) sourceComponentArchDef));
@@ -199,8 +199,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof ProvidedInterfaceDefinition)
 						pvdItfList.add((ProvidedInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof OutputFlowInterfaceDefinition)
-						pvdItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof InputFlowInterfaceDefinition)
+						pvdItfList.add((InputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all provided interfaces coming from Super Types
 				pvdItfList.addAll(listAllProvidedInterfacesFromArchDefSuperTypes((CompositeDefinition) sourceComponentArchDef));
@@ -210,7 +210,7 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		} else if (sourceComponentArchDef instanceof PrimitiveDefinition) {
 			// Get all the elements
 			EList<PrimitiveElement> elements = ((PrimitiveDefinition) sourceComponentArchDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
 
 			if (!bindingDef.isIsSrcParentThis()) {
 				EList<HostedInterfaceDefinition> reqItfList = new BasicEList<HostedInterfaceDefinition>();
@@ -218,8 +218,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof RequiredInterfaceDefinition)
 						reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof InputFlowInterfaceDefinition)
-						reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof OutputFlowInterfaceDefinition)
+						reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all required interfaces coming from Super Types
 				reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes((PrimitiveDefinition) sourceComponentArchDef));
@@ -231,8 +231,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof ProvidedInterfaceDefinition)
 						pvdItfList.add((ProvidedInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof OutputFlowInterfaceDefinition)
-						pvdItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof InputFlowInterfaceDefinition)
+						pvdItfList.add((InputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all provided interfaces coming from Super Types
 				pvdItfList.addAll(listAllProvidedInterfacesFromArchDefSuperTypes((PrimitiveDefinition) sourceComponentArchDef));
@@ -278,7 +278,7 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		if (targetComponentArchDef instanceof TypeDefinition) {
 			// Get all the elements
 			EList<HostedInterfaceDefinition> elements = ((TypeDefinition) targetComponentArchDef).getElements();
-			// Then filter for ProvidedInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
+			// Then filter for ProvidedInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
 
 			if (!bindingDef.isIsTgtParentThis()) {
 				EList<HostedInterfaceDefinition> pvdItfList = new BasicEList<HostedInterfaceDefinition>();
@@ -286,8 +286,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof ProvidedInterfaceDefinition)
 						pvdItfList.add((ProvidedInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof OutputFlowInterfaceDefinition)
-						pvdItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof InputFlowInterfaceDefinition)
+						pvdItfList.add((InputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all provided interfaces coming from Super Types
 				pvdItfList.addAll(listAllProvidedInterfacesFromArchDefSuperTypes((TypeDefinition) targetComponentArchDef));
@@ -299,8 +299,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof RequiredInterfaceDefinition)
 						reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof InputFlowInterfaceDefinition)
-						reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof OutputFlowInterfaceDefinition)
+						reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all required interfaces coming from Super Types
 				reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes((TypeDefinition) targetComponentArchDef));
@@ -310,7 +310,7 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		} else if (targetComponentArchDef instanceof CompositeDefinition) {
 			// Get all the elements
 			EList<CompositeElement> elements = ((CompositeDefinition) targetComponentArchDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
 
 			if (!bindingDef.isIsTgtParentThis()) {
 				EList<HostedInterfaceDefinition> pvdItfList = new BasicEList<HostedInterfaceDefinition>();
@@ -318,8 +318,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof ProvidedInterfaceDefinition)
 						pvdItfList.add((ProvidedInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof OutputFlowInterfaceDefinition)
-						pvdItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof InputFlowInterfaceDefinition)
+						pvdItfList.add((InputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all provided interfaces coming from Super Types
 				pvdItfList.addAll(listAllProvidedInterfacesFromArchDefSuperTypes((CompositeDefinition) targetComponentArchDef));
@@ -331,8 +331,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof RequiredInterfaceDefinition)
 						reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof InputFlowInterfaceDefinition)
-						reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof OutputFlowInterfaceDefinition)
+						reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all required interfaces coming from Super Types
 				reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes((CompositeDefinition) targetComponentArchDef));
@@ -342,7 +342,7 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		} else if (targetComponentArchDef instanceof PrimitiveDefinition) {
 			// Get all the elements
 			EList<PrimitiveElement> elements = ((PrimitiveDefinition) targetComponentArchDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
 
 			if (!bindingDef.isIsTgtParentThis()) {
 				EList<HostedInterfaceDefinition> pvdItfList = new BasicEList<HostedInterfaceDefinition>();
@@ -350,8 +350,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof ProvidedInterfaceDefinition)
 						pvdItfList.add((ProvidedInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof OutputFlowInterfaceDefinition)
-						pvdItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof InputFlowInterfaceDefinition)
+						pvdItfList.add((InputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all provided interfaces coming from Super Types
 				pvdItfList.addAll(listAllProvidedInterfacesFromArchDefSuperTypes((PrimitiveDefinition) targetComponentArchDef));
@@ -363,8 +363,8 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 					if (currentEObject instanceof RequiredInterfaceDefinition)
 						reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 					
-					if (currentEObject instanceof InputFlowInterfaceDefinition)
-						reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+					if (currentEObject instanceof OutputFlowInterfaceDefinition)
+						reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 				}
 				// We also want all required interfaces coming from Super Types
 				reqItfList.addAll(listAllRequiredInterfacesFromArchDefSuperTypes((PrimitiveDefinition) targetComponentArchDef));
@@ -495,38 +495,38 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		if (archDef instanceof TypeDefinition) {
 			// Get all the elements
 			EList<HostedInterfaceDefinition> elements = ((TypeDefinition) archDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
 
 			for (EObject currentEObject : elements) {
 				if (currentEObject instanceof RequiredInterfaceDefinition)
 					reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 				
-				if (currentEObject instanceof InputFlowInterfaceDefinition)
-					reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+				if (currentEObject instanceof OutputFlowInterfaceDefinition)
+					reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 			}
 		} else if (archDef instanceof CompositeDefinition) {
 			// Get all the elements
 			EList<CompositeElement> elements = ((CompositeDefinition) archDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
 
 			for (EObject currentEObject : elements) {
 				if (currentEObject instanceof RequiredInterfaceDefinition)
 					reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 				
-				if (currentEObject instanceof InputFlowInterfaceDefinition)
-					reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+				if (currentEObject instanceof OutputFlowInterfaceDefinition)
+					reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 			}
 		} else if (archDef instanceof PrimitiveDefinition) {
 			// Get all the elements
 			EList<PrimitiveElement> elements = ((PrimitiveDefinition) archDef).getElements();
-			// Then filter for RequiredInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
+			// Then filter for RequiredInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
 
 			for (EObject currentEObject : elements) {
 				if (currentEObject instanceof RequiredInterfaceDefinition)
 					reqItfList.add((RequiredInterfaceDefinition) currentEObject);
 				
-				if (currentEObject instanceof InputFlowInterfaceDefinition)
-					reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
+				if (currentEObject instanceof OutputFlowInterfaceDefinition)
+					reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
 			}
 		}
 		return reqItfList;
@@ -630,38 +630,38 @@ public class AdlScopeProvider extends AbstractDeclarativeScopeProvider {
 		if (archDef instanceof TypeDefinition) {
 			// Get all the elements
 			EList<HostedInterfaceDefinition> elements = ((TypeDefinition) archDef).getElements();
-			// Then filter for ProvidedInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
+			// Then filter for ProvidedInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
 
 			for (EObject currentEObject : elements) {
 				if (currentEObject instanceof ProvidedInterfaceDefinition)
 					reqItfList.add((ProvidedInterfaceDefinition) currentEObject);
 				
-				if (currentEObject instanceof OutputFlowInterfaceDefinition)
-					reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+				if (currentEObject instanceof InputFlowInterfaceDefinition)
+					reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
 			}
 		} else if (archDef instanceof CompositeDefinition) {
 			// Get all the elements
 			EList<CompositeElement> elements = ((CompositeDefinition) archDef).getElements();
-			// Then filter for ProvidedInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
+			// Then filter for ProvidedInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
 
 			for (EObject currentEObject : elements) {
 				if (currentEObject instanceof ProvidedInterfaceDefinition)
 					reqItfList.add((ProvidedInterfaceDefinition) currentEObject);
 				
-				if (currentEObject instanceof OutputFlowInterfaceDefinition)
-					reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+				if (currentEObject instanceof InputFlowInterfaceDefinition)
+					reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
 			}
 		} else if (archDef instanceof PrimitiveDefinition) {
 			// Get all the elements
 			EList<PrimitiveElement> elements = ((PrimitiveDefinition) archDef).getElements();
-			// Then filter for ProvidedInterfaceDefinition(s) and OutputFlowInterfaceDefinition(s)
+			// Then filter for ProvidedInterfaceDefinition(s) and InputFlowInterfaceDefinition(s)
 
 			for (EObject currentEObject : elements) {
 				if (currentEObject instanceof ProvidedInterfaceDefinition)
 					reqItfList.add((ProvidedInterfaceDefinition) currentEObject);
 				
-				if (currentEObject instanceof OutputFlowInterfaceDefinition)
-					reqItfList.add((OutputFlowInterfaceDefinition) currentEObject);
+				if (currentEObject instanceof InputFlowInterfaceDefinition)
+					reqItfList.add((InputFlowInterfaceDefinition) currentEObject);
 			}
 		}
 		return reqItfList;
